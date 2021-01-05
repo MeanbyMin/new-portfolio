@@ -1,150 +1,249 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <!-- HTML Default Meta -->
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <meta name="format-detection" content="telephone=no"/>
-  <meta name="subject" content="EAT딜">
-  <meta name="description" content="맛있는 혜택을 확인해 보세요!">
-  <meta name="image" content="https://mp-seoul-image-production-s3.mangoplate.com/meta_image_eatdeal.png">
 
-  <meta property='fb:app_id' content='476661545693695'/>
-  <meta property='og:url' content='https://www.mangoplate.com/eat_deals'>
-  <meta property='og:type' content='website'>
-  <meta property='og:title' content='EAT딜'>
-  <meta property='og:description' content='맛있는 혜택을 확인해 보세요!'>
-  <meta property='og:image' content='https://mp-seoul-image-production-s3.mangoplate.com/meta_image_eatdeal.png'>
 
-  <!-- Twitter Meta -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:site" content="@MangoPlate">
-<meta property="twitter:url" content="https://www.mangoplate.com/eat_deals">
-<meta property="twitter:title" content="EAT딜">
-<meta property="twitter:description" content="맛있는 혜택을 확인해 보세요!">
-<meta property="twitter:image" content="https://mp-seoul-image-production-s3.mangoplate.com/meta_image_eatdeal.png">
+<body onunload="" ng-app="mp20App" class="ng-scope" style="overflow: visible;">
 
-  <title>EAT딜</title>
+<main class="EatDealDetailPage">
+  <div class="EatDealDetailPage__PictureCarousel">
+    <div class="PictureCarousel">
+      <div class="PictureCarousel__Deem">
+        <button class="PictureCarousel__ShareButton">
+          <i class="PictureCarousel__ShareIcon"></i>
+        </button>
+      </div>
 
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="/assets/favicon.ico">
+      <ul class="PictureCarousel__PictureList slick-initialized slick-slider"><button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button" aria-disabled="false" style="display: inline-block;">Previous</button>
+          <div aria-live="polite" class="slick-list draggable"><div class="slick-track" role="listbox" style="opacity: 1; width: 3840px; transform: translate3d(-768px, 0px, 0px);"><li class="PictureCarousel__Picture slick-slide" style="background-image: url(&quot;https://mp-seoul-image-production-s3.mangoplate.com/eat_deal_pictures/aau4uzlmaicw24yj.PNG?fit=around|768:*&amp;crop=768:*;*,*&amp;output-format=jpg&amp;output-quality=80&quot;); width: 768px;" data-slick-index="0" aria-hidden="true" tabindex="-1" role="option" aria-describedby="slick-slide00"></li><li class="PictureCarousel__Picture slick-slide slick-current slick-active" style="background-image: url(&quot;https://mp-seoul-image-production-s3.mangoplate.com/eat_deal_pictures/pkhbei36dfbg-5sh.PNG?fit=around|768:*&amp;crop=768:*;*,*&amp;output-format=jpg&amp;output-quality=80&quot;); width: 768px;" data-slick-index="1" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide01"></li><li class="PictureCarousel__Picture slick-slide" style="background-image: url(&quot;https://mp-seoul-image-production-s3.mangoplate.com/eat_deal_pictures/p5ovrpfokfgucdbr.PNG?fit=around|768:*&amp;crop=768:*;*,*&amp;output-format=jpg&amp;output-quality=80&quot;); width: 768px;" data-slick-index="2" aria-hidden="true" tabindex="-1" role="option" aria-describedby="slick-slide02"></li><li class="PictureCarousel__Picture slick-slide" style="background-image: url(&quot;https://mp-seoul-image-production-s3.mangoplate.com/eat_deal_pictures/hkqdyztp3e17hf7o.PNG?fit=around|768:*&amp;crop=768:*;*,*&amp;output-format=jpg&amp;output-quality=80&quot;); width: 768px;" data-slick-index="3" aria-hidden="true" tabindex="-1" role="option" aria-describedby="slick-slide03"></li><li class="PictureCarousel__Picture slick-slide" style="background-image: url(&quot;https://mp-seoul-image-production-s3.mangoplate.com/eat_deal_pictures/nnp9a6nfx9wxj5vi.PNG?fit=around|768:*&amp;crop=768:*;*,*&amp;output-format=jpg&amp;output-quality=80&quot;); width: 768px;" data-slick-index="4" aria-hidden="true" tabindex="-1" role="option" aria-describedby="slick-slide04"></li></div></div>
+          
+          
+          
+          
+      <button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: block;" aria-disabled="false">Next</button></ul>
 
-  <!-- Representative URL Setting-->
-  <link rel="canonical" href="https://www.mangoplate.com/eat_deals"/>
-    <link rel="alternate" href="https://www.mangoplate.com/eat_deals" hreflang="ko">
-    <link rel="alternate" href="https://www.mangoplate.com/en/eat_deals" hreflang="en">
-    <link rel="alternate" href="https://www.mangoplate.com/zh/eat_deals" hreflang="zh">
-
-  <link rel="stylesheet" media="screen" href="/assets/dist/eat_deals-5b6d5dbe9b246ca9d90635ec848cf11057ed019178135a85b3ae3aad6cc783b2.css" />
-
-  <script id="dfp_ads" type="application/json">[{"id":21,"platform":"web_desktop","page":"init","inventory":"all","sizes":null,"tag":"/395211568/init/desktop_all","enabled":true,"created_at":"2017-06-23T01:58:50.000+09:00","updated_at":"2018-11-16T17:06:11.000+09:00","args":{"display_type":{"value":"popup"}}},{"id":43,"platform":"web_mobile","page":"init","inventory":"all","sizes":null,"tag":"/395211568/init/mobile_all","enabled":true,"created_at":"2020-02-12T01:57:59.000+09:00","updated_at":"2020-03-23T00:29:37.000+09:00","args":{"display_type":{"value":"popup"},"display":{"value":"once"}}},{"id":53,"platform":"web_mobile","page":"init","inventory":"popop_use_app","sizes":null,"tag":"","enabled":true,"created_at":"2020-01-30T01:49:26.000+09:00","updated_at":"2020-03-06T12:00:28.000+09:00","args":{}},{"id":57,"platform":"web_mobile","page":"init","inventory":"area_use_app","sizes":null,"tag":"","enabled":true,"created_at":"2020-01-30T01:49:26.000+09:00","updated_at":"2020-03-06T12:22:14.000+09:00","args":{}}]</script>
-</head>
-
-<body onunload="" ng-app="mp20App" class="EatDealsPage__Body">
-
-<main class="EatDealsPage">
-  <header class="EatDealsPage__Header"></header>
-  <ul class="EatDealsPage__List"></ul>
-  <button class="EatDealsPage__AllEatDealButton">모든 EAT딜 보기</button>
-
-  <div class="EatDealsPage__EmptyMessageLayer">
-    <p class="EatDealsPage__EmptyMessage">
-      EAT딜을 준비중입니다.
-    </p>
+        <div class="PictureCarousel__Info">
+          <span class="PictureCarousel__Label" style="opacity: 0;">흑임자크림라떼 10% 할인</span>
+          <span class="PictureCarousel__Pagination">
+          <span class="PictureCarousel__PaginationIndex">2</span>/<span class="PictureCarousel__PaginationTotalCount">5</span> <i class="PictureCarousel__PaginationIcon"></i>
+        </span>
+        </div>
+    </div>
   </div>
 
-  <i class="EatDealsPage__LoadingBar EatDealsPage__LoadingBar--Show EatDealsPage__LoadingBar--Center"></i>
+  <div class="EatDealDetailPage__Info EatDealInfo">
+    <a href="/restaurants/bIVPWh2OWpcN" onclick="trackEvent('CLICK_RESTAURANT', '{eat_deal_id: 1607058501723, restaurant_uuid: 352796}')">
+    <h1 class="EatDealInfo__RestaurantName">[부천] 피스앤스윗</h1>
 
-    <div class="PopupUseApp__Dim"></div>
-<div class="PopupUseApp">
-  <div class="PopupUseApp__Content">
-    <div class="PopupUseApp__Content__Align">
-      <div class="PopupUseApp__Content__Align__Inner">
-        <img class="PopupUseApp__Content__Align__Inner--Logo" src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/mp-product-app-logo@3x.png' alt="MangoPlate App Logo">
-        <div class="PopupUseApp__Content__Align__Inner--Text">
-          앱으로 더욱 편리하게 주변 맛집을 검색하고, 할인도 받아보세요!
+    <div class="EatDealDetailPage__RestaurantButton">
+      <i class="EatDealDetailPage__RestaurantButtonInfoIcon"></i>
+      <span class="EatDealDetailPage__RestaurantButtonLabel">
+        식당 정보 보기
+      </span>
+      <i class="EatDealDetailPage__RestaurantButtonArrow"></i>
+    </div>
+  </a>
+
+    <p class="EatDealInfo__Title">흑임자크림라떼</p>
+      <span class="EatDealInfo__UseDate">
+        <span class="EatDealInfo__UseDateLabel">사용 기간 : </span>
+          93일
+          <span class="EatDealInfo__SubUseDate">(2021-01-05
+            ~ 2021-04-07)</span>
+      </span>
+
+    <div class="EatDealInfo__PriceInfo">
+        <span class="EatDealInfo__OriginalPrice">₩5,500</span>
+
+      <div class="EatDealInfo__PriceInfoRow">
+
+        <div class="EatDealInfo__PriceContainer">
+          <div class="EatDealInfo__PriceWrap">
+
+              <span class="EatDealInfo__DiscountWrap">
+                <span class="EatDealInfo__DiscountRate">10</span><span class="EatDealInfo__DiscountUnit">%</span>
+              </span>
+
+            <span class="EatDealInfo__SalesPrice">
+              <span class="EatDealInfo__SalesUnit">₩</span>4,950
+            </span>
+          </div>
         </div>
       </div>
-      <div class="PopupUseApp__linkMain">망고플레이트 앱으로 보기</div>
-      <div class="PopupUseApp__linkSub">모바일 웹으로 볼게요</div>
     </div>
+  </div>
+
+
+  <div class="EatDealDetailPage__SectionSeparator"></div>
+
+
+  <div class="EatDealDetailPage__AdditionalInfo EatDealAdditionalInfo">
+      <section class="EatDealAdditionalInfo__Section">
+        <h3 class="EatDealAdditionalInfo__Title">식당 소개</h3>
+
+        <ul class="EatDealAdditionalInfo__List">
+            <li class="EatDealAdditionalInfo__Item">수제 디저트와 고급 블렌딩 커피를 코지한 분위기에서 즐기는 피스앤스윗</li>
+        </ul>
+      </section>
+      <section class="EatDealAdditionalInfo__Section">
+        <h3 class="EatDealAdditionalInfo__Title">메뉴 소개</h3>
+
+        <ul class="EatDealAdditionalInfo__List">
+            <li class="EatDealAdditionalInfo__Item">단맛과 고소한 맛의 최적 조합</li>
+        </ul>
+      </section>
+      <section class="EatDealAdditionalInfo__Section">
+        <h3 class="EatDealAdditionalInfo__Title">※ 유의사항 (꼭! 확인해주세요)</h3>
+
+        <ul class="EatDealAdditionalInfo__List">
+            <li class="EatDealAdditionalInfo__Item">사용 기간: 구매 시점으로부터 93일</li>
+            <li class="EatDealAdditionalInfo__Item">EAT딜 외에 다른 쿠폰 및 딜과 중복 사용 불가합니다.</li>
+            <li class="EatDealAdditionalInfo__Item">구매 전 전용 지점을 꼭 확인해주세요.</li>
+            <li class="EatDealAdditionalInfo__Item">양도 및 재판매 불가합니다.</li>
+            <li class="EatDealAdditionalInfo__Item">방문 전 영업시간 및 휴무일 확인을 부탁드립니다.</li>
+            <li class="EatDealAdditionalInfo__Item">옵션 당 1인 1매만 구매 가능합니다.</li>
+            <li class="EatDealAdditionalInfo__Item">테이블 당 1매만 사용 가능합니다.</li>
+        </ul>
+      </section>
+      <section class="EatDealAdditionalInfo__Section">
+        <h3 class="EatDealAdditionalInfo__Title">※ 사용 방법</h3>
+
+        <ul class="EatDealAdditionalInfo__List">
+            <li class="EatDealAdditionalInfo__Item">구매하신 EAT딜은 최신 버전 앱에서만 사용 가능합니다.</li>
+            <li class="EatDealAdditionalInfo__Item">결제 시 망고플레이트 앱 &gt; 내정보 &gt; 구매한 EAT딜을 선택하여 매장에 비치된 QR코드를 스캔합니다.</li>
+            <li class="EatDealAdditionalInfo__Item">QR코드 스캔이 불가능할 시 매장 직원에게 화면 하단 12자리 숫자 코드를 보여주세요.</li>
+            <li class="EatDealAdditionalInfo__Item">사용 처리가 완료된 EAT딜은 재사용 및 환불 불가합니다.</li>
+        </ul>
+      </section>
+      <section class="EatDealAdditionalInfo__Section">
+        <h3 class="EatDealAdditionalInfo__Title">※ 환불 규정</h3>
+
+        <ul class="EatDealAdditionalInfo__List">
+            <li class="EatDealAdditionalInfo__Item">상품 사용 기간 내 환불 요청에 한해 구매 금액 전액 환불, 상품 사용 기간 이후 환불 요청 건은 수수료 10%를 제외한 금액 환불을 원칙으로 합니다.</li>
+            <li class="EatDealAdditionalInfo__Item">환불 기간 연장은 불가합니다.</li>
+            <li class="EatDealAdditionalInfo__Item">구매 후 93일 이내 환불 요청: 100% 환불</li>
+            <li class="EatDealAdditionalInfo__Item">구매 후 93일 이후 환불 요청: 90% 환불</li>
+            <li class="EatDealAdditionalInfo__Item">환불은 구매 시 사용하였던 결제수단으로 환불됩니다.</li>
+        </ul>
+      </section>
+      <section class="EatDealAdditionalInfo__Section">
+        <h3 class="EatDealAdditionalInfo__Title">문의</h3>
+
+        <ul class="EatDealAdditionalInfo__List">
+            <li class="EatDealAdditionalInfo__Item">cs@mangoplate.com</li>
+        </ul>
+      </section>
+  </div>
+
+  
+
+  <div class="EatDealDetailPage__ActionContainer">
+    <button class="EatDealDetailPage__ActionButton">
+      <span class="EatDealDetailPage__ActionButtonMessage">구매하기</span>
+    </button>
+
+  </div>
+
+  <div class="ShareView">
+  <div class="ShareView__Wrap">
+    <button class="ShareView__CloseButton">
+      <i class="ShareView__CloseIcon"></i>
+    </button>
+
+    <header class="ShareView__Header">
+      <h3 class="ShareView__Title">
+        친구에게 공유해보세요.
+      </h3>
+    </header>
+
+    <ul class="ShareView__SharingMethodList">
+      <li class="ShareView__SharingMethodItem ShareView__SharingMethodItem--KakaoTalk">
+        <i class="ShareView__SharingMethodIcon"></i>
+        카카오톡
+      </li>
+
+      <li class="ShareView__SharingMethodItem ShareView__SharingMethodItem--FacebookMessenger only-mobile">
+        <i class="ShareView__SharingMethodIcon"></i>
+        페이스북 메신저
+      </li>
+
+      <li class="ShareView__SharingMethodItem ShareView__SharingMethodItem--Line">
+        <i class="ShareView__SharingMethodIcon"></i>
+        라인
+      </li>
+
+      <li class="ShareView__SharingMethodItem ShareView__SharingMethodItem--URL">
+        <i class="ShareView__SharingMethodIcon"></i>
+        URL
+      </li>
+    </ul>
   </div>
 </div>
 
-    <div class="BottomBarUseApp">
-  <div class="BottomBarUseApp__Wrap">
-    <div class="BottomBarUseApp__Close">
-      <img src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/mobile-web-mini-popup-closed.svg' alt="MangoPlate UseApp BottomBar Close"/>
-    </div>
-    <div class="BottomBarUseApp__Content">
-      <img class="BottomBarUseApp__Content-Logo" src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/mp-product-app-logo@3x.png' alt="MangoPlate UseApp BottomBar Logo">
-      <div class="BottomBarUseApp__Content-Text">
-        망고플레이트 앱으로<br/> 더욱 편리하게 이용하세요.
-      </div>
-      <div class="BottomBarUseApp__Content-SeeToApp">앱으로 보기</div>
-    </div>
+
+  <section class="PictureView">
+    <header class="PictureView__Header">
+      <h2 class="PictureView__Title">[부천] 피스앤스윗</h2>
+      <button class="PictureView__CloseButton">
+        <i class="PictureView__CloseIcon"></i>
+      </button>
+    </header>
+
+    <ul class="PictureView__PictureList"><li class="PictureView__PictureItem" style="background-image: url(&quot;https://mp-seoul-image-production-s3.mangoplate.com/eat_deal_pictures/aau4uzlmaicw24yj.PNG?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80&quot;); height: 1395.78px;"><span class="PictureView__Label">흑임자크림라떼 10% 할인</span></li><li class="PictureView__PictureItem" style="background-image: url(&quot;https://mp-seoul-image-production-s3.mangoplate.com/eat_deal_pictures/pkhbei36dfbg-5sh.PNG?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80&quot;); height: 1917.48px;"></li><li class="PictureView__PictureItem" style="background-image: url(&quot;https://mp-seoul-image-production-s3.mangoplate.com/eat_deal_pictures/p5ovrpfokfgucdbr.PNG?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80&quot;); height: 2294.34px;"></li><li class="PictureView__PictureItem" style="background-image: url(&quot;https://mp-seoul-image-production-s3.mangoplate.com/eat_deal_pictures/hkqdyztp3e17hf7o.PNG?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80&quot;); height: 1819.45px;"></li><li class="PictureView__PictureItem" style="background-image: url(&quot;https://mp-seoul-image-production-s3.mangoplate.com/eat_deal_pictures/nnp9a6nfx9wxj5vi.PNG?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80&quot;); height: 1004.04px;"></li></ul>
+  </section>
+
+  <span class="EatDealDetailPage__Toast Toast">링크가 복사되었습니다.</span>
+
+  <div class="EatDealPurchaseCompletedView">
+    <section class="EatDealPurchaseCompletedView__Dialog">
+      <div class="EatDealPurchaseCompletedView__Picture" style="background-image: url('https://mp-seoul-image-production-s3.mangoplate.com/eat_deal_pictures/aau4uzlmaicw24yj.PNG')"></div>
+      <h2 class="EatDealPurchaseCompletedView__Title">EAT딜을 구매해 주셔서 감사합니다.</h2>
+      <p class="EatDealPurchaseCompletedView__Description">
+        구매하신 EAT딜은 <a href="#" class="EatDealPurchaseCompletedView__AppLink">최신 버전의 앱</a>을<br>통해서 사용하실 수 있습니다.
+      </p>
+      <button class="EatDealPurchaseCompletedView__ActionButton">앱에서 사용하기</button>
+      <a href="#" class="EatDealPurchaseCompletedView__NextButton">다음에 사용하기</a>
+    </section>
   </div>
-</div>
 
 </main>
 
-<div class="LocationFilter">
-  <div class="LocationFilter__Wrap">
-    <header class="LocationFilter__Header">
-      <h2 class="LocationFilter__Title">지역 선택</h2>
-      <button class="LocationFilter__CloseButton"></button>
-    </header>
+<script id="RelatedEatDealItemTemplate" type="text/x-handlebars-template">
+  <li class="RelatedEatDealItem">
+    <a class="RelatedEatDealItem__Link" href="{{linkURL}}">
+      <div class="RelatedEatDealItem__Picture" data-original="{{pictureURL}}"></div>
+      <span class="RelatedEatDealItem__RestaurantName">{{restaurantName}}</span>
+      <span class="RelatedEatDealItem__Title">{{title}}</span>
+      {{#ifNotEquals EAT_DEAL_DISCOUNT_TYPE.NONE discountType}}
+      <span class="RelatedEatDealItem__OriginalPrice">{{originalPrice}}</span>
+      {{/ifNotEquals}}
 
-    <nav class="LocationFilter__RegionNav">
-      <ul class="LocationFilter__RegionList">
-        <li class="LocationFilter__RegionListActiveBar"></li>
-      </ul>
-    </nav>
+      <span class="RelatedEatDealItem__SalesPriceWrap">
+        {{#ifEquals EAT_DEAL_DISCOUNT_TYPE.PRICE discountType}}
+          <p class="RelatedEatDealItem__DiscountValue"><span class="RelatedEatDealItem__DiscountLabel">-₩</span>{{discountValue}}</p>
+        {{/ifEquals}}
 
-    <div class="LocationFilter__MetroWrap">
-      <ul class="LocationFilter__MetroList"></ul>
-    </div>
+        {{#ifEquals EAT_DEAL_DISCOUNT_TYPE.RATE discountType}}
+          <p class="RelatedEatDealItem__DiscountValue">{{discountValue}}<span class="RelatedEatDealItem__DiscountLabel">%</span></p>
+        {{/ifEquals}}
 
-    <footer class="LocationFilter__Footer">
-      <button class="LocationFilter__ApplyButton">적용</button>
-      <button class="LocationFilter__ClearAllButton">지우기</button>
-    </footer>
-  </div>
-</div>
-
-<script id="LocationFilterRegionTemplate" type="text/x-handlebars-template">
-  <li class="LocationFilter__RegionItem">
-    <button class="LocationFilter__RegionButton">{{region}}</button>
+        <span class="RelatedEatDealItem__SalesPriceLabel">₩</span>
+        <span class="RelatedEatDealItem__SalesPrice">{{salesPrice}}</span>
+      </span>
+    </a>
   </li>
 </script>
 
-<script id="LocationFilterMetroTemplate" type="text/x-handlebars-template">
-  <li class="LocationFilter__MetroItem">
-    <button class="LocationFilter__MetroButton">{{metro}}</button>
-  </li>
-</script>
+<script id="EatDealDetailPageTitleTemplate" type="text/x-handlebars-template">
+  <a href="/restaurants/bIVPWh2OWpcN"
+     onclick="trackEvent('CLICK_RESTAURANT', '{eat_deal_id: 1607058501723, restaurant_uuid: 352796}')">
+    <h1 class="EatDealInfo__RestaurantName">[부천] 피스앤스윗</h1>
 
-
-<script id="EatDealsHeaderViewTemplate" type="text/x-handlebars-template">
-  <div class="EatDealsHeader ">
-    <button class="EatDealsHeader__LocationFilterButton">
-      <span class="EatDealsHeader__LocationFilterButtonLabel">지역 선택</span>
-      <i class="EatDealsHeader__LocationFilterButtonIcon"></i>
-    </button>
-  </div>
-</script>
-
-<script id="EatDealsFilterTooltipTemplate" type="text/x-handlebars-template">
-  <div class="EatDealsFilterTooltip">
-    <div class="EatDealsFilterTooltip__Wrap">
-      {{#if isNew}}
-      <span class="EatDealsFilterTooltip__New">NEW</span>
-      {{/if}}
-      <p class="EatDealsFilterTooltip__Message">{{{message}}}</p>
-      <button class="EatDealsFilterTooltip__CloseButton"></button>
+    <div class="EatDealDetailPage__RestaurantButton">
+      <i class="EatDealDetailPage__RestaurantButtonInfoIcon"></i>
+      <span class="EatDealDetailPage__RestaurantButtonLabel">
+        식당 정보 보기
+      </span>
+      <i class="EatDealDetailPage__RestaurantButtonArrow"></i>
     </div>
-  </div>
+  </a>
 </script>
 
 <div class="AppDownloadLayer">
@@ -186,97 +285,19 @@
   <div class="inner">
     <button class="btn cancel">취소</button>
     <p class="icon">
-      <img src="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/gc6axol9tbyfjkj-.png?fit=around|*:*&crop=*:*;*,*&output-format=jpg&output-quality=80" alt="망고플레이트 아이콘">
+      <img src="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/gc6axol9tbyfjkj-.png?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80" alt="망고플레이트 아이콘">
     </p>
 
-    <p class="message">망고플레이트 <strong class='strong'>최신 버전 앱</strong>에서<br />사용할 수 있는 기능입니다.</p>
+    <p class="message">망고플레이트 <strong class="strong">최신 버전 앱</strong>에서<br>사용할 수 있는 기능입니다.</p>
 
-    <button class="btn-shortcut-app ConnectAppDownloadLayer__AppButton"
-            data-event_term="V1"
-            data-event_name=""
-            data-ga_event_name=""
-    >
+    <button class="btn-shortcut-app ConnectAppDownloadLayer__AppButton" data-event_term="V1" data-event_name="" data-ga_event_name="">
       앱에서 입고 알림 확인하기
     </button>
   </div>
 </aside>
 <div class="black_screen"></div>
 
-<script id="EatDealItemTemplate" type="text/x-handlebars-template">
-  <li class="EatDealItem">
-    <a href="{{rendingURL}}">
-      <div class="EatDealItem__Picture">
-        <div class="EatDealItem__BGPicture" data-original="{{pictureUrl}}"></div>
-        <div class="EatDealItem__PictureDeem"></div>
 
-        <div class="EatDealItem__PictureLeftArea">
-          {{#if badgePictureUrl}}
-          <img src="{{badgePictureUrl}}" alt="badge image" class="EatDealItem__Badge EatDealItem__BadgeImage"/>
-          {{/if}}
-          <div class="EatDealItem__DiscountValueLabel EatDealItem__PricePresentation EatDealItem__Badge">
-            <span class="EatDealItem__DiscountValue">{{discountValue}}</span>
-          </div>
-
-          <span class="EatDealItem__StateMessage">{{stateMessage}}</span>
-        </div>
-
-        <div class="EatDealItem__PictureRightArea">
-          <div class="EatDealItem__PriceWrap">
-            <span class="EatDealItem__OriginalPrice EatDealItem__PricePresentation">₩{{originalPrice}}</span>
-            <span class="EatDealItem__SalesPrice EatDealItem__PricePresentation">₩{{salesPrice}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="EatDealItem__Content">
-        <div class="EatDealItem__LineWrap">
-          <span class="EatDealItem__RestaurantName">{{restaurantName}}</span>
-
-          {{#if isRestockAlarmEnabled}}
-          <button class="EatDealItem__RestockAlarmButton EatDealRestockAlarmButton {{alarmButtonClassName}}">
-            <i class="EatDealRestockAlarmButton__Icon"></i>
-            <span class="EatDealRestockAlarmButton__Message">입고알림</span>
-          </button>
-          {{/if}}
-
-          {{#if showAvailableSalesCount}}
-          <span class="EatDealItem__AvailableSalesCount">{{availableSalesCountMessage}}</span>
-          {{/if}}
-        </div>
-
-        <p class="EatDealItem__Title">{{title}}</p>
-
-        {{#if description}}
-        <p class="EatDealItem__Description">{{{description}}}</p>
-        {{/if}}
-      </div>
-    </a>
-  </li>
-</script>
-
-<script id="CouponItemTemplate" type="text/x-handlebars-template">
-  <li class="CouponItem">
-    <div class="CouponItem__Content">
-      <span class="CouponItem__Label">COUPON</span>
-      <span class="CouponItem__Title">{{title}}</span>
-      <p class="CouponItem__Description">{{description}}</p>
-    </div>
-    <button class="CouponItem__Button">
-      <i class="CouponItem__CouponIcon"></i>
-      <span class="CouponItem__ButtonText">쿠폰 보기</span>
-    </button>
-  </li>
-</script>
-
-
-
-<script src="https://browser.sentry-cdn.com/4.1.1/bundle.min.js" crossorigin="anonymous"></script>
-<script type="text/javascript" charset="utf-8">
-  Sentry.init({
-    dsn: 'https://36045d362ce347b8a2c56e6fa0d51fc7@sentry.io/1302030',
-    environment: "production"
-  });
-</script>
 
 <script type="text/javascript">
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -290,9 +311,7 @@
 </script>
 
 <header class="Header " data-page="normal">
-  <a href="/"
-     class="Header__Logo"
-     onclick="trackEvent('CLICK_HEADER_LOGO');">
+  <a href="/" class="Header__Logo" onclick="trackEvent('CLICK_HEADER_LOGO');">
     <i class="Header__LogoIcon"></i>
   </a>
 
@@ -300,7 +319,7 @@
     <i class="Header__SearchIcon"></i>
 
     <label class="Header__SearchInputWrap">
-      <input type="text" class="Header__SearchInput" placeholder="지역, 식당 또는 음식" value="" autocomplete="off" maxlength="50"/>
+      <input type="text" class="Header__SearchInput" placeholder="지역, 식당 또는 음식" value="" autocomplete="off" maxlength="50">
     </label>
 
     <button class="Header__SearchInputClearButton">CLEAR</button>
@@ -308,44 +327,36 @@
 
   <ul class="Header__MenuList">
       <li class="Header__MenuItem Header__MenuItem--New">
-        <a href="/eat_deals"
-           class="Header__MenuLink"
-           onclick="trackEvent('CLICK_EAT_DEALS')">
+        <a href="/eat_deals" class="Header__MenuLink" onclick="trackEvent('CLICK_EAT_DEALS')">
           <span class="Header__MenuText">EAT딜</span>
         </a>
       </li>
 
     <li class="Header__MenuItem">
-      <a href="/top_lists"
-         class="Header__MenuLink"
-         onclick="trackEvent('CLICK_TOP_LIST')">
+      <a href="/top_lists" class="Header__MenuLink" onclick="trackEvent('CLICK_TOP_LIST')">
         <span class="Header__MenuText">맛집 리스트</span>
       </a>
     </li>
 
     <li class="Header__MenuItem">
-      <a href="/mango_picks"
-         class="Header__MenuLink"
-         onclick="trackEvent('CLICK_MANGO_PICK')">
+      <a href="/mango_picks" class="Header__MenuLink" onclick="trackEvent('CLICK_MANGO_PICK')">
         <span class="Header__MenuText">망고 스토리</span>
       </a>
     </li>
   </ul>
 
   <ul class="Header__IconButtonList">
-    <li class="Header__IconButtonItem only-mobile Header__IconButtonItem--MenuButton">
-      <button class="MenuButton"
-              onclick="trackEvent('CLICK_MENU');">
+    <li class="Header__IconButtonItem only-mobile Header__IconButtonItem--MenuButton MenuButton--New">
+      <button class="MenuButton" onclick="trackEvent('CLICK_MENU');">
         <i class="MenuButton__Icon"></i>
       </button>
     </li>
 
     <li class="Header__IconButtonItem Header__IconButtonItem--UserRestaurantHistory">
-      <button class="UserProfileButton"
-              onclick="trackEvent('CLICK_PROFILE');">
-        <i class="UserProfileButton__Picture"></i>
+      <button class="UserProfileButton" onclick="trackEvent('CLICK_PROFILE');">
+        <i class="UserProfileButton__Picture" style="background-image: url(&quot;https://mp-seoul-image-production-s3.mangoplate.com/web/resources/fljgy-rm4b8v6vni.png&quot;), url(&quot;https://mp-seoul-image-production-s3.mangoplate.com/web/resources/fljgy-rm4b8v6vni.png&quot;);"></i>
         <i class="UserProfileButton__PersonIcon"></i>
-        <span class="UserProfileButton__HistoryCount">0</span>
+        <span class="UserProfileButton__HistoryCount">5</span>
       </button>
     </li>
 
@@ -358,36 +369,30 @@
 <div class="KeywordSuggester">
   <div class="KeywordSuggester__BlackDeem"></div>
 
-  <div class="KeywordSuggester__Container">
+  <div class="KeywordSuggester__Container" style="top: 61px; left: 214px;">
     <nav class="KeywordSuggester__TabNavigation">
       <ul class="KeywordSuggester__TabList">
         <li class="KeywordSuggester__TabItem">
-          <div class="KeywordSuggester__TabButton KeywordSuggester__RecommendTabButton"
-               onclick="trackEvent('CLICK_SEARCH_RECOMMEND')"
-               role="button">
+          <div class="KeywordSuggester__TabButton KeywordSuggester__RecommendTabButton" onclick="trackEvent('CLICK_SEARCH_RECOMMEND')" role="button">
             추천 검색어
           </div>
         </li>
 
         <li class="KeywordSuggester__TabItem">
-          <div class="KeywordSuggester__TabButton KeywordSuggester__PopularTabButton"
-               onclick="trackEvent('CLICK_SEARCH_POPULAR')"
-               role="button">
+          <div class="KeywordSuggester__TabButton KeywordSuggester__PopularTabButton" onclick="trackEvent('CLICK_SEARCH_POPULAR')" role="button">
             인기 검색어
           </div>
         </li>
 
         <li class="KeywordSuggester__TabItem">
-          <div class="KeywordSuggester__TabButton KeywordSuggester__HistoryTabButton"
-               onclick="trackEvent('CLICK_SEARCH_RECENT')"
-               role="button">
+          <div class="KeywordSuggester__TabButton KeywordSuggester__HistoryTabButton" onclick="trackEvent('CLICK_SEARCH_RECENT')" role="button">
             최근 검색어
           </div>
         </li>
       </ul>
     </nav>
 
-    <div class="KeywordSuggester__SuggestKeywordListWrap">
+    <div class="KeywordSuggester__SuggestKeywordListWrap" data-simplebar="init"><div class="simplebar-wrapper" style="margin: 0px -24px;"><div class="simplebar-height-auto-observer-wrapper"><div class="simplebar-height-auto-observer"></div></div><div class="simplebar-mask"><div class="simplebar-offset" style="right: 0px; bottom: 0px;"><div class="simplebar-content-wrapper" style="height: auto; overflow: hidden;"><div class="simplebar-content KeywordSuggester__SuggestKeywordList--FixedHeight" style="padding: 0px 24px;">
       <p class="KeywordSuggester__EmptyKeywordMessage">최근 검색어가 없습니다.</p>
 
       <div class="KeywordSuggester__Footer">
@@ -395,7 +400,7 @@
           x clear all
         </button>
       </div>
-    </div>
+    </div></div></div></div><div class="simplebar-placeholder" style="width: 0px; height: 0px;"></div></div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); display: none;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: hidden;"><div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); display: none;"></div></div></div>
   </div>
 </div>
 
@@ -406,21 +411,18 @@
     <i class="UserRestaurantHistory__Triangle"></i>
 
     <ul class="UserRestaurantHistory__TabList">
-      <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Viewed"
-          onclick="trackEvent('CLICK_RECENT_TAB')">
+      <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Viewed" onclick="trackEvent('CLICK_RECENT_TAB')">
         <button class="UserRestaurantHistory__TabButton">최근 본 맛집 </button>
       </li>
 
-      <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Wannago"
-          onclick="trackEvent('CLICK_WAANGO_TAB')">
+      <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Wannago" onclick="trackEvent('CLICK_WAANGO_TAB')">
         <button class="UserRestaurantHistory__TabButton">가고싶다</button>
       </li>
     </ul>
 
     <div class="UserRestaurantHistory__HistoryContainer">
       <div class="UserRestaurantHistory__HistoryHeader">
-        <button class="UserRestaurantHistory__ClearAllHistoryButton"
-                onclick="trackEvent('CLICK_VIEWED_RESTAURANT_CLEAR')">
+        <button class="UserRestaurantHistory__ClearAllHistoryButton" onclick="trackEvent('CLICK_VIEWED_RESTAURANT_CLEAR')">
           x clear all
         </button>
       </div>
@@ -440,9 +442,7 @@
       </div>
 
       <div class="UserRestaurantHistory__EmptyWannagoRestaurantHistory">
-        <img class="UserRestaurantHistory__EmptyWannagoRestaurantHistoryImage"
-             src="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kycrji1bsrupvbem.png?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80"
-             alt="wannago empty star" />
+        <img class="UserRestaurantHistory__EmptyWannagoRestaurantHistoryImage" src="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kycrji1bsrupvbem.png?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80" alt="wannago empty star">
         <p class="UserRestaurantHistory__EmptyWannagoRestaurantHistoryTitle">격하게 가고싶다..</p>
         <p class="UserRestaurantHistory__EmptyWannagoRestaurantHistoryDescription">
           식당의 ‘별’ 아이콘을 누르면 가고싶은 곳을 쉽게 저장할 수 있습니다.
@@ -451,7 +451,7 @@
     </div>
 
     <footer class="UserRestaurantHistory__Footer">
-      <button class="UserRestaurantHistory__LoginButton" onclick="trackEvent('CLICK_LOGIN')">로그인</button>
+      <button class="UserRestaurantHistory__LoginButton UserRestaurantHistory__LoginButton--Show" onclick="trackEvent('CLICK_LOGIN')">로그인</button>
       <button class="UserRestaurantHistory__LogoutButton" onclick="trackEvent('CLICK_LOGOUT')">logout</button>
     </footer>
   </div>
@@ -460,11 +460,11 @@
 
 <div class="wannago_go_app_popup">
   <div class="wannago_go_app_popup_inner">
-    <img src="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/5rh5cjpxshg5kw7o.png?fit=around|:&amp;crop=:;*,*&amp;output-format=png&amp;output-quality=80" alt="wannago_go_app_popup_main_image" class="wannago_go_app_popup_main_image"/>
+    <img src="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/5rh5cjpxshg5kw7o.png?fit=around|:&amp;crop=:;*,*&amp;output-format=png&amp;output-quality=80" alt="wannago_go_app_popup_main_image" class="wannago_go_app_popup_main_image">
 
-    <p class="wannago_go_app_popup_text">더 많은 가고싶다를 원한다면<br />망고플레이트 앱을 다운받아 보세요</p>
+    <p class="wannago_go_app_popup_text">더 많은 가고싶다를 원한다면<br>망고플레이트 앱을 다운받아 보세요</p>
     <button class="wannago_go_app_popup_btn" onclick="trackEvent('CLICK_WANNAGO_MORE_DWN');go_to_app_or_market(this);">
-      <img src="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/nsfd8y92hyjmlhtd.png?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80" alt="wannago_go_app_popup_btn_icon" class="wannago_go_app_popup_btn_icon"/>
+      <img src="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/nsfd8y92hyjmlhtd.png?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80" alt="wannago_go_app_popup_btn_icon" class="wannago_go_app_popup_btn_icon">
       앱 다운받기, 클릭!
     </button>
   </div>
@@ -488,20 +488,20 @@
     </div>
 
     <div class="wannago_login_popup_msg">
-      로그인 해보세요<br />가고싶은 곳을 저장할 수 있어요
+      로그인 해보세요<br>가고싶은 곳을 저장할 수 있어요
     </div>
 
     <div class="wannago_login_popup_sign_bar">
       <button class="wannago_login_popup_sign facebook">
         <div class="wannago_login_popup_sign_wrap">
-          <img src="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/3pe2me0b7amj8fw9.png?fit=around|:&amp;crop=:;*,*&amp;output-format=png&amp;output-quality=80" alt="wannago_login_popup_sign_facebook_icon"/>
+          <img src="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/3pe2me0b7amj8fw9.png?fit=around|:&amp;crop=:;*,*&amp;output-format=png&amp;output-quality=80" alt="wannago_login_popup_sign_facebook_icon">
           <span class="wannago_login_popup_facebook_text">클릭 한 번이면 페이스북 로그인</span>
         </div>
       </button>
 
       <button class="wannago_login_popup_sign kakao">
         <div class="wannago_login_popup_sign_wrap">
-          <img src="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/7nvfge9jjvu6ngsw.png?fit=around|:&amp;crop=:;*,*&amp;output-format=png&amp;output-quality=80" alt="wannago_login_popup_sign_kakao_icon"/>
+          <img src="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/7nvfge9jjvu6ngsw.png?fit=around|:&amp;crop=:;*,*&amp;output-format=png&amp;output-quality=80" alt="wannago_login_popup_sign_kakao_icon">
           <span class="wannago_login_popup_kakao_text">클릭 한 번이면 카카오톡 로그인</span>
         </div>
       </button>
@@ -511,15 +511,11 @@
 
 <div class="black_screen"></div>
 <div class="account_terms_layer">
-  <img src="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/ojlwsg-0cpi1dz8p.png?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80"
-       alt="checkbox"
-       style="position:absolute;top: -9999px;display: block"
-  />
+  <img src="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/ojlwsg-0cpi1dz8p.png?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80" alt="checkbox" style="position:absolute;top: -9999px;display: block">
 
   <div class="account_terms_layer_header">
     <button class="close_btn">
-      <img src="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/zva6r-2wxzbxhw_n.png?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80"
-           alt="arrow">
+      <img src="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/zva6r-2wxzbxhw_n.png?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80" alt="arrow">
     </button>
 
     <span>이용약관 동의</span>
@@ -533,10 +529,7 @@
 
       <div class="check_area">
         <button class="check_terms_btn all_terms_btn" data-ischecked="false">
-          <img src="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/24_jjq1lbdgzpdnp.png?fit=around|:&amp;crop=:;*,*&amp;output-format=png&amp;output-quality=80"
-               alt="arrow"
-               title=""
-          />
+          <img src="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/24_jjq1lbdgzpdnp.png?fit=around|:&amp;crop=:;*,*&amp;output-format=png&amp;output-quality=80" alt="arrow" title="">
         </button>
       </div>
     </div>
@@ -545,7 +538,7 @@
       망고플레이트 서비스 이용을 위해 다음의 약관에 동의해 주세요.
     </p>
 
-    <hr class="seper_hr" />
+    <hr class="seper_hr">
 
     <ul class="account_terms_items">
 
@@ -557,34 +550,26 @@
 
 <aside class="pop-context pg-login" style="display: none;">
   <div class="contents-box">
-    <button
-       class="btn-nav-close"
-       onclick="mp_login_layer.close_layer();">
+    <button class="btn-nav-close" onclick="mp_login_layer.close_layer();">
       닫기
     </button>
 
     <p class="title">로그인</p>
 
       <p class="message">
-       로그인 하면 가고싶은 식당을 <br />저장할 수 있어요
+       로그인 하면 가고싶은 식당을 <br>저장할 수 있어요
       </p>
 
       <p>
-        <a class="btn-login facebook"
-           href="#"
-           onclick="trackEvent('CLICK_LOGIN_FACEBOOK','','','PU_LOGIN');">
+        <a class="btn-login facebook" href="#" onclick="trackEvent('CLICK_LOGIN_FACEBOOK','','','PU_LOGIN');">
           <span class="text">페이스북으로 계속하기</span>
         </a>
 
-        <a class="btn-login kakaotalk"
-           href="#"
-           onclick="trackEvent('CLICK_LOGIN_KAKAO','','','PU_LOGIN');">
+        <a class="btn-login kakaotalk" href="#" onclick="trackEvent('CLICK_LOGIN_KAKAO','','','PU_LOGIN');">
           <span class="text">카카오톡으로 계속하기</span>
         </a>
 
-        <a class="btn-login apple"
-           href="#"
-           onclick="trackEvent('CLICK_LOGIN_APPLE','','','PU_LOGIN');">
+        <a class="btn-login apple" href="#" onclick="trackEvent('CLICK_LOGIN_APPLE','','','PU_LOGIN');">
           <span class="text">Apple로 계속하기</span>
         </a>
       </p>
@@ -592,9 +577,7 @@
 </aside>
 
 <div class="login_loading_area">
-  <img src="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/ldcyd5lxlvtlppe3.gif?fit=around|:&crop=:;*,*&output-format=gif&output-quality=80"
-       alt="login loading bar"
-  />
+  <img src="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/ldcyd5lxlvtlppe3.gif?fit=around|:&amp;crop=:;*,*&amp;output-format=gif&amp;output-quality=80" alt="login loading bar">
 </div>
 
 <div class="Menu" data-new="true">
@@ -611,48 +594,38 @@
   <nav class="Menu__Nav">
     <ul class="Menu__NavList">
       <li class="Menu__NavItem">
-        <a href="/"
-           class="Menu__NavLink Menu__HomeLink"
-           onclick="trackEvent('CLICK_HOME','','','PG_MENU');">
+        <a href="/" class="Menu__NavLink Menu__HomeLink" onclick="trackEvent('CLICK_HOME','','','PG_MENU');">
           <span class="Menu__NavText">홈</span>
         </a>
       </li>
 
       <li class="Menu__NavItem">
-        <a href="/top_lists"
-           class="Menu__NavLink Menu__TopListLink"
-           onclick="trackEvent('CLICK_TOP_LIST','','','PG_MENU');">
+        <a href="/top_lists" class="Menu__NavLink Menu__TopListLink" onclick="trackEvent('CLICK_TOP_LIST','','','PG_MENU');">
           <span class="Menu__NavText">맛집 리스트</span>
         </a>
       </li>
 
       <li class="Menu__NavItem">
-        <a href="/mango_picks"
-           class="Menu__NavLink Menu__StoryLink"
-           onclick="trackEvent('CLICK_MANGOPICK','','','PG_MENU');">
+        <a href="/mango_picks" class="Menu__NavLink Menu__StoryLink" onclick="trackEvent('CLICK_MANGOPICK','','','PG_MENU');">
           <span class="Menu__NavText">망고 스토리</span>
         </a>
       </li>
 
         <li class="Menu__NavItem
           ">
-          <a href="https://www.mangoforbiz.com/?utm_campaign=20180116v1&amp;utm_medium=main_menu_adinquiry&amp;utm_source=mp_web"
-             class="Menu__NavLink"
-             onclick="trackEvent('CLICK_SALES_LOCAL','','','PG_MENU')">
+          <a href="https://www.mangoforbiz.com/?utm_campaign=20180116v1&amp;utm_medium=main_menu_adinquiry&amp;utm_source=mp_web" class="Menu__NavLink" onclick="trackEvent('CLICK_SALES_LOCAL','','','PG_MENU')">
             <span class="Menu__NavText">광고 문의</span>
           </a>
         </li>
         <li class="Menu__NavItem
           Menu__NavItem--New
           ">
-          <a href="/eat_deals"
-             class="Menu__NavLink"
-             onclick="trackEvent('CLICK_EAT_DEALS','','','PG_MENU')">
+          <a href="/eat_deals" class="Menu__NavLink" onclick="trackEvent('CLICK_EAT_DEALS','','','PG_MENU')">
             <span class="Menu__NavText">EAT딜</span>
           </a>
         </li>
 
-      <li class="Menu__NavItem Menu__NavItem--Hide">
+      <li class="Menu__NavItem">
         <div class="Menu__NavLink Menu__LoginButton">
           <span class="Menu__NavText">로그인</span>
         </div>
@@ -712,8 +685,8 @@
   }
 </script>
 
-<script src="/assets/dist/eat_deals.all.min-1d0611fcc7e8519c217862010c19fae57fc2738057d0108f5a43d33440490863.js"></script>
-<script src="/packs/eat_deals-8b042a55a6b28299dc47.js"></script>
+<script src="/assets/dist/eat_deal.all.min-bcbdb6f3cbf1a9d28c6d55c375fe6d2f9f9ed14e775e5e9299b1f0fbec64f0f8.js"></script>
+<script src="/packs/eat_deal-ca7ebc16b910abbf762e.js"></script>
 <!-- Start Alexa Certify Javascript -->
 <script type="text/javascript">
 	_atrk_opts = { atrk_acct:"hTunm1akKd60uG", domain:"mangoplate.com",dynamic: true};
@@ -722,6 +695,8 @@
 <noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=hTunm1akKd60uG" style="display:none" height="1" width="1" alt="alexa analytics" /></noscript>
 <!-- End Alexa Certify Javascript -->
 
-</body>
 
-</html>
+
+
+
+<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div></div></div></div></body></html>
