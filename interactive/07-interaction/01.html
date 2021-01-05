@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Canvas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      canvas {
+        background: #eee;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Interaction</h1>
+    <canvas class="canvas" width="600" height="400"></canvas>
+    
+    <script>
+      const canvas = document.querySelector('.canvas');
+      const context = canvas.getContext('2d');
+
+      context.fillRect(200, 200, 100, 100);
+
+      function clickHandler(e){
+        // console.log(e.clientX, e.clientY); 브라우저 전체에서 0,0 기준으로 계산한다
+        // console.log(e.layerX, e.layerY); 캔버스 안 좌표를 찾아준다.
+        const x = e.layerX;
+        const y = e.layerY;
+
+        if(x > 200 && 
+          x < 200 + 100 &&
+          y > 200 &&
+          y < 200 + 100){
+            console.log('x ok');
+          }
+      }
+      canvas.addEventListener('click', clickHandler);
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
