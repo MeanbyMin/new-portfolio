@@ -2794,158 +2794,273 @@ footer.footer small a {
 
 /* EAT딜 상세 페이지 끝 */
 
-/* 맛집리스트 페이지 시작 */
-.matjib_page{
-    padding: 97px 0 25px;
+/* 맛집 리스트 페이지 시작 */
+.contents {
+    padding-top: 61px;
+}
+
+.pg-all_picks .module {
     position: relative;
 }
 
-.matjib_list{
-    width: 1200px;
+.pg-all_picks .top-list {
+    background-color: #f7f7f7;
+    padding: 38px 0 36px 0;
+}
+
+.pg-all_picks .module>.inner {
     margin: 0 auto;
-    display: block;
-    position: relative;
+    width: 1200px;
 }
 
-.matjib_list .title{
-    font-size: 23px;
+.pg-all_picks .module>.inner>.title {
     display: block;
     color: #ff792a;
+    line-height: 1.2em;
+    text-align: left;
+    padding-right: 0;
+    padding-left: 0;
+    font-size: 1.438rem;
 }
 
-.popular_tags{
+.pg-all_picks .slider-container {
     overflow: hidden;
     position: relative;
+    margin-top: 0px;
 }
 
-.tag_item{
-    display: inline-block;
-    margin: 15px 3px 0;
-    padding: 0 18px;
-    font-size: 15px;
-    line-height: 38px;
-    letter-spacing: 0;
-    border-radius: 50px;
-    background-color: #ffffff;
+.tag-item {
     color: #6a6a6a;
     border: 1px solid #cbcbcb;
-}
-
-.popular_tags .active{
-    color: #ff792a;
-    border: 1px solid #ff792a;
-    letter-spacing: 0;
     border-radius: 50px;
-    background-color: #ffffff;
+    background-color: #fff;
+    margin: 15px 3px 0 3px;
+    padding: 0 20px;
+    font-size: 0.938rem;
+    line-height: 38px;
+    letter-spacing: 0em;
 }
 
-.tag_name::before{
-    content: '# ';
+.tag-item:before {
+    content: "#";
     display: inline;
 }
 
-.matjib_list_item:nth-child(odd){
-    padding-right: 15px;
-}
-.matjib_list_item:nth-child(even){
-    padding-left: 15px;
-}
-
-.matjib_list_item{
+.pg-all_picks .module>.inner .tags .tag-item {
     display: inline-block;
-    width: 50%;
-    box-sizing: border-box;
-    margin: -4px;
-    padding-top: 32px;
 }
 
-.list_item{
-    position: relative;
-    display: block;
+.pg-all_picks .module>.inner .tags .tag-item.selected {
+    color: #ff792a;
+    border: 1px solid #ff792a;
+}
+
+.tag-item h2 {
+    display: inline;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.list-type-ls {
     overflow: hidden;
 }
 
-.list_item .img{
-    height: 268px;
+.list-type-ls>li {
+    padding-top: 32px;
 }
 
-.img img{
+.list-type-ls.type-column02-picks>li {
+    display: inline-block;
+    width: 50%;
+    margin: -4px;
+    box-sizing: border-box;
+}
+
+.list-type-ls.type-column02-picks>li:nth-child(odd) {
+    padding-right: 15px;
+}
+
+.list-type-ls.type-column02-picks>li:nth-child(even) {
+    padding-left: 15px;
+}
+
+.ls-item .thumb {
+    overflow: hidden;
+    position: relative;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.type-column02-picks .ls-item .thumb {
+    overflow: hidden;
+    position: relative;
+}
+
+.ls-item .thumb:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: 47.0588235294%;
+}
+
+.type-column02-picks .ls-item .thumb:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: 45.7627118644%;
+}
+
+.ls-item .thumb>.inner {
     position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.type-column02-picks .ls-item .thumb>.inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+img.center-crop {
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 100%;
+    width: auto;
+    transform: translate(-50%, -50%);
+}
+
+img.center-crop.portrait {
     height: auto;
     width: 100%;
-    top: -50%;
 }
 
-.list_item .info_innerbox{
-    padding: 23px 25px 0;
-    width: 100%;
+.ls-item .info {
     height: 100%;
+    width: 100%;
     background-color: rgba(0,0,0,0.2);
     box-sizing: border-box;
     position: absolute;
     top: 0;
+    right: 0;
     bottom: 0;
     left: 0;
-    right: 0;
+    padding-top: 23px;
+    padding-right: 25px;
+    padding-left: 25px;
 }
 
-.list_item .info_innerbox .info{
+.ls-item .info .info_inner_wrap {
     position: absolute;
-    top: 35%;
-    text-align: center;
-    width: 92%;
+    top: 50%;
+    left: 50%;
+    width: 85%;
+    transform: translate(-50%, -50%);
 }
 
-.list_item .info_innerbox .info .info_title{
+.ls-item .info .title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    display: block;
+    color: #ffffff;
+    line-height: 1.2em;
+    word-break: break-all;
+    font-size: 1.500rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+    text-align: center;
+}
+
+.type-column02-picks .ls-item .info .title {
     font-size: 2rem;
-    color: #ffffff;
-    margin-bottom: 10px;
-    display: block;
 }
 
-.list_item .info_innerbox .info .desc{
-    font-size: 1.2rem;
+.ls-item .info .desc {
     color: #ffffff;
-    display: block;
-}
-
-.btn-more{
-    display: block;
+    line-height: 1.2em;
+    margin-top: 7px;
+    font-size: 1.063rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
     text-align: center;
-    margin-top: 20px;
+}
+
+.type-column02-picks .ls-item .info .desc {
+    margin-top: 10px;
+    font-size: 1.2rem;
+}
+
+.ls-item .info .hash {
+    overflow: hidden;
+    position: absolute;
+    right: 15px;
+    bottom: 18px;
+    left: 15px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.2em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.938rem;
+    display: none;
+}
+
+.type-column02-picks .ls-item .info .hash {
+    right: 25px;
+    bottom: 38px;
+    left: 25px;
+    font-size: 1.1rem;
+    line-height: 1.3em;
+}
+
+.pg-all_picks .btn-more {
+    display: block;
+    position: relative;
     padding: 16px 0;
     min-width: 1200px;
-    font-size: 1.2rem;
+    font-size: 1.188rem;
     color: #ff792a;
+    text-align: center;
     width: 100%;
-    position: relative;
 }
 
-.btn-more::before{
-    background-image: url(../img/icons.png);
-    background-position: -848px -774px;
-    width: 17px;
-    height: 10px;
+.pg-all_picks .top-list .btn-more {
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.pg-all_picks .btn-more:before {
     content: '';
     display: inline-block;
+    margin-top: -4px;
     margin-right: 17px;
-    padding-bottom: 2px;
-}
-
-.btn-more::after{
-    background-image: url(../img/icons.png);
+    vertical-align: middle;
+    background-image: url(../img/2018022864551sprites_desktop.png);
     background-position: -848px -774px;
     width: 17px;
     height: 10px;
-    content: '';
-    display: inline-block;
-    margin-left: 17px;
-    padding-bottom: 2px;
 }
 
-/* 맛집리스트 페이지 끝 */
+.pg-all_picks .btn-more:after {
+    content: '';
+    display: inline-block;
+    margin-top: -4px;
+    margin-left: 17px;
+    vertical-align: middle;
+    background-image: url(../img/2018022864551sprites_desktop.png);
+    background-position: -848px -774px;
+    width: 17px;
+    height: 10px;
+}
 
-/* 맛집리스트 상세페이지 시작 */
+/* 맛집 리스트 페이지 끝 */
+
+/* 맛집 리스트 상세페이지 시작 */
 
 .matjib_list_detail{
     position: relative;
