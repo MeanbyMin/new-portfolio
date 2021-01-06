@@ -3061,496 +3061,606 @@ img.center-crop.portrait {
 /* 맛집 리스트 페이지 끝 */
 
 /* 맛집 리스트 상세페이지 시작 */
+.top_list_page_body{
+    min-width: 1200px;
+    background-color: #fff;
+}
 
-.matjib_list_detail{
+.pg-toplist article.contents {
     position: relative;
     overflow: hidden;
-    padding-top: 61px;
-    width: 100%;
 }
 
-.matjib_list_detail_maintitle{
-    border-bottom: 1px solid #dbdbdb;
+.pg-toplist .basic-info-list {
     background-color: #f7f7f7;
-    width: 100%;
+    border-bottom: 1px solid #dbdbdb;
 }
 
-.matjib_list_detail_maintitle .inner{
-    padding: 48px 30px 10px 30px;
-    width: 860px;
+.pg-toplist .basic-info-list>.inner {
     margin: 0 auto;
+    padding: 48px 30px 20px 30px;
+    width: 860px;
 }
 
-.matjib_list_detail_maintitle .status{
-    margin-top: 20px;
-    font-size: 0.9rem;
+.pg-toplist .basic-info-list .status {
     color: #9b9b9b;
     line-height: 1.2em;
     text-align: center;
+    margin-top: 20px;
+    font-size: 0.875rem;
 }
 
-.matjib_list_detail_maintitle .title{
-    margin-top: 18px;
-    font-size: 2.7rem;
+.pg-toplist .basic-info-list .title {
     color: #000000;
     line-height: 1.2em;
     text-align: center;
-    letter-spacing: 1.2px;
+    margin-top: 18px;
+    font-size: 2.563rem;
 }
 
-.matjib_list_detail_maintitle .desc{
+.pg-toplist .basic-info-list .desc {
     font-size: 1.2rem;
     margin: 20px auto 30px;
     color: #9b9b9b;
     line-height: 1.2em;
     text-align: center;
-    letter-spacing: 1.2px;
 }
 
-.matjib_list_detail_maintitle .status .click_date{
-    letter-spacing: 0;
-}
-
-.container_list{
-    background-color: #ffffff;
-    position: relative;
-    overflow: hidden;
-}
-
-.container_list .inner{
+.pg-toplist .container-list>.inner {
     position: relative;
     width: 860px;
     margin: 0 auto;
     padding: 0 30px;
 }
 
-.list_restuarant{
+.list-restaurants.type-single-big {
     margin-top: 5px;
+    margin-left: 0;
+    margin-right: 0;
 }
 
-.list_restuarant .toplist:first-child{
-    border-top: none
-}
-
-.list_restuarant .toplist{
+.list-restaurants.type-single-big>li {
+    float: none;
     padding: 28px 0;
     width: 90%;
+    border-top: 1px solid #dbdbdb;
+    border-bottom: 0;
     margin: 0 auto;
-    border-top: 1px solid #dbdbdb
 }
 
-.list_restuarant .toplist .review{
+.list-restaurants.type-single-big>li:first-child {
+    border-top: 0;
+}
+
+.list-restaurants.type-single-big>li.toplist_list {
+    padding: 28px 0 28px;
+}
+
+.list-restaurants.type-single-big>li .with-review {
     position: relative;
     min-height: 238px;
     overflow: hidden;
 }
 
-.list_restuarant .toplist .review .restaurant_name{
+.type-single-big .restaurant-item {
     position: static;
     padding-left: 268px;
 }
 
-.restaurant_name .menu_image{
+.type-single-big .restaurant-item .thumb {
     position: absolute;
     top: 0;
     left: 0;
     height: 238px;
     width: 238px;
-    overflow: hidden;
-    background-size: cover;
 }
 
-.restaurant_name .menu_image img{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+.type-single-big .restaurant-item .info {
+    padding: 0;
 }
 
-.restaurant_name .info{
-    padding-top: 0;
-}
-
-.restaurant_name .info .title{
-    display: inline-block;
-    overflow: hidden;
-    max-width: 64%;
-    color: #555;
-    line-height: 1.3em;
-    text-overflow: ellipsis;
-    font-size: 1.8rem;
-    margin-bottom: 0;
-}
-
-.restaurant_name .info .point{
-    display: inline-block;
-    overflow: hidden;
-    line-height: 1.3em;
-    text-overflow: ellipsis;
-    font-size: 1.8rem;
-    margin-left: 5px;
-    color: #e9e9e9;
-}
-
-.restaurant_name .info .wantgo_wrap{
+.pg-toplist .container-list .wannago_wrap {
     float: right;
     text-align: center;
     position: relative;
 }
 
-.restaurant_name .info .wantgo_wrap .wantgo_button{
-    position: static;
-    top: 12px;
-    right: 10px;
-    z-index: 2;
-    background-image: url(../img/icons.png);
+.btn-type-icon {
+    display: inline-block;
+    text-indent: -9999px;
+    vertical-align: middle;
+}
+
+.btn-type-icon.favorite {
+    background-image: url(../img/2018022864551sprites_desktop.png);
     background-position: -935px -583px;
     width: 32px;
     height: 32px;
-    display: inline-block;
 }
 
-.restaurant_name .info .wantgo_wrap .wantgo_text{
+.restaurant-item .btn-type-icon.favorite {
+    top: 12px;
+    right: 10px;
+    z-index: 2;
+}
+
+.restaurant-item .wannago_wrap .wannago_txt {
     font-size: 0.7rem;
     color: #9b9b9b;
     margin-top: 6px;
 }
 
-.restaurant_name .info .etc{
-    margin-top: 6px;
+.pg-toplist .container-list .wannago_wrap .wannago_txt {
+    font-size: 0.7rem;
     color: #9b9b9b;
-    line-height: 1.3em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding-right: 10px;
+    margin-top: 6px;
 }
 
-.review .review_content{
-    margin-top: 13px;
-    margin-left: 268px;
+.type-single-big .restaurant-item .info .title {
+    font-size: 1.8rem;
+}
+
+.restaurant-item .info .title a {
+    color: inherit;
+}
+
+.restaurant-item .info .title a h3 {
+    display: inline;
+    font-size: inherit;
+}
+
+.restaurant-item .info .point {
+    color: #ff792a;
+    line-height: 1em;
+    margin-left: 5px;
+    font-size: 1.37rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.type-single-big .restaurant-item .info .point {
+    font-size: 1.8rem;
+    display: inline-block;
+}
+
+.type-single-big .restaurant-item .info .etc, .type-single-big .restaurant-item .info .etc_info {
+    font-size: 1.063rem;
+}
+
+.review-content {
+    overflow: hidden;
+    color: #333;
+    font-size: .95rem;
+    line-height: 1.6rem;
+}
+
+.list-restaurants .review-content {
+    position: relative;
+    overflow: hidden;
+    margin-top: 8px;
     padding-left: 52px;
-    padding-bottom: 60px;
-    line-height: 25px;
+    height: 58px;
+    font-size: 0.875rem;
+    line-height: 21px;
+}
+
+.type-single-big .review-content {
     display: block;
     position: relative;
     overflow: visible;
     height: auto;
     min-height: 40px;
-    word-break: keep-all;
-    letter-spacing: 0;
+    bottom: 0;
+    margin-top: 13px;
+    margin-left: 268px;
+    padding-left: 52px;
+    font-size: 1.000rem;
+    line-height: 25px;
+    margin-bottom: 80px;
+    padding-bottom: 60px;
 }
 
-.review .review_content .user_img{
-    display: block;
-    background-image: url(../img/matjib_list_detail/user.jpeg);
+.type-single-big .review-content.no-bottom {
+    margin-bottom: 0;
+}
+
+.review-content .user {
+    display: inline;
+    position: static;
+    width: 70px;
+    text-align: center;
+}
+
+.list-restaurants .review-content .user {
+    display: inline;
+    position: static;
+    width: auto;
+}
+
+.type-single-big .review-content .user {
+    display: inline;
+    position: static;
+    width: auto;
+    font-size: 0.688rem;
+    line-height: 17px;
+}
+
+.review-content .user .thumb {
+    left: 0;
+    background-size: cover;
+    background-position: 50% 50%;
+    position: relative;
+    top: 0;
+    overflow: hidden;
+    margin-bottom: 5px;
+    height: 70px;
+    width: 70px;
+    border-radius: 70px;
+}
+
+.list-restaurants .review-content .user>.thumb {
+    position: absolute;
+    top: 4px;
+    left: 2px;
+    overflow: hidden;
+    height: 35px;
+    width: 35px;
+    border-radius: 35px;
+}
+
+.type-single-big .review-content .user>.thumb {
+    position: absolute;
+    overflow: hidden;
     top: 4px;
     left: 2px;
     height: 35px;
     width: 35px;
     border-radius: 35px;
-    position: absolute;
-    overflow: hidden;
-    background-size: cover;
 }
 
-.review .review_content .user_review .user_name{
+.review-content .user figcaption {
+    display: block;
+    font-size: 0.8rem;
+    line-height: 1.2em;
+    font-weight: normal;
+    word-break: break-all;
+    color: #555;
+}
+
+.list-restaurants .review-content .user>figcaption {
+    font-size: 0.875rem;
+    display: inline;
     font-weight: bold;
+    color: #000000;
+    line-height: 18px;
 }
 
-.container_list .review .btn-detail{
+.type-single-big .review-content .user>figcaption {
+    display: inline;
+    font-size: 1.000rem;
+    font-weight: bold;
+    color: #000000;
+    line-height: 18px;
+}
+
+.list-restaurants .review-content p {
+    display: inline;
+}
+
+.type-single-big .review-content p {
+    display: inline;
+}
+
+.pg-toplist .container-list .long_review {
+    display: none;
+}
+
+.pg-toplist .container-list .review_more_btn {
+    color: #ff792a;
+    cursor: pointer;
+}
+
+.list-restaurants.type-single-big>li .with-review .btn-detail {
+    display: block;
+    margin-top: 30px;
+    text-align: center;
+    border: 2px solid #fe9963;
+    border-radius: 40px;
     width: auto;
     position: absolute;
     bottom: 0;
     right: 0;
     margin-left: -52px;
+    font-size: 1.000rem;
     line-height: 46px;
+    border-radius: 50px;
     border: none;
     font-weight: normal;
     color: #888;
-    display: block;
-    margin-top: 30px;
-    text-align: center;
 }
 
-.review .btn-detail .restaurant_more_name{
+.list-restaurants.type-single-big>li .with-review .btn-detail:before {
+    content: '';
+    display: inline-block;
+    margin: -3px 5px 0 0;
+    vertical-align: middle;
+}
+
+.pg-toplist .container-list .restaurant-more-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
     display: inline-block;
     text-align: right;
     width: 400px;
-    overflow: hidden;
 }
 
-.review .btn-detail .restaurant_more_text{
+.pg-toplist .container-list .restaurant-more-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
     display: inline-block;
     text-align: right;
+}
+
+.mn-toplist .more_btn_wrapper {
+    text-align: center;
+}
+
+.mn-toplist .more_btn {
+    z-index: 1;
+    display: block;
+    margin: 0 auto;
+    font-size: 0.875rem;
+    line-height: 20px;
+    color: #ff792a;
+    font-size: 1rem;
+    display: inline-block;
+    margin-bottom: 30px;
+}
+
+.mn-toplist .more_btn:before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -4px;
+    margin-right: 9px;
+    background-image: url(../img/2018022864551sprites_mobile@2x.png);
+    background-size: 635px 609px;
+    background-position: -588px -539px;
+    width: 22px;
+    height: 22px;
+}
+
+.mn-toplist .more_btn:after {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -4px;
+    margin-left: 9px;
+    background-image: url(../img/2018022864551sprites_mobile@2x.png);
+    background-size: 635px 609px;
+    background-position: -588px -539px;
+    width: 22px;
+    height: 22px;
+}
+
+.mn-toplist .loading_img {
+    display: none;
+    width: 50px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+.mn-toplist .module {
+    position: relative;
+    border-top: 1px solid #dbdbdb;
+    padding: 27px 0 27px 0;
+}
+
+.pg-toplist .options {
     overflow: hidden;
 }
 
-.btn-more-wrap{
-    width: 100%;
-    margin: 0 auto;
-}
-
-.btn-more-wrap .btn-more{
-    display: block;
+.pg-toplist .options .share-sns {
     text-align: center;
-    margin-top: 0;
-    margin-bottom: 30px;
-    padding: 0;
-    width: 100%;
-    min-width: 860px;
-    font-size: 1rem;
-    color: #ff792a;
-    width: 100%;
-    position: relative;
+    float: right;
 }
 
-.btn-more-wrap .btn-more::before{
-    background-image: url(../img/icons.png);
-    background-position: -848px -774px;
-    width: 17px;
-    height: 10px;
-    content: '';
+.btn-type-share {
     display: inline-block;
-    margin-right: 17px;
-    padding-bottom: 2px;
-}
-
-.btn-more-wrap .btn-more::after{
-    background-image: url(../img/icons.png);
-    background-position: -848px -774px;
-    width: 17px;
-    height: 10px;
-    content: '';
-    display: inline-block;
-    margin-left: 17px;
-    padding-bottom: 2px;
-}
-
-.matjib_list_detail .sharebox{
-    padding: 27px 0;
+    text-indent: -9999px;
+    vertical-align: middle;
     height: 50px;
-    border-top: 1px solid #dbdbdb;
+    width: 50px;
 }
 
-.matjib_list_detail .sharebox .share_link{
+.btn-type-share.facebook {
+    background-image: url(../img/2018022864551sprites_desktop.png);
+    background-position: -668px -534px;
+    width: 50px;
+    height: 50px;
+}
+
+.btn-type-share.kakaotalk {
+    background-image: url(../img/2018022864551sprites_desktop.png);
+    background-position: -555px -423px;
+    width: 51px;
+    height: 50px;
+}
+
+.btn-type-share.band {
+    background-image: url(../img/2018022864551sprites_desktop.png);
+    background-position: -444px -312px;
+    width: 51px;
+    height: 50px;
+}
+
+.btn-type-share.twitter {
+    background-image: url(../img/2018022864551sprites_desktop.png);
+    background-position: -714px -796px;
+    width: 51px;
+    height: 50px;
+}
+
+.btn-type-share.email {
+    background-image: url(../img/2018022864551sprites_desktop.png);
+    background-position: -600px -796px;
+    width: 51px;
+    height: 50px;
+}
+
+.pg-toplist .options .share-link {
     float: left;
     width: 380px;
+}
+
+.share-link p {
     position: relative;
 }
 
-.matjib_list_detail .sharebox .share_link .url_copy{
+.share-link .url {
     display: block;
     overflow: hidden;
     padding-left: 25px;
     padding-right: 135px;
+    font-size: 1.000rem;
     color: #9b9b9b;
     text-overflow: ellipsis;
+    white-space: nowrap;
     line-height: 46px;
     border: 2px solid #dbdbdb;
     border-radius: 50px;
     background-color: #ffffff;
-    word-break: keep-all;
-    font-size: 1rem;
-    white-space: nowrap;
 }
 
-.matjib_list_detail .sharebox .share_link .btn_share_button{
+.share-link .btn-url-share {
     display: block;
     position: absolute;
     top: 0;
     right: 0;
     width: 130px;
+    font-size: 1.000rem;
     color: #ff792a;
     line-height: 46px;
     text-align: center;
     border: 2px solid #ff792a;
     border-radius: 50px;
     background-color: #ffffff;
-    font-size: 1rem;
 }
 
-.matjib_list_detail .sharebox .share_link .btn_share_button::before{
+.share-link .btn-url-share:before {
     content: '';
     display: inline-block;
-    background-image: url(../img/icons.png);
+    margin: -4px 10px 0 0;
+    vertical-align: middle;
+    background-image: url(../img/2018022864551sprites_desktop.png);
     background-position: -974px -667px;
     width: 20px;
     height: 20px;
-    margin: -4px 10px 0 0 ;
-    vertical-align: middle;
 }
 
-.matjib_list_detail .sharebox .share_sns{
-    float: right;
-    text-align: center;
-}
-
-.matjib_list_detail .sharebox .share_sns .facebook_share_button{
-    background-image: url(../img/icons.png);
-    background-position: -668px -534px;
-    width: 50px;
-    height: 50px;
-    display: inline-block;
-}
-
-.matjib_list_detail .sharebox .share_sns .twitter_share_button{
-    background-image: url(../img/icons.png);
-    background-position: -714px -796px;
-    width: 50px;
-    height: 50px;
-    display: inline-block;
-}
-
-.matjib_list_detail_map{
-    padding: 27px 0;
+.mn-toplist .module {
     position: relative;
     border-top: 1px solid #dbdbdb;
+    padding: 27px 0 27px 0;
 }
 
-.matjib_list_detail_map .title{
-    font-size: 1.4rem;
+.mn-toplist .module>.title {
     display: block;
     color: #ff792a;
     line-height: 1.2em;
     text-align: left;
+    font-size: 1.438rem;
+    padding: 0;
 }
 
 #map{
     margin-top: 23px;
 }
 
-.matjib_related_list{
+.pg-toplist .container-related-list {
     position: relative;
+    background-color: #f7f7f7;
     overflow: hidden;
-    border-top: 1px solid #dbdbdb;
 }
 
-.matjib_related_list .inner{
+.pg-toplist .container-related-list:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    height: 1px;
+    background-color: #dbdbdb;
+}
+
+.pg-toplist .container-related-list>.inner {
     margin: 0 auto;
     padding: 0 30px;
     width: 860px;
 }
 
-.related_restaurant{
-    padding: 27px 0;
+.mn-toplist .module {
     position: relative;
-    overflow: hidden;
+    border-top: 1px solid #dbdbdb;
+    padding: 27px 0 27px 0;
 }
 
-.matjib_related_list .inner .related_restaurant .title{
-    display: block;
-    font-size: 1.4rem;
-    color: #ff792a;
-    line-height: 1.2em;
-    text-align: left;
+.list-restaurants.type-column04 {
+    margin: 15px -15px 0 -15px;
 }
 
-.related_restaurant .list_restaurant{
-    margin: 15px -15px 0;
-}
-
-.related_restaurant .list_restaurant li{
-    width: 25%;
-    padding: 0 15px;
+.list-restaurants>li {
+    width: 50%;
     float: left;
     box-sizing: border-box;
 }
 
-.related_restaurant .list_restaurant .restaurant_item{
-    position: relative;
+.list-restaurants.type-column04>li {
+    width: 25%;
+    padding: 0 15px;
 }
 
-.related_restaurant .list_restaurant .restaurant_item .restaurant_image{
-    position: relative;
-    overflow: hidden;
-    background-size: cover;
-    background-position: center;
-    height: 130px;
-}
-
-.related_restaurant .list_restaurant .restaurant_item .restaurant_image img{  
-    display: block;
+.restaurant-item .thumb a {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    position: relative;
-    top: -35px;
+    height: 100%;
+    text-indent: -9999px;
 }
 
-.related_restaurant .list_restaurant .info{
-    padding-top: 9px;
-    position: relative;
+.type-column04 .restaurant-item .info .title {
+    font-size: 1.188rem;
 }
 
-.related_restaurant .list_restaurant .info .title{
-    display: inline-block;
-    font-size: 1.2rem;
-    overflow: hidden;
-    max-width: 64%;
-    color: #555;
-    line-height: 1.3em;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-.related_restaurant .list_restaurant .info .point{
+.type-column04 .restaurant-item .info .point {
     position: absolute;
     top: 7px;
     right: 2px;
-    font-size: 1.6rem;
-    display: inline-block;
-    color: #ff792a;
-    line-height: 1em;
+    margin-left: 0;
+    font-size: 1.625rem;
 }
 
-.related_restaurant .list_restaurant .info .etc{
+.type-column04 .restaurant-item .info .etc, .type-column04 .restaurant-item .info .etc_info {
     font-size: 0.875rem;
-    margin-top: -15px;
-    padding-right: 10px;
-    line-height: 1.3em;
-    overflow: hidden;
-    word-break: keep-all;
-    white-space: nowrap;
-    color: #9b9b9b;
-    text-overflow: ellipsis;
 }
 
-.related_tags{
-    padding: 27px 0;
-    position: relative;
-    border-top: 1px solid #dbdbdb;
-    overflow: hidden;
-}
-
-.related_tags .title{
-    display: block;
-    font-size: 1.4rem;
-    color: #ff792a;
-    line-height: 1.2em;
-    text-align: left;
-}
-
-.related_tags .tags_box{
+.related-tags p {
     padding-top: 14px;
 }
 
-.related_tags .tags_box .tag-item{
-    margin: 15px 3px 0;
-    padding: 0 20px;
-    font-size: 1rem;
-    line-height: 38px;
-    letter-spacing: 0;
+.related-tags p .tag-item{
     display: inline-block;
-    color: #6a6a6a;
-    border: 1px solid #cbcbcb;
-    border-radius: 50px;
-    background-color: #fff;
-}
-
-.related_tags .tags_box .tag-item::before{
-    content: '# ';
+    
 }
 
 
+---
 
 /* 맛집리스트 상세페이지 끝 */
 

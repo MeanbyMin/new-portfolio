@@ -3,749 +3,873 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2021 대구 인기 맛집 베스트 15곳 | 맛집검색 망고플레이트</title>
+    <title>이주의 주목할만 한 맛집 리뷰 BEST 20 | 맛집검색 망고플레이트</title>
     
     <!-- CSS styles -->
     <link rel="stylesheet" href="./css/common.css" type="text/css">
     <link href="../img/ico.png" rel="shortcut icon" type="image/x-icon">
-    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=71px6398hv"></script>
 </head>
-<body>
+<body onunload="" ng-app="mp20App" class="top_list_page_body">
     <ul class="skipnavi">
         <li><a href="#container">본문내용</a></li>
     </ul>
     <!-- wrap 시작 -->
     <div id="wrap">
         <!-- 헤더 시작 -->
-        <header id="header">
-            <div class="header_area box_inner clear">
-                <a href="./index.html" class="header_Logo">
-                    <i class="header_LogoIcon"></i>
-                </a>
+        <header class="Header" data-page="noraml">
+            <a href="./index.html" class="Header__Logo">
+                <i class="Header__LogoIcon"></i>
+            </a>
 
-                <!-- 검색 영역 시작-->
-                <div class="header_SearchBox">
-                    <i class="header_SearchIcon"></i>
-                    <label class="header_SearchInputWrap">
-                        <input class="SearchInput" type="text" placeholder="지역, 식당 또는 음식" maxlength="50">
-                    </label>
-                    <button class="header_SearchInputClearButton">CLEAR</button>
-                </div>
-                <!-- 검색 영역 끝 -->
-                
-                <!-- 메뉴 부분 시작 -->
-                <ul class="header_MenuList">
-                    <li class="header_MenuItem clear">
-                        <a href="./eat_deal.html">
-                            <span class="header_MenuText">EAT딜</span>
-                        </a>
+            <!-- 검색 영역 시작-->
+            <div class="Header__SearchBox">
+                <i class="Header__SearchIcon"></i>
+                <label class="Header__SearchInputWrap">
+                    <input class="Header__SearchInput" type="text" placeholder="지역, 식당 또는 음식" maxlength="50">
+                </label>
+                <button class="Header__SearchInputClearButton">CLEAR</button>
+            </div>
+            <!-- 검색 영역 끝 -->
+            
+            <!-- 메뉴 부분 시작 -->
+            <ul class="Header__MenuList">
+                <li class="Header__MenuItem Header__MenuItem--New clear">
+                    <a href="#" class="Header__MenuLink">
+                        <span class="Header__MenuText">EAT딜</span>
+                    </a>
+                </li>
+                <li class="Header__MenuItem Header__MenuItem--New clear">
+                    <a href="#" class="Header__MenuLink">
+                        <span class="Header__MenuText">맛집 리스트</span>
+                    </a>
+                </li>
+                <li class="Header__MenuItem Header__MenuItem--New clear">
+                    <a href="#" class="Header__MenuLink">
+                        <span class="Header__MenuText">망고 스토리</span>
+                    </a>
+                </li>
+                <!-- 프로필 영역 시작 -->
+                <ul class="Header__IconButtonList">
+                    <li class="Header__IconButtonItem only-mobile Header__IconButtonItem--MenuButton">
+                    <button class="MenuButton"
+                            onclick="">
+                        <i class="MenuButton__Icon"></i>
+                    </button>
                     </li>
-                    <li class="header_MenuItem clear">
-                        <a href="./matjib_list.html">
-                            <span class="header_MenuText">맛집 리스트</span>
-                        </a>
-                    </li>
-                    <li class="header_MenuItem clear">
-                        <a href="./mango_story.html">
-                            <span class="header_MenuText">망고 스토리</span>
-                        </a>
-                    </li>
-                    <!-- 모바일 메뉴 시작 -->
-                    <p class="openMOgnb">
-                        <a href="#">
-                            <b class="hdd">메뉴 토글버튼</b>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </a>
-                    </p>
-                    <!-- 모바일 메뉴 끝 -->
-                    <!-- 프로필 영역 시작 -->
-                    <li class="header_Userbutton">
-                        <button class="UserProfileButton">
-                            <i class="UserProfile"></i>
+            
+                    <li class="Header__IconButtonItem Header__IconButtonItem--UserRestaurantHistory">
+                        <button class="UserProfileButton"
+                                onclick="">
+                            <i class="UserProfileButton__Picture"></i>
+                            <i class="UserProfileButton__PersonIcon"></i>
+                            <span class="UserProfileButton__HistoryCount">0</span>
                         </button>
                     </li>
-                    <!-- 프로필 팝업 창 -->
-                    <div class="UserRestaurantHistory">
-                        <div class="UserRestaurantHistroy_Container">
-                            <i class="UserRestaurantHistory_Triangle"></i>
-                            <ul class="UserRestaurantHistroy_Taplist">
-                                <li class="UserRestaurantHistroy_TapItem UserRestaurantHistroy_TapItem-view">
-                                    <button class="UserRestaurantHistroy_TapButton">
-                                        최근 본 맛집
-                                        <span class="UserRestaurantHistroy_ViewCount">
-                                            (0)
-                                        </span>
-                                    </button>
-                                </li>
-                                <li class="UserRestaurantHistroy_TapItem UserRestaurantHistroy_TapItem-want">
-                                    <button class="UserRestaurantHistroy_TapButton">가고싶다</button>
-                                </li>
-                            </ul>
-                            <div class="UserRestaurantHistroy_HistoryContainer">
-                                <button class="UserRestaurantHistroy_ClearAllButton">
-                                    Clear All
-                                </button>
-                                <ul class="UserRestaurantHistroy_RestaurantList">
-                                    <li class="UserRestaurantHistroy_RestaurantItem">
-                                        <section class="RestaurantItem">
-                                            <a href="#" class="RestaurantItem_Link">
-                                                <div class="RestaurantItem_Picture"></div>
-                                            </a>
-                                            <div class="RestaurantItem_Info">
-                                                <a href="#" class="RestaurantItem_Link">
-                                                    <h3 class="RestaurantItem_Name"></h3>
-                                                    <span class="RestaurantItem_Rate"></span>
-                                                </a>
-                                                <span class="RestaurantItem_location"></span>
-                                            </div>
-                                            <button class="RestaurantItem_want"></button>
-                                        </section>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 프로필 팝업창 끝 -->
-                    <!-- 프로필 영역 끝 -->
+            
+                    <li class="Header__IconButtonItem Header__IconButtonItem--CloseButton Header__IconButtonItem--Hide">
+                    <button class="Header__CloseButton"></button>
+                    </li>
                 </ul>
-                <!-- 메뉴 부분 끝 -->
-            </div>
-        </header>
-        <!-- 헤더 끝 -->
-        <!-- 컨테이너 시작 -->
-        <div class="matjib_list_detail">
-            <header class="matjib_list_detail_maintitle">
-                <div class="inner">
-                    <p class="status">
-                        <span class="click_date">2,596 클릭 | 2020-12-22</span>
-                    </p>
-                    <h1 class="title">2021 대구 인기 맛집 TOP 15</h1>
-                    <h2 class="desc">
-                        “망고플레이트가 선정한 2021년에 꼭 가봐야 할 대구 맛집”
-                    </h2>
-                </div>
-            </header>
-            <div class="container_list">
-                <div class="inner">
-                    <ul class="list_restuarant">
-                        <li class="toplist">
-                            <div class="review">
-                                <div class="restaurant_name">
-                                    <a href="#">
-                                        <div class="menu_image">
-                                            <img src="./img/matjib_list_detail/12.jpeg" alt="12키친앤바">
-                                        </div>
-                                    </a>
-                                    <div class="info">
-                                        <span class="title">
-                                            <a href="#">
-                                                <h3>1. 12키친앤바</h3>
-                                            </a>
-                                        </span>
-                                        <div class="point">
-                                            <span>4.4</span>
-                                        </div>
-                                        <div class="wantgo_wrap">
-                                            <button class="wantgo_button"></button>
-                                            <p class="wantgo_text">가고싶다</p>
-                                        </div>
-                                        <p class="etc">대구광역시 수성구 무학로11길 10</p>
-                                    </div>
-                                </div>
-                                <div class="review_content">
-                                    <div class="user_img"></div>
-                                    <div class="user_review">
-                                        <span class="user_name">나는 항상 배고프다</span>
-                                        <span class="review">런치코스 이용했고 메인디쉬는 스테이크 선택했습니다. 대략 한시간 반 정도에 걸쳐서 나왔어요. 예상 가능한 맛이 나는건 스테이크와 삼겹살정도 였고 나머지 요리는 정말 처음 경험해보는 맛이었어요. 배를 채운다는 느낌이 아니라 음식을 마치 감상하고 있는 기분이랄까요(돈 마니 벌어야할것같아요ㅎㅎ) 채소같은건 가게에서 직접 재배하는거라 향이 너무 좋았고 샐러드에 버섯이 있어 수란을 으깨먹는 요리가 가장 인상적이었습니다.</span>
-                                    </div>
-                                </div>
-                                <a href="#" class="btn-detail">
-                                    <div class="restaurant_more_name">12키친앤바</div>
-                                    <div class="restaurant_more_text">더보기 ></div>
-                                </a>
-                            </div>
+                <!-- 프로필 팝업 창 -->
+                <div class="UserRestaurantHistory">
+                    <div class="UserRestaurantHistory__BlackDeem"></div>
+                
+                    <div class="UserRestaurantHistory__BlackDeem">
+                        <i class="`"></i>
+                
+                        <ul class="UserRestaurantHistory__TabList">
+                        <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Viewed"
+                            onclick="">
+                            <button class="UserRestaurantHistory__TabButton">최근 본 맛집 </button>
                         </li>
-                        <li class="toplist">
-                            <div class="review">
-                                <div class="restaurant_name">
-                                    <a href="#">
-                                        <div class="menu_image">
-                                            <img src="./img/matjib_list_detail/12.jpeg" alt="12키친앤바">
-                                        </div>
-                                    </a>
-                                    <div class="info">
-                                        <span class="title">
-                                            <a href="#">
-                                                <h3>1. 12키친앤바</h3>
-                                            </a>
-                                        </span>
-                                        <div class="point">
-                                            <span>4.4</span>
-                                        </div>
-                                        <div class="wantgo_wrap">
-                                            <button class="wantgo_button"></button>
-                                            <p class="wantgo_text">가고싶다</p>
-                                        </div>
-                                        <p class="etc">대구광역시 수성구 무학로11길 10</p>
-                                    </div>
-                                </div>
-                                <div class="review_content">
-                                    <div class="user_img"></div>
-                                    <div class="user_review">
-                                        <span class="user_name">나는 항상 배고프다</span>
-                                        <span class="review">런치코스 이용했고 메인디쉬는 스테이크 선택했습니다. 대략 한시간 반 정도에 걸쳐서 나왔어요. 예상 가능한 맛이 나는건 스테이크와 삼겹살정도 였고 나머지 요리는 정말 처음 경험해보는 맛이었어요. 배를 채운다는 느낌이 아니라 음식을 마치 감상하고 있는 기분이랄까요(돈 마니 벌어야할것같아요ㅎㅎ) 채소같은건 가게에서 직접 재배하는거라 향이 너무 좋았고 샐러드에 버섯이 있어 수란을 으깨먹는 요리가 가장 인상적이었습니다.</span>
-                                    </div>
-                                </div>
-                                <a href="#" class="btn-detail">
-                                    <div class="restaurant_more_name">12키친앤바</div>
-                                    <div class="restaurant_more_text">더보기 ></div>
-                                </a>
-                            </div>
+                
+                        <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Wannago"
+                            onclick="">
+                            <button class="UserRestaurantHistory__TabButton">가고싶다</button>
                         </li>
-                        <li class="toplist">
-                            <div class="review">
-                                <div class="restaurant_name">
-                                    <a href="#">
-                                        <div class="menu_image">
-                                            <img src="./img/matjib_list_detail/12.jpeg" alt="12키친앤바">
-                                        </div>
-                                    </a>
-                                    <div class="info">
-                                        <span class="title">
-                                            <a href="#">
-                                                <h3>1. 12키친앤바</h3>
-                                            </a>
-                                        </span>
-                                        <div class="point">
-                                            <span>4.4</span>
-                                        </div>
-                                        <div class="wantgo_wrap">
-                                            <button class="wantgo_button"></button>
-                                            <p class="wantgo_text">가고싶다</p>
-                                        </div>
-                                        <p class="etc">대구광역시 수성구 무학로11길 10</p>
-                                    </div>
-                                </div>
-                                <div class="review_content">
-                                    <div class="user_img"></div>
-                                    <div class="user_review">
-                                        <span class="user_name">나는 항상 배고프다</span>
-                                        <span class="review">런치코스 이용했고 메인디쉬는 스테이크 선택했습니다. 대략 한시간 반 정도에 걸쳐서 나왔어요. 예상 가능한 맛이 나는건 스테이크와 삼겹살정도 였고 나머지 요리는 정말 처음 경험해보는 맛이었어요. 배를 채운다는 느낌이 아니라 음식을 마치 감상하고 있는 기분이랄까요(돈 마니 벌어야할것같아요ㅎㅎ) 채소같은건 가게에서 직접 재배하는거라 향이 너무 좋았고 샐러드에 버섯이 있어 수란을 으깨먹는 요리가 가장 인상적이었습니다.</span>
-                                    </div>
-                                </div>
-                                <a href="#" class="btn-detail">
-                                    <div class="restaurant_more_name">12키친앤바</div>
-                                    <div class="restaurant_more_text">더보기 ></div>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="toplist">
-                            <div class="review">
-                                <div class="restaurant_name">
-                                    <a href="#">
-                                        <div class="menu_image">
-                                            <img src="./img/matjib_list_detail/12.jpeg" alt="12키친앤바">
-                                        </div>
-                                    </a>
-                                    <div class="info">
-                                        <span class="title">
-                                            <a href="#">
-                                                <h3>1. 12키친앤바</h3>
-                                            </a>
-                                        </span>
-                                        <div class="point">
-                                            <span>4.4</span>
-                                        </div>
-                                        <div class="wantgo_wrap">
-                                            <button class="wantgo_button"></button>
-                                            <p class="wantgo_text">가고싶다</p>
-                                        </div>
-                                        <p class="etc">대구광역시 수성구 무학로11길 10</p>
-                                    </div>
-                                </div>
-                                <div class="review_content">
-                                    <div class="user_img"></div>
-                                    <div class="user_review">
-                                        <span class="user_name">나는 항상 배고프다</span>
-                                        <span class="review">런치코스 이용했고 메인디쉬는 스테이크 선택했습니다. 대략 한시간 반 정도에 걸쳐서 나왔어요. 예상 가능한 맛이 나는건 스테이크와 삼겹살정도 였고 나머지 요리는 정말 처음 경험해보는 맛이었어요. 배를 채운다는 느낌이 아니라 음식을 마치 감상하고 있는 기분이랄까요(돈 마니 벌어야할것같아요ㅎㅎ) 채소같은건 가게에서 직접 재배하는거라 향이 너무 좋았고 샐러드에 버섯이 있어 수란을 으깨먹는 요리가 가장 인상적이었습니다.</span>
-                                    </div>
-                                </div>
-                                <a href="#" class="btn-detail">
-                                    <div class="restaurant_more_name">12키친앤바</div>
-                                    <div class="restaurant_more_text">더보기 ></div>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="toplist">
-                            <div class="review">
-                                <div class="restaurant_name">
-                                    <a href="#">
-                                        <div class="menu_image">
-                                            <img src="./img/matjib_list_detail/12.jpeg" alt="12키친앤바">
-                                        </div>
-                                    </a>
-                                    <div class="info">
-                                        <span class="title">
-                                            <a href="#">
-                                                <h3>1. 12키친앤바</h3>
-                                            </a>
-                                        </span>
-                                        <div class="point">
-                                            <span>4.4</span>
-                                        </div>
-                                        <div class="wantgo_wrap">
-                                            <button class="wantgo_button"></button>
-                                            <p class="wantgo_text">가고싶다</p>
-                                        </div>
-                                        <p class="etc">대구광역시 수성구 무학로11길 10</p>
-                                    </div>
-                                </div>
-                                <div class="review_content">
-                                    <div class="user_img"></div>
-                                    <div class="user_review">
-                                        <span class="user_name">나는 항상 배고프다</span>
-                                        <span class="review">런치코스 이용했고 메인디쉬는 스테이크 선택했습니다. 대략 한시간 반 정도에 걸쳐서 나왔어요. 예상 가능한 맛이 나는건 스테이크와 삼겹살정도 였고 나머지 요리는 정말 처음 경험해보는 맛이었어요. 배를 채운다는 느낌이 아니라 음식을 마치 감상하고 있는 기분이랄까요(돈 마니 벌어야할것같아요ㅎㅎ) 채소같은건 가게에서 직접 재배하는거라 향이 너무 좋았고 샐러드에 버섯이 있어 수란을 으깨먹는 요리가 가장 인상적이었습니다.</span>
-                                    </div>
-                                </div>
-                                <a href="#" class="btn-detail">
-                                    <div class="restaurant_more_name">12키친앤바</div>
-                                    <div class="restaurant_more_text">더보기 ></div>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="toplist">
-                            <div class="review">
-                                <div class="restaurant_name">
-                                    <a href="#">
-                                        <div class="menu_image">
-                                            <img src="./img/matjib_list_detail/12.jpeg" alt="12키친앤바">
-                                        </div>
-                                    </a>
-                                    <div class="info">
-                                        <span class="title">
-                                            <a href="#">
-                                                <h3>1. 12키친앤바</h3>
-                                            </a>
-                                        </span>
-                                        <div class="point">
-                                            <span>4.4</span>
-                                        </div>
-                                        <div class="wantgo_wrap">
-                                            <button class="wantgo_button"></button>
-                                            <p class="wantgo_text">가고싶다</p>
-                                        </div>
-                                        <p class="etc">대구광역시 수성구 무학로11길 10</p>
-                                    </div>
-                                </div>
-                                <div class="review_content">
-                                    <div class="user_img"></div>
-                                    <div class="user_review">
-                                        <span class="user_name">나는 항상 배고프다</span>
-                                        <span class="review">런치코스 이용했고 메인디쉬는 스테이크 선택했습니다. 대략 한시간 반 정도에 걸쳐서 나왔어요. 예상 가능한 맛이 나는건 스테이크와 삼겹살정도 였고 나머지 요리는 정말 처음 경험해보는 맛이었어요. 배를 채운다는 느낌이 아니라 음식을 마치 감상하고 있는 기분이랄까요(돈 마니 벌어야할것같아요ㅎㅎ) 채소같은건 가게에서 직접 재배하는거라 향이 너무 좋았고 샐러드에 버섯이 있어 수란을 으깨먹는 요리가 가장 인상적이었습니다.</span>
-                                    </div>
-                                </div>
-                                <a href="#" class="btn-detail">
-                                    <div class="restaurant_more_name">12키친앤바</div>
-                                    <div class="restaurant_more_text">더보기 ></div>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="toplist">
-                            <div class="review">
-                                <div class="restaurant_name">
-                                    <a href="#">
-                                        <div class="menu_image">
-                                            <img src="./img/matjib_list_detail/12.jpeg" alt="12키친앤바">
-                                        </div>
-                                    </a>
-                                    <div class="info">
-                                        <span class="title">
-                                            <a href="#">
-                                                <h3>1. 12키친앤바</h3>
-                                            </a>
-                                        </span>
-                                        <div class="point">
-                                            <span>4.4</span>
-                                        </div>
-                                        <div class="wantgo_wrap">
-                                            <button class="wantgo_button"></button>
-                                            <p class="wantgo_text">가고싶다</p>
-                                        </div>
-                                        <p class="etc">대구광역시 수성구 무학로11길 10</p>
-                                    </div>
-                                </div>
-                                <div class="review_content">
-                                    <div class="user_img"></div>
-                                    <div class="user_review">
-                                        <span class="user_name">나는 항상 배고프다</span>
-                                        <span class="review">런치코스 이용했고 메인디쉬는 스테이크 선택했습니다. 대략 한시간 반 정도에 걸쳐서 나왔어요. 예상 가능한 맛이 나는건 스테이크와 삼겹살정도 였고 나머지 요리는 정말 처음 경험해보는 맛이었어요. 배를 채운다는 느낌이 아니라 음식을 마치 감상하고 있는 기분이랄까요(돈 마니 벌어야할것같아요ㅎㅎ) 채소같은건 가게에서 직접 재배하는거라 향이 너무 좋았고 샐러드에 버섯이 있어 수란을 으깨먹는 요리가 가장 인상적이었습니다.</span>
-                                    </div>
-                                </div>
-                                <a href="#" class="btn-detail">
-                                    <div class="restaurant_more_name">12키친앤바</div>
-                                    <div class="restaurant_more_text">더보기 ></div>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="toplist">
-                            <div class="review">
-                                <div class="restaurant_name">
-                                    <a href="#">
-                                        <div class="menu_image">
-                                            <img src="./img/matjib_list_detail/12.jpeg" alt="12키친앤바">
-                                        </div>
-                                    </a>
-                                    <div class="info">
-                                        <span class="title">
-                                            <a href="#">
-                                                <h3>1. 12키친앤바</h3>
-                                            </a>
-                                        </span>
-                                        <div class="point">
-                                            <span>4.4</span>
-                                        </div>
-                                        <div class="wantgo_wrap">
-                                            <button class="wantgo_button"></button>
-                                            <p class="wantgo_text">가고싶다</p>
-                                        </div>
-                                        <p class="etc">대구광역시 수성구 무학로11길 10</p>
-                                    </div>
-                                </div>
-                                <div class="review_content">
-                                    <div class="user_img"></div>
-                                    <div class="user_review">
-                                        <span class="user_name">나는 항상 배고프다</span>
-                                        <span class="review">런치코스 이용했고 메인디쉬는 스테이크 선택했습니다. 대략 한시간 반 정도에 걸쳐서 나왔어요. 예상 가능한 맛이 나는건 스테이크와 삼겹살정도 였고 나머지 요리는 정말 처음 경험해보는 맛이었어요. 배를 채운다는 느낌이 아니라 음식을 마치 감상하고 있는 기분이랄까요(돈 마니 벌어야할것같아요ㅎㅎ) 채소같은건 가게에서 직접 재배하는거라 향이 너무 좋았고 샐러드에 버섯이 있어 수란을 으깨먹는 요리가 가장 인상적이었습니다.</span>
-                                    </div>
-                                </div>
-                                <a href="#" class="btn-detail">
-                                    <div class="restaurant_more_name">12키친앤바</div>
-                                    <div class="restaurant_more_text">더보기 ></div>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="toplist">
-                            <div class="review">
-                                <div class="restaurant_name">
-                                    <a href="#">
-                                        <div class="menu_image">
-                                            <img src="./img/matjib_list_detail/12.jpeg" alt="12키친앤바">
-                                        </div>
-                                    </a>
-                                    <div class="info">
-                                        <span class="title">
-                                            <a href="#">
-                                                <h3>1. 12키친앤바</h3>
-                                            </a>
-                                        </span>
-                                        <div class="point">
-                                            <span>4.4</span>
-                                        </div>
-                                        <div class="wantgo_wrap">
-                                            <button class="wantgo_button"></button>
-                                            <p class="wantgo_text">가고싶다</p>
-                                        </div>
-                                        <p class="etc">대구광역시 수성구 무학로11길 10</p>
-                                    </div>
-                                </div>
-                                <div class="review_content">
-                                    <div class="user_img"></div>
-                                    <div class="user_review">
-                                        <span class="user_name">나는 항상 배고프다</span>
-                                        <span class="review">런치코스 이용했고 메인디쉬는 스테이크 선택했습니다. 대략 한시간 반 정도에 걸쳐서 나왔어요. 예상 가능한 맛이 나는건 스테이크와 삼겹살정도 였고 나머지 요리는 정말 처음 경험해보는 맛이었어요. 배를 채운다는 느낌이 아니라 음식을 마치 감상하고 있는 기분이랄까요(돈 마니 벌어야할것같아요ㅎㅎ) 채소같은건 가게에서 직접 재배하는거라 향이 너무 좋았고 샐러드에 버섯이 있어 수란을 으깨먹는 요리가 가장 인상적이었습니다.</span>
-                                    </div>
-                                </div>
-                                <a href="#" class="btn-detail">
-                                    <div class="restaurant_more_name">12키친앤바</div>
-                                    <div class="restaurant_more_text">더보기 ></div>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="toplist">
-                            <div class="review">
-                                <div class="restaurant_name">
-                                    <a href="#">
-                                        <div class="menu_image">
-                                            <img src="./img/matjib_list_detail/12.jpeg" alt="12키친앤바">
-                                        </div>
-                                    </a>
-                                    <div class="info">
-                                        <span class="title">
-                                            <a href="#">
-                                                <h3>1. 12키친앤바</h3>
-                                            </a>
-                                        </span>
-                                        <div class="point">
-                                            <span>4.4</span>
-                                        </div>
-                                        <div class="wantgo_wrap">
-                                            <button class="wantgo_button"></button>
-                                            <p class="wantgo_text">가고싶다</p>
-                                        </div>
-                                        <p class="etc">대구광역시 수성구 무학로11길 10</p>
-                                    </div>
-                                </div>
-                                <div class="review_content">
-                                    <div class="user_img"></div>
-                                    <div class="user_review">
-                                        <span class="user_name">나는 항상 배고프다</span>
-                                        <span class="review">런치코스 이용했고 메인디쉬는 스테이크 선택했습니다. 대략 한시간 반 정도에 걸쳐서 나왔어요. 예상 가능한 맛이 나는건 스테이크와 삼겹살정도 였고 나머지 요리는 정말 처음 경험해보는 맛이었어요. 배를 채운다는 느낌이 아니라 음식을 마치 감상하고 있는 기분이랄까요(돈 마니 벌어야할것같아요ㅎㅎ) 채소같은건 가게에서 직접 재배하는거라 향이 너무 좋았고 샐러드에 버섯이 있어 수란을 으깨먹는 요리가 가장 인상적이었습니다.</span>
-                                    </div>
-                                </div>
-                                <a href="#" class="btn-detail">
-                                    <div class="restaurant_more_name">12키친앤바</div>
-                                    <div class="restaurant_more_text">더보기 ></div>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="toplist">
-                            <div class="review">
-                                <div class="restaurant_name">
-                                    <a href="#">
-                                        <div class="menu_image">
-                                            <img src="./img/matjib_list_detail/12.jpeg" alt="12키친앤바">
-                                        </div>
-                                    </a>
-                                    <div class="info">
-                                        <span class="title">
-                                            <a href="#">
-                                                <h3>1. 12키친앤바</h3>
-                                            </a>
-                                        </span>
-                                        <div class="point">
-                                            <span>4.4</span>
-                                        </div>
-                                        <div class="wantgo_wrap">
-                                            <button class="wantgo_button"></button>
-                                            <p class="wantgo_text">가고싶다</p>
-                                        </div>
-                                        <p class="etc">대구광역시 수성구 무학로11길 10</p>
-                                    </div>
-                                </div>
-                                <div class="review_content">
-                                    <div class="user_img"></div>
-                                    <div class="user_review">
-                                        <span class="user_name">나는 항상 배고프다</span>
-                                        <span class="review">런치코스 이용했고 메인디쉬는 스테이크 선택했습니다. 대략 한시간 반 정도에 걸쳐서 나왔어요. 예상 가능한 맛이 나는건 스테이크와 삼겹살정도 였고 나머지 요리는 정말 처음 경험해보는 맛이었어요. 배를 채운다는 느낌이 아니라 음식을 마치 감상하고 있는 기분이랄까요(돈 마니 벌어야할것같아요ㅎㅎ) 채소같은건 가게에서 직접 재배하는거라 향이 너무 좋았고 샐러드에 버섯이 있어 수란을 으깨먹는 요리가 가장 인상적이었습니다.</span>
-                                    </div>
-                                </div>
-                                <a href="#" class="btn-detail">
-                                    <div class="restaurant_more_name">12키친앤바</div>
-                                    <div class="restaurant_more_text">더보기 ></div>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="btn-more-wrap">
-                        <button class="btn-more">더보기</button>
-                    </div>
-                    <div class="sharebox">
-                        <div class="share_link">
-                            <span class="url_copy">https://www.mangoplate.com/top_lists/2733_daegu2021</span>
-                            <button class="btn_share_button">공유하기</button>
+                        </ul>
+                
+                        <div class="UserRestaurantHistory__HistoryContainer">
+                        <div class="UserRestaurantHistory__HistoryHeader">
+                            <button class="UserRestaurantHistory__ClearAllHistoryButton"
+                                    onclick="">
+                            x clear all
+                            </button>
                         </div>
-                        <div class="share_sns">
-                            <p>
-                                <button class="facebook_share_button"></button>
-                                <button class="twitter_share_button"></button>
+                
+                        <ul class="UserRestaurantHistory__RestaurantList">
+                
+                        </ul>
+                
+                        <div class="UserRestaurantHistory__EmptyViewedRestaurantHistory">
+                            <span class="UserRestaurantHistory__EmptyViewedRestaurantHistoryTitle">
+                            거기가 어디였지?
+                            </span>
+                
+                            <p class="UserRestaurantHistory__EmptyViewedRestaurantHistoryDescription">
+                            내가 둘러 본 식당이 이 곳에 순서대로 기록됩니다.
                             </p>
                         </div>
+                
+                        <div class="UserRestaurantHistory__EmptyWannagoRestaurantHistory">
+                            <img class="UserRestaurantHistory__EmptyWannagoRestaurantHistoryImage"
+                                src="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kycrji1bsrupvbem.png?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                                alt="wannago empty star" />
+                            <p class="UserRestaurantHistory__EmptyWannagoRestaurantHistoryTitle">격하게 가고싶다..</p>
+                            <p class="UserRestaurantHistory__EmptyWannagoRestaurantHistoryDescription">
+                            식당의 ‘별’ 아이콘을 누르면 가고싶은 곳을 쉽게 저장할 수 있습니다.
+                            </p>
+                        </div>
+                        </div>
+                
+                        <footer class="UserRestaurantHistory__Footer">
+                        <button class="UserRestaurantHistory__LoginButton" onclick="">로그인</button>
+                        <button class="UserRestaurantHistory__LogoutButton" onclick="">logout</button>
+                        </footer>
                     </div>
-                    <div class="matjib_list_detail_map">
-                        <span class="title">리스트 지도</span>
+                </div>
+                <!-- 프로필 팝업창 끝 -->
+                <!-- 프로필 영역 끝 -->
+            </ul>
+            <!-- 메뉴 부분 끝 -->
+        </header>
+        <!-- 헤더 끝 -->
+        <!-- 검색창 시작 -->
+        <div class="KeywordSuggester">
+            <div class="KeywordSuggester__BlackDeem"></div>
+            <div class="KeywordSuggester__Container">
+                <nav class="KeywordSuggester__TabNavigation">
+                    <ul class="KeywordSuggester__TabList">
+                        <li class="KeywordSuggester__TabItem">
+                            <div class="KeywordSuggester__TabButton KeywordSuggester__RecommendTabButton"
+                                onclick=""
+                                role="button">
+                            추천 검색어
+                            </div>
+                        </li>
+                
+                        <li class="KeywordSuggester__TabItem">
+                            <div class="KeywordSuggester__TabButton KeywordSuggester__PopularTabButton"
+                                onclick=""
+                                role="button">
+                            인기 검색어
+                            </div>
+                        </li>
+                
+                        <li class="KeywordSuggester__TabItem">
+                            <div class="KeywordSuggester__TabButton KeywordSuggester__HistoryTabButton"
+                                onclick=""
+                                role="button">
+                            최근 검색어
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            
+                <div class="KeywordSuggester__SuggestKeywordListWrap">
+                    <p class="KeywordSuggester__EmptyKeywordMessage">최근 검색어가 없습니다.</p>
+            
+                    <div class="KeywordSuggester__Footer">
+                        <button class="KeywordSuggester__RemoveAllHistoryKeywordButton">
+                            x clear all
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 검색창 끝 -->
+        <!-- 본문 시작 -->
+        <main class="mn-toplist pg-toplist">
+
+            <article class="contents">
+                <header class="basic-info-list">
+                <div class="inner" style="padding-bottom: 10px">
+                    <p class="status">
+                        <span>
+                            1,447 클릭
+                        </span> |
+                        <time datetime="2021-01-05">
+                            2021-01-05
+                        </time>
+                    </p>
+                    <h1 class="title">이주의 주목할만 한 맛집 리뷰 BEST 20</h1>
+                    <h2 class="desc">
+                    “이주의 주목할만 한 리뷰만 모았다!”
+                    </h2>
+                </div>
+                </header>
+
+                <div class="container-list" id="contents_width">
+                <div class="inner">
+                    <!-- 해당 레스토랑 목록 -->
+                    <section id="contents_list">
+                    <p class="hidden"> 목록</p>
+
+                    <ul class="list-restaurants type-single-big top_list_restaurant_list">
+                        <li class="toplist_list">
+                            <div class="with-review">
+                            <figure class="restaurant-item">
+                                <a href="#" onclick="">
+                                    <div class="thumb">
+                                        <img class="center-croping lazy"
+                                            alt="새들러하우스 사진 - 서울특별시 강남구 도산대로17길 10 B1" src="./img/top_lists_detail/1042666_1609426803624_2621.jpeg"/>
+                                    </div>
+                                </a>
+                                <figcaption>
+                                <div class="info">
+                                    <div class="wannago_wrap">
+                                    <button class="btn-type-icon favorite wannago_btn "
+                                            data-restaurant_uuid="383472"
+                                            data-action_id="">
+                                    </button>
+                                    <p class="wannago_txt">가고싶다</p>
+                                    </div>
+                                    <span class="title ">
+                                    <a href="#"
+                                        onclick="">
+                                        1.<h3> 새들러하우스</h3>
+                                    </a>
+                                    </span>
+                                    <strong class="point  ">
+                                    <span>4.6</span>
+                                    </strong>
+                                    <p class="etc ">서울특별시 강남구 도산대로17길 10 B1</p>
+                                </div>
+                                </figcaption>
+                            </figure>
+
+                                <div class="review-content no-bottom">
+                                <figure class="user">
+                                    <div class="thumb lazy" style="background-image: url(./img/top_lists_detail/1042666_1609323665303.jpeg);">
+                                    </div>
+                                    <figcaption class="">
+                                    라면물조절장인
+                                    </figcaption>
+                                </figure>
+                                <p class="short_review " onclick="">
+                                    최근에 가로수길에 들를 일이 있어 마침 시간도 비었겠다, 한 번 방문해 봤어요. 오픈시간인 12시 좀 넘어서 줄 서기 시작해 10분도 안 기다리...
+                                </p>
+
+                                <p class="long_review ">
+                                    최근에 가로수길에 들를 일이 있어 마침 시간도 비었겠다, 한 번 방문해 봤어요. 오픈시간인 12시 좀 넘어서 줄 서기 시작해 10분도 안 기다리고 크로플 득템! 원래는 웨이팅이 길다던데 이 날이 역대급 강추위라 많이 안 찾으신 거 같아요. ♤ 크로플 세트 (16,200₩) ♤ 콘 크로플 (6,200₩) ♤ 크림치즈 (2,800₩) 세트는 플레인 2개, 치즈 1개, 바질 1개 구성이에요. 
+                                </p>
+
+                                    <span class="review_more_btn" onclick="">더보기</span>
+                                </div>
+
+
+                            <a href="/restaurants/_lwTLhPuzfky" class="btn-detail"
+                                onclick="">
+                                <div class="restaurant-more-name">새들러하우스</div>
+                                <div class="restaurant-more-text">더보기 ></div>
+                            </a>
+                            </div>
+                        </li>
+                        <li class="toplist_list">
+                            <div class="with-review">
+                            <figure class="restaurant-item">
+                                <a href="#" onclick="">
+                                    <div class="thumb">
+                                        <img class="center-croping lazy"
+                                            alt="새들러하우스 사진 - 서울특별시 강남구 도산대로17길 10 B1" src="./img/top_lists_detail/1042666_1609426803624_2621.jpeg"/>
+                                    </div>
+                                </a>
+                                <figcaption>
+                                <div class="info">
+                                    <div class="wannago_wrap">
+                                    <button class="btn-type-icon favorite wannago_btn "
+                                            data-restaurant_uuid="383472"
+                                            data-action_id="">
+                                    </button>
+                                    <p class="wannago_txt">가고싶다</p>
+                                    </div>
+                                    <span class="title ">
+                                    <a href="#"
+                                        onclick="">
+                                        1.<h3> 새들러하우스</h3>
+                                    </a>
+                                    </span>
+                                    <strong class="point  ">
+                                    <span>4.6</span>
+                                    </strong>
+                                    <p class="etc ">서울특별시 강남구 도산대로17길 10 B1</p>
+                                </div>
+                                </figcaption>
+                            </figure>
+
+                                <div class="review-content no-bottom">
+                                <figure class="user">
+                                    <div class="thumb lazy" style="background-image: url(./img/top_lists_detail/1042666_1609323665303.jpeg);">
+                                    </div>
+                                    <figcaption class="">
+                                    라면물조절장인
+                                    </figcaption>
+                                </figure>
+                                <p class="short_review " onclick="">
+                                    최근에 가로수길에 들를 일이 있어 마침 시간도 비었겠다, 한 번 방문해 봤어요. 오픈시간인 12시 좀 넘어서 줄 서기 시작해 10분도 안 기다리...
+                                </p>
+
+                                <p class="long_review ">
+                                    최근에 가로수길에 들를 일이 있어 마침 시간도 비었겠다, 한 번 방문해 봤어요. 오픈시간인 12시 좀 넘어서 줄 서기 시작해 10분도 안 기다리고 크로플 득템! 원래는 웨이팅이 길다던데 이 날이 역대급 강추위라 많이 안 찾으신 거 같아요. ♤ 크로플 세트 (16,200₩) ♤ 콘 크로플 (6,200₩) ♤ 크림치즈 (2,800₩) 세트는 플레인 2개, 치즈 1개, 바질 1개 구성이에요. 
+                                </p>
+
+                                    <span class="review_more_btn" onclick="">더보기</span>
+                                </div>
+
+
+                            <a href="/restaurants/_lwTLhPuzfky" class="btn-detail"
+                                onclick="">
+                                <div class="restaurant-more-name">새들러하우스</div>
+                                <div class="restaurant-more-text">더보기 ></div>
+                            </a>
+                            </div>
+                        </li>
+                        <li class="toplist_list">
+                            <div class="with-review">
+                            <figure class="restaurant-item">
+                                <a href="#" onclick="">
+                                    <div class="thumb">
+                                        <img class="center-croping lazy"
+                                            alt="새들러하우스 사진 - 서울특별시 강남구 도산대로17길 10 B1" src="./img/top_lists_detail/1042666_1609426803624_2621.jpeg"/>
+                                    </div>
+                                </a>
+                                <figcaption>
+                                <div class="info">
+                                    <div class="wannago_wrap">
+                                    <button class="btn-type-icon favorite wannago_btn "
+                                            data-restaurant_uuid="383472"
+                                            data-action_id="">
+                                    </button>
+                                    <p class="wannago_txt">가고싶다</p>
+                                    </div>
+                                    <span class="title ">
+                                    <a href="#"
+                                        onclick="">
+                                        1.<h3> 새들러하우스</h3>
+                                    </a>
+                                    </span>
+                                    <strong class="point  ">
+                                    <span>4.6</span>
+                                    </strong>
+                                    <p class="etc ">서울특별시 강남구 도산대로17길 10 B1</p>
+                                </div>
+                                </figcaption>
+                            </figure>
+
+                                <div class="review-content no-bottom">
+                                <figure class="user">
+                                    <div class="thumb lazy" style="background-image: url(./img/top_lists_detail/1042666_1609323665303.jpeg);">
+                                    </div>
+                                    <figcaption class="">
+                                    라면물조절장인
+                                    </figcaption>
+                                </figure>
+                                <p class="short_review " onclick="">
+                                    최근에 가로수길에 들를 일이 있어 마침 시간도 비었겠다, 한 번 방문해 봤어요. 오픈시간인 12시 좀 넘어서 줄 서기 시작해 10분도 안 기다리...
+                                </p>
+
+                                <p class="long_review ">
+                                    최근에 가로수길에 들를 일이 있어 마침 시간도 비었겠다, 한 번 방문해 봤어요. 오픈시간인 12시 좀 넘어서 줄 서기 시작해 10분도 안 기다리고 크로플 득템! 원래는 웨이팅이 길다던데 이 날이 역대급 강추위라 많이 안 찾으신 거 같아요. ♤ 크로플 세트 (16,200₩) ♤ 콘 크로플 (6,200₩) ♤ 크림치즈 (2,800₩) 세트는 플레인 2개, 치즈 1개, 바질 1개 구성이에요. 
+                                </p>
+
+                                    <span class="review_more_btn" onclick="">더보기</span>
+                                </div>
+
+
+                            <a href="/restaurants/_lwTLhPuzfky" class="btn-detail"
+                                onclick="">
+                                <div class="restaurant-more-name">새들러하우스</div>
+                                <div class="restaurant-more-text">더보기 ></div>
+                            </a>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="more_btn_wrapper">
+                        <button class="more_btn" onclick="">더보기</button>
+                        <img class="loading_img" src="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/ldcyd5lxlvtlppe3.gif?fit=around|:&crop=:;*,*&output-format=gif&output-quality=80" alt="loading bar"/>
+                    </div>
+                    </section>
+
+                    <div class="module options only-desktop">
+                    <div class="share-sns">
+                    <p>
+                        <button class="btn-type-share facebook facebook_share_btn" onclick="t">페이스북에 공유</button>
+                        <button class="btn-type-share kakaotalk kakaotalk_share_btn only-mobile" onclick="">카카오톡에 공유</button>
+                        <button class="btn-type-share band band_share_btn only-mobile" onclick="" >밴드에 공유</button>
+                        <button class="btn-type-share twitter twitter_share_btn" onclick="">트위터에 공유</button>
+                        <button class="btn-type-share email mail_share_btn only-mobile" onclick="">메일보내기</button>
+                    </p>
+                    </div>
+
+                            <!-- 페이지 링크 공유 -->
+                    <div class="share-link" onclick="">
+                    <p>
+                        <span class="url copy_url">https://www.mangoplate.com/top_lists/2758_holic</span>
+                        <button class="btn-url-share">공유하기</button>
+                    </p>
+                    </div>
+
+                    </div>
+
+                    <section class="module map only-desktop">
+                    <span class="title">리스트 지도</span>
+
+                    <div class="map-container">
                         <div id="map" style="width:100%;height:400px;"></div>
                     </div>
+                    </section>
                 </div>
-            </div>
-        </div>
-        <!-- 비슷한 맛집  -->
-        <div class="matjib_related_list">
-            <div class="inner">
-                <div class="related_restaurant">
-                    <span class="title">리스트의 식당과 비슷한 맛집</span>
-                    <ul class="list_restaurant">
-                        <li>
-                            <div class="restaurant_item">
-                                <a href="#">
-                                    <div class="restaurant_image">
-                                        <img src="./img/matjib_list_detail/hi.jpg" alt="하이타이">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="info">
-                                <a href="#">
-                                    <span class="title">하이타이</span>
-                                </a>
-                                <span class="point">3.8</span>
-                                <p class="etc">
-                                    대구 중구 - 태국 음식
-                                </p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="restaurant_item">
-                                <a href="#">
-                                    <div class="restaurant_image">
-                                        <img src="./img/matjib_list_detail/hi.jpg" alt="하이타이">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="info">
-                                <a href="#">
-                                    <span class="title">하이타이</span>
-                                </a>
-                                <span class="point">3.8</span>
-                                <p class="etc">
-                                    대구 중구 - 태국 음식
-                                </p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="restaurant_item">
-                                <a href="#">
-                                    <div class="restaurant_image">
-                                        <img src="./img/matjib_list_detail/hi.jpg" alt="하이타이">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="info">
-                                <a href="#">
-                                    <span class="title">하이타이</span>
-                                </a>
-                                <span class="point">3.8</span>
-                                <p class="etc">
-                                    대구 중구 - 태국 음식
-                                </p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="restaurant_item">
-                                <a href="#">
-                                    <div class="restaurant_image">
-                                        <img src="./img/matjib_list_detail/hi.jpg" alt="하이타이">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="info">
-                                <a href="#">
-                                    <span class="title">하이타이</span>
-                                </a>
-                                <span class="point">3.8</span>
-                                <p class="etc">
-                                    대구 중구 - 태국 음식
-                                </p>
-                            </div>
-                        </li>
-                    </ul>
                 </div>
-                <div class="related_tags">
-                    <span class="title">실시간 인기 키워드</span>
-                    <div class="tags_box">
-                        <a href="#" class="tag-item">만두</a>
-                        <a href="#" class="tag-item">떡볶이</a>
-                        <a href="#" class="tag-item">통닭</a>
-                        <a href="#" class="tag-item">납작만두</a>
-                        <a href="#" class="tag-item">납작한</a>
-                        <a href="#" class="tag-item">양념</a>
-                        <a href="#" class="tag-item">비빔</a>
-                        <a href="#" class="tag-item">비빔만두</a>
-                    </div>
+
+                <!-- 관련 태그/맛집/탑리스트 -->
+                <div class="container-related-list">
+                <div class="inner">
+                    <!-- 관련 식당 목록 -->
+                    <section class="module related-restaurant">
+                        <span class="title">리스트의 식당과 비슷한 맛집</span>
+
+                        <ul class="list-restaurants type-column04">
+                            <li>
+                                <div class="restaurant-item">
+                                    <figure class="restaurant-item">
+                                    <div class="thumb">
+                                        <img class="center-croping lazy" alt="깨비옥 사진 - 인천시 연수구 송도동 22-21" src="./img/top_lists_detail/20793_144568923545346966.jpeg"/>
+                                        <a href="#"
+                                        onclick="">
+                                        깨비옥
+                                        사진
+                                        </a>
+                                    </div>
+                                    <figcaption>
+                                        <div class="info">
+                                        <a href="" onclick="">
+                                            <span class="title">깨비옥</span>
+                                        </a>
+                                        <strong class="point ">4.3</strong>
+                                        <p class="etc">
+                                            인천 연수구 -
+                                            탕 / 찌개 / 전골
+                                        </p>
+                                        </div>
+                                    </figcaption>
+                                    </figure>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="restaurant-item">
+                                    <figure class="restaurant-item">
+                                    <div class="thumb">
+                                        <img class="center-croping lazy" alt="깨비옥 사진 - 인천시 연수구 송도동 22-21" src="./img/top_lists_detail/20793_144568923545346966.jpeg"/>
+                                        <a href="#"
+                                        onclick="">
+                                        깨비옥
+                                        사진
+                                        </a>
+                                    </div>
+                                    <figcaption>
+                                        <div class="info">
+                                        <a href="" onclick="">
+                                            <span class="title">깨비옥</span>
+                                        </a>
+                                        <strong class="point ">4.3</strong>
+                                        <p class="etc">
+                                            인천 연수구 -
+                                            탕 / 찌개 / 전골
+                                        </p>
+                                        </div>
+                                    </figcaption>
+                                    </figure>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="restaurant-item">
+                                    <figure class="restaurant-item">
+                                    <div class="thumb">
+                                        <img class="center-croping lazy" alt="깨비옥 사진 - 인천시 연수구 송도동 22-21" src="./img/top_lists_detail/20793_144568923545346966.jpeg"/>
+                                        <a href="#"
+                                        onclick="">
+                                        깨비옥
+                                        사진
+                                        </a>
+                                    </div>
+                                    <figcaption>
+                                        <div class="info">
+                                        <a href="" onclick="">
+                                            <span class="title">깨비옥</span>
+                                        </a>
+                                        <strong class="point ">4.3</strong>
+                                        <p class="etc">
+                                            인천 연수구 -
+                                            탕 / 찌개 / 전골
+                                        </p>
+                                        </div>
+                                    </figcaption>
+                                    </figure>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="restaurant-item">
+                                    <figure class="restaurant-item">
+                                    <div class="thumb">
+                                        <img class="center-croping lazy" alt="깨비옥 사진 - 인천시 연수구 송도동 22-21" src="./img/top_lists_detail/20793_144568923545346966.jpeg"/>
+                                        <a href="#"
+                                        onclick="">
+                                        깨비옥
+                                        사진
+                                        </a>
+                                    </div>
+                                    <figcaption>
+                                        <div class="info">
+                                        <a href="" onclick="">
+                                            <span class="title">깨비옥</span>
+                                        </a>
+                                        <strong class="point ">4.3</strong>
+                                        <p class="etc">
+                                            인천 연수구 -
+                                            탕 / 찌개 / 전골
+                                        </p>
+                                        </div>
+                                    </figcaption>
+                                    </figure>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <!-- 관련 태그 -->
+                    <section class="module related-tags">
+                        <span class="title">실시간 인기 키워드</span>
+                        <p>
+                            <a href="#"
+                            onclick="" class="tag-item">
+                            버거
+                            </a>
+                            <a href="#"
+                            onclick="" class="tag-item">
+                            치즈
+                            </a>
+                            <a href="#"
+                            onclick="" class="tag-item">
+                            패티
+                            </a>
+                            <a href=""
+                            onclick="" class="tag-item">
+                            수제
+                            </a>
+                            <a href="#"
+                            onclick="" class="tag-item">
+                            쉐이크
+                            </a>
+                            <a href="#"
+                            onclick="" class="tag-item">
+                            수제버거
+                            </a>
+                            <a href="#"
+                            onclick="" class="tag-item">
+                            프라이
+                            </a>
+                            <a href="#"
+                            onclick="" class="tag-item">
+                            웨이팅
+                            </a>
+                            <a href="#"
+                            onclick="" class="tag-item">
+                            미국
+                            </a>
+                            <a href="#"
+                            onclick="" class="tag-item">
+                            줄서다
+                            </a>
+                        </p>
+                    </section>
                 </div>
-            </div>
-        </div>
-        <!-- 컨테이너 끝 -->
+                </div>
+        <!-- 본문 끝 -->
         <!-- footer 시작 -->
-        <footer id="footer">
-            <div class="footer_area box_inner clear">
-                <div class="logo">
-                    <a href="#"><img src="./img/mangoplate-gray-logo.svg" alt="mangoplate logo"></a>
+        <footer class="footer">
+            <div class="inner">
+                <div class="mp_logo">
+                    <a href="/" class="btn-mp">
+                    <img class="mp_logo_img" src="./img/mangoplate-gray-logo.svg" alt="mangoplate logo" />
+                    </a>
                     <p class="subtitle">Eat, Share, Be Happy.</p>
                 </div>
-                <div class="footer_list_box">
-                    <ul class="about_list clear">
-                        <li><a href="#">회사소개</a></li>
-                        <li><a href="#">망고플레이트 채용</a></li>
-                        <li><a href="#">투자 정보</a></li>
-                        <li><a href="#">브랜드 가이드라인</a></li>
-                        <li><a href="#">망고플레이트 비즈니스</a></li>
-                        <li><a href="#">광고 문의</a></li>
+                        
+                <p class="sns-shortcut">
+                    <a class="btn blog"
+                    href="#"
+                    target="_blank"
+                    onclick="">
+                    망고플레이트 네이버 블로그 계정으로 바로가기
+                    </a>
+            
+                    <a class="btn facebook"
+                    href="#"
+                    target="_blank"
+                    onclick="">
+                    망고플레이트 페이스북 계정으로 바로가기
+                    </a>
+            
+                    <a class="btn instagram"
+                    href="#"
+                    target="_blank"
+                    onclick="">
+                    망고플레이트 인스타그램 계정으로 바로가기
+                    </a>
+                </p>
+            
+                <nav class="links-external">
+                    <ul class="list-links">
+                        <li>
+                        <a href="#">
+                            회사소개
+                        </a>
+                        </li>
+            
+                        <li>
+                        <a href="#">
+                            망고플레이트 채용
+                        </a>
+                        </li>
+            
+                        <li>
+                            <a href="#">
+                            투자 정보
+                            </a>
+                        </li>
+            
+                        <li class="only-desktop">
+                            <a href="#" target="_blank">
+                                브랜드 가이드라인
+                            </a>
+                        </li>
+            
+                        <li>
+                            <a href="#" target="_blank">
+                            망고플레이트 비즈니스
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="#" target="_blank">
+                                광고 문의
+                            </a>
+                        </li>
+            
                     </ul>
-                    <ul class="about_list clear">
-                        <li><a href="#">공지사항</a></li>
-                        <li><a href="#">이용약관</a></li>
-                        <li><a href="#">비회원 이용자 이용정책</a></li>
-                        <li><a href="#" style="color: #d2d2d2;">개인정보처리방침</a></li>
-                        <li><a href="#">위치기반서비스 이용약관</a></li>
-                        <li><a href="#">커뮤니티 가이드라인</a></li>
-                        <li><a href="#">청소년보호정책</a></li>
-                        <li><a href="#">홀릭 소개</a></li>
-                        <li><a href="#">문의하기</a></li>
+            
+                    <ul class="list-links">
+                        <li>
+                            <a href="#" target="_blank">
+                            공지사항
+                            </a>
+                        </li>
+            
+                        <li>
+                            <a class="" href="#" onclick="" target="_blank">
+                            이용약관
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="#" onclick="" target="_blank">
+                            비회원 이용자 이용정책
+                            </a>
+                        </li>
+                        <li>
+                            <a class="bold" href="#" onclick="" target="_blank">
+                            개인정보처리방침
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="#" onclick="" target="_blank">
+                            위치기반서비스 이용약관
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="#" onclick="">
+                            커뮤니티 가이드라인
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="#" onclick="" target="_blank">
+                            청소년보호정책
+                            </a>
+                        </li>
+            
+                        <li>
+                            <a href="#" target="_blank">
+                            홀릭 소개
+                            </a>
+                        </li>
+            
+                        <li>
+                            <a href="#">
+                            문의하기
+                            </a>
+                        </li>
                     </ul>
+                </nav>
+            
+                <div class="sitemap-location-keywords">
+                    <div class="keyword_wrap">
+                    <span class="keyword">인기지역 : </span>
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            이태원
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            홍대
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            강남역
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            가로수길
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            신촌
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            명동
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            대학로
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            연남동
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            부산
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            합정
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            대구
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            여의도
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            건대
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            광화문
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            일산
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            제주
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            경리단길
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            한남동
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            삼청동
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            대전
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            종로
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            서촌
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            잠실
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            사당역
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            인천
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            코엑스
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            상수
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            서래마을
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            송도
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            왕십리
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            분당
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            혜화
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            고속터미널
+                        </a>
+                    </div>
                 </div>
-                <ul class="sns_box">
-                    <li><a href="#">네이버블로그</a></li>
-                    <li><a href="#">페이스북</a></li>
-                    <li><a href="#">인스타그램</a></li>
-                </ul>
-                <div class="sns_box">
-                    <a href="#" class="btn_blog"></a>
-                    <a href="#" class="btn_facebook"></a>
-                    <a href="#" class="btn_instagram"></a>
-                </div>
-                <div class="popular_location clear">
-                    <span class="text">인기지역 : </span>
-                    <a href="#" class="location_name">이태원</a>
-                    <a href="#" class="location_name">홍대</a>
-                    <a href="#" class="location_name">강남역</a>
-                    <a href="#" class="location_name">가로수길</a>
-                    <a href="#" class="location_name">신촌</a>
-                    <a href="#" class="location_name">명동</a>
-                    <a href="#" class="location_name">대학로</a>
-                    <a href="#" class="location_name">연남동</a>
-                    <a href="#" class="location_name">부산</a>
-                    <a href="#" class="location_name">합정</a>
-                    <a href="#" class="location_name">대구</a>
-                    <a href="#" class="location_name">여의도</a>
-                    <a href="#" class="location_name">건대</a>
-                    <a href="#" class="location_name">광화문</a>
-                    <a href="#" class="location_name">일산</a>
-                    <a href="#" class="location_name">제주</a>
-                    <a href="#" class="location_name">경리단길</a>
-                    <a href="#" class="location_name">한남동</a>
-                    <a href="#" class="location_name">삼청동</a>
-                    <a href="#" class="location_name">대전</a>
-                    <a href="#" class="location_name">종로</a>
-                    <a href="#" class="location_name">서촌</a>
-                    <a href="#" class="location_name">잠실</a>
-                    <a href="#" class="location_name">사당역</a>
-                    <a href="#" class="location_name">인천</a>
-                    <a href="#" class="location_name">코엑스</a>
-                    <a href="#" class="location_name">상수</a>
-                    <a href="#" class="location_name">서래마을</a>
-                    <a href="#" class="location_name">송도</a>
-                    <a href="#" class="location_name">왕십리</a>
-                    <a href="#" class="location_name">분당</a>
-                    <a href="#" class="location_name">혜화</a>
-                    <a href="#" class="location_name">고속터미널</a>
-                </div>
-                <div class="footer_about_box">
-                    <p class="about">
-                        ㈜ 망고플레이트<br>
-                        서울특별시 서초구 강남대로99길 53, 6층 (잠원동, 삼우빌딩)<br>
-                        대표이사: OH JOON HWAN(오준환)<br>
-                        사업자 등록번호: 211-88-92374 <a href="#">[사업자정보확인]</a><br>
-                        통신판매업 신고번호: 2014-서울강남-02615<br>
-                        고객센터: 02-565-5988<br>
-                        <br>
-                        © 2020 MangoPlate Co., Ltd. All rights reserved.
+            
+                <div class="language-copyrights">
+                    <p class="select-language">
+                    <a href="#" class='selected' >
+                        한국어
+                    </a>
+            
+                    <a href="#" >
+                        English
+                    </a>
+            
+                    <a href="#" >
+                        简体中文
+                    </a>
                     </p>
-                    <ul class="language">
-                        <li><a href="#" style="color: #d2d2d2;">한국어</a></li>
-                        <li><a href="#">영어</a></li>
-                        <li><a href="#">중국어</a></li>
-                    </ul>
+            
+                    <small>
+                    <p>
+                        
+                        ㈜ 망고플레이트<br />서울특별시 서초구 강남대로99길 53, 6층 (잠원동, 삼우빌딩)<br />대표이사: OH JOON HWAN(오준환)<br />사업자 등록번호: 211-88-92374 <a href='#' target='_blank'>[사업자정보확인]</a><br />통신판매업 신고번호: 2014-서울강남-02615<br />고객센터: 02-565-5988<br /><br />
+                        <span class="copyrights">© 2021 MangoPlate Co., Ltd. All rights reserved.</span>
+                    </p>
+                    </small>
                 </div>
             </div>
         </footer>
