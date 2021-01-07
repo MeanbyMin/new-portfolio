@@ -1012,7 +1012,6 @@ input[type=submit] {
 .module {
     padding: 38px 0 36px 0;
     position: relative;
-    border-top: 1px solid #dbdbdb;
 }
 
 .module .module_title_wrap {
@@ -4372,6 +4371,605 @@ img.center-crop.portrait {
 }
 
 /* 망고스토리 상세페이지 끝 */
+
+/* 검색페이지 시작 */
+
+.pg-search article.contents {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+}
+
+.pg-search article.contents .black_screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    z-index: 100;
+    display: none;
+}
+
+.pg-search .column-wrapper {
+    width: calc(100% - 400px);
+}
+
+.pg-search .column-contents {
+    position: relative;
+    height: 100%;
+    margin: 0 auto;
+    min-height: 1550px;
+    min-width: 800px;
+    width: 66.667%;
+    background-color: #fff;
+}
+
+.pg-search .column-contents.flex-contents {
+    flex: 1;
+    padding: 0 30px;
+}
+
+.pg-search .column-contents>.inner {
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0 24px;
+    width: 800px;
+}
+
+.pg-search .module {
+    padding: 30px 0 0 0;
+}
+
+.pg-search .module:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -1px;
+    right: -100%;
+    left: -100%;
+    height: 1px;
+    background-color: #dbdbdb;
+}
+
+.pg-search .search-results .search_info {
+    overflow: hidden;
+}
+
+.pg-search .search-results .search-options {
+    float: right;
+    margin-top: 2px;
+}
+
+.pg-search .search-results .search-options .btn {
+    font-size: 1.125rem;
+    color: #9b9b9b;
+}
+
+.pg-search .search-results .search-options .btn.filter {
+    line-height: 24px;
+}
+
+.pg-search .search-results .search-options .btn:before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    margin: -2px 12px 0 0;
+    background-image: url(../img/2018022864551sprites_desktop.png);
+    background-position: -974px -304px;
+    width: 23px;
+    height: 22px;
+}
+
+.pg-search .search-results .search_top_title_wrap .title {
+    max-width: 75%;
+    word-break: break-word;
+}
+
+.pg-search .search-results .search_top_title_wrap .title_wrap {
+    min-height: 30px;
+}
+
+.pg-search .search-results .search_info .title {
+    line-height: 1.2em;
+    text-align: left;
+    color: #ff792a;
+    font-size: 1.438rem;
+}
+
+.pg-search .search-results .search-list-restaurants-inner-wrap {
+    position: relative;
+}
+
+.pg-search .list-restaurants {
+    margin: 20px 0 0 0;
+}
+
+.pg-search .search-results .search-list-restaurants-inner-wrap .list-restaurants>li {
+    width: 100%;
+    position: relative;
+    display: inline-block;
+}
+
+.pg-search .search-results .search-list-restaurants-inner-wrap .list-restaurants>li:nth-child(odd) {
+    padding-right: 0;
+}
+
+.pg-search .search-results .search-list-restaurants-inner-wrap .list-restaurants>li>.list-restaurant-item {
+    display: inline-block;
+    width: 50%;
+    float: left;
+    box-sizing: border-box;
+}
+
+.pg-search .search-results .search-list-restaurants-inner-wrap .list-restaurants>li>.list-restaurant-item:nth-child(odd) {
+    padding-right: 17px;
+}
+
+.pg-search .search-results .search-list-restaurants-inner-wrap .list-restaurants>li>.list-restaurant-item:nth-child(even) {
+    padding-left: 17px;
+}
+
+.pg-search:not(.reverse) .list-restaurants li a.only-desktop_not {
+    width: calc(50% - 17px);
+}
+
+.pg-search .search-results .search-list-restaurants-inner-wrap .list-restaurants>li a.only-desktop_not {
+    position: relative;
+}
+
+.pg-search .search-results .search-list-restaurants-inner-wrap .list-restaurants>li a.only-desktop_not:nth-child(odd) {
+    padding-right: 0;
+}
+
+.restaurant-item .thumb {
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: 50% 50%;
+    width: 359px;
+    height: 239px;
+}
+
+.restaurant-item .thumb:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: 42.85714%;
+}
+
+.pg-search .restaurant-item .info .etc_info {
+    margin-top: 0 !important;
+}
+
+.pg-search .restaurant-item .info .etc, .restaurant-item .info .etc_info {
+    margin-top: 6px;
+    font-size: 0.9rem;
+}
+
+.restaurant-item .info .etc .view_count, .restaurant-item .info .etc_info .view_count {
+    font-size: .7rem;
+}
+
+.restaurant-item .info .etc .view_count:before, .restaurant-item .info .etc_info .view_count:before {
+    content: '';
+    display: inline-block;
+    margin-right: 3px;
+    background-image: url(../img/2018022864551sprites_mobile@2x.png);
+    background-position: -618px -477px;
+    background-size: 635px 609px;
+    width: 13px;
+    height: 9px;
+}
+
+.restaurant-item .info .etc .review_count, .restaurant-item .info .etc_info .review_count {
+    font-size: .7rem;
+}
+
+.restaurant-item .info .etc .review_count:before, .restaurant-item .info .etc_info .review_count:before {
+    content: '';
+    display: inline-block;
+    margin-right: 2px;
+    margin-left: 6px;
+    background-image: url(../img/2018022864551sprites_mobile@2x.png);
+    background-size: 635px 609px;
+    background-position: -618px -558px;
+    width: 9px;
+    height: 9px;
+}
+
+.paging-container .paging {
+    margin-top: 24px;
+}
+
+.paging-container .paging a {
+    display: inline-block;
+    margin-right: 10px;
+    height: 46px;
+    width: 46px;
+    font-size: 1.125rem;
+    color: #cbcbcb;
+    line-height: 46px;
+    text-align: center;
+    border: 2px solid #cbcbcb;
+    border-radius: 50px;
+}
+
+.paging-container .paging a.selected {
+    color: #ff792a;
+    border: 2px solid #ff792a;
+}
+
+.pg-search .search_result_empty_message {
+    margin: 70px auto 0;
+    width: 90%;
+}
+
+.pg-search .search_result_empty_message .search_result_empty_message_title {
+    font-size: 25px;
+    line-height: 25px;
+    margin-bottom: 65px;
+    word-break: break-word;
+}
+
+.pg-search .search_result_empty_message .search_result_empty_message_title .mango_text {
+    font-size: 25px;
+    line-height: 25px;
+}
+
+.pg-search .search_result_empty_message .search_result_empty_message_title {
+    font-size: 25px;
+    line-height: 25px;
+    margin-bottom: 65px;
+    word-break: break-word;
+}
+
+.pg-search .search_result_empty_message .search_result_empty_message_content {
+    font-size: 23px;
+    line-height: 35px;
+}
+
+.pg-search .search_result_empty_message .search_result_empty_message_content .search_result_empty_message_content_sub_title {
+    font-size: 23px;
+    line-height: 35px;
+}
+
+.pg-search .search_result_empty_message .search_result_empty_message_content .search_result_empty_message_content_list {
+    margin-left: 11px;
+}
+
+.dfp_ad_paging_bottom {
+    min-height: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.search-filter {
+    /* display: none; */
+    display: block;
+    background-color: #ffffff;
+    overflow-y: auto;
+    position: absolute;
+    top: 0px;
+    right: 0;
+    left: 0;
+    z-index: 800;
+}
+
+.search-filter>.inner {
+    height: calc(100vh - 161px);
+    overflow-y: auto;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0 23px;
+}
+
+.search-filter .filter-item {
+    position: relative;
+    padding: 20px 0 30px 0;
+    border-top: 1px solid #dbdbdb;
+}
+
+.search-filter .filter-item>label {
+    display: block;
+    margin-bottom: 20px;
+    font-size: 1.125rem;
+    color: #000000;
+    text-align: left;
+}
+
+.search-filter .filter-item p {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.search-filter .filter-item input[type=radio] {
+    display: none;
+}
+
+.search-filter .filter-item input[type=radio]+label {
+    display: inline-block;
+    text-align: center;
+    border: 2px solid #cbcbcb;
+    box-sizing: border-box;
+    margin: 0 1.5%;
+    max-width: 275px;
+    width: 45%;
+    font-size: 1.000rem;
+    line-height: 46px;
+    border-radius: 50px;
+    color: #9b9b9b;
+}
+
+.search-filter .filter-item input[type=radio]:checked+label {
+    color: #ff792a;
+    border-color: #ff792a;
+}
+
+.search-filter .filter-item .options {
+    position: absolute;
+    color: #9b9b9b;
+    top: 18px;
+    right: 0px;
+    font-size: 0.875rem;
+}
+
+.search-filter .filter-item input[type=checkbox] {
+    display: none;
+}
+
+.search-filter .filter-item input[type=checkbox]+label {
+    display: inline-block;
+    color: #9b9b9b;
+    text-align: center;
+    vertical-align: middle;
+    border: 2px solid #cbcbcb;
+    border-radius: 40px;
+    position: relative;
+    box-sizing: border-box;
+    max-width: 275px;
+    width: 45%;
+    line-height: 46px;
+    font-size: 1.000rem;
+}
+
+.search-filter .filter-item input[type=checkbox].cost+label {
+    box-sizing: border-box;
+    border: 0px;
+    border-radius: 0px;
+    margin: 0 30px;
+    font-size: 1.063rem;
+    line-height: 20px;
+}
+
+.search-filter .filter-item input[type=checkbox]:checked+label {
+    color: #ff792a;
+    border-color: #ff792a;
+}
+
+.search-filter .filter-item input[type=checkbox].cost+label.cost01 {
+    background-image: url(../img/2018022864551sprites_desktop.png);
+    background-position: -828px -480px;
+    width: 90px;
+    height: 90px;
+}
+.search-filter .filter-item input[type=checkbox].cost:checked+label.cost01 {
+    background-image: url(../img/2018022864551sprites_desktop.png);
+    background-position: -828px -384px;
+    width: 90px;
+    height: 90px;
+}
+
+.search-filter .filter-item input[type=checkbox]+label span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    transform: translate(-50%, -50%);
+    user-select: none;
+    line-height: 20px;
+}
+
+
+.search-filter .filter-item input[type=checkbox].cost+label.cost02 {
+    padding-right: 5px;
+    text-indent: -5px;
+    background-image: url(../img/2018022864551sprites_desktop.png);
+    background-position: -828px -192px;
+    width: 95px;
+    height: 90px;
+}
+
+.search-filter .filter-item input[type=checkbox].cost:checked+label.cost02 {
+    background-image: url(../img/2018022864551sprites_desktop.png);
+    background-position: -828px -288px;
+    width: 95px;
+    height: 90px;
+}
+
+.search-filter .filter-item input[type=checkbox].cost+label.cost03 {
+    padding-right: 11px;
+    text-indent: -12px;
+    background-image: url(../img/2018022864551sprites_desktop.png);
+    background-position: -828px -96px;
+    width: 101px;
+    height: 90px;
+}
+
+.search-filter .filter-item input[type=checkbox].cost:checked+label.cost03 {
+    background-image: url(../img/2018022864551sprites_desktop.png);
+    background-position: -828px 0px;
+    width: 101px;
+    height: 90px;
+}
+
+.search-filter .filter-item input[type=checkbox].cost+label.cost04 {
+    padding-right: 15px;
+    text-indent: -15px;
+    background-image: url(../img/2018022864551sprites_desktop.png);
+    background-position: -111px -700px;
+    width: 105px;
+    height: 90px;
+}
+
+.search-filter .filter-item input[type=checkbox].cost:checked+label.cost04 {
+    background-image: url(../img/2018022864551sprites_desktop.png);
+    background-position: 0px -700px;
+    width: 105px;
+    height: 90px;
+}
+
+.search-filter .filter-item {
+    position: relative;
+    padding: 20px 0 30px 0;
+    border-top: 1px solid #dbdbdb;
+}
+
+.search-filter .filter-item .region {
+    overflow: hidden;
+    padding-bottom: 2px;
+}
+
+.search-filter .filter-item .region:before {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 1px;
+    right: 0;
+    left: 0;
+    height: 1px;
+    background-color: #9b9b9b;
+}
+
+.search-filter .filter-item .region a {
+    display: block;
+    position: relative;
+    float: left;
+    width: 16.666%;
+    font-size: 1.125rem;
+    color: #9b9b9b;
+    line-height: 59px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.search-filter .filter-item .region a.selected {
+    color: #ff792a;
+}
+
+.search-filter .filter-item .region a.selected:before {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -2px;
+    right: 0;
+    left: 0;
+    height: 3px;
+    background-color: #ff792a;
+}
+
+.search-filter .filter-item .region a.more:after {
+    content: '';
+    display: inline-block;
+    margin: -4px 0 0 8px;
+    vertical-align: middle;
+    background-image: url(../img/2018022864551sprites_desktop.png);
+    background-position: -996px -518px;
+    width: 9px;
+    height: 15px;
+}
+
+.search-filter .filter-item .metro {
+    width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.search-filter .filter-item .metro .metro_btn {
+    word-break: break-all;
+    display: inline-block;
+    width: 22%;
+    min-height: 50px;
+    margin: 22px 29px 0 0;
+    cursor: pointer;
+}
+
+.search-filter .filter-item input[type=checkbox]+label.small {
+    display: inline-block;
+    width: 100%;
+    height: 50px;
+    line-height: 23px;
+}
+
+.visible {
+    visibility: visible !important;
+}
+
+.search-filter .filter-item .btn-region-cancel_wrap {
+    text-align: right;
+    visibility: hidden;
+}
+
+.search-filter .filter-item .btn-region-cancel {
+    margin-top: 20px;
+    font-size: 1.000rem;
+    color: #9b9b9b;
+}
+
+.search-filter .filter-item .btn-region-cancel:before {
+    content: '';
+    display: inline-block;
+    margin: -4px 8px 0 0;
+    vertical-align: middle;
+    background-image: url(../img/2018022864551sprites_desktop.png);
+    background-position: -995px -836px;
+    width: 11px;
+    height: 11px;
+}
+
+.more-region {
+    display: none;
+    /* display: block; */
+}
+
+.search-filter .filter-item .more-region {
+    position: absolute;
+    top: 120px;
+    right: 0;
+    z-index: 500;
+    padding: 12px 0;
+    width: 200px;
+    border: 1px solid #9b9b9b;
+    background-color: #ffffff;
+}
+
+.search-filter .filter-item .more-region:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -12px;
+    right: 60px;
+    background-image: url(../img/2018022864551sprites_desktop.png);
+    background-position: -974px -693px;
+    width: 26px;
+    height: 12px;
+}
+
+.search-filter .filter-item .more-region>a {
+    display: block;
+    font-size: 1.000rem;
+    color: #cbcbcb;
+    line-height: 35px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.search-filter .filter-item .more-region>a:hover, .search-filter .filter-item .more-region>a.selected {
+    color: #ff792a;
+}
+
+/* 검색 페이지 끝 */
 @media only screen and (min-width: 320px) and (max-width: 768px) {
     .only-desktop {
         display:none !important
