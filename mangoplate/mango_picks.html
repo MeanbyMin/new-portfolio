@@ -9,483 +9,655 @@
     <link rel="stylesheet" href="./css/common.css" type="text/css">
     <link href="../img/ico.png" rel="shortcut icon" type="image/x-icon">
 </head>
-<body>
+<body class="pg-all_picks">
     <ul class="skipnavi">
         <li><a href="#container">본문내용</a></li>
     </ul>
     <!-- wrap 시작 -->
     <div id="wrap">
         <!-- 헤더 시작 -->
-        <header id="header">
-            <div class="header_area box_inner clear">
-                <a href="./index.html" class="header_Logo">
-                    <i class="header_LogoIcon"></i>
-                </a>
+        <header class="Header" data-page="noraml">
+            <a href="./index.html" class="Header__Logo">
+                <i class="Header__LogoIcon"></i>
+            </a>
 
-                <!-- 검색 영역 시작-->
-                <div class="header_SearchBox">
-                    <i class="header_SearchIcon"></i>
-                    <label class="header_SearchInputWrap">
-                        <input class="SearchInput" type="text" placeholder="지역, 식당 또는 음식" maxlength="50">
-                    </label>
-                    <button class="header_SearchInputClearButton">CLEAR</button>
-                </div>
-                <!-- 검색 영역 끝 -->
-                
-                <!-- 메뉴 부분 시작 -->
-                <ul class="header_MenuList">
-                    <li class="header_MenuItem clear">
-                        <a href="./eat_deal.html">
-                            <span class="header_MenuText">EAT딜</span>
-                        </a>
+            <!-- 검색 영역 시작-->
+            <div class="Header__SearchBox">
+                <i class="Header__SearchIcon"></i>
+                <label class="Header__SearchInputWrap">
+                    <input class="Header__SearchInput" type="text" placeholder="지역, 식당 또는 음식" maxlength="50">
+                </label>
+                <button class="Header__SearchInputClearButton">CLEAR</button>
+            </div>
+            <!-- 검색 영역 끝 -->
+            
+            <!-- 메뉴 부분 시작 -->
+            <ul class="Header__MenuList">
+                <li class="Header__MenuItem Header__MenuItem--New clear">
+                    <a href="#" class="Header__MenuLink">
+                        <span class="Header__MenuText">EAT딜</span>
+                    </a>
+                </li>
+                <li class="Header__MenuItem Header__MenuItem--New clear">
+                    <a href="#" class="Header__MenuLink">
+                        <span class="Header__MenuText">맛집 리스트</span>
+                    </a>
+                </li>
+                <li class="Header__MenuItem Header__MenuItem--New clear">
+                    <a href="#" class="Header__MenuLink">
+                        <span class="Header__MenuText">망고 스토리</span>
+                    </a>
+                </li>
+                <!-- 프로필 영역 시작 -->
+                <ul class="Header__IconButtonList">
+                    <li class="Header__IconButtonItem only-mobile Header__IconButtonItem--MenuButton">
+                    <button class="MenuButton"
+                            onclick="">
+                        <i class="MenuButton__Icon"></i>
+                    </button>
                     </li>
-                    <li class="header_MenuItem clear">
-                        <a href="./matjib_list.html">
-                            <span class="header_MenuText">맛집 리스트</span>
-                        </a>
-                    </li>
-                    <li class="header_MenuItem clear">
-                        <a href="./mango_story.html">
-                            <span class="header_MenuText">망고 스토리</span>
-                        </a>
-                    </li>
-                    <!-- 모바일 메뉴 시작 -->
-                    <p class="openMOgnb">
-                        <a href="#">
-                            <b class="hdd">메뉴 토글버튼</b>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </a>
-                    </p>
-                    <!-- 모바일 메뉴 끝 -->
-                    <!-- 프로필 영역 시작 -->
-                    <li class="header_Userbutton">
-                        <button class="UserProfileButton">
-                            <i class="UserProfile"></i>
+            
+                    <li class="Header__IconButtonItem Header__IconButtonItem--UserRestaurantHistory">
+                        <button class="UserProfileButton"
+                                onclick="">
+                            <i class="UserProfileButton__Picture"></i>
+                            <i class="UserProfileButton__PersonIcon"></i>
+                            <span class="UserProfileButton__HistoryCount">0</span>
                         </button>
                     </li>
-                    <!-- 프로필 팝업 창 -->
-                    <div class="UserRestaurantHistory">
-                        <div class="UserRestaurantHistroy_Container">
-                            <i class="UserRestaurantHistory_Triangle"></i>
-                            <ul class="UserRestaurantHistroy_Taplist">
-                                <li class="UserRestaurantHistroy_TapItem UserRestaurantHistroy_TapItem-view">
-                                    <button class="UserRestaurantHistroy_TapButton">
-                                        최근 본 맛집
-                                        <span class="UserRestaurantHistroy_ViewCount">
-                                            (0)
-                                        </span>
-                                    </button>
-                                </li>
-                                <li class="UserRestaurantHistroy_TapItem UserRestaurantHistroy_TapItem-want">
-                                    <button class="UserRestaurantHistroy_TapButton">가고싶다</button>
-                                </li>
-                            </ul>
-                            <div class="UserRestaurantHistroy_HistoryContainer">
-                                <button class="UserRestaurantHistroy_ClearAllButton">
-                                    Clear All
-                                </button>
-                                <ul class="UserRestaurantHistroy_RestaurantList">
-                                    <li class="UserRestaurantHistroy_RestaurantItem">
-                                        <section class="RestaurantItem">
-                                            <a href="#" class="RestaurantItem_Link">
-                                                <div class="RestaurantItem_Picture"></div>
-                                            </a>
-                                            <div class="RestaurantItem_Info">
-                                                <a href="#" class="RestaurantItem_Link">
-                                                    <h3 class="RestaurantItem_Name"></h3>
-                                                    <span class="RestaurantItem_Rate"></span>
-                                                </a>
-                                                <span class="RestaurantItem_location"></span>
-                                            </div>
-                                            <button class="RestaurantItem_want"></button>
-                                        </section>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 프로필 팝업창 끝 -->
-                    <!-- 프로필 영역 끝 -->
+            
+                    <li class="Header__IconButtonItem Header__IconButtonItem--CloseButton Header__IconButtonItem--Hide">
+                    <button class="Header__CloseButton"></button>
+                    </li>
                 </ul>
-                <!-- 메뉴 부분 끝 -->
-            </div>
+                <!-- 프로필 팝업 창 -->
+                <div class="UserRestaurantHistory">
+                    <div class="UserRestaurantHistory__BlackDeem"></div>
+                
+                    <div class="UserRestaurantHistory__BlackDeem">
+                        <i class="`"></i>
+                
+                        <ul class="UserRestaurantHistory__TabList">
+                        <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Viewed"
+                            onclick="">
+                            <button class="UserRestaurantHistory__TabButton">최근 본 맛집 </button>
+                        </li>
+                
+                        <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Wannago"
+                            onclick="">
+                            <button class="UserRestaurantHistory__TabButton">가고싶다</button>
+                        </li>
+                        </ul>
+                
+                        <div class="UserRestaurantHistory__HistoryContainer">
+                        <div class="UserRestaurantHistory__HistoryHeader">
+                            <button class="UserRestaurantHistory__ClearAllHistoryButton"
+                                    onclick="">
+                            x clear all
+                            </button>
+                        </div>
+                
+                        <ul class="UserRestaurantHistory__RestaurantList">
+                
+                        </ul>
+                
+                        <div class="UserRestaurantHistory__EmptyViewedRestaurantHistory">
+                            <span class="UserRestaurantHistory__EmptyViewedRestaurantHistoryTitle">
+                            거기가 어디였지?
+                            </span>
+                
+                            <p class="UserRestaurantHistory__EmptyViewedRestaurantHistoryDescription">
+                            내가 둘러 본 식당이 이 곳에 순서대로 기록됩니다.
+                            </p>
+                        </div>
+                
+                        <div class="UserRestaurantHistory__EmptyWannagoRestaurantHistory">
+                            <img class="UserRestaurantHistory__EmptyWannagoRestaurantHistoryImage"
+                                src="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kycrji1bsrupvbem.png?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                                alt="wannago empty star" />
+                            <p class="UserRestaurantHistory__EmptyWannagoRestaurantHistoryTitle">격하게 가고싶다..</p>
+                            <p class="UserRestaurantHistory__EmptyWannagoRestaurantHistoryDescription">
+                            식당의 ‘별’ 아이콘을 누르면 가고싶은 곳을 쉽게 저장할 수 있습니다.
+                            </p>
+                        </div>
+                        </div>
+                
+                        <footer class="UserRestaurantHistory__Footer">
+                        <button class="UserRestaurantHistory__LoginButton" onclick="">로그인</button>
+                        <button class="UserRestaurantHistory__LogoutButton" onclick="">logout</button>
+                        </footer>
+                    </div>
+                </div>
+                <!-- 프로필 팝업창 끝 -->
+                <!-- 프로필 영역 끝 -->
+            </ul>
+            <!-- 메뉴 부분 끝 -->
         </header>
         <!-- 헤더 끝 -->
-        <!-- 컨테이너 시작 -->
-        <div id="container">
-            <div class="mango_story_main clear">
-                <a href="#">
-                    <div class="mango_story_item">
-                        <div class="mango_story_item_img"></div>
-                        <div class="info">
-                            <strong class="title">12월에 꼭! 가봐야 할 HOT & NEW 맛집</strong>
-                            <p class="desc">망고걸이 직접 다녀온 신상 맛집 나들이!</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="mango_story_list">
-                <div class="inner">
-                    <h2 class="title">에디터 입맛별 맛집 매거진</h2>
-                    <ul class="list_editor_pick">
-                        <li class="mango_story_item_wrap">
-                            <a href="#">
-                                <div class="mango_story_item">
-                                    <div class="mango_story_item_img" style="background-image: url(./img/mango_story/cafe.jpg);"></div>
-                                    <div class="info">
-                                        <strong class="title">요즘 핫한 카페 7곳</strong>
-                                        <p class="hash">
-                                            카페투어를 위한 길라잡이!
-                                        </p>
-                                    </div>
-                                    <div class="editor">
-                                        <span class="badge"></span>
-                                        <div class="editor_image">
-                                            <img src="./img/mango_story/missmango.jpg" alt="미스망고">
-                                        </div>
-                                        <span class="editor_name">미스망고</span>
-                                    </div>
-                                </div>
-                                <div class="review_content">
-                                    <div class="review_text">
-                                        보문동 외관은 모던한 카페 같지만 들어서면 단아한 한옥의 반전이 있는 카페. 여유로움이 느껴지는 한옥의 미를 감상하며 커피타임 즐기기 좋은데요~ 
-                                    </div>
-                                    <div class="user_name">미스망고</div>
-                                </div>
-                            </a>
+        <!-- 검색창 시작 -->
+        <div class="KeywordSuggester">
+            <div class="KeywordSuggester__BlackDeem"></div>
+            <div class="KeywordSuggester__Container">
+                <nav class="KeywordSuggester__TabNavigation">
+                    <ul class="KeywordSuggester__TabList">
+                        <li class="KeywordSuggester__TabItem">
+                            <div class="KeywordSuggester__TabButton KeywordSuggester__RecommendTabButton"
+                                onclick=""
+                                role="button">
+                            추천 검색어
+                            </div>
                         </li>
-                        <li class="mango_story_item_wrap">
-                            <a href="#">
-                                <div class="mango_story_item">
-                                    <div class="mango_story_item_img" style="background-image: url(./img/mango_story/cafe.jpg);"></div>
-                                    <div class="info">
-                                        <strong class="title">요즘 핫한 카페 7곳</strong>
-                                        <p class="hash">
-                                            카페투어를 위한 길라잡이!
-                                        </p>
-                                    </div>
-                                    <div class="editor">
-                                        <span class="badge"></span>
-                                        <div class="editor_image">
-                                            <img src="./img/mango_story/missmango.jpg" alt="미스망고">
-                                        </div>
-                                        <span class="editor_name">미스망고</span>
-                                    </div>
-                                </div>
-                                <div class="review_content">
-                                    <div class="review_text">
-                                        보문동 외관은 모던한 카페 같지만 들어서면 단아한 한옥의 반전이 있는 카페. 여유로움이 느껴지는 한옥의 미를 감상하며 커피타임 즐기기 좋은데요~ 
-                                    </div>
-                                    <div class="user_name">미스망고</div>
-                                </div>
-                            </a>
+                
+                        <li class="KeywordSuggester__TabItem">
+                            <div class="KeywordSuggester__TabButton KeywordSuggester__PopularTabButton"
+                                onclick=""
+                                role="button">
+                            인기 검색어
+                            </div>
                         </li>
-                        <li class="mango_story_item_wrap">
-                            <a href="#">
-                                <div class="mango_story_item">
-                                    <div class="mango_story_item_img" style="background-image: url(./img/mango_story/cafe.jpg);"></div>
-                                    <div class="info">
-                                        <strong class="title">요즘 핫한 카페 7곳</strong>
-                                        <p class="hash">
-                                            카페투어를 위한 길라잡이!
-                                        </p>
-                                    </div>
-                                    <div class="editor">
-                                        <span class="badge"></span>
-                                        <div class="editor_image">
-                                            <img src="./img/mango_story/missmango.jpg" alt="미스망고">
-                                        </div>
-                                        <span class="editor_name">미스망고</span>
-                                    </div>
-                                </div>
-                                <div class="review_content">
-                                    <div class="review_text">
-                                        보문동 외관은 모던한 카페 같지만 들어서면 단아한 한옥의 반전이 있는 카페. 여유로움이 느껴지는 한옥의 미를 감상하며 커피타임 즐기기 좋은데요~ 
-                                    </div>
-                                    <div class="user_name">미스망고</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="mango_story_item_wrap">
-                            <a href="#">
-                                <div class="mango_story_item">
-                                    <div class="mango_story_item_img" style="background-image: url(./img/mango_story/cafe.jpg);"></div>
-                                    <div class="info">
-                                        <strong class="title">요즘 핫한 카페 7곳</strong>
-                                        <p class="hash">
-                                            카페투어를 위한 길라잡이!
-                                        </p>
-                                    </div>
-                                    <div class="editor">
-                                        <span class="badge"></span>
-                                        <div class="editor_image">
-                                            <img src="./img/mango_story/missmango.jpg" alt="미스망고">
-                                        </div>
-                                        <span class="editor_name">미스망고</span>
-                                    </div>
-                                </div>
-                                <div class="review_content">
-                                    <div class="review_text">
-                                        보문동 외관은 모던한 카페 같지만 들어서면 단아한 한옥의 반전이 있는 카페. 여유로움이 느껴지는 한옥의 미를 감상하며 커피타임 즐기기 좋은데요~ 
-                                    </div>
-                                    <div class="user_name">미스망고</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="mango_story_item_wrap">
-                            <a href="#">
-                                <div class="mango_story_item">
-                                    <div class="mango_story_item_img" style="background-image: url(./img/mango_story/cafe.jpg);"></div>
-                                    <div class="info">
-                                        <strong class="title">요즘 핫한 카페 7곳</strong>
-                                        <p class="hash">
-                                            카페투어를 위한 길라잡이!
-                                        </p>
-                                    </div>
-                                    <div class="editor">
-                                        <span class="badge"></span>
-                                        <div class="editor_image">
-                                            <img src="./img/mango_story/missmango.jpg" alt="미스망고">
-                                        </div>
-                                        <span class="editor_name">미스망고</span>
-                                    </div>
-                                </div>
-                                <div class="review_content">
-                                    <div class="review_text">
-                                        보문동 외관은 모던한 카페 같지만 들어서면 단아한 한옥의 반전이 있는 카페. 여유로움이 느껴지는 한옥의 미를 감상하며 커피타임 즐기기 좋은데요~ 
-                                    </div>
-                                    <div class="user_name">미스망고</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="mango_story_item_wrap">
-                            <a href="#">
-                                <div class="mango_story_item">
-                                    <div class="mango_story_item_img" style="background-image: url(./img/mango_story/cafe.jpg);"></div>
-                                    <div class="info">
-                                        <strong class="title">요즘 핫한 카페 7곳</strong>
-                                        <p class="hash">
-                                            카페투어를 위한 길라잡이!
-                                        </p>
-                                    </div>
-                                    <div class="editor">
-                                        <span class="badge"></span>
-                                        <div class="editor_image">
-                                            <img src="./img/mango_story/missmango.jpg" alt="미스망고">
-                                        </div>
-                                        <span class="editor_name">미스망고</span>
-                                    </div>
-                                </div>
-                                <div class="review_content">
-                                    <div class="review_text">
-                                        보문동 외관은 모던한 카페 같지만 들어서면 단아한 한옥의 반전이 있는 카페. 여유로움이 느껴지는 한옥의 미를 감상하며 커피타임 즐기기 좋은데요~ 
-                                    </div>
-                                    <div class="user_name">미스망고</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="mango_story_item_wrap">
-                            <a href="#">
-                                <div class="mango_story_item">
-                                    <div class="mango_story_item_img" style="background-image: url(./img/mango_story/cafe.jpg);"></div>
-                                    <div class="info">
-                                        <strong class="title">요즘 핫한 카페 7곳</strong>
-                                        <p class="hash">
-                                            카페투어를 위한 길라잡이!
-                                        </p>
-                                    </div>
-                                    <div class="editor">
-                                        <span class="badge"></span>
-                                        <div class="editor_image">
-                                            <img src="./img/mango_story/missmango.jpg" alt="미스망고">
-                                        </div>
-                                        <span class="editor_name">미스망고</span>
-                                    </div>
-                                </div>
-                                <div class="review_content">
-                                    <div class="review_text">
-                                        보문동 외관은 모던한 카페 같지만 들어서면 단아한 한옥의 반전이 있는 카페. 여유로움이 느껴지는 한옥의 미를 감상하며 커피타임 즐기기 좋은데요~ 
-                                    </div>
-                                    <div class="user_name">미스망고</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="mango_story_item_wrap">
-                            <a href="#">
-                                <div class="mango_story_item">
-                                    <div class="mango_story_item_img" style="background-image: url(./img/mango_story/cafe.jpg);"></div>
-                                    <div class="info">
-                                        <strong class="title">요즘 핫한 카페 7곳</strong>
-                                        <p class="hash">
-                                            카페투어를 위한 길라잡이!
-                                        </p>
-                                    </div>
-                                    <div class="editor">
-                                        <span class="badge"></span>
-                                        <div class="editor_image">
-                                            <img src="./img/mango_story/missmango.jpg" alt="미스망고">
-                                        </div>
-                                        <span class="editor_name">미스망고</span>
-                                    </div>
-                                </div>
-                                <div class="review_content">
-                                    <div class="review_text">
-                                        보문동 외관은 모던한 카페 같지만 들어서면 단아한 한옥의 반전이 있는 카페. 여유로움이 느껴지는 한옥의 미를 감상하며 커피타임 즐기기 좋은데요~ 
-                                    </div>
-                                    <div class="user_name">미스망고</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="mango_story_item_wrap">
-                            <a href="#">
-                                <div class="mango_story_item">
-                                    <div class="mango_story_item_img" style="background-image: url(./img/mango_story/cafe.jpg);"></div>
-                                    <div class="info">
-                                        <strong class="title">요즘 핫한 카페 7곳</strong>
-                                        <p class="hash">
-                                            카페투어를 위한 길라잡이!
-                                        </p>
-                                    </div>
-                                    <div class="editor">
-                                        <span class="badge"></span>
-                                        <div class="editor_image">
-                                            <img src="./img/mango_story/missmango.jpg" alt="미스망고">
-                                        </div>
-                                        <span class="editor_name">미스망고</span>
-                                    </div>
-                                </div>
-                                <div class="review_content">
-                                    <div class="review_text">
-                                        보문동 외관은 모던한 카페 같지만 들어서면 단아한 한옥의 반전이 있는 카페. 여유로움이 느껴지는 한옥의 미를 감상하며 커피타임 즐기기 좋은데요~ 
-                                    </div>
-                                    <div class="user_name">미스망고</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="mango_story_item_wrap">
-                            <a href="#">
-                                <div class="mango_story_item">
-                                    <div class="mango_story_item_img" style="background-image: url(./img/mango_story/cafe.jpg);"></div>
-                                    <div class="info">
-                                        <strong class="title">요즘 핫한 카페 7곳</strong>
-                                        <p class="hash">
-                                            카페투어를 위한 길라잡이!
-                                        </p>
-                                    </div>
-                                    <div class="editor">
-                                        <span class="badge"></span>
-                                        <div class="editor_image">
-                                            <img src="./img/mango_story/missmango.jpg" alt="미스망고">
-                                        </div>
-                                        <span class="editor_name">미스망고</span>
-                                    </div>
-                                </div>
-                                <div class="review_content">
-                                    <div class="review_text">
-                                        보문동 외관은 모던한 카페 같지만 들어서면 단아한 한옥의 반전이 있는 카페. 여유로움이 느껴지는 한옥의 미를 감상하며 커피타임 즐기기 좋은데요~ 
-                                    </div>
-                                    <div class="user_name">미스망고</div>
-                                </div>
-                            </a>
+                
+                        <li class="KeywordSuggester__TabItem">
+                            <div class="KeywordSuggester__TabButton KeywordSuggester__HistoryTabButton"
+                                onclick=""
+                                role="button">
+                            최근 검색어
+                            </div>
                         </li>
                     </ul>
-                    <button class="btn-more">더보기</button>
+                </nav>
+            
+                <div class="KeywordSuggester__SuggestKeywordListWrap">
+                    <p class="KeywordSuggester__EmptyKeywordMessage">최근 검색어가 없습니다.</p>
+            
+                    <div class="KeywordSuggester__Footer">
+                        <button class="KeywordSuggester__RemoveAllHistoryKeywordButton">
+                            x clear all
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- 컨테이너 끝 -->
+        <!-- 검색창 끝 -->
+        <!-- 본문 시작 -->
+        <main class="pg-all_picks">
+            <article class="contents">
+                <aside class="represented-picks">
+                    <div class="slider-container">
+                        <ul class="list-represented-picks">
+                            <li>
+                                <a href="#"
+                                onclick="">
+                                <figure class="mango-pick-item">
+                                    <div class="thumb"
+                                        style="background-image: url(./img/mango_picks/5rh5cjpxshg5kw7o.png)">
+                                    </div>
+                                    <figcaption>
+                                    <strong class="title">테이크아웃 스시 맛집 6곳</strong>
+                                    <p class="desc" class="
+                                        ">
+                                        집에서 즐기는 스시 클라스가 이정도!
+                                    </p>
+                                    </figcaption>
+                                </figure>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </aside>
+            
+                <!-- 에디터 망고픽 -->
+                <section class="module editors-pick">
+                    <div class="inner">
+                    <h1 class="title only-desktop">에디터 입맛별 맛집 매거진</h1>
+                    <ul class="list-editors-pick">
+                        <li class="mango-pick-item-content-wrap">
+                            <a onclick=""
+                            href="#">
+                            <figure class="mango-pick-item">
+                                <div class="thumb lazy" style="background-image: url(./img/mango_picks/pjagqtddx7ep4z.jpg);">
+                                </div>
+            
+                                <figcaption>
+                                    <strong class="title">생활의 달인 10대 맛의 달인</strong>
+                
+                                    <p class="hash">
+                                        한 해를 뜨겁게 달군 달인의 맛!
+                                    </p>
+                                </figcaption>
+            
+                                <figure class="editor only-desktop">
+                                <span class="badge"></span>
+            
+                                <div class="thumb">
+                                    <img class="center-crop lazy"
+                                        alt="" src="./img/mango_picks/jk5tg1s0xzjfqb.jpg">
+                                </div>
+            
+                                <figcaption>미스망고</figcaption>
+                                </figure>
+                            </figure>
+            
+                            <div class="review-content">
+                                <figure class="user">
+                                <figcaption>
+                                    미스망고
+                                </figcaption>
+                                </figure>
+                                <p>
+                                최고의 쌀떡과 전설의 비법양념의 콜라보! 떡볶이의 최강자라 불리는 곳이 있는데요~ 쌀떡 특유의 말랑한 식감과 진하고 붉은 양념이 구미를 당겨요.
+                                </p>
+                            </div>
+                            </a>
+                        </li>
+                        <li class="mango-pick-item-content-wrap">
+                            <a onclick=""
+                            href="#">
+                            <figure class="mango-pick-item">
+                                <div class="thumb lazy" style="background-image: url(./img/mango_picks/pjagqtddx7ep4z.jpg);">
+                                </div>
+            
+                                <figcaption>
+                                    <strong class="title">생활의 달인 10대 맛의 달인</strong>
+                
+                                    <p class="hash">
+                                        한 해를 뜨겁게 달군 달인의 맛!
+                                    </p>
+                                </figcaption>
+            
+                                <figure class="editor only-desktop">
+                                <span class="badge"></span>
+            
+                                <div class="thumb">
+                                    <img class="center-crop lazy"
+                                        alt="" src="./img/mango_picks/jk5tg1s0xzjfqb.jpg">
+                                </div>
+            
+                                <figcaption>미스망고</figcaption>
+                                </figure>
+                            </figure>
+            
+                            <div class="review-content">
+                                <figure class="user">
+                                <figcaption>
+                                    미스망고
+                                </figcaption>
+                                </figure>
+                                <p>
+                                최고의 쌀떡과 전설의 비법양념의 콜라보! 떡볶이의 최강자라 불리는 곳이 있는데요~ 쌀떡 특유의 말랑한 식감과 진하고 붉은 양념이 구미를 당겨요.
+                                </p>
+                            </div>
+                            </a>
+                        </li>
+                        <li class="mango-pick-item-content-wrap">
+                            <a onclick=""
+                            href="#">
+                            <figure class="mango-pick-item">
+                                <div class="thumb lazy" style="background-image: url(./img/mango_picks/pjagqtddx7ep4z.jpg);">
+                                </div>
+            
+                                <figcaption>
+                                    <strong class="title">생활의 달인 10대 맛의 달인</strong>
+                
+                                    <p class="hash">
+                                        한 해를 뜨겁게 달군 달인의 맛!
+                                    </p>
+                                </figcaption>
+            
+                                <figure class="editor only-desktop">
+                                <span class="badge"></span>
+            
+                                <div class="thumb">
+                                    <img class="center-crop lazy"
+                                        alt="" src="./img/mango_picks/jk5tg1s0xzjfqb.jpg">
+                                </div>
+            
+                                <figcaption>미스망고</figcaption>
+                                </figure>
+                            </figure>
+            
+                            <div class="review-content">
+                                <figure class="user">
+                                <figcaption>
+                                    미스망고
+                                </figcaption>
+                                </figure>
+                                <p>
+                                최고의 쌀떡과 전설의 비법양념의 콜라보! 떡볶이의 최강자라 불리는 곳이 있는데요~ 쌀떡 특유의 말랑한 식감과 진하고 붉은 양념이 구미를 당겨요.
+                                </p>
+                            </div>
+                            </a>
+                        </li>
+                        <li class="mango-pick-item-content-wrap">
+                            <a onclick=""
+                            href="#">
+                            <figure class="mango-pick-item">
+                                <div class="thumb lazy" style="background-image: url(./img/mango_picks/pjagqtddx7ep4z.jpg);">
+                                </div>
+            
+                                <figcaption>
+                                    <strong class="title">생활의 달인 10대 맛의 달인</strong>
+                
+                                    <p class="hash">
+                                        한 해를 뜨겁게 달군 달인의 맛!
+                                    </p>
+                                </figcaption>
+            
+                                <figure class="editor only-desktop">
+                                <span class="badge"></span>
+            
+                                <div class="thumb">
+                                    <img class="center-crop lazy"
+                                        alt="" src="./img/mango_picks/jk5tg1s0xzjfqb.jpg">
+                                </div>
+            
+                                <figcaption>미스망고</figcaption>
+                                </figure>
+                            </figure>
+            
+                            <div class="review-content">
+                                <figure class="user">
+                                <figcaption>
+                                    미스망고
+                                </figcaption>
+                                </figure>
+                                <p>
+                                최고의 쌀떡과 전설의 비법양념의 콜라보! 떡볶이의 최강자라 불리는 곳이 있는데요~ 쌀떡 특유의 말랑한 식감과 진하고 붉은 양념이 구미를 당겨요.
+                                </p>
+                            </div>
+                            </a>
+                        </li>
+                    </ul>
+            
+                        <button class="btn-more" onclick="">더보기</button>
+                    </div>
+                </section>
+            </article>
+        </main>
+        <!-- 본문 끝 -->
         <!-- footer 시작 -->
-        <footer id="footer">
-            <div class="footer_area box_inner clear">
-                <div class="logo">
-                    <a href="#"><img src="./img/mangoplate-gray-logo.svg" alt="mangoplate logo"></a>
+        <footer class="footer">
+            <div class="inner">
+                <div class="mp_logo">
+                    <a href="/" class="btn-mp">
+                    <img class="mp_logo_img" src="./img/mangoplate-gray-logo.svg" alt="mangoplate logo" />
+                    </a>
                     <p class="subtitle">Eat, Share, Be Happy.</p>
                 </div>
-                <div class="footer_list_box">
-                    <ul class="about_list clear">
-                        <li><a href="#">회사소개</a></li>
-                        <li><a href="#">망고플레이트 채용</a></li>
-                        <li><a href="#">투자 정보</a></li>
-                        <li><a href="#">브랜드 가이드라인</a></li>
-                        <li><a href="#">망고플레이트 비즈니스</a></li>
-                        <li><a href="#">광고 문의</a></li>
+                        
+                <p class="sns-shortcut">
+                    <a class="btn blog"
+                    href="#"
+                    target="_blank"
+                    onclick="">
+                    망고플레이트 네이버 블로그 계정으로 바로가기
+                    </a>
+            
+                    <a class="btn facebook"
+                    href="#"
+                    target="_blank"
+                    onclick="">
+                    망고플레이트 페이스북 계정으로 바로가기
+                    </a>
+            
+                    <a class="btn instagram"
+                    href="#"
+                    target="_blank"
+                    onclick="">
+                    망고플레이트 인스타그램 계정으로 바로가기
+                    </a>
+                </p>
+            
+                <nav class="links-external">
+                    <ul class="list-links">
+                        <li>
+                        <a href="#">
+                            회사소개
+                        </a>
+                        </li>
+            
+                        <li>
+                        <a href="#">
+                            망고플레이트 채용
+                        </a>
+                        </li>
+            
+                        <li>
+                            <a href="#">
+                            투자 정보
+                            </a>
+                        </li>
+            
+                        <li class="only-desktop">
+                            <a href="#" target="_blank">
+                                브랜드 가이드라인
+                            </a>
+                        </li>
+            
+                        <li>
+                            <a href="#" target="_blank">
+                            망고플레이트 비즈니스
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="#" target="_blank">
+                                광고 문의
+                            </a>
+                        </li>
+            
                     </ul>
-                    <ul class="about_list clear">
-                        <li><a href="#">공지사항</a></li>
-                        <li><a href="#">이용약관</a></li>
-                        <li><a href="#">비회원 이용자 이용정책</a></li>
-                        <li><a href="#" style="color: #d2d2d2;">개인정보처리방침</a></li>
-                        <li><a href="#">위치기반서비스 이용약관</a></li>
-                        <li><a href="#">커뮤니티 가이드라인</a></li>
-                        <li><a href="#">청소년보호정책</a></li>
-                        <li><a href="#">홀릭 소개</a></li>
-                        <li><a href="#">문의하기</a></li>
+            
+                    <ul class="list-links">
+                        <li>
+                            <a href="#" target="_blank">
+                            공지사항
+                            </a>
+                        </li>
+            
+                        <li>
+                            <a class="" href="#" onclick="" target="_blank">
+                            이용약관
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="#" onclick="" target="_blank">
+                            비회원 이용자 이용정책
+                            </a>
+                        </li>
+                        <li>
+                            <a class="bold" href="#" onclick="" target="_blank">
+                            개인정보처리방침
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="#" onclick="" target="_blank">
+                            위치기반서비스 이용약관
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="#" onclick="">
+                            커뮤니티 가이드라인
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="#" onclick="" target="_blank">
+                            청소년보호정책
+                            </a>
+                        </li>
+            
+                        <li>
+                            <a href="#" target="_blank">
+                            홀릭 소개
+                            </a>
+                        </li>
+            
+                        <li>
+                            <a href="#">
+                            문의하기
+                            </a>
+                        </li>
                     </ul>
+                </nav>
+            
+                <div class="sitemap-location-keywords">
+                    <div class="keyword_wrap">
+                    <span class="keyword">인기지역 : </span>
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            이태원
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            홍대
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            강남역
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            가로수길
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            신촌
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            명동
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            대학로
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            연남동
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            부산
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            합정
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            대구
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            여의도
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            건대
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            광화문
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            일산
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            제주
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            경리단길
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            한남동
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            삼청동
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            대전
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            종로
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            서촌
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            잠실
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            사당역
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            인천
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            코엑스
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            상수
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            서래마을
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            송도
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            왕십리
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            분당
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            혜화
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            고속터미널
+                        </a>
+                    </div>
                 </div>
-                <ul class="sns_box">
-                    <li><a href="#">네이버블로그</a></li>
-                    <li><a href="#">페이스북</a></li>
-                    <li><a href="#">인스타그램</a></li>
-                </ul>
-                <div class="sns_box">
-                    <a href="#" class="btn_blog"></a>
-                    <a href="#" class="btn_facebook"></a>
-                    <a href="#" class="btn_instagram"></a>
-                </div>
-                <div class="popular_location clear">
-                    <span class="text">인기지역 : </span>
-                    <a href="#" class="location_name">이태원</a>
-                    <a href="#" class="location_name">홍대</a>
-                    <a href="#" class="location_name">강남역</a>
-                    <a href="#" class="location_name">가로수길</a>
-                    <a href="#" class="location_name">신촌</a>
-                    <a href="#" class="location_name">명동</a>
-                    <a href="#" class="location_name">대학로</a>
-                    <a href="#" class="location_name">연남동</a>
-                    <a href="#" class="location_name">부산</a>
-                    <a href="#" class="location_name">합정</a>
-                    <a href="#" class="location_name">대구</a>
-                    <a href="#" class="location_name">여의도</a>
-                    <a href="#" class="location_name">건대</a>
-                    <a href="#" class="location_name">광화문</a>
-                    <a href="#" class="location_name">일산</a>
-                    <a href="#" class="location_name">제주</a>
-                    <a href="#" class="location_name">경리단길</a>
-                    <a href="#" class="location_name">한남동</a>
-                    <a href="#" class="location_name">삼청동</a>
-                    <a href="#" class="location_name">대전</a>
-                    <a href="#" class="location_name">종로</a>
-                    <a href="#" class="location_name">서촌</a>
-                    <a href="#" class="location_name">잠실</a>
-                    <a href="#" class="location_name">사당역</a>
-                    <a href="#" class="location_name">인천</a>
-                    <a href="#" class="location_name">코엑스</a>
-                    <a href="#" class="location_name">상수</a>
-                    <a href="#" class="location_name">서래마을</a>
-                    <a href="#" class="location_name">송도</a>
-                    <a href="#" class="location_name">왕십리</a>
-                    <a href="#" class="location_name">분당</a>
-                    <a href="#" class="location_name">혜화</a>
-                    <a href="#" class="location_name">고속터미널</a>
-                </div>
-                <div class="footer_about_box">
-                    <p class="about">
-                        ㈜ 망고플레이트<br>
-                        서울특별시 서초구 강남대로99길 53, 6층 (잠원동, 삼우빌딩)<br>
-                        대표이사: OH JOON HWAN(오준환)<br>
-                        사업자 등록번호: 211-88-92374 <a href="#">[사업자정보확인]</a><br>
-                        통신판매업 신고번호: 2014-서울강남-02615<br>
-                        고객센터: 02-565-5988<br>
-                        <br>
-                        © 2020 MangoPlate Co., Ltd. All rights reserved.
+            
+                <div class="language-copyrights">
+                    <p class="select-language">
+                    <a href="#" class='selected' >
+                        한국어
+                    </a>
+            
+                    <a href="#" >
+                        English
+                    </a>
+            
+                    <a href="#" >
+                        简体中文
+                    </a>
                     </p>
-                    <ul class="language">
-                        <li><a href="#" style="color: #d2d2d2;">한국어</a></li>
-                        <li><a href="#">영어</a></li>
-                        <li><a href="#">중국어</a></li>
-                    </ul>
+            
+                    <small>
+                    <p>
+                        
+                        ㈜ 망고플레이트<br />서울특별시 서초구 강남대로99길 53, 6층 (잠원동, 삼우빌딩)<br />대표이사: OH JOON HWAN(오준환)<br />사업자 등록번호: 211-88-92374 <a href='#' target='_blank'>[사업자정보확인]</a><br />통신판매업 신고번호: 2014-서울강남-02615<br />고객센터: 02-565-5988<br /><br />
+                        <span class="copyrights">© 2021 MangoPlate Co., Ltd. All rights reserved.</span>
+                    </p>
+                    </small>
                 </div>
             </div>
         </footer>
