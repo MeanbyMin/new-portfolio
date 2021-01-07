@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>생활의 달인 10대 맛의 달인</title>
+    
+    <!-- CSS styles -->
+    <link rel="stylesheet" href="./css/common.css" type="text/css">
+    <link href="../img/ico.png" rel="shortcut icon" type="image/x-icon">
+</head>
+<body onunload="" class="StoryDetailBody"">
+    <ul class="skipnavi">
+        <li><a href="#container">본문내용</a></li>
+    </ul>
+    <!-- wrap 시작 -->
+    <div id="wrap">
+        <!-- 헤더 시작 -->
+        <header class="Header" data-page="noraml">
+            <a href="./index.html" class="Header__Logo">
+                <i class="Header__LogoIcon"></i>
+            </a>
+
+            <!-- 검색 영역 시작-->
+            <div class="Header__SearchBox">
+                <i class="Header__SearchIcon"></i>
+                <label class="Header__SearchInputWrap">
+                    <input class="Header__SearchInput" type="text" placeholder="지역, 식당 또는 음식" maxlength="50">
+                </label>
+                <button class="Header__SearchInputClearButton">CLEAR</button>
+            </div>
+            <!-- 검색 영역 끝 -->
+            
+            <!-- 메뉴 부분 시작 -->
+            <ul class="Header__MenuList">
+                <li class="Header__MenuItem Header__MenuItem--New clear">
+                    <a href="#" class="Header__MenuLink">
+                        <span class="Header__MenuText">EAT딜</span>
+                    </a>
+                </li>
+                <li class="Header__MenuItem Header__MenuItem--New clear">
+                    <a href="#" class="Header__MenuLink">
+                        <span class="Header__MenuText">맛집 리스트</span>
+                    </a>
+                </li>
+                <li class="Header__MenuItem Header__MenuItem--New clear">
+                    <a href="#" class="Header__MenuLink">
+                        <span class="Header__MenuText">망고 스토리</span>
+                    </a>
+                </li>
+                <!-- 프로필 영역 시작 -->
+                <ul class="Header__IconButtonList">
+                    <li class="Header__IconButtonItem only-mobile Header__IconButtonItem--MenuButton">
+                    <button class="MenuButton"
+                            onclick="">
+                        <i class="MenuButton__Icon"></i>
+                    </button>
+                    </li>
+            
+                    <li class="Header__IconButtonItem Header__IconButtonItem--UserRestaurantHistory">
+                        <button class="UserProfileButton"
+                                onclick="">
+                            <i class="UserProfileButton__Picture"></i>
+                            <i class="UserProfileButton__PersonIcon"></i>
+                            <span class="UserProfileButton__HistoryCount">0</span>
+                        </button>
+                    </li>
+            
+                    <li class="Header__IconButtonItem Header__IconButtonItem--CloseButton Header__IconButtonItem--Hide">
+                    <button class="Header__CloseButton"></button>
+                    </li>
+                </ul>
+                <!-- 프로필 팝업 창 -->
+                <div class="UserRestaurantHistory">
+                    <div class="UserRestaurantHistory__BlackDeem"></div>
+                
+                    <div class="UserRestaurantHistory__BlackDeem">
+                        <i class="`"></i>
+                
+                        <ul class="UserRestaurantHistory__TabList">
+                        <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Viewed"
+                            onclick="">
+                            <button class="UserRestaurantHistory__TabButton">최근 본 맛집 </button>
+                        </li>
+                
+                        <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Wannago"
+                            onclick="">
+                            <button class="UserRestaurantHistory__TabButton">가고싶다</button>
+                        </li>
+                        </ul>
+                
+                        <div class="UserRestaurantHistory__HistoryContainer">
+                        <div class="UserRestaurantHistory__HistoryHeader">
+                            <button class="UserRestaurantHistory__ClearAllHistoryButton"
+                                    onclick="">
+                            x clear all
+                            </button>
+                        </div>
+                
+                        <ul class="UserRestaurantHistory__RestaurantList">
+                
+                        </ul>
+                
+                        <div class="UserRestaurantHistory__EmptyViewedRestaurantHistory">
+                            <span class="UserRestaurantHistory__EmptyViewedRestaurantHistoryTitle">
+                            거기가 어디였지?
+                            </span>
+                
+                            <p class="UserRestaurantHistory__EmptyViewedRestaurantHistoryDescription">
+                            내가 둘러 본 식당이 이 곳에 순서대로 기록됩니다.
+                            </p>
+                        </div>
+                
+                        <div class="UserRestaurantHistory__EmptyWannagoRestaurantHistory">
+                            <img class="UserRestaurantHistory__EmptyWannagoRestaurantHistoryImage"
+                                src="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kycrji1bsrupvbem.png?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                                alt="wannago empty star" />
+                            <p class="UserRestaurantHistory__EmptyWannagoRestaurantHistoryTitle">격하게 가고싶다..</p>
+                            <p class="UserRestaurantHistory__EmptyWannagoRestaurantHistoryDescription">
+                            식당의 ‘별’ 아이콘을 누르면 가고싶은 곳을 쉽게 저장할 수 있습니다.
+                            </p>
+                        </div>
+                        </div>
+                
+                        <footer class="UserRestaurantHistory__Footer">
+                        <button class="UserRestaurantHistory__LoginButton" onclick="">로그인</button>
+                        <button class="UserRestaurantHistory__LogoutButton" onclick="">logout</button>
+                        </footer>
+                    </div>
+                </div>
+                <!-- 프로필 팝업창 끝 -->
+                <!-- 프로필 영역 끝 -->
+            </ul>
+            <!-- 메뉴 부분 끝 -->
+        </header>
+        <!-- 헤더 끝 -->
+        <!-- 검색창 시작 -->
+        <div class="KeywordSuggester">
+            <div class="KeywordSuggester__BlackDeem"></div>
+            <div class="KeywordSuggester__Container">
+                <nav class="KeywordSuggester__TabNavigation">
+                    <ul class="KeywordSuggester__TabList">
+                        <li class="KeywordSuggester__TabItem">
+                            <div class="KeywordSuggester__TabButton KeywordSuggester__RecommendTabButton"
+                                onclick=""
+                                role="button">
+                            추천 검색어
+                            </div>
+                        </li>
+                
+                        <li class="KeywordSuggester__TabItem">
+                            <div class="KeywordSuggester__TabButton KeywordSuggester__PopularTabButton"
+                                onclick=""
+                                role="button">
+                            인기 검색어
+                            </div>
+                        </li>
+                
+                        <li class="KeywordSuggester__TabItem">
+                            <div class="KeywordSuggester__TabButton KeywordSuggester__HistoryTabButton"
+                                onclick=""
+                                role="button">
+                            최근 검색어
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            
+                <div class="KeywordSuggester__SuggestKeywordListWrap">
+                    <p class="KeywordSuggester__EmptyKeywordMessage">최근 검색어가 없습니다.</p>
+            
+                    <div class="KeywordSuggester__Footer">
+                        <button class="KeywordSuggester__RemoveAllHistoryKeywordButton">
+                            x clear all
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 검색창 끝 -->
+        <!-- 컨텐츠 시작 -->
+        <main class="Story">
+            <div class="Story__BaseInfoContainer">
+                <header class="StoryHeader" style="background-image: url(./img/mango_picks_detail/5rh5cjpxshg5kw7o.jpg)">
+                    <div class="StoryContent__Source StoryContent__Source--Header">
+                        <span class="StoryContent__SourceText">Instagram ID @woogachu</span>
+                    </div>
+                </header>
+            
+                <section class="Story__BaseInfo">
+            
+                    <div class="StoryHeader__ActiveButtons only-desktop">
+                    <button class="StoryHeader__ActiveButton StoryHeader__BookmarkButton ">
+                        <i class="StoryHeader__BookmarkButtonIcon"></i>
+                    </button>
+                    <button class="StoryHeader__ActiveButton StoryHeader__ShareButton">
+                        <i class="StoryHeader__ShareButtonIcon"></i>
+                    </button>
+                    </div>
+            
+                    <i class="Story__Icon only-mobile"></i>
+                    <div class="StoryEditor">
+                    <i class="StoryEditor__EditorMark"></i>
+                    <span class="StoryEditor__EditorName">미스망고</span>
+                    </div>
+            
+                    <h1 class="Story__Title">생활의 달인 10대 맛의 달인</h1>
+                    <p class="Story__Description">한 해를 뜨겁게 달군 달인의 맛!</p>
+            
+                    <div class="DateAndView only-desktop">
+                    <span class="DateAndView__Time">2021-01-05</span>
+            
+                    <span class="DateAndView__ViewCountWrap">
+                        <i class="DateAndView__ViewCountIcon"></i>
+                        <span class="DateAndView__ViewCount">7,156</span>
+                        </span>
+                    </div>
+            
+                    
+                </section>
+                </div>
+            
+                <hr class="Story__Divider Story__ContainerDivider"/>
+            
+                <div class="Story__ContentContainer">
+                <div class="Story__ContentList">
+            
+            
+                    <div class="Story__Content Story__CardContent StoryContent">
+                        <div class="StoryContent__PictureWrap">
+                        <img src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/alci9dqqziix4j.gif"
+                            alt=" 사진"
+                            class="StoryContent__Picture"/>
+            
+                        <div class="StoryContent__Source">
+                            <a href="#"
+                                onclick=""
+                                class="StoryContent__SourceLink">
+                                <span class="StoryContent__SourceText">https://giphy.com/</span>
+                            </a>
+                        </div>
+                        </div>
+            
+                        <p class="StoryContent__Caption">2020년을&nbsp;뜨겁게&nbsp;달군&nbsp;달인의&nbsp;맛!&nbsp;그&nbsp;중&nbsp;연말을&nbsp;맞아&nbsp;10대&nbsp;맛을&nbsp;선정했는데요~&nbsp;치열한&nbsp;심사&nbsp;끝에&nbsp;선정된&nbsp;영광의&nbsp;주인공을&nbsp;소개할게요!&nbsp;</p>
+                    </div>
+            
+            
+                        <hr class="Story__Divider"/>
+            
+                        <section class="Story__Content Story__RestaurantContent StoryRestaurantContent" data-key="IfBJCoZpC2">
+                        <a class="StoryRestaurantContent__Link" href="#">
+                            <span class="StoryRestaurantContent__Metro">명동/남산</span>
+                            <h2 class="StoryRestaurantContent__RestaurantNameWrap">
+                            <span class="StoryRestaurantContent__RestaurantName ">신세계떡볶이</span>
+                            <button class="StoryRestaurantContent__RestaurantInfoButton">
+                                <i class="StoryRestaurantContent__RestaurantInfoButtonIcon"></i>
+                            </button>
+                            </h2>
+                        </a>
+                        </section>
+            
+                    <div class="Story__Content Story__CardContent StoryContent">
+                        <div class="StoryContent__PictureWrap">
+                        <img src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/6cry-gitytvzny.jpg?fit=around|600:*&amp;crop=600:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                            alt=" 사진"
+                            class="StoryContent__Picture"/>
+            
+                        <div class="StoryContent__Source">
+                            <span class="StoryContent__SourceText">Instagram ID @woogachu</span>
+                        </div>
+                        </div>
+            
+                        <p class="StoryContent__Caption">최고의&nbsp;쌀떡과&nbsp;전설의&nbsp;비법양념의&nbsp;콜라보!&nbsp;떡볶이의&nbsp;최강자라&nbsp;불리는&nbsp;곳이&nbsp;있는데요~&nbsp;쌀떡&nbsp;특유의&nbsp;말랑한&nbsp;식감과&nbsp;진하고&nbsp;붉은&nbsp;양념이&nbsp;구미를&nbsp;당겨요.</p>
+                    </div>
+            
+            
+            
+                    <div class="Story__Content Story__CardContent StoryContent">
+                        <div class="StoryContent__PictureWrap">
+                        <img src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/cmjwkg9mgpzbkq.jpg?fit=around|600:*&amp;crop=600:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                            alt=" 사진"
+                            class="StoryContent__Picture"/>
+            
+                        <div class="StoryContent__Source">
+                            <span class="StoryContent__SourceText">MangoPlate ID @권오찬</span>
+                        </div>
+                        </div>
+            
+                        <p class="StoryContent__Caption">이곳의&nbsp;떡볶이는&nbsp;어묵&nbsp;없이&nbsp;오로지&nbsp;떡으로만&nbsp;이루어져&nbsp;떡의&nbsp;풍미를&nbsp;느끼기에&nbsp;좋답니다.&nbsp;호박고구마,&nbsp;토마토,&nbsp;들깻가루가&nbsp;들어간&nbsp;양념장이&nbsp;달인의&nbsp;비법.</p>
+                    </div>
+            
+            
+                        <hr class="Story__Divider"/>
+            
+                        <section class="Story__Content Story__RestaurantContent StoryRestaurantContent" data-key="ScCnZ6CGpz">
+                        <a class="StoryRestaurantContent__Link" href="/restaurants/ScCnZ6CGpz">
+                            <span class="StoryRestaurantContent__Metro">강동구</span>
+                            <h2 class="StoryRestaurantContent__RestaurantNameWrap">
+                            <span class="StoryRestaurantContent__RestaurantName ">다람</span>
+                            <button class="StoryRestaurantContent__RestaurantInfoButton">
+                                <i class="StoryRestaurantContent__RestaurantInfoButtonIcon"></i>
+                            </button>
+                            </h2>
+                        </a>
+                        </section>
+            
+                    <div class="Story__Content Story__CardContent StoryContent">
+                        <div class="StoryContent__PictureWrap">
+                        <img src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/dtu4_1djf1rwsk.jpg?fit=around|600:*&amp;crop=600:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                            alt=" 사진"
+                            class="StoryContent__Picture"/>
+            
+                        <div class="StoryContent__Source">
+                            <span class="StoryContent__SourceText">MangoPlate ID @주아팍 </span>
+                        </div>
+                        </div>
+            
+                        <p class="StoryContent__Caption">SNS를&nbsp;뜨겁게&nbsp;달군&nbsp;삽겹살&nbsp;집.&nbsp;이곳은&nbsp;집김치로&nbsp;인기를&nbsp;끌기&nbsp;시작했는데요~&nbsp;고기와&nbsp;잘&nbsp;숙성된&nbsp;김치의&nbsp;조합!&nbsp;한국인이라면&nbsp;모두가&nbsp;잘&nbsp;아는&nbsp;맛이죠?</p>
+                    </div>
+            
+            
+            
+                    <div class="Story__Content Story__CardContent StoryContent">
+                        <div class="StoryContent__PictureWrap">
+                        <img src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/osqiazwhfdbygc.jpg?fit=around|600:*&amp;crop=600:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                            alt=" 사진"
+                            class="StoryContent__Picture"/>
+            
+                        <div class="StoryContent__Source">
+                            <span class="StoryContent__SourceText">MangoPlate ID @준영</span>
+                        </div>
+                        </div>
+            
+                        <p class="StoryContent__Caption">고기를&nbsp;주문하면&nbsp;직접&nbsp;담근&nbsp;네가지&nbsp;종류의&nbsp;김치를&nbsp;내어주시는데&nbsp;깔끔하면서도&nbsp;시원한&nbsp;맛이&nbsp;일품.&nbsp;설탕&nbsp;대신&nbsp;조청을&nbsp;끓여&nbsp;넣은&nbsp;것이&nbsp;김치&nbsp;맛의&nbsp;비결이에요.&nbsp;고기보다&nbsp;더&nbsp;맛있는&nbsp;김치의&nbsp;맛이&nbsp;궁금하시죠?</p>
+                    </div>
+            
+            
+                        <hr class="Story__Divider"/>
+            
+                        <section class="Story__Content Story__RestaurantContent StoryRestaurantContent" data-key="7nDH_kTDGr">
+                        <a class="StoryRestaurantContent__Link" href="/restaurants/7nDH_kTDGr">
+                            <span class="StoryRestaurantContent__Metro">충북 옥천군</span>
+                            <h2 class="StoryRestaurantContent__RestaurantNameWrap">
+                            <span class="StoryRestaurantContent__RestaurantName ">문정식당</span>
+                            <button class="StoryRestaurantContent__RestaurantInfoButton">
+                                <i class="StoryRestaurantContent__RestaurantInfoButtonIcon"></i>
+                            </button>
+                            </h2>
+                        </a>
+                        </section>
+            
+                    <div class="Story__Content Story__CardContent StoryContent">
+                        <div class="StoryContent__PictureWrap">
+                        <img src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/t7wzbywdyydci0.jpg?fit=around|600:*&amp;crop=600:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                            alt=" 사진"
+                            class="StoryContent__Picture"/>
+            
+                        <div class="StoryContent__Source">
+                            <a href="#"
+                                onclick=""
+                                class="StoryContent__SourceLink">
+                                <span class="StoryContent__SourceText">Instagram ID @anzion1006</span>
+                            </a>
+                        </div>
+                        </div>
+            
+                        <p class="StoryContent__Caption">무려&nbsp;85세의&nbsp;나이에&nbsp;범상치&nbsp;않은&nbsp;포스를&nbsp;풍기며&nbsp;주방을&nbsp;지키고&nbsp;있는&nbsp;중화요리의&nbsp;산증인인&nbsp;달인의&nbsp;중식당.&nbsp;기름기&nbsp;없이&nbsp;개운한&nbsp;국물&nbsp;맛의&nbsp;짬뽕은&nbsp;이곳에서&nbsp;꼭&nbsp;먹어봐야하는&nbsp;메뉴에요.&nbsp;복숭아에&nbsp;고춧가루를&nbsp;올린&nbsp;뒤에&nbsp;쪄내는&nbsp;것이&nbsp;달콤&nbsp;향긋한&nbsp;국물&nbsp;맛을&nbsp;내는&nbsp;비법이라고!&nbsp;&nbsp;</p>
+                    </div>
+            
+            
+            
+                    <div class="Story__Content Story__CardContent StoryContent">
+                        <div class="StoryContent__PictureWrap">
+                        <img src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/sdw5lvv0umgauo.jpg?fit=around|600:*&amp;crop=600:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                            alt=" 사진"
+                            class="StoryContent__Picture"/>
+            
+                        <div class="StoryContent__Source">
+                            <a href="#"
+                                onclick=""
+                                class="StoryContent__SourceLink">
+                                <span class="StoryContent__SourceText">Instagram ID @piwpiw</span>
+                            </a>
+                        </div>
+                        </div>
+            
+                        <p class="StoryContent__Caption">짜장소스와&nbsp;계란후라이가&nbsp;곁들여진&nbsp;중국식&nbsp;볶음밥은&nbsp;밥알이&nbsp;하나하나&nbsp;코팅되어&nbsp;살아있는&nbsp;식감이&nbsp;특징이에요.&nbsp;</p>
+                    </div>
+            
+            
+                        <hr class="Story__Divider"/>
+            
+                        <section class="Story__Content Story__RestaurantContent StoryRestaurantContent" data-key="k_JwEJ3SVwPa">
+                        <a class="StoryRestaurantContent__Link" href="#">
+                            <span class="StoryRestaurantContent__Metro">연남동</span>
+                            <h2 class="StoryRestaurantContent__RestaurantNameWrap">
+                            <span class="StoryRestaurantContent__RestaurantName ">엘비스텍</span>
+                            <button class="StoryRestaurantContent__RestaurantInfoButton">
+                                <i class="StoryRestaurantContent__RestaurantInfoButtonIcon"></i>
+                            </button>
+                            </h2>
+                        </a>
+                        </section>
+            
+                    <div class="Story__Content Story__CardContent StoryContent">
+                        <div class="StoryContent__PictureWrap">
+                        <img src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/guhtkm4xbgqczu.jpg?fit=around|600:*&amp;crop=600:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                            alt=" 사진"
+                            class="StoryContent__Picture"/>
+            
+                        <div class="StoryContent__Source">
+                            <span class="StoryContent__SourceText">MangoPlate ID @우후훗</span>
+                        </div>
+                        </div>
+            
+                        <p class="StoryContent__Caption">한국에서&nbsp;만나는&nbsp;작은&nbsp;스페인.&nbsp;푸근한&nbsp;스페인&nbsp;집밥을&nbsp;재현했는데요~&nbsp;신선한&nbsp;해산물과&nbsp;비법육수로&nbsp;만든&nbsp;스페인의&nbsp;대표&nbsp;요리&nbsp;빠에야는&nbsp;스페인으로&nbsp;순간이동한&nbsp;듯한&nbsp;느낌을&nbsp;주는&nbsp;맛이에요.&nbsp;</p>
+                    </div>
+            
+            
+            
+                    <div class="Story__Content Story__CardContent StoryContent">
+                        <div class="StoryContent__PictureWrap">
+                        <img src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/o9afdjz-pp3fw6.jpg?fit=around|600:*&amp;crop=600:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                            alt=" 사진"
+                            class="StoryContent__Picture"/>
+            
+                        <div class="StoryContent__Source">
+                            <span class="StoryContent__SourceText">MangoPlate ID @따릉따릉</span>
+                        </div>
+                        </div>
+            
+                        <p class="StoryContent__Caption">올리브오일,&nbsp;마늘에&nbsp;새우를&nbsp;익혀낸&nbsp;샹그리아와&nbsp;가볍게&nbsp;곁들이기&nbsp;좋은&nbsp;파타스&nbsp;중&nbsp;하나인&nbsp;감바스는&nbsp;소스에&nbsp;새우의&nbsp;향이&nbsp;가득&nbsp;배어&nbsp;있어&nbsp;함께&nbsp;나온&nbsp;빵에&nbsp;소스처럼&nbsp;찍어&nbsp;먹어도&nbsp;좋아요.&nbsp;</p>
+                    </div>
+            
+            
+                        <hr class="Story__Divider"/>
+            
+                        <section class="Story__Content Story__RestaurantContent StoryRestaurantContent" data-key="9VLsn_7CfpNv">
+                        <a class="StoryRestaurantContent__Link" href="#">
+                            <span class="StoryRestaurantContent__Metro">홍대</span>
+                            <h2 class="StoryRestaurantContent__RestaurantNameWrap">
+                            <span class="StoryRestaurantContent__RestaurantName ">평안도상원냉면</span>
+                            <button class="StoryRestaurantContent__RestaurantInfoButton">
+                                <i class="StoryRestaurantContent__RestaurantInfoButtonIcon"></i>
+                            </button>
+                            </h2>
+                        </a>
+                        </section>
+            
+                    <div class="Story__Content Story__CardContent StoryContent">
+                        <div class="StoryContent__PictureWrap">
+                        <img src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/oiw3tyfdhcv1co.jpg?fit=around|600:*&amp;crop=600:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                            alt=" 사진"
+                            class="StoryContent__Picture"/>
+            
+                        <div class="StoryContent__Source">
+                            <span class="StoryContent__SourceText">MangoPlate ID @깽민</span>
+                        </div>
+                        </div>
+            
+                        <p class="StoryContent__Caption">지하&nbsp;푸드코트&nbsp;구석에&nbsp;위치한&nbsp;작은&nbsp;가게.&nbsp;입소문&nbsp;만으로&nbsp;문전성시를&nbsp;이루는&nbsp;평안도식&nbsp;평양냉면의&nbsp;달인이&nbsp;있는&nbsp;곳인데요~&nbsp;무려&nbsp;4대를&nbsp;이어가는&nbsp;평양냉면의&nbsp;내공깊은&nbsp;숙성&nbsp;육수의&nbsp;맛이&nbsp;매력포인트.&nbsp;</p>
+                    </div>
+            
+            
+            
+                    <div class="Story__Content Story__CardContent StoryContent">
+                        <div class="StoryContent__PictureWrap">
+                        <img src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/vz-hukiy_hxb_p.jpg?fit=around|600:*&amp;crop=600:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                            alt=" 사진"
+                            class="StoryContent__Picture"/>
+            
+                        <div class="StoryContent__Source">
+                            <span class="StoryContent__SourceText">MangoPlate ID @미식가냠</span>
+                        </div>
+                        </div>
+            
+                        <p class="StoryContent__Caption">평양냉면과&nbsp;함께&nbsp;탱글하고&nbsp;쫄깃한&nbsp;면발에&nbsp;호불호&nbsp;없는&nbsp;새콤달콤한&nbsp;양념이&nbsp;더해진&nbsp;비빔냉면도&nbsp;인기에요.</p>
+                    </div>
+            
+            
+                        <hr class="Story__Divider"/>
+            
+                        <section class="Story__Content Story__RestaurantContent StoryRestaurantContent" data-key="1pb5uxBGLt">
+                        <a class="StoryRestaurantContent__Link" href="#">
+                            <span class="StoryRestaurantContent__Metro">용인시</span>
+                            <h2 class="StoryRestaurantContent__RestaurantNameWrap">
+                            <span class="StoryRestaurantContent__RestaurantName ">홍천쌀찐빵</span>
+                            <button class="StoryRestaurantContent__RestaurantInfoButton">
+                                <i class="StoryRestaurantContent__RestaurantInfoButtonIcon"></i>
+                            </button>
+                            </h2>
+                        </a>
+                        </section>
+            
+                    <div class="Story__Content Story__CardContent StoryContent">
+                        <div class="StoryContent__PictureWrap">
+                        <img src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/2ys9wvjqvu-l7q.jpg?fit=around|600:*&amp;crop=600:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                            alt=" 사진"
+                            class="StoryContent__Picture"/>
+            
+                        <div class="StoryContent__Source">
+                            <span class="StoryContent__SourceText">Instagram ID @mumama_ev</span>
+                        </div>
+                        </div>
+            
+                        <p class="StoryContent__Caption">추운&nbsp;겨울철이면&nbsp;절로&nbsp;생각나는&nbsp;간식&nbsp;찐빵과&nbsp;만두.&nbsp;여기&nbsp;찐빵,&nbsp;만두의&nbsp;달인이&nbsp;있는데요~&nbsp;푹신하고&nbsp;부드러운&nbsp;식감을&nbsp;자랑하는&nbsp;반죽과&nbsp;직접&nbsp;쑨&nbsp;팥의&nbsp;조화로&nbsp;사람들의&nbsp;입맛을&nbsp;사로잡는다는!&nbsp;</p>
+                    </div>
+            
+            
+            
+                    <div class="Story__Content Story__CardContent StoryContent">
+                        <div class="StoryContent__PictureWrap">
+                        <img src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/cvuus1cvagln7o.jpg?fit=around|600:*&amp;crop=600:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                            alt=" 사진"
+                            class="StoryContent__Picture"/>
+            
+                        <div class="StoryContent__Source">
+                            <span class="StoryContent__SourceText">Instagram ID @choijinaaaa</span>
+                        </div>
+                        </div>
+            
+                        <p class="StoryContent__Caption">찐빵과&nbsp;함께&nbsp;이곳의&nbsp;또&nbsp;다른&nbsp;인기메뉴인&nbsp;만두는&nbsp;쫀득한&nbsp;만두피에&nbsp;꽉&nbsp;찬&nbsp;만두소가&nbsp;한끼&nbsp;식사로&nbsp;먹어도&nbsp;좋을만큼&nbsp;든든하답니다.&nbsp;염장&nbsp;꼬시래기와&nbsp;귀리,&nbsp;과일을&nbsp;넣어&nbsp;고기를&nbsp;숙성한&nbsp;것이&nbsp;만두의&nbsp;비밀이라고&nbsp;해요~</p>
+                    </div>
+            
+            
+                        <hr class="Story__Divider"/>
+            
+                        <section class="Story__Content Story__RestaurantContent StoryRestaurantContent" data-key="_1vJJ56hn_gg">
+                        <a class="StoryRestaurantContent__Link" href="#">
+                            <span class="StoryRestaurantContent__Metro">대구 북구</span>
+                            <h2 class="StoryRestaurantContent__RestaurantNameWrap">
+                            <span class="StoryRestaurantContent__RestaurantName ">한성불고기식당</span>
+                            <button class="StoryRestaurantContent__RestaurantInfoButton">
+                                <i class="StoryRestaurantContent__RestaurantInfoButtonIcon"></i>
+                            </button>
+                            </h2>
+                        </a>
+                        </section>
+            
+                    <div class="Story__Content Story__CardContent StoryContent">
+                        <div class="StoryContent__PictureWrap">
+                        <img src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/xbfizhltblzwnp.jpg?fit=around|600:*&amp;crop=600:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                            alt=" 사진"
+                            class="StoryContent__Picture"/>
+            
+                        <div class="StoryContent__Source">
+                            <span class="StoryContent__SourceText">Instagram ID @ckhomme</span>
+                        </div>
+                        </div>
+            
+                        <p class="StoryContent__Caption">가게&nbsp;옆에서&nbsp;45년&nbsp;동안&nbsp;연탄불을&nbsp;지킨&nbsp;달인.&nbsp;연탄&nbsp;돼지불고기의&nbsp;달인인데요~&nbsp;연탄불로&nbsp;구워&nbsp;은은한&nbsp;향과&nbsp;감칠맛까지!&nbsp;불고기의&nbsp;양념&nbsp;또한&nbsp;기가막히게&nbsp;했는데요~&nbsp;단맛,&nbsp;짠맛&nbsp;어느&nbsp;한&nbsp;맛에&nbsp;치우쳐지지&nbsp;않은&nbsp;조화로운&nbsp;양념&nbsp;맛!</p>
+                    </div>
+            
+            
+            
+                    <div class="Story__Content Story__CardContent StoryContent">
+                        <div class="StoryContent__PictureWrap">
+                        <img src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/nqek_q9h0qzaq6.jpg?fit=around|600:*&amp;crop=600:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                            alt=" 사진"
+                            class="StoryContent__Picture"/>
+            
+                        <div class="StoryContent__Source">
+                            <span class="StoryContent__SourceText">Instagram ID @happy___things</span>
+                        </div>
+                        </div>
+            
+                        <p class="StoryContent__Caption">대표메뉴인&nbsp;연탄&nbsp;돼지&nbsp;불고기&nbsp;외에도&nbsp;고추장불고기,&nbsp;쫄깃하고&nbsp;야들야들한&nbsp;오징어&nbsp;불고기도&nbsp;별미라니&nbsp;어느&nbsp;것&nbsp;하나&nbsp;놓칠&nbsp;수&nbsp;없는걸요~</p>
+                    </div>
+            
+            
+                        <hr class="Story__Divider"/>
+            
+                        <section class="Story__Content Story__RestaurantContent StoryRestaurantContent" data-key="cI5V9txH3PmW">
+                        <a class="StoryRestaurantContent__Link" href="">
+                            <span class="StoryRestaurantContent__Metro">상암/성산</span>
+                            <h2 class="StoryRestaurantContent__RestaurantNameWrap">
+                            <span class="StoryRestaurantContent__RestaurantName ">프랑스백반</span>
+                            <button class="StoryRestaurantContent__RestaurantInfoButton">
+                                <i class="StoryRestaurantContent__RestaurantInfoButtonIcon"></i>
+                            </button>
+                            </h2>
+                        </a>
+                        </section>
+            
+                    <div class="Story__Content Story__CardContent StoryContent">
+                        <div class="StoryContent__PictureWrap">
+                        <img src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/__yo8wuwiablqs.jpg?fit=around|600:*&amp;crop=600:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                            alt=" 사진"
+                            class="StoryContent__Picture"/>
+            
+                        <div class="StoryContent__Source">
+                            <span class="StoryContent__SourceText">Instagram ID @jinny___92</span>
+                        </div>
+                        </div>
+            
+                        <p class="StoryContent__Caption">프랑스&nbsp;가정식의&nbsp;달인.&nbsp;전채요리인&nbsp;갈레트부터&nbsp;와인에&nbsp;졸인&nbsp;닭요리인&nbsp;프랑스&nbsp;대표&nbsp;가정식&nbsp;코코뱅까지~&nbsp;프랑스에서&nbsp;20년&nbsp;동안&nbsp;거주한&nbsp;달인은&nbsp;다가가이&nbsp;어려운&nbsp;프랑스&nbsp;요리가&nbsp;아닌&nbsp;가정식&nbsp;요리로&nbsp;친숙하게&nbsp;풀어내&nbsp;다양한&nbsp;연령층에게&nbsp;사랑받고&nbsp;있어요.</p>
+                    </div>
+            
+            
+            
+                    <div class="Story__Content Story__CardContent StoryContent">
+                        <div class="StoryContent__PictureWrap">
+                        <img src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/_-ftouejfhnkne.jpg?fit=around|600:*&amp;crop=600:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                            alt=" 사진"
+                            class="StoryContent__Picture"/>
+            
+                        <div class="StoryContent__Source">
+                            <span class="StoryContent__SourceText">MangoPlate ID @어젠 </span>
+                        </div>
+                        </div>
+            
+                        <p class="StoryContent__Caption">해산물과&nbsp;채소를&nbsp;크림소스에&nbsp;뭉근하게&nbsp;끓여낸&nbsp;요리인&nbsp;'블랑케트'는&nbsp;풍부한&nbsp;해산물의&nbsp;맛에&nbsp;부드러운&nbsp;크림이&nbsp;더해져&nbsp;색다른&nbsp;맛!</p>
+                    </div>
+            
+            
+                        <hr class="Story__Divider"/>
+            
+                        <section class="Story__Content Story__RestaurantContent StoryRestaurantContent" data-key="RMuMWRMOg_J-">
+                        <a class="StoryRestaurantContent__Link" href="">
+                            <span class="StoryRestaurantContent__Metro">광화문</span>
+                            <h2 class="StoryRestaurantContent__RestaurantNameWrap">
+                            <span class="StoryRestaurantContent__RestaurantName ">스시미치루</span>
+                            <button class="StoryRestaurantContent__RestaurantInfoButton">
+                                <i class="StoryRestaurantContent__RestaurantInfoButtonIcon"></i>
+                            </button>
+                            </h2>
+                        </a>
+                        </section>
+            
+                    <div class="Story__Content Story__CardContent StoryContent">
+                        <div class="StoryContent__PictureWrap">
+                        <img src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/l-ripck3hvq9fj.jpg?fit=around|600:*&amp;crop=600:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                            alt=" 사진"
+                            class="StoryContent__Picture"/>
+            
+                        <div class="StoryContent__Source">
+                            <span class="StoryContent__SourceText">MangoPlate ID @최은창 </span>
+                        </div>
+                        </div>
+            
+                        <p class="StoryContent__Caption">일본&nbsp;본토에서&nbsp;내공을&nbsp;배워온&nbsp;흰눈&nbsp;숙성법&nbsp;초밥의&nbsp;달인.&nbsp;부드러우면서도&nbsp;동시에&nbsp;씹는&nbsp;맛이&nbsp;일품인&nbsp;달인의&nbsp;초밥에는&nbsp;특별한&nbsp;숙성비법이&nbsp;숨어있는데요~&nbsp;</p>
+                    </div>
+            
+            
+            
+                    <div class="Story__Content Story__CardContent StoryContent">
+                        <div class="StoryContent__PictureWrap">
+                        <img src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/wbna8vgctlkzum.jpg?fit=around|600:*&amp;crop=600:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                            alt=" 사진"
+                            class="StoryContent__Picture"/>
+            
+                        <div class="StoryContent__Source">
+                            <span class="StoryContent__SourceText">MangoPlate ID @최은창 </span>
+                        </div>
+                        </div>
+            
+                        <p class="StoryContent__Caption">하얀&nbsp;색을&nbsp;내는&nbsp;두부와&nbsp;간&nbsp;무를&nbsp;섞어&nbsp;숙성한&nbsp;뒤에&nbsp;가다랑어포를&nbsp;얹어&nbsp;찌는&nbsp;'흰&nbsp;눈&nbsp;숙성법'이&nbsp;그&nbsp;비법.&nbsp;생강에&nbsp;간장을&nbsp;묻혀&nbsp;초밥&nbsp;위에&nbsp;발라&nbsp;먹으면&nbsp;풍미가&nbsp;한층&nbsp;살아나요.&nbsp;</p>
+                    </div>
+            
+            
+                        <hr class="Story__Divider"/>
+            
+                        <section class="Story__Content Story__RestaurantContent StoryRestaurantContent" data-key="2DmsgPtjD48h">
+                        <a class="StoryRestaurantContent__Link" href="">
+                            <span class="StoryRestaurantContent__Metro">수유/도봉/강북</span>
+                            <h2 class="StoryRestaurantContent__RestaurantNameWrap">
+                            <span class="StoryRestaurantContent__RestaurantName ">만두향</span>
+                            <button class="StoryRestaurantContent__RestaurantInfoButton">
+                                <i class="StoryRestaurantContent__RestaurantInfoButtonIcon"></i>
+                            </button>
+                            </h2>
+                        </a>
+                        </section>
+            
+                    <div class="Story__Content Story__CardContent StoryContent">
+                        <div class="StoryContent__PictureWrap">
+                        <img src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/yo0k0wqwiipeoy.jpg?fit=around|600:*&amp;crop=600:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                            alt=" 사진"
+                            class="StoryContent__Picture"/>
+            
+                        <div class="StoryContent__Source">
+                            <span class="StoryContent__SourceText">Instagram ID @야구소년</span>
+                        </div>
+                        </div>
+            
+                        <p class="StoryContent__Caption">노모와&nbsp;딸이&nbsp;선보이는&nbsp;함경도식&nbsp;만두.&nbsp;분단&nbsp;이전부터&nbsp;집에서&nbsp;만들어먹던&nbsp;방식&nbsp;그대로&nbsp;이어오고&nbsp;있다는데요~&nbsp;삼삼하고&nbsp;정갈한&nbsp;맛이&nbsp;특징.&nbsp;</p>
+                    </div>
+            
+            
+            
+                    <div class="Story__Content Story__CardContent StoryContent">
+                        <div class="StoryContent__PictureWrap">
+                        <img src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/y9mf6jsheriliu.jpg?fit=around|600:*&amp;crop=600:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                            alt=" 사진"
+                            class="StoryContent__Picture"/>
+            
+                        <div class="StoryContent__Source">
+                            <span class="StoryContent__SourceText">MangoPlate ID @정민</span>
+                        </div>
+                        </div>
+            
+                        <p class="StoryContent__Caption">만두는&nbsp;사골육수에&nbsp;삶아&nbsp;내여&nbsp;구수한&nbsp;맛이&nbsp;진하게&nbsp;배어있답니다.&nbsp;익힌&nbsp;만두를&nbsp;바로&nbsp;튀겨낸&nbsp;튀김만두는&nbsp;어떻게&nbsp;조리하느냐에&nbsp;따라&nbsp;색다른&nbsp;맛을&nbsp;보여줘요.</p>
+                    </div>
+            
+            
+            
+                    <div class="Story__Content Story__CardContent StoryContent">
+                        <div class="StoryContent__PictureWrap">
+                        <img src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/wfiutws9o4is62.gif"
+                            alt=" 사진"
+                            class="StoryContent__Picture"/>
+            
+                        <div class="StoryContent__Source">
+                            <a href=""
+                                onclick="t"
+                                class="StoryContent__SourceLink">
+                                <span class="StoryContent__SourceText">https://giphy.com/</span>
+                            </a>
+                        </div>
+                        </div>
+            
+                        <p class="StoryContent__Caption">지금까지&nbsp;작년&nbsp;한&nbsp;해를&nbsp;뜨겁게&nbsp;달군&nbsp;10대&nbsp;맛의&nbsp;달인&nbsp;맛집을&nbsp;소개해드렸는데요~&nbsp;2021년&nbsp;올&nbsp;해의&nbsp;맛의&nbsp;달인도&nbsp;기대해봅니다!&nbsp;</p>
+                    </div>
+            
+                </div>
+                    <section class="Story__RestaurantInStory RestaurantInStory">
+                    <h3 class="RestaurantInStory__Title">스토리 속 식당</h3>
+                    <ul class="RestaurantInStory__RestaurantList">
+                        <li class="RestaurantInStory__Restaurant">
+                            <a class="RestaurantInStory__RestaurantLink" href="">
+                            <div class="RestaurantInStory__RestaurantImageWrap">
+                                <img
+                                src="https://mp-seoul-image-production-s3.mangoplate.com/224550/729413_1593622544612_754409?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                                class="RestaurantInStory__RestaurantImage"
+                                alt="신세계떡볶이"/>
+                            </div>
+                            <div class="RestaurantInStory__RestaurantInfo">
+                                <span class="RestaurantInStory__RestaurantMetro ">명동/남산</span>
+                                <span class="RestaurantInStory__RestaurantName ">신세계떡볶이</span>
+                            </div>
+                            </a>
+                            <button class="RestaurantInStory__RestaurantWannagoButton ">
+                            <i class="RestaurantInStory__RestaurantWannagoIcon"></i>
+                            </button>
+                        </li>
+                        <li class="RestaurantInStory__Restaurant">
+                            <a class="RestaurantInStory__RestaurantLink" href="">
+                            <div class="RestaurantInStory__RestaurantImageWrap">
+                                <img
+                                src="https://mp-seoul-image-production-s3.mangoplate.com/26786_1595086816293812.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                                class="RestaurantInStory__RestaurantImage"
+                                alt="다람"/>
+                            </div>
+                            <div class="RestaurantInStory__RestaurantInfo">
+                                <span class="RestaurantInStory__RestaurantMetro ">강동구</span>
+                                <span class="RestaurantInStory__RestaurantName ">다람</span>
+                            </div>
+                            </a>
+                            <button class="RestaurantInStory__RestaurantWannagoButton ">
+                            <i class="RestaurantInStory__RestaurantWannagoIcon"></i>
+                            </button>
+                        </li>
+                        <li class="RestaurantInStory__Restaurant">
+                            <a class="RestaurantInStory__RestaurantLink" href="#">
+                            <div class="RestaurantInStory__RestaurantImageWrap">
+                                <img
+                                src="https://mp-seoul-image-production-s3.mangoplate.com/150634/1319784_1556282202130_15538?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                                class="RestaurantInStory__RestaurantImage"
+                                alt="문정식당"/>
+                            </div>
+                            <div class="RestaurantInStory__RestaurantInfo">
+                                <span class="RestaurantInStory__RestaurantMetro ">충북 옥천군</span>
+                                <span class="RestaurantInStory__RestaurantName ">문정식당</span>
+                            </div>
+                            </a>
+                            <button class="RestaurantInStory__RestaurantWannagoButton ">
+                            <i class="RestaurantInStory__RestaurantWannagoIcon"></i>
+                            </button>
+                        </li>
+                        <li class="RestaurantInStory__Restaurant">
+                            <a class="RestaurantInStory__RestaurantLink" href="#">
+                            <div class="RestaurantInStory__RestaurantImageWrap">
+                                <img
+                                src="https://mp-seoul-image-production-s3.mangoplate.com/926872_1552704948217596.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                                class="RestaurantInStory__RestaurantImage"
+                                alt="엘비스텍"/>
+                            </div>
+                            <div class="RestaurantInStory__RestaurantInfo">
+                                <span class="RestaurantInStory__RestaurantMetro ">연남동</span>
+                                <span class="RestaurantInStory__RestaurantName ">엘비스텍</span>
+                            </div>
+                            </a>
+                            <button class="RestaurantInStory__RestaurantWannagoButton ">
+                            <i class="RestaurantInStory__RestaurantWannagoIcon"></i>
+                            </button>
+                        </li>
+                        <li class="RestaurantInStory__Restaurant">
+                            <a class="RestaurantInStory__RestaurantLink" href="#">
+                            <div class="RestaurantInStory__RestaurantImageWrap">
+                                <img
+                                src="https://mp-seoul-image-production-s3.mangoplate.com/383170/743008_1581595561568_16272?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                                class="RestaurantInStory__RestaurantImage"
+                                alt="평안도상원냉면"/>
+                            </div>
+                            <div class="RestaurantInStory__RestaurantInfo">
+                                <span class="RestaurantInStory__RestaurantMetro ">홍대</span>
+                                <span class="RestaurantInStory__RestaurantName ">평안도상원냉면</span>
+                            </div>
+                            </a>
+                            <button class="RestaurantInStory__RestaurantWannagoButton ">
+                            <i class="RestaurantInStory__RestaurantWannagoIcon"></i>
+                            </button>
+                        </li>
+                        <li class="RestaurantInStory__Restaurant">
+                            <a class="RestaurantInStory__RestaurantLink" href="#">
+                            <div class="RestaurantInStory__RestaurantImageWrap">
+                                <img
+                                src="https://mp-seoul-image-production-s3.mangoplate.com/143286/0z-o8iovi3ecjw.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                                class="RestaurantInStory__RestaurantImage"
+                                alt="홍천쌀찐빵"/>
+                            </div>
+                            <div class="RestaurantInStory__RestaurantInfo">
+                                <span class="RestaurantInStory__RestaurantMetro ">용인시</span>
+                                <span class="RestaurantInStory__RestaurantName ">홍천쌀찐빵</span>
+                            </div>
+                            </a>
+                            <button class="RestaurantInStory__RestaurantWannagoButton ">
+                            <i class="RestaurantInStory__RestaurantWannagoIcon"></i>
+                            </button>
+                        </li>
+                        <li class="RestaurantInStory__Restaurant">
+                            <a class="RestaurantInStory__RestaurantLink" href="#">
+                            <div class="RestaurantInStory__RestaurantImageWrap">
+                                <img
+                                src="https://mp-seoul-image-production-s3.mangoplate.com/413268/1596852_1580531990192_17111?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                                class="RestaurantInStory__RestaurantImage"
+                                alt="한성불고기식당"/>
+                            </div>
+                            <div class="RestaurantInStory__RestaurantInfo">
+                                <span class="RestaurantInStory__RestaurantMetro ">대구 북구</span>
+                                <span class="RestaurantInStory__RestaurantName ">한성불고기식당</span>
+                            </div>
+                            </a>
+                            <button class="RestaurantInStory__RestaurantWannagoButton ">
+                            <i class="RestaurantInStory__RestaurantWannagoIcon"></i>
+                            </button>
+                        </li>
+                        <li class="RestaurantInStory__Restaurant">
+                            <a class="RestaurantInStory__RestaurantLink" href="#">
+                            <div class="RestaurantInStory__RestaurantImageWrap">
+                                <img
+                                src="https://mp-seoul-image-production-s3.mangoplate.com/349254/840737_1557292886694_342748?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                                class="RestaurantInStory__RestaurantImage"
+                                alt="프랑스백반"/>
+                            </div>
+                            <div class="RestaurantInStory__RestaurantInfo">
+                                <span class="RestaurantInStory__RestaurantMetro ">상암/성산</span>
+                                <span class="RestaurantInStory__RestaurantName ">프랑스백반</span>
+                            </div>
+                            </a>
+                            <button class="RestaurantInStory__RestaurantWannagoButton ">
+                            <i class="RestaurantInStory__RestaurantWannagoIcon"></i>
+                            </button>
+                        </li>
+                        <li class="RestaurantInStory__Restaurant">
+                            <a class="RestaurantInStory__RestaurantLink" href="#">
+                            <div class="RestaurantInStory__RestaurantImageWrap">
+                                <img
+                                src="https://mp-seoul-image-production-s3.mangoplate.com/1692734_1590402534752701.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                                class="RestaurantInStory__RestaurantImage"
+                                alt="스시미치루"/>
+                            </div>
+                            <div class="RestaurantInStory__RestaurantInfo">
+                                <span class="RestaurantInStory__RestaurantMetro ">광화문</span>
+                                <span class="RestaurantInStory__RestaurantName ">스시미치루</span>
+                            </div>
+                            </a>
+                            <button class="RestaurantInStory__RestaurantWannagoButton ">
+                            <i class="RestaurantInStory__RestaurantWannagoIcon"></i>
+                            </button>
+                        </li>
+                        <li class="RestaurantInStory__Restaurant">
+                            <a class="RestaurantInStory__RestaurantLink" href="#">
+                            <div class="RestaurantInStory__RestaurantImageWrap">
+                                <img
+                                src="https://mp-seoul-image-production-s3.mangoplate.com/385521/938967_1598232951333_4122?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                                class="RestaurantInStory__RestaurantImage"
+                                alt="만두향"/>
+                            </div>
+                            <div class="RestaurantInStory__RestaurantInfo">
+                                <span class="RestaurantInStory__RestaurantMetro ">수유/도봉/강북</span>
+                                <span class="RestaurantInStory__RestaurantName ">만두향</span>
+                            </div>
+                            </a>
+                            <button class="RestaurantInStory__RestaurantWannagoButton ">
+                            <i class="RestaurantInStory__RestaurantWannagoIcon"></i>
+                            </button>
+                        </li>
+                    </ul>
+                    </section>
+            
+                    <hr class="Story__LineDivider"/>
+            
+                    <section class="Story__RelatedStory">
+                    <h3 class="Story__RelatedStoryTitle">다른 스토리 더 보기</h3>
+                    <ul class="Story__RelatedStoryList">
+                        <li class="Story__RelatedStoryItem" data-story-id="1959">
+                            <a href="#"
+                            class="Story__RelatedStoryLink"></a>
+                            <div class="Story__RelatedStoryDeem"></div>
+            
+                            <div class="Story__RelatedStoryImageWrap">
+                            <img class="Story__RelatedStoryImage"
+                                alt="신년 계획! 다이어트 맛집 추천 6곳 사진 - 새해 계획은 자고로 #다이어트 아니겠어?"
+                                src="https://s3-ap-northeast-2.amazonaws.com/mp-seoul-image-production/265831/qklnpnnabgqvsi.jpg?fit=around|412:216&amp;crop=412:216;*,*&amp;output-format=jpg&amp;output-quality=80"/>
+                            </div>
+            
+                            <span class="Story__RelatedStoryItemTitle">신년 계획! 다이어트 맛집 추천 6곳</span>
+                        </li>
+                        <li class="Story__RelatedStoryItem" data-story-id="1960">
+                            <a href="#"
+                            class="Story__RelatedStoryLink"></a>
+                            <div class="Story__RelatedStoryDeem"></div>
+            
+                            <div class="Story__RelatedStoryImageWrap">
+                            <img class="Story__RelatedStoryImage"
+                                alt="테이크아웃 스시 맛집 6곳 사진 - 집에서 즐기는 스시 클라스가 이정도!"
+                                src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/dll-ojb3j3tgl7.png?fit=around|412:216&amp;crop=412:216;*,*&amp;output-format=jpg&amp;output-quality=80"/>
+                            </div>
+            
+                            <span class="Story__RelatedStoryItemTitle">테이크아웃 스시 맛집 6곳</span>
+                        </li>
+                        <li class="Story__RelatedStoryItem" data-story-id="1961">
+                            <a href="#"                            class="Story__RelatedStoryLink"></a>
+                            <div class="Story__RelatedStoryDeem"></div>
+            
+                            <div class="Story__RelatedStoryImageWrap">
+                            <img class="Story__RelatedStoryImage"
+                                alt="인천 송도 맛집 7곳 사진 - 송도신도시 우리 동네 맛집!"
+                                src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/wu2j2tn7hs_ncz.jpg?fit=around|412:216&amp;crop=412:216;*,*&amp;output-format=jpg&amp;output-quality=80"/>
+                            </div>
+            
+                            <span class="Story__RelatedStoryItemTitle">인천 송도 맛집 7곳</span>
+                        </li>
+                        <li class="Story__RelatedStoryItem" data-story-id="1958">
+                            <a href="#"
+                            class="Story__RelatedStoryLink"></a>
+                            <div class="Story__RelatedStoryDeem"></div>
+            
+                            <div class="Story__RelatedStoryImageWrap">
+                            <img class="Story__RelatedStoryImage"
+                                alt="부산 맛집 7곳 사진 - 멋이 있는 부산의 맛! "
+                                src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/zdapplz3vk_zzr.jpg?fit=around|412:216&amp;crop=412:216;*,*&amp;output-format=jpg&amp;output-quality=80"/>
+                            </div>
+            
+                            <span class="Story__RelatedStoryItemTitle">부산 맛집 7곳</span>
+                        </li>
+                        <li class="Story__RelatedStoryItem" data-story-id="1957">
+                            <a href="#"
+                            class="Story__RelatedStoryLink"></a>
+                            <div class="Story__RelatedStoryDeem"></div>
+            
+                            <div class="Story__RelatedStoryImageWrap">
+                            <img class="Story__RelatedStoryImage"
+                                alt="딸기 디저트 맛집 7곳 사진 - 딸기와 함께 연말을!"
+                                src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/-rsfr9mmwokgux.jpg?fit=around|412:216&amp;crop=412:216;*,*&amp;output-format=jpg&amp;output-quality=80"/>
+                            </div>
+            
+                            <span class="Story__RelatedStoryItemTitle">딸기 디저트 맛집 7곳</span>
+                        </li>
+                        <li class="Story__RelatedStoryItem" data-story-id="1956">
+                            <a href="#"
+                            class="Story__RelatedStoryLink"></a>
+                            <div class="Story__RelatedStoryDeem"></div>
+            
+                            <div class="Story__RelatedStoryImageWrap">
+                            <img class="Story__RelatedStoryImage"
+                                alt="프라이빗룸 맛집 추천 6곳 사진 - 쉿! 우리끼리 편안하게 맛있게!"
+                                src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/cjkltqv5dhss26.png?fit=around|412:216&amp;crop=412:216;*,*&amp;output-format=jpg&amp;output-quality=80"/>
+                            </div>
+            
+                            <span class="Story__RelatedStoryItemTitle">프라이빗룸 맛집 추천 6곳</span>
+                        </li>
+                    </ul>
+                    </section>
+                </div>
+            <div class="black_screen"></div>
+        </main>
+        <!-- 컨텐츠 끝 -->
+        <!-- footer 시작 -->
+        <footer class="footer">
+            <div class="inner">
+                <div class="mp_logo">
+                    <a href="/" class="btn-mp">
+                    <img class="mp_logo_img" src="./img/mangoplate-gray-logo.svg" alt="mangoplate logo" />
+                    </a>
+                    <p class="subtitle">Eat, Share, Be Happy.</p>
+                </div>
+                        
+                <p class="sns-shortcut">
+                    <a class="btn blog"
+                    href="#"
+                    target="_blank"
+                    onclick="">
+                    망고플레이트 네이버 블로그 계정으로 바로가기
+                    </a>
+            
+                    <a class="btn facebook"
+                    href="#"
+                    target="_blank"
+                    onclick="">
+                    망고플레이트 페이스북 계정으로 바로가기
+                    </a>
+            
+                    <a class="btn instagram"
+                    href="#"
+                    target="_blank"
+                    onclick="">
+                    망고플레이트 인스타그램 계정으로 바로가기
+                    </a>
+                </p>
+            
+                <nav class="links-external">
+                    <ul class="list-links">
+                        <li>
+                        <a href="#">
+                            회사소개
+                        </a>
+                        </li>
+            
+                        <li>
+                        <a href="#">
+                            망고플레이트 채용
+                        </a>
+                        </li>
+            
+                        <li>
+                            <a href="#">
+                            투자 정보
+                            </a>
+                        </li>
+            
+                        <li class="only-desktop">
+                            <a href="#" target="_blank">
+                                브랜드 가이드라인
+                            </a>
+                        </li>
+            
+                        <li>
+                            <a href="#" target="_blank">
+                            망고플레이트 비즈니스
+                            </a>
+                        </li>
+                    
+                        <li>
+                            <a href="#" target="_blank">
+                                광고 문의
+                            </a>
+                        </li>
+            
+                    </ul>
+            
+                    <ul class="list-links">
+                        <li>
+                            <a href="#" target="_blank">
+                            공지사항
+                            </a>
+                        </li>
+            
+                        <li>
+                            <a class="" href="#" onclick="" target="_blank">
+                            이용약관
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="#" onclick="" target="_blank">
+                            비회원 이용자 이용정책
+                            </a>
+                        </li>
+                        <li>
+                            <a class="bold" href="#" onclick="" target="_blank">
+                            개인정보처리방침
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="#" onclick="" target="_blank">
+                            위치기반서비스 이용약관
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="#" onclick="">
+                            커뮤니티 가이드라인
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="#" onclick="" target="_blank">
+                            청소년보호정책
+                            </a>
+                        </li>
+            
+                        <li>
+                            <a href="#" target="_blank">
+                            홀릭 소개
+                            </a>
+                        </li>
+            
+                        <li>
+                            <a href="#">
+                            문의하기
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            
+                <div class="sitemap-location-keywords">
+                    <div class="keyword_wrap">
+                    <span class="keyword">인기지역 : </span>
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            이태원
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            홍대
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            강남역
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            가로수길
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            신촌
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            명동
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            대학로
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            연남동
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            부산
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            합정
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            대구
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            여의도
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            건대
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            광화문
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            일산
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            제주
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            경리단길
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            한남동
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            삼청동
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            대전
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            종로
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            서촌
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            잠실
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            사당역
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            인천
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            코엑스
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            상수
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            서래마을
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            송도
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            왕십리
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            분당
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            혜화
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            고속터미널
+                        </a>
+                    </div>
+                </div>
+            
+                <div class="language-copyrights">
+                    <p class="select-language">
+                    <a href="#" class='selected' >
+                        한국어
+                    </a>
+            
+                    <a href="#" >
+                        English
+                    </a>
+            
+                    <a href="#" >
+                        简体中文
+                    </a>
+                    </p>
+            
+                    <small>
+                    <p>
+                        
+                        ㈜ 망고플레이트<br />서울특별시 서초구 강남대로99길 53, 6층 (잠원동, 삼우빌딩)<br />대표이사: OH JOON HWAN(오준환)<br />사업자 등록번호: 211-88-92374 <a href='#' target='_blank'>[사업자정보확인]</a><br />통신판매업 신고번호: 2014-서울강남-02615<br />고객센터: 02-565-5988<br /><br />
+                        <span class="copyrights">© 2021 MangoPlate Co., Ltd. All rights reserved.</span>
+                    </p>
+                    </small>
+                </div>
+            </div>
+        </footer>
+        <!-- footer 끝 -->
+    </div>
+    <!-- wrap 끝 -->
+    <!-- 로딩 -->
+    <div class="login_loading_area">
+        <img src="./img/ldcyd5lxlvtlppe3.gif" alt="login loading bar"/>
+    </div>
+</body>
+</html>
