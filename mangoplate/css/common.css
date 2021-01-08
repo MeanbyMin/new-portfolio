@@ -6285,6 +6285,779 @@ span.orange-underline {
 }
 
 /* 상세페이지 끝 */
+
+/* 리뷰 작성 페이지 시작 */
+
+.ReviewWritingPage {
+    overflow: hidden;
+}
+
+.SimpleHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 900;
+    width: 100%;
+    height: 61px;
+    border-bottom: 1px solid #DBDBDB;
+    box-sizing: border-box;
+    box-shadow: 0 4px 11px rgba(0,0,0,0.1);
+    background-color: #FFFFFF;
+}
+
+.SimpleHeader__Logo {
+    display: flex;
+    justify-content: center;
+    flex-direction: center;
+    margin: 0 25px;
+}
+
+.SimpleHeader__LogoIcon {
+    width: 100px;
+    height: 33px;
+    background-image: url(../img/mangoplate-logo-horizontal.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.ReviewWritingPage__Container {
+    width: 678px;
+    margin: 101px auto 62px;
+}
+
+.ReviewWritingPage__Row {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.RestaurantSubMessage__RestaurantName {
+    display: block;
+    max-width: 400px;
+    font-size: 28px;
+    line-height: 1.462;
+    color: #ff7100;
+    word-break: break-word;
+}
+
+.RestaurantSubMessage__SubMessageWrap {
+    position: relative;
+    margin-left: 4px;
+}
+
+.RestaurantSubMessage__SubMessage {
+    font-size: 16px;
+    width: 270px;
+    margin: 0;
+    position: absolute;
+    top: 60%;
+    transform: translateY(-50%);
+    line-height: 1.45;
+    color: #7F7F7F;
+}
+
+.ReviewWritingPage__ContentWrap {
+    display: flex;
+    flex-direction: row;
+}
+
+.ReviewWritingPage__FormWrap {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.ReviewWritingPage__EditorWrap {
+    width: 678px;
+    margin-bottom: 22px;
+}
+
+.ReviewEditor {
+    flex: 1;
+    position: relative;
+}
+
+.ReviewEditor__Editor__Wrap {
+    border: 1px solid #DBDBDB;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 16px;
+}
+
+.ReviewWritingPage__RestaurantRecommendPickerWrap {
+    margin-bottom: 20px;
+}
+
+.RestaurantRecommendPicker {
+    position: relative;
+}
+
+.RestaurantRecommendPicker__List {
+    display: flex;
+    flex-direction: row;
+}
+
+.RestaurantRecommendPicker__Item {
+    margin-right: 24px;
+}
+
+.RestaurantRecommendPicker__Item:last-child {
+    margin-right: 0;
+}
+
+.RestaurantRecommendPicker__RecommendButton {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    color: #CBCBCB;
+}
+
+.RestaurantRecommendPicker__RecommendButton--Active {
+    color: #ff7100;
+}
+
+.RestaurantRecommendPicker__Image {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    margin-right: 8px;
+    background-size: cover;
+}
+
+.RestaurantRecommendPicker__RecommendButton--Active .RestaurantRecommendPicker__Image--Recommend {
+    background-image: url(../img/reviews/mp-product-app-logo@3x.svg);
+}
+
+.RestaurantRecommendPicker__RecommendButton--Active {
+    color: #ff7100;
+}
+
+.RestaurantRecommendPicker__Image--Recommend {
+    background-image: url(../img/reviews/restaurant_recommend_face.svg);
+}
+
+.RestaurantRecommendPicker__RecommendButton--Active .RestaurantRecommendPicker__Image--Ok {
+    background-image: url(../img/reviews/restaurant_ok_active_face.svg);
+}
+
+.RestaurantRecommendPicker__Image--Ok {
+    background-image: url(../img/reviews/restaurant_ok_face.svg);
+}
+
+.RestaurantRecommendPicker__Image--NotRecommend {
+    background-image: url(../img/reviews/restaurant_not_recommend_face.svg);
+}
+
+.RestaurantRecommendPicker__RecommendButton--Active .RestaurantRecommendPicker__Image--NotRecommend {
+    background-image: url(../img/reviews/restaurant_not_recommend_active_face.svg);
+}
+
+.RestaurantRecommendPicker__LikeLabel {
+    display: block;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.ReviewEditor__Editor {
+    display: block;
+    width: 100%;
+    height: 150px;
+    border: 0;
+    font-size: 16px;
+    color: #000000;
+    resize: none;
+}
+
+.ReviewEditor__Editor:placeholder-shown {
+    color: #CBCBCB;
+}
+
+.ReviewEditor__TextLengthStateBox {
+    transform: translateY(100%);
+    position: absolute;
+    bottom: -4px;
+    right: 0;
+    font-size: 12px;
+    line-height: normal;
+    color: #7F7F7F;
+}
+
+.ReviewWritingPage__PictureWrap {
+    position: relative;
+    width: 687px;
+    margin-bottom: 41px;
+}
+
+.ReviewPictureCounter {
+    transform: translateX(-100%);
+    transition: 0.3s ease;
+    position: absolute;
+    /* display: none; */
+    width: 89px;
+    font-size: 12px;
+    text-align: right;
+    color: #7F7F7F;
+    display: block;
+    top: 93px;
+    left: 89px;
+}
+
+.DraggablePictureContainer {
+    position: relative;
+}
+
+.DraggablePictureContainer__PictureList {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 98px;
+}
+
+.DraggablePictureContainer__PictureItem {
+    position: absolute;
+    margin-right: 9px;
+    margin-bottom: 9px;
+}
+
+.DraggablePictureContainer__AddButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 89px;
+    height: 89px;
+    line-height: 89px;
+    text-align: center;
+    border: 1px dashed #DBDBDB;
+    cursor: pointer;
+}
+
+.DraggablePictureContainer__AddIcon {
+    width: 27px;
+    height: 27px;
+    background-image: url(../img/reviews/plus_icon.svg);
+    background-size: cover;
+}
+
+.DraggablePictureContainer__GuideLayer {
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 81px;
+    right: 20px;
+    bottom: 20px;
+    left: 20px;
+    z-index: 10;
+    display: none;
+    background-color: rgba(255,255,255,0.85);
+    border: 1px dashed #ff7100;
+    box-sizing: border-box;
+}
+
+.DraggablePictureContainer__GuideMessage {
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 15px;
+    font-weight: bold;
+    color: #ff7100;
+}
+
+.ReviewWritingPage__ButtonsWrap {
+    display: flex;
+    flex-direction: row;
+    width: 678px;
+}
+
+.ReviewWritingPage__ContinueButton {
+    min-width: 140px;
+    min-height: 50px;
+    margin-right: 34px;
+    padding-left: 14px;
+    padding-right: 14px;
+    border: 1px solid #ff7100;
+    border-radius: 50px;
+    font-size: 16px;
+    color: #ff7100;
+    text-align: center;
+    background-color: #FFFFFF;
+}
+
+.ReviewWritingPage__ContinueButton--Deactive {
+    border-color: #CBCBCB;
+    color: #CBCBCB;
+    cursor: not-allowed;
+}
+
+.ReviewWritingPage__Buttons {
+    display: flex;
+    justify-content: flex-end;
+    width: 678px;
+}
+
+.ReviewWritingPage__CancelButton {
+    min-width: 140px;
+    min-height: 50px;
+    margin-right: 16px;
+    padding-left: 14px;
+    padding-right: 14px;
+    border: 1px solid #7F7F7F;
+    border-radius: 50px;
+    font-size: 16px;
+    color: #7F7F7F;
+    text-align: center;
+    background-color: #FFFFFF;
+}
+
+.ReviewWritingPage__SubmitButton {
+    min-width: 140px;
+    min-height: 50px;
+    padding-left: 14px;
+    padding-right: 14px;
+    border: 1px solid #ff7100;
+    border-radius: 50px;
+    font-size: 16px;
+    color: #FFFFFF;
+    text-align: center;
+    background-color: #ff7100;
+}
+
+.ReviewWritingPage__SubmitButton--Deactive {
+    border-color: #E9E9E9;
+    background-color: #E9E9E9;
+    color: #FFFFFF;
+    cursor: not-allowed;
+}
+
+.ReviewToolTip {
+    margin-top: 10px;
+    display: none;
+}
+
+.ToolTip {
+    max-width: 161px;
+    z-index: 0;
+}
+
+.ToolTip__Wrap {
+    position: relative;
+    padding: 8px 12px 8px 12px;
+    border-radius: 2px;
+    background-color: #F6F6F6;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.17);
+}
+
+.ToolTip__New {
+    top: 0;
+    left: 0;
+    font-size: 10px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    margin-bottom: 2px;
+    color: #ff7100;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.ToolTip__Message {
+    font-size: 12px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0;
+    color: #595959;
+    word-break: break-word;
+}
+
+.ToolTip__CloseButton {
+    position: absolute;
+    top: 8px;
+    right: 5px;
+    width: 10px;
+    height: 10px;
+    background-image: url(../img/reviews/desktop-tooltip-closed.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.PopupConfirmLayer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.PopupConfirmLayer__Container {
+    display: flex;
+    flex-direction: column;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 370px;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+}
+
+.PopupConfirmLayer__Description {
+    padding: 40px 30px;
+    font-size: 16px;
+    line-height: 25px;
+    color: #333333;
+    text-align: center;
+}
+
+.PopupConfirmLayer__Description__Bold {
+    color: #ff7100;
+    word-break: break-word;
+}
+
+.PopupConfirmLayer__Buttons {
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid #DBDBDB;
+}
+
+.PopupConfirmLayer__GrayButton {
+    color: #4F4F4F;
+}
+
+.PopupConfirmLayer__OrangeButton {
+    color: #ff7100;
+}
+
+.PopupConfirmLayer__Button:last-child {
+    border-right: 0;
+}
+
+.ReviewSubmitLayer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background-color: #FFFFFF;
+}
+
+.ReviewSubmitLayer__Emoji {
+    width: 71px;
+    height: 71px;
+    margin-bottom: 35px;
+    background-image: url(../img/reviews/restaurant_recommend_active_face.svg);
+    background-size: cover;
+    animation: float 3s ease-out infinite;
+}
+
+.ReviewSubmitLayer__ShadowWrap {
+    width: 71px;
+    margin-bottom: 40px;
+}
+
+.ReviewSubmitLayer__Shadow {
+    display: block;
+    width: 57px;
+    height: 17px;
+    background-size: cover;
+    animation: shrink 3s ease-out infinite;
+    transform-origin: center center;
+}
+
+.ReviewSubmitLayer__Message {
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    color: #ff7100;
+}
+
+.NoticeNotAcceptImageLayer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.NoticeNotAcceptImageLayer__Container {
+    display: flex;
+    flex-direction: column;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 480px;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+}
+
+.NoticeNotAcceptImageLayer__Header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    min-height: 80px;
+    padding: 20px 34px 20px 35px;
+    box-sizing: border-box;
+    background-color: #FF5C5C;
+}
+
+.NoticeNotAcceptImageLayer__FaceIcon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    background-image: url(../img/reviews/review_picture_upload_error_face.svg);
+    background-size: cover;
+}
+
+.NoticeNotAcceptImageLayer__Title {
+    flex: 1;
+    font-size: 24px;
+    line-height: 1.2;
+    color: #FFFFFF;
+}
+
+.NoticeNotAcceptImageLayer__Content {
+    height: 358px;
+    padding: 30px;
+    border-bottom: 1px solid #DBDBDB;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.NoticeNotAcceptImageLayer__Button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    font-size: 15px;
+    line-height: 20px;
+    color: #4F4F4F;
+}
+
+.account_terms_layer {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: white;
+    z-index: 10000;
+    padding-bottom: 200px;
+    display: none;
+}
+
+.account_terms_layer .account_terms_layer_header {
+    position: relative;
+    background-color: #e9e9e9;
+    min-height: 64px;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+    line-height: 64px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.account_terms_layer .account_terms_layer_header .close_btn {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+}
+
+.account_terms_layer .account_terms_layer_content {
+    margin: 25px 20px 50px;
+}
+
+.terms_content {
+    float: left;
+}
+
+.account_terms_layer_content_location .terms_content {
+    margin-top: 16px;
+    font-size: 14px;
+    line-height: 21px;
+    color: #4f4f4f;
+}
+
+.check_area {
+    float: right;
+}
+
+.account_terms_layer button {
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+}
+
+.account_terms_layer_content_location .all_terms_btn {
+    margin-top: -8px;
+}
+
+.check_terms_btn img {
+    width: 44px;
+}
+
+.account_terms_layer .sub_content {
+    font-size: 11px;
+    line-height: 18px;
+    color: #7f7f7f;
+    clear: both;
+    margin: 5px 0 15px;
+}
+
+.account_terms_layer .account_terms_layer_content .seper_hr {
+    border: 0;
+    border-top: 1px solid #dbdbdb;
+    margin: 0;
+    height: 1px;
+    width: 100%;
+}
+
+.account_terms_layer .account_terms_layer_ok_btn {
+    width: 277px;
+    height: 55px;
+    border-radius: 40px;
+    background-color: #ff7100;
+    display: block;
+    margin: 0 auto;
+    line-height: 55px;
+    font-size: 15px;
+    color: white;
+}
+
+.account_terms_layer .account_terms_layer_ok_btn:disabled {
+    background-color: #cccccc;
+    cursor: default;
+}
+
+.pop-context {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10000;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.pop-context.pg-login {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10001;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.pop-context .contents-box {
+    position: relative;
+    margin: 0 auto;
+    background-color: #ffffff;
+    width: 585px;
+}
+
+.pop-context.pg-login>.contents-box {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.pop-context.pg-login>.contents-box {
+    width: auto;
+    padding: 101px 52px 98px;
+    border-radius: 10px;
+}
+
+.pop-context .contents-box .btn-nav-close {
+    display: block;
+    position: absolute;
+    top: 13px;
+    right: 15px;
+    text-indent: -9999px;
+    background-image: url(../img/2018022864551sprites_desktop.png);
+    background-position: -935px -693px;
+    width: 30px;
+    height: 30px;
+}
+
+.pop-context.pg-login .title {
+    margin-bottom: 19px;
+    font-size: 30px;
+    line-height: 1;
+    font-weight: 900;
+    text-align: center;
+}
+
+.pop-context.pg-login .message {
+    margin-bottom: 30px;
+    padding-bottom: 0;
+    font-size: 16px;
+    line-height: 21px;
+    letter-spacing: -0.3px;
+    color: #555;
+    text-align: center;
+}
+
+.btn-login.facebook {
+    color: #ffffff;
+    background-color: #4150bf;
+}
+
+.btn-login .text {
+    margin-left: 51px;
+    padding-left: 21px;
+}
+
+.btn-login.facebook .text {
+    border-left: 1px solid rgba(255,255,255,0.3);
+}
+
+.btn-login.kakaotalk {
+    color: #66514c;
+    background-color: #ffe809;
+}
+
+.btn-login.kakaotalk .text {
+    border-left: 1px solid rgba(68,53,53,0.3);
+}
+
+.btn-login.apple {
+    color: #ffffff;
+    background-color: #000000;
+}
+
+.btn-login:last-of-type {
+    margin-bottom: 0;
+}
+
+.btn-login.apple .text {
+    border-left: 1px solid rgba(255,255,255,0.5);
+}
+
+/* 리뷰 작성 페이지 끝 */
 @media only screen and (min-width: 320px) and (max-width: 768px) {
     .only-desktop {
         display:none !important
