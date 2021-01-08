@@ -4645,8 +4645,8 @@ img.center-crop.portrait {
 }
 
 .search-filter {
-    /* display: none; */
-    display: block;
+    display: none;
+    /* display: block; */
     background-color: #ffffff;
     overflow-y: auto;
     position: absolute;
@@ -4895,6 +4895,10 @@ img.center-crop.portrait {
     cursor: pointer;
 }
 
+.search-filter .filter-item .metro .metro_btn:nth-child(4n) {
+    margin-right: 0;
+}
+
 .search-filter .filter-item input[type=checkbox]+label.small {
     display: inline-block;
     width: 100%;
@@ -4967,6 +4971,281 @@ img.center-crop.portrait {
 
 .search-filter .filter-item .more-region>a:hover, .search-filter .filter-item .more-region>a.selected {
     color: #ff792a;
+}
+
+.search-filter .filter-item .cuisine_list_wrap {
+    width: 624px;
+    margin: 0 auto;
+}
+
+.search-filter .filter-item input[type=checkbox].food+label:before {
+    content: '';
+    display: block;
+    margin: 0 auto;
+}
+
+
+
+.search-filter .filter-item input[type=checkbox].food+label {
+    display: inline-block;
+    margin-right: 63px;
+    /* margin-right: 68px; */
+    width: 105px;
+    font-size: 1.000rem;
+    color: #cbcbcb;
+    text-align: center;
+    border: 0px;
+    border-radius: 0px;
+}
+
+.search-filter .filter-item input[type=checkbox].food+label.line-break {
+    margin-right: 0;
+}
+
+.search-filter .filter-item input[type=checkbox]:checked+label {
+    color: #ff792a;
+    border-color: #ff792a;
+}
+
+.search-filter .filter-item input[type=checkbox].food+label.food01:before {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-position: -613px -333px;
+    width: 105px;
+    height: 105px
+}
+
+.search-filter .filter-item input[type=checkbox].food+label.food02:before {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-position: -613px 0px;
+    width: 105px;
+    height: 105px
+}
+
+.search-filter .filter-item input[type=checkbox].food+label.food03:before {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-position: -613px -222px;
+    width: 105px;
+    height: 105px
+}
+
+.search-filter .filter-item input[type=checkbox].food+label.food04:before {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-position: -111px -423px;
+    width: 105px;
+    height: 105px
+}
+
+.search-filter .filter-item input[type=checkbox].food+label.food05:before {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-position: -502px -222px;
+    width: 105px;
+    height: 105px
+}
+
+.search-filter .filter-item input[type=checkbox].food+label.food06:before {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-position: -502px 0px;
+    width: 105px;
+    height: 105px
+}
+
+.search-filter .filter-item input[type=checkbox].food+label.food07:before {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-position: -222px -312px;
+    width: 105px;
+    height: 105px
+}
+
+.search-filter .filter-item input[type=checkbox].food+label.food08:before {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-position: -333px -423px;
+    width: 105px;
+    height: 105px
+}
+
+.search-filter .filter-item input[type=checkbox].food:checked+label.food01:before {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-position: -613px -111px;
+    width: 105px;
+    height: 105px
+}
+
+.search-filter .filter-item input[type=checkbox].food:checked+label.food02:before {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-position: -444px -423px;
+    width: 105px;
+    height: 105px
+}
+
+.search-filter .filter-item input[type=checkbox].food:checked+label.food03:before {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-position: -222px -423px;
+    width: 105px;
+    height: 105px
+}
+
+.search-filter .filter-item input[type=checkbox].food:checked+label.food04:before {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-position: 0px -423px;
+    width: 105px;
+    height: 105px
+}
+
+.search-filter .filter-item input[type=checkbox].food:checked+label.food05:before {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-position: -502px -111px;
+    width: 105px;
+    height: 105px
+}
+
+.search-filter .filter-item input[type=checkbox].food:checked+label.food06:before {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-position: -333px -312px;
+    width: 105px;
+    height: 105px
+}
+
+.search-filter .filter-item input[type=checkbox].food:checked+label.food07:before {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-position: -111px -312px;
+    width: 105px;
+    height: 105px
+}
+
+.search-filter .filter-item input[type=checkbox].food:checked+label.food08:before {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-position: 0px -312px;
+    width: 105px;
+    height: 105px
+}
+
+.search-filter .submit-container {
+    overflow: hidden;
+    height: 90px;
+    min-width: 800px;
+    width: 100%;
+}
+
+.search-filter .submit-container .btn {
+    display: block;
+    float: left;
+    width: 50%;
+    font-size: 1.438rem;
+    color: #ffffff;
+    line-height: 90px;
+    text-align: center;
+}
+
+.search-filter .submit-container .btn.cancel {
+    background-color: #cbcbcb;
+}
+
+.search-filter .submit-container .btn.submit {
+    background-color: #ff792a;
+}
+
+.pg-search .column-back {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 400px;
+    background-color: #f6f6f6;
+    height: 100%;
+}
+
+.pg-search .column-side {
+    overflow: hidden;
+    position: relative;
+    right: 0;
+    height: 100%;
+    width: 400px;
+    background-color: #f6f6f6;
+}
+
+.pg-search .map-container_wrap {
+    position: relative;
+}
+
+.pg-search .map-container {
+    display: block;
+    position: relative;
+    height: 485px;
+    width: 100%;
+}
+
+.pg-search .map-container_wrap .btn-map {
+    display: block;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 4;
+    width: 130px;
+    font-size: 1.000rem;
+    color: #ffffff;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 50px;
+    background-color: rgba(0,0,0,0.43);
+}
+
+.pg-search .map-container_wrap .btn-map:before {
+    content: '';
+    display: inline-block;
+    margin: -3px 8px 0 0;
+    vertical-align: middle;
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-position: -974px -896px;
+    width: 17px;
+    height: 12px;
+}
+
+.btn-type-round {
+    vertical-align: middle;
+    display: inline-block;
+    padding: 0 19px 0 19px;
+    font-size: 1.000rem;
+    color: #ff792a;
+    line-height: 46px;
+    text-align: center;
+    border: 2px solid #ff792a;
+    border-radius: 50px;
+    background-color: #fff;
+}
+
+.pg-search .map-container_wrap .reset {
+    /* display: none; */
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    z-index: 4;
+    margin-left: -125px;
+    width: 250px;
+}
+
+.pg-search .map-container_wrap .reset.show_reset_btn {
+    display: block;
+}
+
+.pg-search .map-container_wrap .no_result {
+    cursor: default;
+    display: none;
+}
+
+.pg-search .column-side>.inner {
+    box-sizing: border-box;
+    padding: 0 24px;
+    width: 400px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+.pg-search .module>.title {
+    font-size: 1.438rem;
+    color: #ff792a;
+    line-height: 1.2em;
+    text-align: left;
+    padding: 0;
 }
 
 /* 검색 페이지 끝 */
