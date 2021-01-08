@@ -7058,6 +7058,193 @@ span.orange-underline {
 }
 
 /* 리뷰 작성 페이지 끝 */
+
+/* 리뷰 상세페이지 시작 */
+
+body.ReviewDetailPage__Body {
+    min-width: 1200px;
+    background-color: #E9E9E9;
+}
+
+.ReviewDetailPage {
+    max-width: 600px;
+    margin: 61px auto 40px;
+    padding: 10px 15px;
+}
+
+.ReviewCard {
+    padding: 15px;
+    background-color: #FFFFFF;
+}
+
+.ReviewCard__Header {
+    display: flex;
+    flex-direction: row;
+}
+
+.ReviewCard__User {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    min-width: 0;
+}
+
+.ReviewCard__UserPicture {
+    width: 45px;
+    height: 45px;
+    margin-right: 10px;
+    border-radius: 100%;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+.ReviewCard__UserInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    min-width: 0;
+}
+
+.ReviewCard__UserNameWrap {
+    display: flex;
+    flex-direction: row;
+    margin: 0 10px 4px 0;
+    min-width: 0;
+}
+
+.ReviewCard__UserName {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    font-size: 16px;
+    color: #595959;
+}
+
+.ReviewCard__CountInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 12px;
+    color: #B1B1B1;
+}
+
+.ReviewCard__UserReviewCountInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.ReviewCard__UserReviewCountIcon {
+    background-image: url(../img/2018022864551sprites_mobile@2x.png);
+    background-size: 635px 609px;
+    background-position: -618px -558px;
+    width: 9px;
+    height: 9px;
+    margin-right: 5px;
+}
+
+.ReviewCard__UserFollowerCountInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.ReviewCard__UserFollowerCountIcon {
+    background-image: url(../img/2018022864551sprites_desktop.png);
+    background-position: -998px -729px;
+    width: 8px;
+    height: 8px;
+    margin-right: 5px;
+}
+
+.ReviewCard__Recommended {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+}
+
+.ReviewCard__RecommendedIcon {
+    width: 28px;
+    height: 28px;
+    margin: 0 auto 2px;
+    background-size: cover;
+}
+
+.ReviewCard__RecommendedIcon--Recommend {
+    background-image: url(../img/reviews_detail/restaurant_recommend_active_face.svg);
+}
+
+.ReviewCard__RecommendedText {
+    font-size: 12px;
+    text-align: center;
+    color: #ff7100;
+}
+
+.ReviewCard__RestaurantInfo {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    display: block;
+    margin: 6px 0 10px;
+    font-size: 13px;
+    line-height: 1.3;
+    color: #ff7100;
+}
+
+.ReviewCard__RestaurantName {
+    text-decoration: underline;
+}
+
+.ReviewCard__RestaurantMetro {
+    text-decoration: underline;
+}
+
+.ReviewCard__ReviewText {
+    word-break: break-word;
+    margin-bottom: 10px;
+    font-size: 15px;
+    line-height: 1.4;
+    color: #434343;
+}
+
+.ReviewCard__ReviewPictureContainer {
+    position: relative;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overflow-scrolling: touch;
+}
+
+.ReviewCard__ReviewPictureSlider {
+    font-size: 0;
+    line-height: 0;
+}
+
+.ReviewCard__ReviewPicture {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    margin-right: 6px;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.ReviewCard__Footer {
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+    color: #D9D9D9;
+}
+
+/* 리뷰 상세페이지 끝 */
 @media only screen and (min-width: 320px) and (max-width: 768px) {
     .only-desktop {
         display:none !important
