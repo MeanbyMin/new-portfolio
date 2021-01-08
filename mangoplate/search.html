@@ -1012,278 +1012,278 @@
             
                     <div class="inner">
                         <div class="column-module">
-                          <pagination-type-mobile page="page" last-page="last_page" is-active-first-button="page > 2" is-active-next-button="last_page > page &amp;&amp; max_page > page" is-active-prev-button="page > 1" on-click-first="handleClickFirstPaginationButton" on-click-next="handleClickNextPaginationButton" on-click-prev="handleClickPrevPaginationButton" class="ng-isolate-scope"><div class="PaginationTypeNextPrev">
-                  <div class="PaginationTypeNextPrev__Wrap">
-                    <button class="PaginationTypeNextPrev__Button PaginationTypeNextPrev__FirstButton" ng-click="handleClickFirstButton()" ng-class="{'PaginationTypeNextPrev__FirstButton--Active': isActiveFirstButton}">
-                    </button>
-                
-                    <button class="PaginationTypeNextPrev__Button PaginationTypeNextPrev__PrevButton" ng-click="handleClickPrevButton()" ng-class="{'PaginationTypeNextPrev__PrevButton--Active': isActivePrevButton}">
-                    </button>
-                
-                    <span class="PaginationTypeNextPrev__Page ng-binding"></span>
-                
-                    <button class="PaginationTypeNextPrev__Button PaginationTypeNextPrev__NextButton PaginationTypeNextPrev__NextButton--Active" ng-click="handleClickNextButton()" ng-class="{'PaginationTypeNextPrev__NextButton--Active': isActiveNextButton}">
-                    </button>
-                  </div>
-                </div>
-                </pagination-type-mobile>
-                
-                            
-                
-                
-                          <!-- 리스트 -->
-                          <section class="module related-list only-desktop" ng-show="relatedContentLoaded &amp;&amp; relatedContents &amp;&amp; relatedContents.length > 0">
-                            <span class="title">관련 콘텐츠</span>
-                
-                            <ul class="list-type-ls">
-                              <!-- ngRepeat: relatedContent in relatedContents | limitTo: 14 --><li ng-repeat="relatedContent in relatedContents | limitTo: 14" class="ng-scope">
-                                <a href="/top_lists/2736_gangbuk2021" ng-click="handleClickRelatedContent(relatedContent, keyword, $index)">
-                                  <figure class="ls-item">
-                                    <i class="sponsored-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType()) &amp;&amp; relatedContent.getIsSponsored()"></i>
-                
-                                    <div class="thumb">
-                                      <img class="center-croping  " ng-src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/2xuc1gbiojvpbah5.png?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80'" alt="relatedContent.getTitle() " picture-url="get_full_picture_url_by_akamai(relatedContent.getPictureURL(), 738, 738)" src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/2xuc1gbiojvpbah5.png?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80">
-                                    </div>
-                                    <figcaption class="info">
-                                      <div class="info_inner_wrap">
-                                        <i class="eatdeal-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType())"></i>
-                                        <span class="title small ng-binding">2021 강북 인기 맛집 TOP 100</span>
-                                        <p class="desc small ng-binding"><span class="ellip">"망고플레이트가 선정한 2021년에 꼭 가봐야 할 <span class="ellip-line">강북 맛집" </span></span></p>
-                                      </div>
-                                    </figcaption>
-                                  </figure>
-                                </a>
-                              </li><!-- end ngRepeat: relatedContent in relatedContents | limitTo: 14 --><li ng-repeat="relatedContent in relatedContents | limitTo: 14" class="ng-scope">
-                                <a href="/mango_picks/1946" ng-click="handleClickRelatedContent(relatedContent, keyword, $index)">
-                                  <figure class="ls-item">
-                                    <i class="sponsored-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType()) &amp;&amp; relatedContent.getIsSponsored()"></i>
-                
-                                    <div class="thumb">
-                                      <img class="center-croping  " ng-src="https://s3-ap-northeast-2.amazonaws.com/mp-seoul-image-production/265831/aesgchfjpud8yg.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80'" alt="relatedContent.getTitle() " picture-url="get_full_picture_url_by_akamai(relatedContent.getPictureURL(), 738, 738)" src="https://s3-ap-northeast-2.amazonaws.com/mp-seoul-image-production/265831/aesgchfjpud8yg.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80">
-                                    </div>
-                                    <figcaption class="info">
-                                      <div class="info_inner_wrap">
-                                        <i class="eatdeal-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType())"></i>
-                                        <span class="title small ng-binding">제주 인기 맛집 성수에 상륙! &lt;마구로 쇼쿠도&gt;</span>
-                                        <p class="desc small ng-binding"><span class="ellip"><span style="white-space: nowrap;">"입에서</span> <span style="white-space: nowrap;">사르르</span> <span style="white-space: nowrap;">녹는</span> <span style="white-space: nowrap;">참치회덮밥</span> <span style="white-space: nowrap;">맛집은</span> <span style="white-space: nowrap;">여기!"</span></span></p>
-                                      </div>
-                                    </figcaption>
-                                  </figure>
-                                </a>
-                              </li><!-- end ngRepeat: relatedContent in relatedContents | limitTo: 14 --><li ng-repeat="relatedContent in relatedContents | limitTo: 14" class="ng-scope">
-                                <a href="/mango_picks/1887" ng-click="handleClickRelatedContent(relatedContent, keyword, $index)">
-                                  <figure class="ls-item">
-                                    <i class="sponsored-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType()) &amp;&amp; relatedContent.getIsSponsored()"></i>
-                
-                                    <div class="thumb">
-                                      <img class="center-croping  " ng-src="https://s3-ap-northeast-2.amazonaws.com/mp-seoul-image-production/12280/fy1cntw3lwhgv_.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80'" alt="relatedContent.getTitle() " picture-url="get_full_picture_url_by_akamai(relatedContent.getPictureURL(), 738, 738)" src="https://s3-ap-northeast-2.amazonaws.com/mp-seoul-image-production/12280/fy1cntw3lwhgv_.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80">
-                                    </div>
-                                    <figcaption class="info">
-                                      <div class="info_inner_wrap">
-                                        <i class="eatdeal-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType())"></i>
-                                        <span class="title small ng-binding">찐- 인도 음식을 만나다! 성수동 인디카 </span>
-                                        <p class="desc small ng-binding"><span class="ellip"><span style="white-space: nowrap;">"여기가</span> <span style="white-space: nowrap;">인도인지</span> <span style="white-space: nowrap;">한국인지!"</span></span></p>
-                                      </div>
-                                    </figcaption>
-                                  </figure>
-                                </a>
-                              </li><!-- end ngRepeat: relatedContent in relatedContents | limitTo: 14 --><li ng-repeat="relatedContent in relatedContents | limitTo: 14" class="ng-scope">
-                                <a href="/mango_picks/1840" ng-click="handleClickRelatedContent(relatedContent, keyword, $index)">
-                                  <figure class="ls-item">
-                                    <i class="sponsored-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType()) &amp;&amp; relatedContent.getIsSponsored()"></i>
-                
-                                    <div class="thumb">
-                                      <img class="center-croping  " ng-src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/9opq2u1624xxy3.png?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80'" alt="relatedContent.getTitle() " picture-url="get_full_picture_url_by_akamai(relatedContent.getPictureURL(), 738, 738)" src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/9opq2u1624xxy3.png?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80">
-                                    </div>
-                                    <figcaption class="info">
-                                      <div class="info_inner_wrap">
-                                        <i class="eatdeal-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType())"></i>
-                                        <span class="title small ng-binding">성수동 핫플은 여기! 로스트성수</span>
-                                        <p class="desc small ng-binding"><span class="ellip"><span style="white-space: nowrap;">"기대보다</span> <span style="white-space: nowrap;">더</span> <span style="white-space: nowrap;">맛있는</span> <span style="white-space: nowrap;">음식과</span> <span style="white-space: nowrap;">와인!"</span></span></p>
-                                      </div>
-                                    </figcaption>
-                                  </figure>
-                                </a>
-                              </li><!-- end ngRepeat: relatedContent in relatedContents | limitTo: 14 --><li ng-repeat="relatedContent in relatedContents | limitTo: 14" class="ng-scope">
-                                <a href="/mango_picks/1833" ng-click="handleClickRelatedContent(relatedContent, keyword, $index)">
-                                  <figure class="ls-item">
-                                    <i class="sponsored-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType()) &amp;&amp; relatedContent.getIsSponsored()"></i>
-                
-                                    <div class="thumb">
-                                      <img class="center-croping  " ng-src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/y2inkosz9uit-s.png?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80'" alt="relatedContent.getTitle() " picture-url="get_full_picture_url_by_akamai(relatedContent.getPictureURL(), 738, 738)" src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/y2inkosz9uit-s.png?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80">
-                                    </div>
-                                    <figcaption class="info">
-                                      <div class="info_inner_wrap">
-                                        <i class="eatdeal-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType())"></i>
-                                        <span class="title small ng-binding">8월에 꼭! 가봐야 할 HOT &amp; NEW 맛집</span>
-                                        <p class="desc small ng-binding"><span class="ellip"><span style="white-space: nowrap;">"망고걸이</span> <span style="white-space: nowrap;">직접</span> <span style="white-space: nowrap;">다녀온</span> <span style="white-space: nowrap;">신상</span> <span style="white-space: nowrap;">맛집</span> <span style="white-space: nowrap;">나들이!"</span></span></p>
-                                      </div>
-                                    </figcaption>
-                                  </figure>
-                                </a>
-                              </li><!-- end ngRepeat: relatedContent in relatedContents | limitTo: 14 --><li ng-repeat="relatedContent in relatedContents | limitTo: 14" class="ng-scope">
-                                <a href="/top_lists/1340_sungsudong" ng-click="handleClickRelatedContent(relatedContent, keyword, $index)">
-                                  <figure class="ls-item">
-                                    <i class="sponsored-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType()) &amp;&amp; relatedContent.getIsSponsored()"></i>
-                
-                                    <div class="thumb">
-                                      <img class="center-croping  " ng-src="https://mp-seoul-image-production-s3.mangoplate.com/265831/yagoxhhjnokuwb.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80'" alt="relatedContent.getTitle() " picture-url="get_full_picture_url_by_akamai(relatedContent.getPictureURL(), 738, 738)" src="https://mp-seoul-image-production-s3.mangoplate.com/265831/yagoxhhjnokuwb.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80">
-                                    </div>
-                                    <figcaption class="info">
-                                      <div class="info_inner_wrap">
-                                        <i class="eatdeal-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType())"></i>
-                                        <span class="title small ng-binding">성수동 맛집 베스트 65곳</span>
-                                        <p class="desc small ng-binding"><span class="ellip"><span style="white-space: nowrap;">"성수동</span> <span style="white-space: nowrap;">가기</span> <span style="white-space: nowrap;">전</span> <span style="white-space: nowrap;">필수</span> <span style="white-space: nowrap;">메모!"</span></span></p>
-                                      </div>
-                                    </figcaption>
-                                  </figure>
-                                </a>
-                              </li><!-- end ngRepeat: relatedContent in relatedContents | limitTo: 14 --><li ng-repeat="relatedContent in relatedContents | limitTo: 14" class="ng-scope">
-                                <a href="/top_lists/1763_seoulforest" ng-click="handleClickRelatedContent(relatedContent, keyword, $index)">
-                                  <figure class="ls-item">
-                                    <i class="sponsored-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType()) &amp;&amp; relatedContent.getIsSponsored()"></i>
-                
-                                    <div class="thumb">
-                                      <img class="center-croping  " ng-src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/sakb75za_eto4efs.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80'" alt="relatedContent.getTitle() " picture-url="get_full_picture_url_by_akamai(relatedContent.getPictureURL(), 738, 738)" src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/sakb75za_eto4efs.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80">
-                                    </div>
-                                    <figcaption class="info">
-                                      <div class="info_inner_wrap">
-                                        <i class="eatdeal-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType())"></i>
-                                        <span class="title small ng-binding">서울숲 맛집 베스트 35곳</span>
-                                        <p class="desc small ng-binding"><span class="ellip"><span style="white-space: nowrap;">"요즘</span> <span style="white-space: nowrap;">가장</span> <span style="white-space: nowrap;">핫한,</span> <span style="white-space: nowrap;">서울숲</span> <span style="white-space: nowrap;">맛집</span> <span style="white-space: nowrap;">총정리!"</span></span></p>
-                                      </div>
-                                    </figcaption>
-                                  </figure>
-                                </a>
-                              </li><!-- end ngRepeat: relatedContent in relatedContents | limitTo: 14 --><li ng-repeat="relatedContent in relatedContents | limitTo: 14" class="ng-scope">
-                                <a href="/mango_picks/1773" ng-click="handleClickRelatedContent(relatedContent, keyword, $index)">
-                                  <figure class="ls-item">
-                                    <i class="sponsored-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType()) &amp;&amp; relatedContent.getIsSponsored()"></i>
-                
-                                    <div class="thumb">
-                                      <img class="center-croping  " ng-src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/mv8z2-dx8boklc.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80'" alt="relatedContent.getTitle() " picture-url="get_full_picture_url_by_akamai(relatedContent.getPictureURL(), 738, 738)" src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/mv8z2-dx8boklc.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80">
-                                    </div>
-                                    <figcaption class="info">
-                                      <div class="info_inner_wrap">
-                                        <i class="eatdeal-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType())"></i>
-                                        <span class="title small ng-binding">성수동 맛집 7곳</span>
-                                        <p class="desc small ng-binding"><span class="ellip"><span style="white-space: nowrap;">"성수동</span> <span style="white-space: nowrap;">HOT&amp;NEW</span> <span style="white-space: nowrap;">파헤치기!"</span></span></p>
-                                      </div>
-                                    </figcaption>
-                                  </figure>
-                                </a>
-                              </li><!-- end ngRepeat: relatedContent in relatedContents | limitTo: 14 --><li ng-repeat="relatedContent in relatedContents | limitTo: 14" class="ng-scope">
-                                <a href="/mango_picks/1739" ng-click="handleClickRelatedContent(relatedContent, keyword, $index)">
-                                  <figure class="ls-item">
-                                    <i class="sponsored-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType()) &amp;&amp; relatedContent.getIsSponsored()"></i>
-                
-                                    <div class="thumb">
-                                      <img class="center-croping  " ng-src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/rsg2ddqtvxrif-.png?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80'" alt="relatedContent.getTitle() " picture-url="get_full_picture_url_by_akamai(relatedContent.getPictureURL(), 738, 738)" src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/rsg2ddqtvxrif-.png?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80">
-                                    </div>
-                                    <figcaption class="info">
-                                      <div class="info_inner_wrap">
-                                        <i class="eatdeal-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType())"></i>
-                                        <span class="title small ng-binding">성수동 핫플은 여기! &lt;르프리크&gt;</span>
-                                        <p class="desc small ng-binding"><span class="ellip"><span style="white-space: nowrap;">"업무를</span> <span style="white-space: nowrap;">빙자한</span> <span style="white-space: nowrap;">망고걸이</span> <span style="white-space: nowrap;">간다!"</span></span></p>
-                                      </div>
-                                    </figcaption>
-                                  </figure>
-                                </a>
-                              </li><!-- end ngRepeat: relatedContent in relatedContents | limitTo: 14 --><li ng-repeat="relatedContent in relatedContents | limitTo: 14" class="ng-scope">
-                                <a href="/mango_picks/1721" ng-click="handleClickRelatedContent(relatedContent, keyword, $index)">
-                                  <figure class="ls-item">
-                                    <i class="sponsored-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType()) &amp;&amp; relatedContent.getIsSponsored()"></i>
-                
-                                    <div class="thumb">
-                                      <img class="center-croping  " ng-src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/tdmhru11c-9yc5.png?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80'" alt="relatedContent.getTitle() " picture-url="get_full_picture_url_by_akamai(relatedContent.getPictureURL(), 738, 738)" src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/tdmhru11c-9yc5.png?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80">
-                                    </div>
-                                    <figcaption class="info">
-                                      <div class="info_inner_wrap">
-                                        <i class="eatdeal-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType())"></i>
-                                        <span class="title small ng-binding">달콤함의 찬가! 성수동 &lt;오드투스윗&gt;</span>
-                                        <p class="desc small ng-binding"><span class="ellip"><span style="white-space: nowrap;">"들어가기만</span> <span style="white-space: nowrap;">해도</span> <span style="white-space: nowrap;">행복해지는</span> <span style="white-space: nowrap;">공간!"</span></span></p>
-                                      </div>
-                                    </figcaption>
-                                  </figure>
-                                </a>
-                              </li><!-- end ngRepeat: relatedContent in relatedContents | limitTo: 14 --><li ng-repeat="relatedContent in relatedContents | limitTo: 14" class="ng-scope">
-                                <a href="/top_lists/2256_gangbuk2020" ng-click="handleClickRelatedContent(relatedContent, keyword, $index)">
-                                  <figure class="ls-item">
-                                    <i class="sponsored-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType()) &amp;&amp; relatedContent.getIsSponsored()"></i>
-                
-                                    <div class="thumb">
-                                      <img class="center-croping  " ng-src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/kukjvoxkyg5pqfqm.png?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80'" alt="relatedContent.getTitle() " picture-url="get_full_picture_url_by_akamai(relatedContent.getPictureURL(), 738, 738)" src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/kukjvoxkyg5pqfqm.png?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80">
-                                    </div>
-                                    <figcaption class="info">
-                                      <div class="info_inner_wrap">
-                                        <i class="eatdeal-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType())"></i>
-                                        <span class="title small ng-binding">2020 강북 인기 맛집 TOP 100</span>
-                                        <p class="desc small ng-binding"><span class="ellip">"망고플레이트가 선정한 2020년에 꼭 가봐야 할 <span class="ellip-line">강북 맛집" </span></span></p>
-                                      </div>
-                                    </figcaption>
-                                  </figure>
-                                </a>
-                              </li><!-- end ngRepeat: relatedContent in relatedContents | limitTo: 14 --><li ng-repeat="relatedContent in relatedContents | limitTo: 14" class="ng-scope">
-                                <a href="/mango_picks/1645" ng-click="handleClickRelatedContent(relatedContent, keyword, $index)">
-                                  <figure class="ls-item">
-                                    <i class="sponsored-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType()) &amp;&amp; relatedContent.getIsSponsored()"></i>
-                
-                                    <div class="thumb">
-                                      <img class="center-croping  " ng-src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/wp9fsedqpiobds.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80'" alt="relatedContent.getTitle() " picture-url="get_full_picture_url_by_akamai(relatedContent.getPictureURL(), 738, 738)" src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/wp9fsedqpiobds.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80">
-                                    </div>
-                                    <figcaption class="info">
-                                      <div class="info_inner_wrap">
-                                        <i class="eatdeal-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType())"></i>
-                                        <span class="title small ng-binding">이게 바로 성수동 VIBE, 로우커피스탠드 </span>
-                                        <p class="desc small ng-binding"><span class="ellip"><span style="white-space: nowrap;">"업무를</span> <span style="white-space: nowrap;">빙자한</span> <span style="white-space: nowrap;">망고걸이</span> <span style="white-space: nowrap;">간다!"</span></span></p>
-                                      </div>
-                                    </figcaption>
-                                  </figure>
-                                </a>
-                              </li><!-- end ngRepeat: relatedContent in relatedContents | limitTo: 14 --><li ng-repeat="relatedContent in relatedContents | limitTo: 14" class="ng-scope">
-                                <a href="/mango_picks/1500" ng-click="handleClickRelatedContent(relatedContent, keyword, $index)">
-                                  <figure class="ls-item">
-                                    <i class="sponsored-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType()) &amp;&amp; relatedContent.getIsSponsored()"></i>
-                
-                                    <div class="thumb">
-                                      <img class="center-croping  " ng-src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/nkfhsddg8kmprb.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80'" alt="relatedContent.getTitle() " picture-url="get_full_picture_url_by_akamai(relatedContent.getPictureURL(), 738, 738)" src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/nkfhsddg8kmprb.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80">
-                                    </div>
-                                    <figcaption class="info">
-                                      <div class="info_inner_wrap">
-                                        <i class="eatdeal-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType())"></i>
-                                        <span class="title small ng-binding">핫하다! 성수동 핫플레이스 8곳</span>
-                                        <p class="desc small ng-binding"><span class="ellip"><span style="white-space: nowrap;">"이번주</span> <span style="white-space: nowrap;">봄</span> <span style="white-space: nowrap;">나들이는</span> <span style="white-space: nowrap;">성수동이다!"</span></span></p>
-                                      </div>
-                                    </figcaption>
-                                  </figure>
-                                </a>
-                              </li><!-- end ngRepeat: relatedContent in relatedContents | limitTo: 14 --><li ng-repeat="relatedContent in relatedContents | limitTo: 14" class="ng-scope">
-                                <a href="/top_lists/1866_seongdonggu" ng-click="handleClickRelatedContent(relatedContent, keyword, $index)">
-                                  <figure class="ls-item">
-                                    <i class="sponsored-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType()) &amp;&amp; relatedContent.getIsSponsored()"></i>
-                
-                                    <div class="thumb">
-                                      <img class="center-croping  " ng-src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/2av0st7qf5kvu8p2.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80'" alt="relatedContent.getTitle() " picture-url="get_full_picture_url_by_akamai(relatedContent.getPictureURL(), 738, 738)" src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/2av0st7qf5kvu8p2.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80">
-                                    </div>
-                                    <figcaption class="info">
-                                      <div class="info_inner_wrap">
-                                        <i class="eatdeal-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType())"></i>
-                                        <span class="title small ng-binding">성동구 맛집 베스트 30곳</span>
-                                        <p class="desc small ng-binding"><span class="ellip"><span style="white-space: nowrap;">"요즘</span> <span style="white-space: nowrap;">핫한</span> <span style="white-space: nowrap;">이</span> <span style="white-space: nowrap;">동네,</span> <span style="white-space: nowrap;">성동구!"</span></span></p>
-                                      </div>
-                                    </figcaption>
-                                  </figure>
-                                </a>
-                              </li><!-- end ngRepeat: relatedContent in relatedContents | limitTo: 14 -->
-                            </ul>
-                          </section>
-                
-                          <!-- detail SEO : 모바일 전용 -->
-                
-                          <!-- SEO detail : 데스크탑 전용 -->
-                
-                        </div>  <!-- class="column-module" -->
-                      </div>
+                            <pagination-type-mobile page="page" last-page="last_page" is-active-first-button="page > 2" is-active-next-button="last_page > page &amp;&amp; max_page > page" is-active-prev-button="page > 1" on-click-first="handleClickFirstPaginationButton" on-click-next="handleClickNextPaginationButton" on-click-prev="handleClickPrevPaginationButton" class="ng-isolate-scope"><div class="PaginationTypeNextPrev">
+                    <div class="PaginationTypeNextPrev__Wrap">
+                        <button class="PaginationTypeNextPrev__Button PaginationTypeNextPrev__FirstButton" ng-click="handleClickFirstButton()" ng-class="{'PaginationTypeNextPrev__FirstButton--Active': isActiveFirstButton}">
+                        </button>
+                    
+                        <button class="PaginationTypeNextPrev__Button PaginationTypeNextPrev__PrevButton" ng-click="handleClickPrevButton()" ng-class="{'PaginationTypeNextPrev__PrevButton--Active': isActivePrevButton}">
+                        </button>
+                    
+                        <span class="PaginationTypeNextPrev__Page ng-binding"></span>
+                    
+                        <button class="PaginationTypeNextPrev__Button PaginationTypeNextPrev__NextButton PaginationTypeNextPrev__NextButton--Active" ng-click="handleClickNextButton()" ng-class="{'PaginationTypeNextPrev__NextButton--Active': isActiveNextButton}">
+                        </button>
+                    </div>
+                    </div>
+                    </pagination-type-mobile>
+                    
+                                
+                    
+                    
+                            <!-- 리스트 -->
+                            <section class="module related-list only-desktop" ng-show="relatedContentLoaded &amp;&amp; relatedContents &amp;&amp; relatedContents.length > 0">
+                                <span class="title">관련 콘텐츠</span>
+                    
+                                <ul class="list-type-ls">
+                                <!-- ngRepeat: relatedContent in relatedContents | limitTo: 14 --><li ng-repeat="relatedContent in relatedContents | limitTo: 14" class="ng-scope">
+                                    <a href="/top_lists/2736_gangbuk2021" ng-click="handleClickRelatedContent(relatedContent, keyword, $index)">
+                                    <figure class="ls-item">
+                                        <i class="sponsored-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType()) &amp;&amp; relatedContent.getIsSponsored()"></i>
+                    
+                                        <div class="thumb">
+                                        <img class="center-croping  " ng-src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/2xuc1gbiojvpbah5.png?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80'" alt="relatedContent.getTitle() " picture-url="get_full_picture_url_by_akamai(relatedContent.getPictureURL(), 738, 738)" src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/2xuc1gbiojvpbah5.png?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80">
+                                        </div>
+                                        <figcaption class="info">
+                                        <div class="info_inner_wrap">
+                                            <i class="eatdeal-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType())"></i>
+                                            <span class="title small ng-binding">2021 강북 인기 맛집 TOP 100</span>
+                                            <p class="desc small ng-binding"><span class="ellip">"망고플레이트가 선정한 2021년에 꼭 가봐야 할 <span class="ellip-line">강북 맛집" </span></span></p>
+                                        </div>
+                                        </figcaption>
+                                    </figure>
+                                    </a>
+                                </li><!-- end ngRepeat: relatedContent in relatedContents | limitTo: 14 --><li ng-repeat="relatedContent in relatedContents | limitTo: 14" class="ng-scope">
+                                    <a href="/mango_picks/1946" ng-click="handleClickRelatedContent(relatedContent, keyword, $index)">
+                                    <figure class="ls-item">
+                                        <i class="sponsored-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType()) &amp;&amp; relatedContent.getIsSponsored()"></i>
+                    
+                                        <div class="thumb">
+                                        <img class="center-croping  " ng-src="https://s3-ap-northeast-2.amazonaws.com/mp-seoul-image-production/265831/aesgchfjpud8yg.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80'" alt="relatedContent.getTitle() " picture-url="get_full_picture_url_by_akamai(relatedContent.getPictureURL(), 738, 738)" src="https://s3-ap-northeast-2.amazonaws.com/mp-seoul-image-production/265831/aesgchfjpud8yg.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80">
+                                        </div>
+                                        <figcaption class="info">
+                                        <div class="info_inner_wrap">
+                                            <i class="eatdeal-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType())"></i>
+                                            <span class="title small ng-binding">제주 인기 맛집 성수에 상륙! &lt;마구로 쇼쿠도&gt;</span>
+                                            <p class="desc small ng-binding"><span class="ellip"><span style="white-space: nowrap;">"입에서</span> <span style="white-space: nowrap;">사르르</span> <span style="white-space: nowrap;">녹는</span> <span style="white-space: nowrap;">참치회덮밥</span> <span style="white-space: nowrap;">맛집은</span> <span style="white-space: nowrap;">여기!"</span></span></p>
+                                        </div>
+                                        </figcaption>
+                                    </figure>
+                                    </a>
+                                </li><!-- end ngRepeat: relatedContent in relatedContents | limitTo: 14 --><li ng-repeat="relatedContent in relatedContents | limitTo: 14" class="ng-scope">
+                                    <a href="/mango_picks/1887" ng-click="handleClickRelatedContent(relatedContent, keyword, $index)">
+                                    <figure class="ls-item">
+                                        <i class="sponsored-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType()) &amp;&amp; relatedContent.getIsSponsored()"></i>
+                    
+                                        <div class="thumb">
+                                        <img class="center-croping  " ng-src="https://s3-ap-northeast-2.amazonaws.com/mp-seoul-image-production/12280/fy1cntw3lwhgv_.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80'" alt="relatedContent.getTitle() " picture-url="get_full_picture_url_by_akamai(relatedContent.getPictureURL(), 738, 738)" src="https://s3-ap-northeast-2.amazonaws.com/mp-seoul-image-production/12280/fy1cntw3lwhgv_.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80">
+                                        </div>
+                                        <figcaption class="info">
+                                        <div class="info_inner_wrap">
+                                            <i class="eatdeal-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType())"></i>
+                                            <span class="title small ng-binding">찐- 인도 음식을 만나다! 성수동 인디카 </span>
+                                            <p class="desc small ng-binding"><span class="ellip"><span style="white-space: nowrap;">"여기가</span> <span style="white-space: nowrap;">인도인지</span> <span style="white-space: nowrap;">한국인지!"</span></span></p>
+                                        </div>
+                                        </figcaption>
+                                    </figure>
+                                    </a>
+                                </li><!-- end ngRepeat: relatedContent in relatedContents | limitTo: 14 --><li ng-repeat="relatedContent in relatedContents | limitTo: 14" class="ng-scope">
+                                    <a href="/mango_picks/1840" ng-click="handleClickRelatedContent(relatedContent, keyword, $index)">
+                                    <figure class="ls-item">
+                                        <i class="sponsored-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType()) &amp;&amp; relatedContent.getIsSponsored()"></i>
+                    
+                                        <div class="thumb">
+                                        <img class="center-croping  " ng-src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/9opq2u1624xxy3.png?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80'" alt="relatedContent.getTitle() " picture-url="get_full_picture_url_by_akamai(relatedContent.getPictureURL(), 738, 738)" src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/9opq2u1624xxy3.png?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80">
+                                        </div>
+                                        <figcaption class="info">
+                                        <div class="info_inner_wrap">
+                                            <i class="eatdeal-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType())"></i>
+                                            <span class="title small ng-binding">성수동 핫플은 여기! 로스트성수</span>
+                                            <p class="desc small ng-binding"><span class="ellip"><span style="white-space: nowrap;">"기대보다</span> <span style="white-space: nowrap;">더</span> <span style="white-space: nowrap;">맛있는</span> <span style="white-space: nowrap;">음식과</span> <span style="white-space: nowrap;">와인!"</span></span></p>
+                                        </div>
+                                        </figcaption>
+                                    </figure>
+                                    </a>
+                                </li><!-- end ngRepeat: relatedContent in relatedContents | limitTo: 14 --><li ng-repeat="relatedContent in relatedContents | limitTo: 14" class="ng-scope">
+                                    <a href="/mango_picks/1833" ng-click="handleClickRelatedContent(relatedContent, keyword, $index)">
+                                    <figure class="ls-item">
+                                        <i class="sponsored-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType()) &amp;&amp; relatedContent.getIsSponsored()"></i>
+                    
+                                        <div class="thumb">
+                                        <img class="center-croping  " ng-src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/y2inkosz9uit-s.png?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80'" alt="relatedContent.getTitle() " picture-url="get_full_picture_url_by_akamai(relatedContent.getPictureURL(), 738, 738)" src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/y2inkosz9uit-s.png?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80">
+                                        </div>
+                                        <figcaption class="info">
+                                        <div class="info_inner_wrap">
+                                            <i class="eatdeal-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType())"></i>
+                                            <span class="title small ng-binding">8월에 꼭! 가봐야 할 HOT &amp; NEW 맛집</span>
+                                            <p class="desc small ng-binding"><span class="ellip"><span style="white-space: nowrap;">"망고걸이</span> <span style="white-space: nowrap;">직접</span> <span style="white-space: nowrap;">다녀온</span> <span style="white-space: nowrap;">신상</span> <span style="white-space: nowrap;">맛집</span> <span style="white-space: nowrap;">나들이!"</span></span></p>
+                                        </div>
+                                        </figcaption>
+                                    </figure>
+                                    </a>
+                                </li><!-- end ngRepeat: relatedContent in relatedContents | limitTo: 14 --><li ng-repeat="relatedContent in relatedContents | limitTo: 14" class="ng-scope">
+                                    <a href="/top_lists/1340_sungsudong" ng-click="handleClickRelatedContent(relatedContent, keyword, $index)">
+                                    <figure class="ls-item">
+                                        <i class="sponsored-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType()) &amp;&amp; relatedContent.getIsSponsored()"></i>
+                    
+                                        <div class="thumb">
+                                        <img class="center-croping  " ng-src="https://mp-seoul-image-production-s3.mangoplate.com/265831/yagoxhhjnokuwb.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80'" alt="relatedContent.getTitle() " picture-url="get_full_picture_url_by_akamai(relatedContent.getPictureURL(), 738, 738)" src="https://mp-seoul-image-production-s3.mangoplate.com/265831/yagoxhhjnokuwb.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80">
+                                        </div>
+                                        <figcaption class="info">
+                                        <div class="info_inner_wrap">
+                                            <i class="eatdeal-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType())"></i>
+                                            <span class="title small ng-binding">성수동 맛집 베스트 65곳</span>
+                                            <p class="desc small ng-binding"><span class="ellip"><span style="white-space: nowrap;">"성수동</span> <span style="white-space: nowrap;">가기</span> <span style="white-space: nowrap;">전</span> <span style="white-space: nowrap;">필수</span> <span style="white-space: nowrap;">메모!"</span></span></p>
+                                        </div>
+                                        </figcaption>
+                                    </figure>
+                                    </a>
+                                </li><!-- end ngRepeat: relatedContent in relatedContents | limitTo: 14 --><li ng-repeat="relatedContent in relatedContents | limitTo: 14" class="ng-scope">
+                                    <a href="/top_lists/1763_seoulforest" ng-click="handleClickRelatedContent(relatedContent, keyword, $index)">
+                                    <figure class="ls-item">
+                                        <i class="sponsored-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType()) &amp;&amp; relatedContent.getIsSponsored()"></i>
+                    
+                                        <div class="thumb">
+                                        <img class="center-croping  " ng-src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/sakb75za_eto4efs.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80'" alt="relatedContent.getTitle() " picture-url="get_full_picture_url_by_akamai(relatedContent.getPictureURL(), 738, 738)" src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/sakb75za_eto4efs.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80">
+                                        </div>
+                                        <figcaption class="info">
+                                        <div class="info_inner_wrap">
+                                            <i class="eatdeal-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType())"></i>
+                                            <span class="title small ng-binding">서울숲 맛집 베스트 35곳</span>
+                                            <p class="desc small ng-binding"><span class="ellip"><span style="white-space: nowrap;">"요즘</span> <span style="white-space: nowrap;">가장</span> <span style="white-space: nowrap;">핫한,</span> <span style="white-space: nowrap;">서울숲</span> <span style="white-space: nowrap;">맛집</span> <span style="white-space: nowrap;">총정리!"</span></span></p>
+                                        </div>
+                                        </figcaption>
+                                    </figure>
+                                    </a>
+                                </li><!-- end ngRepeat: relatedContent in relatedContents | limitTo: 14 --><li ng-repeat="relatedContent in relatedContents | limitTo: 14" class="ng-scope">
+                                    <a href="/mango_picks/1773" ng-click="handleClickRelatedContent(relatedContent, keyword, $index)">
+                                    <figure class="ls-item">
+                                        <i class="sponsored-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType()) &amp;&amp; relatedContent.getIsSponsored()"></i>
+                    
+                                        <div class="thumb">
+                                        <img class="center-croping  " ng-src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/mv8z2-dx8boklc.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80'" alt="relatedContent.getTitle() " picture-url="get_full_picture_url_by_akamai(relatedContent.getPictureURL(), 738, 738)" src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/mv8z2-dx8boklc.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80">
+                                        </div>
+                                        <figcaption class="info">
+                                        <div class="info_inner_wrap">
+                                            <i class="eatdeal-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType())"></i>
+                                            <span class="title small ng-binding">성수동 맛집 7곳</span>
+                                            <p class="desc small ng-binding"><span class="ellip"><span style="white-space: nowrap;">"성수동</span> <span style="white-space: nowrap;">HOT&amp;NEW</span> <span style="white-space: nowrap;">파헤치기!"</span></span></p>
+                                        </div>
+                                        </figcaption>
+                                    </figure>
+                                    </a>
+                                </li><!-- end ngRepeat: relatedContent in relatedContents | limitTo: 14 --><li ng-repeat="relatedContent in relatedContents | limitTo: 14" class="ng-scope">
+                                    <a href="/mango_picks/1739" ng-click="handleClickRelatedContent(relatedContent, keyword, $index)">
+                                    <figure class="ls-item">
+                                        <i class="sponsored-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType()) &amp;&amp; relatedContent.getIsSponsored()"></i>
+                    
+                                        <div class="thumb">
+                                        <img class="center-croping  " ng-src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/rsg2ddqtvxrif-.png?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80'" alt="relatedContent.getTitle() " picture-url="get_full_picture_url_by_akamai(relatedContent.getPictureURL(), 738, 738)" src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/rsg2ddqtvxrif-.png?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80">
+                                        </div>
+                                        <figcaption class="info">
+                                        <div class="info_inner_wrap">
+                                            <i class="eatdeal-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType())"></i>
+                                            <span class="title small ng-binding">성수동 핫플은 여기! &lt;르프리크&gt;</span>
+                                            <p class="desc small ng-binding"><span class="ellip"><span style="white-space: nowrap;">"업무를</span> <span style="white-space: nowrap;">빙자한</span> <span style="white-space: nowrap;">망고걸이</span> <span style="white-space: nowrap;">간다!"</span></span></p>
+                                        </div>
+                                        </figcaption>
+                                    </figure>
+                                    </a>
+                                </li><!-- end ngRepeat: relatedContent in relatedContents | limitTo: 14 --><li ng-repeat="relatedContent in relatedContents | limitTo: 14" class="ng-scope">
+                                    <a href="/mango_picks/1721" ng-click="handleClickRelatedContent(relatedContent, keyword, $index)">
+                                    <figure class="ls-item">
+                                        <i class="sponsored-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType()) &amp;&amp; relatedContent.getIsSponsored()"></i>
+                    
+                                        <div class="thumb">
+                                        <img class="center-croping  " ng-src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/tdmhru11c-9yc5.png?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80'" alt="relatedContent.getTitle() " picture-url="get_full_picture_url_by_akamai(relatedContent.getPictureURL(), 738, 738)" src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/tdmhru11c-9yc5.png?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80">
+                                        </div>
+                                        <figcaption class="info">
+                                        <div class="info_inner_wrap">
+                                            <i class="eatdeal-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType())"></i>
+                                            <span class="title small ng-binding">달콤함의 찬가! 성수동 &lt;오드투스윗&gt;</span>
+                                            <p class="desc small ng-binding"><span class="ellip"><span style="white-space: nowrap;">"들어가기만</span> <span style="white-space: nowrap;">해도</span> <span style="white-space: nowrap;">행복해지는</span> <span style="white-space: nowrap;">공간!"</span></span></p>
+                                        </div>
+                                        </figcaption>
+                                    </figure>
+                                    </a>
+                                </li><!-- end ngRepeat: relatedContent in relatedContents | limitTo: 14 --><li ng-repeat="relatedContent in relatedContents | limitTo: 14" class="ng-scope">
+                                    <a href="/top_lists/2256_gangbuk2020" ng-click="handleClickRelatedContent(relatedContent, keyword, $index)">
+                                    <figure class="ls-item">
+                                        <i class="sponsored-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType()) &amp;&amp; relatedContent.getIsSponsored()"></i>
+                    
+                                        <div class="thumb">
+                                        <img class="center-croping  " ng-src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/kukjvoxkyg5pqfqm.png?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80'" alt="relatedContent.getTitle() " picture-url="get_full_picture_url_by_akamai(relatedContent.getPictureURL(), 738, 738)" src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/kukjvoxkyg5pqfqm.png?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80">
+                                        </div>
+                                        <figcaption class="info">
+                                        <div class="info_inner_wrap">
+                                            <i class="eatdeal-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType())"></i>
+                                            <span class="title small ng-binding">2020 강북 인기 맛집 TOP 100</span>
+                                            <p class="desc small ng-binding"><span class="ellip">"망고플레이트가 선정한 2020년에 꼭 가봐야 할 <span class="ellip-line">강북 맛집" </span></span></p>
+                                        </div>
+                                        </figcaption>
+                                    </figure>
+                                    </a>
+                                </li><!-- end ngRepeat: relatedContent in relatedContents | limitTo: 14 --><li ng-repeat="relatedContent in relatedContents | limitTo: 14" class="ng-scope">
+                                    <a href="/mango_picks/1645" ng-click="handleClickRelatedContent(relatedContent, keyword, $index)">
+                                    <figure class="ls-item">
+                                        <i class="sponsored-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType()) &amp;&amp; relatedContent.getIsSponsored()"></i>
+                    
+                                        <div class="thumb">
+                                        <img class="center-croping  " ng-src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/wp9fsedqpiobds.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80'" alt="relatedContent.getTitle() " picture-url="get_full_picture_url_by_akamai(relatedContent.getPictureURL(), 738, 738)" src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/wp9fsedqpiobds.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80">
+                                        </div>
+                                        <figcaption class="info">
+                                        <div class="info_inner_wrap">
+                                            <i class="eatdeal-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType())"></i>
+                                            <span class="title small ng-binding">이게 바로 성수동 VIBE, 로우커피스탠드 </span>
+                                            <p class="desc small ng-binding"><span class="ellip"><span style="white-space: nowrap;">"업무를</span> <span style="white-space: nowrap;">빙자한</span> <span style="white-space: nowrap;">망고걸이</span> <span style="white-space: nowrap;">간다!"</span></span></p>
+                                        </div>
+                                        </figcaption>
+                                    </figure>
+                                    </a>
+                                </li><!-- end ngRepeat: relatedContent in relatedContents | limitTo: 14 --><li ng-repeat="relatedContent in relatedContents | limitTo: 14" class="ng-scope">
+                                    <a href="/mango_picks/1500" ng-click="handleClickRelatedContent(relatedContent, keyword, $index)">
+                                    <figure class="ls-item">
+                                        <i class="sponsored-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType()) &amp;&amp; relatedContent.getIsSponsored()"></i>
+                    
+                                        <div class="thumb">
+                                        <img class="center-croping  " ng-src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/nkfhsddg8kmprb.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80'" alt="relatedContent.getTitle() " picture-url="get_full_picture_url_by_akamai(relatedContent.getPictureURL(), 738, 738)" src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/nkfhsddg8kmprb.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80">
+                                        </div>
+                                        <figcaption class="info">
+                                        <div class="info_inner_wrap">
+                                            <i class="eatdeal-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType())"></i>
+                                            <span class="title small ng-binding">핫하다! 성수동 핫플레이스 8곳</span>
+                                            <p class="desc small ng-binding"><span class="ellip"><span style="white-space: nowrap;">"이번주</span> <span style="white-space: nowrap;">봄</span> <span style="white-space: nowrap;">나들이는</span> <span style="white-space: nowrap;">성수동이다!"</span></span></p>
+                                        </div>
+                                        </figcaption>
+                                    </figure>
+                                    </a>
+                                </li><!-- end ngRepeat: relatedContent in relatedContents | limitTo: 14 --><li ng-repeat="relatedContent in relatedContents | limitTo: 14" class="ng-scope">
+                                    <a href="/top_lists/1866_seongdonggu" ng-click="handleClickRelatedContent(relatedContent, keyword, $index)">
+                                    <figure class="ls-item">
+                                        <i class="sponsored-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType()) &amp;&amp; relatedContent.getIsSponsored()"></i>
+                    
+                                        <div class="thumb">
+                                        <img class="center-croping  " ng-src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/2av0st7qf5kvu8p2.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80'" alt="relatedContent.getTitle() " picture-url="get_full_picture_url_by_akamai(relatedContent.getPictureURL(), 738, 738)" src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/2av0st7qf5kvu8p2.jpg?fit=around|738:738&amp;crop=738:738;*,*&amp;output-format=jpg&amp;output-quality=80">
+                                        </div>
+                                        <figcaption class="info">
+                                        <div class="info_inner_wrap">
+                                            <i class="eatdeal-badge ng-hide" ng-show="isEatDealCollectionType(relatedContent.getType())"></i>
+                                            <span class="title small ng-binding">성동구 맛집 베스트 30곳</span>
+                                            <p class="desc small ng-binding"><span class="ellip"><span style="white-space: nowrap;">"요즘</span> <span style="white-space: nowrap;">핫한</span> <span style="white-space: nowrap;">이</span> <span style="white-space: nowrap;">동네,</span> <span style="white-space: nowrap;">성동구!"</span></span></p>
+                                        </div>
+                                        </figcaption>
+                                    </figure>
+                                    </a>
+                                </li><!-- end ngRepeat: relatedContent in relatedContents | limitTo: 14 -->
+                                </ul>
+                            </section>
+                    
+                            <!-- detail SEO : 모바일 전용 -->
+                    
+                            <!-- SEO detail : 데스크탑 전용 -->
+                    
+                            </div>  <!-- class="column-module" -->
+                        </div>
                 </div>  <!-- class="column-side" -->
             </article>
         </main>
