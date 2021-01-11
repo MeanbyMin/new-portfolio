@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
-<body class="home_page" onunload="" style="overflow: hidden;">
+<body class="home_page" onunload="">
     <ul class="skipnavi">
         <li><a href="#container">본문내용</a></li>
     </ul>
@@ -75,7 +75,7 @@
                     </li>
                 </ul>
                 <!-- 프로필 팝업 창 -->
-                <div class="UserRestaurantHistory UserRestaurantHistory--Open">
+                <div class="UserRestaurantHistory">
                     <div class="UserRestaurantHistory__BlackDeem"></div>
                     
                         <div class="UserRestaurantHistory__Container">
@@ -1870,7 +1870,7 @@
     </div>
     <!-- wrap 끝 -->
     <!-- 로그인창 팝업 시작 -->
-    <aside class="pop-context pg-login" style="display: block;">
+    <aside class="pop-context pg-login" style="display: none;">
         <div class="contents-box">
             <button class="btn-nav-close" onclick="">
                 닫기
@@ -1897,7 +1897,7 @@
     </aside>
     <!-- 로그인창 팝업 끝 -->
     <!-- 로딩 -->
-    <div class="login_loading_area">
+    <div class="login_loading_area" style="display: block">
         <img src="./img/ldcyd5lxlvtlppe3.gif" alt="login loading bar"/>
     </div>
     
