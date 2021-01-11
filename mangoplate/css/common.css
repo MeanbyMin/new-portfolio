@@ -7003,6 +7003,9 @@ span.orange-underline {
     cursor: default;
 }
 
+/* 리뷰 작성 페이지 끝 */
+
+/* 팝업 로그인 시작 */
 .pop-context {
     position: fixed;
     top: 0;
@@ -7073,9 +7076,42 @@ span.orange-underline {
     text-align: center;
 }
 
+.btn-login {
+    display: block;
+    position: relative;
+    text-decoration: none;
+    width: 256px;
+    height: 51px;
+    margin: 0 auto 12px;
+    padding: 0;
+    color: #fff;
+    font-size: 14px;
+    line-height: 51px;
+    border-radius: 48px;
+}
+
+.btn-login:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 63px;
+    top: 50%;
+    left: 21px;
+    transform: translateY(-50%);
+}
+
 .btn-login.facebook {
     color: #ffffff;
     background-color: #4150bf;
+}
+
+.btn-login.facebook:before {
+    background-image: url(../img/2018022864551sprites_desktop.png);
+    background-position: -974px -615px;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
 }
 
 .btn-login .text {
@@ -7092,6 +7128,14 @@ span.orange-underline {
     background-color: #ffe809;
 }
 
+.btn-login.kakaotalk:before {
+    background-image: url(../img/2018022864551sprites_desktop.png);
+    background-position: -974px -641px;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+}
+
 .btn-login.kakaotalk .text {
     border-left: 1px solid rgba(68,53,53,0.3);
 }
@@ -7099,6 +7143,13 @@ span.orange-underline {
 .btn-login.apple {
     color: #ffffff;
     background-color: #000000;
+}
+
+.btn-login.apple:before {
+    background-image: url(../img/login-apple-logo.svg);
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
 }
 
 .btn-login:last-of-type {
@@ -7109,7 +7160,7 @@ span.orange-underline {
     border-left: 1px solid rgba(255,255,255,0.5);
 }
 
-/* 리뷰 작성 페이지 끝 */
+/* 팝업 로그인 끝 */
 
 /* 리뷰 상세페이지 시작 */
 
