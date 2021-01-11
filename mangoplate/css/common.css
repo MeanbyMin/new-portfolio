@@ -625,6 +625,8 @@ img {
     display: none
 }
 
+/* 유저 히스토리 시작 */
+
 .UserRestaurantHistory {
     display: none
 }
@@ -666,20 +668,12 @@ img {
 }
 
 .UserRestaurantHistory__TabList {
-    display: -moz-flex;
-    display: -ms-flexbox;
     display: flex;
-    display: -webkit-box;
-    display: -webkit-flex;
     height: 50px
 }
 
 .UserRestaurantHistory__TabItem {
-    display: -moz-flex;
-    display: -ms-flexbox;
     display: flex;
-    display: -webkit-box;
-    display: -webkit-flex;
     width: 50%
 }
 
@@ -734,6 +728,62 @@ img {
 
 .UserRestaurantHistory__RestaurantItem {
     position: relative
+}
+
+.RestaurantHorizontalItem {
+    display: flex;
+    height: 86px;
+    margin-bottom: 16px;
+}
+
+.RestaurantHorizontalItem__Picture {
+    width: 70px;
+    height: 70px;
+    margin-right: 16px;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-color: #E6E6E6;
+}
+
+.RestaurantHorizontalItem__Info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    margin-right: 15%;
+    line-height: 22px;
+}
+
+.RestaurantHorizontalItem__NameWrap {
+    display: flex;
+    flex-direction: row;
+}
+
+.RestaurantHorizontalItem__Name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    font-size: 16px;
+    color: #000000;
+}
+
+.RestaurantHorizontalItem__Rating {
+    margin-left: 5px;
+    font-size: 16px;
+    color: #ff792a;
+}
+
+.RestaurantHorizontalItem__MetroAndCuisine {
+    font-size: 12px;
+    color: #6a6a6a;
+}
+
+.RestaurantHorizontalItem__WannagoButton {
+    width: 28px;
+    height: 28px;
+    background: url(../img/btn_star_big.png) no-repeat;
+    cursor: pointer;
 }
 
 .UserRestaurantHistory__RestaurantItem--Dim {
@@ -842,6 +892,8 @@ img {
 .UserRestaurantHistory__LogoutButton--Show {
     display: block
 }
+
+/* 유저 히스토리 끝 */
 
 /* 메인 컨텐츠 */
 .main-header{
