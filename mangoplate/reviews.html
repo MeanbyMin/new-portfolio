@@ -8,6 +8,7 @@
     <!-- CSS styles -->
     <link rel="stylesheet" href="./css/common.css" type="text/css">
     <link href="../img/ico.png" rel="shortcut icon" type="image/x-icon">
+    <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
 </head>
 <body>
     <!-- 심플 헤더 -->
@@ -41,7 +42,7 @@
                         <div class="RestaurantRecommendPicker">
                         <ul class="RestaurantRecommendPicker__List">
                             <li class="RestaurantRecommendPicker__Item">
-                            <button class="RestaurantRecommendPicker__RecommendButton RestaurantRecommendPicker__RecommendButton--Recommend" data-recommend-type="3">
+                            <button class="RestaurantRecommendPicker__RecommendButton RestaurantRecommendPicker__RecommendButton--Recommend RestaurantRecommendPicker__RecommendButton--Active" data-recommend-type="3">
                                 <i class="RestaurantRecommendPicker__Image RestaurantRecommendPicker__Image--Recommend"></i>
                                 <span class="RestaurantRecommendPicker__LikeLabel">맛있다</span>
                             </button>
@@ -63,7 +64,7 @@
                         </ul>
                         </div>
                     </div>
-                    <textarea class="ReviewEditor__Editor"></textarea>
+                    <textarea class="ReviewEditor__Editor" maxlength="10000" placeholder="오석민님, 주문하신 메뉴는 어떠셨나요? 식당의 분위기와 서비스도 궁금해요!" style="overflow: hidden; overflow-wrap: break-word; height: 150px;"></textarea>
                     </div>
 
                     <p class="ReviewEditor__TextLengthStateBox">
