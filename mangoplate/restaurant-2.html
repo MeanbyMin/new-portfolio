@@ -12,7 +12,7 @@
     <link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
 </head>
-<body onunload="" ng-app="mp20App" class="ng-scope">
+<body onunload="" class="ng-scope" style="overflow: hidden;">
     <ul class="skipnavi">
         <li><a href="#container">본문내용</a></li>
     </ul>
@@ -175,7 +175,7 @@
         </div>
         <!-- 검색창 끝 -->
         <!-- 본문 시작 -->
-        <main class="pg-restaurant have-share-sns-another" ng-controller="mp20_restaurant_controller" data-restaurant_key="0ZBL14x1k0Re" data-restaurant_name="바위파스타바" data-metro_str="왕십리/성동" data-subcuisine_code_str="이탈리안" data-price_code_str="만원-2만원" data-parking_code_str="주차공간없음" data-review_count="34">
+        <main class="pg-restaurant have-share-sns-another">
             <article class="contents">
                 <!-- 레스토랑 상세 이미지 슬라이드 -->
                 <aside class="restaurant-photos">
@@ -1017,21 +1017,82 @@
     </aside>
     <!-- 로그인창 팝업 끝 -->
     <!-- 사진 더보기 팝업 시작 -->
-    <div id="mp20_gallery" class="">
+    <div id="mp20_gallery" class="on">
+        <style>
+        .fotorama1610457241136 .fotorama__nav--thumbs .fotorama__nav__frame {
+            padding:2px;
+            height:64px
+        }
+        .fotorama1610457241136 .fotorama__thumb-border {
+            height:60px;
+            border-width:2px;
+            margin-top:2px
+        }
+        </style>
+        <div class="fotorama--hidden"></div>
         <div class="picture_area fotorama" data-auto="false"></div>
-            <div class="ng-scope">
+        <div class="picture_area fotorama fotorama1610458249198" data-auto="false">
+            <div class="fotorama__wrap fotorama__wrap--css3 fotorama__wrap--slide fotorama__wrap--no-controls" style="width: 947.5px; min-width: 0px; max-width: 100%;">
+                <div class="fotorama__stage" style="width: 946px; height: 538px;">
+                    <div class="fotorama__stage__shaft fotorama__grab" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px); width: 946px; margin-left: 0px;">
+                        <div class="fotorama__stage__frame fotorama__loaded fotorama__loaded--img" style="left: 0;">
+                            <img src="https://mp-seoul-image-production-s3.mangoplate.com/1175978_1604733090427406.jpg" class="fotorama__img" style="width: 717.333px; height: 538px; left: 114.333px; top: 0px;">
+                        </div>
+                        <div class="fotorama__stage__frame fotorama__loaded fotorama__loaded--img fotorama__active" style="left: 0px;">
+                            <img src="https://mp-seoul-image-production-s3.mangoplate.com/411159/1013171_1600765976860_19391" class="fotorama__img" style="width: 717.333px; height: 538px; left: 114.333px; top: 0px;">
+                        </div>
+                    </div>
+                    <div class="fotorama__arr fotorama__arr--prev fotorama__arr--disabled" tabindex="-1" role="button" disabled="disabled"></div>
+                    <div class="fotorama__arr fotorama__arr--next" tabindex="0" role="button"></div>
+                    <div class="fotorama__video-close"></div>
+                </div>
+                <div class="fotorama__nav-wrap">
+                    <div class="fotorama__nav fotorama__nav--thumbs fotorama__shadows--right" style="width: 933px;">
+                        <div class="fotorama__nav__shaft fotorama__grab" style="transition-duration: 330ms; transform: translate3d(0px, 0px, 0px);">
+                            <div class="fotorama__thumb-border" style="transition-duration: 360ms; transform: translate3d(0px, 0px, 0px); width: 60px;"></div>
+                            <div class="fotorama__nav__frame fotorama__nav__frame--thumb fotorama__active" tabindex="0" role="button" style="width: 64px;">
+                                <div class="fotorama__thumb fotorama__loaded fotorama__loaded--img">
+                                    <img src="https://mp-seoul-image-production-s3.mangoplate.com/411159/1013171_1600765976860_19391?fit=around|66:68&amp;crop=66:68;*,*&amp;output-format=jpg&amp;output-quality=80" class="fotorama__img" style="width: 64px; height: 65.9394px; left: 0px; top: -0.969697px;">
+                                </div>
+                            </div>
+                            <div class="fotorama__nav__frame fotorama__nav__frame--thumb" tabindex="0" role="button" style="width: 64px;">
+                                <div class="fotorama__thumb fotorama__loaded fotorama__loaded--img">
+                                    <img src="https://mp-seoul-image-production-s3.mangoplate.com/1175978_1604733090427406.jpg?fit=around|66:68&amp;crop=66:68;*,*&amp;output-format=jpg&amp;output-quality=80" class="fotorama__img" style="width: 64px; height: 65.9394px; left: 0px; top: -0.969697px;">
+                                </div>
+                            </div>
+                            <div class="fotorama__nav__frame fotorama__nav__frame--thumb" tabindex="0" role="button" style="width: 64px;">
+                                <div class="fotorama__thumb fotorama__loaded fotorama__loaded--img">
+                                    <img src="https://mp-seoul-image-production-s3.mangoplate.com/1175978_1604733091287602.jpg?fit=around|66:68&amp;crop=66:68;*,*&amp;output-format=jpg&amp;output-quality=80" class="fotorama__img" style="width: 64px; height: 65.9394px; left: 0px; top: -0.969697px;">
+                                </div>
+                            </div>
+                            <div class="fotorama__nav__frame fotorama__nav__frame--thumb" tabindex="0" role="button" style="width: 64px;">
+                                <div class="fotorama__thumb fotorama__loaded fotorama__loaded--img">
+                                    <img src="https://mp-seoul-image-production-s3.mangoplate.com/1175978_1604733091592955.jpg?fit=around|66:68&amp;crop=66:68;*,*&amp;output-format=jpg&amp;output-quality=80" class="fotorama__img" style="width: 64px; height: 65.9394px; left: 0px; top: -0.969697px;">
+                                </div>
+                            </div>
+                            <div class="fotorama__nav__frame fotorama__nav__frame--thumb" tabindex="0" role="button" style="width: 64px;">
+                                <div class="fotorama__thumb fotorama__loaded fotorama__loaded--img">
+                                    <img src="https://mp-seoul-image-production-s3.mangoplate.com/1255396_1601195530253866.jpg?fit=around|66:68&amp;crop=66:68;*,*&amp;output-format=jpg&amp;output-quality=80" class="fotorama__img" style="width: 64px; height: 65.9394px; left: 0px; top: -0.969697px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ng-scope">
                 <div class="info_area">
                     <div class="resto_name ng-binding">바위파스타바</div>
                     <div class="header">
                         <div class="basic_review_area">
                             <div class="inner_header">
                             <div class="user_picture_area">
-                                <img class="user_picture" alt="Review User Image" src="">
+                                <img class="user_picture" alt="Review User Image" src="./img/user.jpeg">
                             </div>
         
                             <div class="user_profile">
                                 <p class="name_wrap">
-                                <span class="name ng-binding">작성자</span>
+                                <span class="name ng-binding">MeanbyMin</span>
                                 <span class="holic"></span>
                                 </p>
                                 <span class="stat">
@@ -1055,8 +1116,8 @@
         
                     <div class="body">
                         <div class="content_wrap ng-isolate-scope mCustomScrollbar _mCS_2 mCS-autoHide" style="position: relative; overflow: visible;">
-                            <div id="mCSB_2" class="mCustomScrollBox mCS-minimal-dark mCSB_vertical_horizontal mCSB_outside" tabindex="0" style="max-height: 0px;">
-                                <div id="mCSB_2_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position: relative; top: 0px; left: -100px; width: 100%;" dir="ltr">
+                            <div id="mCSB_2" class="mCustomScrollBox mCS-minimal-dark mCSB_vertical_horizontal mCSB_outside" tabindex="0" style="max-height: none;">
+                                <div id="mCSB_2_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position: relative; top: 0px; left: 0px; width: 100%;" dir="ltr">
                                     <div class="content">
                                         <a class="source ng-binding ng-hide">
                                             내용 작성 부분
@@ -1065,7 +1126,7 @@
                                         <a ng-href="" target="_blank" class="source ng-binding ng-hide"></a>
                             
                                         <span class="review_content ng-binding">
-                                            내용 작성 부분
+                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil labore quis sed enim quisquam voluptatum eveniet culpa magnam, dolorum natus totam molestiae voluptate! Aspernatur rem temporibus excepturi quod.
                                         </span>
             
                                         <button class="translate_btn ng-binding ng-hide">번역 보기</button>
@@ -1076,7 +1137,7 @@
                             </div>
                             <div id="mCSB_2_scrollbar_vertical" class="mCSB_scrollTools mCSB_2_scrollbar mCS-minimal-dark mCSB_scrollTools_vertical" style="display: none;">
                                 <div class="mCSB_draggerContainer">
-                                    <div id="mCSB_2_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 50px; top: 0px; display: block; height: 210px; max-height: 352px;">
+                                    <div id="mCSB_2_dragger_vertical" class="mCSB_dragger">
                                         <div class="mCSB_dragger_bar" style="line-height: 50px;"></div>
                                     </div>
                                     <div class="mCSB_draggerRail"></div>
@@ -1084,7 +1145,7 @@
                             </div>
                             <div id="mCSB_2_scrollbar_horizontal" class="mCSB_scrollTools mCSB_2_scrollbar mCS-minimal-dark mCSB_scrollTools_horizontal" style="display: block;">
                                 <div class="mCSB_draggerContainer">
-                                    <div id="mCSB_2_dragger_horizontal" class="mCSB_dragger" style="position: absolute; min-width: 50px; display: block; width: 0px; left: 0px;">
+                                    <div id="mCSB_2_dragger_horizontal" class="mCSB_dragger">
                                         <div class="mCSB_dragger_bar"></div>
                                     </div>
                                     <div class="mCSB_draggerRail"></div>
@@ -1106,6 +1167,7 @@
                 </button>
         </div>
     </div>
+    <div class="black_screen"></div>
     <!-- 사진 더보기 팝업 끝 -->
     <!-- 로딩 -->
     <div class="login_loading_area">

@@ -5873,6 +5873,10 @@ img.center-crop.portrait {
 
 /* 상세페이지 시작 */
 
+.pg-restaurant .contents {
+    padding-top: 61px;
+}
+
 .pg-restaurant article.contents {
     position: relative;
 }
@@ -6518,8 +6522,8 @@ img.center-crop.portrait {
 }
 
 .RestaurantReviewList__Empty {
-    /* display: none; */
-    display: block;
+    display: none;
+    /* display: block; */
     padding: 70px 0 150px;
     font-size: 21px;
     line-height: 1.4;
@@ -6899,6 +6903,681 @@ span.orange-underline {
 
 .pg-restaurant .restaurnat_footer {
     display: none;
+}
+
+/* 사진 더 보기 팝업 */
+
+#mp20_gallery {
+    position: fixed;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    z-index: 1001;
+    border-radius: 10px;
+    display: none;
+}
+
+#mp20_gallery.on {
+    display: block;
+}
+
+.fotorama--hidden, .fotorama__load {
+    position: absolute;
+    left: -99999px;
+    top: -99999px;
+    z-index: -1;
+}
+
+.fotorama {
+    min-width: 1px;
+    overflow: hidden;
+}
+
+#mp20_gallery .picture_area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 350px;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    padding: 30px 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.fotorama__arr, .fotorama__fullscreen-icon, .fotorama__no-select, .fotorama__video-close, .fotorama__video-play, .fotorama__wrap {
+    user-select: none;
+}
+
+.fotorama__wrap {
+    -webkit-text-size-adjust: 100%;
+    position: relative;
+    direction: ltr;
+    z-index: 0;
+}
+
+.fotorama__nav, .fotorama__stage {
+    overflow: hidden;
+    position: relative;
+    max-width: 100%;
+}
+
+.fotorama__caption, .fotorama__nav:after, .fotorama__nav:before, .fotorama__stage:after, .fotorama__stage:before, .fotorama__wrap--css3 .fotorama__html, .fotorama__wrap--css3 .fotorama__nav, .fotorama__wrap--css3 .fotorama__spinner, .fotorama__wrap--css3 .fotorama__stage, .fotorama__wrap--css3 .fotorama__stage .fotorama__img, .fotorama__wrap--css3 .fotorama__stage__frame {
+    transform: translateZ(0);
+}
+
+.fotorama__nav:after, .fotorama__nav:before, .fotorama__stage:after, .fotorama__stage:before {
+    content: "";
+    display: block;
+    position: absolute;
+    text-decoration: none;
+    top: 0;
+    bottom: 0;
+    width: 10px;
+    height: auto;
+    z-index: 10;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-size: 1px 100%, 5px 100%;
+}
+
+.fotorama__nav:before, .fotorama__stage:before {
+    background-image: linear-gradient(transparent, rgba(0,0,0,0.2) 25%, rgba(0,0,0,0.3) 75%, transparent),radial-gradient(farthest-side at 0 50%, rgba(0,0,0,0.4), transparent);
+    background-position: 0 0, 0 0;
+    left: -10px;
+}
+
+.fotorama__arr:focus:after, .fotorama__fullscreen-icon:focus:after, .fotorama__html, .fotorama__img, .fotorama__nav__frame:focus .fotorama__dot:after, .fotorama__nav__frame:focus .fotorama__thumb:after, .fotorama__stage__frame, .fotorama__stage__shaft, .fotorama__video iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.fotorama__arr, .fotorama__fullscreen-icon, .fotorama__nav, .fotorama__nav__frame, .fotorama__nav__shaft, .fotorama__stage__frame, .fotorama__stage__shaft, .fotorama__video-close, .fotorama__video-play {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.fotorama__wrap .fotorama__grab {
+    cursor: move;
+    cursor: grab;
+}
+
+.fotorama__wrap--css3 .fotorama__arr, .fotorama__wrap--css3 .fotorama__fullscreen-icon, .fotorama__wrap--css3 .fotorama__nav__shaft, .fotorama__wrap--css3 .fotorama__stage__shaft, .fotorama__wrap--css3 .fotorama__thumb-border, .fotorama__wrap--css3 .fotorama__video-close, .fotorama__wrap--css3 .fotorama__video-play {
+    transform: translate3d(0, 0, 0);
+}
+
+.fotorama__wrap--css3 .fotorama__nav__shaft, .fotorama__wrap--css3 .fotorama__stage__shaft, .fotorama__wrap--css3 .fotorama__thumb-border {
+    transition-property: transform, width;
+    transition-timing-function: cubic-bezier(0.1, 0, 0.25, 1);
+    transition-duration: 0ms;
+}
+
+.fotorama__stage__frame {
+    overflow: hidden;
+}
+
+.fotorama__caption, .fotorama__nav:after, .fotorama__nav:before, .fotorama__stage:after, .fotorama__stage:before, .fotorama__wrap--css3 .fotorama__html, .fotorama__wrap--css3 .fotorama__nav, .fotorama__wrap--css3 .fotorama__spinner, .fotorama__wrap--css3 .fotorama__stage, .fotorama__wrap--css3 .fotorama__stage .fotorama__img, .fotorama__wrap--css3 .fotorama__stage__frame {
+    transform: translateZ(0);
+}
+
+.fotorama__wrap--slide .fotorama__stage__frame {
+    opacity: 1 !important;
+}
+
+.fotorama__wrap--css3 .fotorama__html, .fotorama__wrap--css3 .fotorama__stage .fotorama__img {
+    transition-property: opacity;
+    transition-timing-function: linear;
+    transition-duration: 0.3s;
+}
+
+.fotorama__stage__frame.fotorama__active {
+    z-index: 8;
+}
+
+.fotorama__arr, .fotorama__fullscreen-icon, .fotorama__video-close, .fotorama__video-play {
+    position: absolute;
+    z-index: 11;
+    cursor: pointer;
+}
+
+.fotorama__arr {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    top: 50%;
+    margin-top: -16px;
+}
+
+.fotorama__arr--prev {
+    left: 2px;
+    background-position: 0 0;
+}
+
+.fotorama__arr--disabled {
+    pointer-events: none;
+    cursor: default;
+    *display: none;
+    opacity: 0.1;
+}
+
+.fotorama__arr.fotorama__arr--prev, .fotorama__fullscreen-icon.fotorama__arr--prev, .fotorama__video-close.fotorama__arr--prev, .fotorama__video-play.fotorama__arr--prev {
+    background: url(../img/2018022864551sprites_desktop.png) -935px -281px;
+    width: 28px;
+    height: 45px;
+    opacity: .5;
+    margin-left: 10px;
+}
+
+.fotorama__arr.fotorama__arr--next, .fotorama__fullscreen-icon.fotorama__arr--next, .fotorama__video-close.fotorama__arr--next, .fotorama__video-play.fotorama__arr--next {
+    background: url(../img/2018022864551sprites_desktop.png) -935px -332px;
+    width: 28px;
+    height: 45px;
+    opacity: .5;
+    margin-right: 10px;
+}
+
+.fotorama__wrap--css3 .fotorama__arr:not(:focus), .fotorama__wrap--css3 .fotorama__fullscreen-icon:not(:focus), .fotorama__wrap--css3 .fotorama__video-close:not(:focus), .fotorama__wrap--css3 .fotorama__video-play:not(:focus) {
+    transition-property: transform, opacity;
+    transition-duration: 0.3s;
+}
+
+.fotorama__wrap--css3 .fotorama__video-close {
+    -webkit-transform: translate3d(32px, -32px, 0);
+    transform: translate3d(32px, -32px, 0);
+}
+
+.fotorama__wrap .fotorama__nav-wrap {
+    cursor: pointer;
+    margin-top: 3%;
+}
+
+.fotorama__caption__wrap, .fotorama__nav__frame, .fotorama__nav__shaft {
+    -moz-box-orient: vertical;
+    display: inline-block;
+    vertical-align: middle;
+    *display: inline;
+    *zoom: 1;
+}
+
+.fotorama__nav__shaft {
+    position: relative;
+    left: 0;
+    top: 0;
+    text-align: left;
+}
+
+.fotorama__nav__frame, .fotorama__thumb-border {
+    box-sizing: content-box;
+}
+
+.fotorama__thumb-border {
+    display: none;
+    position: absolute;
+    z-index: 9;
+    top: 0;
+    left: 0;
+    border-style: solid;
+    border-color: #00afea;
+    background-image: linear-gradient(to bottom right, rgba(255,255,255,0.25), rgba(64,64,64,0.1));
+}
+
+.fotorama1610458249198 .fotorama__thumb-border {
+    height: 60px;
+    border-width: 2px;
+    margin-top: 2px;
+}
+
+.fotorama__arr:focus, .fotorama__fullscreen-icon:focus, .fotorama__nav__frame {
+    outline: 0;
+}
+
+.fotorama__nav, .fotorama__nav__frame {
+    margin: auto;
+    padding: 0;
+}
+
+.fotorama__nav__frame {
+    position: relative;
+    cursor: pointer;
+}
+
+.fotorama__nav--thumbs .fotorama__nav__frame {
+    padding-left: 0 !important;
+}
+
+.fotorama1610458249198 .fotorama__nav--thumbs .fotorama__nav__frame {
+    padding: 2px;
+    height: 64px;
+}
+
+.fotorama__thumb {
+    background-color: #7f7f7f;
+    background-color: rgba(127,127,127,0.2);
+}
+
+.fotorama__thumb {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.fotorama--fullscreen, .fotorama__img {
+    max-width: 99999px !important;
+    max-height: 99999px !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+.fotorama__img {
+    filter: alpha(opacity=0);
+    opacity: 0;
+    border: none !important;
+}
+
+.fotorama__error .fotorama__img, .fotorama__loaded .fotorama__img {
+    filter: alpha(opacity=100);
+    opacity: 1;
+}
+
+.fotorama__nav--thumbs .fotorama__nav__frame:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 1;
+    opacity: .5;
+}
+
+.fotorama__active::before {
+    display: none;
+}
+
+#mp20_gallery .info_area {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 350px;
+    height: 100%;
+    background-color: white;
+    border-radius: 0 4px 4px 0;
+    overflow: hidden;
+}
+
+#mp20_gallery .info_area .resto_name {
+    padding: 8px 14px;
+    font-size: .8rem;
+    border-radius: 0 4px 0 0;
+    color: #555;
+    border-bottom: 1px solid #f2f2f2;
+    text-align: left;
+    word-break: break-word;
+}
+
+#mp20_gallery .info_area .header {
+    padding: 5px 16px 0;
+}
+
+#mp20_gallery .info_area .header .inner_header {
+    overflow: hidden;
+}
+
+#mp20_gallery .info_area .header .inner_header .user_picture_area {
+    float: left;
+    text-align: center;
+}
+
+#mp20_gallery .info_area .header .inner_header .user_picture_area .user_picture {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+#mp20_gallery .info_area .header .user_profile {
+    display: inline-block;
+    width: 65%;
+    padding: 6px 0 0 6px;
+}
+
+#mp20_gallery .info_area .header .user_profile .name_wrap {
+    font-size: .85rem;
+}
+
+#mp20_gallery .info_area .header .user_profile .name_wrap .name {
+    display: inline-block;
+    word-break: break-all;
+    vertical-align: top;
+}
+
+#mp20_gallery .info_area .header .user_profile .holic {
+    display: inline-block;
+    margin-left: 4px;
+    background: url(../img/restaurant/holic.svg) no-repeat;
+    width: 37px;
+    height: 15px;
+    background-size: 100%;
+}
+
+#mp20_gallery .info_area .header .user_profile .stat {
+    font-size: .75rem;
+    color: #777;
+    display: block;
+    margin: 0;
+    width: 70px;
+    font-size: 0.625rem;
+    color: #cbcbcb;
+    text-align: center;
+    text-align: left;
+}
+
+em {
+    font-style: normal;
+}
+
+#mp20_gallery .info_area .header .user_profile .stat em {
+    margin: 0;
+    font-size: 0.625rem;
+}
+
+#mp20_gallery .info_area .header .user_profile .stat em:before {
+    content: '';
+    display: inline-block;
+    margin: -2px 1px 0 2px;
+    vertical-align: middle;
+}
+
+#mp20_gallery .info_area .header .user_profile .stat em.review:before {
+    background-image: url(../img/2018022864551sprites_desktop.png);
+    background-position: -996px -600px;
+    width: 9px;
+    height: 8px;
+}
+
+#mp20_gallery .hidden {
+    display: none;
+}
+
+#mp20_gallery .info_area .header .user_profile .stat em.hit:before {
+    background-image: url(../img/2018022864551sprites_desktop.png);
+    background-position: -998px -729px;
+    width: 8px;
+    height: 8px;
+}
+
+#mp20_gallery .info_area .header .rating_area {
+    float: right;
+}
+
+#mp20_gallery .info_area .header .rating_area .rating {
+    display: inline-block;
+}
+
+#mp20_gallery .info_area .header .rating_area .rating.good {
+    background-image: url(../img/2018022864551sprites_mobile@2x.png);
+    background-size: 635px 609px;
+    background-position: -102px -539px;
+    width: 30px;
+    height: 30px;
+}
+
+#mp20_gallery .info_area .header .rating_area .rating_str {
+    color: #ff792a;
+    font-size: .75rem;
+    text-align: center;
+}
+
+#mp20_gallery .info_area .body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+#mp20_gallery .info_area .content_wrap {
+    flex: 1 0 100px;
+    padding: 0 16px;
+    overflow: hidden !important;
+    margin-bottom: 30px;
+}
+
+.mCustomScrollBox {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    max-width: 100%;
+    outline: 0;
+    direction: ltr;
+}
+
+.mCSB_container {
+    overflow: hidden;
+    width: auto;
+    height: auto;
+}
+
+#mp20_gallery .info_area .content {
+    margin-top: 20px;
+    font-size: .85rem;
+    letter-spacing: .2px;
+    line-height: 1.2rem;
+    overflow: auto;
+    color: rgba(51,51,51,0.8);
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
+    display: none !important;
+}
+
+#mp20_gallery .info_area .content .source {
+    word-wrap: break-word;
+    text-decoration: underline;
+    color: #999;
+}
+
+#mp20_gallery .info_area .content .review_content {
+    display: inline-block;
+    word-break: break-all;
+}
+
+#mp20_gallery .info_area .content .translate_btn {
+    display: block;
+    line-height: 1;
+    margin-top: 10px;
+    margin-bottom: 14px;
+    padding-bottom: 3px;
+    font-size: 13px;
+    border-bottom: solid 1px #9c9c9c;
+    color: #9c9c9c;
+}
+
+#mp20_gallery .info_area .regist_date {
+    margin-top: 20px;
+    font-size: .75rem;
+    color: #777;
+}
+
+.mCSB_scrollTools {
+    position: absolute;
+    width: 16px;
+    height: auto;
+    left: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: .75;
+    filter: "alpha(opacity=75)";
+}
+
+.mCSB_scrollTools, .mCSB_scrollTools .mCSB_buttonDown, .mCSB_scrollTools .mCSB_buttonLeft, .mCSB_scrollTools .mCSB_buttonRight, .mCSB_scrollTools .mCSB_buttonUp, .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+    transition: opacity .2s ease-in-out,background-color .2s ease-in-out;
+}
+
+.mCSB_outside+.mCSB_scrollTools {
+    right: -26px;
+}
+
+.mCS-autoHide>.mCustomScrollBox>.mCSB_scrollTools, .mCS-autoHide>.mCustomScrollBox ~ .mCSB_scrollTools {
+    opacity: 0;
+    filter: "alpha(opacity=0)";
+}
+
+.mCSB_outside+.mCS-minimal-dark.mCSB_scrollTools_vertical, .mCSB_outside+.mCS-minimal.mCSB_scrollTools_vertical {
+    right: 0;
+    margin: 12px 0;
+}
+
+.mCSB_scrollTools .mCSB_draggerContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: auto;
+}
+
+.mCSB_scrollTools .mCSB_dragger {
+    cursor: pointer;
+    width: 100%;
+    height: 30px;
+    z-index: 1;
+}
+
+.mCS-minimal-dark.mCSB_scrollTools_vertical .mCSB_dragger, .mCS-minimal.mCSB_scrollTools_vertical .mCSB_dragger {
+    height: 50px;
+}
+
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+    position: relative;
+    width: 4px;
+    height: 100%;
+    margin: 0 auto;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+    background-color: #fff;
+    background-color: rgba(255,255,255,0.75);
+    filter: "alpha(opacity=75)";
+}
+
+.mCS-minimal-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+    background-color: #000;
+    background-color: rgba(0,0,0,0.2);
+    filter: "alpha(opacity=20)";
+}
+
+.mCSB_scrollTools .mCSB_draggerRail {
+    width: 2px;
+    height: 100%;
+    margin: 0 auto;
+    border-radius: 16px;
+}
+
+.mCSB_scrollTools .mCSB_draggerRail {
+    background-color: #000;
+    background-color: rgba(0,0,0,0.4);
+    filter: "alpha(opacity=40)";
+}
+
+.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_draggerRail, .mCS-minimal-dark.mCSB_scrollTools .mCSB_draggerRail, .mCS-minimal.mCSB_scrollTools .mCSB_draggerRail {
+    background-color: transparent;
+}
+
+#mp20_gallery .close_btn {
+    position: absolute;
+    top: -10px;
+    right: -40px;
+}
+
+#mp20_gallery .close_btn .close_icon {
+display: inline-block;
+background-image: url(../img/2018022864551sprites_mobile@2x.png);
+background-size: 635px 609px;
+background-position: -28px -587px;
+width: 21px;
+height: 21px;
+}
+
+#mp20_gallery+.black_screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .6;
+    z-index: auto;
+    z-index: 1000;
+    background-color: black;
+    display: none;
+}
+
+#mp20_gallery.on+.black_screen {
+    display: block;
+}
+
+/* 상세페이지 지도 크게 팝업 시작 */
+
+.mp20_map_popup {
+    width: 90%;
+    height: 90%;
+    position: fixed;
+    z-index: 1001;
+    display: none;
+    min-width: 700px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.mp20_map_popup.open {
+    display: block;
+}
+
+.mp20_map_popup .map_area {
+    height: 100%;
+    border-radius: 3px;
+}
+
+.mp20_map_popup .close_btn {
+    background-image: url(../img/2018022864551sprites_mobile@2x.png);
+    background-size: 635px 609px;
+    background-position: -28px -587px;
+    width: 21px;
+    height: 21px;
+    position: fixed;
+    top: -30px;
+    right: 0;
+    z-index: 2000;
+}
+
+.mp20_map_popup+.black_screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .6;
+    background-color: black;
+    display: none;
+    z-index: 1000;
+}
+
+.mp20_map_popup.open+.black_screen {
+    display: block;
 }
 
 /* 상세페이지 끝 */
