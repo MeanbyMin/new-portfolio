@@ -3030,6 +3030,166 @@ footer.footer small a {
 
 /* EAT딜 상세 페이지 끝 */
 
+/* 앱 다운로드 레이어 시작 */
+
+.AppDownloadLayer {
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 1001;
+    display: none;
+    width: 360px;
+    height: 460px;
+    overflow: hidden;
+}
+
+.AppDownloadLayer--Show {
+    display: block;
+}
+
+.AppDownloadLayer__Container {
+    position: relative;
+    background-color: #ffffff;
+}
+
+.AppDownloadLayer__CloseBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    padding: 15px;
+}
+
+.AppDownloadLayer__CloseIcon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url(../img/EatDealDetail/pc-popup-closed.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.AppDownloadLayer__Content {
+    position: relative;
+    display: block;
+    height: 304px;
+    background-image: url(../img/EatDealDetail/pc-app-download-bg.svg);
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.AppDownloadLayer__Phone {
+    transform: translateX(-50%);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 218px;
+    height: 241px;
+    margin: 0 auto;
+    background-image: url(../img/EatDealDetail/pc-app-download-phone.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.AppDownloadLayer__PhoneContent {
+    transform: translateX(-50%);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 100%;
+}
+
+.AppDownloadLayer__Description {
+    display: block;
+    width: 85%;
+    margin: 0 auto 30px;
+    font-size: 15px;
+    line-height: 20px;
+    text-align: center;
+    font-weight: normal;
+    color: #ff7100;
+}
+
+.AppDownloadLayer__DescriptionBold {
+    font-weight: bold;
+}
+
+.AppDownloadLayer__Logo {
+    display: block;
+    width: 68px;
+    height: 68px;
+    margin: 0 auto 30px;
+    background-image: url(../img/EatDealDetail/pc-app-download-logo.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.AppDownloadLayer__Buttons {
+    height: 156px;
+    padding-top: 32px;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-color: #FFFFFF;
+}
+
+.AppDownloadLayer__AppBtn {
+    display: none;
+    width: 135px;
+    height: 40px;
+    margin: 0 auto;
+    background-size: cover;
+}
+
+.AppDownloadLayer__AppBtn--Show {
+    display: block;
+}
+
+.AppDownloadLayer__AppBtnAndroid {
+    background-image: url(../img/EatDealDetail/oigm7vftuhfo1iqu.png);
+}
+
+.AppDownloadLayer__AppBtnIOS {
+    background-image: url(../img/EatDealDetail/kvhmejwze60eoq01.png);
+}
+
+.AppDownloadLayer__AppBtn--Show+.AppDownloadLayer__AppBtn--Show {
+    margin-top: 12px;
+}
+
+.AppDownloadLayer__PreparingMessageList {
+    margin-top: 20px;
+}
+
+.AppDownloadLayer__PreparingMessage {
+    display: none;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0;
+    font-weight: bold;
+    text-align: center;
+    color: #4F4F4F;
+}
+
+.AppDownloadLayer__BlackDeem {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .5;
+    z-index: 1000;
+    background-color: black;
+    display: none;
+}
+
+.AppDownloadLayer__BlackDeem--Show {
+    display: block;
+}
+
+/* 앱 다운로드 레이어 끝 */
+
 /* 맛집 리스트 페이지 시작 */
 .pg-all_picks .contents {
     padding-top: 61px;
@@ -3231,6 +3391,10 @@ img.center-crop.portrait {
 .type-column02-picks .ls-item .info .desc {
     margin-top: 10px;
     font-size: 1.2rem;
+}
+
+.ls-item .info .desc.small {
+    font-size: .9rem;
 }
 
 .ls-item .info .hash {
@@ -4615,6 +4779,7 @@ img.center-crop.portrait {
     position: relative;
     overflow: hidden;
     display: flex;
+    padding-top: 61px;
 }
 
 .pg-search article.contents .black_screen {
@@ -5126,7 +5291,7 @@ img.center-crop.portrait {
 .search-filter .filter-item .metro .metro_btn {
     word-break: break-all;
     display: inline-block;
-    width: 22%;
+    width: 21.8%;
     min-height: 50px;
     margin: 22px 29px 0 0;
     cursor: pointer;
@@ -5245,112 +5410,112 @@ img.center-crop.portrait {
 }
 
 .search-filter .filter-item input[type=checkbox].food+label.food01:before {
-    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-image: url(../img/2018022864551sprites_desktop.png);
     background-position: -613px -333px;
     width: 105px;
     height: 105px
 }
 
 .search-filter .filter-item input[type=checkbox].food+label.food02:before {
-    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-image: url(../img/2018022864551sprites_desktop.png);
     background-position: -613px 0px;
     width: 105px;
     height: 105px
 }
 
 .search-filter .filter-item input[type=checkbox].food+label.food03:before {
-    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-image: url(../img/2018022864551sprites_desktop.png);
     background-position: -613px -222px;
     width: 105px;
     height: 105px
 }
 
 .search-filter .filter-item input[type=checkbox].food+label.food04:before {
-    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-image: url(../img/2018022864551sprites_desktop.png);
     background-position: -111px -423px;
     width: 105px;
     height: 105px
 }
 
 .search-filter .filter-item input[type=checkbox].food+label.food05:before {
-    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-image: url(../img/2018022864551sprites_desktop.png);
     background-position: -502px -222px;
     width: 105px;
     height: 105px
 }
 
 .search-filter .filter-item input[type=checkbox].food+label.food06:before {
-    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-image: url(../img/2018022864551sprites_desktop.png);
     background-position: -502px 0px;
     width: 105px;
     height: 105px
 }
 
 .search-filter .filter-item input[type=checkbox].food+label.food07:before {
-    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-image: url(../img/2018022864551sprites_desktop.png);
     background-position: -222px -312px;
     width: 105px;
     height: 105px
 }
 
 .search-filter .filter-item input[type=checkbox].food+label.food08:before {
-    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-image: url(../img/2018022864551sprites_desktop.png);
     background-position: -333px -423px;
     width: 105px;
     height: 105px
 }
 
 .search-filter .filter-item input[type=checkbox].food:checked+label.food01:before {
-    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-image: url(../img/2018022864551sprites_desktop.png);
     background-position: -613px -111px;
     width: 105px;
     height: 105px
 }
 
 .search-filter .filter-item input[type=checkbox].food:checked+label.food02:before {
-    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-image: url(../img/2018022864551sprites_desktop.png);
     background-position: -444px -423px;
     width: 105px;
     height: 105px
 }
 
 .search-filter .filter-item input[type=checkbox].food:checked+label.food03:before {
-    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-image: url(../img/2018022864551sprites_desktop.png);
     background-position: -222px -423px;
     width: 105px;
     height: 105px
 }
 
 .search-filter .filter-item input[type=checkbox].food:checked+label.food04:before {
-    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-image: url(../img/2018022864551sprites_desktop.png);
     background-position: 0px -423px;
     width: 105px;
     height: 105px
 }
 
 .search-filter .filter-item input[type=checkbox].food:checked+label.food05:before {
-    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-image: url(../img/2018022864551sprites_desktop.png);
     background-position: -502px -111px;
     width: 105px;
     height: 105px
 }
 
 .search-filter .filter-item input[type=checkbox].food:checked+label.food06:before {
-    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-image: url(../img/2018022864551sprites_desktop.png);
     background-position: -333px -312px;
     width: 105px;
     height: 105px
 }
 
 .search-filter .filter-item input[type=checkbox].food:checked+label.food07:before {
-    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-image: url(../img/2018022864551sprites_desktop.png);
     background-position: -111px -312px;
     width: 105px;
     height: 105px
 }
 
 .search-filter .filter-item input[type=checkbox].food:checked+label.food08:before {
-    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-image: url(../img/2018022864551sprites_desktop.png);
     background-position: 0px -312px;
     width: 105px;
     height: 105px
@@ -5430,10 +5595,41 @@ img.center-crop.portrait {
     display: inline-block;
     margin: -3px 8px 0 0;
     vertical-align: middle;
-    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-image: url(../img/2018022864551sprites_desktop.png);
     background-position: -974px -896px;
     width: 17px;
     height: 12px;
+}
+
+.pg-search.reverse .map-container_wrap .btn-map {
+    display: block;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 4;
+    width: 130px;
+    font-size: 1.000rem;
+    color: #ffffff;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 50px;
+    background-color: rgba(0,0,0,0.43);
+}
+
+.pg-search.reverse .map-container_wrap .btn-map::before {
+    display: none;
+}
+
+.pg-search.reverse .map-container_wrap .btn-map::after {
+    content: '';
+    display: inline-block;
+    margin: -3px 0 0 8px;
+    vertical-align: middle;
+    background-image: url(../img/2018022864551sprites_desktop.png);
+    background-position: -974px -896px;
+    width: 17px;
+    height: 12px;
+    transform: rotate(180deg);
 }
 
 .btn-type-round {
@@ -5450,7 +5646,7 @@ img.center-crop.portrait {
 }
 
 .pg-search .map-container_wrap .reset {
-    /* display: none; */
+    display: none;
     box-sizing: border-box;
     position: absolute;
     bottom: 10px;
@@ -5484,6 +5680,194 @@ img.center-crop.portrait {
     text-align: left;
     padding: 0;
 }
+
+/* 지도 크게 */
+.pg-search.reverse .column-wrapper {
+    width: 38.3%;
+    min-width: 490px;
+}
+
+.pg-search.reverse .column-contents {
+    float: left;
+    min-width: 400px;
+    width: 100%;
+    background-color: #fff;
+    overflow-y: auto;
+}
+
+.pg-search.reverse .column-contents.flex-contents {
+    box-sizing: content-box;
+    padding: 0;
+}
+
+.pg-search.reverse .column-contents>.inner {
+    width: 400px;
+    box-sizing: border-box;
+    padding: 0 24px;
+}
+
+.reverse .list-restaurants {
+    margin-top: 17px;
+}
+
+.pg-search.reverse .column-contents>.inner .module .search-list-restaurants-inner-wrap .list-restaurants>li {
+    padding: 0;
+    border: 0;
+}
+
+.pg-search.reverse .column-contents>.inner .module .search-list-restaurants-inner-wrap .list-restaurants>li .list-restaurant-item {
+    display: block;
+    width: 100%;
+    float: none;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.pg-search.reverse .column-contents>.inner .module .search-list-restaurants-inner-wrap .list-restaurants>li .list-restaurant-item:nth-child(odd) {
+    padding-right: 0;
+}
+
+.pg-search.reverse .column-contents>.inner .module .search-list-restaurants-inner-wrap .list-restaurants>li .list-restaurant-item:nth-child(even) {
+    padding-left: 0;
+}
+
+.reverse .restaurant-item {
+    position: relative;
+    box-sizing: border-box;
+    padding-left: 117px;
+    height: 105px;
+}
+
+.reverse .restaurant-item a {
+    position: static !important;
+}
+
+.reverse .restaurant-item .thumb {
+    display: block;
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 105px !important;
+    height: inherit !important;
+    position: relative;
+}
+
+.reverse .restaurant-item .thumb:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: 100%;
+}
+
+.reverse .restaurant-item .info {
+    padding: 0;
+    height: 105px;
+}
+
+.reverse .restaurant-item a {
+    position: static !important;
+}
+
+.reverse .restaurant-item .info .title {
+    font-size: 1.313rem;
+}
+
+.reverse .restaurant-item .info .point {
+    position: static;
+    margin-left: 5px;
+    font-size: 1.313rem;
+}
+
+.reverse .restaurant-item .info .etc, .reverse .restaurant-item .info .etc_info {
+    font-size: 0.875rem;
+}
+
+.reverse .restaurant-item .info .etc, .reverse .restaurant-item .info .etc_info {
+    font-size: 0.875rem;
+}
+
+.pg-search.reverse .paging a {
+    margin-bottom: 10px;
+}
+
+.pg-search.reverse .column-back {
+    width: calc(100% - 38.3%);
+}
+
+.pg-search.reverse .column-side {
+    width: calc(100% - 38.3%);
+    background-color: #f6f6f6;
+}
+
+.pg-search.reverse .column-side>.inner {
+    width: 800px;
+    margin: 0;
+}
+
+.pg-search.reverse .column-side .column-module {
+    padding-bottom: 32px;
+    overflow: hidden;
+}
+
+.pg-search.reverse .related-list {
+    padding: 30px 0 0 0;
+}
+
+.pg-search.reverse .column-side .column-module .module {
+    float: left;
+    box-sizing: border-box;
+    width: 50%;
+}
+
+.pg-search.reverse .search-filter .cost_wrap {
+    white-space: nowrap;
+    margin-bottom: 10px;
+}
+
+.reverse .search-filter .filter-item input[type=checkbox].cost+label {
+    margin: 0 5px;
+}
+
+.reverse .search-filter .filter-item input[type=checkbox].cost+label.cost-zoom {
+    zoom: 0.9;
+}
+
+.reverse .search-filter .filter-item .region a.more:after {
+    display: none;
+}
+
+.pg-search.reverse .search-filter .filter-item .metro {
+    width: 415px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.pg-search.reverse .search-filter .filter-item .metro .metro_btn {
+    word-break: break-all;
+    display: inline-block;
+    width: 46%;
+    min-height: 50px;
+    margin: 22px 29px 0 0;
+}
+
+.pg-search.reverse .search-filter .filter-item .metro .metro_btn:nth-child(2n) {
+    margin-right: 0;
+}
+
+.pg-search.reverse .search-filter .cuisine_list_wrap {
+    width: auto;
+    margin: auto;
+}
+
+.pg-search.reverse .search-filter .cuisine_list_wrap label {
+    float: none;
+}
+
+.reverse .search-filter .filter-item input[type=checkbox].food+label {
+    margin-right: 5%;
+}
+
 
 /* 검색 페이지 끝 */
 
@@ -6236,7 +6620,7 @@ span.orange-underline {
     font-size: 1.2rem;
 }
 
-.list-restaurants>li:nth-child(even) {
+.pg-restaurant .list-restaurants>li:nth-child(even) {
     padding-left: 17px;
 }
 

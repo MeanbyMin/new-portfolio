@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./css/common.css" type="text/css">
     <link href="../img/ico.png" rel="shortcut icon" type="image/x-icon">
 </head>
-<body  onunload="" ng-app="mp20App" class="ng-scope">
+<body  onunload="" ng-app="mp20App" class="ng-scope" style="overflow: hidden;">
     <ul class="skipnavi">
         <li><a href="#container">본문내용</a></li>
     </ul>
@@ -25,7 +25,7 @@
             <div class="Header__SearchBox">
                 <i class="Header__SearchIcon"></i>
                 <label class="Header__SearchInputWrap">
-                    <input class="Header__SearchInput" type="text" placeholder="지역, 식당 또는 음식" maxlength="50">
+                    <input class="Header__SearchInput" type="text" placeholder="지역, 식당 또는 음식" maxlength="50" >
                 </label>
                 <button class="Header__SearchInputClearButton">CLEAR</button>
             </div>
@@ -128,44 +128,58 @@
         </header>
         <!-- 헤더 끝 -->
         <!-- 검색창 시작 -->
-        <div class="KeywordSuggester">
+        <div class="KeywordSuggester KeywordSuggester--Open">
             <div class="KeywordSuggester__BlackDeem"></div>
-            <div class="KeywordSuggester__Container">
+            <div class="KeywordSuggester__Container" style="top: 61px; left: 214px;">
                 <nav class="KeywordSuggester__TabNavigation">
                     <ul class="KeywordSuggester__TabList">
                         <li class="KeywordSuggester__TabItem">
-                            <div class="KeywordSuggester__TabButton KeywordSuggester__RecommendTabButton"
-                                onclick=""
-                                role="button">
+                            <div class="KeywordSuggester__TabButton KeywordSuggester__RecommendTabButton" onclick="" role="button">
                             추천 검색어
                             </div>
                         </li>
                 
                         <li class="KeywordSuggester__TabItem">
-                            <div class="KeywordSuggester__TabButton KeywordSuggester__PopularTabButton"
-                                onclick=""
-                                role="button">
+                            <div class="KeywordSuggester__TabButton KeywordSuggester__PopularTabButton" onclick="" role="button">
                             인기 검색어
                             </div>
                         </li>
                 
                         <li class="KeywordSuggester__TabItem">
-                            <div class="KeywordSuggester__TabButton KeywordSuggester__HistoryTabButton"
-                                onclick=""
-                                role="button">
+                            <div class="KeywordSuggester__TabButton KeywordSuggester__HistoryTabButton KeywordSuggester__TabButton--Selected" onclick="" role="button">
                             최근 검색어
                             </div>
                         </li>
                     </ul>
                 </nav>
             
-                <div class="KeywordSuggester__SuggestKeywordListWrap">
-                    <p class="KeywordSuggester__EmptyKeywordMessage">최근 검색어가 없습니다.</p>
-            
-                    <div class="KeywordSuggester__Footer">
-                        <button class="KeywordSuggester__RemoveAllHistoryKeywordButton">
-                            x clear all
-                        </button>
+                <div class="KeywordSuggester__SuggestKeywordListWrap" data-simplebar="init">
+                    <div class="simplebar-wrapper" style="margin: 0px -24px;">
+                        <div class="simplebar-height-auto-observer-wrapper">
+                            <div class="simplebar-height-auto-observer"></div>
+                        </div>
+                        <div class="simplebar-mask">
+                            <div class="simplebar-offset" style="right: -15px; bottom: 0px;">
+                                <div class="simplebar-content-wrapper" style="height: auto; overflow: hidden scroll;">
+                                    <div class="simplebar-content" style="padding: 0px 24px;">
+                                        <p class="KeywordSuggester__EmptyKeywordMessage KeywordSuggester__EmptyKeywordMessage--Show">최근 검색어가 없습니다.</p>
+                                
+                                        <div class="KeywordSuggester__Footer KeywordSuggester__Footer--Hide">
+                                        <button class="KeywordSuggester__RemoveAllHistoryKeywordButton">
+                                            x clear all
+                                        </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="simplebar-placeholder" style="width: 658px; height: 77px;"></div>
+                    </div>
+                    <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+                        <div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); display: none;"></div>
+                    </div>
+                    <div class="simplebar-track simplebar-vertical" style="visibility: visible;">
+                        <div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); display: block; height: 170px;"></div>
                     </div>
                 </div>
             </div>
@@ -1052,13 +1066,13 @@
                 <div class="column-side">
                     <!-- 지도 -->
                     <div class="map-container_wrap">
-                    <div class="map-container">
-                    </div>
-                    <button class="btn-map">지도 크게</button>
-                    <div class="map_black_screen"></div>
-                    <button class="btn-type-round reset">이 지역 검색하기</button><!-- 지도영역에서 노출 안되므로 위로 올림-->
-                    <p class="reset no_result">검색 결과가 없어요</p>
-                    </div>
+                        <div class="map-container">
+                        </div>
+                        <button class="btn-map">지도 크게</button>
+                        <div class="map_black_screen"></div>
+                        <button class="btn-type-round reset">이 지역 검색하기</button><!-- 지도영역에서 노출 안되므로 위로 올림-->
+                        <p class="reset no_result">검색 결과가 없어요</p>
+                        </div>
             
                     <div class="inner">
                         <div class="column-module">

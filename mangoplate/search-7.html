@@ -172,7 +172,7 @@
         </div>
         <!-- 검색창 끝 -->
         <!-- 본문 시작 -->
-        <main class="pg-search" ng-controller="mp20_search_result_controller" data-keyword="성수">
+        <main class="pg-search ng-scope reverse" ng-controller="mp20_search_result_controller" data-keyword="성수">
             <article class="contents">
                 <div class="black_screen"></div>
             
@@ -184,8 +184,8 @@
                         <!-- 검색 식당 목록 -->
                         <section class="module search-results short-bottom">
                         <div class="search_info">
-                            <div class="search-options" ng-class="{is_empty_result: search_result_list.length === 0}">
-                            <button class="btn filter" ng-class="{selected: is_apply_filter}" ng-click="open_filter()" onclick="">필터</button>
+                            <div class="search-options">
+                            <button class="btn filter"onclick="">필터</button>
                             </div>
             
                             <div class="search_top_title_wrap">
@@ -741,9 +741,9 @@
                             </ul>
                         </div>
             
-                        <div class="paging-container" ng-cloak ng-hide="!search_result_list.length && !ajaxing">
+                        <div class="paging-container">
                             <p class="paging">
-                                <a href="#" onclick="" ng-repeat="paging in get_paging_array(search_all_count) | limitTo: max_page track by $index" ng-class="{selected: $index + 1 == page}" ng-click="get_next_page($index + 1)" class="ng-binding ng-scope selected">1</a>
+                                <a href="#" onclick="" class="ng-binding ng-scope selected">1</a>
                                 <a href="#" onclick="" class="ng-binding ng-scope">2</a>
                                 <a href="#" onclick="" class="ng-binding ng-scope">3</a>
                                 <a href="#" onclick="" class="ng-binding ng-scope">4</a>
@@ -1052,9 +1052,9 @@
                 <div class="column-side">
                     <!-- 지도 -->
                     <div class="map-container_wrap">
-                    <div class="map-container">
+                    <div class="map-container" style="position: relative; overflow: hidden; background: url() 0px 0px repeat transparent; width: 879px; height: 485px;">
                     </div>
-                    <button class="btn-map">지도 크게</button>
+                    <button class="btn-map" ng-click="change_map_mode()" ng-cloak>지도 작게</button>
                     <div class="map_black_screen"></div>
                     <button class="btn-type-round reset">이 지역 검색하기</button><!-- 지도영역에서 노출 안되므로 위로 올림-->
                     <p class="reset no_result">검색 결과가 없어요</p>

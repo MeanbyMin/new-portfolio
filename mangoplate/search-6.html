@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./css/common.css" type="text/css">
     <link href="../img/ico.png" rel="shortcut icon" type="image/x-icon">
 </head>
-<body  onunload="" ng-app="mp20App" class="ng-scope">
+<body  onunload="" ng-app="mp20App" class="ng-scope" style="overflow: hidden;">
     <ul class="skipnavi">
         <li><a href="#container">본문내용</a></li>
     </ul>
@@ -174,7 +174,7 @@
         <!-- 본문 시작 -->
         <main class="pg-search" ng-controller="mp20_search_result_controller" data-keyword="성수">
             <article class="contents">
-                <div class="black_screen"></div>
+                <div class="black_screen" style="display: block;"></div>
             
                 <!-- 데스크탑 컨텐츠 영역 -->
                 <div class="column-wrapper">
@@ -780,7 +780,7 @@
                         </section>
                     </div>
             
-                    <aside class="popup search-filter">
+                    <aside class="popup search-filter" style="display: block;">
                         <div class="inner">
                         <div>
                             <!--<legend>검색 필터</legend>-->
@@ -1052,13 +1052,13 @@
                 <div class="column-side">
                     <!-- 지도 -->
                     <div class="map-container_wrap">
-                    <div class="map-container">
-                    </div>
-                    <button class="btn-map">지도 크게</button>
-                    <div class="map_black_screen"></div>
-                    <button class="btn-type-round reset">이 지역 검색하기</button><!-- 지도영역에서 노출 안되므로 위로 올림-->
-                    <p class="reset no_result">검색 결과가 없어요</p>
-                    </div>
+                        <div class="map-container">
+                        </div>
+                        <button class="btn-map">지도 크게</button>
+                        <div class="map_black_screen"></div>
+                        <button class="btn-type-round reset">이 지역 검색하기</button><!-- 지도영역에서 노출 안되므로 위로 올림-->
+                        <p class="reset no_result">검색 결과가 없어요</p>
+                        </div>
             
                     <div class="inner">
                         <div class="column-module">
