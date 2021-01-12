@@ -75,7 +75,7 @@
                     </li>
                 </ul>
                 <!-- 프로필 팝업 창 -->
-                <div class="UserRestaurantHistory UserRestaurantHistory--Open">
+                <div class="UserRestaurantHistory">
                     <div class="UserRestaurantHistory__BlackDeem"></div>
                     
                         <div class="UserRestaurantHistory__Container">
@@ -83,7 +83,7 @@
                     
                         <ul class="UserRestaurantHistory__TabList">
                             <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Viewed UserRestaurantHistory__TabItem--Selected" onclick="">
-                            <button class="UserRestaurantHistory__TabButton">최근 본 맛집 <span class="UserRestaurantHistory__ViewedCount">0</span></button>
+                            <button class="UserRestaurantHistory__TabButton">최근 본 맛집 <span class="UserRestaurantHistory__ViewedCount">6</span></button>
                             </li>
                     
                             <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Wannago" onclick="">
@@ -138,7 +138,7 @@
                     <p class="title">솔직한 리뷰, 믿을 수 있는 평점!</p>
                     <h1 class="title">망고플레이트</h1>
 
-                    <fieldset class="main-search">
+                    <fieldset class="main-search" style="z-index: 1000;">
                         <legend>전체 검색</legend>
 
                         <label class="search-word" for="main-search">
@@ -1577,7 +1577,6 @@
             </section>
             <!-- 메뉴별 인기 맛집 끝 -->
         </article>
-        
         <!-- 컨텐츠 끝 -->
         <!-- footer 시작 -->
         <footer class="footer">
@@ -1870,7 +1869,7 @@
     </div>
     <!-- wrap 끝 -->
     <!-- 로그인창 팝업 시작 -->
-    <aside class="pop-context pg-login" style="display: block;">
+    <aside class="pop-context pg-login" style="display: none;">
         <div class="contents-box">
             <button class="btn-nav-close" onclick="">
                 닫기
@@ -1896,6 +1895,89 @@
         </div>
     </aside>
     <!-- 로그인창 팝업 끝 -->
+    <!-- 메인 검색창 시작 -->
+    <div class="KeywordSuggester KeywordSuggester--Open">
+        <div class="KeywordSuggester__BlackDeem"></div>
+      
+        <div class="KeywordSuggester__Container" style="top: 337px; left: 374.5px; position: absolute; width: 544px;">
+            <nav class="KeywordSuggester__TabNavigation">
+                <ul class="KeywordSuggester__TabList">
+                    <li class="KeywordSuggester__TabItem">
+                        <div class="KeywordSuggester__TabButton KeywordSuggester__RecommendTabButton" onclick="" role="button">
+                            추천 검색어
+                        </div>
+                        </li>
+                
+                        <li class="KeywordSuggester__TabItem">
+                        <div class="KeywordSuggester__TabButton KeywordSuggester__PopularTabButton" onclick="" role="button">
+                            인기 검색어
+                        </div>
+                        </li>
+                
+                        <li class="KeywordSuggester__TabItem">
+                        <div class="KeywordSuggester__TabButton KeywordSuggester__HistoryTabButton KeywordSuggester__TabButton--Selected" onclick="" role="button">
+                            최근 검색어
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+      
+            <div class="KeywordSuggester__SuggestKeywordListWrap" data-simplebar="init">
+                <div class="simplebar-wrapper" style="margin: 0px -24px;">
+                    <div class="simplebar-height-auto-observer-wrapper">
+                        <div class="simplebar-height-auto-observer"></div>
+                    </div>
+                    <div class="simplebar-mask">
+                        <div class="simplebar-offset" style="right: -15px; bottom: 0px;">
+                            <div class="simplebar-content-wrapper" style="height: auto; overflow: hidden scroll;">
+                                <div class="simplebar-content" style="padding: 0px 24px;">
+                                    <li class="KeywordSuggester__SuggestKeywordItem">
+                                        <a href="#" class="KeywordSuggester__SuggestKeywordLink">
+                                        <i class="KeywordSuggester__SuggestKeywordIcon"></i>
+                                        <span class="KeywordSuggester__SuggestKeyword">바위파스타</span>
+                                        
+                                        <button class="KeywordSuggester__RemoveHistoryKeywordButton"></button>
+                                        </a>
+                                  </li>
+                                  <li class="KeywordSuggester__SuggestKeywordItem">
+                                    <a href="#" class="KeywordSuggester__SuggestKeywordLink">
+                                      <i class="KeywordSuggester__SuggestKeywordIcon"></i>
+                                      <span class="KeywordSuggester__SuggestKeyword">성수</span>
+                                      
+                                      <button class="KeywordSuggester__RemoveHistoryKeywordButton"></button>
+                                    </a>
+                                  </li>
+                                  <li class="KeywordSuggester__SuggestKeywordItem">
+                                    <a href="#" class="KeywordSuggester__SuggestKeywordLink">
+                                      <i class="KeywordSuggester__SuggestKeywordIcon"></i>
+                                      <span class="KeywordSuggester__SuggestKeyword">피스엔스윗</span>
+                                      
+                                      <button class="KeywordSuggester__RemoveHistoryKeywordButton"></button>
+                                    </a>
+                                  </li>
+                                <p class="KeywordSuggester__EmptyKeywordMessage">최근 검색어가 없습니다.</p>
+                          
+                                <div class="KeywordSuggester__Footer">
+                                  <button class="KeywordSuggester__RemoveAllHistoryKeywordButton">
+                                    x clear all
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="simplebar-placeholder" style="width: 542px; height: 427px;"></div>
+                </div>
+                <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+                    <div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); display: none;"></div>
+                </div>
+                <div class="simplebar-track simplebar-vertical" style="visibility: visible;">
+                    <div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); display: block; height: 146px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 메인 검색창 끝 -->
     <!-- 로딩 -->
     <div class="login_loading_area">
         <img src="./img/ldcyd5lxlvtlppe3.gif" alt="login loading bar"/>
