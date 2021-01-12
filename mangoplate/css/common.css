@@ -37,6 +37,7 @@ body {
     word-break: keep-all
 }
 
+
 header,h1 {
     font-size: 100%
 }
@@ -683,6 +684,15 @@ img {
     background-image: url(../img/uo3o88vopcmdsket.png);
     background-size: cover
 }
+
+.UserProfileButton {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin: 0 6px;
+    overflow: visible;
+}
+
 .UserProfileButton__Picture {
     position: relative;
     display: none;
@@ -692,6 +702,11 @@ img {
     background-size: cover;
     background-position: 50% 50%;
     background-repeat: no-repeat
+}
+
+.UserProfileButton--Login {
+    border: 2px solid #ff792a;
+    border-radius: 34px;
 }
 
 .UserProfileButton--Login .UserProfileButton__Picture {
@@ -706,14 +721,17 @@ img {
     display: block
 }
 
-/* 위치 끼워 맞춤 */
+.UserProfileButton--Login .UserProfileButton__PersonIcon {
+    display: none;
+}
+
 .UserProfileButton__HistoryCount {
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 5px;
-    right: 20px;
+    top: -5px;
+    right: -8px;
     z-index: 1;
     width: 24px;
     height: 24px;
@@ -890,6 +908,11 @@ img {
     height: 28px;
     background: url(../img/btn_star_big.png) no-repeat;
     cursor: pointer;
+}
+
+.RestaurantHorizontalItem__WannagoButton--Selected {
+    /* animation: ani_star 400ms; */
+    background: url(../img/btn_star_filled_big.png) no-repeat;
 }
 
 .UserRestaurantHistory__RestaurantItem--Dim {
@@ -2289,6 +2312,19 @@ footer.footer small a {
     color: #ff7100;
 }
 
+.LocationFilter__RegionItem--Selected .LocationFilter__RegionButton:after {
+    transform: translate(100%, -100%);
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    width: 3px;
+    height: 3px;
+    border-radius: 100px;
+    background-color: #ff7100;
+}
+
 .LocationFilter__MetroWrap {
     display: flex;
     flex-direction: column;
@@ -2324,6 +2360,26 @@ footer.footer small a {
 
 .LocationFilter__MetroItem:nth-child(odd) {
     margin-right: 10px;
+}
+
+.LocationFilter__MetroItem--Active {
+    border-color: #ff7100;
+}
+
+.LocationFilter__MetroItem--Active .LocationFilter__MetroButton {
+    color: #ff7100;
+}
+
+.LocationFilter__MetroItem--Active:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    width: 16px;
+    height: 15px;
+    background-image: url(../img/eat_deals/mobile-web-filter-check.svg);
+    background-size: cover;
 }
 
 .LocationFilter__MetroButton {
@@ -2737,6 +2793,12 @@ footer.footer small a {
     align-items: center;
 }
 
+.ShareView--Show {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .ShareView__Wrap {
     position: relative;
     max-width: 768px;
@@ -2790,6 +2852,13 @@ footer.footer small a {
     font-size: 16px;
     color: #4f4f4f;
     cursor: pointer;
+}
+
+.ShareView__SharingMethodIcon {
+    width: 30px;
+    height: 30px;
+    margin-right: 14px;
+    background-size: cover;
 }
 
 .ShareView__SharingMethodItem--KakaoTalk .ShareView__SharingMethodIcon {
