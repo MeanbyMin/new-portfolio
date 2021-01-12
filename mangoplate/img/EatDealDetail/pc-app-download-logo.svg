@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="68" height="68" viewBox="0 0 68 68">
+    <defs>
+        <filter id="a" width="121.7%" height="121.7%" x="-10.8%" y="-9.2%" filterUnits="objectBoundingBox">
+            <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"/>
+            <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"/>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+        <linearGradient id="b" x1="17.34%" x2="80.124%" y1="17.34%" y2="80.124%">
+            <stop offset="0%" stop-color="#FF880D"/>
+            <stop offset="43%" stop-color="#FF7905"/>
+            <stop offset="59%" stop-color="#FB6F03"/>
+            <stop offset="100%" stop-color="#F45F00"/>
+        </linearGradient>
+    </defs>
+    <g fill="none" fill-rule="nonzero" filter="url(#a)" transform="translate(4 3)">
+        <rect width="59.975" height="59.975" x=".001" fill="url(#b)" rx="10.638"/>
+        <path fill="#FFF" d="M30.709 10.347a.5.5 0 0 1 .468-.418h.417c.134 0 .366.104.445.261L38.1 21.482h.053l6.062-11.292c.078-.157.314-.261.444-.261h.418c.235.011.43.185.468.418l2.962 17.561c.052.34-.183.575-.497.575h-3.084c-.235 0-.468-.21-.497-.418l-1.175-8.075h-.052l-4.391 8.467a.61.61 0 0 1-.444.287H37.9a.567.567 0 0 1-.444-.287l-4.417-8.467h-.052l-1.154 8.076a.508.508 0 0 1-.497.417h-3.083c-.314 0-.55-.235-.497-.574l2.953-17.562zM46.818 37.4a.496.496 0 0 1 .496.496v6.297c0 3.214-2.613 5.854-5.774 5.854-3.242 0-5.88-2.64-5.88-5.827v-2.744h-6.142a.514.514 0 0 1-.496-.497v-3.083a.496.496 0 0 1 .496-.497h17.3zm-7.343 6.558a2.053 2.053 0 0 0 2.065 2.065c1.097 0 1.933-.941 1.933-2.065v-2.482h-3.998v2.482z"/>
+    </g>
+</svg>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[부천] 피스앤스윗</title>
+    
+    <!-- CSS styles -->
+    <link rel="stylesheet" href="./css/common.css" type="text/css">
+    <link href="../img/ico.png" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" href="./css/swiper.min.css">
+</head>
+<body onunload="" ng-app="mp20App" style="overflow: visible;">
+    <ul class="skipnavi">
+        <li><a href="#container">본문내용</a></li>
+    </ul>
+    <!-- wrap 시작 -->
+    <div id="wrap">
+        <!-- 헤더 시작 -->
+        <header class="Header" data-page="noraml">
+            <a href="./index.html" class="Header__Logo">
+                <i class="Header__LogoIcon"></i>
+            </a>
+            
+            <!-- 검색 영역 시작-->
+            <div class="Header__SearchBox">
+                <i class="Header__SearchIcon"></i>
+                <label class="Header__SearchInputWrap">
+                    <input class="Header__SearchInput" type="text" placeholder="지역, 식당 또는 음식" maxlength="50">
+                </label>
+                <button class="Header__SearchInputClearButton">CLEAR</button>
+            </div>
+            <!-- 검색 영역 끝 -->
+            
+            <!-- 메뉴 부분 시작 -->
+            <ul class="Header__MenuList">
+                <li class="Header__MenuItem Header__MenuItem--New clear">
+                    <a href="#" class="Header__MenuLink">
+                        <span class="Header__MenuText">EAT딜</span>
+                    </a>
+                </li>
+                <li class="Header__MenuItem Header__MenuItem--New clear">
+                    <a href="#" class="Header__MenuLink">
+                        <span class="Header__MenuText">맛집 리스트</span>
+                    </a>
+                </li>
+                <li class="Header__MenuItem Header__MenuItem--New clear">
+                    <a href="#" class="Header__MenuLink">
+                        <span class="Header__MenuText">망고 스토리</span>
+                    </a>
+                </li>
+                <!-- 프로필 영역 시작 -->
+                <ul class="Header__IconButtonList">
+                    <li class="Header__IconButtonItem only-mobile Header__IconButtonItem--MenuButton">
+                    <button class="MenuButton"
+                            onclick="">
+                        <i class="MenuButton__Icon"></i>
+                    </button>
+                    </li>
+            
+                    <li class="Header__IconButtonItem Header__IconButtonItem--UserRestaurantHistory">
+                        <button class="UserProfileButton"
+                                onclick="">
+                            <i class="UserProfileButton__Picture"></i>
+                            <i class="UserProfileButton__PersonIcon"></i>
+                            <span class="UserProfileButton__HistoryCount">0</span>
+                        </button>
+                    </li>
+            
+                    <li class="Header__IconButtonItem Header__IconButtonItem--CloseButton Header__IconButtonItem--Hide">
+                    <button class="Header__CloseButton"></button>
+                    </li>
+                </ul>
+                <!-- 프로필 팝업 창 -->
+                <div class="UserRestaurantHistory">
+                    <div class="UserRestaurantHistory__BlackDeem"></div>
+                    
+                        <div class="UserRestaurantHistory__Container">
+                        <i class="UserRestaurantHistory__Triangle"></i>
+                    
+                        <ul class="UserRestaurantHistory__TabList">
+                            <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Viewed UserRestaurantHistory__TabItem--Selected" onclick="">
+                            <button class="UserRestaurantHistory__TabButton">최근 본 맛집 <span class="UserRestaurantHistory__ViewedCount">6</span></button>
+                            </li>
+                    
+                            <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Wannago" onclick="">
+                            <button class="UserRestaurantHistory__TabButton">가고싶다</button>
+                            </li>
+                        </ul>
+                    
+                        <div class="UserRestaurantHistory__HistoryContainer">
+                            <div class="UserRestaurantHistory__HistoryHeader">
+                            <button class="UserRestaurantHistory__ClearAllHistoryButton" onclick="">
+                                x clear all
+                            </button>
+                            </div>
+                    
+                            <ul class="UserRestaurantHistory__RestaurantList"></ul>
+                    
+                            <div class="UserRestaurantHistory__EmptyViewedRestaurantHistory UserRestaurantHistory__EmptyViewedRestaurantHistory--Show">
+                                <span class="UserRestaurantHistory__EmptyViewedRestaurantHistoryTitle">
+                                    거기가 어디였지?
+                                </span>
+                        
+                                <p class="UserRestaurantHistory__EmptyViewedRestaurantHistoryDescription">
+                                    내가 둘러 본 식당이 이 곳에 순서대로 기록됩니다.
+                                </p>
+                            </div>
+                    
+                            <div class="UserRestaurantHistory__EmptyWannagoRestaurantHistory">
+                            <img class="UserRestaurantHistory__EmptyWannagoRestaurantHistoryImage" src="./img/kycrji1bsrupvbem.png" alt="wannago empty star">
+                            <p class="UserRestaurantHistory__EmptyWannagoRestaurantHistoryTitle">격하게 가고싶다..</p>
+                            <p class="UserRestaurantHistory__EmptyWannagoRestaurantHistoryDescription">
+                                식당의 ‘별’ 아이콘을 누르면 가고싶은 곳을 쉽게 저장할 수 있습니다.
+                            </p>
+                            </div>
+                        </div>
+                    
+                        <footer class="UserRestaurantHistory__Footer">
+                            <button class="UserRestaurantHistory__LoginButton UserRestaurantHistory__LoginButton--Show" onclick="">로그인</button>
+                            <button class="UserRestaurantHistory__LogoutButton" onclick="">logout</button>
+                        </footer>
+                        </div>
+                </div>
+                <!-- 프로필 팝업창 끝 -->
+                <!-- 프로필 영역 끝 -->
+            </ul>
+            <!-- 메뉴 부분 끝 -->
+        </header>
+        <!-- 헤더 끝 -->
+        <!-- 컨테이너 시작 -->
+        <main class="EatDealDetailPage">
+            <div class="EatDealDetailPage__PictureCarousel">
+                <div class="PictureCarousel">
+                    <div class="PictureCarousel__Deem">
+                        <button class="PictureCarousel__ShareButton">
+                            <i class="PictureCarousel__ShareIcon"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="swiper-container swiper4">
+                        <ul class="swiper-wrapper PictureCarousel__PictureList slick-track">
+                            <li class="swiper-slide PictureCarousel__Picture" style="background-image: url(./img/EatDealDetail/aau4uzlmaicw24yj.png)"></li>
+                            <li class="swiper-slide PictureCarousel__Picture" style="background-image: url(./img/EatDealDetail/pkhbei36dfbg-5sh.png)"></li>
+                            <li class="swiper-slide PictureCarousel__Picture" style="background-image: url(./img/EatDealDetail/p5ovrpfokfgucdbr.png)"></li>
+                            <li class="swiper-slide PictureCarousel__Picture" style="background-image: url(./img/EatDealDetail/hkqdyztp3e17hf7o.png)"></li>
+                            <li class="swiper-slide PictureCarousel__Picture" style="background-image: url(./img/EatDealDetail/nnp9a6nfx9wxj5vi.png)"></li>
+                        </ul>
+                    </div>
+
+            
+                    <div class="PictureCarousel__Info">
+                        <span class="PictureCarousel__Label">흑임자크림라떼 10% 할인</span>
+                        <span class="PictureCarousel__Pagination">
+                            <span class="PictureCarousel__PaginationIndex">1</span>/<span class="PictureCarousel__PaginationTotalCount">5</span>
+                            <i class="PictureCarousel__PaginationIcon"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="EatDealDetailPage__Info EatDealInfo">
+                <a href="/restaurants/bIVPWh2OWpcN" onclick="trackEvent('CLICK_RESTAURANT', '{eat_deal_id: 1607058501723, restaurant_uuid: 352796}')">
+                    <h1 class="EatDealInfo__RestaurantName">[부천] 피스앤스윗</h1>
+                
+                    <div class="EatDealDetailPage__RestaurantButton">
+                        <i class="EatDealDetailPage__RestaurantButtonInfoIcon"></i>
+                        <span class="EatDealDetailPage__RestaurantButtonLabel">
+                        식당 정보 보기
+                        </span>
+                        <i class="EatDealDetailPage__RestaurantButtonArrow"></i>
+                    </div>
+                </a>
+            
+                <p class="EatDealInfo__Title">흑임자크림라떼</p>
+                  <span class="EatDealInfo__UseDate">
+                    <span class="EatDealInfo__UseDateLabel">사용 기간 : </span>
+                      93일
+                      <span class="EatDealInfo__SubUseDate">(2021-01-05
+                        ~ 2021-04-07)</span>
+                  </span>
+            
+                <div class="EatDealInfo__PriceInfo">
+                    <span class="EatDealInfo__OriginalPrice">₩5,500</span>
+                    <div class="EatDealInfo__PriceInfoRow">
+                        <div class="EatDealInfo__PriceContainer">
+                            <div class="EatDealInfo__PriceWrap">
+                                <span class="EatDealInfo__DiscountWrap">
+                                    <span class="EatDealInfo__DiscountRate">10</span>
+                                    <span class="EatDealInfo__DiscountUnit">%</span>
+                                </span>
+                                <span class="EatDealInfo__SalesPrice">
+                                    <span class="EatDealInfo__SalesUnit">₩</span>4,950
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="EatDealDetailPage__SectionSeparator"></div>
+            
+            <div class="EatDealDetailPage__AdditionalInfo EatDealAdditionalInfo">
+                <section class="EatDealAdditionalInfo__Section">
+                    <h3 class="EatDealAdditionalInfo__Title">식당 소개</h3>
+        
+                    <ul class="EatDealAdditionalInfo__List">
+                        <li class="EatDealAdditionalInfo__Item">수제 디저트와 고급 블렌딩 커피를 코지한 분위기에서 즐기는 피스앤스윗</li>
+                    </ul>
+                </section>
+                <section class="EatDealAdditionalInfo__Section">
+                    <h3 class="EatDealAdditionalInfo__Title">메뉴 소개</h3>
+            
+                    <ul class="EatDealAdditionalInfo__List">
+                        <li class="EatDealAdditionalInfo__Item">단맛과 고소한 맛의 최적 조합</li>
+                    </ul>
+                </section>
+                <section class="EatDealAdditionalInfo__Section">
+                    <h3 class="EatDealAdditionalInfo__Title">※ 유의사항 (꼭! 확인해주세요)</h3>
+            
+                    <ul class="EatDealAdditionalInfo__List">
+                        <li class="EatDealAdditionalInfo__Item">사용 기간: 구매 시점으로부터 93일</li>
+                        <li class="EatDealAdditionalInfo__Item">EAT딜 외에 다른 쿠폰 및 딜과 중복 사용 불가합니다.</li>
+                        <li class="EatDealAdditionalInfo__Item">구매 전 전용 지점을 꼭 확인해주세요.</li>
+                        <li class="EatDealAdditionalInfo__Item">양도 및 재판매 불가합니다.</li>
+                        <li class="EatDealAdditionalInfo__Item">방문 전 영업시간 및 휴무일 확인을 부탁드립니다.</li>
+                        <li class="EatDealAdditionalInfo__Item">옵션 당 1인 1매만 구매 가능합니다.</li>
+                        <li class="EatDealAdditionalInfo__Item">테이블 당 1매만 사용 가능합니다.</li>
+                    </ul>
+                </section>
+                <section class="EatDealAdditionalInfo__Section">
+                    <h3 class="EatDealAdditionalInfo__Title">※ 사용 방법</h3>
+            
+                    <ul class="EatDealAdditionalInfo__List">
+                        <li class="EatDealAdditionalInfo__Item">구매하신 EAT딜은 최신 버전 앱에서만 사용 가능합니다.</li>
+                        <li class="EatDealAdditionalInfo__Item">결제 시 망고플레이트 앱 &gt; 내정보 &gt; 구매한 EAT딜을 선택하여 매장에 비치된 QR코드를 스캔합니다.</li>
+                        <li class="EatDealAdditionalInfo__Item">QR코드 스캔이 불가능할 시 매장 직원에게 화면 하단 12자리 숫자 코드를 보여주세요.</li>
+                        <li class="EatDealAdditionalInfo__Item">사용 처리가 완료된 EAT딜은 재사용 및 환불 불가합니다.</li>
+                    </ul>
+                </section>
+                <section class="EatDealAdditionalInfo__Section">
+                    <h3 class="EatDealAdditionalInfo__Title">※ 환불 규정</h3>
+            
+                    <ul class="EatDealAdditionalInfo__List">
+                        <li class="EatDealAdditionalInfo__Item">상품 사용 기간 내 환불 요청에 한해 구매 금액 전액 환불, 상품 사용 기간 이후 환불 요청 건은 수수료 10%를 제외한 금액 환불을 원칙으로 합니다.</li>
+                        <li class="EatDealAdditionalInfo__Item">환불 기간 연장은 불가합니다.</li>
+                        <li class="EatDealAdditionalInfo__Item">구매 후 93일 이내 환불 요청: 100% 환불</li>
+                        <li class="EatDealAdditionalInfo__Item">구매 후 93일 이후 환불 요청: 90% 환불</li>
+                        <li class="EatDealAdditionalInfo__Item">환불은 구매 시 사용하였던 결제수단으로 환불됩니다.</li>
+                    </ul>
+                </section>
+                <section class="EatDealAdditionalInfo__Section">
+                    <h3 class="EatDealAdditionalInfo__Title">문의</h3>
+            
+                    <ul class="EatDealAdditionalInfo__List">
+                        <li class="EatDealAdditionalInfo__Item">cs@mangoplate.com</li>
+                    </ul>
+                </section>
+            </div>
+            
+            <!-- <div class="EatDealDetailPage__RelatedEatDealContainer">
+                <div class="EatDealDetailPage__SectionSeparator"></div>
+            </div> -->
+            
+            <div class="EatDealDetailPage__ActionContainer">
+                <button class="EatDealDetailPage__ActionButton">
+                    <span class="EatDealDetailPage__ActionButtonMessage">구매하기</span>
+                </button>
+            
+            </div>
+            
+            <div class="ShareView">
+                <div class="ShareView__Wrap">
+                    <button class="ShareView__CloseButton">
+                        <i class="ShareView__CloseIcon"></i>
+                    </button>
+            
+                    <header class="ShareView__Header">
+                        <h3 class="ShareView__Title">
+                        친구에게 공유해보세요.
+                        </h3>
+                    </header>
+            
+                    <ul class="ShareView__SharingMethodList">
+                        <li class="ShareView__SharingMethodItem ShareView__SharingMethodItem--KakaoTalk">
+                            <i class="ShareView__SharingMethodIcon"></i>
+                            카카오톡
+                        </li>
+                
+                        <li class="ShareView__SharingMethodItem ShareView__SharingMethodItem--FacebookMessenger only-mobile">
+                            <i class="ShareView__SharingMethodIcon"></i>
+                            페이스북 메신저
+                        </li>
+                
+                        <li class="ShareView__SharingMethodItem ShareView__SharingMethodItem--Line">
+                            <i class="ShareView__SharingMethodIcon"></i>
+                            라인
+                        </li>
+                
+                        <li class="ShareView__SharingMethodItem ShareView__SharingMethodItem--URL">
+                            <i class="ShareView__SharingMethodIcon"></i>
+                            URL
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            
+            <section class="PictureView">
+                <header class="PictureView__Header">
+                    <h2 class="PictureView__Title">[부천] 피스앤스윗</h2>
+                    <button class="PictureView__CloseButton">
+                        <i class="PictureView__CloseIcon"></i>
+                    </button>
+                </header>
+            
+                <ul class="PictureView__PictureList"></ul>
+            </section>
+            
+            <span class="EatDealDetailPage__Toast Toast">링크가 복사되었습니다.</span>
+            
+            <div class="EatDealPurchaseCompletedView">
+                <section class="EatDealPurchaseCompletedView__Dialog">
+                    <div class="EatDealPurchaseCompletedView__Picture" style="background-image: url(./img/EatDealDetail/aau4uzlmaicw24yj.png)"></div>
+                    <h2 class="EatDealPurchaseCompletedView__Title">EAT딜을 구매해 주셔서 감사합니다.</h2>
+                    <p class="EatDealPurchaseCompletedView__Description">
+                    구매하신 EAT딜은 <a href='#' class='EatDealPurchaseCompletedView__AppLink'>최신 버전의 앱</a>을<br />통해서 사용하실 수 있습니다.
+                    </p>
+                    <button class="EatDealPurchaseCompletedView__ActionButton">앱에서 사용하기</button>
+                    <a href="#" class="EatDealPurchaseCompletedView__NextButton">다음에 사용하기</a>
+                </section>
+            </div>
+        </main>
+        <!-- 컨테이너 끝 -->
+    </div>
+    <!-- wrap 끝 -->
+    <!-- 앱 다운로드 레이어 시작 -->
+    <div class="AppDownloadLayer AppDownloadLayer--Show">
+        <div class="AppDownloadLayer__Container">
+            <button class="AppDownloadLayer__CloseBtn">
+                <i class="AppDownloadLayer__CloseIcon"></i>
+            </button>
+        
+            <div class="AppDownloadLayer__Content">
+                <div class="AppDownloadLayer__Phone">
+                    <div class="AppDownloadLayer__PhoneContent">
+                        <p class="AppDownloadLayer__Description"><span class="AppDownloadLayer__DescriptionBold">모바일 앱</span>을 다운받고<br><span class="AppDownloadLayer__DescriptionBold">EAT딜</span>의 혜택을 즐겨보세요!</p>
+            
+                        <div class="AppDownloadLayer__Logo"></div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="AppDownloadLayer__Buttons">
+                <div class="AppDownloadLayer__ButtonList">
+                    <a class="AppDownloadLayer__AppBtn AppDownloadLayer__AppBtnAndroid AppDownloadLayer__AppBtn--Show" href="https://play.google.com/store/apps/details?id=com.mangoplate" target="_blank"></a>
+                    <a class="AppDownloadLayer__AppBtn AppDownloadLayer__AppBtnIOS AppDownloadLayer__AppBtn--Show" href="https://itunes.apple.com/kr/app/id628509224" target="_blank"></a>
+                </div>
+        
+                <div class="AppDownloadLayer__PreparingMessageList" style="display: none;">
+                    <p class="AppDownloadLayer__PreparingMessage AppDownloadLayer__PreparingMessage--IOS">* IOS 버전은 준비 중입니다.</p>
+                    <p class="AppDownloadLayer__PreparingMessage AppDownloadLayer__PreparingMessage--Android">* Android 버전은 준비 중입니다.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="AppDownloadLayer__BlackDeem AppDownloadLayer__BlackDeem--Show"></div>
+    <!-- 앱 다운로드 레이어 끝 -->
+    <!-- 로그인창 팝업 시작 -->
+    <aside class="pop-context pg-login" style="display: none;">
+        <div class="contents-box">
+            <button class="btn-nav-close" onclick="">
+                닫기
+            </button>
+        
+            <p class="title">로그인</p>
+        
+                <p class="message">로그인 하면 가고싶은 식당을 <br>저장할 수 있어요</p>
+        
+                <p>
+                <a class="btn-login facebook" href="#" onclick="">
+                    <span class="text">페이스북으로 계속하기</span>
+                </a>
+        
+                <a class="btn-login kakaotalk" href="#" onclick="">
+                    <span class="text">카카오톡으로 계속하기</span>
+                </a>
+        
+                <a class="btn-login apple" href="#" onclick="">
+                    <span class="text">Apple로 계속하기</span>
+                </a>
+            </p>
+        </div>
+    </aside>
+    <!-- 로그인창 팝업 끝 -->
+    <script src="/js/swiper.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="360" height="304" viewBox="0 0 360 304">
+    <defs>
+        <linearGradient id="b" x1="50%" x2="50%" y1="0%" y2="100%">
+            <stop offset="0%" stop-color="#FF7100" stop-opacity=".5"/>
+            <stop offset="100%" stop-color="#F45F00"/>
+        </linearGradient>
+        <path id="a" d="M8 0h344a8 8 0 0 1 8 8v296H0V8a8 8 0 0 1 8-8z"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <mask id="c" fill="#fff">
+            <use xlink:href="#a"/>
+        </mask>
+        <use fill="url(#b)" fill-opacity=".8" xlink:href="#a"/>
+        <circle cx="332.32" cy="126.832" r="168.533" fill="#FF7100" fill-opacity=".16" mask="url(#c)" style="mix-blend-mode:overlay"/>
+        <circle cx="163.787" cy="105.069" r="78.507" fill="#FFF" fill-opacity=".18" mask="url(#c)" style="mix-blend-mode:overlay"/>
+        <circle cx="57.12" cy="335.5" r="106.667" fill="#FF7100" fill-opacity=".16" mask="url(#c)" style="mix-blend-mode:overlay"/>
+    </g>
+</svg>
