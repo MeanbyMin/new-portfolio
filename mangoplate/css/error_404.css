@@ -1,0 +1,217 @@
+@charset "utf-8"; /* 글자가 깨지지 않도록 하기 위해서 입력 */
+
+/* 공통 부분 */
+* {
+    margin: 0;
+    padding: 0
+}
+*:focus {
+    outline: none
+}
+
+* { font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif'; }
+
+body {
+    min-width: 320px;
+    background-color: #fff
+}
+
+html {
+    font-family: "SpoqaHanSans", "Noto Sans SC", "APPLE SD Gothic NEO", "sans-serif";
+    word-wrap: break-word
+}
+
+article,aside,canvas,details,figcaption,figure,footer,header,nav,menu,nav,section,main {
+    display: block
+}
+
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,address,cite,code,del,dfn,em,font,img,ins,q,s,samp,strike,strong,sub,sup,dl,dt,dd,ol,ul,li,fieldset,form,label,legend {
+    border: 0 none
+}
+
+body {
+    position: relative;
+    min-width: 320px;
+    margin: 0 auto;
+    font-size: 100%;
+    line-height: 100%;
+    text-size-adjust: 100%;
+    word-break: keep-all
+}
+
+
+header,h1 {
+    font-size: 100%
+}
+
+caption,legend {
+    display: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    overflow: hidden;
+    visibility: hidden
+}
+
+img {
+    border: none;
+    vertical-align: top
+}
+
+select,input {
+    vertical-align: top
+}
+
+hr {
+    display: none;
+    border: 0 none
+}
+
+ol,ul,ul li {
+    list-style: none
+}
+
+em {
+    font-style: normal
+}
+
+menu li {
+    list-style: none
+}
+
+address {
+    display: inline;
+    font-style: normal
+}
+
+button {
+    appearance: none;
+    cursor: pointer;
+    border: 0px;
+    border-radius: 0;
+    background-color: transparent
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+input,textarea,keygen,select,button {
+    font-family: "SpoqaHanSans", "Noto Sans SC", "APPLE SD Gothic NEO", "sans-serif"
+}
+
+strong {
+    font-weight: normal
+}
+
+h1,h2,h3,h4,h5,h6,strong,th {
+    font-weight: normal
+}
+
+a:link,a:visited,a:active,a:focus {
+    text-decoration: none
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.hidden {
+    display: none
+}
+
+.clear {
+    clear: both
+}
+
+img {
+    color: rgba(255,255,255,0);
+    text-indent: -9999px;
+}
+
+.under_line {
+    text-decoration: underline !important;
+}
+
+.wrap-404 {
+    background-color: #f1f1f1;
+    height: 100%;
+    padding: 20px;
+}
+
+.wrap-404 .wrapper-404 {
+    font-weight: 200;
+    padding: 0;
+    margin: 0;
+    color: #555;
+    text-decoration: none;
+    list-style-type: none;
+    line-height: 1.4rem;
+    margin-top: 80px;
+    padding: 80px 35px;
+    border-radius: 3px;
+    background-color: #fff;
+    box-shadow: 0 2px 13px #d9d9d9;
+}
+
+.wrap-404 .wrapper-404 h1 {
+    font-size: 1.9rem;
+    line-height: 2.4rem;
+}
+
+.logo_404 {
+    background-image: url(../img/2018022864551sprites_desktop.png);
+    background-position: -672px -700px;
+    width: 100px;
+    height: 33px;
+    text-align: center;
+    display: block;
+}
+
+.wrap-404 .section_wrap {
+    margin-top: 35px;
+}
+
+.wrap-404 .wrapper-404 h1 {
+    font-size: 1.9rem;
+    line-height: 2.4rem;
+}
+
+.wrap-404 .wrapper-404 .section_wrap .section-404 h1 {
+    font-weight: 500;
+}
+
+.wrap-404 .wrapper-404 .section_wrap .section-404 b {
+    font-weight: 600;
+}
+
+.wrap-404 .wrapper-404 .section_wrap .section-404 h1>b {
+    color: #f75c01;
+}
+
+.wrap-404 .section-404 h4 {
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+.wrap-404 .detail-404 {
+    margin-top: 100px;
+}
+
+.wrap-404 .line {
+    width: 80px;
+    border-top: 2px solid #d2d2d2;
+    margin-bottom: 30px;
+}
+
+.wrap-404 .section-404 h3 {
+    font-weight: 600;
+    margin: 20px 0;
+}
+
+.wrap-404 .wrapper-404 .section_wrap .section-404 .orange_a {
+    color: #ff792a;
+    font-weight: 700;
+}
