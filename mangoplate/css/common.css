@@ -5870,6 +5870,11 @@ img.center-crop.portrait {
     margin-right: 5%;
 }
 
+.reverse .search-filter .submit-container {
+    right: 66.667%;
+    min-width: 352px;
+}
+
 
 /* 검색 페이지 끝 */
 
@@ -7580,6 +7585,16 @@ height: 21px;
 
 .mp20_map_popup.open+.black_screen {
     display: block;
+}
+
+.pg-search .map-container_wrap .map_black_screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 3;
 }
 
 /* 상세페이지 끝 */
