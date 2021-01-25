@@ -451,7 +451,7 @@ header .call .number:hover{
 
 .project_list_item{
     position: relative;
-    width: 19%;
+    width: 19.5%;
     display: inline-block;
     text-align: center;
 }
@@ -801,6 +801,14 @@ header .call .number:hover{
     }
     .blog_item:nth-child(n+7){
         display: none;
+    }
+    .project_list_item{
+        position: relative;
+        width: 32.5%;
+    }
+    
+    .project_list_item:nth-child(n+3){
+        margin-top: 50px;
     }
 }
 @media screen and (max-width: 1000px){
