@@ -1,4 +1,5 @@
 <?php
+    header('Content-Type: text/html; charset=UTF-8');
     $userid = $_POST['userid'];
     $userpw = $_POST['pw1'];
     $name = $_POST['name'];
