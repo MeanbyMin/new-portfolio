@@ -87,7 +87,7 @@ label {
   background: #fff;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  border-radius: 15px;
+  border-radius: 10px;
 }
 
 .int {
@@ -161,8 +161,8 @@ input:-webkit-autofill:active  {
   border: 1px solid #dadada;
 }
 
-.bir_yy{ border-radius: 15px 0 0 15px;}
-.bir_dd{ border-radius: 0 15px 15px 0;}
+.bir_yy{ border-radius: 10px 0 0 10px;}
+.bir_dd{ border-radius: 0 10px 10px 0;}
 
 .birth_box {
   padding: 11px 14px;
@@ -205,7 +205,7 @@ span.int_ssn{
   position: relative;
   height: 51px;
   border: solid 1px #dadada;
-  border-radius: 15px;
+  border-radius: 10px;
   background: #fff;
   box-sizing: border-box;
 }
@@ -250,7 +250,7 @@ span.int_mobile {
   position: relative;
   height: 51px;
   border: solid 1px #dadada;
-  border-radius: 15px;
+  border-radius: 10px;
   background: #fff;
   box-sizing: border-box;
 }
@@ -277,7 +277,7 @@ span.mobile_confirm {
   position: relative;
   height: 51px;
   border: solid 1px #dadada;
-  border-radius: 15px;
+  border-radius: 10px;
   background: #fff;
   box-sizing: border-box;
 }
@@ -305,7 +305,7 @@ span.mobile_confirm {
 .btn_type {
   color: #fff;
   border: solid 1px rgba(0, 0, 0, 0.08);
-  border-radius: 15px;
+  border-radius: 10px;
   background-color: #c1c1c1;
 }
 
@@ -331,7 +331,7 @@ span.int_adress{
     position: relative;
     height: 51px;
     border: solid 1px #dadada;
-    border-radius: 15px;
+    border-radius: 10px;
     background: #fff;
     box-sizing: border-box;
 }
@@ -403,4 +403,4 @@ footer a:visited {
   color: #8e8e8e;
 }
 
-.bir_yy_ok{ border-radius: 15px;}
+.bir_yy_ok{ border-radius: 10px;}
