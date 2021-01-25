@@ -765,6 +765,23 @@ header .call .number:hover{
     }
 }
 
+@media screen and (max-width: 1112px){
+    .project_list_item{
+        width: 24.5%;
+    }
+    
+    .project_list_item:nth-child(n+4){
+        margin-top: 50px;
+    }
+}
+
+@media screen and (max-width: 1040px){
+    .project_list_item{
+        width: 32%;
+    }
+    
+}
+
 @media screen and (max-width: 1024px){
     header .logo{
         width: 15%;
@@ -809,7 +826,6 @@ header .call .number:hover{
     
     .project_list_item:nth-child(n+3){
         margin-top: 50px;
-        
     }
 }
 @media screen and (max-width: 1000px){
