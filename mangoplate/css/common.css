@@ -5866,11 +5866,11 @@ img.center-crop.portrait {
     float: none;
 }
 
-.reverse .search-filter .filter-item input[type=checkbox].food+label {
+.pg-search.reverse .search-filter .filter-item input[type=checkbox].food+label {
     margin-right: 5%;
 }
 
-.reverse .search-filter .submit-container {
+.pg-search.reverse .search-filter .submit-container {
     right: 66.667%;
     min-width: 352px;
 }
