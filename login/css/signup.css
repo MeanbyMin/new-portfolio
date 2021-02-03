@@ -200,7 +200,7 @@ input:-webkit-autofill:active  {
 span.int_ssn{
   display: inline-block;
   width: 100%;
-  padding: 10px 15px 10px 14px;
+  padding: 10px 0 10px 14px;
   vertical-align: top;
   position: relative;
   height: 51px;
@@ -211,7 +211,7 @@ span.int_ssn{
 }
 
 span.int_ssn .int{
-  width: 48%;
+  width: 45%;
   display: inline-block;
   text-align: center;
 }
@@ -391,10 +391,15 @@ footer {
 footer a {
   color: black;
   text-decoration: none;
+  transition: .5s ease;
 }
 
 footer a:visited {
   color: #000;
+}
+
+footer a:hover{
+  color: red;
 }
 
 .info{
@@ -404,3 +409,4 @@ footer a:visited {
 }
 
 .bir_yy_ok{ border-radius: 10px;}
+

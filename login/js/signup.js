@@ -16,13 +16,24 @@ function sendit(){
     const bir_dd_sub = document.querySelector('.bir_dd_sub');
     const email = document.querySelector('#email');
     const email_sub = document.querySelector('.email_sub');
-    const isSSN_sub = document.querySelector('.isSSN_sub');
+    const isSSN = document.getElementById('isSSN');
+    const ssn1 = document.getElementById('ssn1');
+    const ssn2 = document.getElementById('ssn2');
     const ssn_sub = document.querySelector('.ssn_sub');
+    const isSSN_sub = document.querySelector('.isSSN_sub');
+    const gender = document.querySelector('#gender');
+    const gender_value = document.querySelector('#gender').options.selectedIndex;
+    const gender_sub = document.querySelector('.gender_sub');
+    const mobile = document.querySelector('#mobileNo');
+    const mobile_sub = document.querySelector('.mobile_sub');
+    const mobile_confirm_sub = document.querySelector('.mobile_confirm_sub');
+    const address = document.querySelector('#sample6_postcode');
+    const address_sub = document.querySelector('.address_sub');
     
     
 
     // 정규식
-    // const expPwText = /^.*(?=^.{4,20}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*()+=]).*$/;
+    const expPwText = /^.*(?=^.{4,20}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*()+=]).*$/;
     const expNametext = /[가-힣]+$/;
     const expBirth = /[0-9]+$/;
     const expHpText = /^\d{3}-\d{3,4}-\d{4}$/;
@@ -106,6 +117,57 @@ function sendit(){
         bir_dd_sub.style.display = 'none'
     }
 
+    if(ssn1.value == '' || ssn2.value == ''){
+        ssn_sub.style.display = 'block';
+        ssn1.focus();
+        return false;
+    }else{
+        ssn_sub.style.display = 'none';
+    }
+
+    if(isSSN.value == 'false'){
+        // alert('주민등록번호 검증을 확인하세요.');
+        isSSN_sub.style.display = 'block';
+        ssn1.focus();
+        return false;
+    }
+
+    if(isSSN.value == 'true'){
+        isSSN_sub.style.display = 'none';
+    }
+
+    if(gender.options[gender_value].value == ''){
+        gender_sub.style.display = 'block';
+        gender.focus();
+        return false;
+    }else{
+        gender_sub.style.display = 'none';
+    }
+    
+    if(mobile.value == ''){
+        mobile_sub.style.display = 'block';
+        mobile.focus();
+        return false;
+    }else{
+        mobile_sub.style.display = 'none';
+    }
+
+    if(expHpText.test(mobile.value) == false){
+        mobile_confirm_sub.style.display = 'block';
+        mobile.focus();
+        return false;
+    }else{
+        mobile_confirm_sub.style.display = 'none';
+    }
+
+    if(address.value == ''){
+        address_sub.style.display = 'block';
+        address.focus();
+        return false;
+    }else{
+        address_sub.style.display ='none';
+    }
+
     if(email.value == ''){
         return true;
     }
@@ -116,12 +178,6 @@ function sendit(){
         return false;
     }else{
         email_sub.style.display = 'none';
-    }
-
-    if(isSSN.value == 'false'){
-        ssn_sub.style.display = 'block';
-        ss1.focus();
-        return false;
     }
 }
 

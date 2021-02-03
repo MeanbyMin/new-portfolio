@@ -1,4 +1,6 @@
 <?php
+    include "./include/dbconn.php";
+
     header('Content-Type: text/html; charset=UTF-8');
     $userid = $_POST['userid'];
     $userpw = $_POST['pw1'];
@@ -15,151 +17,12 @@
     $add2 = $_POST['add2'];
     $add3 = $_POST['add3'];
     $add4 = $_POST['add4'];
-    if($userpw != ''){
-        $userpw = strlen($userpw);
-        for($i=0; $i<$userpw; $i++){
-            $count .= '*';
-        }
-    }
-
-    if($gender == 'Man'){
-        $gender = '남자';
-    }else if($gender == 'Woman'){
-        $gender = '여자';
+    
+    if(!$conn){
+        echo "DB 연결 실패!";
     }else{
-        $gender = '선택안함';
-    };
-
-    if($ssn2 != ''){
-        $ssn2_first = substr($ssn2, 0, 1);
-        $ssn2 = strlen($ssn2);
-        for($i=1; $i<$ssn2; $i++){
-            $ssn2_last .= '*';
-        }
-    }
-
-    if($email == ''){
-        $email = '입력 안함';
+        $sql = "INSERT INTO min_member (min_userid, min_userpw, min_name, min_biryy, min_birmm, min_birdd, min_ssn1, min_ssn2, min_gender, min_email, min_hp, min_zipcode, min_address1, min_address2, min_address3) VALUES ('$userid', '$userpw', '$name', '$yy', '$mm', '$dd', '$ssn1', '$ssn2', '$gender',  '$email', '$mobile', '$add1', '$add2', '$add3', '$add4')";
+        $result = mysqli_query($conn, $sql);
+        echo "<script>alert('회원가입이 완료되었습니다.'); location.href='./login.php';</script>";
     }
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원 정보</title>
-    <link rel="stylesheet" href="./css/signup.css" type="text/css">
-</head>
-<body>
-<div id="wrap">
-        <!--Header-->
-        <div id="header" role="logo">
-            <h1>
-                <a href="#"><img src="./img/logo.png" alt="MeanByMin">
-                </a>
-            </h1>
-        </div>
-        <!--Container-->
-        <div>
-            <div id="content">
-                <div id="join_content">
-                    <div class="join_row">
-                        <h3 class="join_title">
-                            <label for="id">아이디</label>
-                        </h3>
-                        <span class="box int_id">
-                            <span class="info"><?=$userid?></span>
-                        </span>
-                    </div>
-                    <div class="join_row">
-                        <h3 class="join_title">
-                            <label for="pw1">비밀번호</label>
-                        </h3>
-                        <span class="box int_pass">
-                            <span class="info"><?=$count?></span>
-                        </span>
-                    </div>
-                    <div class="join_row">
-                        <h3 class="join_title">
-                            <label for="name">이름</label>
-                        </h3>
-                        <span class="box int_name">
-                            <span class="info"><?=$name?></span>
-                        </span>
-                    </div>
-                    <div class="join_row_birth">
-                        <h3 class="join_title">
-                            <label for="birthday">생년월일</label>
-                        </h3>
-                        <div class="birth_wrap">
-                            <span class="box int_birth">
-                                <span class="info"><?=$yy?>-<?=$mm?>-<?=$dd?></span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="join_row">
-                        <h3 class="join_title">
-                            <label for="ssn">주민등록번호</label>
-                        </h3>
-                        <div class="box int_ssn_area_ok">
-                            <span class="int_ssn_ok">
-                                <span class="info"><?=$ssn1?>-<?=$ssn2_first?><?=$ssn2_last?></span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="join_row">
-                        <h3 class="join_title">
-                            <label for="gender">성별</label>
-                        </h3>
-                        <span class="box select_gender">
-                            <span class="info"><?=$gender?></span>
-                        </span>
-                    </div>
-                    <div class="join_row">
-                        <h3 class="join_title">
-                            <label for="email">이메일</label>
-                        </h3>
-                        <span class="box int_email">
-                            <span class="info"><?=$email?></span>
-                        </span>
-                    </div>
-                    <div class="join_row">
-                        <h3 class="join_title">
-                            <label for="mobile">휴대전화</label>
-                        </h3>
-                        <div class="box int_mobile_area_ok">
-                            <span class="int_mobile_ok">
-                                <span class="info"><?=$mobile?></span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="join_row">
-                        <h3 class="join_title">
-                            <label for="adress">주소</label>
-                        </h3>
-                        <div class="box adress2">
-                            <span class="int_adress">
-                                <span class="info">[<?=$add1?>] <?=$add2?> <?=$add3?> <?=$add4?></span>
-                            </span>
-                        </div>                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <footer>
-        <a href="#">
-            이용약관
-        </a>
-        |
-        <a href="#">
-            개인정보처리방침
-        </a>
-        |
-        <a href="#">
-            회원정보 고객센터
-        </a>
-    </footer>
-</body>
-</html>
