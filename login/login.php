@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="kor">
 <head>
@@ -8,7 +11,8 @@
 </head>
 <body>
 <?php
-    if(!isset($_COOKIE['id'])){
+    // if(!isset($_COOKIE['id'])){  // 쿠키에서 세션으로 변경
+    if(!isset($_SESSION['id'])){
 ?>
     <div id="wrap">
         <div id="header">
@@ -72,11 +76,13 @@
                 <div class="id_area">
                     <div class="input_row" id="id_area" style="border: none;">
                         <span class="input_box" style="font-size: 20px; padding-top: 5px; color: #8e8e8e;">
-                            <?=$_COOKIE['id']?>님 환영합니다.
+                            <?=$_SESSION['id']?>님 환영합니다.
                         </span>
                     </div>
                 </div>
-                <input type="button" title="로그아웃" alt="로그아웃" value="로그아웃" class="btn" id="logout" onclick="location.href='./logout.php'">
+                <p><input type="button" title="로그아웃" alt="로그아웃" value="로그아웃" class="btn" id="logout" onclick="location.href='./logout.php'"></p>
+                <p><input type="button" alt="정보수정" value="정보수정" class="btn" id="modify" onclick="location.href='./modify.php'"></p>
+                <p><input type="button" alt="게시판 리스트" value="게시판 리스트" class="btn" id="list" onclick="location.href='./list.php'"></p>
             </div>
         </div>
     </div>
