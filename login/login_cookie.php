@@ -1,3 +1,6 @@
+<?php
+    header('Content-Type: text/html; charset=UTF-8');
+?>
 <!DOCTYPE html>
 <html lang="kor">
 <head>
@@ -44,7 +47,7 @@
                         <span class="bar">|</span>
                         <a href="#">비밀번호 찾기</a>
                         <span class="bar">|</span>
-                        <a href="signup.html">회원가입</a>
+                        <a href="signup.php">회원가입</a>
                     </div>
                 </div>
             </div>
