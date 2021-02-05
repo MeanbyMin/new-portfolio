@@ -5,11 +5,6 @@
   font-size: 12px;
 }
 
-button {
-  background-color: #c1c1c1;
-  border: none;
-  color: white;
-}
 
 #wrap {
   width: 100%;
@@ -226,6 +221,8 @@ span.int_ssn .int{
   color: #000;
   border: none;
   border-radius: 0;
+  -webkit-border-radius: 0;
+  -webkit-appearance: none;
 }
 
 .sel:hover, .sel:focus, .sel:active{
@@ -410,3 +407,29 @@ footer a:hover{
 
 .bir_yy_ok{ border-radius: 10px;}
 
+input{
+  /*ios대응*/
+  appearance: none;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+}
+
+select{
+  /*ios대응*/
+  -webkit-appearance: none;
+  -moz-appearance: none; 
+  appearance: none;
+  
+  /*화살표 배경 넣기*/
+  background: url('../img/dropdown.png') no-repeat 100% 50% #fff; /*화살표 select박스 오른쪽 중앙 배치,배경 흰색*/
+  background-size: 10px;
+}
+
+select::-ms-expand{ 
+  display:none; /* 화살표 없애기 for IE10, 11*/
+}
+
+input[type=button], input[type=submit]{
+  appearance: none;
+  -webkit-appearance: none;
+}
