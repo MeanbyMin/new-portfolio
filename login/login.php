@@ -83,7 +83,7 @@
                 </div>
                 <p><input type="button" title="로그아웃" alt="로그아웃" value="로그아웃" class="btn" id="logout" onclick="location.href='./logout.php'"></p>
                 <p><input type="button" alt="정보수정" value="정보수정" class="btn" id="modify" onclick="location.href='./modify.php'"></p>
-                <p><input type="button" alt="게시판 리스트" value="게시판 리스트" class="btn" id="list" onclick="location.href='./list.php'"></p>
+                <p><input type="button" alt="게시판 리스트" value="게시판 리스트" class="btn" id="list" onclick="location.href='./board/list.php'"></p>
             </div>
         </div>
     </div>
