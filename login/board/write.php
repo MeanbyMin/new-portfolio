@@ -1,6 +1,7 @@
 <?php
     header('Content-Type: text/html; charset=UTF-8');
     session_start();
+    include "../include/sessionCheck.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +67,7 @@
             border-radius: 3px;
             box-sizing: border-box;
             padding: 16px;
-            height: 300px;
+            height: 310px;
         }
 
         .write p{
@@ -74,12 +75,16 @@
             width: 100%;
         }
 
+        .write p.btn_area{
+            margin-top: 30px
+        }
+
         .write p:first-child{
             margin-top: 0px;
         }
 
         .content_area{
-            margin-bottom: 40px !important;
+            margin-bottom: 0px !important;
         }
 
         .write input[type=text]{
@@ -125,6 +130,49 @@
             float: right;
             margin-right: -15px;
         }
+
+        .btn:hover{
+            color: #999;
+        }
+
+        .file_area{
+            position: relative;
+            height: 25px
+        }
+
+        .file_btn{
+            padding: 4px 12px;
+            background-color: #c1c1c1;
+            border-radius: 3px;
+            color: white;
+            cursor: pointer;
+            font-size: 12px;
+            margin-left: -5px;
+            float: left;
+        }
+
+        .file_btn:hover{
+            color: #999;
+        }
+
+        .file_area input[type=text]{
+            display: inline-block;
+            width: 250px;
+            margin-left: 8px;
+            line-height: 23px;
+            border: 1px solid #c1c1c1;
+            border-radius: 3px;
+            box-sizing: border-box;
+            padding-left: 5px;
+            color: #c1c1c1;
+            font-size: 12px;
+        }
+
+        input[type=file]{
+            position: absolute;
+            left: -9999px;
+        }
+        
     </style>
     <title>민바이민 : 글쓰기</title>
 </head>
@@ -138,13 +186,26 @@
             </div>
         </header>
         <div class="write">
-            <form method="post" action="write_ok.php" autocomplete='off'>
+            <form method="post" action="write_ok.php" enctype="multipart/form-data" autocomplete='off'>
                 <p class="userid"><label>아이디 : <?=$_SESSION['id']?></label></p>
                 <p><input type="text" name="b_title" placeholder="제목을 입력해 주세요."></p>
                 <p class="content_area"><textarea name="b_content" placeholder="내용을 입력해 주세요." maxlength="10000"></textarea></p>
-                <p class="btn_area"><input type="submit" value="글쓰기" class="btn"> <input type="reset" value="다시 작성" class="btn"> <input type="button" value="리스트" class="btn" onclick="location.href='./list.php'"></p>
+                <div class="file_area">
+                    <label for="b_file" class="file_btn">파일 선택</label>
+                    <input type="text" id="file_route" readonly placeholder="선택된 파일 없음">
+                    <input type="file" name="b_file" id="b_file" onchange="file()">
+                </div>
+                <p class="btn_area"><input type="submit" value="작성" class="btn"> <input type="reset" value="다시 작성" class="btn"> <input type="button" value="리스트" class="btn" onclick="location.href='./list.php'"></p>
             </form>
         </div>
     </div>
+    <script>
+        function file(){
+            const file_route = document.getElementById('b_file').value;
+            const fileSplit = file_route.split('\\');
+            const file_name = fileSplit[fileSplit.length-1];
+            document.getElementById('file_route').value = file_name;
+        }
+    </script>
 </body>
 </html>
