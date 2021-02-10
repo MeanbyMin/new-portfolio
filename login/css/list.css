@@ -91,11 +91,33 @@ td{
 .btn_area{
     width: 100%;
     max-width: 1200px;
-    margin: 20px auto 0;
+    margin: 20px auto 150px;
+    display: flex;
 }
 
-.write_btn{ float: left;}
-.login_btn{ float: right;}
+.page_area{
+    width: 100%;
+    max-width: 1100px;
+    text-align: center;
+}
+
+.paging{
+    width: 30px;
+    height: 40px;
+    display: inline-block;
+    text-align: center;
+    line-height: 40px;
+}
+
+.paging a{ color: #888; }
+.paging a:hover{ color: tomato; }
+
+/* .write_btn{ float: left;}
+.login_btn{ float: right;} */
+
+.btn:hover{ color: #999; }
+
+.btn:focus{ outline: none; }
 
 input[type=button]{
     width: 80px;

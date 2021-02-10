@@ -85,6 +85,8 @@ label {
   border-radius: 10px;
 }
 
+
+
 .int {
   display: block;
   position: relative;
@@ -100,10 +102,33 @@ label {
   z-index: 10;
 }
 
-input#id.name {
+.box.id_box{ 
+  position: relative;
+  margin-top: 10px;
+  padding: 0 125px 0 0;
+  height: 51px;
+  border: none;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+span.int_id{
+  display: inline-block;
+    width: 100%;
+    padding: 10px 0 10px 14px;
+    vertical-align: top;
+    position: relative;
+    height: 51px;
+    border: solid 1px #dadada;
+    border-radius: 10px;
+    background: #fff;
+    box-sizing: border-box;
+}
+ 
+input#userid {
   display: block;
   position: relative;
-  width: 90%;
+  width: 100%;
   height: 29px;
   padding-right: 25px;
   line-height: 29px;
@@ -113,6 +138,16 @@ input#id.name {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   z-index: 10;
+}
+
+.id_url {
+  position: absolute;
+  top: 16px;
+  right: 13px;
+  font-size: 15px;
+  line-height: 18px;
+  color: #8e8e8e;
+  z-index: 15;
 }
 
 input, input:focus, input:hover, input:active{
@@ -130,15 +165,7 @@ input:-webkit-autofill:active  {
 
 
 
-.id_url {
-  position: absolute;
-  top: 16px;
-  right: 13px;
-  font-size: 15px;
-  line-height: 18px;
-  color: #8e8e8e;
-  z-index: 15;
-}
+
 
 .birth_wrap {
   display: table;
@@ -232,7 +259,7 @@ span.int_ssn .int{
 .int_mobile_area {
   position: relative;
   margin-top: 10px;
-  padding: 0 125px 0 0;
+  padding: 0;
   height: 51px;
   border: none;
   background: #fff;
@@ -288,7 +315,7 @@ span.mobile_confirm {
   top: 0;
   right: 0;
   width: 115px;
-  height: 51px;
+  height: 50px;
   text-align: center;
   box-sizing: border-box;
   text-decoration: none;
@@ -376,6 +403,12 @@ span.int_adress:first-child .int{
   padding-left: 10px;
   color: #8e8e8e;
   display: none;
+}
+
+#idCheck_text{
+  margin-top: 10px;
+  padding-left: 10px;
+  color: #8e8e8e;
 }
 
 footer {

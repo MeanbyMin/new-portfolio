@@ -65,6 +65,8 @@ h1 {
   clear: both;
 }
 
+.login_logo:focus{ outline: none; }
+
 .id_area,
 .pw_area {
   position: relative;
@@ -144,6 +146,10 @@ label {
   cursor: pointer;
   text-align: center;
 }
+
+.btn:hover{ color: #999; }
+
+.btn:focus{ outline: none; }
 
 #modify{
   margin: 0 0 14px;
