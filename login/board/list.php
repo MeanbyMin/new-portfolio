@@ -1,8 +1,19 @@
 <?php
     header('Content-Type: text/html; charset=UTF-8');
+    session_start();
     include "../include/dbconn.php";
+    include "../include/sessionCheck.php";
 
     $sql = "SELECT b_idx, b_userid, b_title, b_content, b_hit, b_regdate, b_file, b_up FROM min_board ORDER BY b_idx DESC";
+    $result = mysqli_query($conn, $sql);
+
+    $pageNum = 5;   
+    $pageTotal = $result->num_rows; 
+    $page = 0;
+    if(isset($_GET['page'])){
+        $page = ($_GET['page']-1) * $pageNum;
+    };
+    $sql = "SELECT * FROM min_board ORDER BY b_idx DESC limit $page, $pageNum";
     $result = mysqli_query($conn, $sql);
 ?>
 <!DOCTYPE html>
@@ -64,8 +75,22 @@
 ?>
         </table>
         <div class="btn_area">
-            <p class="write_btn"><input type="button" value="글쓰기" onclick="location.href='./write.php'"></p>
-            <p class="login_btn"><input type="button" value="돌아가기" onclick="location.href='../login.php'"></p>
+            <input type="button" class="btn write_btn" value="글쓰기" onclick="location.href='./write.php'">
+            <p class="page_area">
+<?php
+    $pages = $pageTotal / $pageNum;
+    for($i=0; $i<$pages; $i++){
+        $nextNum = $i + 1;
+        $nextPage = ($pageNum * $i)/$pageNum +1;
+?>
+        <span class="paging">
+            <a href="<?=$_SERVER['PHP_SELF']?>?page=<?=$nextPage?>"><?=$nextNum?></a>
+        </span>
+<?php
+    }
+?>
+            </p>
+            <input type="button" class="btn login_btn" value="돌아가기" onclick="location.href='../login.php'">
         </div>
     </div>
 </body>
