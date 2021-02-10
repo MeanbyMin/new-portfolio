@@ -1,6 +1,7 @@
 function sendit(){
     const userid = document.getElementById('userid');
     const id_sub = document.querySelector('.int_id_sub');
+    const id_sub2 = document.querySelector('.int_id_sub2');
     const pw1 = document.getElementById('pw1');
     const pw1_sub = document.querySelector('.int_pw1_sub')
     const pw2 = document.getElementById('pw2');
@@ -51,6 +52,14 @@ function sendit(){
         return false;
     }else{
         id_sub.style.display = 'none';
+    }
+
+    if(isIdCheck.value == 'false'){
+        id_sub2.style.display = 'block';
+        userid.focus();
+        return false;
+    }else{
+        id_sub2.style.display = 'none';
     }
 
     if(expPwText.test(pw1.value) == false){
@@ -227,4 +236,35 @@ function ssnCheck(){
     }else{
         alert('유효하지 않은 주민등록번호입니다.');
     }
+}
+
+function idCheck(){
+    // alert(id);
+    const userid = document.getElementById('userid');
+    if(userid.value == ""){
+        id_sub.style.display = 'block';
+        userid.focus();
+        return false;
+    }
+
+    const httpRequest = new XMLHttpRequest();
+    httpRequest.onreadystatechange = function(){
+        if(httpRequest.readyState == XMLHttpRequest.DONE && httpRequest.status == 200){
+            // Ajax 통신이 제대로 이루어졌을 경우
+            // alert(httpRequest.responseText.trim());
+            if(httpRequest.responseText.trim() == "n"){
+                document.getElementById('idCheck_text').innerHTML = "사용할 수 있는 아이디입니다.";
+                document.getElementById('isIdCheck').value = true;
+            }else{
+                document.getElementById('idCheck_text').innerHTML = "사용할 수 없는 아이디입니다."
+            }
+        }
+    };
+    httpRequest.open("GET", "idCheck_ok.php?min_userid="+userid.value, true);
+    httpRequest.send();
+}
+
+function isIdChange(){
+    document.getElementById('idCheck_text').innerHTML = "";
+    document.getElementById('isIdCheck').value = false;
 }
