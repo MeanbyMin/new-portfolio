@@ -146,7 +146,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td rowspan="3">
+                    <td rowspan="4">
                         <strong>로그인/회원가입</strong>
                     </td>
                     <td>
@@ -178,7 +178,70 @@
                         회원가입 페이지
                     </td>
                     <td class="desc">
-                        회원 가입 후 로그인 페이지(세션 사용)에서 로그인을 하실 수 있습니다. (DB사용)
+                        회원 가입 후 로그인 페이지(세션 사용)에서 로그인을 하실 수 있습니다. (DB사용)<br>
+                        ID 중복체크, 주민번호 유효성체크, 주소찾기 기능 있습니다.<br>
+                        개인정보로 인해 주민번호는 미리 입력해 놓았습니다.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a class="link" target="_blank" href="./modify.php">modify</a>
+                    </td>
+                    <td>
+                        정보수정 페이지
+                    </td>
+                    <td class="desc">
+                        로그인 상태일 때만 정보 수정이 가능합니다.
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="4">
+                        <strong>게시판</strong>
+                    </td>
+                    <td>
+                        <a class="link" target="_blank" href="./board/list.php">list</a>
+                    </td>
+                    <td>
+                        게시판 리스트 페이지
+                    </td>
+                    <td class="desc">
+                        로그인 상태일 때만 게시판 리스트에 접속할 수 있습니다.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a class="link" target="_blank" href="./board/write.php">write</a>
+                    </td>
+                    </td>
+                    <td>
+                        게시글 작성 페이지
+                    </td>
+                    <td class="desc">
+                        로그인 상태일 때만 게시판 글 작성이 가능합니다. 이미지 파일 1개를 첨가할 수 있습니다.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a class="link" target="_blank" href="./board/view.php">view</a>
+                    </td>
+                    </td>
+                    <td>
+                        게시글 페이지
+                    </td>
+                    <td class="desc">
+                        로그인 상태일 때만 게시글을 볼 수 있습니다. 댓글 기능을 사용할 수 있습니다.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a class="link" target="_blank" href="./board/edit.php">edit</a>
+                    </td>
+                    </td>
+                    <td>
+                        게시글 수정 페이지
+                    </td>
+                    <td class="desc">
+                        로그인 상태일 때만 게시글 수정이 가능하며, 이미지 파일을 수정할 수 있습니다.
                     </td>
                 </tr>
             </tbody>
