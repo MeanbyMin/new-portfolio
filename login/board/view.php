@@ -3,6 +3,7 @@
     session_start();
     include "../include/dbconn.php";
     include "../include/sessionCheck.php";
+    include "../include/getIdxCheck.php";
 
     $b_idx = $_GET['b_idx'];
     $sql = "UPDATE min_board SET b_hit = b_hit + 1 WHERE b_idx = $b_idx";

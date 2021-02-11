@@ -3,6 +3,7 @@
     session_start();
     include "../include/dbconn.php";
     include "../include/sessionCheck.php";
+    include "../include/getIdxCheck.php";
 
     $b_idx = $_GET['b_idx'];
 
