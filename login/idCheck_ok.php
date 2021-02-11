@@ -1,4 +1,5 @@
 <?php
+    header('Content-Type: text/html; charset=UTF-8');
     include "./include/dbconn.php";
     $min_userid = $_GET['min_userid'];
 
