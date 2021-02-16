@@ -203,7 +203,7 @@
                         </div>
                         <div class="box int_mobile_area">
                             <span class="int_mobile">
-                                <input type="tel" name="mobileNo" id="mobileNo" class="int" placeholder="전화번호 입력" maxlength="13" >
+                                <input type="text" name="mobileNo" id="mobileNo" class="int" placeholder="전화번호 입력" maxlength="13" >
                             </span>
                             <!-- <a href="#" class="btn_number btn_type" onclick="mobileConfirm()"><input type="button" id="btnSend"><span class = "click">인증번호 받기</span></a> -->
                         </div>
