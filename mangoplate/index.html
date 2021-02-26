@@ -62,8 +62,7 @@
                     </li>
             
                     <li class="Header__IconButtonItem Header__IconButtonItem--UserRestaurantHistory">
-                        <button class="UserProfileButton"
-                                onclick="">
+                        <button class="UserProfileButton" onclick="clickProfile()">
                             <i class="UserProfileButton__Picture"></i>
                             <i class="UserProfileButton__PersonIcon"></i>
                             <span class="UserProfileButton__HistoryCount">0</span>
@@ -82,11 +81,11 @@
                         <i class="UserRestaurantHistory__Triangle"></i>
                     
                         <ul class="UserRestaurantHistory__TabList">
-                            <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Viewed UserRestaurantHistory__TabItem--Selected" onclick="">
-                            <button class="UserRestaurantHistory__TabButton">최근 본 맛집 <span class="UserRestaurantHistory__ViewedCount">6</span></button>
+                            <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Viewed UserRestaurantHistory__TabItem--Selected" onclick="CLICK_RECENT_TAB()">
+                            <button class="UserRestaurantHistory__TabButton">최근 본 맛집 <span class="UserRestaurantHistory__ViewedCount">0</span></button>
                             </li>
                     
-                            <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Wannago" onclick="">
+                            <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Wannago" onclick="CLICK_WAANGO_TAB()">
                             <button class="UserRestaurantHistory__TabButton">가고싶다</button>
                             </li>
                         </ul>
@@ -120,7 +119,7 @@
                         </div>
                     
                         <footer class="UserRestaurantHistory__Footer">
-                            <button class="UserRestaurantHistory__LoginButton UserRestaurantHistory__LoginButton--Show" onclick="">로그인</button>
+                            <button class="UserRestaurantHistory__LoginButton UserRestaurantHistory__LoginButton--Show" onclick="clickLogin()">로그인</button>
                             <button class="UserRestaurantHistory__LogoutButton" onclick="">logout</button>
                         </footer>
                         </div>
@@ -1870,8 +1869,9 @@
     <!-- wrap 끝 -->
     <!-- 로그인창 팝업 시작 -->
     <aside class="pop-context pg-login" style="display: none;">
+        <div class="pop_blackDeem"></div>
         <div class="contents-box">
-            <button class="btn-nav-close" onclick="">
+            <button class="btn-nav-close" onclick="loginClose()">
                 닫기
             </button>
         
@@ -1901,5 +1901,6 @@
     </div>
     
     <script src="./js/swiper.min.js"></script>
+    <script src="./js/mango.js"></script>
 </body>
 </html>
