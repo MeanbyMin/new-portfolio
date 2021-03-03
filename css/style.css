@@ -1090,4 +1090,9 @@ header .call .number:hover{
     .copyright p{
         font-size: .5rem;
     }
+
+    .project_intro{
+        font-size: 2.5rem;
+    }
 }
+
