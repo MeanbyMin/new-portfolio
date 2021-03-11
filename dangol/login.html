@@ -7,27 +7,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>민바이민 : 로그인</title>
-    <link rel="stylesheet" href="./css/login.css" type="text/css">
+    <title>단골카페 : 로그인</title>
     <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="./css/common.css" type="text/css">
 </head>
 <body>
 <?php
-    // if(!isset($_COOKIE['id'])){  // 쿠키에서 세션으로 변경
     if(!isset($_SESSION['id'])){
 ?>
     <div id="wrap">
         <div id="header">
             <h1>
-                <img src="./img/logo.png" alt="logo">
+                <img src="./img/logo1.png" alt="logo">
             </h1>
         </div>
-        <div id="container">
+        <div id="loginContainer" class="container">
             <div id="content">
                 <form class="login_area" method="POST" action="./login_ok.php">
                     <div class="id_area">
                         <div class="input_row" id="id_area">
-                            <p class="label_box"><label for="id" id="label_id_area" class="text">Email</label></p>
+                            <p class="label_box"><label for="id" id="label_id_area" class="text">이메일</label></p>
                             <span class="input_box">
                                 <input type="text" id="id" name="userid" placeholder="Email" class="int" maxlength="40">
                                 <img src="./img/check.svg" alt="check" class="check_icon">
@@ -36,7 +35,7 @@
                     </div>
                     <div class="pw_area">
                         <div class="input_row" id="pw_area">
-                            <p class="label_box"><label for="pw" id="label_pw_area" class="text">Password</label></p>
+                            <p class="label_box"><label for="pw" id="label_pw_area" class="text">비밀번호</label></p>
                             <span class="input_box">
                                 <input type="password" id="pw" name="userpw" placeholder="Password" class="int" maxlength="16">
                                 <img src="./img/hidden-eye.svg" alt="hidden-eye" class="check_icon">
@@ -47,7 +46,7 @@
                         <!-- searchpass로 페이지 만들기 -->
                         <a href="#" class="link_look">비밀번호를 잊으셨나요?</a>
                     </div>
-                    <input type="submit" title="로그인" alt="로그인" value="Log In" class="btn" id="login">
+                    <input type="submit" title="로그인" alt="로그인" value="로그인" class="btn" id="login">
                 </form>
                 <div class="social_box">
                     <a href="#" class="social_btn kakako">카카오</a>
@@ -55,17 +54,10 @@
                     <a href="#" class="social_btn google">구글</a>
                 </div>
                 <div class="signup_area">
-                    <a href="signup.php"><span class="signup_text">아직 계정이 없으신가요?</span> 회원가입!</a>
+                    <a href="privacyPolicy.html"><span class="signup_text">아직 계정이 없으신가요?</span> 회원가입!</a>
                 </div>
             </div>
         </div>
-        <!-- <div id="footer">
-            <ul>
-                <a href="#"><li>이용약관</li></a>
-                <a href="#"><li>개인정보처리방침</li></a>
-                <a href="#"><li>회원정보 고객센터</li></a>
-            </ul>
-        </div> -->
     </div>
 <?php
     }

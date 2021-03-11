@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="kor">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>단골카페 : 회원가입</title>
+    <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="./css/common.css" type="text/css">
+</head>
+<body>
+    <div id="wrap">
+        <div id="header">
+            <button class="goBack" onclick="location.href='login.html'"></button>
+            <h1>
+                <img src="./img/logo1.png" alt="logo">
+            </h1>
+        </div>
+        <div id="policyContainer" class="container">
+            <div id="content">
+                <form class="policyForm regForm" method="POST" action="./policyOk.php">
+                    <ul class="policy_area">
+                        <li class="policy_list">
+                            <input type="checkbox" name="checkAll" id="checkAll">
+                            <label for="checkAll">
+                                <div class="check_box">
+                                    <p class="check_title title_mar">
+                                        전체동의
+                                    </p>
+                                    <p class="check_sub">
+                                        전체동의는 선택목적에 대한 동의를 포함하고 있으며,<br>선택목적에 대한 동의를 거부해도 서비스 이용이 가능합니다.
+                                    </p>
+                                </div>
+                            </label>
+                        </li>
+                        <hr>
+                        <li class="policy_list">
+                            <input type="checkbox" name="agree1" id="agree1">
+                            <label for="agree1">
+                                <div class="check_box">
+                                    <p class="check_title">
+                                        이용약관 동의 <span class="check_require">(필수)</span>
+                                    </p>
+                                    <span class="detailBtn" onclick=""></span>
+                                </div>
+                            </label>
+                        </li>
+                        <hr>
+                        <li class="policy_list">
+                            <input type="checkbox" name="agree2" id="agree2">
+                            <label for="agree2">
+                                <div class="check_box">
+                                    <p class="check_title">
+                                        개인정보수집 및 이용 동의 <span class="check_require">(필수)</span>
+                                    </p>
+                                    <span class="detailBtn" onclick=""></span>
+                                </div>
+                            </label>
+                        </li>
+                        <hr>
+                        <li class="policy_list">
+                            <input type="checkbox" name="agree3" id="agree3">
+                            <label for="agree3">
+                                <div class="check_box">
+                                    <p class="check_title">
+                                        만 14세 이상 이용자 <span class="check_require">(필수)</span>
+                                    </p>
+                                    <span class="detailBtn" onclick=""></span>
+                                </div>
+                            </label>
+                        </li>
+                        <hr>
+                        <li class="policy_list">
+                            <input type="checkbox" name="agree4" id="agree4">
+                            <label for="agree4">
+                                <div class="check_box">
+                                    <p class="check_title title_mar">
+                                        위치기반 서비스 이용약관 동의 <span class="check_require">(필수)</span>
+                                    </p>
+                                    <p class="check_sub">
+                                        주변 커페 검색에 사용됩니다.
+                                    </p>
+                                    <span class="detailBtn" onclick=""></span>
+                                </div>
+                            </label>
+                        </li>
+                        <hr>
+                        <li class="policy_list">
+                            <input type="checkbox" name="agree5" id="agree5">
+                            <label for="agree5">
+                                <div class="check_box">
+                                    <p class="check_title title_mar">
+                                        E-mail 및 SNS 광고성 정보 수신동의 <span class="check_choice">(선택)</span>
+                                    </p>
+                                    <p class="check_sub">
+                                        다양한 프로모션 소식 및 정보를 보내드립니다.
+                                    </p>
+                                </div>
+                            </label>
+                        </li>
+                        <hr>
+                    </ul>
+                    <input type="submit" title="다음" alt="다음" value="다음" class="btn" id="next">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
