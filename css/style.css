@@ -39,7 +39,6 @@ html{font-family: 'AppleGothic', 'Nanum Gothic', sans-serif, Helvetica;}
     transition: background-color 1s ease;
     width: 100vw;
     height: 100vh;
-    min-height: 640px;
     z-index: 9999;
 }
 h1{
