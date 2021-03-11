@@ -1,0 +1,148 @@
+ol, ul, ul li {
+    list-style: none;
+}
+
+p{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+h2{
+    margin-bottom: 50px;
+}
+
+.btn_area .btn{
+    width: 90px;
+    height: 35px;
+    background-color: #c1c1c1;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    letter-spacing: 1px;
+    box-sizing: border-box;
+}
+
+.btn:hover{ color: #999; }
+
+.btn:focus{ outline: none; }
+
+.btn.edit{
+    margin-left: auto;
+}
+
+.btn.delete{ margin-left: 5px;}
+
+.title{
+    display: inline-block;
+    width: 110px;
+    font-size: 1rem;
+    color: rgba(79,79,79,0.6);
+    line-height: 1.7;
+    text-align: left;
+    vertical-align: top;
+    padding-right: 10px;
+}
+
+input[type=text]{
+    width: 300px;
+    font-size: 1rem;
+    color: #212529;
+    line-height: 1.7;
+    text-align: left;
+    vertical-align: top;
+    border: none;
+    border-bottom: 1px solid #999;
+}
+
+input:focus{
+    outline: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: #212529 !important;
+}
+
+input[type=button],
+input[type=submit],
+input[type=reset]{
+    background-color: #999999;
+    color: #eeeeee;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: .9rem;
+    margin-left: 10px;
+    border: none;
+}
+
+input[type=submit]{
+    margin-left: 0;
+}
+
+#price {
+    margin-bottom: 20px;
+}
+
+#price p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#price input[type=text]{
+    width: 200px;
+    margin-right: 10px;
+}
+
+#price input[type=text]:nth-child(even){
+    margin-right: 0;
+}
+
+.btn_area{
+    margin-top: 40px;
+}
+
+.filebox input[type="file"] { 
+    position: absolute; 
+    width: 1px; 
+    height: 1px; 
+    padding: 0; 
+    margin: -1px; 
+    overflow: hidden; 
+    clip:rect(0,0,0,0); 
+    border: 0; 
+} 
+
+.filebox label { 
+    display: inline-block; 
+    padding: .5em .75em; 
+    color: #eeeeee; 
+    font-size: inherit; 
+    line-height: normal; 
+    vertical-align: middle; 
+    background-color: #999999; 
+    cursor: pointer; 
+    border: none; 
+    border-radius: .25em;
+    font-size: .9rem;
+    margin-bottom: 0;
+} 
+/* named upload */ 
+.filebox #upload-name { 
+    display: inline-block; 
+    padding: .5em .75em; /* label의 패딩값과 일치 */ 
+    font-size: inherit; 
+    font-family: inherit; 
+    line-height: normal; 
+    vertical-align: middle; 
+    background-color: inherit; 
+    border: none;
+    border-bottom: 1px solid #999999;
+    -webkit-appearance: none; /* 네이티브 외형 감추기 */ -moz-appearance: none; 
+    appearance: none;
+    width: 200px;
+    margin-right: 10px;
+}
