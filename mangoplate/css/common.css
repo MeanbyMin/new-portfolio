@@ -171,6 +171,14 @@ img {
     text-decoration: underline !important;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	 transition: background-color 100s;
+	 -webkit-transition: background-color 9999s;
+}
+
 /* 공통 부분 끝 */
 
 /* 웹 접근성 */
@@ -8641,6 +8649,126 @@ body.ReviewDetailPage__Body {
 }
 
 /* 리뷰 상세페이지 끝 */
+
+/* 가게 등록페이지 시작 */
+
+.restaurantEnrollment {
+    max-width: 768px;
+    position: relative;
+    margin: 110px auto 50px;
+    display: block;
+    overflow: hidden;
+}
+
+.enrollmentTitle{
+    color: #ff7100;
+    height: 30px;
+    line-height: 1.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+}
+
+.enrollmentForm{
+    width: 100%;
+}
+
+.enrollmentForm p{
+    margin: 20px 0;
+}
+
+.enrollmentForm input, .enrollmentForm textarea{
+    caret-color: #ff7100;
+}
+
+.enrollmentForm input[type=text] {
+    width: 300px;
+    font-size: 1rem;
+    color: #212529;
+    background-color: inherit;
+    line-height: 1.7;
+    text-align: left;
+    vertical-align: top;
+    border: none;
+    border-bottom: 1px solid #999;
+}
+
+.enrollmentForm .title{
+    width: 110px;
+    font-size: 1rem;
+    color: rgba(79,79,79,0.6);
+    line-height: 1.7;
+    text-align: left;
+    vertical-align: top;
+    padding-right: 10px;
+    display: inline-block;
+}
+
+.enrollmentForm input[type=button],
+.enrollmentForm input[type=submit], 
+.enrollmentForm input[type=reset] {
+    background-color: #ff7100;
+    color: #eeeeee;
+    border-radius: 5px;
+    padding: .5em .75em;
+    font-size: .9rem;
+    margin-left: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.enrollmentForm #price input[type=text] {
+    width: 200px;
+    margin-right: 10px;
+}
+
+.filebox #upload-name {
+    display: inline-block;
+    padding: .5em .75em;
+    font-size: inherit;
+    font-family: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: inherit;
+    border: none;
+    border-bottom: 1px solid #999999;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 200px;
+    margin-right: 10px;
+}
+
+.filebox label {
+    display: inline-block;
+    padding: .5em .75em;
+    color: #eeeeee;
+    font-size: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: #ff7100;
+    cursor: pointer;
+    border: none;
+    border-radius: .25em;
+    font-size: .9rem;
+    margin-bottom: 0;
+}
+
+.filebox input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+
+.enrollmentForm .btn_area {
+    margin-top: 80px;
+    text-align: center;
+}
+/* 식당 등록페이지 끝 */
 
 /* 반응형 */
 @media only screen and (min-width: 320px) and (max-width: 768px) {
