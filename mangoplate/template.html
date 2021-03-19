@@ -10,7 +10,7 @@
     <link href="../img/ico.png" rel="shortcut icon" type="image/x-icon">
     <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
 </head>
-<body onunload="" ng-app="mp20App" class="EatDealsPage__Body">
+<body onunload="" ng-app="mp20App" class="home_page">
     <ul class="skipnavi">
         <li><a href="#container">본문내용</a></li>
     </ul>
@@ -60,7 +60,7 @@
             
                     <li class="Header__IconButtonItem Header__IconButtonItem--UserRestaurantHistory">
                         <button class="UserProfileButton"
-                                onclick="">
+                                onclick="clickProfile()">
                             <i class="UserProfileButton__Picture"></i>
                             <i class="UserProfileButton__PersonIcon"></i>
                             <span class="UserProfileButton__HistoryCount">0</span>
@@ -117,7 +117,7 @@
                         </div>
                     
                         <footer class="UserRestaurantHistory__Footer">
-                            <button class="UserRestaurantHistory__LoginButton UserRestaurantHistory__LoginButton--Show" onclick="">로그인</button>
+                            <button class="UserRestaurantHistory__LoginButton UserRestaurantHistory__LoginButton--Show" onclick="clickLogin()">로그인</button>
                             <button class="UserRestaurantHistory__LogoutButton" onclick="">logout</button>
                         </footer>
                         </div>
@@ -468,7 +468,7 @@
     <!-- 로그인창 팝업 시작 -->
     <aside class="pop-context pg-login" style="display: none;">
         <div class="contents-box">
-            <button class="btn-nav-close" onclick="">
+            <button class="btn-nav-close" onclick="loginClose()">
                 닫기
             </button>
         
