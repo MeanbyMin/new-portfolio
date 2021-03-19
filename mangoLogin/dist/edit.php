@@ -7,7 +7,7 @@
 
     $r_idx = $_GET['r_idx'];
 
-    $sql = "SELECT r_idx, r_writer, r_restaurant, r_grade, r_read, r_review, r_wannago, r_repphoto, r_photo, r_address, r_jibunaddress, r_tel, r_foodtype, r_price, r_website, r_parking, r_openhour, r_breaktime, r_lastorder, r_holiday, r_menu, r_menuprice, r_regdate FROM mango_restaurant WHERE r_idx=$r_idx";
+    $sql = "SELECT r_idx, r_writer, r_restaurant, r_grade, r_read, r_review, r_wannago, r_repphoto, r_photo, r_address, r_jibunaddress, r_tel, r_foodtype, r_price, r_website, r_parking, r_openhour, r_breaktime, r_lastorder, r_holiday, r_menu, r_menuprice, r_status, r_regdate FROM mango_restaurant WHERE r_idx=$r_idx";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result);
 
@@ -32,6 +32,7 @@
     $r_holiday          = $row['r_holiday'];
     $r_menu             = $row['r_menu'];
     $r_menuprice        = $row['r_menuprice'];
+    $r_status           = $row['r_status'];
     $r_regdate          = $row['r_regdate'];
     $r_menuarr          = explode(',', $r_menu);
     $r_menupricearr     = explode(',', $r_menuprice);
@@ -87,7 +88,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="index.html">
+                            <a class="nav-link" href="index.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
@@ -99,20 +100,11 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="RestaurantList.php">Restaurant Enrollment</a>
-                                    <a class="nav-link" href="layout-static.html">Mango Story</a>
-                                    <a class="nav-link" href="layout-static.html">Matjib List</a>
+                                    <a class="nav-link" href="./RestaurantList.php">Restaurant List</a>
+                                    <a class="nav-link" href="MangoStory.php">Mango Story</a>
+                                    <a class="nav-link" href="MatjibList.php">Matjib List</a>
                                 </nav>
                             </div>
-                            <div class="sb-sidenav-menu-heading">Addons</div>
-                            <a class="nav-link" href="charts.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Charts
-                            </a>
-                            <a class="nav-link" href="tables.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Tables
-                            </a>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
@@ -130,25 +122,25 @@
                             <li class="breadcrumb-item active">Restaurant Edit</li>
                         </ol>
                         <!-- 본문 추가 영역 -->
-                        <form method="post" action="edit_ok.php" enctype="multipart/form-data" onsubmit="return sendit()">
+                        <form method="post" action="edit_ok.php" enctype="multipart/form-data" class="editForm" onsubmit="return sendit()">
                             <input type="hidden" name="isAddress" id="isAddress" value="false">
-                                <input type="hidden" name="r_idx" value="<?=$r_idx?>">
-                                <p><label>아이디 : <?=$_SESSION['id']?></label></p>
-                                <p><label>가게명 : <input type="text" name="r_restaurant" value="<?=$r_restaurant?>" required></label></p>
-                                <p><label>도로명 주소 : <input type="text" id="sample4_roadAddress" class="r_address" name="r_address" placeholder="도로명주소" value="<?=$r_address?>" readonly></label> <input type="button" id="address_btn" onclick="sample4_execDaumPostcode()" value="주소 찾기"></p>
-                                <p><label>지번 주소 : <input type="text" id="sample4_jibunAddress" class="r_jibunaddress" name="r_jibunaddress" placeholder="지번주소" value="<?=$r_jibunaddress?>" readonly></label></p>
-                                <p><label>전화번호 : <input type="text" name="r_tel" placeholder="-을 넣어주세요" value="<?=$r_tel?>"></label></p>
-                                <p><label>음식 종류 : <input type="text" id="r_foodtype" name="r_foodtype" value="<?=$r_foodtype?>"></label></p>
-                                <p><label>가격대 : <input type="text" name="r_price" value="<?=$r_price?>"></label></p>
-                                <p><label>웹사이트 : <input type="text" name="r_website" value="<?=$r_website?>"></label></p>
-                                <p><label>주차 : <input type="text" name="r_parking" value="<?=$r_parking?>"></label></p>
-                                <p><label>영업 시간 : <input type="text" name="r_openhour" value="<?=$r_openhour?>"></label></p>
-                                <p><label>쉬는 시간 : <input type="text" name="r_breaktime" value="<?=$r_breaktime?>"></label></p>
-                                <p><label>마지막 주문 : <input type="text" name="r_lastorder" value="<?=$r_lastorder?>"></label></p>
-                                <p><label>휴일 : <input type="text" name="r_holiday" value="<?=$r_holiday?>"></label></p>
-                                <p><label>메뉴/가격 : 
-                                    <div id="price">
-                                        <input type="text" name="r_menu[]" value="<?=$r_menuarr[0]?>"> <input type="text" name="r_menuprice[]" value="<?=$r_menupricearr[0]?>"> <input type="button" value="추가" onclick="add_textbox()">
+                            <input type="hidden" name="r_idx" value="<?=$r_idx?>">
+                            <p><label><span class="title">아이디</span> <span class="value"><?=$_SESSION['id']?></span></label></p>
+                            <p><label><span class="title">가게명</span> <input type="text" name="r_restaurant" value="<?=$r_restaurant?>" required></label></p>
+                            <p><label><span class="title">도로명 주소</span> <input type="text" id="sample4_roadAddress" class="r_address" name="r_address" placeholder="도로명주소" value="<?=$r_address?>" readonly></label> <input type="button" id="address_btn" onclick="sample4_execDaumPostcode()" value="주소 찾기"></p>
+                            <p><label><span class="title">지번 주소</span> <input type="text" id="sample4_jibunAddress" class="r_jibunaddress" name="r_jibunaddress" placeholder="지번주소" value="<?=$r_jibunaddress?>" readonly></label></p>
+                            <p><label><span class="title">전화번호</span> <input type="text" name="r_tel" placeholder="-을 넣어주세요" value="<?=$r_tel?>"></label></p>
+                            <p><label><span class="title">음식 종류</span> <input type="text" id="r_foodtype" name="r_foodtype" value="<?=$r_foodtype?>"></label></p>
+                            <p><label><span class="title">가격대</span> <input type="text" name="r_price" value="<?=$r_price?>"></label></p>
+                            <p><label><span class="title">웹사이트</span> <input type="text" name="r_website" value="<?=$r_website?>"></label></p>
+                            <p><label><span class="title">주차</span> <input type="text" name="r_parking" value="<?=$r_parking?>"></label></p>
+                            <p><label><span class="title">영업 시간</span> <input type="text" name="r_openhour" value="<?=$r_openhour?>"></label></p>
+                            <p><label><span class="title">쉬는 시간</span> <input type="text" name="r_breaktime" value="<?=$r_breaktime?>"></label></p>
+                            <p><label><span class="title">마지막 주문</span> <input type="text" name="r_lastorder" value="<?=$r_lastorder?>"></label></p>
+                            <p><label><span class="title">휴일</span> <input type="text" name="r_holiday" value="<?=$r_holiday?>"></label></p>
+                            <p><label><span class="title">메뉴/가격</span> 
+                                <div id="price">
+                                    <input type="text" name="r_menu[]" value="<?=$r_menuarr[0]?>"> <input type="text" name="r_menuprice[]" value="<?=$r_menupricearr[0]?>"> <input type="button" value="추가" onclick="add_textbox()">
 <?php
     for($i=1; $i<count($r_menuarr)-1; $i++){
 ?>
@@ -156,18 +148,35 @@
 <?php
     }
 ?>
-                                    </div>
-                                </label> </p>
-                                <p><span class="title">파일</span>
-                                    <p class="img_area"><?=$imgpath?></p>
-                                    <div class="filebox"> 
-                                        <input id="upload-name" placeholder="파일선택" value="<?=$r_repphoto?>" readonly> 
-                                        <label for="ex_filename">파일선택</label> 
-                                        <input type="file" id="ex_filename" class="upload-hidden" name="r_repphoto" onchange="upload_file()"> 
-                                    </div>
-                                </p>
-                                <p class="btn_area"><input type="submit" value="작성"> <input type="reset" value="다시작성"> <input type="button" value="리스트" onclick="location.href='./RestaurantList.php'"></p>
-                            </form>
+                                </div>
+                            </label> </p>
+                            <p><span class="title">등록상태</span>
+                                <select name="r_status">
+<?php
+    if($r_status == '등록'){
+?>
+                                    <option value="등록" selected>등록</option>
+                                    <option value="미등록">미등록</option>
+<?php
+    }else{
+?>
+                                    <option value="등록">등록</option>
+                                    <option value="미등록" selected>미등록</option>
+<?php
+    }
+?>
+                                </select>
+                            </p>
+                            <p><span class="title">파일</span>
+                                <p class="img_area"><?=$imgpath?></p>
+                                <div class="filebox"> 
+                                    <input id="upload-name" placeholder="파일선택" value="<?=$r_repphoto?>" readonly> 
+                                    <label for="ex_filename">파일선택</label> 
+                                    <input type="file" id="ex_filename" class="upload-hidden" name="r_repphoto" onchange="upload_file()"> 
+                                </div>
+                            </p>
+                            <p class="btn_area"><input type="submit" value="작성"> <input type="reset" value="다시작성"> <input type="button" value="리스트" onclick="location.href='./RestaurantList.php'"></p>
+                        </form>
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">

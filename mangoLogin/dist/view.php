@@ -9,7 +9,7 @@
     $sql = "UPDATE mango_restaurant SET r_read = r_read + 1 WHERE r_idx = $r_idx";
     $result = mysqli_query($conn, $sql);
 
-    $sql = "SELECT r_idx, r_writer, r_restaurant, r_grade, r_read, r_review, r_wannago, r_repphoto, r_photo, r_address, r_jibunaddress, r_tel, r_foodtype, r_price, r_website, r_parking, r_openhour, r_breaktime, r_lastorder, r_holiday, r_menu, r_menuprice, r_regdate FROM mango_restaurant WHERE r_idx = $r_idx";
+    $sql = "SELECT r_idx, r_writer, r_restaurant, r_grade, r_read, r_review, r_wannago, r_repphoto, r_photo, r_address, r_jibunaddress, r_tel, r_foodtype, r_price, r_website, r_parking, r_openhour, r_breaktime, r_lastorder, r_holiday, r_menu, r_menuprice, r_status, r_regdate FROM mango_restaurant WHERE r_idx = $r_idx";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result);
 
@@ -36,6 +36,7 @@
     $r_holiday          = $row['r_holiday'];
     $r_menu             = $row['r_menu'];
     $r_menuprice        = $row['r_menuprice'];
+    $r_status           = $row['r_status'];
     $r_regdate          = $row['r_regdate'];
     $r_menuarr          = explode(',', $r_menu);
     $r_menupricearr     = explode(',', $r_menuprice);
@@ -92,7 +93,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="index.html">
+                            <a class="nav-link" href="index.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
@@ -104,20 +105,11 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="layout-static.html">Restaurant Enrollment</a>
-                                    <a class="nav-link" href="layout-static.html">Mango Story</a>
-                                    <a class="nav-link" href="layout-static.html">Matjib List</a>
+                                    <a class="nav-link" href="./RestaurantList.php">Restaurant List</a>
+                                    <a class="nav-link" href="MangoStory.php">Mango Story</a>
+                                    <a class="nav-link" href="MatjibList.php">Matjib List</a>
                                 </nav>
                             </div>
-                            <div class="sb-sidenav-menu-heading">Addons</div>
-                            <a class="nav-link" href="charts.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Charts
-                            </a>
-                            <a class="nav-link" href="tables.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Tables
-                            </a>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
@@ -129,22 +121,17 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">Restaurant Enrollment</h1>
+                        <h1 class="mt-4">Restaurant View</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Restaurant Enrollment</li>
+                            <li class="breadcrumb-item active">Restaurant View</li>
                         </ol>
                         <!-- 본문 추가 영역 -->
                         <p class="btn_area">
                             <input type="button" class="btn list" value="리스트" onclick="location.href='./RestaurantList.php'"> 
-<?php
-    if($r_writer == $_SESSION['id']){
-?>
                             <input type="button" class="btn edit" value="수정" onclick="location.href='./edit.php?r_idx=<?=$r_idx?>'"> 
                             <input type="button" class="btn delete" value="삭제" onclick="location.href='./delete.php?r_idx=<?=$r_idx?>'">
-<?php
-    };
-?>
+
                         </p>
                         <div class="view">
                             
@@ -201,7 +188,7 @@ if($r_writer != $_SESSION['id']){
                                 </tr>
                                 <tr>
                                     <th>웹사이트</th>
-                                    <td><?=$r_website?></td>
+                                    <td><a href="<?=$r_website?>"><?=$r_website?></a></td>
                                 </tr>
                                 <tr>
                                     <th>주차</th>
@@ -241,6 +228,10 @@ if($r_writer != $_SESSION['id']){
                                     </td>
                                 </tr>
                                 <tr>
+                                    <th>등록상태</th>
+                                    <td><?=$r_status?></td>
+                                </tr>
+                                <tr>
                                     <th>작성시간</th>
                                     <td><?=$r_regdate?></td>
                                 </tr>
@@ -263,15 +254,15 @@ if($r_writer != $_SESSION['id']){
             </div>
         </div>
         <script>
-        function wannogo(){
+        function wannago(){
             const httpRequest = new XMLHttpRequest();
             httpRequest.onreadystatechange = function(){
                 if(httpRequest.readyState == XMLHttpRequest.DONE && httpRequest.status == 200){
-                    alert('가고싶다에 추가하셨습니다.');
+                    alert('가고싶다에 추가되었습니다.');
                     document.getElementById("wannago").innerHTML = httpRequest.responseText;
                 }
             };
-            httpRequest.open("GET", "up_ok.php?r_idx=<?=$r_idx?>", true);
+            httpRequest.open("GET", "wannago_ok.php?r_idx=<?=$r_idx?>", true);
             httpRequest.send();
         }
         </script>

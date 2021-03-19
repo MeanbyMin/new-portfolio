@@ -19,6 +19,7 @@
     $r_lastorder        = $_POST['r_lastorder'];
     $r_holiday          = $_POST['r_holiday'];
     $r_menu             = $_POST['r_menu'];
+    $r_status           = $_POST['r_status'];
     $menustr = "";
     foreach($r_menu as $m){
         $menustr .= $m.",";
@@ -62,9 +63,9 @@
         $imgpath = $uploads_dir."/".$rename;
         move_uploaded_file($_FILES['r_repphoto']['tmp_name'], $imgpath);
 
-        $sql = "UPDATE mango_restaurant set r_writer = '$id', r_restaurant = '$r_restaurant', r_repphoto='$imgpath', r_address='$r_address', r_jibunaddress='$r_jibunaddress', r_tel='$r_tel', r_foodtype='$r_foodtype', r_price='$r_price', r_website='$r_website', r_parking='$r_parking', r_openhour='$r_openhour', r_breaktime='$r_breaktime', r_lastorder='$r_lastorder', r_holiday='$r_holiday', r_menu='$menustr', r_menuprice='$menupricestr' WHERE r_idx = '$r_idx'";
+        $sql = "UPDATE mango_restaurant set r_writer = '$id', r_restaurant = '$r_restaurant', r_repphoto='$imgpath', r_address='$r_address', r_jibunaddress='$r_jibunaddress', r_tel='$r_tel', r_foodtype='$r_foodtype', r_price='$r_price', r_website='$r_website', r_parking='$r_parking', r_openhour='$r_openhour', r_breaktime='$r_breaktime', r_lastorder='$r_lastorder', r_holiday='$r_holiday', r_menu='$menustr', r_menuprice='$menupricestr', r_status='$r_status' WHERE r_idx = '$r_idx'";
     }else{
-        $sql = "UPDATE mango_restaurant set r_writer = '$id', r_restaurant = '$r_restaurant', r_repphoto='$imgpath', r_address='$r_address', r_jibunaddress='$r_jibunaddress', r_tel='$r_tel', r_foodtype='$r_foodtype', r_price='$r_price', r_website='$r_website', r_parking='$r_parking', r_openhour='$r_openhour', r_breaktime='$r_breaktime', r_lastorder='$r_lastorder', r_holiday='$r_holiday', r_menu='$menustr', r_menuprice='$menupricestr' WHERE r_idx = '$r_idx'";
+        $sql = "UPDATE mango_restaurant set r_writer = '$id', r_restaurant = '$r_restaurant', r_address='$r_address', r_jibunaddress='$r_jibunaddress', r_tel='$r_tel', r_foodtype='$r_foodtype', r_price='$r_price', r_website='$r_website', r_parking='$r_parking', r_openhour='$r_openhour', r_breaktime='$r_breaktime', r_lastorder='$r_lastorder', r_holiday='$r_holiday', r_menu='$menustr', r_menuprice='$menupricestr', r_status='$r_status' WHERE r_idx = '$r_idx'";
     }
 
     $result = mysqli_query($conn, $sql);

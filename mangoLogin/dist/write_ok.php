@@ -3,20 +3,21 @@
     session_start();
     include "./include/dbconn.php"; //php 파일 삽입
 
-    $id = $_SESSION['id'];
-    $r_restaurant = $_POST['r_restaurant'];
-    $r_address = $_POST['r_address'];
+    $id             = $_SESSION['id'];
+    $r_restaurant   = $_POST['r_restaurant'];
+    $r_address      = $_POST['r_address'];
     $r_jibunaddress = $_POST['r_jibunaddress'];
-    $r_tel = $_POST['r_tel'];
-    $r_foodtype = $_POST['r_foodtype'];
-    $r_price = $_POST['r_price'];
-    $r_website = $_POST['r_website'];
-    $r_parking = $_POST['r_parking'];
-    $r_openhour = $_POST['r_openhour'];
-    $r_breaktime = $_POST['r_breaktime'];
-    $r_lastorder = $_POST['r_lastorder'];
-    $r_holiday = $_POST['r_holiday'];
-    $r_menu = $_POST['r_menu'];
+    $r_tel          = $_POST['r_tel'];
+    $r_foodtype     = $_POST['r_foodtype'];
+    $r_price        = $_POST['r_price'];
+    $r_website      = $_POST['r_website'];
+    $r_parking      = $_POST['r_parking'];
+    $r_openhour     = $_POST['r_openhour'];
+    $r_breaktime    = $_POST['r_breaktime'];
+    $r_lastorder    = $_POST['r_lastorder'];
+    $r_holiday      = $_POST['r_holiday'];
+    $r_menu         = $_POST['r_menu'];
+    $r_status       = $_POST['r_status'];
     $menustr = "";
     foreach($r_menu as $m){
         $menustr .= $m.",";
@@ -82,9 +83,9 @@
     if(!$conn){
         echo "DB 연결 실패!";
     }else{
-        $sql = "INSERT INTO mango_restaurant (r_writer, r_restaurant, r_repphoto, r_address, r_jibunaddress, r_tel, r_foodtype, r_price, r_website, r_parking, r_openhour, r_breaktime, r_lastorder, r_holiday, r_menu, r_menuprice) VALUES ('$id',
+        $sql = "INSERT INTO mango_restaurant (r_writer, r_restaurant, r_repphoto, r_address, r_jibunaddress, r_tel, r_foodtype, r_price, r_website, r_parking, r_openhour, r_breaktime, r_lastorder, r_holiday, r_menu, r_menuprice, r_status) VALUES ('$id',
         '$r_restaurant', '$filepath', '$r_address', '$r_jibunaddress', '$r_tel', '$r_foodtype', '$r_price', '$r_website',
-        '$r_parking', '$r_openhour', '$r_breaktime', '$r_lastorder', '$r_holiday', '$menustr', '$menupricestr');";
+        '$r_parking', '$r_openhour', '$r_breaktime', '$r_lastorder', '$r_holiday', '$menustr', '$menupricestr', '$r_status');";
         $result = mysqli_query($conn, $sql);
         echo "<script>alert('레스토랑 등록이 완료되었습니다.'); location.href='./RestaurantList.php';</script>";
     }

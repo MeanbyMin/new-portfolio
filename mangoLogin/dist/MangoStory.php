@@ -25,7 +25,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title> 민바이민 : Restaurant Enrollment</title>
+        <title> 민바이민 : MangoStory</title>
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="./css/list.css">
@@ -110,6 +110,15 @@
                                     </div>
                                 </nav>
                             </div> -->
+                            <div class="sb-sidenav-menu-heading">Addons</div>
+                            <a class="nav-link" href="charts.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Charts
+                            </a>
+                            <a class="nav-link" href="tables.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Tables
+                            </a>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
@@ -121,26 +130,24 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">Restaurant List</h1>
+                        <h1 class="mt-4">MangoStory</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Restaurant List</li>
+                            <li class="breadcrumb-item active">MangoStory</li>
                         </ol>
                         <table>
                             <colgroup>
-                                <col width= "5%">
-                                <col width= "8%">
+                                <col width= "10%">
+                                <col width= "10%">
                                 <col width= "">
-                                <col width= "8%">
-                                <col width= "8%">
+                                <col width= "10%">
                                 <col width= "20%">
-                                <col width= "8%">
+                                <col width= "10%">
                             </colgroup>
                             <tr>
                                 <th>번호</th>
                                 <th>글쓴이</th>
                                 <th>가게명</th>
-                                <th>등록상태</th>
                                 <th>조회수</th>
                                 <th>날짜</th>
                                 <th>가고싶다</th>
@@ -153,13 +160,11 @@
         $r_read          = $row['r_read'];
         $r_regdate       = $row['r_regdate'];
         $r_wannago       = $row['r_wannago'];
-        $r_status        = $row['r_status'];
 ?>
                             <tr>
                                 <td><?=$r_idx?></td> 
                                 <td><?=$r_writer?></td>
                                 <td><a href="./view.php?r_idx=<?=$r_idx?>"><?=$r_restaurant?></a></td>
-                                <td><?=$r_status?></td>
                                 <td><?=$r_read?></td>
                                 <td><?=$r_regdate?></td>
                                 <td><?=$r_wannago?></td>
@@ -169,7 +174,7 @@
 ?>
                         </table>
                         <div class="btn_area">
-                            <input type="button" class="btn write_btn" value="글쓰기" onclick="location.href='./write.php'">
+                            <input type="button" class="btn write_btn" value="글쓰기" onclick="location.href='./write_story.php'">
                                 <p class="page_area">
 <?php
     $pages = $pageTotal / $pageNum;
