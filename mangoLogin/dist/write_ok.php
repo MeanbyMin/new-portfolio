@@ -17,16 +17,19 @@
     $r_lastorder    = $_POST['r_lastorder'];
     $r_holiday      = $_POST['r_holiday'];
     $r_menu         = $_POST['r_menu'];
-    $r_status       = $_POST['r_status'];
+    $r_status       = false;
+    
     $menustr = "";
     foreach($r_menu as $m){
         $menustr .= $m.",";
     };
+    $menustr = substr($menustr, 0, -1);
     $r_menuprice = $_POST['r_menuprice'];
     $menupricestr = "";
     foreach($r_menuprice as $mp){
         $menupricestr .= $mp.",";
     };
+    $menupricestr = substr($menupricestr, 0, -1);
 
     $filepath = "";
 

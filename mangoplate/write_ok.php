@@ -1,7 +1,7 @@
 <?php
     header('Content-Type: text/html; charset=UTF-8');
     session_start();
-    include "../mangoLogin/dist/include/dbconn.php"; //php 파일 삽입
+    include "./include/dbconn.php"; //php 파일 삽입
 
     $id             = $_SESSION['id'];
     $r_restaurant   = $_POST['r_restaurant'];
@@ -17,21 +17,24 @@
     $r_lastorder    = $_POST['r_lastorder'];
     $r_holiday      = $_POST['r_holiday'];
     $r_menu         = $_POST['r_menu'];
-    $r_status       = $_POST['r_status'];
+    $r_status       = false;
+    
     $menustr = "";
     foreach($r_menu as $m){
         $menustr .= $m.",";
     };
+    $menustr = substr($menustr, 0, -1);
     $r_menuprice = $_POST['r_menuprice'];
     $menupricestr = "";
     foreach($r_menuprice as $mp){
         $menupricestr .= $mp.",";
     };
+    $menupricestr = substr($menupricestr, 0, -1);
 
     $filepath = "";
 
     if($_FILES['r_repphoto']['tmp_name']){
-        $uploads_dir = '../mangoLogin/dist/upload';
+        $uploads_dir = './upload';
         $allowed_ext = array('jpg', 'jpeg', 'png', 'gif', 'bmp');
         $error = $_FILES['r_repphoto']['error'];
         $name = $_FILES['r_repphoto']['name'];   // apple.jpg
@@ -87,6 +90,6 @@
         '$r_restaurant', '$filepath', '$r_address', '$r_jibunaddress', '$r_tel', '$r_foodtype', '$r_price', '$r_website',
         '$r_parking', '$r_openhour', '$r_breaktime', '$r_lastorder', '$r_holiday', '$menustr', '$menupricestr', '$r_status');";
         $result = mysqli_query($conn, $sql);
-        echo "<script>alert('레스토랑 등록이 완료되었습니다.'); location.href='./index.html';</script>";
+        echo "<script>alert('레스토랑 등록이 완료되었습니다.'); location.href='./RestaurantList.php';</script>";
     }
 ?>
