@@ -33,6 +33,11 @@
         rel="stylesheet">
     <!-- javascript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        document.cookie = "safeCookie1=foo; SameSite=Lax"; 
+        document.cookie = "safeCookie2=foo"; 
+        document.cookie = "crossCookie=bar; SameSite=None; Secure";
+    </script>
 </head>
 
 <body class="home_page" onunload="">
@@ -83,7 +88,7 @@
                     </li>
 
                     <li class="Header__IconButtonItem Header__IconButtonItem--UserRestaurantHistory">
-<?php
+                        <?php
                       if(!isset($id)){
                   ?>
                         <button class="UserProfileButton" onclick="clickProfile()">
@@ -91,7 +96,7 @@
                             <i class="UserProfileButton__PersonIcon"></i>
                             <span class="UserProfileButton__HistoryCount">0</span>
                         </button>
-<?php
+                        <?php
                   }else{
                   ?>
                         <button class="UserProfileButton UserProfileButton--Login" onclick="clickProfile()">
@@ -99,7 +104,7 @@
                             <i class="UserProfileButton__PersonIcon"></i>
                             <span class="UserProfileButton__HistoryCount">0</span>
                         </button>
-<?php
+                        <?php
                   }
                   ?>
                     </li>
@@ -121,21 +126,21 @@
                                 <button class="UserRestaurantHistory__TabButton">최근 본 맛집 <span
                                         class="UserRestaurantHistory__ViewedCount">0</span></button>
                             </li>
-<?php
+                            <?php
                           if(isset($id)){
                       ?>
                             <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Wannago"
                                 onclick="CLICK_WAANGO_TAB()">
                                 <button class="UserRestaurantHistory__TabButton">가고싶다</button>
                             </li>
-<?php
+                            <?php
                           }else{
                       ?>
                             <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Wannago"
                                 onclick="clickLogin()">
                                 <button class="UserRestaurantHistory__TabButton">가고싶다</button>
                             </li>
-<?php
+                            <?php
                           }
                       ?>
                         </ul>
@@ -171,19 +176,19 @@
                         </div>
 
                         <footer class="UserRestaurantHistory__Footer">
-<?php
+                            <?php
                       if(!isset($id)){
                   ?>
                             <button class="UserRestaurantHistory__LoginButton UserRestaurantHistory__LoginButton--Show"
                                 onclick="clickLogin()">로그인</button>
-<?php
+                            <?php
                       }else{
                   ?>
                             <button class="UserRestaurantHistory__LoginButton" onclick="clickLogin()">로그인</button>
                             <button
                                 class="UserRestaurantHistory__SettingButton UserRestaurantHistory__SettingButton--Show"
                                 onclick="CLICK_SETTING()">내정보</button>
-<?php
+                            <?php
                       }
                   ?>
                         </footer>
@@ -206,7 +211,7 @@
                             <div class="UserProfile__InfoTable">
                                 <i class="UserProfile__UserThumnail"
                                     style="background-image: url(<?=$image?>), url(&quot;https://mp-seoul-image-production-s3.mangoplate.com/web/resources/fljgy-rm4b8v6vni.png&quot;);"></i>
-<?php
+                                <?php
                       if(strpos($id, "facebook") === 0){
                       ?>
                                 <div class="UserProfile__InfoRow">
@@ -231,7 +236,7 @@
                                     <div class="UserProfile__InfoRow--Content UserProfile__UserPhoneNumber">01024750333
                                     </div>
                                 </div> -->
-<?php
+                                <?php
                       }else if(strpos($id, "kakao") === 0){ 
                       ?>
                                 <div class="UserProfile__InfoRow">
@@ -245,7 +250,7 @@
                                     <span class="UserProfile__InfoSideRow--Info UserProfile__UserSignupType">카카오톡 계정으로
                                         가입</span>
                                 </div>
-<?php
+                                <?php
                       }else if(strpos($id, "apple") === 0){ 
                       ?>
                                 <div class="UserProfile__InfoRow">
@@ -269,7 +274,7 @@
                                     <div class="UserProfile__InfoRow--Content UserProfile__UserPhoneNumber">01024750333
                                     </div>
                                 </div> -->
-<?php
+                                <?php
                       }
                       ?>
                                 <div class="UserProfile__InfoDetail">정보 수정은 모바일앱 &gt; 내정보에서 가능합니다.</div>
@@ -279,26 +284,26 @@
                         <div class="UserProfile__Footer">
                             <div class="UserProfile__Button UserProfile__DisactiveButton">회원탈퇴</div>
                             <div class="UserProfile__Footer--Line"></div>
-<?php
+                            <?php
                   if(strpos($id, "facebook") === 0){ 
                   ?>
                             <div class="UserProfile__Button UserProfile__LogoutButton" onclick="facebooklogout()">로그아웃
                             </div>
-<?php
+                            <?php
                   }else if(strpos($id, "kakao") === 0){ 
                   ?>
                             <div class="UserProfile__Button UserProfile__LogoutButton" onclick="kakaologout()">로그아웃
                             </div>
-<?php
+                            <?php
                   }else if(strpos($id, "apple") === 0){ 
                   ?>
                             <div class="UserProfile__Button UserProfile__LogoutButton">로그아웃</div>
-<?php
+                            <?php
                   }else{
                   ?>
                             <div class="UserProfile__Button UserProfile__LogoutButton" onclick="facebooklogout()">로그아웃
                             </div>
-<?php
+                            <?php
                   }
                   ?>
 
@@ -358,6 +363,63 @@
             </div>
             <!-- 탈퇴하기 확인 모달 창 끝 -->
         </header>
+        <!-- 검색창 포커스 시작 -->
+        <div class="KeywordSuggester">
+            <div class="KeywordSuggester__BlackDeem"></div>
+
+            <div class="KeywordSuggester__Container" style="position: absolute; left: 262px; width: 544px;">
+                <nav class="KeywordSuggester__TabNavigation">
+                    <ul class="KeywordSuggester__TabList">
+                        <li class="KeywordSuggester__TabItem">
+                            <div class="KeywordSuggester__TabButton KeywordSuggester__RecommendTabButton KeywordSuggester__TabButton--Selected"
+                                onclick="CLICK_SEARCH_RECOMMEND(this)" role="button">
+                                추천 검색어
+                            </div>
+                        </li>
+
+                        <li class="KeywordSuggester__TabItem">
+                            <div class="KeywordSuggester__TabButton KeywordSuggester__PopularTabButton"
+                                onclick="CLICK_SEARCH_POPULAR(this)" role="button">
+                                인기 검색어
+                            </div>
+                        </li>
+
+                        <li class="KeywordSuggester__TabItem">
+                            <div class="KeywordSuggester__TabButton KeywordSuggester__HistoryTabButton"
+                                onclick="CLICK_SEARCH_RECENT(this)" role="button">
+                                최근 검색어
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="KeywordSuggester__SuggestKeywordListWrap" data-simplebar="init">
+                    <div class="simplebar-wrapper" style="margin: 0px -24px;">
+                        <div class="simplebar-height-auto-observer-wrapper">
+                            <div class="simplebar-height-auto-observer"></div>
+                        </div>
+                        <div class="simplebar-mask">
+                            <div class="simplebar-offset" style="right: -15px; bottom: 0px;">
+                                <div class="simplebar-content-wrapper" style="height: auto; overflow: hidden scroll;">
+                                    <div class="simplebar-content" style="padding: 0px 24px;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="simplebar-placeholder" style="width: 542px; height: 366px;"></div>
+                    </div>
+                    <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+                        <div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); display: none;">
+                        </div>
+                    </div>
+                    <div class="simplebar-track simplebar-vertical" style="visibility: visible;">
+                        <div class="simplebar-scrollbar"
+                            style="transform: translate3d(0px, 0px, 0px); display: block; height: 170px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 검색창 포커스 끝 -->
         <!-- 헤더 끝 -->
         <!-- 컨텐츠 시작 -->
         <article class="contents main-padding">
@@ -771,6 +833,10 @@
                 <h2 class="title">EAT딜을 판매중인 식당</h2>
                 <div class="slider-container popular_restaurant_container">
                     <ul class="list-restaurants main_popular_restaurant_list type-main">
+                        <?php
+// tags에 eatdeal 추가하기
+{
+?>
                         <li class="restaurant-item">
                             <div class="popular_restaurant_inner_wrap">
                                 <a href="#" onclick="">
@@ -795,174 +861,9 @@
                                 </a>
                             </div>
                         </li>
-                        <li class="restaurant-item">
-                            <div class="popular_restaurant_inner_wrap">
-                                <a href="#" onclick="">
-                                    <figure class="restaurant-item">
-                                        <div class="thumb">
-                                            <i class="featured_badge"
-                                                style="background-image: url(./img/r-i0n1w_hdfo4vlf.png)"></i>
-                                            <img class="center-croping lazy" alt="오스틴 사진 - 서울시 강남구 역삼동 617-3"
-                                                src="./img/ostin.jpg">
-                                        </div>
-                                        <figcaption>
-                                            <div class="info">
-                                                <span class="title">오스틴</span>
-                                                <strong class="point search_point ">4.2</strong>
-                                                <p class="etc">
-                                                    강남역 -
-                                                    스테이크 / 바베큐
-                                                </p>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="restaurant-item">
-                            <div class="popular_restaurant_inner_wrap">
-                                <a href="#" onclick="">
-                                    <figure class="restaurant-item">
-                                        <div class="thumb">
-                                            <i class="featured_badge"
-                                                style="background-image: url(./img/r-i0n1w_hdfo4vlf.png)"></i>
-                                            <img class="center-croping lazy" alt="오스틴 사진 - 서울시 강남구 역삼동 617-3"
-                                                src="./img/ostin.jpg">
-                                        </div>
-                                        <figcaption>
-                                            <div class="info">
-                                                <span class="title">오스틴</span>
-                                                <strong class="point search_point ">4.2</strong>
-                                                <p class="etc">
-                                                    강남역 -
-                                                    스테이크 / 바베큐
-                                                </p>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="restaurant-item">
-                            <div class="popular_restaurant_inner_wrap">
-                                <a href="#" onclick="">
-                                    <figure class="restaurant-item">
-                                        <div class="thumb">
-                                            <i class="featured_badge"
-                                                style="background-image: url(./img/r-i0n1w_hdfo4vlf.png)"></i>
-                                            <img class="center-croping lazy" alt="오스틴 사진 - 서울시 강남구 역삼동 617-3"
-                                                src="./img/ostin.jpg">
-                                        </div>
-                                        <figcaption>
-                                            <div class="info">
-                                                <span class="title">오스틴</span>
-                                                <strong class="point search_point ">4.2</strong>
-                                                <p class="etc">
-                                                    강남역 -
-                                                    스테이크 / 바베큐
-                                                </p>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="restaurant-item">
-                            <div class="popular_restaurant_inner_wrap">
-                                <a href="#" onclick="">
-                                    <figure class="restaurant-item">
-                                        <div class="thumb">
-                                            <i class="featured_badge"
-                                                style="background-image: url(./img/r-i0n1w_hdfo4vlf.png)"></i>
-                                            <img class="center-croping lazy" alt="오스틴 사진 - 서울시 강남구 역삼동 617-3"
-                                                src="./img/ostin.jpg">
-                                        </div>
-                                        <figcaption>
-                                            <div class="info">
-                                                <span class="title">오스틴</span>
-                                                <strong class="point search_point ">4.2</strong>
-                                                <p class="etc">
-                                                    강남역 -
-                                                    스테이크 / 바베큐
-                                                </p>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="restaurant-item">
-                            <div class="popular_restaurant_inner_wrap">
-                                <a href="#" onclick="">
-                                    <figure class="restaurant-item">
-                                        <div class="thumb">
-                                            <i class="featured_badge"
-                                                style="background-image: url(./img/r-i0n1w_hdfo4vlf.png)"></i>
-                                            <img class="center-croping lazy" alt="오스틴 사진 - 서울시 강남구 역삼동 617-3"
-                                                src="./img/ostin.jpg">
-                                        </div>
-                                        <figcaption>
-                                            <div class="info">
-                                                <span class="title">오스틴</span>
-                                                <strong class="point search_point ">4.2</strong>
-                                                <p class="etc">
-                                                    강남역 -
-                                                    스테이크 / 바베큐
-                                                </p>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="restaurant-item">
-                            <div class="popular_restaurant_inner_wrap">
-                                <a href="#" onclick="">
-                                    <figure class="restaurant-item">
-                                        <div class="thumb">
-                                            <i class="featured_badge"
-                                                style="background-image: url(./img/r-i0n1w_hdfo4vlf.png)"></i>
-                                            <img class="center-croping lazy" alt="오스틴 사진 - 서울시 강남구 역삼동 617-3"
-                                                src="./img/ostin.jpg">
-                                        </div>
-                                        <figcaption>99
-                                            <div class="info">
-                                                <span class="title">오스틴</span>
-                                                <strong class="point search_point ">4.2</strong>
-                                                <p class="etc">
-                                                    강남역 -
-                                                    스테이크 / 바베큐
-                                                </p>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="restaurant-item">
-                            <div class="popular_restaurant_inner_wrap">
-                                <a href="#" onclick="">
-                                    <figure class="restaurant-item">
-                                        <div class="thumb">
-                                            <i class="featured_badge"
-                                                style="background-image: url(./img/r-i0n1w_hdfo4vlf.png)"></i>
-                                            <img class="center-croping lazy" alt="오스틴 사진 - 서울시 강남구 역삼동 617-3"
-                                                src="./img/ostin.jpg">
-                                        </div>
-                                        <figcaption>
-                                            <div class="info">
-                                                <span class="title">오스틴</span>
-                                                <strong class="point search_point ">4.2</strong>
-                                                <p class="etc">
-                                                    강남역 -
-                                                    스테이크 / 바베큐
-                                                </p>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-                        </li>
+                        <?php
+}
+?>
                     </ul>
                 </div>
             </section>
@@ -972,7 +873,7 @@
                 <h2 class="title">에디터가 선정한 식당</h2>
                 <div class="slider-container popular_restaurant_container">
                     <ul class="list-restaurants main_popular_restaurant_list type-main">
-<?php
+                        <?php
 $sql = "SELECT r_idx, r_restaurant, r_jibunaddress, r_branch, r_grade, r_repphoto, r_repadd, r_foodtype FROM mango_restaurant WHERE r_status= '등록' AND r_tags LIKE '%editor%' ORDER BY r_idx DESC LIMIT 8 ";
 $result = mysqli_query($conn, $sql);
 while($row = mysqli_fetch_array($result)){
@@ -987,26 +888,34 @@ while($row = mysqli_fetch_array($result)){
 ?>
                         <li class="restaurant-item">
                             <div class="popular_restaurant_inner_wrap">
-                                <a href="./restaurant.php?r_idx=<?=$r_idx?>"
-                                    onclick="">
+                                <a href="./restaurant.php?r_idx=<?=$r_idx?>" onclick="">
                                     <figure class="restaurant-item">
                                         <div class="thumb">
-                                            <img class="center-croping lazy" alt="<?=$r_restaurant?> 사진 - <?=$r_jibunaddress?>"
+                                            <img class="center-croping lazy"
+                                                alt="<?=$r_restaurant?> 사진 - <?=$r_jibunaddress?>"
                                                 data-original="<?=$r_repphoto?>"
-                                                data-error="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80" src="<?=$r_repphoto?>" style="display: block;"/>
+                                                data-error="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                                                src="<?=$r_repphoto?>" style="display: block;" />
                                         </div>
                                         <figcaption>
                                             <div class="info">
-                                                <span class="title"><?=$r_restaurant?></span>
-                                                <strong class="point search_point"><?=$r_grade?></strong>
-                                                <p class="etc"><?=$r_repadd?> - <?=$r_foodtype?></p>
+                                                <span class="title">
+                                                    <?=$r_restaurant?>
+                                                </span>
+                                                <strong class="point search_point">
+                                                    <?=$r_grade?>
+                                                </strong>
+                                                <p class="etc">
+                                                    <?=$r_repadd?> -
+                                                    <?=$r_foodtype?>
+                                                </p>
                                             </div>
                                         </figcaption>
                                     </figure>
                                 </a>
                             </div>
                         </li>
-<?php
+                        <?php
 }
 ?>
 
@@ -1019,21 +928,41 @@ while($row = mysqli_fetch_array($result)){
                 <h2 class="title">TV에 나온 식당</h2>
                 <div class="slider-container popular_restaurant_container">
                     <ul class="list-restaurants main_popular_restaurant_list type-main">
+                        <?php
+$sql = "SELECT r_idx, r_restaurant, r_jibunaddress, r_branch, r_grade, r_repphoto, r_repadd, r_foodtype FROM mango_restaurant WHERE r_status= '등록' AND r_tags LIKE '%tv%' ORDER BY r_idx DESC LIMIT 8 ";
+$result = mysqli_query($conn, $sql);
+while($row = mysqli_fetch_array($result)){
+    $r_idx              = $row['r_idx'];
+    $r_restaurant       = $row['r_restaurant'];
+    $r_jibunaddress     = $row['r_jibunaddress'];
+    $r_branch           = $row['r_branch'];
+    $r_grade            = $row['r_grade'];
+    $r_repphoto         = $row['r_repphoto'];
+    $r_repadd           = $row['r_repadd'];
+    $r_foodtype         = $row['r_foodtype'];
+?>
                         <li class="restaurant-item">
                             <div class="popular_restaurant_inner_wrap">
-                                <a href="#" onclick="">
+                                <a href="./restaurant.php?r_idx=<?=$r_idx?>" onclick="">
                                     <figure class="restaurant-item">
                                         <div class="thumb">
-                                            <img class="center-croping lazy" alt="사랑방참숯화로구이  사진 - 서울시 용산구 후암동 415-39"
-                                                src="./img/sarangbang.jpg">
+                                            <img class="center-croping lazy"
+                                                alt="<?=$r_restaurant?> 사진 - <?=$r_jibunaddress?>"
+                                                data-original="<?=$r_repphoto?>"
+                                                data-error="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                                                src="<?=$r_repphoto?>" style="display: block;" />
                                         </div>
                                         <figcaption>
                                             <div class="info">
-                                                <span class="title">사랑방참숯화로구이 </span>
-                                                <strong class="point search_point expected">3.9</strong>
+                                                <span class="title">
+                                                    <?=$r_restaurant?>
+                                                </span>
+                                                <strong class="point search_point">
+                                                    <?=$r_grade?>
+                                                </strong>
                                                 <p class="etc">
-                                                    용산/숙대 -
-                                                    고기 요리
+                                                    <?=$r_repadd?> -
+                                                    <?=$r_foodtype?>
                                                 </p>
                                             </div>
                                         </figcaption>
@@ -1041,160 +970,9 @@ while($row = mysqli_fetch_array($result)){
                                 </a>
                             </div>
                         </li>
-                        <li class="restaurant-item">
-                            <div class="popular_restaurant_inner_wrap">
-                                <a href="#" onclick="">
-                                    <figure class="restaurant-item">
-                                        <div class="thumb">
-                                            <img class="center-croping lazy" alt="사랑방참숯화로구이  사진 - 서울시 용산구 후암동 415-39"
-                                                src="./img/sarangbang.jpg">
-                                        </div>
-                                        <figcaption>
-                                            <div class="info">
-                                                <span class="title">사랑방참숯화로구이 </span>
-                                                <strong class="point search_point expected">3.9</strong>
-                                                <p class="etc">
-                                                    용산/숙대 -
-                                                    고기 요리
-                                                </p>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="restaurant-item">
-                            <div class="popular_restaurant_inner_wrap">
-                                <a href="#" onclick="">
-                                    <figure class="restaurant-item">
-                                        <div class="thumb">
-                                            <img class="center-croping lazy" alt="사랑방참숯화로구이  사진 - 서울시 용산구 후암동 415-39"
-                                                src="./img/sarangbang.jpg">
-                                        </div>
-                                        <figcaption>
-                                            <div class="info">
-                                                <span class="title">사랑방참숯화로구이 </span>
-                                                <strong class="point search_point expected">3.9</strong>
-                                                <p class="etc">
-                                                    용산/숙대 -
-                                                    고기 요리
-                                                </p>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="restaurant-item">
-                            <div class="popular_restaurant_inner_wrap">
-                                <a href="#" onclick="">
-                                    <figure class="restaurant-item">
-                                        <div class="thumb">
-                                            <img class="center-croping lazy" alt="사랑방참숯화로구이  사진 - 서울시 용산구 후암동 415-39"
-                                                src="./img/sarangbang.jpg">
-                                        </div>
-                                        <figcaption>
-                                            <div class="info">
-                                                <span class="title">사랑방참숯화로구이 </span>
-                                                <strong class="point search_point expected">3.9</strong>
-                                                <p class="etc">
-                                                    용산/숙대 -
-                                                    고기 요리
-                                                </p>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="restaurant-item">
-                            <div class="popular_restaurant_inner_wrap">
-                                <a href="#" onclick="">
-                                    <figure class="restaurant-item">
-                                        <div class="thumb">
-                                            <img class="center-croping lazy" alt="사랑방참숯화로구이  사진 - 서울시 용산구 후암동 415-39"
-                                                src="./img/sarangbang.jpg">
-                                        </div>
-                                        <figcaption>
-                                            <div class="info">
-                                                <span class="title">사랑방참숯화로구이 </span>
-                                                <strong class="point search_point expected">3.9</strong>
-                                                <p class="etc">
-                                                    용산/숙대 -
-                                                    고기 요리
-                                                </p>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="restaurant-item">
-                            <div class="popular_restaurant_inner_wrap">
-                                <a href="#" onclick="">
-                                    <figure class="restaurant-item">
-                                        <div class="thumb">
-                                            <img class="center-croping lazy" alt="사랑방참숯화로구이  사진 - 서울시 용산구 후암동 415-39"
-                                                src="./img/sarangbang.jpg">
-                                        </div>
-                                        <figcaption>
-                                            <div class="info">
-                                                <span class="title">사랑방참숯화로구이 </span>
-                                                <strong class="point search_point expected">3.9</strong>
-                                                <p class="etc">
-                                                    용산/숙대 -
-                                                    고기 요리
-                                                </p>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="restaurant-item">
-                            <div class="popular_restaurant_inner_wrap">
-                                <a href="#" onclick="">
-                                    <figure class="restaurant-item">
-                                        <div class="thumb">
-                                            <img class="center-croping lazy" alt="사랑방참숯화로구이  사진 - 서울시 용산구 후암동 415-39"
-                                                src="./img/sarangbang.jpg">
-                                        </div>
-                                        <figcaption>
-                                            <div class="info">
-                                                <span class="title">사랑방참숯화로구이 </span>
-                                                <strong class="point search_point expected">3.9</strong>
-                                                <p class="etc">
-                                                    용산/숙대 -
-                                                    고기 요리
-                                                </p>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="restaurant-item">
-                            <div class="popular_restaurant_inner_wrap">
-                                <a href="#" onclick="">
-                                    <figure class="restaurant-item">
-                                        <div class="thumb">
-                                            <img class="center-croping lazy" alt="사랑방참숯화로구이  사진 - 서울시 용산구 후암동 415-39"
-                                                src="./img/sarangbang.jpg">
-                                        </div>
-                                        <figcaption>
-                                            <div class="info">
-                                                <span class="title">사랑방참숯화로구이 </span>
-                                                <strong class="point search_point expected">3.9</strong>
-                                                <p class="etc">
-                                                    용산/숙대 -
-                                                    고기 요리
-                                                </p>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-                        </li>
+                        <?php
+}
+?>
                     </ul>
                 </div>
             </section>
@@ -1204,21 +982,41 @@ while($row = mysqli_fetch_array($result)){
                 <h2 class="title">평점이 높은 인기 식당</h2>
                 <div class="slider-container popular_restaurant_container">
                     <ul class="list-restaurants main_popular_restaurant_list type-main">
+                        <?php
+$sql = "SELECT r_idx, r_restaurant, r_jibunaddress, r_branch, r_grade, r_repphoto, r_repadd, r_foodtype FROM mango_restaurant WHERE r_status= '등록' ORDER BY r_grade DESC LIMIT 8 ";
+$result = mysqli_query($conn, $sql);
+while($row = mysqli_fetch_array($result)){
+    $r_idx              = $row['r_idx'];
+    $r_restaurant       = $row['r_restaurant'];
+    $r_jibunaddress     = $row['r_jibunaddress'];
+    $r_branch           = $row['r_branch'];
+    $r_grade            = $row['r_grade'];
+    $r_repphoto         = $row['r_repphoto'];
+    $r_repadd           = $row['r_repadd'];
+    $r_foodtype         = $row['r_foodtype'];
+?>
                         <li class="restaurant-item">
                             <div class="popular_restaurant_inner_wrap">
-                                <a href="#" onclick="">
+                                <a href="./restaurant.php?r_idx=<?=$r_idx?>" onclick="">
                                     <figure class="restaurant-item">
                                         <div class="thumb">
-                                            <img class="center-croping lazy" alt="버블앤코클스 사진 - 서울시 용산구 한남동 738-14"
-                                                src="./img/bubble.jpg">
+                                            <img class="center-croping lazy"
+                                                alt="<?=$r_restaurant?> 사진 - <?=$r_jibunaddress?>"
+                                                data-original="<?=$r_repphoto?>"
+                                                data-error="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                                                src="<?=$r_repphoto?>" style="display: block;" />
                                         </div>
                                         <figcaption>
                                             <div class="info">
-                                                <span class="title">버블앤코클스</span>
-                                                <strong class="point search_point ">4.4</strong>
+                                                <span class="title">
+                                                    <?=$r_restaurant?>
+                                                </span>
+                                                <strong class="point search_point">
+                                                    <?=$r_grade?>
+                                                </strong>
                                                 <p class="etc">
-                                                    이태원/한남동 -
-                                                    시푸드 요리
+                                                    <?=$r_repadd?> -
+                                                    <?=$r_foodtype?>
                                                 </p>
                                             </div>
                                         </figcaption>
@@ -1226,160 +1024,9 @@ while($row = mysqli_fetch_array($result)){
                                 </a>
                             </div>
                         </li>
-                        <li class="restaurant-item">
-                            <div class="popular_restaurant_inner_wrap">
-                                <a href="#" onclick="">
-                                    <figure class="restaurant-item">
-                                        <div class="thumb">
-                                            <img class="center-croping lazy" alt="버블앤코클스 사진 - 서울시 용산구 한남동 738-14"
-                                                src="./img/bubble.jpg">
-                                        </div>
-                                        <figcaption>
-                                            <div class="info">
-                                                <span class="title">버블앤코클스</span>
-                                                <strong class="point search_point ">4.4</strong>
-                                                <p class="etc">
-                                                    이태원/한남동 -
-                                                    시푸드 요리
-                                                </p>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="restaurant-item">
-                            <div class="popular_restaurant_inner_wrap">
-                                <a href="#" onclick="">
-                                    <figure class="restaurant-item">
-                                        <div class="thumb">
-                                            <img class="center-croping lazy" alt="버블앤코클스 사진 - 서울시 용산구 한남동 738-14"
-                                                src="./img/bubble.jpg">
-                                        </div>
-                                        <figcaption>
-                                            <div class="info">
-                                                <span class="title">버블앤코클스</span>
-                                                <strong class="point search_point ">4.4</strong>
-                                                <p class="etc">
-                                                    이태원/한남동 -
-                                                    시푸드 요리
-                                                </p>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="restaurant-item">
-                            <div class="popular_restaurant_inner_wrap">
-                                <a href="#" onclick="">
-                                    <figure class="restaurant-item">
-                                        <div class="thumb">
-                                            <img class="center-croping lazy" alt="버블앤코클스 사진 - 서울시 용산구 한남동 738-14"
-                                                src="./img/bubble.jpg">
-                                        </div>
-                                        <figcaption>
-                                            <div class="info">
-                                                <span class="title">버블앤코클스</span>
-                                                <strong class="point search_point ">4.4</strong>
-                                                <p class="etc">
-                                                    이태원/한남동 -
-                                                    시푸드 요리
-                                                </p>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="restaurant-item">
-                            <div class="popular_restaurant_inner_wrap">
-                                <a href="#" onclick="">
-                                    <figure class="restaurant-item">
-                                        <div class="thumb">
-                                            <img class="center-croping lazy" alt="버블앤코클스 사진 - 서울시 용산구 한남동 738-14"
-                                                src="./img/bubble.jpg">
-                                        </div>
-                                        <figcaption>
-                                            <div class="info">
-                                                <span class="title">버블앤코클스</span>
-                                                <strong class="point search_point ">4.4</strong>
-                                                <p class="etc">
-                                                    이태원/한남동 -
-                                                    시푸드 요리
-                                                </p>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="restaurant-item">
-                            <div class="popular_restaurant_inner_wrap">
-                                <a href="#" onclick="">
-                                    <figure class="restaurant-item">
-                                        <div class="thumb">
-                                            <img class="center-croping lazy" alt="버블앤코클스 사진 - 서울시 용산구 한남동 738-14"
-                                                src="./img/bubble.jpg">
-                                        </div>
-                                        <figcaption>
-                                            <div class="info">
-                                                <span class="title">버블앤코클스</span>
-                                                <strong class="point search_point ">4.4</strong>
-                                                <p class="etc">
-                                                    이태원/한남동 -
-                                                    시푸드 요리
-                                                </p>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="restaurant-item">
-                            <div class="popular_restaurant_inner_wrap">
-                                <a href="#" onclick="">
-                                    <figure class="restaurant-item">
-                                        <div class="thumb">
-                                            <img class="center-croping lazy" alt="버블앤코클스 사진 - 서울시 용산구 한남동 738-14"
-                                                src="./img/bubble.jpg">
-                                        </div>
-                                        <figcaption>
-                                            <div class="info">
-                                                <span class="title">버블앤코클스</span>
-                                                <strong class="point search_point ">4.4</strong>
-                                                <p class="etc">
-                                                    이태원/한남동 -
-                                                    시푸드 요리
-                                                </p>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="restaurant-item">
-                            <div class="popular_restaurant_inner_wrap">
-                                <a href="#" onclick="">
-                                    <figure class="restaurant-item">
-                                        <div class="thumb">
-                                            <img class="center-croping lazy" alt="버블앤코클스 사진 - 서울시 용산구 한남동 738-14"
-                                                src="./img/bubble.jpg">
-                                        </div>
-                                        <figcaption>
-                                            <div class="info">
-                                                <span class="title">버블앤코클스</span>
-                                                <strong class="point search_point ">4.4</strong>
-                                                <p class="etc">
-                                                    이태원/한남동 -
-                                                    시푸드 요리
-                                                </p>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-                        </li>
+                        <?php
+}
+?>
                     </ul>
                 </div>
             </section>

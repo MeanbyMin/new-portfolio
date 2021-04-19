@@ -3,9 +3,9 @@
     session_start();
     include "./include/getIdxCheck.php";
     include "./include/dbconn.php";
-    include "./include/sessionCheck.php";
+    include "./include/mangosessionCheck.php";
 
-    $id = $_SESSION['id'];
+    $id = $_SESSION['mangoid'];
     $r_idx = $_GET['r_idx'];
     $sql = "SELECT mm_nickname FROM mango_member WHERE mm_userid='$id'";
     $result = mysqli_query($conn, $sql);

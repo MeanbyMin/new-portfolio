@@ -1,13 +1,16 @@
 <?php
     header('Content-Type: text/html; charset=UTF-8');
     session_start();
-    // include "./include/getIdxCheck.php";
+    include "./include/getIdxCheck.php";
     include "./include/dbconn.php";
     $sql = "SELECT * FROM mango_member";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result);
-    if(isset($_SESSION['id'])){
-        $id = $_SESSION['id'];
+    if(isset($_SESSION['mangoid'])){
+        $id = $_SESSION['mangoid'];
+        if(isset($_SESSION['email'])){
+            $email = $_SESSION['email'];
+        }
         $name = $_SESSION['name'];
         $image = $_SESSION['image'];
     }
@@ -67,15 +70,17 @@
         $r_openhourarr = $r_openhour;
       }
     }
+
     $sql = "SELECT * FROM mango_review WHERE mr_boardidx = '$r_idx'";
     $result = mysqli_query($conn, $sql);
 
     
     $member = [];
     while ($row = mysqli_fetch_array($result)){
-        $memberadd = array('mr_idx' => $row['mr_idx'], 'mr_content' => $row['mr_content'], 'mr_recommend' => $row['mr_recommend'], 'mr_photo' => $row['mr_photo'].",");
+        $memberadd = array('mr_idx' => $row['mr_idx'], 'mr_name' => $row['mr_name'], 'mr_content' => $row['mr_content'], 'mr_recommend' => $row['mr_recommend'], 'mr_photo' => $row['mr_photo'].",");
         array_push($member, $memberadd);
     }
+
     $reviewCount = count($member);
     $goodRecommendCount = 0;
     $okRecommendCount = 0;
@@ -130,6 +135,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
     <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
+    <script>
+        document.cookie = "safeCookie1=foo; SameSite=Lax"; 
+        document.cookie = "safeCookie2=foo"; 
+        document.cookie = "crossCookie=bar; SameSite=None; Secure";
+    </script>
 </head>
 
 <body onunload="" ng-app="mp20App" class="ng-scope">
@@ -283,7 +293,6 @@
 <?php
                       }
                   ?>
-                            <button class="UserRestaurantHistory__LogoutButton" onclick="">logout</button>
                         </footer>
                     </div>
                 </div>
@@ -882,7 +891,7 @@
                                                     <button class="btn-thumb" onclick=""
                                                         ng-click="open_menu_picture(<?=$i?>)">
                                                         <img class="center-croping lazy"
-                                                            alt="바위파스타바 메뉴 사진 - 서울시 성동구 성수동2가 269-81"
+                                                            alt="<?=$r_restaurant?> 메뉴 사진 - <?=$r_jibunaddress?>"
                                                             src="<?=$r_menuphotoarr[$i]?>" style="display: block;">
                                                     </button>
 <?php
@@ -1018,7 +1027,7 @@
 ?>
                             <section class="module related-restaurant">
                                 <span class="title">
-                                    <a href="#" onclick="t">
+                                    <a href="#" onclick="">
                                         <span class="orange-underline">2021 양식 인기 맛집 TOP 100 </span></a>에 있는 다른 식당
                                 </span>
 
@@ -1204,7 +1213,7 @@
    if(count($r_neararr) != 0){
 ?>
                                 <section
-                                    class="module near-rastaurant NearByRestaurantList NearByRestaurantList--Loading">
+                                    class="module near-rastaurant NearByRestaurantList">
                                     <span class="title NearByRestaurantList__Title">주변 인기 식당</span>
 
                                     <ul class="list-restaurants type-single NearByRestaurantList__List">
@@ -1607,12 +1616,13 @@
         </div>
     </aside>
     <!-- 로그인창 팝업 끝 -->
+
     <!-- 사진 더보기 팝업 시작 -->
     <div id="mp20_gallery" class="">
-        <div class="picture_area fotorama" data-auto="false"></div>
+        <div class="picture_area fotorama" data-nav="thumbs"></div>
         <div class="ng-scope">
             <div class="info_area">
-                <div class="resto_name ng-binding">바위파스타바</div>
+                <div class="resto_name ng-binding"><?=$r_restaurant?></div>
                 <div class="header">
                     <div class="basic_review_area">
                         <div class="inner_header">
@@ -1622,7 +1632,7 @@
 
                             <div class="user_profile">
                                 <p class="name_wrap">
-                                    <span class="name ng-binding">작성자</span>
+                                    <span class="name ng-binding"><?=$member[0]['mr_name']?></span>
                                     <span class="holic"></span>
                                 </p>
                                 <span class="stat">
@@ -1708,6 +1718,7 @@
             </button>
         </div>
     </div>
+    <div class="black_screen"></div>
     <!-- 사진 더보기 팝업 끝 -->
     <!-- 로딩 -->
     <div class="login_loading_area">

@@ -648,14 +648,14 @@ input:-webkit-autofill:active {
 
 /* 검색창 영역 */
 .KeywordSuggester {
-    display: none;
+    display: none
 }
 
 .KeywordSuggester--Open {
-    display: block;
+    display: block
 }
 
-.KeywordSuggester__BlackDeem {
+ .KeywordSuggester__BlackDeem {
     display: none;
     position: fixed;
     top: 0;
@@ -663,16 +663,31 @@ input:-webkit-autofill:active {
     z-index: 890;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0,0,0,0.8)
 }
 
 .KeywordSuggester--Open .KeywordSuggester__BlackDeem {
-    display: block;
+    display: block
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .KeywordSuggester--Open .KeywordSuggester__BlackDeem {
+        display:none
+    }
 }
 
 .KeywordSuggester__Container {
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-flex-direction: column;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
     position: fixed;
     z-index: 1100;
     width: 660px;
@@ -680,43 +695,102 @@ input:-webkit-autofill:active {
     border-top: 0;
     border-radius: 0 0 3px 3px;
     box-sizing: border-box;
-    background-color: #FFFFFF;
-    top: 61px;
-    left: 214px;
+    background-color: #FFFFFF
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .KeywordSuggester__Container {
+        width:100%;
+        height: 100%;
+        padding-bottom: 50px;
+        border: none;
+        border-top: 1px solid #DBDBDB;
+        box-sizing: border-box
+    }
 }
 
 .KeywordSuggester__TabNavigation {
-    padding: 0 24px;
+    padding: 0 24px
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .KeywordSuggester__TabNavigation {
+        padding:0 15px
+    }
 }
 
 .KeywordSuggester__TabList {
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
     flex-direction: row;
-    height: 50px;
+    -webkit-flex-direction: row;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    height: 50px
+}
+
+.KeywordSuggester__TabList--Hide {
+    display: none
 }
 
 .KeywordSuggester__TabItem {
+    -moz-box-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
     flex: 1;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-flex-direction: column;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical
 }
 
 .KeywordSuggester__TabButton {
+    -moz-box-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
     flex: 1;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    -moz-justify-content: center;
     justify-content: center;
+    -webkit-justify-content: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -moz-align-items: center;
     align-items: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     position: relative;
     width: 100%;
     height: 100%;
     border-bottom: 1px solid #DBDBDB;
     font-size: 16px;
     color: #7F7F7F;
-    cursor: pointer;
+    cursor: pointer
 }
 
 .KeywordSuggester__TabButton--Selected {
-    color: #ff7100;
+    color: #ff7100
 }
 
 .KeywordSuggester__TabButton--Selected:after {
@@ -726,21 +800,221 @@ input:-webkit-autofill:active {
     left: 0;
     width: 100%;
     height: 3px;
-    background-color: #ff7100;
+    background-color: #ff7100
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .KeywordSuggester__TabButton {
+        font-size:14px
+    }
 }
 
 .KeywordSuggester__SuggestKeywordListWrap {
+    -moz-box-flex: 1;
+    -moz-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
     flex: 1 1 auto;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 auto;
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
     min-height: 0;
     padding: 0 24px;
-    max-height: 250px;
+    max-height: 250px
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .KeywordSuggester__SuggestKeywordListWrap {
+        max-height:none;
+        padding: 0 15px
+    }
+}
+
+.KeywordSuggester__SuggestKeywordItem {
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 60px;
+    -ms-flex: 0 0 60px;
+    flex: 0 0 60px;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 60px;
+    border-bottom: 1px solid #DBDBDB;
+    list-style: none
+}
+
+.KeywordSuggester__SuggestKeywordItem--Selected {
+    background-color: #F9F9F9
+}
+
+.KeywordSuggester__SuggestKeywordItem:hover {
+    background-color: #F9F9F9
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .KeywordSuggester__SuggestKeywordItem:last-child {
+        border-bottom:1px solid #DBDBDB
+    }
+}
+
+.KeywordSuggester__SuggestKeywordLink {
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    -moz-align-items: center;
+    align-items: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    height: 60px
+}
+
+.KeywordSuggester__SuggestKeywordIcon {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-position: -974px -752px;
+    width: 17px;
+    height: 17px;
+    margin: 0 12px 0 7px
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .KeywordSuggester__SuggestKeywordIcon {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+        background-position: -618px -157px;
+        width: 17px;
+        height: 17px
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2), only screen and (min-width: 320px) and (max-width: 768px) and (min-resolution: 192dpi) {
+    .KeywordSuggester__SuggestKeywordIcon {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png);
+        background-size: 635px 609px
+    }
+}
+
+.KeywordSuggester__SuggestKeyword {
+    -moz-box-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    margin-right: 45px;
+    font-size: 14px;
+    color: #7F7F7F;
+    height: 18px
+}
+
+.KeywordSuggester__RemoveHistoryKeywordButton {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+    background-position: -502px -539px;
+    width: 23px;
+    height: 23px;
+    margin-left: auto
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .KeywordSuggester__RemoveHistoryKeywordButton {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png);
+        background-size: 635px 609px
+    }
+}
+
+.KeywordSuggester__EmptyKeywordMessage {
+    display: none;
+    padding: 30px 0;
+    border-bottom: 1px solid #DBDBDB;
+    text-align: center
+}
+
+.KeywordSuggester__EmptyKeywordMessage--Show {
+    display: block
+}
+
+.KeywordSuggester__Footer {
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    padding: 10px 0 20px
+}
+
+.KeywordSuggester__Footer--Hide {
+    display: none
+}
+
+.KeywordSuggester__RemoveAllHistoryKeywordButton {
+    margin-left: auto;
+    font-size: 11px;
+    color: #DBDBDB
+}
+
+.KeywordSuggester__SuggestKeywordType {
+    margin-left: auto;
+    margin-right: 20px;
+    font-size: 14px;
+    color: #CBCBCB
+}
+
+.KeywordSuggester__SuggestKeywordType+.KeywordSuggester__RemoveHistoryKeywordButton {
+    margin-left: initial
+}
+
+@-webkit-keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+}
+
+@-moz-keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+}
+
+@keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+} */
+
+/* 검색창 영역 끝 */
+
+/* simplebar 시작 */
+[data-simplebar] {
     position: relative;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: flex-start;
     align-content: flex-start;
-    align-items: flex-start;
+    align-items: flex-start
 }
 
 .simplebar-wrapper {
@@ -748,7 +1022,62 @@ input:-webkit-autofill:active {
     width: inherit;
     height: inherit;
     max-width: inherit;
-    max-height: inherit;
+    max-height: inherit
+}
+
+.simplebar-mask {
+    direction: inherit;
+    position: absolute;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: auto !important;
+    height: auto !important;
+    z-index: 0;
+    margin-top: 50px;
+}
+
+.simplebar-offset {
+    direction: inherit !important;
+    box-sizing: inherit !important;
+    resize: none !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 0;
+    margin: 0;
+    -webkit-overflow-scrolling: touch
+}
+
+.simplebar-content-wrapper {
+    direction: inherit;
+    box-sizing: border-box !important;
+    position: relative;
+    display: block;
+    height: 100%;
+    width: auto;
+    visibility: visible;
+    overflow: auto;
+    max-width: 100%;
+    max-height: 100%
+}
+
+.simplebar-content:after,.simplebar-content:before {
+    content: " ";
+    display: table
+}
+
+.simplebar-placeholder {
+    max-height: 100%;
+    max-width: 100%;
+    width: 100%;
+    pointer-events: none
 }
 
 .simplebar-height-auto-observer-wrapper {
@@ -766,7 +1095,7 @@ input:-webkit-autofill:active {
     pointer-events: none;
     flex-grow: inherit;
     flex-shrink: 0;
-    flex-basis: 0;
+    flex-basis: 0
 }
 
 .simplebar-height-auto-observer {
@@ -782,123 +1111,7 @@ input:-webkit-autofill:active {
     min-width: 1px;
     overflow: hidden;
     pointer-events: none;
-    z-index: -1;
-}
-
-.simplebar-mask {
-    direction: inherit;
-    position: absolute;
-    overflow: hidden;
-    padding: 0;
-    margin: 0;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    width: auto !important;
-    height: auto !important;
-    z-index: 0;
-}
-
-.simplebar-offset {
-    direction: inherit !important;
-    box-sizing: inherit !important;
-    resize: none !important;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: -15px;
-    bottom: 0;
-    padding: 0;
-    margin: 0;
-}
-
-.simplebar-content-wrapper {
-    direction: inherit;
-    box-sizing: border-box !important;
-    position: relative;
-    display: block;
-    width: auto;
-    visibility: visible;
-    max-width: 100%;
-    max-height: 100%;
-    height: auto;
-    overflow: hidden scroll;
-}
-
-.simplebar-content:after, .simplebar-content:before {
-    content: " ";
-    display: table;
-}
-
-.KeywordSuggester__SuggestKeywordItem {
-    flex: 0 0 60px;
-    border-bottom: 1px solid #DBDBDB;
-    list-style: none;
-}
-
-.KeywordSuggester__SuggestKeywordLink {
-    display: flex;
-    align-items: center;
-    height: 60px;
-}
-
-.KeywordSuggester__SuggestKeywordIcon {
-    background-image: url(../img/2018022864551sprites_desktop.png);
-    background-position: -974px -752px;
-    width: 17px;
-    height: 17px;
-    margin: 0 12px 0 7px;
-}
-
-.KeywordSuggester__SuggestKeyword {
-    flex: 1;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    word-wrap: normal;
-    margin-right: 45px;
-    font-size: 14px;
-    color: #7F7F7F;
-    height: 18px;
-}
-
-.KeywordSuggester__EmptyKeywordMessage {
-    display: none;
-    padding: 30px 0;
-    border-bottom: 1px solid #DBDBDB;
-    text-align: center;
-}
-
-.KeywordSuggester__EmptyKeywordMessage--Show {
-    display: block;
-}
-
-.KeywordSuggester__Footer {
-    display: flex;
-    padding: 10px 0 20px;
-}
-
-.KeywordSuggester__Footer--Hide {
-    display: none;
-}
-
-.KeywordSuggester__RemoveAllHistoryKeywordButton {
-    margin-left: auto;
-    font-size: 11px;
-    color: #DBDBDB;
-}
-
-.simplebar-content:after, .simplebar-content:before {
-    content: " ";
-    display: table;
-}
-
-.simplebar-placeholder {
-    max-height: 100%;
-    max-width: 100%;
-    width: 100%;
-    pointer-events: none;
+    z-index: -1
 }
 
 .simplebar-track {
@@ -907,34 +1120,18 @@ input:-webkit-autofill:active {
     right: 0;
     bottom: 0;
     pointer-events: none;
-    overflow: hidden;
+    overflow: hidden
 }
 
-.simplebar-track.simplebar-horizontal {
-    left: 0;
-    height: 11px;
+[data-simplebar].simplebar-dragging .simplebar-track {
+    pointer-events: all
 }
 
 .simplebar-scrollbar {
     position: absolute;
     right: 2px;
     width: 7px;
-    min-height: 10px;
-}
-
-.simplebar-track.simplebar-horizontal .simplebar-scrollbar {
-    right: auto;
-    left: 0;
-    top: 2px;
-    height: 7px;
-    min-height: 0;
-    min-width: 10px;
-    width: auto;
-}
-
-.simplebar-track.simplebar-vertical {
-    top: 0;
-    width: 11px;
+    min-height: 10px
 }
 
 .simplebar-scrollbar:before {
@@ -945,22 +1142,61 @@ input:-webkit-autofill:active {
     left: 0;
     right: 0;
     opacity: 0;
-    transition: opacity .2s linear;
+    transition: opacity .2s linear
+}
+
+.simplebar-track .simplebar-scrollbar.simplebar-visible:before {
+    opacity: .5;
+    transition: opacity 0s linear
+}
+
+.simplebar-track.simplebar-vertical {
+    top: 0;
+    width: 11px
 }
 
 .simplebar-track.simplebar-vertical .simplebar-scrollbar:before {
     top: 2px;
-    bottom: 2px;
+    bottom: 2px
 }
 
-.KeywordSuggester__RemoveHistoryKeywordButton {
-    background-image: url(../img/2018022864551sprites_mobile@2x.png);
-    background-size: 635px 609px;
-    background-position: -502px -539px;
-    width: 23px;
-    height: 23px;
-    margin-left: auto;
+.simplebar-track.simplebar-horizontal {
+    left: 0;
+    height: 11px
 }
+
+.simplebar-track.simplebar-horizontal .simplebar-scrollbar:before {
+    height: 100%;
+    left: 2px;
+    right: 2px
+}
+
+.simplebar-track.simplebar-horizontal .simplebar-scrollbar {
+    right: auto;
+    left: 0;
+    top: 2px;
+    height: 7px;
+    min-height: 0;
+    min-width: 10px;
+    width: auto
+}
+
+[data-simplebar-direction=rtl] .simplebar-track.simplebar-vertical {
+    right: auto;
+    left: 0
+}
+
+.hs-dummy-scrollbar-size {
+    direction: rtl;
+    position: fixed;
+    opacity: 0;
+    visibility: hidden;
+    height: 500px;
+    width: 500px;
+    overflow-y: hidden;
+    overflow-x: scroll
+}
+/* simplebar 끝 */
 
 
 
@@ -7284,10 +7520,6 @@ span.orange-underline {
     font-size: 1.2rem;
 }
 
-.pg-restaurant .list-restaurants>li:nth-child(even) {
-    padding-left: 17px;
-}
-
 .pg-restaurant .column-module {
     overflow: hidden;
 }
@@ -7448,8 +7680,50 @@ span.orange-underline {
     margin: 0 auto;
 }
 
-.pg-restaurant .near-rastaurant {
-    padding-top: 30px;
+/* 주변 인기 식당 시작 */
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .pg-restaurant .near-rastaurant {
+        padding:25px 10px 10px
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .pg-restaurant .near-rastaurant {
+        padding-top:30px
+    }
+
+    .pg-restaurant .near-rastaurant .list-restaurants.type-single>li .restaurant-item .info .title {
+        font-size: 1.1rem
+    }
+
+    .pg-restaurant .near-rastaurant .list-restaurants.type-single>li .restaurant-item .info .title:hover {
+        color: #ff792a
+    }
+
+    .pg-restaurant .near-rastaurant .list-restaurants.type-single>li .restaurant-item .info .point {
+        font-size: 1.2rem
+    }
+
+    .pg-restaurant .near-rastaurant .list-restaurants.type-single>li .restaurant-item .info .etc_info {
+        font-size: .8rem
+    }
+
+    .pg-restaurant .near-rastaurant .list-restaurants.type-single>li .sample-review {
+        font-size: .8rem;
+        color: #333
+    }
+
+    .pg-restaurant .near-rastaurant .list-restaurants.type-single>li .see_more_info {
+        position: absolute;
+        bottom: 0;
+        right: 11px;
+        font-size: .8rem;
+        color: #999
+    }
+
+    .pg-restaurant .near-rastaurant .list-restaurants.type-single>li .see_more_info:hover {
+        color: #ff792a
+    }
 }
 
 .list-restaurants.type-single {
@@ -7463,100 +7737,6 @@ span.orange-underline {
     border-bottom: 1px solid #dbdbdb;
 }
 
-.NearByRestaurantItem__PictureAndContent {
-    display: flex;
-    flex-direction: column;
-    flex-direction: row;
-}
-
-.RestaurantItem__Picture, .NearByRestaurantItem__Picture {
-    margin-bottom: 6px;
-    padding-bottom: 100%;
-}
-
-.NearByRestaurantItem__Picture {
-    padding-bottom: 0;
-    object-fit: cover;
-    opacity: 0;
-    background-color: #E9E9E9;
-    background-size: cover;
-    width: 103px;
-    height: 103px;
-    margin-bottom: 0;
-}
-
-.NearByRestaurantItem__Picture:not(.initial) {
-    transition: opacity .3s;
-}
-
-.NearByRestaurantItem__Picture.initial, .NearByRestaurantItem__Picture.loaded, .NearByRestaurantItem__Picture.error {
-    opacity: 1;
-}
-
-.NearByRestaurantItem__Content {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-width: 0;
-    margin-left: 8px;
-}
-
-.RestaurantItem__TitleWrap, .NearByRestaurantItem__NameWrap {
-    display: flex;
-    align-items: center;
-}
-
-.RestaurantItem__Rating, .NearByRestaurantItem__Rating {
-    margin-left: 5px;
-    font-size: 19px;
-    line-height: 1;
-    color: #ff792a;
-}
-
-.RestaurantItem__MetroAndCuisine, .NearByRestaurantItem__MetroAndCuisine {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    word-wrap: normal;
-    margin-top: 3px;
-    font-size: 12px;
-    line-height: 1.3;
-    color: #9B9B9B;
-}
-
-.NearByRestaurantItem__MetroAndCuisine {
-    display: none;
-}
-
-.NearByRestaurantItem__InfoWrap {
-    display: flex;
-    flex-direction: column;
-    margin-left: 3px;
-}
-
-.NearByRestaurantItem__Info {
-    display: flex;
-    flex-direction: row;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    word-wrap: normal;
-    font-size: 11px;
-    margin-top: 6px;
-}
-
-.NearByRestaurantItem__InfoLabel {
-    color: #9B9B9B;
-}
-
-.NearByRestaurantItem__InfoLabel:after {
-    content: ': ';
-}
-
-.NearByRestaurantItem__InfoValue {
-    color: #555555;
-}
-
 .related-tags p {
     padding-top: 14px;
 }
@@ -7564,6 +7744,396 @@ span.orange-underline {
 .pg-restaurant .restaurnat_footer {
     display: none;
 }
+
+.NearByRestaurantList--Loading .NearByRestaurantList__Title {
+    background: linear-gradient(to right, #eee 2%, #ddd 18%, #eee 33%);
+    -webkit-animation: placeholderAnimation 1.5s linear infinite forwards;
+    -o-animation: placeholderAnimation 1.5s linear infinite forwards;
+    animation: placeholderAnimation 1.5s linear infinite forwards;
+    background-size: 2000px;
+    width: 43%;
+    height: 20px;
+    font-size: 0 !important;
+    background-color: #ADADAD
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .NearByRestaurantList--Loading .NearByRestaurantList__Title {
+        display:none
+    }
+}
+
+.NearByRestaurantList--Loading .NearByRestaurantItem__PictureAndContent {
+    background: linear-gradient(to right, #eee 2%, #ddd 18%, #eee 33%);
+    -webkit-animation: placeholderAnimation 1.5s linear infinite forwards;
+    -o-animation: placeholderAnimation 1.5s linear infinite forwards;
+    animation: placeholderAnimation 1.5s linear infinite forwards;
+    background-size: 2000px;
+    width: 103px;
+    height: 103px;
+    background-color: #ADADAD
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .NearByRestaurantList--Loading .NearByRestaurantItem__PictureAndContent {
+        width:100%;
+        height: initial;
+        padding-bottom: 100%;
+        background-color: #ADADAD
+    }
+}
+
+@-webkit-keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+}
+
+@-moz-keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+}
+
+@keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+}
+
+@-webkit-keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+}
+
+@-moz-keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+}
+
+@keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+}
+
+.RestaurantItem,.NearByRestaurantItem {
+    width: 50%;
+    position: relative
+}
+
+.RestaurantItem__Link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
+}
+
+.RestaurantItem__Picture,.NearByRestaurantItem__Picture {
+    margin-bottom: 6px;
+    padding-bottom: 100%
+}
+
+.RestaurantItem__TitleWrap,.NearByRestaurantItem__NameWrap {
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    -moz-align-items: center;
+    align-items: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center
+}
+
+.RestaurantItem__Name,.NearByRestaurantItem__Name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    max-width: 64%;
+    font-size: 16px;
+    line-height: 1.3;
+    color: #555555
+}
+
+.RestaurantItem__Rating,.NearByRestaurantItem__Rating {
+    margin-left: auto;
+    font-size: 19px;
+    line-height: 1;
+    color: #ff792a
+}
+
+.RestaurantItem__Rating--Expected,.NearByRestaurantItem__Rating--Expected {
+    color: #E9E9E9
+}
+
+.RestaurantItem__MetroAndCuisine,.NearByRestaurantItem__MetroAndCuisine {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    margin-top: 3px;
+    font-size: 12px;
+    line-height: 1.3;
+    color: #9B9B9B
+}
+
+.RestaurantItem__Metro:after,.NearByRestaurantItem__Metro:after {
+    content: ' - '
+}
+
+.NearByRestaurantItem {
+    margin-bottom: 16px
+}
+
+@media only screen and (min-width: 769px) {
+    .NearByRestaurantItem {
+        margin-bottom:0
+    }
+}
+
+.NearByRestaurantItem__PictureAndContent {
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical
+}
+
+@media only screen and (min-width: 769px) {
+    .NearByRestaurantItem__PictureAndContent {
+        -moz-flex-direction:row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-flex-direction: row;
+        -webkit-box-direction: normal;
+        -webkit-box-orient: horizontal
+    }
+}
+
+.NearByRestaurantItem__Picture {
+    width: 100%;
+    padding-bottom: 0;
+    object-fit: cover;
+    opacity: 0;
+    background-color: #E9E9E9;
+    background-size: cover
+}
+
+.NearByRestaurantItem__Picture:not(.initial) {
+    transition: opacity .3s
+}
+
+.NearByRestaurantItem__Picture.initial,.NearByRestaurantItem__Picture.loaded,.NearByRestaurantItem__Picture.error {
+    opacity: 1
+}
+
+@media only screen and (min-width: 769px) {
+    .NearByRestaurantItem__Picture {
+        width:103px;
+        height: 103px;
+        margin-bottom: 0
+    }
+}
+
+.NearByRestaurantItem__Picture.LazyLoadPictureError {
+    background-image: url("https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg")
+}
+
+.NearByRestaurantItem__Content {
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical
+}
+
+@media only screen and (min-width: 769px) {
+    .NearByRestaurantItem__Content {
+        -moz-box-flex:1;
+        -moz-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        min-width: 0;
+        margin-left: 8px
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .NearByRestaurantItem__Name {
+        font-size:18px;
+        line-height: 1.27
+    }
+
+    .NearByRestaurantItem__Name:hover {
+        color: #ff792a
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .NearByRestaurantItem__Rating {
+        margin-left:5px;
+        font-size: 19px;
+        line-height: 1
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .NearByRestaurantItem__MetroAndCuisine {
+        display:none
+    }
+}
+
+.NearByRestaurantItem__InfoWrap {
+    display: none
+}
+
+@media only screen and (min-width: 769px) {
+    .NearByRestaurantItem__InfoWrap {
+        display:-moz-flex;
+        display: -ms-flexbox;
+        display: flex;
+        display: -webkit-box;
+        display: -webkit-flex;
+        -moz-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-flex-direction: column;
+        -webkit-box-direction: normal;
+        -webkit-box-orient: vertical;
+        margin-left: 3px
+    }
+}
+
+.NearByRestaurantItem__Info {
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    font-size: 11px;
+    margin-top: 6px
+}
+
+.NearByRestaurantItem__InfoLabel {
+    color: #9B9B9B
+}
+
+.NearByRestaurantItem__InfoLabel:after {
+    content: ': '
+}
+
+.NearByRestaurantItem__InfoValue {
+    color: #555555
+}
+
+.NearByRestaurantItem__ReviewContent {
+    display: none
+}
+
+@media only screen and (min-width: 769px) {
+    .NearByRestaurantItem__ReviewContent {
+        display:block;
+        margin-top: 5px
+    }
+}
+
+.NearByRestaurantItem__ReviewerName {
+    font-size: 12px;
+    line-height: 1.5;
+    font-weight: bold;
+    color: #000000
+}
+
+.NearByRestaurantItem__ReviewText {
+    display: inline;
+    font-size: 13px;
+    color: #333333
+}
+
+@-webkit-keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+}
+
+@-moz-keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+}
+
+@keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+}
+
 
 /* 사진 더 보기 팝업 */
 

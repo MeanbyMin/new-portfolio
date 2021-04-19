@@ -48,10 +48,10 @@
             $_SESSION['email']      = $row['mm_email'];
             $_SESSION['name']       = $row['mm_nickname'];
             $_SESSION['image']      = $row['mm_profile_image'];
-            echo $_SESSION['mangoid'];
-            echo $_SESSION['email'];
-            echo $_SESSION['name'];
-            echo $_SESSION['image'];
+            // echo $_SESSION['mangoid'];
+            // echo $_SESSION['email'];
+            // echo $_SESSION['name'];
+            // echo $_SESSION['image'];
         }else{
             $sql = "SELECT mm_userid, mm_email, mm_nickname, mm_profile_image FROM mango_member WHERE mm_userid='$mm_userid'";
             $result = mysqli_query($conn, $sql);
