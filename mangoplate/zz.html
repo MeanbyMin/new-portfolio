@@ -1,172 +1,67 @@
-<div ng-controller="mp20_gallery_controller" class="ng-scope">
-    <!-- ngIf: show_picture.ad -->
+<!DOCTYPE html>
+<html lang="ko">
 
-    <div class="info_area">
-        <div class="resto_name ng-binding" ng-bind="restaurant_name || show_picture.restaurant.name">명륜건강원</div>
-        <div class="header" ng-show="!is_menu_picture">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
 
-            <div class="basic_review_area">
-                <div class="inner_header">
-                    <div class="user_picture_area">
-                        <img class="user_picture"
-                            ng-src="https://s3-ap-northeast-2.amazonaws.com/mp-seoul-image-production/191512_1618135120784?fit=around|56:56&amp;crop=56:56;*,*&amp;output-format=jpg&amp;output-quality=80"
-                            alt="Review User Image"
-                            onerror="this.src = 'https://mp-seoul-image-production-s3.mangoplate.com/web/resources/jmcmlp180qwkp1jj.png?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80'"
-                            src="https://s3-ap-northeast-2.amazonaws.com/mp-seoul-image-production/191512_1618135120784?fit=around|56:56&amp;crop=56:56;*,*&amp;output-format=jpg&amp;output-quality=80">
-                    </div>
-
-                    <div class="user_profile">
-                        <p class="name_wrap">
-                            <span class="name ng-binding">띵시</span>
-                            <span class="holic" ng-show="show_picture.user.is_holic"></span>
-                        </p>
-                        <span class="stat" ng-show="show_picture.user">
-                            <em class="review"><span class="hidden">리뷰수: </span><span
-                                    ng-bind="show_picture.user.review_count || 0" class="ng-binding">821</span></em>
-                            <em class="hit"><span class="hidden">팔로우 수: </span><span
-                                    ng-bind="show_picture.user.follower_count || 0" class="ng-binding">597</span></em>
-                        </span>
-                    </div>
-
-                    <div class="rating_area" ng-show="show_picture.review">
-                        <div class="rating good"
-                            ng-class="get_recommend_class_name(show_picture.review.action.action_value -1)"></div>
-                        <p class="rating_str ng-binding"
-                            ng-bind="get_recommend_message(show_picture.review.action.action_value - 1)">맛있다</p>
-                    </div>
-                </div>
-            </div>
-            <!--<div class="another_link" ng-show="show_picture.short_description">-->
-            <!--<a ng-href="{{show_picture.short_description}}" target="_blank" onclick="common_ga(get_now_page_code(), 'CLICK_GALLERY_EXT_PIC')">{{show_picture.short_description}}</a>-->
-            <!--</div>-->
-        </div>
-
-        <div class="body">
-            <div class="content_wrap ng-isolate-scope mCustomScrollbar _mCS_2 mCS-autoHide mCS_no_scrollbar"
-                ng-scrollbars="" ng-scrollbars-config="review_scrollbar_config" ng-scrollbars-update="updateScrollbar"
-                style="position: relative; overflow: visible;">
-                <div id="mCSB_2" class="mCustomScrollBox mCS-minimal-dark mCSB_vertical_horizontal mCSB_outside"
-                    tabindex="0" style="max-height: none;">
-                    <div id="mCSB_2_container"
-                        class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y mCS_x_hidden mCS_no_scrollbar_x"
-                        style="position: relative; top: 0px; left: 0px; width: 100%;" dir="ltr">
-                        <div class="content">
-                            <a class="source ng-binding ng-hide" ng-href="아주 깔끔한 한식 밥상을 찾는다면 무조건 명륜건강원이에요!
-이름이 특이해서 당황스러웠는데, 의외로 분위기가 카페처럼 아기자기하고 밝은 식당이에요. 모든 메뉴가 만원 이하고, 밥과 정갈한 반찬들 그리고 그날그날 바뀌는 국이 함께 나와요~ 생강삼겹살구이와 야채닭고기를 먹었는데 둘 다 간장양념이 잘 배어있으면서도 자극적이지 않아 좋았어요!
-동행인 분이 며칠 전에 탈이 나 자극적인 걸 못 먹는 상태였는데, 여기 음식은 식사 후에도 속이 편했대요:) 집 근처였으면 자주 가고싶네요!
-+클렌즈 쥬스라는 해독주스와 과일즙도 판매하니까 참고하세요!" ng-show="review_content.type == 'naver'" href="아주 깔끔한 한식 밥상을 찾는다면 무조건 명륜건강원이에요!
-이름이 특이해서 당황스러웠는데, 의외로 분위기가 카페처럼 아기자기하고 밝은 식당이에요. 모든 메뉴가 만원 이하고, 밥과 정갈한 반찬들 그리고 그날그날 바뀌는 국이 함께 나와요~ 생강삼겹살구이와 야채닭고기를 먹었는데 둘 다 간장양념이 잘 배어있으면서도 자극적이지 않아 좋았어요!
-동행인 분이 며칠 전에 탈이 나 자극적인 걸 못 먹는 상태였는데, 여기 음식은 식사 후에도 속이 편했대요:) 집 근처였으면 자주 가고싶네요!
-+클렌즈 쥬스라는 해독주스와 과일즙도 판매하니까 참고하세요!">아주 깔끔한 한식 밥상을 찾는다면 무조건 명륜건강원이에요!
-                                이름이 특이해서 당황스러웠는데, 의외로 분위기가 카페처럼 아기자기하고 밝은 식당이에요. 모든 메뉴가 만원 이하고, 밥과 정갈한 반찬들 그리고 그날그날 바뀌는
-                                국이 함께 나와요~ 생강삼겹살구이와 야채닭고기를 먹었는데 둘 다 간장양념이 잘 배어있으면서도 자극적이지 않아 좋았어요!
-                                동행인 분이 며칠 전에 탈이 나 자극적인 걸 못 먹는 상태였는데, 여기 음식은 식사 후에도 속이 편했대요:) 집 근처였으면 자주 가고싶네요!
-                                +클렌즈 쥬스라는 해독주스와 과일즙도 판매하니까 참고하세요!</a>
-
-                            <a ng-href="" target="_blank" class="source ng-binding ng-hide"
-                                ng-show="review_content.type == 'insta'"></a>
-
-                            <span class="review_content ng-binding" ng-show="review_content.type == 'review'">아주 깔끔한 한식
-                                밥상을 찾는다면 무조건 명륜건강원이에요!
-                                이름이 특이해서 당황스러웠는데, 의외로 분위기가 카페처럼 아기자기하고 밝은 식당이에요. 모든 메뉴가 만원 이하고, 밥과 정갈한 반찬들 그리고 그날그날 바뀌는
-                                국이 함께 나와요~ 생강삼겹살구이와 야채닭고기를 먹었는데 둘 다 간장양념이 잘 배어있으면서도 자극적이지 않아 좋았어요!
-                                동행인 분이 며칠 전에 탈이 나 자극적인 걸 못 먹는 상태였는데, 여기 음식은 식사 후에도 속이 편했대요:) 집 근처였으면 자주 가고싶네요!
-                                +클렌즈 쥬스라는 해독주스와 과일즙도 판매하니까 참고하세요!</span>
-
-                            <button class="translate_btn ng-binding ng-hide"
-                                ng-show="is_translate_btn_show(page_locale, review_content.language, review_content.comment, review_content.member_uuid)"
-                                ng-click="handle_translate_btn()">번역 보기</button>
-                        </div>
-
-                        <div class="regist_date ng-binding">2015-12-24</div>
-                    </div>
-                </div>
-                <div id="mCSB_2_scrollbar_vertical"
-                    class="mCSB_scrollTools mCSB_2_scrollbar mCS-minimal-dark mCSB_scrollTools_vertical"
-                    style="display: none;">
-                    <div class="mCSB_draggerContainer">
-                        <div id="mCSB_2_dragger_vertical" class="mCSB_dragger"
-                            style="position: absolute; min-height: 50px; top: 0px; height: 0px;">
-                            <div class="mCSB_dragger_bar" style="line-height: 50px;"></div>
-                        </div>
-                        <div class="mCSB_draggerRail"></div>
-                    </div>
-                </div>
-                <div id="mCSB_2_scrollbar_horizontal"
-                    class="mCSB_scrollTools mCSB_2_scrollbar mCS-minimal-dark mCSB_scrollTools_horizontal"
-                    style="display: none;">
-                    <div class="mCSB_draggerContainer">
-                        <div id="mCSB_2_dragger_horizontal" class="mCSB_dragger"
-                            style="position: absolute; min-width: 50px; display: block; width: 0px; left: 0px;">
-                            <div class="mCSB_dragger_bar"></div>
-                        </div>
-                        <div class="mCSB_draggerRail"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="info_area_footer">
-                <div class="ad_area gallery_right_review only-desktop" id="web_desktop-restaurant-gallery_right_review"
-                    style="display: none;">
-                    <div class="ad_wrap">
-                        <div class="content" id="web_desktop-restaurant-gallery_right_review-content"
-                            data-google-query-id="CMKU4amSivACFQluvQodJ0UEwg" style="display: none;">
-                            <div id="google_ads_iframe_/395211568/production/desktop-web.picture-viewer.right-side_0__container__"
-                                style="border: 0pt none; width: 336px; height: 280px;"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="source_notice ng-hide" ng-show="review_content.type == 'insta'">
-                    <div class="inner">
-                        <i class="icon"></i>
-                        망고플레이트는 인스타그램과 기술제휴를 통해 식당과 관련된 사진을 보여드리고 있어요. <br> <br> 당신의 사진이 표시되는 것을 원하지 않으실 경우 <a
-                            class="color_orange under_line" href="mailto://cs@mangoplate.com"
-                            target="_blank">cs@mangoplate.com</a>로 요청주세요.
-                    </div>
-                </div>
-
-            </div>
-        </div>
+<body>
+    <input style="display: block;" type="file" id="input-multiple-image" multiple>
+    <div id="multiple-container">
     </div>
+    <script>
+        function readMultipleImage(input) {
+            const multipleContainer = document.getElementById("multiple-container")
 
-    <button class="close_btn">
-        <i class="close_icon"></i>
-    </button>
+            // 인풋 태그에 파일들이 있는 경우
+            if (input.files) {
+                // 이미지 파일 검사 (생략)
+                console.log(input.files)
+                // 유사배열을 배열로 변환 (forEach문으로 처리하기 위해)
+                const fileArr = Array.from(input.files)
+                const $colDiv1 = document.createElement("div")
+                const $colDiv2 = document.createElement("div")
+                $colDiv1.classList.add("column")
+                $colDiv2.classList.add("column")
+                fileArr.forEach((file, index) => {
+                    const reader = new FileReader()
+                    const $imgDiv = document.createElement("div")
+                    const $img = document.createElement("img")
+                    $img.classList.add("image")
+                    const $label = document.createElement("label")
+                    $label.classList.add("image-label")
+                    $label.textContent = file.name
+                    $imgDiv.appendChild($img)
+                    $imgDiv.appendChild($label)
+                    reader.onload = e => {
+                        $img.src = e.target.result
 
-    <div class="m_info_area">
+                        $imgDiv.style.width = ($img.naturalWidth) * 0.2 + "px"
+                        $imgDiv.style.height = ($img.naturalHeight) * 0.2 + "px"
+                    }
 
-        <!-- ngIf: show_picture.ad -->
+                    console.log(file.name)
+                    if (index % 2 == 0) {
+                        $colDiv1.appendChild($imgDiv)
+                    } else {
+                        $colDiv2.appendChild($imgDiv)
+                    }
 
-        <!-- ngIf: !show_picture.ad -->
-        <div ng-if="!show_picture.ad" class="ng-scope">
-            <div class="now_stat">
-                <div class="page_stat">
-                    <span class="now_page ng-binding">1</span> / <span class="all_page ng-binding">241</span>
-                </div>
+                    reader.readAsDataURL(file)
+                })
+                multipleContainer.appendChild($colDiv1)
+                multipleContainer.appendChild($colDiv2)
+            }
+        }
+        const inputMultipleImage = document.getElementById("input-multiple-image")
+        inputMultipleImage.addEventListener("change", e => {
+            readMultipleImage(e.target)
+        })
+    </script>
+</body>
 
-                <span class="source ng-hide"
-                    ng-show="!show_picture.user &amp;&amp; is_naver_source(show_picture.short_description) &amp;&amp; show_picture.short_description">
-                    <span>@Naver</span><br>
-                    <a class="naver_blog_link ng-binding" ng-href="" target="_blank"
-                        onclick="trackEvent('CLICK_GALLERY_EXT_PIC')"></a>
-                </span>
-
-                <span class="source ng-hide"
-                    ng-show="!is_naver_source(show_picture.short_description) &amp;&amp; show_picture.short_description.indexOf('insta') > -1">
-                    <span onclick="trackEvent('CLICK_GALLERY_EXT_PIC')">@Instagram<br>
-                        <a ng-href="" class="ng-binding"></a>
-                    </span>
-                </span>
-
-                <span class="source ng-hide" ng-show="!show_picture.user &amp;&amp; !show_picture.short_description">
-                    <a href="#">@MangoPlate</a>
-                </span>
-
-                <span class="user_name ng-binding" ng-show="show_picture.user">띵시</span>
-            </div>
-            <div class="review_content"></div>
-        </div><!-- end ngIf: !show_picture.ad -->
-
-    </div>
-</div>
+</html>

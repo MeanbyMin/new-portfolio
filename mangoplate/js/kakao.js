@@ -29,14 +29,14 @@ function kakaologin() {
             "&mm_birthday=" +
             `${kakao_account.birthday}`;
 
-          console.log(data);
+          // console.log(data);
           xhr.send(data);
           xhr.onload = () => {
             if (xhr.status === 200) {
-              console.log("로그인 성공");
+              console.log("카카오 로그인 성공");
               location.reload();
             } else {
-              console.log("로그인 실패");
+              console.log("카카오 로그인 실패");
               location.reload();
             }
           };

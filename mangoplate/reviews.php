@@ -63,7 +63,7 @@
     </header>
     <main class="ReviewWritingPage" data-restaurant-uuid="" data-restaurant-key="<?=$r_idx?>">
         <header class="SimpleHeader">
-            <a href="./index.php" class="SimpleHeader__Logo" onclick="trackEvent('CLICK_HEADER_LOGO');">
+            <a href="./index.php" class="SimpleHeader__Logo" onclick="">
                 <i class="SimpleHeader__LogoIcon"></i>
             </a>
         </header>
@@ -265,7 +265,7 @@
 
                 <div class="PopupConfirmLayer__Buttons">
                     <button class="PopupConfirmLayer__Button PopupConfirmLayer__GrayButton" onclick="newwrite()">새로쓰기</button>
-                    <button class="PopupConfirmLayer__Button PopupConfirmLayer__OrangeButton" onclick="writeOverContinuew()">이어쓰기</button>
+                    <button class="PopupConfirmLayer__Button PopupConfirmLayer__OrangeButton" onclick="writeOverContinue()">이어쓰기</button>
                 </div>
             </div>
         </div>
@@ -364,6 +364,7 @@
         <input type="hidden" id="mr_userid" name="mr_userid" value="<?=$id?>">
         <input type="hidden" id="mr_idx" name="mr_idx" value="<?=$mr_idx?>">
         <input type="hidden" id="r_idx" name="r_idx" value="<?=$r_idx?>">
+        <input type="hidden" id="mr_name" name="mr_name" value="<?=$username?>">
         <input type="hidden" id="r_restaurant" name="r_restaurant" value="<?=$r_restaurant?>">
         <input type="hidden" id="mr_content" name="mr_content">
         <input type="hidden" id="mr_remainPhoto" name="mr_remainPhoto">
@@ -377,7 +378,7 @@
     <div class="login_loading_area">
         <img src="./img/reviews/ldcyd5lxlvtlppe3.gif" alt="login loading bar" />
     </div>
-    <script src="./js/review.js"></script>
+    <script src="./js/reviews.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
 </body>
 
@@ -648,21 +649,21 @@
         <input type="file" id="review_photo" name="upload[]" onchange="upload_file(event)" accept="image/*" multiple="multiple" style="display:none">
         <input type="hidden" id="mr_userid" name="mr_userid" value="<?=$id?>">
         <input type="hidden" id="r_idx" name="r_idx" value="<?=$r_idx?>">
+        <input type="hidden" id="mr_name" name="mr_name" value="<?=$username?>">
         <input type="hidden" id="r_restaurant" name="r_restaurant" value="<?=$r_restaurant?>">
         <input type="hidden" id="mr_content" name="mr_content">
+        <input type="hidden" id="mr_remainPhoto" name="mr_remainPhoto">
         <input type="hidden" id="mr_recommend" name="mr_recommend" value="맛있다">
         <input type="submit" id="mr_submit" style="display:none">
         <input type='button' id="mr_submit2" style="display:none" onclick='return info_chk2(this.form);'>
     </form>
-
-
 
     <div class="login_loading_area">
         <img src="./img/reviews/ldcyd5lxlvtlppe3.gif" alt="login loading bar" />
     </div>
     <script src="./js/reviews.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
-    <link rel="stylesheet" href="./css/review.css">
+    <!-- <link rel="stylesheet" href="./css/review.css"> -->
 </body>
 
 </html>

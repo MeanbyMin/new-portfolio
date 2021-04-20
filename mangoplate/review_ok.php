@@ -3,8 +3,9 @@
     session_start();
     include "./include/dbconn.php"; //php 파일 삽입
 
-    $id             = $_SESSION['id'];
+    $id             = $_SESSION['mangoid'];
     $r_idx          = $_POST['r_idx'];
+    $mr_name        = $_POST['mr_name'];
     $mr_content     = $_POST['mr_content'];
     $mr_recommend   = $_POST['mr_recommend'];
     $mr_status      = true;
@@ -55,22 +56,23 @@
     }
     $imgfile = substr($imgfile, 0, -1);
 
-    // echo $id."<br>";  
-    // echo $r_idx."<br>";  
-    // echo $mr_content."<br>";  
-    // echo $mr_recommend."<br>";
-    // echo $imgfile."<br>";
-    // echo $r_restaurant."<br>";
+    echo $id."<br>";  
+    echo $r_idx."<br>";  
+    echo $mr_content."<br>";  
+    echo $mr_recommend."<br>";
+    echo $imgfile."<br>";
+    echo $r_restaurant."<br>";
 
 
     if(!$conn){
         echo "DB 연결 실패!";
     }else{
-        $sql = "INSERT INTO mango_review (mr_userid, mr_content, mr_recommend, mr_photo, mr_status, mr_boardidx) VALUES ('$id',
+        echo 1;
+        $sql = "INSERT INTO mango_review (mr_userid, mr_name, mr_content, mr_recommend, mr_photo, mr_status, mr_boardidx) VALUES ('$id', '$mr_name',
         '$mr_content', '$mr_recommend', '$imgfile', '$mr_status', '$r_idx');";
         $result = mysqli_query($conn, $sql);
         $sql = "UPDATE mango_member SET mm_reviews = mm_reviews + 1 WHERE mm_userid = '$id'";
         $result = mysqli_query($conn, $sql);
-        echo "<script>alert('$r_restaurant 리뷰 작성이 완료되었습니다.'); location.href='./restaurant.php?r_idx=$r_idx';</script>";
+        // echo "<script>alert('$r_restaurant 리뷰 작성이 완료되었습니다.'); location.href='./restaurant.php?r_idx=$r_idx';</script>";
     }
 ?>

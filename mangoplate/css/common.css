@@ -9052,7 +9052,7 @@ height: 21px;
 }
 
 .DraggablePictureContainer__PictureItem {
-    position: absolute;
+    /* position: absolute; */
     margin-right: 9px;
     margin-bottom: 9px;
 }
@@ -9125,6 +9125,7 @@ height: 21px;
     border-color: #CBCBCB;
     color: #CBCBCB;
     cursor: not-allowed;
+    pointer-events: none;
 }
 
 .ReviewWritingPage__Buttons {
@@ -9165,6 +9166,7 @@ height: 21px;
     background-color: #E9E9E9;
     color: #FFFFFF;
     cursor: not-allowed;
+    pointer-events: none;
 }
 
 .ReviewToolTip {
@@ -10495,3 +10497,141 @@ body.ReviewDetailPage__Body {
         display:none !important
     }
 }
+
+/* 리뷰쓰기 사진 썸네일  */
+.Picture {
+    position: relative;
+    width: 89px;
+    height: 89px;
+    background-color: #F3F3F3;
+    background-size: cover;
+    background-position: 50% 50%;
+    cursor: pointer
+}
+
+.Picture__Layer {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5)
+}
+
+.Picture--NotUploaded .Picture__Layer {
+    display: block;
+    background-color: #F3F3F3
+}
+
+.Picture--Uploaded .Picture__Layer {
+    -webkit-transition-duration: 2s;
+    -moz-transition-duration: 2s;
+    -ms-transition-duration: 2s;
+    -o-transition-duration: 2s;
+    transition-duration: 2s;
+    display: block;
+    background-color: rgba(255,255,255,0.65)
+}
+
+.Picture--Ready:hover .Picture__Layer {
+    display: block
+}
+
+.Picture__LoadingBar {
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: none;
+    width: 30px;
+    height: 30px;
+    background-image: url("https://mp-seoul-image-production-s3.mangoplate.com/web/resources/ldcyd5lxlvtlppe3.gif?fit=around|:&crop=:;*,*&output-format=gif&output-quality=80");
+    background-size: cover
+}
+
+.Picture--NotUploaded .Picture__LoadingBar,.Picture--Uploaded .Picture__LoadingBar {
+    display: block
+}
+
+.Picture__RemoveButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    display: block;
+    width: 30px;
+    height: 30px
+}
+
+.Picture__RemoveIcon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 13px;
+    height: 13px;
+    background-image: url("https://mp-seoul-image-production-s3.mangoplate.com/web/resources/pc-delete-review-photo.svg")
+}
+
+.Picture--NotUploaded .Picture__RemoveIcon,.Picture--Uploaded .Picture__RemoveIcon {
+    background-image: url("https://mp-seoul-image-production-s3.mangoplate.com/web/resources/pc-delete-review-photo-black.svg")
+}
+
+.Picture__ExtendButton {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    display: none;
+    width: 30px;
+    height: 30px
+}
+
+.Picture--Ready .Picture__ExtendButton {
+    display: block
+}
+
+.Picture__ExtendIcon {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    width: 13px;
+    height: 13px;
+    background-image: url("https://mp-seoul-image-production-s3.mangoplate.com/web/resources/pc-review-photo-extend.svg")
+}
+
+@-webkit-keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+}
+
+@-moz-keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+}
+
+@keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+}
+
+/* 리뷰쓰기 사진 썸네일  */

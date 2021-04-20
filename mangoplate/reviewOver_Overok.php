@@ -3,9 +3,10 @@
     session_start();
     include "./include/dbconn.php"; //php 파일 삽입
 
-    $id             = $_SESSION['id'];
+    $id             = $_SESSION['mangoid'];
     $r_idx          = $_POST['r_idx'];
     $mr_idx         = $_POST['mr_idx'];
+    $mr_name        = $_POST['mr_name'];
     $mr_content     = $_POST['mr_content'];
     $mr_remainPhoto = $_POST['mr_remainPhoto'];
     $mr_recommend   = $_POST['mr_recommend'];
@@ -106,7 +107,7 @@
     if(!$conn){
         echo "DB 연결 실패!";
     }else{
-        $sql = "UPDATE mango_review SET mr_userid='$id', mr_content='$mr_content', mr_recommend='$mr_recommend', mr_photo='$imgfile', mr_status='$mr_status', mr_boardidx='$r_idx' WHERE mr_idx='$mr_idx'";
+        $sql = "UPDATE mango_review SET mr_userid='$id', mr_name='$mr_name', mr_content='$mr_content', mr_recommend='$mr_recommend', mr_photo='$imgfile', mr_status='$mr_status', mr_boardidx='$r_idx' WHERE mr_idx='$mr_idx'";
         $result = mysqli_query($conn, $sql);
         echo "<script>alert('$r_restaurant 리뷰 작성 임시저장이 완료되었습니다.'); location.href='./restaurant.php?r_idx=$r_idx';</script>";
     }
