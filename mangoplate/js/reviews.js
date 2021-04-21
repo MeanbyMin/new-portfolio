@@ -1,3 +1,4 @@
+const body = document.querySelector("body");
 const ReviewDraftConfirmLayer = document.querySelector(
   ".ReviewDraftConfirmLayer"
 );
@@ -135,6 +136,9 @@ window.addEventListener("click", (e) => {
   ) {
     document.getElementById("review_photo").click();
   }
+  e.target === document.querySelector(".Gallery--Loaded")
+    ? removeGallery()
+    : false;
 });
 
 function info_chk2(frm) {
@@ -158,9 +162,11 @@ function upload_file(e) {
   //   mr_photo.push(f.name + ",");
   // });
   // -----------------------
-
-  for (var image of e.target.files) {
-    var reader = new FileReader();
+  // console.log(mr_photo);
+  for (let i = 0; i < e.target.files.length; i++) {
+    mr_photo.push(e.target.files[i]);
+    // console.log(e.target.files);
+    const reader = new FileReader();
     reader.onload = function (event) {
       let DraggablePictureContainer__PictureList = document.querySelector(
         ".DraggablePictureContainer__PictureList"
@@ -183,13 +189,13 @@ function upload_file(e) {
         style='background-image: url("${event.target.result}"); opacity: 1; transform: scale(1);'>
           <div class="Picture__Layer ItemDraggable">
             <button class="Picture__RemoveButton Picture__UploadedContent">
-              <i class="Picture__RemoveIcon"></i>
+              <i class="Picture__RemoveIcon" onclick="removePicture(this)"></i>
             </button>
 
             <i class="Picture__LoadingBar Picture__LoadingBar--Show"></i>
 
             <button class="Picture__ExtendButton Picture__UploadedContent">
-              <i class="Picture__ExtendIcon"></i>
+              <i class="Picture__ExtendIcon" onclick="GALLERY()"></i>
             </button>
           </div>
         </div>
@@ -201,7 +207,7 @@ function upload_file(e) {
       index++;
     };
 
-    reader.readAsDataURL(image);
+    reader.readAsDataURL(e.target.files[i]);
     setTimeout(() => {
       const DraggablePictureContainer__PictureItemPicture = document.querySelectorAll(
         ".DraggablePictureContainer__PictureItem--Picture"
@@ -248,13 +254,134 @@ function upload_file(e) {
   }
 }
 
+let mr_remainPhotoArr = [];
 function reviewUpload() {
   mr_content.value = ReviewEditor__Editor.value;
-  if()
+  let PictureReady = document.querySelectorAll(".Picture--Ready");
+  if (PictureReady !== null) {
+    for (pic of PictureReady) {
+      if (pic.style.backgroundImage.includes("upload") == true) {
+        let img = String(pic.style.backgroundImage);
+        let url = img.substring(5, img.length - 2);
+
+        mr_remainPhotoArr.push(url);
+      }
+    }
+  }
+  mr_remainPhoto.value = mr_remainPhotoArr;
+  const formData = new FormData();
+  for (let i = 0; i < mr_photo.length; i++) {
+    formData.append("upload[]", mr_photo[i]);
+  }
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "./review_ok.php");
+  xhr.send(formData);
+  xhr.onreadystatechange = function () {
+    if (this.status == 200 && this.readyState == 4) {
+      console.log("OK.");
+    }
+  };
   mr_submit.click();
 }
 
 function writeOver() {
   mr_content.value = ReviewEditor__Editor.value;
+  let PictureReady = document.querySelectorAll(".Picture--Ready");
+  if (PictureReady !== null) {
+    for (pic of PictureReady) {
+      if (pic.style.backgroundImage.includes("upload") == true) {
+        let img = String(pic.style.backgroundImage);
+        let url = img.substring(5, img.length - 2);
+
+        mr_remainPhotoArr.push(url);
+      }
+    }
+  }
+  mr_remainPhoto.value = mr_remainPhotoArr;
   mr_submit2.click();
 }
+
+function removePicture(item) {
+  // console.log(item);
+  item.parentNode.parentNode.parentNode.parentNode.remove();
+  setTimeout(() => {
+    const DraggablePictureContainer__PictureItemPicture = document.querySelectorAll(
+      ".DraggablePictureContainer__PictureItem--Picture"
+    );
+    const ReviewPictureCounter__CurrentLength = document.querySelector(
+      ".ReviewPictureCounter__CurrentLength"
+    );
+    const length = DraggablePictureContainer__PictureItemPicture.length;
+    ReviewPictureCounter__CurrentLength.innerHTML = length;
+    const ReviewPictureCounter = document.querySelector(
+      ".ReviewPictureCounter"
+    );
+    if (length > 0) {
+      ReviewWritingPage__ContinueButton.classList.remove(
+        "ReviewWritingPage__ContinueButton--Deactive"
+      );
+    } else {
+      ReviewWritingPage__ContinueButton.classList.add(
+        "ReviewWritingPage__ContinueButton--Deactive"
+      );
+    }
+    let topMulti = Math.floor(length / 7);
+    let leftMulti = length % 7;
+    let top = 93 * (topMulti + 1) + 4 * topMulti;
+    let left = 89 * (leftMulti + 1) + 9 * leftMulti;
+
+    if (length >= 30) {
+      left -= 98;
+      ReviewPictureCounter.setAttribute(
+        "style",
+        `top:${top}px; left:${left}px`
+      );
+      const DraggablePictureContainer__PictureItembutton = document.querySelector(
+        ".DraggablePictureContainer__PictureItem--button"
+      );
+      DraggablePictureContainer__PictureItembutton.style.display = "none";
+    } else {
+      ReviewPictureCounter.setAttribute(
+        "style",
+        `top:${top}px; left:${left}px`
+      );
+    }
+  }, 0);
+}
+
+function GALLERY() {
+  const PictureReady = document.querySelectorAll(".Picture--Ready");
+
+  let div = document.createElement("div");
+  div.setAttribute("class", "Gallery Gallery--Loaded");
+  div.setAttribute("style", "display: block");
+  div.innerHTML = `
+  <div class="Gallery__Container">
+  <div class="Gallery__ImageWrap fotorama" data-nav="thumbs">
+  </div>
+  <button class="Gallery__CloseButton">
+            <i class="Gallery__CloseIcon" onclick="removeGallery()"></i>
+        </button>
+  </div>
+  `;
+  body.appendChild(div);
+
+  for (let i = 0; i < PictureReady.length; i++) {
+    let backgroundImage = String(PictureReady[i].style.backgroundImage);
+    let backgroundImageUrl = backgroundImage.substr(5);
+    backgroundImageUrl = backgroundImageUrl.split('"')[0];
+    let img = document.createElement("img");
+    img.setAttribute("src", backgroundImageUrl);
+    let Gallery__ImageWrap = document.querySelector(".Gallery__ImageWrap");
+    Gallery__ImageWrap.appendChild(img);
+  }
+  $(function () {
+    $(".fotorama").fotorama();
+  });
+}
+
+const removeGallery = () => {
+  const Gallery = document.querySelector(".Gallery");
+  Gallery.remove();
+};

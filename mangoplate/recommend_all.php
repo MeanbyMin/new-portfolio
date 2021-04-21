@@ -9,6 +9,7 @@
 
     $i=0;
     while ($row = mysqli_fetch_array($result)){
+        $row['mr_regdate'] = substr($row['mr_regdate'], 0, 10);
         echo $row['mr_idx']."&nbsp".$row['mr_userid'].
         "&nbsp".$row['mr_content']."&nbsp".$row['mr_recommend']."&nbsp".$row['mr_photo']."&nbsp".$row['mr_regdate']."<br>";
     }

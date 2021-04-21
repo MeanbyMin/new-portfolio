@@ -7205,101 +7205,413 @@ img.center-crop.portrait {
     border-bottom: 1px solid #e9e9e9;
 }
 
+/* 레스토랑페이지 - 리뷰 부분 */
 .RestaurantReviewList {
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-flex-direction: column;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewList {
+        padding:20px 10px 0;
+        background-color: #F7F7F7
+    }
 }
 
 .RestaurantReviewList__Header {
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex;
-    margin-bottom: 14px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    margin-bottom: 14px
 }
 
 .RestaurantReviewList__Title {
     font-size: 18px;
     line-height: 1.2;
-    color: #4F4F4F;
+    color: #4F4F4F
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewList__Title {
+        color:#ff792a
+    }
 }
 
 .RestaurantReviewList__RestaurantName {
-    display: none;
+    display: none
 }
 
-.RestaurantReviewList__RestaurantNameSuffixMobile {
-    display: none;
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewList__RestaurantName {
+        display:inline;
+        word-break: break-all
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewList__RestaurantNameSuffixDesktop {
+        display:none
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .RestaurantReviewList__RestaurantNameSuffixMobile {
+        display:none
+    }
 }
 
 .RestaurantReviewList__AllCount {
-    color: #7F7F7F;
+    color: #7F7F7F
 }
 
 .RestaurantReviewList__AllCount:before {
     content: '(';
-    display: inline;
+    display: inline
 }
 
 .RestaurantReviewList__AllCount:after {
     content: ')';
-    display: inline;
+    display: inline
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewList__AllCount {
+        color:#ff792a
+    }
 }
 
 .RestaurantReviewList__FilterList {
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex;
-    margin-left: auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    margin-left: auto
+}
+
+.RestaurantReviewList__FilterList--Hide {
+    display: none
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewList__FilterList {
+        display:none
+    }
 }
 
 .RestaurantReviewList__FilterItem {
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
     flex-direction: row;
+    -webkit-flex-direction: row;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -moz-align-items: center;
     align-items: center;
-}
-
-.RestaurantReviewList__FilterButton {
-    padding-right: 3px;
-    font-size: 16px;
-    color: #9b9b9b;
-}
-
-.RestaurantReviewList__FilterButton--Selected {
-    color: #ff792a;
-}
-
-.RestaurantReviewList__ReviewCount:before {
-    display: inline;
-    content: '(';
-}
-
-.RestaurantReviewList__ReviewCount:after {
-    display: inline;
-    content: ')';
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center
 }
 
 .RestaurantReviewList__FilterItem:after {
     content: '|';
     margin: 0 7px;
-    color: #9b9b9b;
+    color: #9b9b9b
 }
 
 .RestaurantReviewList__FilterItem:last-child:after {
-    content: '';
-    margin: 0;
+    display: none;
+    content: ''
+}
+
+.RestaurantReviewList__FilterButton {
+    padding-right: 3px;
+    font-size: 16px;
+    color: #9b9b9b
+}
+
+.RestaurantReviewList__FilterButton--Selected {
+    color: #ff792a
+}
+
+.RestaurantReviewList__FilterButton--Inactive {
+    cursor: default
+}
+
+.RestaurantReviewList__FilterItem:last-child .RestaurantReviewList__FilterButton {
+    padding-right: 0
+}
+
+.RestaurantReviewList__ReviewCount:before {
+    display: inline;
+    content: '('
+}
+
+.RestaurantReviewList__ReviewCount:after {
+    display: inline;
+    content: ')'
 }
 
 .RestaurantReviewList__ReviewList {
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-flex-direction: column;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical
+}
+
+.RestaurantReviewList__ReviewList--Loading:after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin: 30px auto;
+    background-image: url("https://mp-seoul-image-production-s3.mangoplate.com/web/resources/ldcyd5lxlvtlppe3.gif?fit=around|:&crop=:;*,*&output-format=gif&output-quality=80");
+    background-size: cover
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewList__ReviewList--Loading:after {
+        margin:15px auto
+    }
+}
+
+.RestaurantReviewList__MoreReviewButton {
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    -moz-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    -moz-align-items: center;
+    align-items: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -moz-align-self: center;
+    -ms-flex-item-align: center;
+    align-self: center;
+    -webkit-align-self: center;
+    min-width: 130px;
+    height: 72px;
+    margin: 0 auto;
+    font-size: 19px;
+    color: #ff792a;
+    cursor: pointer
+}
+
+.RestaurantReviewList__MoreReviewButton--Hide {
+    display: none
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewList__MoreReviewButton {
+        -moz-justify-content:center;
+        justify-content: center;
+        -webkit-justify-content: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        height: 50px;
+        font-size: 14px
+    }
+}
+
+.RestaurantReviewList__MoreReviewButton:before {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+    background-position: -588px -539px;
+    width: 22px;
+    height: 22px;
+    content: '';
+    margin-right: 17px
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .RestaurantReviewList__MoreReviewButton:before {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png);
+        background-size: 635px 609px
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewList__MoreReviewButton:before {
+        margin-right:9px
+    }
+}
+
+.RestaurantReviewList__MoreReviewButton:after {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+    background-position: -588px -539px;
+    width: 22px;
+    height: 22px;
+    content: '';
+    margin-left: 17px
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .RestaurantReviewList__MoreReviewButton:after {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png);
+        background-size: 635px 609px
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewList__MoreReviewButton:after {
+        margin-left:9px
+    }
+}
+
+.RestaurantReviewList__Empty {
+    display: none;
+    padding: 70px 0 150px;
+    font-size: 21px;
+    line-height: 1.4;
+    text-align: center;
+    color: #999;
+    background-color: transparent
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewList__Empty {
+        padding:26px 0 40px;
+        font-size: 16px;
+        line-height: 1.375
+    }
+}
+
+.RestaurantReviewList__Empty--Show {
+    display: block
+}
+
+.RestaurantReviewList__EmptyTitle {
+    display: block
+}
+
+.RestaurantReviewList__EmptyDescription {
+    font-size: 16px
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewList__EmptyDescription {
+        font-size:14px
+    }
+}
+
+@-webkit-keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+}
+
+@-moz-keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+}
+
+@keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
 }
 
 .RestaurantReviewItem {
     position: relative;
-    border-bottom: 1px solid #DBDBDB;
+    border-bottom: 1px solid #DBDBDB
+}
+
+.RestaurantReviewItem:hover {
+    background-color: #F3F3F3
+}
+
+.RestaurantReviewItem__Link {
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    padding: 20px 0 52px 0
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewItem__Link {
+        display:block;
+        padding: 9px 50px 13px 37px
+    }
 }
 
 .RestaurantReviewItem__User {
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-flex-direction: column;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -moz-flex-basis: 70px;
+    -ms-flex-preferred-size: 70px;
     flex-basis: 70px;
-    margin: 15px 35px 0 8px;
+    -webkit-flex-basis: 70px;
+    margin: 15px 35px 0 8px
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewItem__User {
+        -moz-flex-basis:initial;
+        -ms-flex-preferred-size: initial;
+        flex-basis: initial;
+        -webkit-flex-basis: initial;
+        display: inline;
+        margin: 0;
+        font-weight: bold
+    }
 }
 
 .RestaurantReviewItem__UserPictureWrap {
@@ -7308,7 +7620,17 @@ img.center-crop.portrait {
     margin-bottom: 5px;
     border-radius: 50%;
     overflow: hidden;
-    background-color: #dbdbdb;
+    background-color: #dbdbdb
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewItem__UserPictureWrap {
+        position:absolute;
+        top: 10px;
+        left: 0;
+        width: 30px;
+        height: 30px
+    }
 }
 
 .RestaurantReviewItem__UserPicture {
@@ -7316,15 +7638,15 @@ img.center-crop.portrait {
     height: 100%;
     border-radius: 50%;
     opacity: 0;
-    object-fit: cover;
+    object-fit: cover
 }
 
 .RestaurantReviewItem__UserPicture:not(.initial) {
-    transition: opacity .3s;
+    transition: opacity .3s
 }
 
-.RestaurantReviewItem__UserPicture.initial, .RestaurantReviewItem__UserPicture.loaded, .RestaurantReviewItem__UserPicture.error {
-    opacity: 1;
+.RestaurantReviewItem__UserPicture.initial,.RestaurantReviewItem__UserPicture.loaded,.RestaurantReviewItem__UserPicture.error {
+    opacity: 1
 }
 
 .RestaurantReviewItem__UserNickName {
@@ -7333,141 +7655,512 @@ img.center-crop.portrait {
     line-height: 1.3;
     text-align: center;
     word-break: break-all;
-    color: #555555;
+    color: #555555
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewItem__UserNickName {
+        display:inline;
+        margin-bottom: 0;
+        font-size: 14px;
+        color: #000000;
+        font-weight: bold
+    }
 }
 
 .RestaurantReviewItem__UserStat {
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    -moz-justify-content: center;
     justify-content: center;
+    -webkit-justify-content: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewItem__UserStat {
+        display:none
+    }
 }
 
 .RestaurantReviewItem__UserStatItem {
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    -moz-align-items: center;
     align-items: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     margin-right: 2px;
     font-size: 10px;
-    color: #CBCBCB;
+    color: #CBCBCB
 }
 
 .RestaurantReviewItem__UserStatItem:before {
     content: '';
-    margin: 0 2px 0 2px;
-}
-
-.RestaurantReviewItem__UserStatItem--Review:before {
-    background-image: url(../img/2018022864551sprites_desktop.png);
-    background-position: -996px -600px;
-    width: 9px;
-    height: 8px;
+    margin: 0 2px 0 2px
 }
 
 .RestaurantReviewItem__UserStatItem:last-child {
-    margin-right: 0;
+    margin-right: 0
+}
+
+.RestaurantReviewItem__UserStatItem--Review:before {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-position: -996px -600px;
+    width: 9px;
+    height: 8px
 }
 
 .RestaurantReviewItem__UserStatItem--Follower:before {
-    background-image: url(../img/2018022864551sprites_desktop.png);
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
     background-position: -998px -729px;
     width: 8px;
-    height: 8px;
+    height: 8px
+}
+
+.RestaurantReviewItem__HolicBadge {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-position: -777px -667px;
+    width: 35px;
+    height: 21px;
+    width: 37px;
+    height: 21px;
+    margin: 0 auto
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewItem__HolicBadge {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+        background-position: -573px -512px;
+        width: 35px;
+        height: 15px;
+        position: absolute;
+        top: 45px;
+        left: -4px;
+        width: 35px;
+        height: 21px
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2), only screen and (min-width: 320px) and (max-width: 768px) and (min-resolution: 192dpi) {
+    .RestaurantReviewItem__HolicBadge {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png);
+        background-size: 635px 609px
+    }
 }
 
 .RestaurantReviewItem__ReviewContent {
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
     flex-direction: column;
-    width: 605px;
+    -webkit-flex-direction: column;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    width: 605px
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewItem__ReviewContent {
+        display:inline;
+        width: auto
+    }
 }
 
 .RestaurantReviewItem__ReviewTextWrap {
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    -moz-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
+    -webkit-flex-direction: column-reverse;
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: vertical
 }
 
-.RestaurantReviewItem__ReviewText {
-    order: 2;
-    font-size: 15px;
-    line-height: 1.666;
-    word-break: break-all;
-    color: #000000;
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewItem__ReviewTextWrap {
+        display:inline
+    }
 }
 
 .RestaurantReviewItem__ReviewDate {
+    -moz-order: 3;
+    -ms-flex-order: 3;
     order: 3;
+    -webkit-box-ordinal-group: 4;
+    -webkit-order: 3;
     font-size: 14px;
     line-height: 1.2;
-    color: #9B9B9B;
+    color: #9B9B9B
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewItem__ReviewDate {
+        display:block;
+        font-size: 11px;
+        line-height: 2
+    }
+}
+
+.RestaurantReviewItem__ReviewText {
+    -moz-order: 2;
+    -ms-flex-order: 2;
+    order: 2;
+    -webkit-box-ordinal-group: 3;
+    -webkit-order: 2;
+    font-size: 15px;
+    line-height: 1.666;
+    word-break: break-all;
+    color: #000000
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewItem__ReviewText {
+        display:inline;
+        font-size: 14px;
+        line-height: 1.5
+    }
+}
+
+.RestaurantReviewItem__TranslationButton {
+    -moz-order: 1;
+    -ms-flex-order: 1;
+    order: 1;
+    -webkit-box-ordinal-group: 2;
+    -webkit-order: 1;
+    -moz-align-self: flex-start;
+    -ms-flex-item-align: start;
+    align-self: flex-start;
+    -webkit-align-self: flex-start;
+    margin: 10px auto 0 0;
+    border-bottom: 1px solid #9C9C9C;
+    font-size: 15px;
+    line-height: 1;
+    color: #9C9C9C
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewItem__TranslationButton {
+        display:block;
+        margin: 7px 0 9px;
+        font-size: 14px
+    }
+}
+
+.RestaurantReviewItem__PictureList {
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    margin-top: 17px
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewItem__PictureList {
+        margin-top:10px
+    }
+}
+
+.RestaurantReviewItem__PictureItem {
+    margin-right: 10px
+}
+
+.RestaurantReviewItem__PictureItem:last-child {
+    margin-right: 0
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewItem__PictureItem {
+        margin-right:5px
+    }
+}
+
+.RestaurantReviewItem__PictureButton {
+    position: relative;
+    background-color: #dbdbdb
+}
+
+.RestaurantReviewItem__Picture {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    opacity: 0;
+    background-color: #E9E9E9;
+    background-size: cover
+}
+
+.RestaurantReviewItem__Picture:not(.initial) {
+    transition: opacity .3s
+}
+
+.RestaurantReviewItem__Picture.initial,.RestaurantReviewItem__Picture.loaded,.RestaurantReviewItem__Picture.error {
+    opacity: 1
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewItem__Picture {
+        width:44px;
+        height: 44px
+    }
+}
+
+.RestaurantReviewItem__PictureDeem {
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    -moz-justify-content: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -moz-align-items: center;
+    align-items: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 21px;
+    color: #FFFFFF;
+    background-color: rgba(0,0,0,0.6)
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewItem__PictureDeem {
+        font-size:14px
+    }
 }
 
 .RestaurantReviewItem__Rating {
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-flex-direction: column;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -moz-align-items: center;
     align-items: center;
-    margin-left: auto;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    margin-left: auto
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewItem__Rating {
+        position:absolute;
+        top: 10px;
+        right: 4px
+    }
+}
+
+.RestaurantReviewItem__Rating:before {
+    content: '';
+    margin: 0 8px 10px
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewItem__Rating:before {
+        margin:0 0 5px 0
+    }
 }
 
 .RestaurantReviewItem__Rating--Recommend:before {
-    background-image: url(../img/2018022864551sprites_desktop.png);
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
     background-position: -714px -866px;
     width: 44px;
-    height: 44px;
+    height: 44px
+}
+
+.RestaurantReviewItem__Rating--Ok:before {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-position: -564px -866px;
+    width: 44px;
+    height: 44px
+}
+
+.RestaurantReviewItem__Rating--DoNotRecommend:before {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-position: -514px -866px;
+    width: 44px;
+    height: 44px
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewItem__Rating--Recommend:before {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+        background-position: -102px -539px;
+        width: 30px;
+        height: 30px
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2), only screen and (min-width: 320px) and (max-width: 768px) and (min-resolution: 192dpi) {
+    .RestaurantReviewItem__Rating--Recommend:before {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png);
+        background-size: 635px 609px
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewItem__Rating--Ok:before {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+        background-position: -210px -539px;
+        width: 30px;
+        height: 30px
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2), only screen and (min-width: 320px) and (max-width: 768px) and (min-resolution: 192dpi) {
+    .RestaurantReviewItem__Rating--Ok:before {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png);
+        background-size: 635px 609px
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewItem__Rating--DoNotRecommend:before {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+        background-position: -66px -539px;
+        width: 30px;
+        height: 30px
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2), only screen and (min-width: 320px) and (max-width: 768px) and (min-resolution: 192dpi) {
+    .RestaurantReviewItem__Rating--DoNotRecommend:before {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png);
+        background-size: 635px 609px
+    }
 }
 
 .RestaurantReviewItem__RatingText {
     font-size: 15px;
-    color: #ff792a;
+    color: #ff792a
 }
 
-.RestaurantReviewList__Empty {
-    display: none;
-    /* display: block; */
-    padding: 70px 0 150px;
-    font-size: 21px;
-    line-height: 1.4;
-    text-align: center;
-    color: #999;
-    background-color: transparent;
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewItem__RatingText {
+        font-size:12px
+    }
 }
 
-.RestaurantReviewList__EmptyTitle {
-    display: block;
+.RestaurantReviewItem__ReviewOptionList {
+    position: absolute;
+    bottom: 22px;
+    right: 15px;
+    display: none
 }
 
-.RestaurantReviewList__EmptyDescription {
-    font-size: 16px;
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .RestaurantReviewItem__ReviewOptionList {
+        display:none
+    }
 }
 
-.RestaurantReviewList__MoreReviewButton {
+@media only screen and (min-width: 769px) {
+    .RestaurantReviewItem:hover .RestaurantReviewItem__ReviewOptionList {
+        display:-moz-flex;
+        display: -ms-flexbox;
+        display: flex;
+        display: -webkit-box;
+        display: -webkit-flex
+    }
+}
+
+.RestaurantReviewItem__ReviewOption {
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
+    display: -webkit-box;
+    display: -webkit-flex;
+    -moz-align-items: center;
     align-items: center;
-    align-self: center;
-    min-width: 130px;
-    height: 72px;
-    margin: 0 auto;
-    font-size: 19px;
-    color: #ff792a;
-    cursor: pointer;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center
 }
 
-.RestaurantReviewList__MoreReviewButton:before {
-    background-image: url(../img/2018022864551sprites_mobile@2x.png);
-    background-size: 635px 609px;
-    background-position: -588px -539px;
-    width: 22px;
-    height: 22px;
+.RestaurantReviewItem__ReviewOption:after {
     content: '';
-    margin-right: 17px;
+    width: 3px;
+    height: 3px;
+    margin: 0 8px;
+    border-radius: 50%;
+    background-color: #CBCBCB
 }
 
-.RestaurantReviewList__MoreReviewButton:after {
-    background-image: url(../img/2018022864551sprites_mobile@2x.png);
-    background-size: 635px 609px;
-    background-position: -588px -539px;
-    width: 22px;
-    height: 22px;
-    content: '';
-    margin-left: 17px;
+.RestaurantReviewItem__ReviewOption:last-child:after {
+    display: none
 }
+
+.RestaurantReviewItem__OptionButton {
+    font-size: 14px;
+    color: #7F7F7F
+}
+
+.RestaurantReviewItem__OptionButton:hover {
+    font-weight: bold
+}
+
+@-webkit-keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+}
+
+@-moz-keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+}
+
+@keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+}
+/* 레스토랑페이지 - 리뷰 부분 */
+
 
 .pg-restaurant .module {
     position: relative;
@@ -8185,6 +8878,7 @@ span.orange-underline {
     position: relative;
     direction: ltr;
     z-index: 0;
+    width: 100% !important;
 }
 
 .fotorama__nav, .fotorama__stage {
@@ -8247,6 +8941,11 @@ span.orange-underline {
     transition-duration: 0ms;
 }
 
+.fotorama__stage__shaft{
+    width: 100% !important;
+    height: 100% !important;
+}
+
 .fotorama__stage__frame {
     overflow: hidden;
 }
@@ -8267,6 +8966,11 @@ span.orange-underline {
 
 .fotorama__stage__frame.fotorama__active {
     z-index: 8;
+}
+
+.fotorama__stage {
+    width: 100% !important;
+    height: 65vh !important;
 }
 
 .fotorama__arr, .fotorama__fullscreen-icon, .fotorama__video-close, .fotorama__video-play {
@@ -8411,6 +9115,9 @@ span.orange-underline {
     filter: alpha(opacity=0);
     opacity: 0;
     border: none !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    top: 0 !important;
 }
 
 .fotorama__error .fotorama__img, .fotorama__loaded .fotorama__img {
@@ -8434,312 +9141,34 @@ span.orange-underline {
     display: none;
 }
 
-#mp20_gallery .info_area {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 350px;
-    height: 100%;
-    background-color: white;
-    border-radius: 0 4px 4px 0;
-    overflow: hidden;
+#mp20_gallery {
+    position: fixed;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    z-index: 1001;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    display: none
 }
 
-#mp20_gallery .info_area .resto_name {
-    padding: 8px 14px;
-    font-size: .8rem;
-    border-radius: 0 4px 0 0;
-    color: #555;
-    border-bottom: 1px solid #f2f2f2;
-    text-align: left;
-    word-break: break-word;
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    #mp20_gallery {
+        top:0;
+        left: 0;
+        width: 100%;
+        height: 100%
+    }
 }
 
-#mp20_gallery .info_area .header {
-    padding: 5px 16px 0;
+#mp20_gallery.on {
+    display: block
 }
 
-#mp20_gallery .info_area .header .inner_header {
-    overflow: hidden;
-}
-
-#mp20_gallery .info_area .header .inner_header .user_picture_area {
-    float: left;
-    text-align: center;
-}
-
-#mp20_gallery .info_area .header .inner_header .user_picture_area .user_picture {
-    display: block;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
-
-#mp20_gallery .info_area .header .user_profile {
-    display: inline-block;
-    width: 65%;
-    padding: 6px 0 0 6px;
-}
-
-#mp20_gallery .info_area .header .user_profile .name_wrap {
-    font-size: .85rem;
-}
-
-#mp20_gallery .info_area .header .user_profile .name_wrap .name {
-    display: inline-block;
-    word-break: break-all;
-    vertical-align: top;
-}
-
-#mp20_gallery .info_area .header .user_profile .holic {
-    display: inline-block;
-    margin-left: 4px;
-    background: url(../img/restaurant/holic.svg) no-repeat;
-    width: 37px;
-    height: 15px;
-    background-size: 100%;
-}
-
-#mp20_gallery .info_area .header .user_profile .stat {
-    font-size: .75rem;
-    color: #777;
-    display: block;
-    margin: 0;
-    width: 70px;
-    font-size: 0.625rem;
-    color: #cbcbcb;
-    text-align: center;
-    text-align: left;
-}
-
-em {
-    font-style: normal;
-}
-
-#mp20_gallery .info_area .header .user_profile .stat em {
-    margin: 0;
-    font-size: 0.625rem;
-}
-
-#mp20_gallery .info_area .header .user_profile .stat em:before {
-    content: '';
-    display: inline-block;
-    margin: -2px 1px 0 2px;
-    vertical-align: middle;
-}
-
-#mp20_gallery .info_area .header .user_profile .stat em.review:before {
-    background-image: url(../img/2018022864551sprites_desktop.png);
-    background-position: -996px -600px;
-    width: 9px;
-    height: 8px;
-}
-
-#mp20_gallery .hidden {
-    display: none;
-}
-
-#mp20_gallery .info_area .header .user_profile .stat em.hit:before {
-    background-image: url(../img/2018022864551sprites_desktop.png);
-    background-position: -998px -729px;
-    width: 8px;
-    height: 8px;
-}
-
-#mp20_gallery .info_area .header .rating_area {
-    float: right;
-}
-
-#mp20_gallery .info_area .header .rating_area .rating {
-    display: inline-block;
-}
-
-#mp20_gallery .info_area .header .rating_area .rating.good {
-    background-image: url(../img/2018022864551sprites_mobile@2x.png);
-    background-size: 635px 609px;
-    background-position: -102px -539px;
-    width: 30px;
-    height: 30px;
-}
-
-#mp20_gallery .info_area .header .rating_area .rating_str {
-    color: #ff792a;
-    font-size: .75rem;
-    text-align: center;
-}
-
-#mp20_gallery .info_area .body {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
-
-#mp20_gallery .info_area .content_wrap {
-    flex: 1 0 100px;
-    padding: 0 16px;
-    overflow: hidden !important;
-    margin-bottom: 30px;
-}
-
-.mCustomScrollBox {
-    position: relative;
-    overflow: hidden;
-    height: 100%;
-    max-width: 100%;
-    outline: 0;
-    direction: ltr;
-}
-
-.mCSB_container {
-    overflow: hidden;
-    width: auto;
-    height: auto;
-}
-
-#mp20_gallery .info_area .content {
-    margin-top: 20px;
-    font-size: .85rem;
-    letter-spacing: .2px;
-    line-height: 1.2rem;
-    overflow: auto;
-    color: rgba(51,51,51,0.8);
-}
-
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
-    display: none !important;
-}
-
-#mp20_gallery .info_area .content .source {
-    word-wrap: break-word;
-    text-decoration: underline;
-    color: #999;
-}
-
-#mp20_gallery .info_area .content .review_content {
-    display: inline-block;
-    word-break: break-all;
-}
-
-#mp20_gallery .info_area .content .translate_btn {
-    display: block;
-    line-height: 1;
-    margin-top: 10px;
-    margin-bottom: 14px;
-    padding-bottom: 3px;
-    font-size: 13px;
-    border-bottom: solid 1px #9c9c9c;
-    color: #9c9c9c;
-}
-
-#mp20_gallery .info_area .regist_date {
-    margin-top: 20px;
-    font-size: .75rem;
-    color: #777;
-}
-
-.mCSB_scrollTools {
-    position: absolute;
-    width: 16px;
-    height: auto;
-    left: auto;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    opacity: .75;
-    filter: "alpha(opacity=75)";
-}
-
-.mCSB_scrollTools, .mCSB_scrollTools .mCSB_buttonDown, .mCSB_scrollTools .mCSB_buttonLeft, .mCSB_scrollTools .mCSB_buttonRight, .mCSB_scrollTools .mCSB_buttonUp, .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
-    transition: opacity .2s ease-in-out,background-color .2s ease-in-out;
-}
-
-.mCSB_outside+.mCSB_scrollTools {
-    right: -26px;
-}
-
-.mCS-autoHide>.mCustomScrollBox>.mCSB_scrollTools, .mCS-autoHide>.mCustomScrollBox ~ .mCSB_scrollTools {
-    opacity: 0;
-    filter: "alpha(opacity=0)";
-}
-
-.mCSB_outside+.mCS-minimal-dark.mCSB_scrollTools_vertical, .mCSB_outside+.mCS-minimal.mCSB_scrollTools_vertical {
-    right: 0;
-    margin: 12px 0;
-}
-
-.mCSB_scrollTools .mCSB_draggerContainer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    height: auto;
-}
-
-.mCSB_scrollTools .mCSB_dragger {
-    cursor: pointer;
-    width: 100%;
-    height: 30px;
-    z-index: 1;
-}
-
-.mCS-minimal-dark.mCSB_scrollTools_vertical .mCSB_dragger, .mCS-minimal.mCSB_scrollTools_vertical .mCSB_dragger {
-    height: 50px;
-}
-
-.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
-    position: relative;
-    width: 4px;
-    height: 100%;
-    margin: 0 auto;
-    border-radius: 16px;
-    text-align: center;
-}
-
-.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
-    background-color: #fff;
-    background-color: rgba(255,255,255,0.75);
-    filter: "alpha(opacity=75)";
-}
-
-.mCS-minimal-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
-    background-color: #000;
-    background-color: rgba(0,0,0,0.2);
-    filter: "alpha(opacity=20)";
-}
-
-.mCSB_scrollTools .mCSB_draggerRail {
-    width: 2px;
-    height: 100%;
-    margin: 0 auto;
-    border-radius: 16px;
-}
-
-.mCSB_scrollTools .mCSB_draggerRail {
-    background-color: #000;
-    background-color: rgba(0,0,0,0.4);
-    filter: "alpha(opacity=40)";
-}
-
-.mCS-3d-thick-dark.mCSB_scrollTools .mCSB_draggerRail, .mCS-minimal-dark.mCSB_scrollTools .mCSB_draggerRail, .mCS-minimal.mCSB_scrollTools .mCSB_draggerRail {
-    background-color: transparent;
-}
-
-#mp20_gallery .close_btn {
-    position: absolute;
-    top: -10px;
-    right: -40px;
-}
-
-#mp20_gallery .close_btn .close_icon {
-display: inline-block;
-background-image: url(../img/2018022864551sprites_mobile@2x.png);
-background-size: 635px 609px;
-background-position: -28px -587px;
-width: 21px;
-height: 21px;
+#mp20_gallery.on+.black_screen {
+    display: block
 }
 
 #mp20_gallery+.black_screen {
@@ -8752,12 +9181,1298 @@ height: 21px;
     z-index: auto;
     z-index: 1000;
     background-color: black;
-    display: none;
+    display: none
 }
 
-#mp20_gallery.on+.black_screen {
-    display: block;
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    #mp20_gallery+.black_screen {
+        opacity:.9
+    }
 }
+
+#mp20_gallery .picture_area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 350px;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    padding: 30px 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    #mp20_gallery .picture_area {
+        padding:0;
+        right: 0;
+        background-color: transparent
+    }
+}
+
+#mp20_gallery .info_area {
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 350px;
+    height: 100%;
+    background-color: white;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 0 4px 4px 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    #mp20_gallery .info_area {
+        display:none
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    #mp20_gallery .info_area .resto_name {
+        padding:8px 14px;
+        font-size: .8rem;
+        border-radius: 0 4px 0 0;
+        color: #555;
+        border-bottom: 1px solid #f2f2f2;
+        text-align: left;
+        word-break: break-word
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    #mp20_gallery .info_area .header {
+        padding:5px 16px 0
+    }
+}
+
+#mp20_gallery .info_area .header .inner_header {
+    overflow: hidden
+}
+
+#mp20_gallery .info_area .header .inner_header .user_picture_area {
+    float: left;
+    text-align: center
+}
+
+#mp20_gallery .info_area .header .inner_header .user_picture_area .user_picture {
+    display: block;
+    width: 40px;
+    height: 40px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%
+}
+
+#mp20_gallery .info_area .header .user_profile {
+    display: inline-block;
+    width: 65%;
+    padding: 6px 0 0 6px
+}
+
+#mp20_gallery .info_area .header .user_profile .name_wrap {
+    font-size: .85rem
+}
+
+#mp20_gallery .info_area .header .user_profile .name_wrap .name {
+    display: inline-block;
+    word-break: break-all;
+    vertical-align: top
+}
+
+#mp20_gallery .info_area .header .user_profile .stat {
+    font-size: .75rem;
+    color: #777;
+    display: block;
+    margin: 0;
+    width: 70px;
+    font-size: 0.625rem;
+    color: #cbcbcb;
+    text-align: center;
+    text-align: left
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    #mp20_gallery .info_area .header .user_profile .stat {
+        display:none
+    }
+}
+
+#mp20_gallery .info_area .header .user_profile .stat em {
+    margin: 0;
+    font-size: 0.625rem
+}
+
+#mp20_gallery .info_area .header .user_profile .stat em:before {
+    content: '';
+    display: inline-block;
+    margin: -2px 1px 0 2px;
+    vertical-align: middle
+}
+
+#mp20_gallery .info_area .header .user_profile .stat em.review:before {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-position: -996px -600px;
+    width: 9px;
+    height: 8px
+}
+
+#mp20_gallery .info_area .header .user_profile .stat em.hit:before {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-position: -998px -729px;
+    width: 8px;
+    height: 8px
+}
+
+#mp20_gallery .info_area .header .user_profile .holic {
+    display: inline-block;
+    margin-left: 4px;
+    background: url("/assets/holic.svg") no-repeat;
+    width: 37px;
+    height: 15px;
+    background-size: 100%
+}
+
+#mp20_gallery .info_area .header .rating_area {
+    float: right
+}
+
+#mp20_gallery .info_area .header .rating_area .rating {
+    display: inline-block
+}
+
+#mp20_gallery .info_area .header .rating_area .rating.bad {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+    background-position: -66px -539px;
+    width: 30px;
+    height: 30px
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    #mp20_gallery .info_area .header .rating_area .rating.bad {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png);
+        background-size: 635px 609px
+    }
+}
+
+#mp20_gallery .info_area .header .rating_area .rating.ok {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+    background-position: -210px -539px;
+    width: 30px;
+    height: 30px
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    #mp20_gallery .info_area .header .rating_area .rating.ok {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png);
+        background-size: 635px 609px
+    }
+}
+
+#mp20_gallery .info_area .header .rating_area .rating.good {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+    background-position: -102px -539px;
+    width: 30px;
+    height: 30px
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    #mp20_gallery .info_area .header .rating_area .rating.good {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png);
+        background-size: 635px 609px
+    }
+}
+
+#mp20_gallery .info_area .header .rating_area .rating_str {
+    color: #ff792a;
+    font-size: .75rem;
+    text-align: center
+}
+
+#mp20_gallery .info_area .body {
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -moz-box-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1
+}
+
+#mp20_gallery .info_area .content_wrap {
+    -moz-box-flex: 1;
+    -moz-flex: 1 0 100px;
+    -ms-flex: 1 0 100px;
+    flex: 1 0 100px;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 0 100px;
+    padding: 0 16px;
+    overflow: hidden !important;
+    margin-bottom: 30px
+}
+
+#mp20_gallery .info_area .content {
+    margin-top: 20px;
+    font-size: .85rem;
+    letter-spacing: .2px;
+    line-height: 1.2rem;
+    overflow: auto;
+    color: rgba(51,51,51,0.8)
+}
+
+#mp20_gallery .info_area .content .source {
+    word-wrap: break-word;
+    text-decoration: underline;
+    color: #999
+}
+
+#mp20_gallery .info_area .content .review_content {
+    display: inline-block;
+    word-break: break-all
+}
+
+#mp20_gallery .info_area .content .translate_btn {
+    display: block;
+    line-height: 1;
+    margin-top: 10px;
+    margin-bottom: 14px;
+    padding-bottom: 3px;
+    font-size: 13px;
+    border-bottom: solid 1px #9c9c9c;
+    color: #9c9c9c
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    #mp20_gallery .info_area .content .translate_btn {
+        display:none
+    }
+}
+
+#mp20_gallery .info_area .regist_date {
+    margin-top: 20px;
+    font-size: .75rem;
+    color: #777
+}
+
+#mp20_gallery .info_area .another_link a {
+    color: #6A6A6A;
+    text-decoration: underline
+}
+
+#mp20_gallery .info_area .info_area_footer .source_notice {
+    width: 300px;
+    margin: 17px auto;
+    box-sizing: border-box;
+    font-size: .75rem;
+    background-color: #ececec
+}
+
+#mp20_gallery .info_area .info_area_footer .source_notice .inner {
+    position: relative;
+    padding: 16px 16px 16px 52px
+}
+
+#mp20_gallery .info_area .info_area_footer .source_notice .inner .icon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+    background-position: -174px -539px;
+    width: 30px;
+    height: 30px
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    #mp20_gallery .info_area .info_area_footer .source_notice .inner .icon {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png);
+        background-size: 635px 609px
+    }
+}
+
+#mp20_gallery .info_area .info_area_footer .content {
+    margin-top: 0
+}
+
+#mp20_gallery .info_area .info_area_footer .gallery_right_review {
+    margin-bottom: 10px
+}
+
+
+#mp20_gallery .close_btn {
+    position: absolute;
+    top: -10px;
+    right: -40px
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    #mp20_gallery .close_btn {
+        top:0;
+        right: 0;
+        width: 50px;
+        height: 50px;
+        text-align: center
+    }
+}
+
+#mp20_gallery .close_btn .close_icon {
+    display: inline-block;
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+    background-position: -28px -587px;
+    width: 21px;
+    height: 21px
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    #mp20_gallery .close_btn .close_icon {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png);
+        background-size: 635px 609px
+    }
+}
+
+#mp20_gallery .m_info_area {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    background: -moz-linear-gradient(top, transparent 0%, rgba(0,0,0,0.65) 68%, rgba(0,0,0,0.65) 100%);
+    background: -webkit-linear-gradient(top, transparent 0%, rgba(0,0,0,0.65) 68%, rgba(0,0,0,0.65) 100%);
+    background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.65) 68%, rgba(0,0,0,0.65) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 )
+}
+
+@media only screen and (min-width: 769px) {
+    #mp20_gallery .m_info_area {
+        display:none
+    }
+}
+
+#mp20_gallery .m_info_area .now_stat {
+    color: white;
+    padding: 20px
+}
+
+#mp20_gallery .m_info_area .now_stat .page_stat {
+    float: right
+}
+
+#mp20_gallery .m_info_area .source a {
+    color: white;
+    text-decoration: underline
+}
+
+#mp20_gallery .m_info_area .source .naver_blog_link {
+    word-break: break-all
+}
+
+#mp20_gallery .m_info_area .user_name {
+    display: inline-block;
+    max-width: 60%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal
+}
+
+@media only screen and (min-width: 769px) {
+    #mp20_gallery .brand_wrap {
+        display:none
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    #mp20_gallery .brand_wrap {
+        position:absolute;
+        top: 20px;
+        left: 20px
+    }
+}
+
+#mp20_gallery .brand_wrap .brand_image {
+    width: 35px;
+    height: 35px;
+    margin-right: 12px;
+    border-radius: 50%
+}
+
+#mp20_gallery .brand_wrap .brand_contents {
+    display: inline-block
+}
+
+#mp20_gallery .brand_wrap .brand_title {
+    margin-bottom: 3px;
+    font-size: 14px;
+    color: white
+}
+
+#mp20_gallery .brand_wrap .brand_ad_badge {
+    width: 24px;
+    height: 15px;
+    background-image: url("https://mp-seoul-image-production-s3.mangoplate.com/web/resources/7j5e5awc5ctqkqa7.png");
+    background-size: cover
+}
+
+@-webkit-keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+}
+
+@-moz-keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+}
+
+@keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+}
+
+.mp20_map_popup {
+    width: 90%;
+    height: 90%;
+    position: fixed;
+    z-index: 1001;
+    display: none
+}
+
+@media only screen and (min-width: 769px) {
+    .mp20_map_popup {
+        min-width:700px;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%)
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .mp20_map_popup {
+        width:100%;
+        height: 100%;
+        top: 0;
+        left: 0
+    }
+}
+
+.mp20_map_popup .title_area {
+    position: relative;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    background-color: white
+}
+
+@media only screen and (min-width: 769px) {
+    .mp20_map_popup .title_area {
+        display:none
+    }
+}
+
+.mp20_map_popup .title_area .title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    display: block;
+    width: 73.333%;
+    height: 100%;
+    margin: 0 auto;
+    font-size: 18px;
+    font-weight: bold
+}
+
+.mp20_map_popup .map_area {
+    height: 100%;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .mp20_map_popup .map_area {
+        height:calc(100% - 48px);
+        height: -webkit-calc(100% - 48px)
+    }
+}
+
+.mp20_map_popup .close_btn {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+    background-position: -28px -587px;
+    width: 21px;
+    height: 21px;
+    position: fixed;
+    top: -30px;
+    right: 0;
+    z-index: 2000
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .mp20_map_popup .close_btn {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png);
+        background-size: 635px 609px
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .mp20_map_popup .close_btn {
+        -moz-transform:translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        background: none
+    }
+}
+
+.mp20_map_popup .close_btn .close_btn_icon {
+    display: none;
+    margin: 0 auto
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .mp20_map_popup .close_btn .close_btn_icon {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+        background-position: -618px -225px;
+        width: 16px;
+        height: 16px;
+        display: block
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2), only screen and (min-width: 320px) and (max-width: 768px) and (min-resolution: 192dpi) {
+    .mp20_map_popup .close_btn .close_btn_icon {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png);
+        background-size: 635px 609px
+    }
+}
+
+.mp20_map_popup+.black_screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .6;
+    z-index: auto;
+    z-index: 1000;
+    background-color: black;
+    display: none;
+    z-index: 1000
+}
+
+.mp20_map_popup.open {
+    display: block
+}
+
+.mp20_map_popup.open+.black_screen {
+    display: block
+}
+
+@-webkit-keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+}
+
+@-moz-keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+}
+
+@keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+}
+
+.mn-photoviewer {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10000;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.8)
+}
+
+.mn-photoviewer:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+    background: linear-gradient(to bottom, #000 0%, transparent 99%, transparent 100%)
+}
+
+.mn-photoviewer:after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    background: linear-gradient(to top, #000 0%, transparent 99%, transparent 100%)
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .mn-photoviewer:before {
+        height:92px
+    }
+
+    .mn-photoviewer:after {
+        height: 267px
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .mn-photoviewer:before {
+        height:227px
+    }
+
+    .mn-photoviewer:after {
+        height: 383px
+    }
+}
+
+.mn-photoviewer .btn-photoviewer-close {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    text-indent: -9999px
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .mn-photoviewer .btn-photoviewer-close {
+        right:14px;
+        margin-top: -17.5px;
+        background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+        background-position: -573px -225px;
+        width: 35px;
+        height: 35px
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2), only screen and (min-width: 320px) and (max-width: 768px) and (min-resolution: 192dpi) {
+    .mn-photoviewer .btn-photoviewer-close {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png);
+        background-size: 635px 609px
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .mn-photoviewer .btn-photoviewer-close {
+        right:35px;
+        margin-top: -17px;
+        background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+        background-position: 0px -919px;
+        width: 35px;
+        height: 34px
+    }
+}
+
+.mn-photoviewer>.title-bar {
+    position: relative
+}
+
+.mn-photoviewer>.title-bar h1 {
+    overflow: hidden;
+    color: #ffffff;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .mn-photoviewer>.title-bar h1 {
+        padding:0 50px;
+        font-size: 1.375rem;
+        line-height: 66px
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .mn-photoviewer>.title-bar h1 {
+        padding:0 90px;
+        font-size: 2.000rem;
+        line-height: 97px
+    }
+}
+
+.mn-photoviewer>.toolbar {
+    display: block;
+    position: absolute;
+    right: 0px;
+    bottom: 0;
+    left: 0px
+}
+
+.mn-photoviewer>.toolbar>h1 {
+    display: none
+}
+
+.mn-photoviewer>.toolbar .btns {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    text-align: center
+}
+
+.mn-photoviewer>.toolbar .btns a {
+    display: inline-block;
+    color: #ffffff;
+    text-indent: -9999px
+}
+
+.mn-photoviewer>.toolbar .btns a.btn-favorite {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 45px
+}
+
+.mn-photoviewer>.toolbar .btns a.btn-favorite:before {
+    content: '';
+    display: block;
+    margin: 0 auto
+}
+
+.mn-photoviewer>.toolbar .btns a.btn-favorite.selected {
+    color: #ff792a
+}
+
+.mn-photoviewer>.toolbar .btns a.btn-gallery {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 45px
+}
+
+.mn-photoviewer>.toolbar .btns a.btn-gallery:before {
+    content: '';
+    display: block;
+    margin: 0 auto
+}
+
+.mn-photoviewer>.toolbar .btns a.sns {
+    display: inline-block;
+    height: 35px;
+    width: 35px
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .mn-photoviewer>.toolbar {
+        padding-right:15px;
+        padding-left: 15px;
+        height: 80px
+    }
+
+    .mn-photoviewer>.toolbar:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 15px;
+        left: 15px;
+        height: 1px;
+        background-color: #6a6a6a
+    }
+
+    .mn-photoviewer>.toolbar .btns a {
+        font-size: 0.750rem
+    }
+
+    .mn-photoviewer>.toolbar .btns a.btn-favorite {
+        left: 2px;
+        margin-top: -23.5px;
+        text-indent: 0
+    }
+
+    .mn-photoviewer>.toolbar .btns a.btn-favorite:before {
+        margin-bottom: 7px;
+        background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+        background-position: -346px -539px;
+        width: 26px;
+        height: 25px
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2), only screen and (min-width: 320px) and (max-width: 768px) and (min-resolution: 192dpi) {
+    .mn-photoviewer>.toolbar .btns a.btn-favorite:before {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png);
+        background-size: 635px 609px
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .mn-photoviewer>.toolbar .btns a.btn-favorite.selected:before {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+        background-position: -410px -539px;
+        width: 25px;
+        height: 25px
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2), only screen and (min-width: 320px) and (max-width: 768px) and (min-resolution: 192dpi) {
+    .mn-photoviewer>.toolbar .btns a.btn-favorite.selected:before {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png);
+        background-size: 635px 609px
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .mn-photoviewer>.toolbar .btns a.btn-gallery {
+        right:2px;
+        margin-top: -23.5px;
+        text-indent: 0
+    }
+
+    .mn-photoviewer>.toolbar .btns a.btn-gallery:before {
+        margin-bottom: 7px;
+        background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+        background-position: -378px -539px;
+        width: 26px;
+        height: 25px
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2), only screen and (min-width: 320px) and (max-width: 768px) and (min-resolution: 192dpi) {
+    .mn-photoviewer>.toolbar .btns a.btn-gallery:before {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png);
+        background-size: 635px 609px
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .mn-photoviewer>.toolbar .btns a.sns {
+        margin-top:20px;
+        margin-right: 5px;
+        margin-left: 5px;
+        height: 35px;
+        width: 35px;
+        text-align: left
+    }
+
+    .mn-photoviewer>.toolbar .btns a.sns.btn-kakaotalk {
+        background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+        background-position: -573px -471px;
+        width: 35px;
+        height: 35px
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2), only screen and (min-width: 320px) and (max-width: 768px) and (min-resolution: 192dpi) {
+    .mn-photoviewer>.toolbar .btns a.sns.btn-kakaotalk {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png);
+        background-size: 635px 609px
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .mn-photoviewer>.toolbar .btns a.sns.btn-facebook {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+        background-position: -573px -266px;
+        width: 35px;
+        height: 35px
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2), only screen and (min-width: 320px) and (max-width: 768px) and (min-resolution: 192dpi) {
+    .mn-photoviewer>.toolbar .btns a.sns.btn-facebook {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png);
+        background-size: 635px 609px
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .mn-photoviewer>.toolbar .btns a.sns.btn-band {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+        background-position: -573px -307px;
+        width: 35px;
+        height: 35px
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2), only screen and (min-width: 320px) and (max-width: 768px) and (min-resolution: 192dpi) {
+    .mn-photoviewer>.toolbar .btns a.sns.btn-band {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png);
+        background-size: 635px 609px
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .mn-photoviewer>.toolbar .btns a.sns.btn-twitter {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+        background-position: -573px -348px;
+        width: 35px;
+        height: 35px
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2), only screen and (min-width: 320px) and (max-width: 768px) and (min-resolution: 192dpi) {
+    .mn-photoviewer>.toolbar .btns a.sns.btn-twitter {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png);
+        background-size: 635px 609px
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .mn-photoviewer>.toolbar {
+        height:138px;
+        border-top: 1px solid #6a6a6a
+    }
+
+    .mn-photoviewer>.toolbar .btns a {
+        font-size: 1.125rem
+    }
+
+    .mn-photoviewer>.toolbar .btns a.btn-favorite {
+        left: 55px;
+        margin-top: -43px;
+        width: 70px;
+        text-indent: 0
+    }
+
+    .mn-photoviewer>.toolbar .btns a.btn-favorite:before {
+        margin-bottom: 14px;
+        background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+        background-position: -420px -796px;
+        width: 54px;
+        height: 54px
+    }
+
+    .mn-photoviewer>.toolbar .btns a.btn-favorite.selected:before {
+        background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+        background-position: -540px -796px;
+        width: 54px;
+        height: 54px
+    }
+
+    .mn-photoviewer>.toolbar .btns a.btn-gallery {
+        right: 55px;
+        margin-top: -43px;
+        width: 70px;
+        text-indent: 0
+    }
+
+    .mn-photoviewer>.toolbar .btns a.btn-gallery:before {
+        margin-bottom: 14px;
+        background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+        background-position: -480px -796px;
+        width: 54px;
+        height: 54px
+    }
+
+    .mn-photoviewer>.toolbar .btns a.sns {
+        margin-top: 34px;
+        margin-right: 10px;
+        margin-left: 10px;
+        height: 70px;
+        width: 70px;
+        text-align: left
+    }
+
+    .mn-photoviewer>.toolbar .btns a.sns.btn-kakaotalk {
+        background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+        background-position: -724px -591px;
+        width: 70px;
+        height: 70px
+    }
+
+    .mn-photoviewer>.toolbar .btns a.sns.btn-facebook {
+        background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+        background-position: -613px -444px;
+        width: 70px;
+        height: 70px
+    }
+
+    .mn-photoviewer>.toolbar .btns a.sns.btn-band {
+        background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+        background-position: -502px -333px;
+        width: 70px;
+        height: 70px
+    }
+
+    .mn-photoviewer>.toolbar .btns a.sns.btn-twitter {
+        background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+        background-position: -592px -534px;
+        width: 70px;
+        height: 70px
+    }
+}
+
+.mn-photoviewer>.pg-photoviewer {
+    display: block;
+    position: absolute;
+    right: 0;
+    left: 0;
+    width: 100%
+}
+
+.mn-photoviewer>.pg-photoviewer .photos {
+    position: absolute;
+    right: 0;
+    left: 0
+}
+
+.mn-photoviewer>.pg-photoviewer .photos .list-photos {
+    overflow: hidden;
+    height: 100%
+}
+
+.mn-photoviewer>.pg-photoviewer .photos .list-photos>li {
+    position: relative;
+    float: left;
+    margin: 0 1px;
+    height: 100%;
+    width: 100%
+}
+
+.mn-photoviewer>.pg-photoviewer .photos .restaurant-photos-item {
+    display: block;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden
+}
+
+.mn-photoviewer>.pg-photoviewer .photos .restaurant-photos-item .via-instagram {
+    display: block;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    z-index: 1;
+    text-indent: -9999px;
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+    background-position: -618px -247px;
+    width: 16px;
+    height: 16px
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .mn-photoviewer>.pg-photoviewer .photos .restaurant-photos-item .via-instagram {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png);
+        background-size: 635px 609px
+    }
+}
+
+.mn-photoviewer>.pg-photoviewer .photos .restaurant-photos-item figcaption {
+    display: none
+}
+
+.mn-photoviewer>.pg-photoviewer .btn-prev,.mn-photoviewer>.pg-photoviewer .btn-next {
+    display: block;
+    position: absolute;
+    top: 50%;
+    text-indent: -9999px
+}
+
+.mn-photoviewer>.pg-photoviewer .btn-prev {
+    left: 58px;
+    margin-top: -24.5px;
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-position: -935px -124px;
+    width: 29px;
+    height: 49px
+}
+
+.mn-photoviewer>.pg-photoviewer .btn-next {
+    right: 58px;
+    margin-top: -24.5px;
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-position: -935px -69px;
+    width: 29px;
+    height: 49px
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .mn-photoviewer>.pg-photoviewer {
+        top:67px;
+        bottom: 81px
+    }
+
+    .mn-photoviewer>.pg-photoviewer .btn-prev,.mn-photoviewer>.pg-photoviewer .btn-next {
+        display: none
+    }
+
+    .mn-photoviewer>.pg-photoviewer .photos {
+        top: 36px;
+        bottom: 122px
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .mn-photoviewer>.pg-photoviewer {
+        top:98px;
+        bottom: 139px
+    }
+
+    .mn-photoviewer>.pg-photoviewer .photos {
+        top: 55px;
+        bottom: 178px
+    }
+}
+
+.blueimp-gallery .review-item {
+    color: #ffffff;
+    margin: 0 auto
+}
+
+.blueimp-gallery .review-item figcaption {
+    color: #ffffff
+}
+
+.blueimp-gallery .review-item p {
+    color: #fff
+}
+
+@media only screen and (min-width: 769px) {
+    .blueimp-gallery .review-item {
+        padding-bottom:0;
+        min-height: 100px;
+        width: 30%
+    }
+}
+
+.blueimp-gallery .insta_address {
+    display: block;
+    width: 70%;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    color: white;
+    line-height: 1.2rem;
+    text-align: center
+}
+
+@media only screen and (min-width: 769px) {
+    .blueimp-gallery .insta_address {
+        bottom:130px
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    .blueimp-gallery .insta_address {
+        bottom:125px
+    }
+}
+
+@-webkit-keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+}
+
+@-moz-keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+}
+
+@keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+}
+
 
 /* 상세페이지 지도 크게 팝업 시작 */
 

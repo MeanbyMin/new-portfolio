@@ -77,7 +77,7 @@
     
     $member = [];
     while ($row = mysqli_fetch_array($result)){
-        $memberadd = array('mr_idx' => $row['mr_idx'], 'mr_name' => $row['mr_name'], 'mr_content' => $row['mr_content'], 'mr_recommend' => $row['mr_recommend'], 'mr_photo' => $row['mr_photo'].",");
+        $memberadd = array('mr_idx' => $row['mr_idx'], 'mr_userid' => $row['mr_userid'], 'mr_name' => $row['mr_name'], 'mr_content' => $row['mr_content'], 'mr_recommend' => $row['mr_recommend'], 'mr_photo' => $row['mr_photo'].",", 'mr_regdate' => $row['mr_regdate']);
         array_push($member, $memberadd);
     }
 
@@ -85,7 +85,17 @@
     $goodRecommendCount = 0;
     $okRecommendCount = 0;
     $noRecommendCount = 0;
-
+    if(isset($member[0])){
+        $mr_regdate = substr($member[0]['mr_regdate'], 0, 10);
+        $userid = $member[0]['mr_userid'];
+        $sql = "SELECT * FROM mango_member WHERE mm_userid = '$userid'";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_array($result);
+        $mm_photo = $row['mm_profile_image'];
+        $mm_reviews = $row['mm_reviews'];
+        $mm_followers = $row['mm_followers'];
+    }
+    
     
     for($i=0; $i < $reviewCount; $i++){
         if(in_array("맛있다", $member[$i])){
@@ -98,6 +108,7 @@
             $noRecommendCount++;
         }
     }
+
 
     // 주변 인기 식당 sql
     
@@ -130,16 +141,11 @@
 
     <!-- CSS styles -->
     <link rel="stylesheet" href="./css/common.css" type="text/css">
+    <link rel="stylesheet" href="./css/restaurant.css" type="text/css">
     <link href="../img/ico.png" rel="shortcut icon" type="image/x-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
     <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
-    <script>
-        document.cookie = "safeCookie1=foo; SameSite=Lax"; 
-        document.cookie = "safeCookie2=foo"; 
-        document.cookie = "crossCookie=bar; SameSite=None; Secure";
-    </script>
 </head>
 
 <body onunload="" ng-app="mp20App" class="ng-scope">
@@ -618,7 +624,7 @@
                         <div class="owl-wrapper-outer">
                             <div class="owl-wrapper" style="width: 100vw; left: 0px; display: block;">
 <?php
-  for($i=0; $i<count($r_photoarr); $i++){
+  for($i=0; $i<5; $i++){
 ?>
                                 <div class="owl-item" style="width: 20%;">
                                     <figure class="list-photo">
@@ -1135,7 +1141,8 @@
 
                             <div class="column-module">
                                 <!-- 관련 TOP 리스트 -->
-                                <section class="module includes-restaurants RelatedTopList RelatedTopList--Loading">
+                                <section class="module includes-restaurants RelatedTopList">
+                                <!-- <section class="module includes-restaurants RelatedTopList RelatedTopList--Loading"> -->
                                     <h2 class="title RelatedTopList__Title">관련 TOP 리스트</h2>
 
                                     <ul class="RelatedTopList__List">
@@ -1166,7 +1173,8 @@
                                 </section>
 
                                 <!-- 관련 스토리 -->
-                                <section class="module related-story RelatedStory RelatedStory--Loading">
+                                <section class="module related-story RelatedStory">
+                                <!-- <section class="module related-story RelatedStory RelatedStory--Loading"> -->
                                     <h2 class="title RelatedStory__Title">관련 스토리</h2>
 
                                     <ul class="RelatedStory__List">
@@ -1619,7 +1627,8 @@
 
     <!-- 사진 더보기 팝업 시작 -->
     <div id="mp20_gallery" class="">
-        <div class="picture_area fotorama" data-nav="thumbs"></div>
+        <div class="picture_area fotorama" data-width="90%"
+  data-ratio="800/600" data-nav="thumbs"></div>
         <div class="ng-scope">
             <div class="info_area">
                 <div class="resto_name ng-binding"><?=$r_restaurant?></div>
@@ -1627,28 +1636,30 @@
                     <div class="basic_review_area">
                         <div class="inner_header">
                             <div class="user_picture_area">
-                                <img class="user_picture" alt="Review User Image" src="">
+                                <img class="user_picture" alt="Review User Image" src="<?=$mm_photo?>">
                             </div>
-
+<?php
+if(isset($member[0])){
+?>
                             <div class="user_profile">
                                 <p class="name_wrap">
                                     <span class="name ng-binding"><?=$member[0]['mr_name']?></span>
-                                    <span class="holic"></span>
+                                    <!-- <span class="holic"></span> -->
                                 </p>
                                 <span class="stat">
                                     <em class="review">
                                         <span class="hidden">리뷰수: </span>
-                                        <span class="ng-binding">410</span>
+                                        <span class="ng-binding"><?=$mm_reviews?></span>
                                     </em>
                                     <em class="hit">
                                         <span class="hidden">팔로우 수: </span>
-                                        <span class="ng-binding">39</span></em>
+                                        <span class="ng-binding"><?=$mm_followers?></span></em>
                                 </span>
                             </div>
 
                             <div class="rating_area">
                                 <div class="rating good"></div>
-                                <p class="rating_str ng-binding">맛있다</p>
+                                <p class="rating_str ng-binding"><?=$member[0]['mr_recommend']?></p>
                             </div>
                         </div>
                     </div>
@@ -1660,54 +1671,68 @@
                         <div id="mCSB_2" class="mCustomScrollBox mCS-minimal-dark mCSB_vertical_horizontal mCSB_outside"
                             tabindex="0" style="max-height: 0px;">
                             <div id="mCSB_2_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y"
-                                style="position: relative; top: 0px; left: -100px; width: 100%;" dir="ltr">
+                                style="position: relative; top: 0px; left: 0px; width: 100%;" dir="ltr">
                                 <div class="content">
-                                    <a class="source ng-binding ng-hide">
-                                        내용 작성 부분
-                                    </a>
+                                    <a class="source ng-binding ng-hide"></a>
 
                                     <a ng-href="" target="_blank" class="source ng-binding ng-hide"></a>
 
                                     <span class="review_content ng-binding">
-                                        내용 작성 부분
+                                    <?=$member[0]['mr_content']?>
                                     </span>
 
-                                    <button class="translate_btn ng-binding ng-hide">번역 보기</button>
                                 </div>
 
-                                <div class="regist_date ng-binding">2020-09-22</div>
+                                <div class="regist_date ng-binding"><?=$mr_regdate?></div>
+<?php
+}else{
+?>
+<div class="user_profile">
+                                <p class="name_wrap">
+                                    <span class="name ng-binding">이름</span>
+                                    <!-- <span class="holic"></span> -->
+                                </p>
+                                <span class="stat">
+                                    <em class="review">
+                                        <span class="hidden">리뷰수: </span>
+                                        <span class="ng-binding">0</span>
+                                    </em>
+                                    <em class="hit">
+                                        <span class="hidden">팔로우 수: </span>
+                                        <span class="ng-binding">0</span></em>
+                                </span>
                             </div>
-                        </div>
-                        <div id="mCSB_2_scrollbar_vertical"
-                            class="mCSB_scrollTools mCSB_2_scrollbar mCS-minimal-dark mCSB_scrollTools_vertical"
-                            style="display: none;">
-                            <div class="mCSB_draggerContainer">
-                                <div id="mCSB_2_dragger_vertical" class="mCSB_dragger"
-                                    style="position: absolute; min-height: 50px; top: 0px; display: block; height: 210px; max-height: 352px;">
-                                    <div class="mCSB_dragger_bar" style="line-height: 50px;"></div>
-                                </div>
-                                <div class="mCSB_draggerRail"></div>
-                            </div>
-                        </div>
-                        <div id="mCSB_2_scrollbar_horizontal"
-                            class="mCSB_scrollTools mCSB_2_scrollbar mCS-minimal-dark mCSB_scrollTools_horizontal"
-                            style="display: block;">
-                            <div class="mCSB_draggerContainer">
-                                <div id="mCSB_2_dragger_horizontal" class="mCSB_dragger"
-                                    style="position: absolute; min-width: 50px; display: block; width: 0px; left: 0px;">
-                                    <div class="mCSB_dragger_bar"></div>
-                                </div>
-                                <div class="mCSB_draggerRail"></div>
+
+                            <div class="rating_area">
+                                <div class="rating good"></div>
+                                <p class="rating_str ng-binding">맛평가</p>
                             </div>
                         </div>
                     </div>
-                    <div class="info_area_footer">
-                        <div class="source_notice ng-hide">
-                            <div class="inner">
-                                <i class="icon"></i>
-                                망고플레이트는 인스타그램과 기술제휴를 통해 식당과 관련된 사진을 보여드리고 있어요. <br> <br> 당신의 사진이 표시되는 것을 원하지 않으실 경우 <a
-                                    class="color_orange under_line" href="#" target="_blank">cs@mangoplate.com</a>로
-                                요청주세요.
+                </div>
+
+                <div class="body">
+                    <div class="content_wrap ng-isolate-scope mCustomScrollbar _mCS_2 mCS-autoHide"
+                        style="position: relative; overflow: visible;">
+                        <div id="mCSB_2" class="mCustomScrollBox mCS-minimal-dark mCSB_vertical_horizontal mCSB_outside"
+                            tabindex="0" style="max-height: 0px;">
+                            <div id="mCSB_2_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y"
+                                style="position: relative; top: 0px; left: 0px; width: 100%;" dir="ltr">
+                                <div class="content">
+                                    <a class="source ng-binding ng-hide"></a>
+
+                                    <a ng-href="" target="_blank" class="source ng-binding ng-hide"></a>
+
+                                    <span class="review_content ng-binding">
+                                    리뷰내용
+                                    </span>
+
+                                </div>
+
+                                <div class="regist_date ng-binding">날짜</div>
+<?php
+}
+?>
                             </div>
                         </div>
                     </div>

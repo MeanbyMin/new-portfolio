@@ -12,5 +12,5 @@
     echo $row['mm_nickname']."&nbsp";
     echo $row['mm_profile_image']."&nbsp";
     echo $row['mm_reviews']."&nbsp";
-    echo $row['mm_followers'];
+    echo $row['mm_followers']."<br>";
 ?>

@@ -41,6 +41,7 @@
 
     <!-- CSS styles -->
     <link rel="stylesheet" href="./css/common.css" type="text/css">
+    <link rel="stylesheet" href="./css/reviews.css">
     <link href="../img/ico.png" rel="shortcut icon" type="image/x-icon">
     <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
 
@@ -48,8 +49,7 @@
     <!-- jQuery 1.8 or later, 33 KB -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-    <!-- Fotorama from CDNJS, 19 KB -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+
 
 
 </head>
@@ -403,9 +403,6 @@
     <!-- jQuery 1.8 or later, 33 KB -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-    <!-- Fotorama from CDNJS, 19 KB -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
-
 
 </head>
 
@@ -663,7 +660,7 @@
     </div>
     <script src="./js/reviews.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
-    <!-- <link rel="stylesheet" href="./css/review.css"> -->
+    <link rel="stylesheet" href="./css/reviews.css">
 </body>
 
 </html>
