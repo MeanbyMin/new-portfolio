@@ -61,7 +61,16 @@
     $r_regdate          = substr($r_regdate, 0, -9);
     $r_menuarr          = explode(',', $r_menu);
     $r_menupricearr     = explode('원,', $r_menuprice);
-    $r_photoarr         = explode(',', $r_photo);
+    echo $r_photo;
+    if(strlen($r_photo)>0){
+        if(strpos($r_photo, ",") > 0){
+            $r_photoarr = explode(',', $r_photo);
+        }else{
+            array_push($r_photoarr, $r_photo);
+        }
+    }else{
+       $r_photoarr = []; 
+    }
     $r_menuphotoarr     = explode(',', $r_menuphoto);
     if(strlen($r_openhour) > 0){
       if(strpos(",", $r_openhour) >= 0){
@@ -423,11 +432,11 @@
             <!-- 메뉴 부분 끝 -->
         </header>
         <!-- 헤더 끝 -->
-        <!-- 검색창 시작 -->
+        <!-- 검색창 포커스 시작 -->
         <div class="KeywordSuggester">
             <div class="KeywordSuggester__BlackDeem"></div>
 
-            <div class="KeywordSuggester__Container">
+            <div class="KeywordSuggester__Container" style="position: absolute; left: 262px; width: 544px;">
                 <nav class="KeywordSuggester__TabNavigation">
                     <ul class="KeywordSuggester__TabList">
                         <li class="KeywordSuggester__TabItem">
@@ -452,7 +461,6 @@
                         </li>
                     </ul>
                 </nav>
-
                 <div class="KeywordSuggester__SuggestKeywordListWrap" data-simplebar="init">
                     <div class="simplebar-wrapper" style="margin: 0px -24px;">
                         <div class="simplebar-height-auto-observer-wrapper">
@@ -461,138 +469,7 @@
                         <div class="simplebar-mask">
                             <div class="simplebar-offset" style="right: -15px; bottom: 0px;">
                                 <div class="simplebar-content-wrapper" style="height: auto; overflow: hidden scroll;">
-                                    <div class="simplebar-content1" style="padding: 0px 24px;">
-                                        <li class="KeywordSuggester__SuggestKeywordItem">
-                                            <a href="#" class="KeywordSuggester__SuggestKeywordLink">
-                                                <i class="KeywordSuggester__SuggestKeywordIcon"></i>
-                                                <span class="KeywordSuggester__SuggestKeyword">EAT딜있는식당</span>
-
-
-                                            </a>
-                                        </li>
-                                        <li class="KeywordSuggester__SuggestKeywordItem">
-                                            <a href="#" class="KeywordSuggester__SuggestKeywordLink">
-                                                <i class="KeywordSuggester__SuggestKeywordIcon"></i>
-                                                <span class="KeywordSuggester__SuggestKeyword">2021망고플레이트인기맛집</span>
-
-
-                                            </a>
-                                        </li>
-                                        <li class="KeywordSuggester__SuggestKeywordItem">
-                                            <a href="#" class="KeywordSuggester__SuggestKeywordLink">
-                                                <i class="KeywordSuggester__SuggestKeywordIcon"></i>
-                                                <span class="KeywordSuggester__SuggestKeyword">미쉐린</span>
-
-
-                                            </a>
-                                        </li>
-                                        <li class="KeywordSuggester__SuggestKeywordItem">
-                                            <a href="#" class="KeywordSuggester__SuggestKeywordLink">
-                                                <i class="KeywordSuggester__SuggestKeywordIcon"></i>
-                                                <span class="KeywordSuggester__SuggestKeyword">분식</span>
-
-
-                                            </a>
-                                        </li>
-                                        <li class="KeywordSuggester__SuggestKeywordItem">
-                                            <a href="#" class="KeywordSuggester__SuggestKeywordLink">
-                                                <i class="KeywordSuggester__SuggestKeywordIcon"></i>
-                                                <span class="KeywordSuggester__SuggestKeyword">수제버거</span>
-
-
-                                            </a>
-                                        </li>
-                                        <li class="KeywordSuggester__SuggestKeywordItem">
-                                            <a href="#" class="KeywordSuggester__SuggestKeywordLink">
-                                                <i class="KeywordSuggester__SuggestKeywordIcon"></i>
-                                                <span class="KeywordSuggester__SuggestKeyword">스시</span>
-
-
-                                            </a>
-                                        </li>
-                                        <p class="KeywordSuggester__EmptyKeywordMessage">최근 검색어가 없습니다.</p>
-
-                                        <div class="KeywordSuggester__Footer KeywordSuggester__Footer--Hide">
-                                            <button class="KeywordSuggester__RemoveAllHistoryKeywordButton">
-                                                x clear all
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="simplebar-content2" style="padding: 0px 24px;">
-                                        <li class="KeywordSuggester__SuggestKeywordItem">
-                                            <a href="#" class="KeywordSuggester__SuggestKeywordLink">
-                                                <i class="KeywordSuggester__SuggestKeywordIcon"></i>
-                                                <span class="KeywordSuggester__SuggestKeyword">홍대</span>
-
-
-                                            </a>
-                                        </li>
-                                        <li class="KeywordSuggester__SuggestKeywordItem">
-                                            <a href="#" class="KeywordSuggester__SuggestKeywordLink">
-                                                <i class="KeywordSuggester__SuggestKeywordIcon"></i>
-                                                <span class="KeywordSuggester__SuggestKeyword">이태원</span>
-
-
-                                            </a>
-                                        </li>
-                                        <li class="KeywordSuggester__SuggestKeywordItem">
-                                            <a href="#" class="KeywordSuggester__SuggestKeywordLink">
-                                                <i class="KeywordSuggester__SuggestKeywordIcon"></i>
-                                                <span class="KeywordSuggester__SuggestKeyword">신촌</span>
-
-
-                                            </a>
-                                        </li>
-                                        <li class="KeywordSuggester__SuggestKeywordItem">
-                                            <a href="#" class="KeywordSuggester__SuggestKeywordLink">
-                                                <i class="KeywordSuggester__SuggestKeywordIcon"></i>
-                                                <span class="KeywordSuggester__SuggestKeyword">강남역</span>
-
-
-                                            </a>
-                                        </li>
-                                        <li class="KeywordSuggester__SuggestKeywordItem">
-                                            <a href="#" class="KeywordSuggester__SuggestKeywordLink">
-                                                <i class="KeywordSuggester__SuggestKeywordIcon"></i>
-                                                <span class="KeywordSuggester__SuggestKeyword">가로수길</span>
-
-
-                                            </a>
-                                        </li>
-                                        <li class="KeywordSuggester__SuggestKeywordItem">
-                                            <a href="#" class="KeywordSuggester__SuggestKeywordLink">
-                                                <i class="KeywordSuggester__SuggestKeywordIcon"></i>
-                                                <span class="KeywordSuggester__SuggestKeyword">평택시</span>
-
-
-                                            </a>
-                                        </li>
-                                        <li class="KeywordSuggester__SuggestKeywordItem">
-                                            <a href="#" class="KeywordSuggester__SuggestKeywordLink">
-                                                <i class="KeywordSuggester__SuggestKeywordIcon"></i>
-                                                <span class="KeywordSuggester__SuggestKeyword">방배</span>
-
-
-                                            </a>
-                                        </li>
-                                        <p class="KeywordSuggester__EmptyKeywordMessage">최근 검색어가 없습니다.</p>
-
-                                        <div class="KeywordSuggester__Footer KeywordSuggester__Footer--Hide">
-                                            <button class="KeywordSuggester__RemoveAllHistoryKeywordButton">
-                                                x clear all
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="simplebar-content3" style="padding: 0px 24px;">
-                                        <p
-                                            class="KeywordSuggester__EmptyKeywordMessage KeywordSuggester__EmptyKeywordMessage--Show">
-                                            최근 검색어가 없습니다.</p>
-
-                                        <div class="KeywordSuggester__Footer KeywordSuggester__Footer--Hide">
-                                            <button class="KeywordSuggester__RemoveAllHistoryKeywordButton">
-                                                x clear all
-                                            </button>
-                                        </div>
+                                    <div class="simplebar-content" style="padding: 0px 24px;">
                                     </div>
                                 </div>
                             </div>
@@ -610,16 +487,27 @@
                 </div>
             </div>
         </div>
-        <!-- 검색창 끝 -->
+
+        <!-- 검색창 포커스 끝 -->
         <!-- 본문 시작 -->
         <main class="pg-restaurant have-share-sns-another" ng-controller="mp20_restaurant_controller"
             data-restaurant_key="<?=$r_idx?>" data-restaurant_name="<?=$r_restaurant?>" data-metro_str="<?=$r_repadd?>"
             data-subcuisine_code_str="<?=$r_foodtype?>" data-price_code_str="<?=$r_price?>"
             data-parking_code_str="<?=$r_parking?>" data-review_count="34">
-            <article class="contents">
+            <article class="contents"
                 <!-- 레스토랑 상세 이미지 슬라이드 -->
                 <aside class="restaurant-photos">
-
+<?php
+if($r_photoarr == null){
+?>
+                    <div class="no_image_wrap">
+                        <p class="no_image_msg">
+                            앱에서 사진을 올려주세요
+                        </p>
+                    </div>
+<?php
+    }else if(count($r_photoarr) >=5){
+?>
                     <div class="list-photo_wrap owl-carousel owl-theme" style="opacity: 1; display: block;">
                         <div class="owl-wrapper-outer">
                             <div class="owl-wrapper" style="width: 100vw; left: 0px; display: block;">
@@ -657,6 +545,66 @@
                             </div>
                         </div>
                     </div>
+<?php
+}else if(count($r_photoarr) > 0) {
+    for($i=0; $i<count($r_photoarr); $i++){
+?>
+                                <div class="owl-item" style="width: 20%;">
+                                    <figure class="list-photo">
+                                        <meta content="">
+                                        <figure class="restaurant-photos-item" onclick="GALLERY()"
+                                            aria-label="<?=$r_restaurant?> - <?=$r_repadd?> <?=$r_foodtype?> | 맛집검색 망고플레이트"
+                                            title="<?=$r_restaurant?> - <?=$r_repadd?> <?=$r_foodtype?> | 맛집검색 망고플레이트">
+                                            <img class="center-croping" src="<?=$r_photoarr[$i]?>"
+                                                alt="<?=$r_restaurant?> 사진 - <?=$r_jibunaddress?>">
+
+                                            <div class="last_image" onclick="">
+                                                <p class="txt">
+                                                    사진 더보기
+                                                    <span class="arrow-white"></span>
+                                                </p>
+                                            </div>
+                                        </figure>
+                                    </figure>
+                                </div>
+<?php
+    }
+    for($k=0; $k<5-count($r_photoarr); $k++){
+?>
+                                <div class="owl-item" style="width: 20%;">
+                                    <figure class="list-photo">
+                                        <meta content="">
+                                        <figure class="restaurant-photos-item" onclick="GALLERY()"
+                                            aria-label=" | 맛집검색 망고플레이트"
+                                            title=" | 맛집검색 망고플레이트">
+                                            <img class="center-croping" src=""
+                                                alt="사진">
+
+                                            <div class="last_image" onclick="">
+                                                <p class="txt">
+                                                    사진 더보기
+                                                    <span class="arrow-white"></span>
+                                                </p>
+                                            </div>
+                                        </figure>
+                                    </figure>
+                                </div>
+<?php
+    }
+?>
+                            </div>
+                        </div>
+                        <div class="owl-controls clickable" style="display: none;">
+                            <div class="owl-buttons">
+                                <div class="owl-prev"><button class="btn-nav prev" style="display: none;"></button>
+                                </div>
+                                <div class="owl-next"><button class="btn-nav next"></button></div>
+                            </div>
+                        </div>
+                    </div>                
+<?php
+}
+?>
                 </aside>
 
                 <div class="column-wrapper">
@@ -706,8 +654,8 @@
                                             <div class="wannago_wrap">
                                                 <button class="btn-type-icon favorite wannago_btn "
                                                     data-restaurant_uuid="<?=$r_idx?>"
-                                                    data-action_id="<?=$id?>"></button>
-                                                <p class="wannago_txt">가고싶다</p>
+                                                    data-action_id="<?=$id?>" onclick="wannago_btn()"></button>
+                                                <p class="wannago_txt" onclick="wannago_btn()">가고싶다</p>
                                             </div>
 <?php
     }else{
@@ -1627,8 +1575,7 @@
 
     <!-- 사진 더보기 팝업 시작 -->
     <div id="mp20_gallery" class="">
-        <div class="picture_area fotorama" data-width="90%"
-  data-ratio="800/600" data-nav="thumbs"></div>
+        <div class="picture_area fotorama" data-width="90%" data-nav="thumbs"></div>
         <div class="ng-scope">
             <div class="info_area">
                 <div class="resto_name ng-binding"><?=$r_restaurant?></div>
@@ -1749,7 +1696,7 @@ if(isset($member[0])){
     <div class="login_loading_area">
         <img src="./img/ldcyd5lxlvtlppe3.gif" alt="login loading bar" />
     </div>
-    <script src="./js/mango.js"></script>
+
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script async defer crossorigin="anonymous"
         src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v10.0&appId=3138539786286381&autoLogAppEvents=1"
