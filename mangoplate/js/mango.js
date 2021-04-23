@@ -7,6 +7,7 @@ const HistoryBlackDeem = document.querySelector(
 const popContext = document.querySelector(".pop-context");
 const contentsBox = document.querySelector("contents-box");
 const popBlackDeem = document.querySelector(".pop_blackDeem");
+const btnNavClose = document.querySelector(".btn-nav-close");
 const UserRestaurantHistoryTabItemViewed = document.querySelector(
   ".UserRestaurantHistory__TabItem--Viewed"
 );
@@ -95,6 +96,8 @@ window.addEventListener("click", (e) => {
   e.target === UserProfile__DisactiveButton
     ? UserDisactiveInfo.classList.add("UserDisactiveInfo--Open")
     : false;
+  e.target === btnNavClose ? (popContext.style.display = "none") : false;
+  e.target === popContext ? (popContext.style.display = "none") : false;
   if (
     e.target === UserDisactiveInfo__CheckButtonImage ||
     e.target === UserDisactiveInfo__CheckButtonText
@@ -212,12 +215,25 @@ function CLICK_WAANGO_TAB() {
   UserRestaurantHistoryTabItemViewed.classList.remove(
     "UserRestaurantHistory__TabItem--Selected"
   );
+  if (mm_wannago !== null) {
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "./wannago_list.php");
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    let data = "mm_userid=" + mm_userid;
+    xhr.send(data);
+    if (xhr.status === 200) {
+      console.log(xhr.responseText);
+    } else {
+      console.error(xhr.responseText);
+    }
+  }
   UserRestaurantHistoryEmptyViewedRestaurantHistory.classList.remove(
     "UserRestaurantHistory__EmptyViewedRestaurantHistory--Show"
   );
   UserRestaurantHistoryEmptyWannagoRestaurantHistory.classList.add(
     "UserRestaurantHistory__EmptyWannagoRestaurantHistory--Show"
   );
+  // console.log(mm_wannago);
 }
 
 // 스크롤에 의한 헤더 변화

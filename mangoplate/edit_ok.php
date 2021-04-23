@@ -2,9 +2,9 @@
     header('Content-Type: text/html; charset=UTF-8');
     session_start();
     include "./include/dbconn.php";
-    include "./include/sessionCheck.php";
+    include "./include/adminsessionCheck.php";
 
-    $id                 = $_SESSION['adminId'];
+    $id                 = $_SESSION['adminid'];
     $r_idx              = $_POST['r_idx'];
     $r_restaurant       = $_POST['r_restaurant'];
     $r_address          = $_POST['r_address'];
@@ -18,21 +18,30 @@
     $r_breaktime        = $_POST['r_breaktime'];
     $r_lastorder        = $_POST['r_lastorder'];
     $r_holiday          = $_POST['r_holiday'];
+    $r_tags             = $_POST['r_tags'];
     $r_menu             = $_POST['r_menu'];
     $r_status           = $_POST['r_status'];
+
     $menustr = "";
-    foreach($r_menu as $m){
-        $menustr .= $m.",";
-    };
+    if(strlen($r_menu[0]) > 0){
+        foreach($r_menu as $m){
+            $menustr .= $m.",";
+        };
+    }
+    $menustr = substr($menustr, 0, -1);
+
     $r_menuprice = $_POST['r_menuprice'];
     $menupricestr = "";
-    foreach($r_menuprice as $mp){
-        $menupricestr .= $mp.",";
-    };
+    if(strlen($r_menuprice[0]) > 0){
+        foreach($r_menuprice as $mp){
+            $menupricestr .= $mp.",";
+        };
+    }
+    // $menupricestr = substr($menupricestr, 0, -1);
 
     $imgpath = "";
     if($_FILES['r_repphoto']['tmp_name']){
-        $uploads_dir = '../../mangoplate/upload';
+        $uploads_dir = './upload';
         $allowed_ext = array('jpg', 'jpeg', 'png', 'gif', 'bmp');
         $error = $_FILES['r_repphoto']['error'];
         $name = $_FILES['r_repphoto']['name'];  // apple.jpg
@@ -63,9 +72,9 @@
         $imgpath = $uploads_dir."/".$rename;
         move_uploaded_file($_FILES['r_repphoto']['tmp_name'], $imgpath);
 
-        $sql = "UPDATE mango_restaurant set r_writer = '$id', r_restaurant = '$r_restaurant', r_repphoto='$imgpath', r_address='$r_address', r_jibunaddress='$r_jibunaddress', r_tel='$r_tel', r_foodtype='$r_foodtype', r_price='$r_price', r_website='$r_website', r_parking='$r_parking', r_openhour='$r_openhour', r_breaktime='$r_breaktime', r_lastorder='$r_lastorder', r_holiday='$r_holiday', r_menu='$menustr', r_menuprice='$menupricestr', r_status='$r_status' WHERE r_idx = '$r_idx'";
+        $sql = "UPDATE mango_restaurant set r_writer = '$id', r_restaurant = '$r_restaurant', r_repphoto='$imgpath', r_address='$r_address', r_jibunaddress='$r_jibunaddress', r_tel='$r_tel', r_foodtype='$r_foodtype', r_price='$r_price', r_website='$r_website', r_parking='$r_parking', r_openhour='$r_openhour', r_breaktime='$r_breaktime', r_lastorder='$r_lastorder', r_holiday='$r_holiday', r_menu='$menustr', r_menuprice='$menupricestr', r_tags='$r_tags', r_status='$r_status' WHERE r_idx = '$r_idx'";
     }else{
-        $sql = "UPDATE mango_restaurant set r_writer = '$id', r_restaurant = '$r_restaurant', r_address='$r_address', r_jibunaddress='$r_jibunaddress', r_tel='$r_tel', r_foodtype='$r_foodtype', r_price='$r_price', r_website='$r_website', r_parking='$r_parking', r_openhour='$r_openhour', r_breaktime='$r_breaktime', r_lastorder='$r_lastorder', r_holiday='$r_holiday', r_menu='$menustr', r_menuprice='$menupricestr', r_status='$r_status' WHERE r_idx = '$r_idx'";
+        $sql = "UPDATE mango_restaurant set r_writer = '$id', r_restaurant = '$r_restaurant', r_address='$r_address', r_jibunaddress='$r_jibunaddress', r_tel='$r_tel', r_foodtype='$r_foodtype', r_price='$r_price', r_website='$r_website', r_parking='$r_parking', r_openhour='$r_openhour', r_breaktime='$r_breaktime', r_lastorder='$r_lastorder', r_holiday='$r_holiday', r_menu='$menustr', r_menuprice='$menupricestr', r_tags='$r_tags', r_status='$r_status' WHERE r_idx = '$r_idx'";
     }
 
     $result = mysqli_query($conn, $sql);

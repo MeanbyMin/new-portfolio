@@ -4,6 +4,58 @@ const picture_area = document.querySelector(".picture_area");
 const black_screen = document.querySelector(".black_screen");
 const close_icon = document.querySelector(".close_icon");
 const body = document.querySelector("body");
+const popContext = document.querySelector(".pop-context");
+const contentsBox = document.querySelector("contents-box");
+const UserRestaurantHistory = document.querySelector(".UserRestaurantHistory");
+const HistoryBlackDeem = document.querySelector(
+  ".UserRestaurantHistory__BlackDeem"
+);
+const btnNavClose = document.querySelector(".btn-nav-close");
+const popBlackDeem = document.querySelector(".pop_blackDeem");
+const UserRestaurantHistoryTabItemViewed = document.querySelector(
+  ".UserRestaurantHistory__TabItem--Viewed"
+);
+const UserRestaurantHistoryTabItemWannago = document.querySelector(
+  ".UserRestaurantHistory__TabItem--Wannago"
+);
+const UserRestaurantHistoryEmptyViewedRestaurantHistory = document.querySelector(
+  ".UserRestaurantHistory__EmptyViewedRestaurantHistory"
+);
+const UserRestaurantHistoryEmptyWannagoRestaurantHistory = document.querySelector(
+  ".UserRestaurantHistory__EmptyWannagoRestaurantHistory"
+);
+
+const UserProfile = document.querySelector(".UserProfile");
+const UserProfile__BlackDeem = document.querySelector(
+  ".UserProfile__BlackDeem"
+);
+
+const UserProfile__DisactiveButton = document.querySelector(
+  ".UserProfile__DisactiveButton"
+);
+const UserDisactiveInfo = document.querySelector(".UserDisactiveInfo");
+const UserDisactiveInfo__CheckButtonImage = document.querySelector(
+  ".UserDisactiveInfo__CheckButton--Image"
+);
+const UserDisactiveInfo__CheckButtonText = document.querySelector(
+  ".UserDisactiveInfo__CheckButton--Text"
+);
+const UserDisactiveInfo__Button = document.querySelector(
+  ".UserDisactiveInfo__Button"
+);
+
+const UserDisactiveApprovePopup = document.querySelector(
+  ".UserDisactiveApprovePopup"
+);
+const PopupConfirmLayer__GrayButton = document.querySelector(
+  ".PopupConfirmLayer__GrayButton"
+);
+const UserDisactiveInfo__BlackDeem = document.querySelector(
+  ".UserDisactiveInfo__BlackDeem"
+);
+const UserDisactiveInfo__ClostButtonIcon = document.querySelector(
+  ".UserDisactiveInfo__ClostButton--Icon"
+);
 
 // 리뷰
 const RestaurantReviewList__AllFilterButton = document.querySelector(
@@ -73,6 +125,51 @@ function GALLERY() {
 
 window.addEventListener("click", (e) => {
   // console.log(e.target);
+  e.target === HistoryBlackDeem
+    ? UserRestaurantHistory.classList.remove("UserRestaurantHistory--Open")
+    : false;
+  e.target === HistoryBlackDeem ? (body.style = "") : false;
+  e.target === popBlackDeem ? (popContext.style.display = "none") : false;
+  e.target === btnNavClose ? (popContext.style.display = "none") : false;
+  e.target === popContext ? (popContext.style.display = "none") : false;
+  e.target === UserProfile__BlackDeem
+    ? UserProfile.classList.remove("UserProfile--Open")
+    : false;
+  e.target === UserProfile__DisactiveButton
+    ? UserProfile.classList.remove("UserProfile--Open")
+    : false;
+  e.target === UserProfile__DisactiveButton
+    ? UserDisactiveInfo.classList.add("UserDisactiveInfo--Open")
+    : false;
+  if (
+    e.target === UserDisactiveInfo__CheckButtonImage ||
+    e.target === UserDisactiveInfo__CheckButtonText
+  ) {
+    UserDisactiveInfo__CheckButtonImage.classList.toggle(
+      "UserDisactiveInfo__CheckButton--Image--Checked"
+    );
+    UserDisactiveInfo__Button.classList.toggle(
+      "UserDisactiveInfo__Button--Active"
+    );
+  }
+  if (
+    e.target === document.querySelector(".UserDisactiveInfo__Button--Active")
+  ) {
+    UserDisactiveApprovePopup.style.display = "block";
+  }
+  if (
+    e.target === PopupConfirmLayer__GrayButton &&
+    UserDisactiveApprovePopup.style.display == "block"
+  ) {
+    UserDisactiveApprovePopup.style.display = "none";
+  }
+  e.target === UserDisactiveInfo__BlackDeem
+    ? UserDisactiveInfo.classList.remove("UserDisactiveInfo--Open")
+    : false;
+  e.target === UserDisactiveInfo__ClostButtonIcon
+    ? UserDisactiveInfo.classList.remove("UserDisactiveInfo--Open")
+    : false;
+
   e.target === black_screen ? mp20_gallery.classList.remove("on") : false;
   e.target === black_screen ? (body.style.overflow = "") : false;
   e.target === close_icon ? mp20_gallery.classList.remove("on") : false;
@@ -661,4 +758,17 @@ function wannago_btn() {
       }
     };
   }
+}
+
+function clickProfile() {
+  body.style.overflow = "hidden";
+  UserRestaurantHistory.classList.add("UserRestaurantHistory--Open");
+}
+
+function clickLogin() {
+  popContext.style.display = "block";
+}
+
+function loginClose() {
+  popContext.style.display = "none";
 }

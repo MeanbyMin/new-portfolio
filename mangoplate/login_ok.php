@@ -7,18 +7,18 @@
       
 
     if(($userid == "admin" && $userpw == "1234") || ($userid == "soeg0810" && $userpw == "12!@qw")){
-        $_SESSION['adminId'] = $userid; 
+        $_SESSION['adminid'] = $userid; 
 ?>
     <script>
         alert("관리자님 어서오세요.");
-        location.href="./dist/index.php";
+        location.href="./adminindex.php";
     </script>
 <?php
     }else{
 ?>
     <script>
         alert("로그인 실패!\n아이디 또는 비밀번호를 확인하세요.");
-        history.back();
+        location.href = "./login.php";
     </script>
 <?php
     }

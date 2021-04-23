@@ -2,7 +2,7 @@
     header('Content-Type: text/html; charset=UTF-8');
     session_start();
     include "./include/dbconn.php";
-    include "./include/sessionCheck.php";
+    include "./include/adminsessionCheck.php";
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -96,7 +96,7 @@
                         <form method="post" action="write_ok.php" enctype="multipart/form-data" onsubmit="return sendit()">
                             <input type="hidden" name="isAddress" id="isAddress" value="false">
                             <input type="hidden" name="r_status" value="등록">
-                            <p><label><span class="title">아이디</span> <span class="value"><?=$_SESSION['id']?></span></label></p>
+                            <p><label><span class="title">아이디</span> <span class="value"><?=$_SESSION['adminid']?></span></label></p>
                             <p><label><span class="title">가게명</span> <input type="text" name="r_restaurant" required></label></p>
                             <p><label><span class="title">도로명 주소</span> <input type="text" id="sample4_roadAddress" class="r_address" name="r_address" placeholder="도로명주소" readonly></label> <input type="button" id="address_btn" onclick="sample4_execDaumPostcode()" value="주소 찾기"></p>
                             <p><label><span class="title">지번 주소</span> <input type="text" id="sample4_jibunAddress" class="r_jibunaddress" name="r_jibunaddress" placeholder="지번주소" readonly></label></p>
@@ -109,11 +109,12 @@
                             <p><label><span class="title">쉬는 시간</span> <input type="text" name="r_breaktime"></label></p>
                             <p><label><span class="title">마지막 주문</span> <input type="text" name="r_lastorder"></label></p>
                             <p><label><span class="title">휴일</span> <input type="text" name="r_holiday"></label></p>
+                            <p><label><span class="title">태그</span> <input type="text" name="r_tags"></label></p>
                             <p>
                                 <label>
                                     <span class="title">메뉴/가격</span> 
                                     <div id="price">
-                                        <input type="text" name="r_menu[]"> <input type="text" name="r_menuprice[]"> <input type="button" value="추가" onclick="add_textbox()">
+                                        <input type="text" name="r_menu[]"> <input type="text" name="r_menuprice[]" placeholder='원을 함께 적어주세요.'> <input type="button" value="추가" onclick="add_textbox()">
                                     </div>
                                 </label>
                             </p>
@@ -178,7 +179,7 @@
             const add_textbox = () => {
                 const price = document.getElementById("price");
                 const newP = document.createElement('p');
-                newP.innerHTML = "<input type='text' name='r_menu[]'> <input type='text' name='r_menuprice[]'> <input type='button' value='삭제' onclick='remove(this)'>";
+                newP.innerHTML = "<input type='text' name='r_menu[]'> <input type='text' name='r_menuprice[]' placeholder='원을 함께 적어주세요.'> <input type='button' value='삭제' onclick='remove(this)'>";
                 price.appendChild(newP);
             }
             const remove = (obj) => {
@@ -227,4 +228,3 @@
     </script>
     </body>
 </html>
-fdfddf

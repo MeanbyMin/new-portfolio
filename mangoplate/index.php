@@ -13,6 +13,15 @@
         }
         $name = $_SESSION['name'];
         $image = $_SESSION['image'];
+        if(isset($row['mm_wannago'])){
+            $mm_wannago = $row['mm_wannago'];
+            $mm_wannagoarr = [];
+            if(strpos($mm_wannago, ",") > 0){
+                $mm_wannagoarr = explode(",", $mm_wannago);
+            }else{
+                array_push($mm_wannagoarr, $mm_wannagoarr);
+            }
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -126,23 +135,23 @@
                                 <button class="UserRestaurantHistory__TabButton">최근 본 맛집 <span
                                         class="UserRestaurantHistory__ViewedCount">0</span></button>
                             </li>
-                            <?php
-                          if(isset($id)){
-                      ?>
+<?php
+    if(isset($id)){
+?>
                             <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Wannago"
                                 onclick="CLICK_WAANGO_TAB()">
                                 <button class="UserRestaurantHistory__TabButton">가고싶다</button>
                             </li>
-                            <?php
-                          }else{
-                      ?>
+<?php
+    }else{
+?>
                             <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Wannago"
                                 onclick="clickLogin()">
                                 <button class="UserRestaurantHistory__TabButton">가고싶다</button>
                             </li>
-                            <?php
-                          }
-                      ?>
+<?php
+    }
+?>
                         </ul>
 
                         <div class="UserRestaurantHistory__HistoryContainer">
@@ -151,9 +160,7 @@
                                     x clear all
                                 </button>
                             </div>
-
                             <ul class="UserRestaurantHistory__RestaurantList"></ul>
-
                             <div
                                 class="UserRestaurantHistory__EmptyViewedRestaurantHistory UserRestaurantHistory__EmptyViewedRestaurantHistory--Show">
                                 <span class="UserRestaurantHistory__EmptyViewedRestaurantHistoryTitle">
@@ -1654,6 +1661,10 @@ while($row = mysqli_fetch_array($result)){
     <script src="./js/mango.js"></script>
     <script src="./js/facebook.js"></script>
     <script src="./js/kakao.js"></script>
+    <script>
+        let mm_wannago = <?=json_encode($mm_wannago)?>;
+        let mm_userid = <?=json_encode($id)?>;
+    </script>
 </body>
 
 </html>

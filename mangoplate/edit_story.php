@@ -2,7 +2,7 @@
     header('Content-Type: text/html; charset=UTF-8');
     session_start();
     include "./include/dbconn.php";
-    include "./include/sessionCheck.php";
+    include "./include/adminsessionCheck.php";
     include "./include/msIdxCheck.php";
 
     $auth_ms_idx = mysqli_real_escape_string($conn, $_GET['ms_idx']);
@@ -11,7 +11,7 @@
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result);
 
-    $id = $_SESSION['id'];
+    $id = $_SESSION['adminid'];
     $ms_idx         = $row['ms_idx'];
     $ms_userid      = $row['ms_userid'];
     $ms_title       = $row['ms_title'];

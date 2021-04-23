@@ -2,7 +2,7 @@
     header('Content-Type: text/html; charset=UTF-8');
     session_start();
     include "./include/dbconn.php";
-    include "./include/sessionCheck.php";
+    include "./include/adminsessionCheck.php";
 
     $sql = "SELECT * FROM mango_story ORDER BY ms_idx DESC";
     $result = mysqli_query($conn, $sql);

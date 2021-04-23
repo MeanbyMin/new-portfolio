@@ -2,9 +2,9 @@
     header('Content-Type: text/html; charset=UTF-8');
     session_start();
     include "./include/dbconn.php";
-    include "./include/sessionCheck.php";
+    include "./include/adminsessionCheck.php";
 
-    $id = $_SESSION['id'];
+    $id = $_SESSION['adminid'];
     $ms_idx          = $_POST['ms_idx'];
     $ms_userid       = $_POST['ms_userid'];
     $ms_title        = $_POST['ms_title'];

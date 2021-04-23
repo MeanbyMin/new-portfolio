@@ -1,7 +1,7 @@
 <?php
     session_start();
     include "./include/dbconn.php";
-    include "./include/sessionCheck.php";
+    include "./include/adminsessionCheck.php";
     include "./include/getIdxCheck.php";
 
     $ms_idx = $_GET['ms_idx'];

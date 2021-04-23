@@ -2,18 +2,18 @@
     header('Content-Type: text/html; charset=UTF-8');
     session_start();
     include "./include/dbconn.php";
-    include "./include/sessionCheck.php";
+    include "./include/adminsessionCheck.php";
     include "./include/getIdxCheck.php";
 
     $r_idx = $_GET['r_idx'];
     $sql = "UPDATE mango_restaurant SET r_read = r_read + 1 WHERE r_idx = $r_idx";
     $result = mysqli_query($conn, $sql);
 
-    $sql = "SELECT r_idx, r_writer, r_restaurant, r_grade, r_read, r_review, r_wannago, r_repphoto, r_photo, r_address, r_jibunaddress, r_tel, r_foodtype, r_price, r_website, r_parking, r_openhour, r_breaktime, r_lastorder, r_holiday, r_menu, r_menuprice, r_status, r_regdate FROM mango_restaurant WHERE r_idx = $r_idx";
+    $sql = "SELECT r_idx, r_writer, r_restaurant, r_grade, r_read, r_review, r_wannago, r_repphoto, r_photo, r_address, r_jibunaddress, r_tel, r_foodtype, r_price, r_website, r_parking, r_openhour, r_breaktime, r_lastorder, r_holiday, r_menu, r_menuprice, r_status, r_tags, r_regdate FROM mango_restaurant WHERE r_idx = $r_idx";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result);
 
-    $id = $_SESSION['id'];
+    $id                 = $_SESSION['adminid'];
     $r_idx              = $row['r_idx'];
     $r_writer           = $row['r_writer'];
     $r_restaurant       = $row['r_restaurant'];
@@ -38,6 +38,17 @@
     $r_menuprice        = $row['r_menuprice'];
     $r_status           = $row['r_status'];
     $r_regdate          = $row['r_regdate'];
+    $r_regdate          = substr($r_regdate, 0, -9);
+    $r_tags             = $row['r_tags'];
+    $r_tagsarr = [];
+    if($r_tags == ""){
+        $r_tagsarr = [];
+    }else if(strpos($r_tags, ",") > 0){
+        $r_tagsarr = explode(",", $r_tags);
+    }else{
+        array_push($r_tagsarr, $r_tags);
+    }
+    
     $r_menuarr          = explode(',', $r_menu);
     $r_menupricearr     = explode('원,', $r_menuprice);
 
@@ -158,7 +169,7 @@
                                             <span><b>리뷰수</b> : <?=$r_review?></span>
                                             <span><b>가고싶다</b> : <span id="wannago"><?=$r_wannago?></span></span>
 <?php
-if($r_writer != $_SESSION['id']){
+if($r_writer != $_SESSION['adminid']){
 ?>
                                 <img src="./img/wannago.png" alt="wannago" style="width:20px" class="wannago_btn" onclick="wannago()">
 <?php
@@ -220,11 +231,15 @@ if($r_writer != $_SESSION['id']){
                                     <td><?=$r_holiday?></td>
                                 </tr>
                                 <tr>
+                                    <th>태그</th>
+                                    <td><?=$r_tags?></td>
+                                </tr>
+                                <tr>
                                     <th>메뉴</th>
                                     <td class="menu_td">
                                         <ul class="Restaurant_MenuList">
 <?php
-    for($i=0; $i<count($r_menuarr)-1; $i++){
+    for($i=0; $i<count($r_menuarr); $i++){
 ?>
                                             <li class="Restaurant_MenuItem">
                                                 <span class="Restaurant_Menu"><?=$r_menuarr[$i]?></span>

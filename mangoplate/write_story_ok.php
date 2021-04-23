@@ -3,7 +3,7 @@
     session_start();
     include "./include/dbconn.php"; //php 파일 삽입
 
-    $id             = $_SESSION['id'];
+    $id             = $_SESSION['adminid'];
     $ms_title       = mysqli_real_escape_string($conn, $_POST['ms_title']);
     $ms_subtitle       = mysqli_real_escape_string($conn, $_POST['ms_subtitle']);
     $ms_content     = mysqli_real_escape_string($conn, $_POST['ms_content']);

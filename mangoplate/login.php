@@ -8,12 +8,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>망고플레이트 : 어드민</title>
-    <link rel="stylesheet" href="./login.css" type="text/css">
+    <link rel="stylesheet" href="./css/login.css" type="text/css">
 </head>
 <body>
 <?php
     // if(!isset($_COOKIE['id'])){  // 쿠키에서 세션으로 변경
-    if(!isset($_SESSION['adminId'])){
+    if(!isset($_SESSION['adminid'])){
 ?>
     <div id="wrap">
         <div id="header">
@@ -47,7 +47,7 @@
     </div>
 <?php
     }else{
-        echo "<script>location.href='./dist/index.php';</script>";
+        echo "<script>location.href='./adminindex.php';</script>";
     }
 ?>
 </body>

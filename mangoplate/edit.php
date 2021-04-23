@@ -2,16 +2,15 @@
     header('Content-Type: text/html; charset=UTF-8');
     session_start();
     include "./include/dbconn.php";
-    include "./include/sessionCheck.php";
+    include "./include/adminsessionCheck.php";
     include "./include/getIdxCheck.php";
 
     $r_idx = $_GET['r_idx'];
-
-    $sql = "SELECT r_idx, r_writer, r_restaurant, r_grade, r_read, r_review, r_wannago, r_repphoto, r_photo, r_address, r_jibunaddress, r_tel, r_foodtype, r_price, r_website, r_parking, r_openhour, r_breaktime, r_lastorder, r_holiday, r_menu, r_menuprice, r_status, r_regdate FROM mango_restaurant WHERE r_idx=$r_idx";
+    $sql = "SELECT r_idx, r_writer, r_restaurant, r_grade, r_read, r_review, r_wannago, r_repphoto, r_photo, r_address, r_jibunaddress, r_tel, r_foodtype, r_price, r_website, r_parking, r_openhour, r_breaktime, r_lastorder, r_holiday, r_menu, r_menuprice, r_status, r_tags, r_regdate FROM mango_restaurant WHERE r_idx=$r_idx";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result);
 
-    $id                 = $_SESSION['id'];
+    $id                 = $_SESSION['adminid'];
     $r_restaurant       = $row['r_restaurant'];
     $r_grade            = $row['r_grade'];
     $r_read             = $row['r_read'];
@@ -30,12 +29,13 @@
     $r_breaktime        = $row['r_breaktime'];
     $r_lastorder        = $row['r_lastorder'];
     $r_holiday          = $row['r_holiday'];
+    $r_tags             = $row['r_tags'];
     $r_menu             = $row['r_menu'];
     $r_menuprice        = $row['r_menuprice'];
     $r_status           = $row['r_status'];
     $r_regdate          = $row['r_regdate'];
     $r_menuarr          = explode(',', $r_menu);
-    $r_menupricearr     = explode(',', $r_menuprice);
+    $r_menupricearr     = explode('원,', $r_menuprice);
 
     $imgpath = "";
     if($row['r_repphoto'] != ""){
@@ -134,7 +134,7 @@
                         <form method="post" action="edit_ok.php" enctype="multipart/form-data" class="editForm" onsubmit="return sendit()">
                             <input type="hidden" name="isAddress" id="isAddress" value="false">
                             <input type="hidden" name="r_idx" value="<?=$r_idx?>">
-                            <p><label><span class="title">아이디</span> <span class="value"><?=$_SESSION['id']?></span></label></p>
+                            <p><label><span class="title">아이디</span> <span class="value"><?=$_SESSION['adminid']?></span></label></p>
                             <p><label><span class="title">가게명</span> <input type="text" name="r_restaurant" value="<?=$r_restaurant?>" required></label></p>
                             <p><label><span class="title">도로명 주소</span> <input type="text" id="sample4_roadAddress" class="r_address" name="r_address" placeholder="도로명주소" value="<?=$r_address?>" readonly></label> <input type="button" id="address_btn" onclick="sample4_execDaumPostcode()" value="주소 찾기"></p>
                             <p><label><span class="title">지번 주소</span> <input type="text" id="sample4_jibunAddress" class="r_jibunaddress" name="r_jibunaddress" placeholder="지번주소" value="<?=$r_jibunaddress?>" readonly></label></p>
@@ -147,13 +147,15 @@
                             <p><label><span class="title">쉬는 시간</span> <input type="text" name="r_breaktime" value="<?=$r_breaktime?>"></label></p>
                             <p><label><span class="title">마지막 주문</span> <input type="text" name="r_lastorder" value="<?=$r_lastorder?>"></label></p>
                             <p><label><span class="title">휴일</span> <input type="text" name="r_holiday" value="<?=$r_holiday?>"></label></p>
+                            <p><label><span class="title">태그</span> <input type="text" name="r_tags" value="<?=$r_tags?>"></label></p>
+                            <p>
                             <p><label><span class="title">메뉴/가격</span> 
                                 <div id="price">
-                                    <input type="text" name="r_menu[]" value="<?=$r_menuarr[0]?>"> <input type="text" name="r_menuprice[]" value="<?=$r_menupricearr[0]?>"> <input type="button" value="추가" onclick="add_textbox()">
+                                    <input type="text" name="r_menu[]" value="<?=$r_menuarr[0]?>"> <input type="text" name="r_menuprice[]" value="<?=$r_menupricearr[0]?>원"> <input type="button" value="추가" onclick="add_textbox()">
 <?php
-    for($i=1; $i<count($r_menuarr)-1; $i++){
+    for($i=1; $i<count($r_menuarr); $i++){
 ?>
-                                     <p><input type='text' name='r_menu[]' value='<?=$r_menuarr[$i]?>'> <input type='text' name='r_menuprice[]' value='<?=$r_menupricearr[$i]?>'> <input type='button' value='삭제' onclick='remove(this)'></p>
+                                     <p><input type='text' name='r_menu[]' value='<?=$r_menuarr[$i]?>'> <input type='text' name='r_menuprice[]' value='<?=$r_menupricearr[$i]?>원'> <input type='button' value='삭제' onclick='remove(this)'></p>
 <?php
     }
 ?>

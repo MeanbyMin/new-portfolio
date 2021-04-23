@@ -1,7 +1,7 @@
 <?php
     header('Content-Type: text/html; charset=UTF-8');
     session_start();
-    include "./include/getIdxCheck.php";
+    include "./include/getmrIdxCheck.php";
     include "./include/dbconn.php";
     $sql = "SELECT * FROM mango_member";
     $result = mysqli_query($conn, $sql);
@@ -19,7 +19,7 @@
     $r_idx = $_GET['r_idx'];
     $sql = "UPDATE mango_restaurant SET r_read = r_read + 1 WHERE r_idx = $r_idx";
     $result = mysqli_query($conn, $sql);
-    $sql = "SELECT r_idx, r_restaurant, r_branch, r_grade, r_read, r_review, r_wannago, r_repphoto, r_photo, r_repadd, r_address, r_jibunaddress, r_tel, r_foodtype, r_price, r_website, r_parking, r_openhour, r_breaktime, r_lastorder, r_holiday, r_menu, r_menuprice, r_menuphoto, r_status, r_tags, r_regdate FROM mango_restaurant WHERE r_idx = $r_idx";
+    $sql = "SELECT r_idx, r_restaurant, r_branch, r_grade, r_read, r_review, r_wannago, r_repphoto, r_photo, r_repadd, r_address, r_jibunaddress, r_tel, r_foodtype, r_price, r_website, r_parking, r_openhour, r_breaktime, r_lastorder, r_holiday, r_menu, r_menuprice, r_menuphoto, r_status, r_tags, r_regdate FROM mango_restaurant WHERE r_idx = '$r_idx' AND r_status = '등록'";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result);
 
@@ -61,7 +61,7 @@
     $r_regdate          = substr($r_regdate, 0, -9);
     $r_menuarr          = explode(',', $r_menu);
     $r_menupricearr     = explode('원,', $r_menuprice);
-    echo $r_photo;
+    $r_photoarr = [];
     if(strlen($r_photo)>0){
         if(strpos($r_photo, ",") > 0){
             $r_photoarr = explode(',', $r_photo);
@@ -547,6 +547,12 @@ if($r_photoarr == null){
                     </div>
 <?php
 }else if(count($r_photoarr) > 0) {
+    ?>
+                    <div class="list-photo_wrap owl-carousel owl-theme" style="opacity: 1; display: block;">
+                        <div class="owl-wrapper-outer">
+                            <div class="owl-wrapper" style="width: 100vw; left: 0px; display: block;">
+
+<?php
     for($i=0; $i<count($r_photoarr); $i++){
 ?>
                                 <div class="owl-item" style="width: 20%;">
@@ -557,28 +563,6 @@ if($r_photoarr == null){
                                             title="<?=$r_restaurant?> - <?=$r_repadd?> <?=$r_foodtype?> | 맛집검색 망고플레이트">
                                             <img class="center-croping" src="<?=$r_photoarr[$i]?>"
                                                 alt="<?=$r_restaurant?> 사진 - <?=$r_jibunaddress?>">
-
-                                            <div class="last_image" onclick="">
-                                                <p class="txt">
-                                                    사진 더보기
-                                                    <span class="arrow-white"></span>
-                                                </p>
-                                            </div>
-                                        </figure>
-                                    </figure>
-                                </div>
-<?php
-    }
-    for($k=0; $k<5-count($r_photoarr); $k++){
-?>
-                                <div class="owl-item" style="width: 20%;">
-                                    <figure class="list-photo">
-                                        <meta content="">
-                                        <figure class="restaurant-photos-item" onclick="GALLERY()"
-                                            aria-label=" | 맛집검색 망고플레이트"
-                                            title=" | 맛집검색 망고플레이트">
-                                            <img class="center-croping" src=""
-                                                alt="사진">
 
                                             <div class="last_image" onclick="">
                                                 <p class="txt">
