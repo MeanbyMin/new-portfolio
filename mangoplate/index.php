@@ -19,9 +19,19 @@
             if(strpos($mm_wannago, ",") > 0){
                 $mm_wannagoarr = explode(",", $mm_wannago);
             }else{
-                array_push($mm_wannagoarr, $mm_wannagoarr);
+                array_push($mm_wannagoarr, $mm_wannago);
             }
         }
+    }else{
+        $id = "";
+        $mm_wannagoarr = "";
+    }
+    $sql = "SELECT r_restaurant, r_repadd, r_address, r_jibunaddress, r_menu, r_tags FROM mango_restaurant";
+    $result = mysqli_query($conn, $sql);
+    $restaurant_list = [];
+    while($row = mysqli_fetch_array($result)){
+        $restuarant = array('r_restaurant' => $row['r_restaurant']);
+        array_push($restaurant_list, $restuarant);
     }
 ?>
 <!DOCTYPE html>
@@ -46,6 +56,7 @@
         document.cookie = "safeCookie1=foo; SameSite=Lax"; 
         document.cookie = "safeCookie2=foo"; 
         document.cookie = "crossCookie=bar; SameSite=None; Secure";
+        let restaurant_list = <?=json_encode($restaurant_list)?>;
     </script>
 </head>
 
@@ -440,12 +451,11 @@
 
                         <label class="search-word" for="main-search">
                             <span class="icon">검색 :</span>
-                            <input id="main-search" class="HomeSearchInput" name="main-search" type="text"
-                                maxlength="50" placeholder="지역, 식당 또는 음식">
+                            <input id="main-search" class="HomeSearchInput" name="main-search" type="text" maxlength="50" placeholder="지역, 식당 또는 음식" autocomplete="off">
                             <span class="clear_btn">CLEAR</span>
                         </label>
 
-                        <input class="btn-search" type="submit" value="검색" />
+                        <input class="btn-search" type="submit" value="검색" onclick="CLICK_KEYWORD_SEARCH()"/>
                     </fieldset>
 
                     <aside class="shortcut-app type-main">
@@ -889,7 +899,11 @@ while($row = mysqli_fetch_array($result)){
     $r_jibunaddress     = $row['r_jibunaddress'];
     $r_branch           = $row['r_branch'];
     $r_grade            = $row['r_grade'];
-    $r_repphoto         = $row['r_repphoto'];
+    if(isset($row['r_repphoto'])){
+        $r_repphoto     = $row['r_repphoto'];
+    }else{
+        $r_repphoto = "https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&crop=*:*;*,*&output-format=jpg&output-quality=80";
+    }
     $r_repadd           = $row['r_repadd'];
     $r_foodtype         = $row['r_foodtype'];
 ?>
@@ -901,7 +915,7 @@ while($row = mysqli_fetch_array($result)){
                                             <img class="center-croping lazy"
                                                 alt="<?=$r_restaurant?> 사진 - <?=$r_jibunaddress?>"
                                                 data-original="<?=$r_repphoto?>"
-                                                data-error="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                                                data-error="<?=$r_repphoto?>"
                                                 src="<?=$r_repphoto?>" style="display: block;" />
                                         </div>
                                         <figcaption>
@@ -944,7 +958,11 @@ while($row = mysqli_fetch_array($result)){
     $r_jibunaddress     = $row['r_jibunaddress'];
     $r_branch           = $row['r_branch'];
     $r_grade            = $row['r_grade'];
-    $r_repphoto         = $row['r_repphoto'];
+    if(isset($row['r_repphoto'])){
+        $r_repphoto     = $row['r_repphoto'];
+    }else{
+        $r_repphoto = "https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&crop=*:*;*,*&output-format=jpg&output-quality=80";
+    }
     $r_repadd           = $row['r_repadd'];
     $r_foodtype         = $row['r_foodtype'];
 ?>
@@ -956,7 +974,7 @@ while($row = mysqli_fetch_array($result)){
                                             <img class="center-croping lazy"
                                                 alt="<?=$r_restaurant?> 사진 - <?=$r_jibunaddress?>"
                                                 data-original="<?=$r_repphoto?>"
-                                                data-error="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                                                data-error="<?=$r_repphoto?>"
                                                 src="<?=$r_repphoto?>" style="display: block;" />
                                         </div>
                                         <figcaption>
@@ -998,7 +1016,11 @@ while($row = mysqli_fetch_array($result)){
     $r_jibunaddress     = $row['r_jibunaddress'];
     $r_branch           = $row['r_branch'];
     $r_grade            = $row['r_grade'];
-    $r_repphoto         = $row['r_repphoto'];
+    if(isset($row['r_repphoto'])){
+        $r_repphoto     = $row['r_repphoto'];
+    }else{
+        $r_repphoto = "https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&crop=*:*;*,*&output-format=jpg&output-quality=80";
+    }
     $r_repadd           = $row['r_repadd'];
     $r_foodtype         = $row['r_foodtype'];
 ?>
@@ -1010,7 +1032,7 @@ while($row = mysqli_fetch_array($result)){
                                             <img class="center-croping lazy"
                                                 alt="<?=$r_restaurant?> 사진 - <?=$r_jibunaddress?>"
                                                 data-original="<?=$r_repphoto?>"
-                                                data-error="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                                                data-error="<?=$r_repphoto?>"
                                                 src="<?=$r_repphoto?>" style="display: block;" />
                                         </div>
                                         <figcaption>
@@ -1662,7 +1684,7 @@ while($row = mysqli_fetch_array($result)){
     <script src="./js/facebook.js"></script>
     <script src="./js/kakao.js"></script>
     <script>
-        let mm_wannago = <?=json_encode($mm_wannago)?>;
+        let mm_wannago = <?=json_encode($mm_wannagoarr)?>;
         let mm_userid = <?=json_encode($id)?>;
     </script>
 </body>

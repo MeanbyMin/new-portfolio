@@ -27,7 +27,7 @@ const pool = mysql.createPool({
     let searchInput = await driver.findElement(By.id("main-search"));
 
     // 검색창에 '식당'을 치고 엔터키를 누른다.
-    let keyword = "마포";
+    let keyword = "일산";
     searchInput.sendKeys(keyword, Key.ENTER);
 
     // css selector로 가져온 element가 위치할때까지 최대 7초간 기다린다.

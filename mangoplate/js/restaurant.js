@@ -85,6 +85,9 @@ const KeywordSuggester__BlackDeem = document.querySelector(
   ".KeywordSuggester__BlackDeem"
 );
 const simplebarVertical = document.querySelector(".simplebar-vertical");
+const Header__SearchInputClearButton = document.querySelector(
+  ".Header__SearchInputClearButton"
+);
 
 // 이미지
 const centerCroping = document.querySelectorAll(".center-croping");
@@ -772,3 +775,64 @@ function clickLogin() {
 function loginClose() {
   popContext.style.display = "none";
 }
+
+const CLICK_SETTING = () => {
+  UserRestaurantHistory.classList.remove("UserRestaurantHistory--Open");
+  UserProfile.classList.add("UserProfile--Open");
+  body.style = "";
+};
+
+function matchSearch(value) {
+  const search = Header__SearchInput.value;
+
+  return value.indexOf(search) != -1;
+}
+
+function showFilter(id) {
+  let simplebarContent = document.querySelector(".simplebar-content");
+  let li = document.createElement("li");
+  li.setAttribute("class", "KeywordSuggester__SuggestKeywordItem");
+  li.innerHTML = `<a href="#" class="KeywordSuggester__SuggestKeywordLink">
+          <i class="KeywordSuggester__SuggestKeywordIcon"></i>
+          <span class="KeywordSuggester__SuggestKeyword">${id.r_restaurant}</span>
+          </a>`;
+  simplebarContent.appendChild(li);
+}
+
+Header__SearchInput.addEventListener("keyup", function () {
+  if (Header__SearchInput.value.length > 0) {
+    Header__SearchInputClearButton.classList.add(
+      "Header__SearchInputClearButton--Show"
+    );
+  } else {
+    Header__SearchInputClearButton.classList.remove(
+      "Header__SearchInputClearButton--Show"
+    );
+  }
+  if (Header__SearchInput.value) {
+    const filtered = restaurant_list.filter((x) => matchSearch(x.r_restaurant));
+    if (filtered) {
+      let simplebarContent = document.querySelector(".simplebar-content");
+      while (simplebarContent.hasChildNodes()) {
+        simplebarContent.removeChild(simplebarContent.firstChild);
+      }
+      filtered.forEach(function (e) {
+        showFilter(e);
+      });
+    }
+  }
+});
+
+Header__SearchInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    btnSearch.click();
+  }
+});
+
+Header__SearchInputClearButton.addEventListener("click", () => {
+  Header__SearchInput.value = "";
+});
+
+const CLICK_KEYWORD_SEARCH = () => {
+  location.href = "./search.php?search=" + Header__SearchInput.value;
+};

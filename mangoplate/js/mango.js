@@ -65,6 +65,9 @@ const KeywordSuggester__Container = document.querySelector(
 const simplebarPlaceholder = document.querySelector(".simplebar-placeholder");
 const simplebarVertical = document.querySelector(".simplebar-vertical");
 
+const btnSearch = document.querySelector(".btn-search");
+const clearBtn = document.querySelector(".clear_btn");
+
 // --------------------------------------------------------------------
 
 function clickProfile() {
@@ -166,7 +169,7 @@ if (mainSearch !== null) {
           value.forEach((i) => {
             let li = document.createElement("li");
             li.setAttribute("class", "KeywordSuggester__SuggestKeywordItem");
-            li.innerHTML = `<a href="#" class="KeywordSuggester__SuggestKeywordLink">
+            li.innerHTML = `<a href="./search.php?search=${i}" class="KeywordSuggester__SuggestKeywordLink">
           <i class="KeywordSuggester__SuggestKeywordIcon"></i>
           <span class="KeywordSuggester__SuggestKeyword">${i}</span>
           </a>`;
@@ -284,7 +287,7 @@ function CLICK_SEARCH_RECOMMEND(t) {
         value.forEach((i) => {
           let li = document.createElement("li");
           li.setAttribute("class", "KeywordSuggester__SuggestKeywordItem");
-          li.innerHTML = `<a href="#" class="KeywordSuggester__SuggestKeywordLink">
+          li.innerHTML = `<a href="./search.php?search=${i}" class="KeywordSuggester__SuggestKeywordLink">
           <i class="KeywordSuggester__SuggestKeywordIcon"></i>
           <span class="KeywordSuggester__SuggestKeyword">${i}</span>
           </a>`;
@@ -340,7 +343,7 @@ const CLICK_SEARCH_POPULAR = (t) => {
         value.forEach((i) => {
           let li = document.createElement("li");
           li.setAttribute("class", "KeywordSuggester__SuggestKeywordItem");
-          li.innerHTML = `<a href="#" class="KeywordSuggester__SuggestKeywordLink">
+          li.innerHTML = `<a href="./search.php?search=${i}" class="KeywordSuggester__SuggestKeywordLink">
           <i class="KeywordSuggester__SuggestKeywordIcon"></i>
           <span class="KeywordSuggester__SuggestKeyword">${i}</span>
           </a>`;
@@ -403,4 +406,55 @@ const CLICK_SEARCH_RECENT = (t) => {
   simplebarPlaceholder.style.width = "542px";
   simplebarPlaceholder.style.height = "77px";
   simplebarVertical.style.visibility = "hidden";
+};
+
+function matchSearch(value) {
+  const search = mainSearch.value;
+
+  return value.indexOf(search) != -1;
+}
+
+function showFilter(id) {
+  let simplebarContent = document.querySelector(".simplebar-content");
+  let li = document.createElement("li");
+  li.setAttribute("class", "KeywordSuggester__SuggestKeywordItem");
+  li.innerHTML = `<a href="./search.php?search=${id.r_restaurant}" class="KeywordSuggester__SuggestKeywordLink">
+          <i class="KeywordSuggester__SuggestKeywordIcon"></i>
+          <span class="KeywordSuggester__SuggestKeyword">${id.r_restaurant}</span>
+          </a>`;
+  simplebarContent.appendChild(li);
+}
+
+mainSearch.addEventListener("keyup", function () {
+  if (mainSearch.value.length > 0) {
+    clearBtn.classList.add("show");
+  } else {
+    clearBtn.classList.remove("show");
+  }
+  if (mainSearch.value) {
+    const filtered = restaurant_list.filter((x) => matchSearch(x.r_restaurant));
+    if (filtered) {
+      let simplebarContent = document.querySelector(".simplebar-content");
+      while (simplebarContent.hasChildNodes()) {
+        simplebarContent.removeChild(simplebarContent.firstChild);
+      }
+      filtered.forEach(function (e) {
+        showFilter(e);
+      });
+    }
+  }
+});
+
+mainSearch.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    btnSearch.click();
+  }
+});
+
+clearBtn.addEventListener("click", () => {
+  mainSearch.value = "";
+});
+
+const CLICK_KEYWORD_SEARCH = () => {
+  location.href = "./search.php?search=" + mainSearch.value;
 };

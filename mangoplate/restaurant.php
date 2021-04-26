@@ -135,6 +135,14 @@
     // echo var_dump($member)."<br>";
     // echo count($member);
     // echo $member[0]["mr_idx"];
+
+    $sql = "SELECT r_restaurant, r_repadd, r_address, r_jibunaddress, r_menu, r_tags FROM mango_restaurant";
+    $result = mysqli_query($conn, $sql);
+    $restaurant_list = [];
+    while($row = mysqli_fetch_array($result)){
+        $restuarant = array('r_restaurant' => $row['r_restaurant']);
+        array_push($restaurant_list, $restuarant);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="kor">
@@ -155,6 +163,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
     <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
+    <script>
+        let restaurant_list = <?=json_encode($restaurant_list)?>;
+    </script>
 </head>
 
 <body onunload="" ng-app="mp20App" class="ng-scope">
@@ -430,6 +441,52 @@
                 <!-- 프로필 영역 끝 -->
             </ul>
             <!-- 메뉴 부분 끝 -->
+            <!-- 회원탈퇴 모달 창 시작 -->
+            <div class="UserDisactiveInfo">
+                <div class="UserDisactiveInfo__BlackDeem"></div>
+                <div class="UserDisactiveInfo__Container">
+                    <div class="UserDisactiveInfo__Header">
+                        <button class="UserDisactiveInfo__ClostButton">
+                            <i class="UserDisactiveInfo__ClostButton--Icon"></i>
+                        </button>
+                    </div>
+                    <div class="UserDisactiveInfo__Content">
+                        <span class="UserDisactiveInfo__Content--Notice">회원 탈퇴 전 아래의 내용을 꼭 확인해 주세요.</span>
+                        <ul class="UserDisactiveInfo__Content--List">
+                            <div class="UserDisactiveInfo__Content--Item">회원탈퇴 시 회원정보 및 서비스 이용기록은 모두 삭제되며, 삭제된 데이터는 복구가
+                                불가능합니다. 다만 법령에 의하여 보관해야 하는 경우 또는 회사 내부정책에 의하여 보관해야하는 정보는 회원탈퇴 후에도 일정기간 보관됩니다. 자세한 사항은
+                                개인정보처리방침에서 확인하실 수 있습니다.</div>
+                            <div class="UserDisactiveInfo__Content--Item">회원탈퇴 후 재가입하더라도 탈퇴 전의 회원정보 및 서비스 이용기록은 복구되지
+                                않습니다.</div>
+                            <div class="UserDisactiveInfo__Content--Item">회원탈퇴 전 만료된 EAT딜의 환불을 신청해 주세요. 회원이 환불 신청 없이 자진
+                                탈퇴하고자 하는 경우, 회사는 만료된 EAT딜에 대한 소멸 동의를 받습니다.</div>
+                            <div class="UserDisactiveInfo__Content--Item">회원탈퇴 시 작성하신 리뷰는 자동 삭제되지 않고 남아 있습니다. 삭제를 원하실 경우
+                                반드시 탈퇴 전 삭제하시기 바랍니다. 탈퇴 후에는 회원정보가 삭제되어 본인 여부를 확인할 수 있는 방법이 없어, 리뷰를 임의로 삭제해드릴 수 없습니다.
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="UserDisactiveInfo__Footer">
+                        <div class="UserDisactiveInfo__CheckButton">
+                            <i class="UserDisactiveInfo__CheckButton--Image"></i>
+                            <div class="UserDisactiveInfo__CheckButton--Text">위 내용을 모두 확인하였으며, 이에 동의합니다.</div>
+                        </div>
+                        <div class="UserDisactiveInfo__Button">탈퇴하기</div>
+                    </div>
+                </div>
+            </div>
+            <!-- 회원탈퇴 모달 창 끝 -->
+            <!-- 탈퇴하기 확인 모달 창 시작 -->
+            <div class="PopupConfirmLayer UserDisactiveApprovePopup" style="display: none;">
+                <div class="PopupConfirmLayer__Container">
+                    <div class="PopupConfirmLayer__Title">회원탈퇴</div>
+                    <p class="PopupConfirmLayer__DescriptionWithTitle">탈퇴한 계정은 복구가 불가능합니다.<br>탈퇴 하시겠습니까?</p>
+                    <div class="PopupConfirmLayer__Buttons">
+                        <button class="PopupConfirmLayer__Button PopupConfirmLayer__GrayButton">취소</button>
+                        <button class="PopupConfirmLayer__Button PopupConfirmLayer__OrangeButton">탈퇴하기</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 탈퇴하기 확인 모달 창 끝 -->
         </header>
         <!-- 헤더 끝 -->
         <!-- 검색창 포커스 시작 -->
@@ -1709,6 +1766,7 @@ if(isset($member[0])){
             if (status === kakao.maps.services.Status.OK) {
 
                 const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+                console.log(coords);
 
                 // 결과값으로 받은 위치를 마커로 표시합니다
                 const marker = new kakao.maps.Marker({

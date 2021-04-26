@@ -2019,6 +2019,10 @@ input:-webkit-autofill:active {
     transform: translateY(-50%);
 }
 
+.main-header .main-search .search-word .clear_btn.show {
+    display: block;
+}
+
 .main-header .main-search .btn-search {
     width: 180px;
     font-size: 1.313rem;
@@ -5939,7 +5943,6 @@ img.center-crop.portrait {
 
 .search-filter {
     display: none;
-    /* display: block; */
     background-color: #ffffff;
     overflow-y: auto;
     position: absolute;
@@ -12350,3 +12353,115 @@ body.ReviewDetailPage__Body {
 }
 
 /* 리뷰쓰기 사진 썸네일  */
+
+
+/* 검색 지도 css 시작 */
+.restaurant-in-map .restaurant-item {
+    position: relative;
+    box-sizing: border-box;
+    padding-left: 117px;
+    height: 105px;
+    width: auto
+}
+
+.restaurant-in-map .restaurant-item>.thumb {
+    display: block;
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 105px;
+    position: relative
+}
+
+.restaurant-in-map .restaurant-item>.thumb:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: 100%
+}
+
+.restaurant-in-map .restaurant-item>.thumb>.inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0
+}
+
+.restaurant-in-map .restaurant-item .info {
+    padding: 0;
+    height: 105px
+}
+
+.restaurant-in-map .restaurant-item .info .title {
+    max-width: 68%;
+    font-size: 1.313rem;
+    margin-top: 0
+}
+
+.restaurant-in-map .restaurant-item .info .title a {
+    color: #000000
+}
+
+.restaurant-in-map .restaurant-item .info .point {
+    position: static;
+    margin-left: 5px;
+    font-size: 1.313rem
+}
+
+.restaurant-in-map .restaurant-item .info .etc,.restaurant-in-map .restaurant-item .info .etc_info {
+    font-size: 0.875rem
+}
+
+.restaurant-in-map .restaurant-item .info time {
+    display: none
+}
+
+.restaurant-in-map .restaurant-item .info .status-cnt {
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    margin: 0;
+    font-size: 0.813rem;
+    color: #cbcbcb
+}
+
+.restaurant-in-map .restaurant-item .info .status-cnt em {
+    margin-right: 5px
+}
+
+.restaurant-in-map .restaurant-item .info .status-cnt em:before {
+    content: '';
+    display: inline-block;
+    margin: -2px 1px 0 2px;
+    vertical-align: middle
+}
+
+.restaurant-in-map .restaurant-item .info .status-cnt em.review:before {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-position: -800px -648px;
+    width: 12px;
+    height: 13px
+}
+
+.restaurant-in-map .restaurant-item .info .status-cnt em.favorite:before {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-position: -689px -444px;
+    width: 12px;
+    height: 11px
+}
+
+.restaurant-in-map .restaurant-item .btn-type-icon.favorite {
+    top: 0px;
+    right: 0px
+}
+
+.restaurant-in-map {
+    position: relative;
+    width: 300px;
+    margin: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    background-color: #ffffff
+}
+/* 검색 지도 css 끝 */

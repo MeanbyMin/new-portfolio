@@ -15,8 +15,8 @@
     $row = mysqli_fetch_array($result);
     $r_photo = $row['r_photo'];
     // echo $r_photo."<Br>";
-    echo var_dump($_FILES);
-    echo var_dump($_POST['upload[]']);
+    // echo var_dump($_FILES);
+    // echo var_dump($_POST['upload[]']);
     
     $imgfile ="";
     if($_FILES['upload']['tmp_name'][0]){
@@ -74,18 +74,19 @@
     // echo $r_photo."<br>";
 
 
-    // if(!$conn){
-    //     echo "DB 연결 실패!";
-    // }else{
-    //     $sql = "INSERT INTO mango_review (mr_userid, mr_name, mr_content, mr_recommend, mr_photo, mr_status, mr_boardidx) VALUES ('$id', '$mr_name',
-    //     '$mr_content', '$mr_recommend', '$imgfile', '$mr_status', '$r_idx');";
-    //     $result = mysqli_query($conn, $sql);
-    //     $sql = "UPDATE mango_member SET mm_reviews = mm_reviews + 1 WHERE mm_userid = '$id'";
-    //     $result = mysqli_query($conn, $sql);
-    //     $sql = "UPDATE mango_restaurant SET r_review = r_review + 1 WHERE r_idx ='$r_idx'";
-    //     $result = mysqli_query($conn, $sql);
-    //     $sql = "UPDATE mango_restaurant SET r_photo = '$r_photo' WHERE r_idx ='$r_idx'";
-    //     $result = mysqli_query($conn, $sql);
-    //     echo "<script>alert('$r_restaurant 리뷰 작성이 완료되었습니다.'); location.href='./restaurant.php?r_idx=$r_idx';</script>";
-    // }
+    if(!$conn){
+        echo "DB 연결 실패!";
+    }else{
+        $sql = "INSERT INTO mango_review (mr_userid, mr_name, mr_content, mr_recommend, mr_photo, mr_status, mr_boardidx) VALUES ('$id', '$mr_name',
+        '$mr_content', '$mr_recommend', '$imgfile', '$mr_status', '$r_idx');";
+        $result = mysqli_query($conn, $sql);
+        // echo $sql;
+        $sql = "UPDATE mango_member SET mm_reviews = mm_reviews + 1 WHERE mm_userid = '$id'";
+        $result = mysqli_query($conn, $sql);
+        $sql = "UPDATE mango_restaurant SET r_review = r_review + 1 WHERE r_idx ='$r_idx'";
+        $result = mysqli_query($conn, $sql);
+        $sql = "UPDATE mango_restaurant SET r_photo = '$r_photo' WHERE r_idx ='$r_idx'";
+        $result = mysqli_query($conn, $sql);
+        echo "<script>alert('$r_restaurant 리뷰 작성이 완료되었습니다.'); location.href='./restaurant.php?r_idx=$r_idx';</script>";
+    }
 ?>
