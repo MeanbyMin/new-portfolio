@@ -58,10 +58,8 @@
             $filepath = $uploads_dir."/".$rename;
             move_uploaded_file($_FILES['upload']['tmp_name'][$i], $filepath);
             $imgfile .= $filepath.",";
-            echo $imgfile."<br>";
         }
-        $imgfile .= substr($imgfile, 0, -1);
-        // echo $imgfile."<br>";
+        $imgfile = substr($imgfile, 0, -1);
     }
     $r_photo = $imgfile.",".$r_photo;
 

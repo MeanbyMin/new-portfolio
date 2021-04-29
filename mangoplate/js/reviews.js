@@ -256,32 +256,32 @@ function upload_file(e) {
 
 let mr_remainPhotoArr = [];
 function reviewUpload() {
-  mr_content.value = ReviewEditor__Editor.value;
-  let PictureReady = document.querySelectorAll(".Picture--Ready");
-  if (PictureReady !== null) {
-    for (pic of PictureReady) {
-      if (pic.style.backgroundImage.includes("upload") == true) {
-        let img = String(pic.style.backgroundImage);
-        let url = img.substring(5, img.length - 2);
+  // mr_content.value = ReviewEditor__Editor.value;
+  // let PictureReady = document.querySelectorAll(".Picture--Ready");
+  // if (PictureReady !== null) {
+  //   for (pic of PictureReady) {
+  //     if (pic.style.backgroundImage.includes("upload") == true) {
+  //       let img = String(pic.style.backgroundImage);
+  //       let url = img.substring(5, img.length - 2);
 
-        mr_remainPhotoArr.push(url);
-      }
-    }
-  }
-  mr_remainPhoto.value = mr_remainPhotoArr;
-  const formData = new FormData();
-  for (let i = 0; i < mr_photo.length; i++) {
-    formData.append("upload[]", mr_photo[i]);
-  }
+  //       mr_remainPhotoArr.push(url);
+  //     }
+  //   }
+  // }
+  // mr_remainPhoto.value = mr_remainPhotoArr;
+  // const formData = new FormData();
+  // for (let i = 0; i < mr_photo.length; i++) {
+  //   formData.append("upload[]", mr_photo[i]);
+  // }
 
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "./review_ok.php");
-  xhr.send(formData);
-  xhr.onreadystatechange = function () {
-    if (this.status == 200 && this.readyState == 4) {
-      console.log("OK.");
-    }
-  };
+  // var xhr = new XMLHttpRequest();
+  // xhr.open("POST", "./review_ok.php");
+  // xhr.send(formData);
+  // xhr.onreadystatechange = function () {
+  //   if (this.status == 200 && this.readyState == 4) {
+  //     console.log("OK.");
+  //   }
+  // };
   mr_submit.click();
 }
 
