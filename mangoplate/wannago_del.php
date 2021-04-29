@@ -1,15 +1,9 @@
 <?php
     session_start();
     include "./include/dbconn.php";
-    include "./inlcude/mangosessionCheck.php";
-    include "./include/getIdxCheck.php";
 
     $r_idx = $_POST['r_idx'];
     $mm_userid = $_POST['mm_userid'];
-
-    검색조건에 like를 이용하여 해당 r_idx가 있는지 찾아야함.
-    ,글자가 있으면 r_idx,로 나누어서 앞과 뒤를 합치고
-    ,글자가 없으면 mm_wannago값 없애기
 
     if($conn){
         $sql = "UPDATE mango_restaurant SET r_wannago = r_wannago - 1 WHERE r_idx = '$r_idx'";
@@ -33,7 +27,7 @@
                 $mm_wannago = $mm_wannagoArr[0];
             }
         }else{
-            $mm_wannago = Null;
+            $mm_wannago = "";
         }
         $sql = "UPDATE mango_member SET mm_wannago = '$mm_wannago' WHERE mm_userid = '$mm_userid'";
         $result = mysqli_query($conn, $sql);

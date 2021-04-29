@@ -577,7 +577,9 @@ function CLICK_LOCATION(e) {
         let span = document.createElement("span");
         span.setAttribute("class", "metro_btn ng-scope");
         span.innerHTML = `
-          <input type="checkbox" id="region01_0${i + 1}" name="region">
+          <input type="checkbox" id="region01_0${
+            i + 1
+          }" name="region[]" value="${arr[i]}">
           <label for="region01_0${i + 1}" class="small" onclick="">
               <span class="ng-binding">${arr[i]}</span>
           </label>
@@ -595,56 +597,4 @@ function moreRegion() {
   moreRegion.style.display === "none"
     ? (moreRegion.style.display = "block")
     : (moreRegion.style.display = "none");
-}
-
-// 필터 적용 버튼
-function CLICK_FILTER_APPLY() {
-  let sorting = document.querySelector('input[name="sorting"]:checked').value;
-  let cost = document.querySelectorAll('input[name="cost"]:checked');
-  let costarr = [];
-  for (let i = 0; i < cost.length; i++) {
-    costarr[i] = cost[i].value;
-  }
-  // console.log(costarr);
-
-  let region = document.querySelectorAll('input[name="region"]:checked');
-  let regionarr = [];
-  for (let i = 0; i < region.length; i++) {
-    regionarr[i] = region[
-      i
-    ].nextSibling.nextSibling.childNodes[1].textContent.trim();
-  }
-  // console.log(regionarr);
-
-  let food = document.querySelectorAll('input[name="food"]:checked');
-  let foodarr = [];
-  for (let i = 0; i < food.length; i++) {
-    foodarr[i] = food[i].nextSibling.textContent.trim();
-  }
-  // console.log(foodarr);
-
-  let parking = document.querySelector('input[name="parking"]:checked').value;
-
-  const xhr = new XMLHttpRequest();
-  xhr.open("POST", "./search.php?search=" + search);
-  xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-  const data =
-    "sorting=" +
-    `${sorting}` +
-    "&costarr=" +
-    `${costarr}` +
-    "&regionarr=" +
-    `${regionarr}` +
-    "&foodarr=" +
-    `${foodarr}` +
-    "&parking=" +
-    `${parking}` +
-    "&search=" +
-    `${search}`;
-  xhr.send(data);
-  xhr.onload = () => {
-    if (xhr.status === 200) {
-      location.reload();
-    }
-  };
 }

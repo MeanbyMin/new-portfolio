@@ -2,7 +2,6 @@
     header('Content-Type: text/html; charset=UTF-8');
     session_start();
     include "./include/dbconn.php";
-    // include "./inlcude/mangosessionCheck.php";
 
     $mm_userid = $_POST['mm_userid'];
     $sql = "SELECT mm_wannago FROM mango_member WHERE mm_userid = '$mm_userid'";
@@ -30,5 +29,5 @@
             array_push($wannago_list, $wannagoadd);
         }
     }
-    echo var_dump($wannago_list);
+    echo json_encode($wannago_list);
 ?>

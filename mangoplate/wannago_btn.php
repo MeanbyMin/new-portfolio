@@ -18,7 +18,7 @@
         $sql = "SELECT mm_wannago FROM mango_member WHERE mm_userid = '$mm_userid'";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_array($result);
-        if($row['mm_wannago']){
+        if($row['mm_wannago'] !== ""){
             $mm_wannago = $row['mm_wannago'];
             $mm_wannago = $mm_wannago.",".$r_idx;
         }else{

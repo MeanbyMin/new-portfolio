@@ -203,40 +203,69 @@ function CLICK_RECENT_TAB() {
   UserRestaurantHistoryTabItemWannago.classList.remove(
     "UserRestaurantHistory__TabItem--Selected"
   );
-  UserRestaurantHistoryEmptyViewedRestaurantHistory.classList.add(
-    "UserRestaurantHistory__EmptyViewedRestaurantHistory--Show"
-  );
-  UserRestaurantHistoryEmptyWannagoRestaurantHistory.classList.remove(
-    "UserRestaurantHistory__EmptyWannagoRestaurantHistory--Show"
-  );
+  if (mm_recentarr !== "") {
+    let UserRestaurantHistory__HistoryHeader = document.querySelector(
+      ".UserRestaurantHistory__HistoryHeader"
+    );
+    UserRestaurantHistory__HistoryHeader.classList.add(
+      "UserRestaurantHistory__HistoryHeader--Show"
+    );
+    let recent_arr = document.querySelector(
+      ".UserRestaurantHistory__RestaurantList.mm_recentarr"
+    );
+    recent_arr.classList.add("mm_recentarr--Show");
+  } else {
+    UserRestaurantHistoryEmptyViewedRestaurantHistory.classList.add(
+      "UserRestaurantHistory__EmptyViewedRestaurantHistory--Show"
+    );
+  }
+  if (mm_wannago !== "") {
+    let wannago_arr = document.querySelector(
+      ".UserRestaurantHistory__RestaurantList.mm_wannagoarr"
+    );
+    wannago_arr.classList.remove("mm_wannagoarr--Show");
+  } else {
+    UserRestaurantHistoryEmptyWannagoRestaurantHistory.classList.remove(
+      "UserRestaurantHistory__EmptyWannagoRestaurantHistory--Show"
+    );
+  }
 }
 
 function CLICK_WAANGO_TAB() {
+  console.log(mm_wannago);
   UserRestaurantHistoryTabItemWannago.classList.add(
     "UserRestaurantHistory__TabItem--Selected"
   );
   UserRestaurantHistoryTabItemViewed.classList.remove(
     "UserRestaurantHistory__TabItem--Selected"
   );
-  if (mm_wannago !== null) {
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", "./wannago_list.php");
-    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-    let data = "mm_userid=" + mm_userid;
-    xhr.send(data);
-    if (xhr.status === 200) {
-      console.log(xhr.responseText);
-    } else {
-      console.error(xhr.responseText);
-    }
+
+  if (mm_recentarr !== "") {
+    let UserRestaurantHistory__HistoryHeader = document.querySelector(
+      ".UserRestaurantHistory__HistoryHeader"
+    );
+    UserRestaurantHistory__HistoryHeader.classList.remove(
+      "UserRestaurantHistory__HistoryHeader--Show"
+    );
+    let recent_arr = document.querySelector(
+      ".UserRestaurantHistory__RestaurantList.mm_recentarr"
+    );
+    recent_arr.classList.remove("mm_recentarr--Show");
+  } else {
+    UserRestaurantHistoryEmptyViewedRestaurantHistory.classList.remove(
+      "UserRestaurantHistory__EmptyViewedRestaurantHistory--Show"
+    );
   }
-  UserRestaurantHistoryEmptyViewedRestaurantHistory.classList.remove(
-    "UserRestaurantHistory__EmptyViewedRestaurantHistory--Show"
-  );
-  UserRestaurantHistoryEmptyWannagoRestaurantHistory.classList.add(
-    "UserRestaurantHistory__EmptyWannagoRestaurantHistory--Show"
-  );
-  // console.log(mm_wannago);
+  if (mm_wannago[0] !== "") {
+    let wannago_arr = document.querySelector(
+      ".UserRestaurantHistory__RestaurantList.mm_wannagoarr"
+    );
+    wannago_arr.classList.add("mm_wannagoarr--Show");
+  } else {
+    UserRestaurantHistoryEmptyWannagoRestaurantHistory.classList.add(
+      "UserRestaurantHistory__EmptyWannagoRestaurantHistory--Show"
+    );
+  }
 }
 
 // 스크롤에 의한 헤더 변화
@@ -458,3 +487,50 @@ clearBtn.addEventListener("click", () => {
 const CLICK_KEYWORD_SEARCH = () => {
   location.href = "./search.php?search=" + mainSearch.value;
 };
+
+// 최근 본 맛집 삭제
+function CLICK_VIEWED_RESTAURANT_CLEAR() {
+  document.cookie = sessionid + "=; expires=Thu, 01 Jan 1999 00:00:10 GMT;";
+  location.reload();
+}
+
+// 유저프로필 wannago btn
+function profile_wannago_btn(e) {
+  if (
+    e.classList.contains("RestaurantHorizontalItem__WannagoButton--Selected")
+  ) {
+    let r_idx =
+      e.previousSibling.previousSibling.childNodes[1].dataset.restaurant;
+    console.log(r_idx);
+    e.classList.remove("RestaurantHorizontalItem__WannagoButton--Selected");
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "./wannago_del.php");
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    const data = "mm_userid=" + mm_userid + "&r_idx=" + r_idx;
+    xhr.send(data);
+    xhr.onload = () => {
+      if (xhr.status === 200) {
+        console.log("가고싶다 제거 성공");
+      } else {
+        console.log("가고싶다 제거 실패");
+      }
+    };
+  } else {
+    let r_idx =
+      e.previousSibling.previousSibling.childNodes[1].dataset.restaurant;
+    console.log(r_idx);
+    e.classList.add("RestaurantHorizontalItem__WannagoButton--Selected");
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "./wannago_btn.php");
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    const data = "mm_userid=" + mm_userid + "&r_idx=" + r_idx;
+    xhr.send(data);
+    xhr.onload = () => {
+      if (xhr.status === 200) {
+        console.log("가고싶다 추가 성공");
+      } else {
+        console.log("가고싶다 추가 실패");
+      }
+    };
+  }
+}

@@ -2,42 +2,162 @@
     header('Content-Type: text/html; charset=UTF-8');
     session_start();
     include "./include/dbconn.php";
+    if(isset($_SESSION['mangoid'])){
+        $id = $_SESSION['mangoid'];
+        if(isset($_SESSION['email'])){
+            $email = $_SESSION['email'];
+        }
+        $name = $_SESSION['name'];
+        $image = $_SESSION['image'];
+    }
     $search = $_GET['search'];
+
+
+    $sorting = "";
     if(isset($_POST['sorting'])){
-        echo 1;
+        if($_POST['sorting'] === "2"){
+            $sorting = "r_grade";
+        }else if($_POST['sorting'] === "0"){
+            $sorting = "r_review";
+        }   
+
+    }
+    $costarr = [];
+    if(isset($_POST['cost'])){
+        $cost = $_POST['cost'];
+        for($i=0; $i<count($cost); $i++){
+            if($cost[$i] === "1"){
+                $costresult = "만원 미만";
+                array_push($costarr, $costresult);
+            }else if($cost[$i] === "2"){
+                $costresult = "만원-2만원";
+                array_push($costarr, $costresult);
+            }else if($cost[$i] === "3"){
+                $costresult = "2만원-3만원";
+                array_push($costarr, $costresult);
+            }else if($cost[$i] === "4"){
+                $costresult = "3만원-4만원";
+                array_push($costarr, $costresult);
+            }
+        }
     }
 
-    // if(isset($_SESSION['mangoid'])){
-    //     $id = $_SESSION['mangoid'];
-    //     if(isset($_SESSION['email'])){
-    //         $email = $_SESSION['email'];
-    //     }
-    //     $name = $_SESSION['name'];
-    //     $image = $_SESSION['image'];
-    // }
+
+    $region;
+    if(isset($_POST['region'])){
+        $region = $_POST['region'];
+    }
 
 
-    // $sql = "SELECT r_idx, r_restaurant, r_branch, r_grade, r_read, r_review, r_wannago, r_repphoto, r_repadd, r_address, r_jibunaddress, r_foodtype  FROM mango_restaurant WHERE r_restaurant like '%$search%' OR r_repadd like '%$search%' OR r_address like '%$search%' OR r_jibunaddress like '%$search%' OR r_menu like '%$search%' OR r_tags like '%$search%' ORDER BY r_grade DESC";
-    // $result = mysqli_query($conn, $sql);
+    $food;
+    if(isset($_POST['food'])){
+        $food = $_POST['food'];
+    }
 
-    // $pageNum = 20;
-    // $pageTotal = $result->num_rows;
-    // $page = 0;
-    // // echo $_GET['page'];
-    // if(isset($_GET['page'])){
-    //     $page = ($_GET['page']-1) * $pageNum;
-    // };
+    $searchlist = [];
+    if(isset($_POST['sorting'])){
+        $cs = "";
+        if(isset($costarr)){
+            $costsearch = " AND r_price IN (";
+            if(count($costarr) === 1){
+                $costsearch .= "'$costarr[0]'";
+            }else if(count($costarr) > 1){
+                for($i=0;$i<count($costarr);$i++){
+                    if($i === (count($costarr) - 1)){
+                        $costsearch .= "'$costarr[$i]'";    
+                    }else{
+                        $costsearch .= "'$costarr[$i]'".",";
+                    }
+                }
+            }
+            $cs = $costsearch;
+            $cs .= ")";
+        }
 
-    // $sql = "SELECT r_idx, r_restaurant, r_branch, r_grade, r_read, r_review, r_wannago, r_repphoto, r_repadd, r_address, r_jibunaddress, r_foodtype  FROM mango_restaurant WHERE r_restaurant like '%$search%' OR r_repadd like '%$search%' OR r_address like '%$search%' OR r_jibunaddress like '%$search%' OR r_menu like '%$search%' OR r_tags like '%$search%' ORDER BY r_grade DESC LIMIT $page, $pageNum";
-    // $result = mysqli_query($conn, $sql);
+        $rs = "";
+        if(isset($region)){
+            $regionsearch = " AND r_repadd IN (";
+            if(count($region) === 1){
+                $regionsearch .= "'$region[0]'";
+            }else if(count($region) > 1){
+                for($i=0;$i<count($region);$i++){
+                    if($i === (count($region) - 1)){
+                        $regionsearch .= "'$region[$i]'";    
+                    }else{
+                        $regionsearch .= "'$region[$i]'".",";
+                    }
+                }
+            }
+            $rs = $regionsearch;
+            $rs .= ")";
+        }
 
-    // $searchlist = [];
-    // while($row = mysqli_fetch_array($result)){
-    //     $searchadd = array('r_idx' => $row['r_idx'], 'r_restaurant' => $row['r_restaurant'], 'r_branch' => $row['r_branch'], 'r_grade' => $row['r_grade'], 'r_read' => $row['r_read'], 'r_review' => $row['r_review'], 'r_wannago' => $row['r_wannago'], 'r_repphoto' => $row['r_repphoto'], 'r_repadd' => $row['r_repadd'], 'r_address' => $row['r_address'], 'r_jibunaddress' => $row['r_jibunaddress'], 'r_foodtype' => $row['r_foodtype']);
-    //     array_push($searchlist, $searchadd);
-    // }
+        $fs = "";
+        if(isset($food)){
+            $foodsearch = " AND r_foodtype IN (";
+            if(count($food) === 1){
+                $foodsearch .= "'$food[0]'";
+            }else if(count($food) > 1){
+                for($i=0;$i<count($food);$i++){
+                    if($i === (count($food) - 1)){
+                        $foodsearch .= "'$food[$i]'";    
+                    }else{
+                        $foodsearch .= "'$food[$i]'".",";
+                    }
+                }
+            }
+            $fs = $foodsearch;
+            $fs .= ")";
+        }
 
-    // echo count($searchlist)."<br>";
+        $ps = "";
+        if(isset($parking)){
+            if($parking === "1"){
+                $parking = "주차공간없음";
+                $ps = " AND r_parking NOT LIKE '$parking'";
+            }
+        }
+        $sql = "SELECT r_idx, r_restaurant, r_branch, r_grade, r_read, r_review, r_wannago, r_repphoto, r_repadd, r_address, r_jibunaddress, r_foodtype  FROM mango_restaurant WHERE (r_restaurant like '%$search%' OR r_repadd like '%$search%' OR r_address like '%$search%' OR r_jibunaddress like '%$search%' OR r_menu like '%$search%' OR r_tags like '%$search%') $cs $rs $fs $ps ORDER BY $sorting DESC";
+
+        $result = mysqli_query($conn, $sql);
+
+        $pageNum = 20;
+        $pageTotal = $result->num_rows;
+        $page = 0;
+
+        if(isset($_GET['page'])){
+            $page = ($_GET['page']-1) * $pageNum;
+        };
+
+        $sql = "SELECT r_idx, r_restaurant, r_branch, r_grade, r_read, r_review, r_wannago, r_repphoto, r_repadd, r_address, r_jibunaddress, r_foodtype  FROM mango_restaurant WHERE (r_restaurant like '%$search%' OR r_repadd like '%$search%' OR r_address like '%$search%' OR r_jibunaddress like '%$search%' OR r_menu like '%$search%' OR r_tags like '%$search%') $cs $rs $fs $ps ORDER BY $sorting DESC LIMIT $page, $pageNum";
+        $result = mysqli_query($conn, $sql);
+
+        
+        while($row = mysqli_fetch_array($result)){
+            $searchadd = array('r_idx' => $row['r_idx'], 'r_restaurant' => $row['r_restaurant'], 'r_branch' => $row['r_branch'], 'r_grade' => $row['r_grade'], 'r_read' => $row['r_read'], 'r_review' => $row['r_review'], 'r_wannago' => $row['r_wannago'], 'r_repphoto' => $row['r_repphoto'], 'r_repadd' => $row['r_repadd'], 'r_address' => $row['r_address'], 'r_jibunaddress' => $row['r_jibunaddress'], 'r_foodtype' => $row['r_foodtype']);
+            array_push($searchlist, $searchadd);
+        }
+    }else{
+        $sql = "SELECT r_idx, r_restaurant, r_branch, r_grade, r_read, r_review, r_wannago, r_repphoto, r_repadd, r_address, r_jibunaddress, r_foodtype  FROM mango_restaurant WHERE r_restaurant like '%$search%' OR r_repadd like '%$search%' OR r_address like '%$search%' OR r_jibunaddress like '%$search%' OR r_menu like '%$search%' OR r_tags like '%$search%' ORDER BY r_grade DESC";
+        $result = mysqli_query($conn, $sql);
+        
+        $pageNum = 20;
+        $pageTotal = $result->num_rows;
+        $page = 0;
+
+        if(isset($_GET['page'])){
+            $page = ($_GET['page']-1) * $pageNum;
+        };
+        
+        $sql = "SELECT r_idx, r_restaurant, r_branch, r_grade, r_read, r_review, r_wannago, r_repphoto, r_repadd, r_address, r_jibunaddress, r_foodtype  FROM mango_restaurant WHERE r_restaurant like '%$search%' OR r_repadd like '%$search%' OR r_address like '%$search%' OR r_jibunaddress like '%$search%' OR r_menu like '%$search%' OR r_tags like '%$search%' ORDER BY r_grade DESC LIMIT $page, $pageNum";
+        $result = mysqli_query($conn, $sql);
+        
+
+        while($row = mysqli_fetch_array($result)){
+            $searchadd = array('r_idx' => $row['r_idx'], 'r_restaurant' => $row['r_restaurant'], 'r_branch' => $row['r_branch'], 'r_grade' => $row['r_grade'], 'r_read' => $row['r_read'], 'r_review' => $row['r_review'], 'r_wannago' => $row['r_wannago'], 'r_repphoto' => $row['r_repphoto'], 'r_repadd' => $row['r_repadd'], 'r_address' => $row['r_address'], 'r_jibunaddress' => $row['r_jibunaddress'], 'r_foodtype' => $row['r_foodtype']);
+            array_push($searchlist, $searchadd);
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="kor">
@@ -452,8 +572,19 @@
                                 <div class="search_info">
                                     <div class="search-options"
                                         ng-class="{is_empty_result: search_result_list.length === 0}">
+<?php
+    if(isset($_POST['sorting'])){
+?>
+                                        <button class="btn filter selected" ng-class="{selected: is_apply_filter}"
+                                            ng-click="open_filter()" onclick="open_filter()">필터</button>
+<?php
+    }else{
+?>
                                         <button class="btn filter" ng-class="{selected: is_apply_filter}"
                                             ng-click="open_filter()" onclick="open_filter()">필터</button>
+<?php
+    }
+?>
                                     </div>
 
                                     <div class="search_top_title_wrap">
@@ -752,10 +883,10 @@
                         </div>
 
                         <aside class="popup search-filter">
+                            <form action="./search.php?search=<?=$search?>" method="post">
                             <div class="inner">
                                 <div>
                                     <!--<legend>검색 필터</legend>-->
-
                                     <div class="filter-item">
                                         <label for="sorting01">검색 필터</label>
                                         <p class="order_wrap">
@@ -771,22 +902,22 @@
                                         <label for="">가격/1인당</label>
 
                                         <p class="cost_wrap">
-                                            <input type="checkbox" id="cost01" name="cost" class="cost"
+                                            <input type="checkbox" id="cost01" name="cost[]" class="cost"
                                                 ng-checked="is_checked_price_value(price_filter_name, 1)" data-value="1"
                                                 value="1"><label onclick="" for="cost01" class="cost01 cost-zoom"
                                                 data-filter="1"
                                                 ng-click="set_filter_value(price_filter_name, $event, price_filter_value_hadler)"><span>만원미만</span></label>
-                                            <input type="checkbox" id="cost02" name="cost" class="cost"
+                                            <input type="checkbox" id="cost02" name="cost[]" class="cost"
                                                 ng-checked="is_checked_price_value(price_filter_name, 2)" data-value="2"
                                                 value="2"><label onclick="" for="cost02" class="cost02 cost-zoom"
                                                 data-filter="2"
                                                 ng-click="set_filter_value(price_filter_name, $event, price_filter_value_hadler)"><span>1만원대</span></label>
-                                            <input type="checkbox" id="cost03" name="cost" class="cost"
+                                            <input type="checkbox" id="cost03" name="cost[]" class="cost"
                                                 ng-checked="is_checked_price_value(price_filter_name, 3)" data-value="3"
                                                 value="3"><label onclick="" for="cost03" class="cost03 cost-zoom"
                                                 data-filter="3"
                                                 ng-click="set_filter_value(price_filter_name, $event, price_filter_value_hadler)"><span>2만원대</span></label>
-                                            <input type="checkbox" id="cost04" name="cost" class="cost"
+                                            <input type="checkbox" id="cost04" name="cost[]" class="cost"
                                                 ng-checked="is_checked_price_value(price_filter_name, 4)" data-value="4"
                                                 value="4"><label onclick="" for="cost04" class="cost04 cost-zoom"
                                                 data-filter="4,5"
@@ -808,157 +939,157 @@
                                         </p>
                                         <p class="metro">
                                             <span class="metro_btn ng-scope">
-                                                <input type="checkbox" id="region01_01" name="region">
+                                                <input type="checkbox" id="region01_01" name="region[]" value="가로수길">
                                                 <label for="region01_01" class="small" onclick="">
                                                     <span class="ng-binding">가로수길</span>
                                                 </label>
                                             </span>
                                             <span class="metro_btn ng-scope">
-                                                <input type="checkbox" id="region01_02" name="region">
+                                                <input type="checkbox" id="region01_02" name="region[]" value="강남역">
                                                 <label for="region01_02" class="small" onclick="">
                                                     <span class="ng-binding">강남역</span>
                                                 </label>
                                             </span>
                                             <span class="metro_btn ng-scope">
-                                                <input type="checkbox" id="region01_03" name="region">
+                                                <input type="checkbox" id="region01_03" name="region[]" value="강동구">
                                                 <label for="region01_03" class="small" onclick="">
                                                     <span class="ng-binding">강동구</span>
                                                 </label>
                                             </span>
                                             <span class="metro_btn ng-scope">
-                                                <input type="checkbox" id="region01_04" name="region">
+                                                <input type="checkbox" id="region01_04" name="region[]" value="개포/수서/일원">
                                                 <label for="region01_04" class="small" onclick="">
                                                     <span class="ng-binding">개포/수서/일원</span>
                                                 </label>
                                             </span>
                                             <span class="metro_btn ng-scope">
-                                                <input type="checkbox" id="region01_05" name="region">
+                                                <input type="checkbox" id="region01_05" name="region[]" value="관악구">
                                                 <label for="region01_05" class="small" onclick="">
                                                     <span class="ng-binding">관악구</span>
                                                 </label>
                                             </span>
                                             <span class="metro_btn ng-scope">
-                                                <input type="checkbox" id="region01_06" name="region">
+                                                <input type="checkbox" id="region01_06" name="region[]" value="교대/서초">
                                                 <label for="region01_06" class="small" onclick="">
                                                     <span class="ng-binding">교대/서초</span>
                                                 </label>
                                             </span>
                                             <span class="metro_btn ng-scope">
-                                                <input type="checkbox" id="region01_07" name="region">
+                                                <input type="checkbox" id="region01_07" name="region[]" value="구로구">
                                                 <label for="region01_07" class="small" onclick="">
                                                     <span class="ng-binding">구로구</span>
                                                 </label>
                                             </span>
                                             <span class="metro_btn ng-scope">
-                                                <input type="checkbox" id="region01_08" name="region">
+                                                <input type="checkbox" id="region01_08" name="region[]" value="금천구">
                                                 <label for="region01_08" class="small" onclick="">
                                                     <span class="ng-binding">금천구</span>
                                                 </label>
                                             </span>
                                             <span class="metro_btn ng-scope">
-                                                <input type="checkbox" id="region01_09" name="region">
+                                                <input type="checkbox" id="region01_09" name="region[]" value="논현동">
                                                 <label for="region01_09" class="small" onclick="">
                                                     <span class="ng-binding">논현동</span>
                                                 </label>
                                             </span>
                                             <span class="metro_btn ng-scope">
-                                                <input type="checkbox" id="region01_010" name="region">
+                                                <input type="checkbox" id="region01_010" name="region[]" value="대치동">
                                                 <label for="region01_010" class="small" onclick="">
                                                     <span class="ng-binding">대치동</span>
                                                 </label>
                                             </span>
                                             <span class="metro_btn ng-scope">
-                                                <input type="checkbox" id="region01_011" name="region">
+                                                <input type="checkbox" id="region01_011" name="region[]" value="도곡동">
                                                 <label for="region01_011" class="small" onclick="">
                                                     <span class="ng-binding">도곡동</span>
                                                 </label>
                                             </span>
                                             <span class="metro_btn ng-scope">
-                                                <input type="checkbox" id="region01_012" name="region">
+                                                <input type="checkbox" id="region01_012" name="region[]" value="동작/사당">
                                                 <label for="region01_012" class="small" onclick="">
                                                     <span class="ng-binding">동작/사당</span>
                                                 </label>
                                             </span>
                                             <span class="metro_btn ng-scope">
-                                                <input type="checkbox" id="region01_013" name="region">
+                                                <input type="checkbox" id="region01_013" name="region[]" value="등촌/강서">
                                                 <label for="region01_013" class="small" onclick="">
                                                     <span class="ng-binding">등촌/강서</span>
                                                 </label>
                                             </span>
                                             <span class="metro_btn ng-scope">
-                                                <input type="checkbox" id="region01_014" name="region">
+                                                <input type="checkbox" id="region01_014" name="region[]" value="목동/양천">
                                                 <label for="region01_014" class="small" onclick="">
                                                     <span class="ng-binding">목동/양천</span>
                                                 </label>
                                             </span>
                                             <span class="metro_btn ng-scope">
-                                                <input type="checkbox" id="region01_015" name="region">
+                                                <input type="checkbox" id="region01_015" name="region[]" value="방배/반포/잠원">
                                                 <label for="region01_015" class="small" onclick="">
                                                     <span class="ng-binding">방배/반포/잠원</span>
                                                 </label>
                                             </span>
                                             <span class="metro_btn ng-scope">
-                                                <input type="checkbox" id="region01_016" name="region">
+                                                <input type="checkbox" id="region01_016" name="region[]" value="방이동">
                                                 <label for="region01_016" class="small" onclick="">
                                                     <span class="ng-binding">방이동</span>
                                                 </label>
                                             </span>
                                             <span class="metro_btn ng-scope">
-                                                <input type="checkbox" id="region01_017" name="region">
+                                                <input type="checkbox" id="region01_017" name="region[]" value="삼성동">
                                                 <label for="region01_017" class="small" onclick="">
                                                     <span class="ng-binding">삼성동</span>
                                                 </label>
                                             </span>
                                             <span class="metro_btn ng-scope">
-                                                <input type="checkbox" id="region01_018" name="region">
+                                                <input type="checkbox" id="region01_018" name="region[]" value="서래마을">
                                                 <label for="region01_018" class="small" onclick="">
                                                     <span class="ng-binding">서래마을</span>
                                                 </label>
                                             </span>
                                             <span class="metro_btn ng-scope">
-                                                <input type="checkbox" id="region01_019" name="region">
+                                                <input type="checkbox" id="region01_019" name="region[]" value="송파/가락">
                                                 <label for="region01_019" class="small" onclick="">
                                                     <span class="ng-binding">송파/가락</span>
                                                 </label>
                                             </span>
                                             <span class="metro_btn ng-scope">
-                                                <input type="checkbox" id="region01_020" name="region">
+                                                <input type="checkbox" id="region01_020" name="region[]" value="신사/압구정">
                                                 <label for="region01_020" class="small" onclick="">
                                                     <span class="ng-binding">신사/압구정</span>
                                                 </label>
                                             </span>
                                             <span class="metro_btn ng-scope">
-                                                <input type="checkbox" id="region01_021" name="region">
+                                                <input type="checkbox" id="region01_021" name="region[]" value="신천/잠실">
                                                 <label for="region01_021" class="small" onclick="">
                                                     <span class="ng-binding">신천/잠실</span>
                                                 </label>
                                             </span>
                                             <span class="metro_btn ng-scope">
-                                                <input type="checkbox" id="region01_022" name="region">
+                                                <input type="checkbox" id="region01_022" name="region[]" value="양재동">
                                                 <label for="region01_022" class="small" onclick="">
                                                     <span class="ng-binding">양재동</span>
                                                 </label>
                                             </span>
                                             <span class="metro_btn ng-scope">
-                                                <input type="checkbox" id="region01_023" name="region">
+                                                <input type="checkbox" id="region01_023" name="region[]" value="여의도">
                                                 <label for="region01_023" class="small" onclick="">
                                                     <span class="ng-binding">여의도</span>
                                                 </label>
                                             </span>
                                             <span class="metro_btn ng-scope">
-                                                <input type="checkbox" id="region01_024" name="region">
+                                                <input type="checkbox" id="region01_024" name="region[]" value="역삼/선릉">
                                                 <label for="region01_024" class="small" onclick="">
                                                     <span class="ng-binding">역삼/선릉</span>
                                                 </label>
                                             </span>
                                             <span class="metro_btn ng-scope">
-                                                <input type="checkbox" id="region01_025" name="region">
+                                                <input type="checkbox" id="region01_025" name="region[]" value="영등포구">
                                                 <label for="region01_025" class="small" onclick="">
                                                     <span class="ng-binding">영등포구</span>
                                                 </label>
                                             </span>
                                             <span class="metro_btn ng-scope">
-                                                <input type="checkbox" id="region01_026" name="region">
+                                                <input type="checkbox" id="region01_026" name="region[]" value="청담동">
                                                 <label for="region01_026" class="small" onclick="">
                                                     <span class="ng-binding">청담동</span>
                                                 </label>
@@ -993,21 +1124,21 @@
                                         <label for="">음식종류</label>
 
                                         <p class="cuisine_list_wrap">
-                                            <input type="checkbox" id="food01" name="food" class="food"><label
+                                            <input type="checkbox" id="food01" name="food[]" class="food" value="한식"><label
                                                 for="food01" class="food01">한식</label>
-                                            <input type="checkbox" id="food02" name="food" class="food"><label
+                                            <input type="checkbox" id="food02" name="food[]" class="food" value="일식"><label
                                                 for="food02" class="food02">일식</label>
-                                            <input type="checkbox" id="food03" name="food" class="food"><label
+                                            <input type="checkbox" id="food03" name="food[]" class="food" value="중식"><label
                                                 for="food03" class="food03">중식</label>
-                                            <input type="checkbox" id="food04" name="food" class="food"><label
+                                            <input type="checkbox" id="food04" name="food[]" class="food" value="양식"><label
                                                 for="food04" class="food04 line-break">양식</label>
-                                            <input type="checkbox" id="food05" name="food" class="food"><label
+                                            <input type="checkbox" id="food05" name="food[]" class="food" value="세계음식"><label
                                                 for="food05" class="food05">세계음식</label>
-                                            <input type="checkbox" id="food06" name="food" class="food"><label
+                                            <input type="checkbox" id="food06" name="food[]" class="food" value="뷔페"><label
                                                 for="food06" class="food06">뷔페</label>
-                                            <input type="checkbox" id="food07" name="food" class="food"><label
+                                            <input type="checkbox" id="food07" name="food[]" class="food" value="카페"><label
                                                 for="food07" class="food07">카페</label>
-                                            <input type="checkbox" id="food08" name="food" class="food"><label
+                                            <input type="checkbox" id="food08" name="food[]" class="food" value="주점"><label
                                                 for="food08" class="food08 line-break">주점</label>
                                         </p>
                                     </div>
@@ -1016,7 +1147,7 @@
                                         <label for="parking01">주차</label>
                                         <p>
                                             <input type="radio" id="parking01" name="parking" value="0" checked><label
-                                                for="parking01"> 상관없음</label>
+                                                for="parking01">상관없음</label>
                                             <input type="radio" id="parking02" name="parking" value="1"><label
                                                 for="parking02">가능한 곳만</label>
                                         </p>
@@ -1029,6 +1160,7 @@
                                     ng-click="close_filter_button()">취소</button>
                                 <button type="submit" onclick="CLICK_FILTER_APPLY()" class="btn submit">적용</button>
                             </div>
+                            </form>
                         </aside>
 
                     </div> <!-- class="column-contents" -->
@@ -1080,14 +1212,9 @@
                                     </li>
                                 </ul>
                             </section>
-
-                            <!-- detail SEO : 모바일 전용 -->
-
-                            <!-- SEO detail : 데스크탑 전용 -->
-
-                        </div> <!-- class="column-module" -->
+                        </div> 
                     </div>
-                </div> <!-- class="column-side" -->
+                </div> 
             </article>
         </main>
         <!-- 본문 끝 -->

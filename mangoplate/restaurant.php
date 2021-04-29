@@ -3,6 +3,8 @@
     session_start();
     include "./include/getmrIdxCheck.php";
     include "./include/dbconn.php";
+
+    $r_idx = $_GET['r_idx'];    
     $sql = "SELECT * FROM mango_member";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result);
@@ -13,10 +15,91 @@
         }
         $name = $_SESSION['name'];
         $image = $_SESSION['image'];
+        if(isset($row['mm_wannago'])){
+            $mm_wannago = $row['mm_wannago'];
+            $mm_wannagoarr = [];
+            if(strpos($mm_wannago, ",") > 0){
+                $mm_wannagoarr = explode(",", $mm_wannago);
+            }else{
+                array_push($mm_wannagoarr, $mm_wannago);
+            }
+        }
+    }else{
+        $mm_wannagoarr = "";
+        $id = "";
     }
     
-
-    $r_idx = $_GET['r_idx'];
+    // 최근 검색을 위한 쿠키 설정
+    $sessionid = session_id();
+    $newRecord = "";
+    
+    //식당 상세보기를 한번이라도 했다면
+    if(isset($_COOKIE[$sessionid])){
+        //이전에 조회한 숙소
+        $record = $_COOKIE[$sessionid];
+        $recoredArr =  explode(',', $record);
+        $isNewRecord = true;
+        //지금 조회한 식당이 전에 조회했던적이 있는지 검사
+        foreach($recoredArr as $r){
+            if($r_idx == $r){
+                $isNewRecord = false;
+            }
+        }
+        
+        //이전에 조회한적 없다면
+        if($isNewRecord){
+            //이전 조회 식당에 새로운 조회 식당 추가
+            $newRecord = $record.','.$r_idx;
+        }else{
+            $newRecord = $record;
+        }
+        
+        //식당 상세보기를 한번도 하지 않았다면
+    }else{
+        $newRecord = $r_idx;
+    }
+    
+    setcookie($sessionid, $newRecord); 
+    
+    // echo $_COOKIE[$sessionid];
+    
+    // 최근 본 맛집 리스트
+    if(isset($_COOKIE[$sessionid])){
+        if(strlen($_COOKIE[$sessionid]) > 0){
+            $mm_recentarr = [];
+            if(strpos($_COOKIE[$sessionid], ",") > 0){
+                $mm_recentarr = explode(",", $_COOKIE[$sessionid]);
+            }else{
+                array_push($mm_recentarr, $_COOKIE[$sessionid]);
+            }
+        }else{
+            $mm_recentarr = null;
+        }
+    }
+    
+    // 가고싶다 리스트
+    if(isset($mm_wannagoarr)){
+        if($mm_wannagoarr[0] !== ""){
+            $wannago_list = [];
+            $wannago_idx = "";
+            if(isset($mm_wannagoarr)){
+                foreach($mm_wannagoarr as $idx){
+                    $sql = "SELECT r_idx, r_restaurant, r_grade, r_repphoto, r_repadd, r_foodtype FROM mango_restaurant WHERE r_idx = '$idx'";
+                    $result = mysqli_query($conn, $sql);
+                    $row = mysqli_fetch_array($result);
+                    // echo var_dump($row);
+                    $wannagoadd = array('r_idx' => $row['r_idx'], 'r_restaurant' => $row['r_restaurant'], 'r_grade' => $row['r_grade'], 'r_repphoto' => $row['r_repphoto'], 'r_repadd' => $row['r_repadd'], 'r_foodtype' => $row['r_foodtype']);
+                    array_push($wannago_list, $wannagoadd);
+                }
+                for($i=0;$i<count($wannago_list);$i++){
+                    $wannago_idx .= $wannago_list[$i]['r_idx']." ";
+                }
+            }
+        }else{
+        }
+    }
+    
+    // 식당 정보
     $sql = "UPDATE mango_restaurant SET r_read = r_read + 1 WHERE r_idx = $r_idx";
     $result = mysqli_query($conn, $sql);
     $sql = "SELECT r_idx, r_restaurant, r_branch, r_grade, r_read, r_review, r_wannago, r_repphoto, r_photo, r_repadd, r_address, r_jibunaddress, r_tel, r_foodtype, r_price, r_website, r_parking, r_openhour, r_breaktime, r_lastorder, r_holiday, r_menu, r_menuprice, r_menuphoto, r_status, r_tags, r_regdate FROM mango_restaurant WHERE r_idx = '$r_idx' AND r_status = '등록'";
@@ -157,8 +240,8 @@
     </title>
 
     <!-- CSS styles -->
-    <link rel="stylesheet" href="./css/common.css" type="text/css">
     <link rel="stylesheet" href="./css/restaurant.css" type="text/css">
+    <link rel="stylesheet" href="./css/common.css" type="text/css">
     <link href="../img/ico.png" rel="shortcut icon" type="image/x-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
@@ -222,7 +305,17 @@
                         <button class="UserProfileButton" onclick="clickProfile()">
                             <i class="UserProfileButton__Picture"></i>
                             <i class="UserProfileButton__PersonIcon"></i>
-                            <span class="UserProfileButton__HistoryCount">0</span>
+<?php
+    if(!isset($_COOKIE[$sessionid])){
+?>
+                                <span class="UserProfileButton__HistoryCount">0</span>
+<?php
+    }else{
+?>
+                                <span class="UserProfileButton__HistoryCount"><?=count($mm_recentarr)?></span>
+<?php
+    }
+?>  
                         </button>
 <?php
                   }else{
@@ -230,7 +323,17 @@
                         <button class="UserProfileButton UserProfileButton--Login" onclick="clickProfile()">
                             <i class="UserProfileButton__Picture" style="background-image: url(<?=$image;?>)"></i>
                             <i class="UserProfileButton__PersonIcon"></i>
-                            <span class="UserProfileButton__HistoryCount">0</span>
+<?php
+    if(!isset($_COOKIE[$sessionid])){
+?>
+                                <span class="UserProfileButton__HistoryCount">0</span>
+<?php
+    }else{
+?>
+                                <span class="UserProfileButton__HistoryCount"><?=count($mm_recentarr)?></span>
+<?php
+    }
+?>  
                         </button>
 <?php
                   }
@@ -251,48 +354,201 @@
                         <ul class="UserRestaurantHistory__TabList">
                             <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Viewed UserRestaurantHistory__TabItem--Selected"
                                 onclick="CLICK_RECENT_TAB()">
+<?php
+    if(!isset($_COOKIE[$sessionid])){
+?>
                                 <button class="UserRestaurantHistory__TabButton">최근 본 맛집 <span
                                         class="UserRestaurantHistory__ViewedCount">0</span></button>
+<?php
+    }else{
+?>
+                                <button class="UserRestaurantHistory__TabButton">최근 본 맛집 <span
+                                        class="UserRestaurantHistory__ViewedCount"><?=count($mm_recentarr)?></span></button>
+<?php
+    }
+?>  
                             </li>
 <?php
-                          if(isset($id)){
-                      ?>
+    if(isset($id)){
+?>
                             <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Wannago"
                                 onclick="CLICK_WAANGO_TAB()">
                                 <button class="UserRestaurantHistory__TabButton">가고싶다</button>
                             </li>
 <?php
-                          }else{
-                      ?>
+    }else{
+?>
                             <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Wannago"
                                 onclick="clickLogin()">
                                 <button class="UserRestaurantHistory__TabButton">가고싶다</button>
                             </li>
 <?php
-                          }
-                      ?>
+    }
+?>
                         </ul>
 
                         <div class="UserRestaurantHistory__HistoryContainer">
-                            <div class="UserRestaurantHistory__HistoryHeader">
+<?php
+    if(isset($_COOKIE[$sessionid])){
+?>
+                            <div class="UserRestaurantHistory__HistoryHeader UserRestaurantHistory__HistoryHeader--Show">
+                                <button class="UserRestaurantHistory__ClearAllHistoryButton" onclick="CLICK_VIEWED_RESTAURANT_CLEAR()">
+                                    x clear all
+                                </button>
+                            </div>
+                            <ul class="UserRestaurantHistory__RestaurantList mm_recentarr mm_recentarr--Show">
+<?php
+    $recent_list = [];
+    if(isset($mm_recentarr)){
+        foreach($mm_recentarr as $r_idx){
+            $sql = "SELECT r_idx, r_restaurant, r_grade, r_repphoto, r_repadd, r_foodtype FROM mango_restaurant WHERE r_idx = '$r_idx'";
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_array($result);
+            // echo var_dump($row);
+            $recentadd = array('r_idx' => $row['r_idx'], 'r_restaurant' => $row['r_restaurant'], 'r_grade' => $row['r_grade'], 'r_repphoto' => $row['r_repphoto'], 'r_repadd' => $row['r_repadd'], 'r_foodtype' => $row['r_foodtype']);
+            array_push($recent_list, $recentadd);
+        }
+    }
+    for($i=0;$i<count($recent_list);$i++){
+?>
+                            <li class="UserRestaurantHistory__RestaurantItem">
+                                <section class="RestaurantHorizontalItem">
+                                    <a href="./restaurant.php?r_idx=<?=$recent_list[$i]['r_idx']?>"
+                                        class="RestaurantHorizontalItem__Link" onclick="">
+                                        <div class="RestaurantHorizontalItem__Picture"
+                                            data-bg="url(<?=$recent_list[$i]['r_repphoto']?>)"
+                                            data-was-processed="true"
+                                            style="background-image: url(<?=$recent_list[$i]['r_repphoto']?>);">
+                                        </div>
+                                    </a>
+
+                                    <div class="RestaurantHorizontalItem__Info">
+                                        <a href="./restaurant.php?r_idx=<?=$recent_list[$i]['r_idx']?>"
+                                            class="RestaurantHorizontalItem__NameWrap RestaurantHorizontalItem__Link" data-restaurant="<?=$recent_list[$i]['r_idx']?>"
+                                            onclick="">
+                                            <h3 class="RestaurantHorizontalItem__Name">
+                                                <?=$recent_list[$i]['r_restaurant']?>
+                                            </h3>
+                                            <span
+                                                class="RestaurantHorizontalItem__Rating RestaurantHorizontalItem__Rating--Expected">
+                                                <?=$recent_list[$i]['r_grade']?>
+                                            </span>
+                                        </a>
+                                        <span class="RestaurantHorizontalItem__MetroAndCuisine">
+                                            <?=$recent_list[$i]['r_repadd']?> -
+                                            <?=$recent_list[$i]['r_foodtype']?>
+                                        </span>
+                                    </div>
+
+<?php
+    if(isset($id)){
+        if(isset($wannago_idx)){
+            if(strstr($wannago_idx, $recent_list[$i]['r_idx'])){
+?>
+                                    <button
+                                        class="RestaurantHorizontalItem__WannagoButton RestaurantHorizontalItem__WannagoButton--Selected" onclick="profile_wannago_btn(this)"></button>
+<?php
+            }else{
+?>
+                                    <button
+                                        class="RestaurantHorizontalItem__WannagoButton" onclick="profile_wannago_btn(this)"></button>
+<?php
+            }
+        }else{
+?>
+                                    <button
+                                        class="RestaurantHorizontalItem__WannagoButton" onclick="profile_wannago_btn(this)"></button>
+<?php
+        }
+    }else{
+?>
+                                    <button
+                                        class="RestaurantHorizontalItem__WannagoButton" onclick="clickLogin()"></button>
+<?php
+    }
+?>
+                                </section>
+
+                                <div class="UserRestaurantHistory__RestaurantItem--Dim" style="display: none"></div>
+                            </li>
+<?php
+        }
+?>
+                        </ul>
+<?php
+    }else{
+?>
+                        <div class="UserRestaurantHistory__HistoryHeader">
                                 <button class="UserRestaurantHistory__ClearAllHistoryButton" onclick="">
                                     x clear all
                                 </button>
                             </div>
+                        <ul class="UserRestaurantHistory__RestaurantList mm_recentarr"></ul>
+                        <div
+                            class="UserRestaurantHistory__EmptyViewedRestaurantHistory UserRestaurantHistory__EmptyViewedRestaurantHistory--Show">
+                            <span class="UserRestaurantHistory__EmptyViewedRestaurantHistoryTitle">
+                                거기가 어디였지?
+                            </span>
 
-                            <ul class="UserRestaurantHistory__RestaurantList"></ul>
+                            <p class="UserRestaurantHistory__EmptyViewedRestaurantHistoryDescription">
+                                내가 둘러 본 식당이 이 곳에 순서대로 기록됩니다.
+                            </p>
+                        </div>
+<?php
+    }
+?>
+<?php
+    if(isset($wannago_list)){
 
-                            <div
-                                class="UserRestaurantHistory__EmptyViewedRestaurantHistory UserRestaurantHistory__EmptyViewedRestaurantHistory--Show">
-                                <span class="UserRestaurantHistory__EmptyViewedRestaurantHistoryTitle">
-                                    거기가 어디였지?
-                                </span>
+?>
+                            <ul class="UserRestaurantHistory__RestaurantList mm_wannagoarr">
+<?php
+        for($i=0;$i<count($wannago_list);$i++){
+?>
+                                <li class="UserRestaurantHistory__RestaurantItem">
+                                    <section class="RestaurantHorizontalItem">
+                                        <a href="./restaurant.php?r_idx=<?=$wannago_list[$i]['r_idx']?>"
+                                            class="RestaurantHorizontalItem__Link" onclick="">
+                                            <div class="RestaurantHorizontalItem__Picture"
+                                                data-bg="url(<?=$wannago_list[$i]['r_repphoto']?>)"
+                                                data-was-processed="true"
+                                                style="background-image: url(<?=$wannago_list[$i]['r_repphoto']?>);">
+                                            </div>
+                                        </a>
 
-                                <p class="UserRestaurantHistory__EmptyViewedRestaurantHistoryDescription">
-                                    내가 둘러 본 식당이 이 곳에 순서대로 기록됩니다.
-                                </p>
-                            </div>
+                                        <div class="RestaurantHorizontalItem__Info">
 
+
+                                            <a href="./restaurant.php?r_idx=<?=$wannago_list[$i]['r_idx']?>"
+                                                class="RestaurantHorizontalItem__NameWrap RestaurantHorizontalItem__Link"
+                                                onclick="" data-restaurant="<?=$wannago_list[$i]['r_idx']?>">
+                                                <h3 class="RestaurantHorizontalItem__Name">
+                                                    <?=$wannago_list[$i]['r_restaurant']?>
+                                                </h3>
+                                                <span
+                                                    class="RestaurantHorizontalItem__Rating RestaurantHorizontalItem__Rating--Expected">
+                                                    <?=$wannago_list[$i]['r_grade']?>
+                                                </span>
+                                            </a>
+                                            <span class="RestaurantHorizontalItem__MetroAndCuisine">
+                                                <?=$wannago_list[$i]['r_repadd']?> -
+                                                <?=$wannago_list[$i]['r_foodtype']?>
+                                            </span>
+                                        </div>
+
+                                        <button
+                                            class="RestaurantHorizontalItem__WannagoButton RestaurantHorizontalItem__WannagoButton--Selected" onclick="profile_wannago_btn(this)"></button>
+                                    </section>
+                                    <div class="UserRestaurantHistory__RestaurantItem--Dim" style="display: none"></div>
+                                </li>
+<?php
+        }
+?>
+                            </ul>
+<?php
+    }else{
+?>
+                            <ul class="UserRestaurantHistory__RestaurantList mm_wannagoarr"></ul>
                             <div class="UserRestaurantHistory__EmptyWannagoRestaurantHistory">
                                 <img class="UserRestaurantHistory__EmptyWannagoRestaurantHistoryImage"
                                     src="./img/kycrji1bsrupvbem.png" alt="wannago empty star">
@@ -301,12 +557,15 @@
                                     식당의 ‘별’ 아이콘을 누르면 가고싶은 곳을 쉽게 저장할 수 있습니다.
                                 </p>
                             </div>
+<?php
+    }
+?>
                         </div>
 
                         <footer class="UserRestaurantHistory__Footer">
 <?php
-                      if(!isset($id)){
-                  ?>
+    if(!isset($id)){
+?>
                             <button class="UserRestaurantHistory__LoginButton UserRestaurantHistory__LoginButton--Show"
                                 onclick="clickLogin()">로그인</button>
 <?php
@@ -356,13 +615,14 @@
                                 <div class="UserProfile__InfoRow">
                                     <div class="UserProfile__InfoRow--Label">이메일</div>
                                     <div class="UserProfile__InfoRow--Content UserProfile__UserEmail">
-                                        soeg0810@lycos.co.kr</div>
+                                        <?=$email?>
+                                    </div>
                                 </div>
-                                <div class="UserProfile__InfoRow">
+                                <!-- <div class="UserProfile__InfoRow">
                                     <div class="UserProfile__InfoRow--Label">전화번호</div>
                                     <div class="UserProfile__InfoRow--Content UserProfile__UserPhoneNumber">01024750333
                                     </div>
-                                </div>
+                                </div> -->
 <?php
                       }else if(strpos($id, "kakao") === 0){ 
                       ?>
@@ -391,7 +651,7 @@
                                     <span class="UserProfile__InfoSideRow--Info UserProfile__UserSignupType">애플 계정으로
                                         가입</span>
                                 </div>
-                                <div class="UserProfile__InfoRow">
+                                <!-- <div class="UserProfile__InfoRow">
                                     <div class="UserProfile__InfoRow--Label">이메일</div>
                                     <div class="UserProfile__InfoRow--Content UserProfile__UserEmail">
                                         soeg0810@lycos.co.kr</div>
@@ -400,7 +660,7 @@
                                     <div class="UserProfile__InfoRow--Label">전화번호</div>
                                     <div class="UserProfile__InfoRow--Content UserProfile__UserPhoneNumber">01024750333
                                     </div>
-                                </div>
+                                </div> -->
 <?php
                       }
                       ?>
@@ -414,7 +674,8 @@
 <?php
                   if(strpos($id, "facebook") === 0){ 
                   ?>
-                            <div class="UserProfile__Button UserProfile__LogoutButton">로그아웃</div>
+                            <div class="UserProfile__Button UserProfile__LogoutButton" onclick="facebooklogout()">로그아웃
+                            </div>
 <?php
                   }else if(strpos($id, "kakao") === 0){ 
                   ?>
@@ -693,9 +954,25 @@ if($r_photoarr == null){
                                             </button>
 
                                             <div class="wannago_wrap">
+<?php
+    $sql = "SELECT mm_wannago FROM mango_member WHERE mm_userid = '$id' AND mm_wannago LIKE '%$r_idx%'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_array($result);
+    if(isset($row['mm_wannago'])){
+?>
+                                                <button class="btn-type-icon favorite wannago_btn selected"
+                                                    data-restaurant_uuid="<?=$r_idx?>"
+                                                    data-action_id="<?=$id?>" onclick="wannago_btn()"></button>
+<?php
+    }else{
+?>
                                                 <button class="btn-type-icon favorite wannago_btn "
                                                     data-restaurant_uuid="<?=$r_idx?>"
                                                     data-action_id="<?=$id?>" onclick="wannago_btn()"></button>
+
+<?php
+    }
+?>
                                                 <p class="wannago_txt" onclick="wannago_btn()">가고싶다</p>
                                             </div>
 <?php
@@ -1766,7 +2043,7 @@ if(isset($member[0])){
             if (status === kakao.maps.services.Status.OK) {
 
                 const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-                console.log(coords);
+                // console.log(coords);
 
                 // 결과값으로 받은 위치를 마커로 표시합니다
                 const marker = new kakao.maps.Marker({
@@ -1782,6 +2059,12 @@ if(isset($member[0])){
     <script src="./js/facebook.js"></script>
     <script src="./js/kakao.js"></script>
     <script src="./js/restaurant.js"></script>
+    <script>
+        let mm_wannago = <?= json_encode($mm_wannagoarr) ?>;
+        let mm_userid = <?= json_encode($id) ?>;
+        let sessionid = <?= json_encode($sessionid)?>;
+        let mm_recentarr = <?=json_encode($mm_recentarr)?>;
+    </script>
 </body>
 
 </html>

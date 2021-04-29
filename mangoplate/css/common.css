@@ -1284,11 +1284,11 @@ input:-webkit-autofill:active {
 }
 
 .UserProfileButton__PersonIcon {
-    background-image: url(../img/2018022864551sprites_desktop.png);
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
     background-position: -82px -919px;
     width: 34px;
     height: 34px;
-    display: block
+    display: block;
 }
 
 .UserProfileButton--Login .UserProfileButton__PersonIcon {
@@ -1418,6 +1418,22 @@ input:-webkit-autofill:active {
 
 .UserRestaurantHistory__RestaurantList {
     margin: 16px 10px 0 16px
+}
+
+.UserRestaurantHistory__RestaurantList.mm_wannagoarr {
+    display: none;
+}
+
+.UserRestaurantHistory__RestaurantList.mm_wannagoarr--Show {
+    display: block;
+}
+
+.UserRestaurantHistory__RestaurantList.mm_recentarr {
+    display: none;
+}
+
+.UserRestaurantHistory__RestaurantList.mm_recentarr--Show {
+    display: block;
 }
 
 .UserRestaurantHistory__RestaurantItem {
@@ -4873,10 +4889,6 @@ img.center-crop.portrait {
     padding: 0;
 }
 
-#map{
-    margin-top: 23px;
-}
-
 .pg-toplist .container-related-list {
     position: relative;
     background-color: #f7f7f7;
@@ -5758,6 +5770,16 @@ img.center-crop.portrait {
     height: 22px;
 }
 
+.pg-search .search-results .search-options .btn.filter.selected:before {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-position: -974px -276px;
+    width: 23px;
+    height: 22px;
+}
+
+.pg-search .search-results .search-options .btn.filter.selected {
+    color: #ff792a;
+}
 .pg-search .search-results .search_top_title_wrap .title {
     max-width: 75%;
     word-break: break-word;
@@ -5952,7 +5974,7 @@ img.center-crop.portrait {
     z-index: 800;
 }
 
-.search-filter>.inner {
+.search-filter .inner {
     height: calc(100vh - 161px);
     overflow-y: auto;
     box-sizing: border-box;
@@ -5966,7 +5988,7 @@ img.center-crop.portrait {
     border-top: 1px solid #dbdbdb;
 }
 
-.search-filter .filter-item>label {
+.search-filter .filter-item label {
     display: block;
     margin-bottom: 20px;
     font-size: 1.125rem;
