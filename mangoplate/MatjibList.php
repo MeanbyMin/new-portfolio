@@ -4,7 +4,7 @@
     include "./include/dbconn.php";
     include "./include/adminsessionCheck.php";
 
-    $sql = "SELECT * FROM mango_story ORDER BY ms_idx DESC";
+    $sql = "SELECT * FROM top_lists ORDER BY tl_idx DESC";
     $result = mysqli_query($conn, $sql);
 
     $pageNum = 5;
@@ -14,7 +14,7 @@
         $page = ($_GET['page']-1) * $pageNum;
     } 
 
-    $sql = "SELECT * FROM mango_story ORDER BY ms_idx DESC limit $page, $pageNum";
+    $sql = "SELECT * FROM top_lists ORDER BY tl_idx DESC limit $page, $pageNum";
     $result = mysqli_query($conn, $sql);
 ?>
 <!DOCTYPE html>
@@ -130,10 +130,10 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">망고 스토리</h1>
+                        <h1 class="mt-4">맛집 리스트</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="adminindex.php">Dashboard</a></li>
-                            <li class="breadcrumb-item active">망고 스토리</li>
+                            <li class="breadcrumb-item"><a href="./adminindex.php">Dashboard</a></li>
+                            <li class="breadcrumb-item active">맛집 리스트</li>
                         </ol>
                         <table>
                             <colgroup>
@@ -141,40 +141,40 @@
                                 <col width= "10%">
                                 <col width= "">
                                 <col width= "10%">
-                                <col width= "20%">
                                 <col width= "10%">
+                                <col width= "20%">
                             </colgroup>
                             <tr>
                                 <th>번호</th>
                                 <th>글쓴이</th>
                                 <th>제목</th>
                                 <th>조회수</th>
+                                <th>상태</th>
                                 <th>날짜</th>
-                                <th>좋아요</th>
                             </tr>
 <?php
     while($row = mysqli_fetch_array($result)){ 
-        $ms_idx        = $row['ms_idx'];
-        $ms_userid     = $row['ms_userid'];
-        $ms_title      = $row['ms_title'];
-        $ms_read       = $row['ms_read'];
-        $ms_regdate    = $row['ms_regdate'];
-        $ms_like       = $row['ms_like'];
+        $tl_idx         = $row['tl_idx'];
+        $tl_userid      = $row['tl_userid'];
+        $tl_title       = $row['tl_title'];
+        $tl_read        = $row['tl_read'];
+        $tl_status      = $row['tl_status'];
+        $tl_regdate     = $row['tl_regdate'];
 ?>
                             <tr>
-                                <td><?=$ms_idx?></td> 
-                                <td><?=$ms_userid?></td>
-                                <td><a href="./view_story.php?ms_idx=<?=$ms_idx?>"><?=$ms_title?></a></td>
-                                <td><?=$ms_read?></td>
-                                <td><?=$ms_regdate?></td>
-                                <td><?=$ms_like?></td>
+                                <td><?=$tl_idx?></td> 
+                                <td><?=$tl_userid?></td>
+                                <td><a href="./view_matjib.php?tl_idx=<?=$tl_idx?>"><?=$tl_title?></a></td>
+                                <td><?=$tl_read?></td>
+                                <td><?=$tl_status?></td>
+                                <td><?=$tl_regdate?></td>
                             </tr>
 <?php
     }
 ?>
                         </table>
                         <div class="btn_area">
-                            <input type="button" class="btn write_btn" value="글쓰기" onclick="location.href='./write_story.php'">
+                            <input type="button" class="btn write_btn" value="글쓰기" onclick="location.href='./write_matjib.php'">
                                 <p class="page_area">
 <?php
     $pages = $pageTotal / $pageNum;

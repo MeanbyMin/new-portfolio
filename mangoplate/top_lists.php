@@ -1,3 +1,17 @@
+<?php
+    header('Content-Type: text/html; charset=UTF-8');
+    session_start();
+    include "./include/dbconn.php";
+    if(isset($_SESSION['mangoid'])){
+        $id = $_SESSION['mangoid'];
+        if(isset($_SESSION['email'])){
+            $email = $_SESSION['email'];
+        }
+        $name = $_SESSION['name'];
+        $image = $_SESSION['image'];
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="kor">
 <head>
@@ -16,9 +30,9 @@
     </ul>
     <!-- wrap 시작 -->
     <div id="wrap">
-        <!-- 헤더 시작 -->
-        <header class="Header" data-page="noraml">
-            <a href="./index.html" class="Header__Logo">
+       <!-- 헤더 시작 -->
+       <header class="Header" data-page="noraml">
+            <a href="./index.php" class="Header__Logo">
                 <i class="Header__LogoIcon"></i>
             </a>
 
@@ -31,7 +45,7 @@
                 <button class="Header__SearchInputClearButton">CLEAR</button>
             </div>
             <!-- 검색 영역 끝 -->
-            
+
             <!-- 메뉴 부분 시작 -->
             <ul class="Header__MenuList">
                 <li class="Header__MenuItem Header__MenuItem--New clear">
@@ -52,127 +66,343 @@
                 <!-- 프로필 영역 시작 -->
                 <ul class="Header__IconButtonList">
                     <li class="Header__IconButtonItem only-mobile Header__IconButtonItem--MenuButton">
-                    <button class="MenuButton"
-                            onclick="">
-                        <i class="MenuButton__Icon"></i>
-                    </button>
+                        <button class="MenuButton" onclick="">
+                            <i class="MenuButton__Icon"></i>
+                        </button>
                     </li>
-            
+
                     <li class="Header__IconButtonItem Header__IconButtonItem--UserRestaurantHistory">
-                        <button class="UserProfileButton"
-                                onclick="">
+                        <?php
+                      if(!isset($id)){
+                  ?>
+                        <button class="UserProfileButton" onclick="clickProfile()">
                             <i class="UserProfileButton__Picture"></i>
                             <i class="UserProfileButton__PersonIcon"></i>
                             <span class="UserProfileButton__HistoryCount">0</span>
                         </button>
+                        <?php
+                  }else{
+                  ?>
+                        <button class="UserProfileButton UserProfileButton--Login" onclick="clickProfile()">
+                            <i class="UserProfileButton__Picture" style="background-image: url(<?=$image;?>)"></i>
+                            <i class="UserProfileButton__PersonIcon"></i>
+                            <span class="UserProfileButton__HistoryCount">0</span>
+                        </button>
+                        <?php
+                  }
+                  ?>
                     </li>
-            
+
                     <li class="Header__IconButtonItem Header__IconButtonItem--CloseButton Header__IconButtonItem--Hide">
-                    <button class="Header__CloseButton"></button>
+                        <button class="Header__CloseButton"></button>
                     </li>
                 </ul>
                 <!-- 프로필 팝업 창 -->
                 <div class="UserRestaurantHistory">
                     <div class="UserRestaurantHistory__BlackDeem"></div>
-                    
-                        <div class="UserRestaurantHistory__Container">
+
+                    <div class="UserRestaurantHistory__Container">
                         <i class="UserRestaurantHistory__Triangle"></i>
-                    
+
                         <ul class="UserRestaurantHistory__TabList">
-                            <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Viewed UserRestaurantHistory__TabItem--Selected" onclick="">
-                            <button class="UserRestaurantHistory__TabButton">최근 본 맛집 <span class="UserRestaurantHistory__ViewedCount">6</span></button>
+                            <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Viewed UserRestaurantHistory__TabItem--Selected"
+                                onclick="CLICK_RECENT_TAB()">
+                                <button class="UserRestaurantHistory__TabButton">최근 본 맛집 <span
+                                        class="UserRestaurantHistory__ViewedCount">0</span></button>
                             </li>
-                    
-                            <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Wannago" onclick="">
-                            <button class="UserRestaurantHistory__TabButton">가고싶다</button>
+                            <?php
+                          if(isset($id)){
+                      ?>
+                            <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Wannago"
+                                onclick="CLICK_WAANGO_TAB()">
+                                <button class="UserRestaurantHistory__TabButton">가고싶다</button>
                             </li>
+                            <?php
+                          }else{
+                      ?>
+                            <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Wannago"
+                                onclick="clickLogin()">
+                                <button class="UserRestaurantHistory__TabButton">가고싶다</button>
+                            </li>
+                            <?php
+                          }
+                      ?>
                         </ul>
-                    
+
                         <div class="UserRestaurantHistory__HistoryContainer">
                             <div class="UserRestaurantHistory__HistoryHeader">
-                            <button class="UserRestaurantHistory__ClearAllHistoryButton" onclick="">
-                                x clear all
-                            </button>
+                                <button class="UserRestaurantHistory__ClearAllHistoryButton" onclick="">
+                                    x clear all
+                                </button>
                             </div>
-                    
+
                             <ul class="UserRestaurantHistory__RestaurantList"></ul>
-                    
-                            <div class="UserRestaurantHistory__EmptyViewedRestaurantHistory UserRestaurantHistory__EmptyViewedRestaurantHistory--Show">
+
+                            <div
+                                class="UserRestaurantHistory__EmptyViewedRestaurantHistory UserRestaurantHistory__EmptyViewedRestaurantHistory--Show">
                                 <span class="UserRestaurantHistory__EmptyViewedRestaurantHistoryTitle">
                                     거기가 어디였지?
                                 </span>
-                        
+
                                 <p class="UserRestaurantHistory__EmptyViewedRestaurantHistoryDescription">
                                     내가 둘러 본 식당이 이 곳에 순서대로 기록됩니다.
                                 </p>
                             </div>
-                    
+
                             <div class="UserRestaurantHistory__EmptyWannagoRestaurantHistory">
-                            <img class="UserRestaurantHistory__EmptyWannagoRestaurantHistoryImage" src="./img/kycrji1bsrupvbem.png" alt="wannago empty star">
-                            <p class="UserRestaurantHistory__EmptyWannagoRestaurantHistoryTitle">격하게 가고싶다..</p>
-                            <p class="UserRestaurantHistory__EmptyWannagoRestaurantHistoryDescription">
-                                식당의 ‘별’ 아이콘을 누르면 가고싶은 곳을 쉽게 저장할 수 있습니다.
-                            </p>
+                                <img class="UserRestaurantHistory__EmptyWannagoRestaurantHistoryImage"
+                                    src="./img/kycrji1bsrupvbem.png" alt="wannago empty star">
+                                <p class="UserRestaurantHistory__EmptyWannagoRestaurantHistoryTitle">격하게 가고싶다..</p>
+                                <p class="UserRestaurantHistory__EmptyWannagoRestaurantHistoryDescription">
+                                    식당의 ‘별’ 아이콘을 누르면 가고싶은 곳을 쉽게 저장할 수 있습니다.
+                                </p>
                             </div>
                         </div>
-                    
+
                         <footer class="UserRestaurantHistory__Footer">
-                            <button class="UserRestaurantHistory__LoginButton UserRestaurantHistory__LoginButton--Show" onclick="">로그인</button>
-                            <button class="UserRestaurantHistory__LogoutButton" onclick="">logout</button>
+                            <?php
+                      if(!isset($id)){
+                  ?>
+                            <button class="UserRestaurantHistory__LoginButton UserRestaurantHistory__LoginButton--Show"
+                                onclick="clickLogin()">로그인</button>
+                            <?php
+                      }else{
+                  ?>
+                            <button class="UserRestaurantHistory__LoginButton" onclick="clickLogin()">로그인</button>
+                            <button
+                                class="UserRestaurantHistory__SettingButton UserRestaurantHistory__SettingButton--Show"
+                                onclick="CLICK_SETTING()">내정보</button>
+                            <?php
+                      }
+                  ?>
                         </footer>
-                        </div>
+                    </div>
                 </div>
+                <!-- 내 정보 팝업창 시작 -->
+                <div class="UserProfile">
+                    <div class="UserProfile__BlackDeem"></div>
+
+                    <div class="UserProfile__Container">
+                        <i class="UserProfile__Triangle"></i>
+
+                        <ul class="UserProfile__TabList">
+                            <li class="UserProfile__TabItem">
+                                <button class="UserProfile__TabButton">내정보</button>
+                            </li>
+                        </ul>
+
+                        <div class="UserProfile__Content">
+                            <div class="UserProfile__InfoTable">
+                                <i class="UserProfile__UserThumnail"
+                                    style="background-image: url(<?=$image?>), url(&quot;https://mp-seoul-image-production-s3.mangoplate.com/web/resources/fljgy-rm4b8v6vni.png&quot;);"></i>
+                                <?php
+                      if(strpos($id, "facebook") === 0){
+                      ?>
+                                <div class="UserProfile__InfoRow">
+                                    <div class="UserProfile__InfoRow--Label">이름</div>
+                                    <div class="UserProfile__InfoRow--Content UserProfile__UserName">
+                                        <?=$name?>
+                                    </div>
+                                </div>
+                                <div class="UserProfile__InfoSideRow">
+                                    <div class="UserProfile__InfoRow--Label"></div>
+                                    <span class="UserProfile__InfoSideRow--Info UserProfile__UserSignupType">페이스북 계정으로
+                                        가입</span>
+                                </div>
+                                <div class="UserProfile__InfoRow">
+                                    <div class="UserProfile__InfoRow--Label">이메일</div>
+                                    <div class="UserProfile__InfoRow--Content UserProfile__UserEmail">
+                                        soeg0810@lycos.co.kr</div>
+                                </div>
+                                <div class="UserProfile__InfoRow">
+                                    <div class="UserProfile__InfoRow--Label">전화번호</div>
+                                    <div class="UserProfile__InfoRow--Content UserProfile__UserPhoneNumber">01024750333
+                                    </div>
+                                </div>
+                                <?php
+                      }else if(strpos($id, "kakao") === 0){ 
+                      ?>
+                                <div class="UserProfile__InfoRow">
+                                    <div class="UserProfile__InfoRow--Label">이름</div>
+                                    <div class="UserProfile__InfoRow--Content UserProfile__UserName">
+                                        <?=$name?>
+                                    </div>
+                                </div>
+                                <div class="UserProfile__InfoSideRow">
+                                    <div class="UserProfile__InfoRow--Label"></div>
+                                    <span class="UserProfile__InfoSideRow--Info UserProfile__UserSignupType">카카오톡 계정으로
+                                        가입</span>
+                                </div>
+                                <?php
+                      }else if(strpos($id, "apple") === 0){ 
+                      ?>
+                                <div class="UserProfile__InfoRow">
+                                    <div class="UserProfile__InfoRow--Label">이름</div>
+                                    <div class="UserProfile__InfoRow--Content UserProfile__UserName">
+                                        <?=$name?>
+                                    </div>
+                                </div>
+                                <div class="UserProfile__InfoSideRow">
+                                    <div class="UserProfile__InfoRow--Label"></div>
+                                    <span class="UserProfile__InfoSideRow--Info UserProfile__UserSignupType">애플 계정으로
+                                        가입</span>
+                                </div>
+                                <div class="UserProfile__InfoRow">
+                                    <div class="UserProfile__InfoRow--Label">이메일</div>
+                                    <div class="UserProfile__InfoRow--Content UserProfile__UserEmail">
+                                        soeg0810@lycos.co.kr</div>
+                                </div>
+                                <div class="UserProfile__InfoRow">
+                                    <div class="UserProfile__InfoRow--Label">전화번호</div>
+                                    <div class="UserProfile__InfoRow--Content UserProfile__UserPhoneNumber">01024750333
+                                    </div>
+                                </div>
+                                <?php
+                      }
+                      ?>
+                                <div class="UserProfile__InfoDetail">정보 수정은 모바일앱 &gt; 내정보에서 가능합니다.</div>
+                            </div>
+                        </div>
+
+                        <div class="UserProfile__Footer">
+                            <div class="UserProfile__Button UserProfile__DisactiveButton">회원탈퇴</div>
+                            <div class="UserProfile__Footer--Line"></div>
+                            <?php
+                  if(strpos($id, "facebook") === 0){ 
+                  ?>
+                            <div class="UserProfile__Button UserProfile__LogoutButton">로그아웃</div>
+                            <?php
+                  }else if(strpos($id, "kakao") === 0){ 
+                  ?>
+                            <div class="UserProfile__Button UserProfile__LogoutButton" onclick="kakaologout()">로그아웃
+                            </div>
+                            <?php
+                  }else if(strpos($id, "apple") === 0){ 
+                  ?>
+                            <div class="UserProfile__Button UserProfile__LogoutButton">로그아웃</div>
+                            <?php
+                  }else{
+                  ?>
+                            <div class="UserProfile__Button UserProfile__LogoutButton" onclick="facebooklogout()">로그아웃
+                            </div>
+                            <?php
+                  }
+                  ?>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- 내 정보 팝업창 끝 -->
                 <!-- 프로필 팝업창 끝 -->
                 <!-- 프로필 영역 끝 -->
             </ul>
             <!-- 메뉴 부분 끝 -->
+            <!-- 회원탈퇴 모달 창 시작 -->
+            <div class="UserDisactiveInfo">
+                <div class="UserDisactiveInfo__BlackDeem"></div>
+                <div class="UserDisactiveInfo__Container">
+                    <div class="UserDisactiveInfo__Header">
+                        <button class="UserDisactiveInfo__ClostButton">
+                            <i class="UserDisactiveInfo__ClostButton--Icon"></i>
+                        </button>
+                    </div>
+                    <div class="UserDisactiveInfo__Content">
+                        <span class="UserDisactiveInfo__Content--Notice">회원 탈퇴 전 아래의 내용을 꼭 확인해 주세요.</span>
+                        <ul class="UserDisactiveInfo__Content--List">
+                            <div class="UserDisactiveInfo__Content--Item">회원탈퇴 시 회원정보 및 서비스 이용기록은 모두 삭제되며, 삭제된 데이터는 복구가
+                                불가능합니다. 다만 법령에 의하여 보관해야 하는 경우 또는 회사 내부정책에 의하여 보관해야하는 정보는 회원탈퇴 후에도 일정기간 보관됩니다. 자세한 사항은
+                                개인정보처리방침에서 확인하실 수 있습니다.</div>
+                            <div class="UserDisactiveInfo__Content--Item">회원탈퇴 후 재가입하더라도 탈퇴 전의 회원정보 및 서비스 이용기록은 복구되지
+                                않습니다.</div>
+                            <div class="UserDisactiveInfo__Content--Item">회원탈퇴 전 만료된 EAT딜의 환불을 신청해 주세요. 회원이 환불 신청 없이 자진
+                                탈퇴하고자 하는 경우, 회사는 만료된 EAT딜에 대한 소멸 동의를 받습니다.</div>
+                            <div class="UserDisactiveInfo__Content--Item">회원탈퇴 시 작성하신 리뷰는 자동 삭제되지 않고 남아 있습니다. 삭제를 원하실 경우
+                                반드시 탈퇴 전 삭제하시기 바랍니다. 탈퇴 후에는 회원정보가 삭제되어 본인 여부를 확인할 수 있는 방법이 없어, 리뷰를 임의로 삭제해드릴 수 없습니다.
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="UserDisactiveInfo__Footer">
+                        <div class="UserDisactiveInfo__CheckButton">
+                            <i class="UserDisactiveInfo__CheckButton--Image"></i>
+                            <div class="UserDisactiveInfo__CheckButton--Text">위 내용을 모두 확인하였으며, 이에 동의합니다.</div>
+                        </div>
+                        <div class="UserDisactiveInfo__Button">탈퇴하기</div>
+                    </div>
+                </div>
+            </div>
+            <!-- 회원탈퇴 모달 창 끝 -->
+            <!-- 탈퇴하기 확인 모달 창 시작 -->
+            <div class="PopupConfirmLayer UserDisactiveApprovePopup" style="display: none;">
+                <div class="PopupConfirmLayer__Container">
+                    <div class="PopupConfirmLayer__Title">회원탈퇴</div>
+                    <p class="PopupConfirmLayer__DescriptionWithTitle">탈퇴한 계정은 복구가 불가능합니다.<br>탈퇴 하시겠습니까?</p>
+                    <div class="PopupConfirmLayer__Buttons">
+                        <button class="PopupConfirmLayer__Button PopupConfirmLayer__GrayButton">취소</button>
+                        <button class="PopupConfirmLayer__Button PopupConfirmLayer__OrangeButton">탈퇴하기</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 탈퇴하기 확인 모달 창 끝 -->
         </header>
         <!-- 헤더 끝 -->
-        <!-- 검색창 시작 -->
+        <!-- 검색창 포커스 시작 -->
         <div class="KeywordSuggester">
             <div class="KeywordSuggester__BlackDeem"></div>
-            <div class="KeywordSuggester__Container">
+
+            <div class="KeywordSuggester__Container" style="position: absolute; left: 262px; width: 544px;">
                 <nav class="KeywordSuggester__TabNavigation">
                     <ul class="KeywordSuggester__TabList">
                         <li class="KeywordSuggester__TabItem">
-                            <div class="KeywordSuggester__TabButton KeywordSuggester__RecommendTabButton"
-                                onclick=""
-                                role="button">
-                            추천 검색어
+                            <div class="KeywordSuggester__TabButton KeywordSuggester__RecommendTabButton KeywordSuggester__TabButton--Selected"
+                                onclick="CLICK_SEARCH_RECOMMEND(this)" role="button">
+                                추천 검색어
                             </div>
                         </li>
-                
+
                         <li class="KeywordSuggester__TabItem">
                             <div class="KeywordSuggester__TabButton KeywordSuggester__PopularTabButton"
-                                onclick=""
-                                role="button">
-                            인기 검색어
+                                onclick="CLICK_SEARCH_POPULAR(this)" role="button">
+                                인기 검색어
                             </div>
                         </li>
-                
+
                         <li class="KeywordSuggester__TabItem">
                             <div class="KeywordSuggester__TabButton KeywordSuggester__HistoryTabButton"
-                                onclick=""
-                                role="button">
-                            최근 검색어
+                                onclick="CLICK_SEARCH_RECENT(this)" role="button">
+                                최근 검색어
                             </div>
                         </li>
                     </ul>
                 </nav>
-            
-                <div class="KeywordSuggester__SuggestKeywordListWrap">
-                    <p class="KeywordSuggester__EmptyKeywordMessage">최근 검색어가 없습니다.</p>
-            
-                    <div class="KeywordSuggester__Footer">
-                        <button class="KeywordSuggester__RemoveAllHistoryKeywordButton">
-                            x clear all
-                        </button>
+                <div class="KeywordSuggester__SuggestKeywordListWrap" data-simplebar="init">
+                    <div class="simplebar-wrapper" style="margin: 0px -24px;">
+                        <div class="simplebar-height-auto-observer-wrapper">
+                            <div class="simplebar-height-auto-observer"></div>
+                        </div>
+                        <div class="simplebar-mask">
+                            <div class="simplebar-offset" style="right: -15px; bottom: 0px;">
+                                <div class="simplebar-content-wrapper" style="height: auto; overflow: hidden scroll;">
+                                    <div class="simplebar-content" style="padding: 0px 24px;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="simplebar-placeholder" style="width: 542px; height: 366px;"></div>
+                    </div>
+                    <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+                        <div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); display: none;">
+                        </div>
+                    </div>
+                    <div class="simplebar-track simplebar-vertical" style="visibility: visible;">
+                        <div class="simplebar-scrollbar"
+                            style="transform: translate3d(0px, 0px, 0px); display: block; height: 170px;"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- 검색창 끝 -->
-        <!-- 컨테이너 시작 -->
+
+        <!-- 검색창 포커스 끝 -->
+        <!-- 본문 시작 -->
         <main class="pg-all_picks">
             <article class="contents">
                 <section class="module top-list">
@@ -229,182 +459,68 @@
                         </div>
             
                         <ul class="list-type-ls type-column02-picks">
+<?php
+    $sql = "SELECT * FROM top_lists WHERE tl_status = '등록'";
+    $result = mysqli_query($conn, $sql);
+
+    $top_lists = [];
+    while($row = mysqli_fetch_array($result)){
+        $toplistadd = array('tl_idx' => $row['tl_idx'], 'tl_title' => $row['tl_title'], 'tl_subtitle' => $row['tl_subtitle'], 'tl_repphoto' => $row['tl_repphoto']);
+        array_push($top_lists, $toplistadd);
+    }
+
+    if(count($top_lists) > 10){
+        for($i=0; $i<10; $i++){
+?>
                             <li class="top_list_item">
-                                <a href="#"
-                                onclick="">
-                                <figure class="ls-item">
+                                <a href="./top_lists.php?tl_idx=<?=$top_lists[$i]['tl_idx']?>" onclick="">
+                                    <figure class="ls-item">
                                     <div class="thumb">
-                                    <div class="inner">
-                                        <img class="center-crop portrait lazy"
-                                            alt="이주의 주목할만 한 맛집 리뷰 BEST 20" src="./img/top_lists/puv3it_az8vycq.jpg">
-                                    </div>
+                                        <div class="inner">
+                                        <img class="center-crop portrait lazy" alt="<?=$top_lists[$i]['tl_title']?>" data-original="<?=$top_lists[$i]['tl_repphoto']?>" data-error="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80" src="<?=$top_lists[$i]['tl_repphoto']?>" style="display: block;">
+                                        </div>
                                     </div>
                                     <figcaption class="info">
-                                    <div class="info_inner_wrap">
-                                        <span class="title">이주의 주목할만 한 맛집 리뷰 BEST 20</span>
-                                        <p class="desc">"이주의 주목할만 한 리뷰만 모았다!"</p>
+                                        <div class="info_inner_wrap">
+                                        <span class="title" data-ellipsis-id="<?=$i + 1?>"><?=$top_lists[$i]['tl_title']?></span>
+                                        <p class="desc" data-ellipsis-id="2<?=$i + 1?>"><?=$top_lists[$i]['tl_subtitle']?></p>
                                         <p class="hash">
-                                        <span>#이주의 주목할만 한 맛집 리뷰 BEST 20</span>
+                                            <span>#<?=$top_lists[$i]['tl_title']?></span>
                                         </p>
-                                    </div>
+                                        </div>
                                     </figcaption>
-                                </figure>
+                                    </figure>
                                 </a>
                             </li>
+<?php
+        }
+    }else{
+        for($i=0;$i<count($top_lists);$i++){
+?>
                             <li class="top_list_item">
-                                <a href="#"
-                                onclick="">
-                                <figure class="ls-item">
+                                <a href="./top_lists.php?tl_idx=<?=$top_lists[$i]['tl_idx']?>" onclick="">
+                                    <figure class="ls-item">
                                     <div class="thumb">
-                                    <div class="inner">
-                                        <img class="center-crop portrait lazy"
-                                            alt="이주의 주목할만 한 맛집 리뷰 BEST 20" src="./img/top_lists/puv3it_az8vycq.jpg">
-                                    </div>
+                                        <div class="inner">
+                                        <img class="center-crop portrait lazy" alt="<?=$top_lists[$i]['tl_title']?>" data-original="<?=$top_lists[$i]['tl_repphoto']?>" data-error="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80" src="<?=$top_lists[$i]['tl_repphoto']?>" style="display: block;">
+                                        </div>
                                     </div>
                                     <figcaption class="info">
-                                    <div class="info_inner_wrap">
-                                        <span class="title">이주의 주목할만 한 맛집 리뷰 BEST 20</span>
-                                        <p class="desc">"이주의 주목할만 한 리뷰만 모았다!"</p>
+                                        <div class="info_inner_wrap">
+                                        <span class="title" data-ellipsis-id="<?=$i + 1?>"><?=$top_lists[$i]['tl_title']?></span>
+                                        <p class="desc" data-ellipsis-id="2<?=$i + 1?>"><?=$top_lists[$i]['tl_subtitle']?></p>
                                         <p class="hash">
-                                        <span>#이주의 주목할만 한 맛집 리뷰 BEST 20</span>
+                                            <span>#<?=$top_lists[$i]['tl_title']?></span>
                                         </p>
-                                    </div>
+                                        </div>
                                     </figcaption>
-                                </figure>
+                                    </figure>
                                 </a>
                             </li>
-                            <li class="top_list_item">
-                                <a href="#"
-                                onclick="">
-                                <figure class="ls-item">
-                                    <div class="thumb">
-                                    <div class="inner">
-                                        <img class="center-crop portrait lazy"
-                                            alt="이주의 주목할만 한 맛집 리뷰 BEST 20" src="./img/top_lists/puv3it_az8vycq.jpg">
-                                    </div>
-                                    </div>
-                                    <figcaption class="info">
-                                    <div class="info_inner_wrap">
-                                        <span class="title">이주의 주목할만 한 맛집 리뷰 BEST 20</span>
-                                        <p class="desc">"이주의 주목할만 한 리뷰만 모았다!"</p>
-                                        <p class="hash">
-                                        <span>#이주의 주목할만 한 맛집 리뷰 BEST 20</span>
-                                        </p>
-                                    </div>
-                                    </figcaption>
-                                </figure>
-                                </a>
-                            </li>
-                            <li class="top_list_item">
-                                <a href="#"
-                                onclick="">
-                                <figure class="ls-item">
-                                    <div class="thumb">
-                                    <div class="inner">
-                                        <img class="center-crop portrait lazy"
-                                            alt="이주의 주목할만 한 맛집 리뷰 BEST 20" src="./img/top_lists/puv3it_az8vycq.jpg">
-                                    </div>
-                                    </div>
-                                    <figcaption class="info">
-                                    <div class="info_inner_wrap">
-                                        <span class="title">이주의 주목할만 한 맛집 리뷰 BEST 20</span>
-                                        <p class="desc">"이주의 주목할만 한 리뷰만 모았다!"</p>
-                                        <p class="hash">
-                                        <span>#이주의 주목할만 한 맛집 리뷰 BEST 20</span>
-                                        </p>
-                                    </div>
-                                    </figcaption>
-                                </figure>
-                                </a>
-                            </li>
-                            <li class="top_list_item">
-                                <a href="#"
-                                onclick="">
-                                <figure class="ls-item">
-                                    <div class="thumb">
-                                    <div class="inner">
-                                        <img class="center-crop portrait lazy"
-                                            alt="이주의 주목할만 한 맛집 리뷰 BEST 20" src="./img/top_lists/puv3it_az8vycq.jpg">
-                                    </div>
-                                    </div>
-                                    <figcaption class="info">
-                                    <div class="info_inner_wrap">
-                                        <span class="title">이주의 주목할만 한 맛집 리뷰 BEST 20</span>
-                                        <p class="desc">"이주의 주목할만 한 리뷰만 모았다!"</p>
-                                        <p class="hash">
-                                        <span>#이주의 주목할만 한 맛집 리뷰 BEST 20</span>
-                                        </p>
-                                    </div>
-                                    </figcaption>
-                                </figure>
-                                </a>
-                            </li>
-                            <li class="top_list_item">
-                                <a href="#"
-                                onclick="">
-                                <figure class="ls-item">
-                                    <div class="thumb">
-                                    <div class="inner">
-                                        <img class="center-crop portrait lazy"
-                                            alt="이주의 주목할만 한 맛집 리뷰 BEST 20" src="./img/top_lists/puv3it_az8vycq.jpg">
-                                    </div>
-                                    </div>
-                                    <figcaption class="info">
-                                    <div class="info_inner_wrap">
-                                        <span class="title">이주의 주목할만 한 맛집 리뷰 BEST 20</span>
-                                        <p class="desc">"이주의 주목할만 한 리뷰만 모았다!"</p>
-                                        <p class="hash">
-                                        <span>#이주의 주목할만 한 맛집 리뷰 BEST 20</span>
-                                        </p>
-                                    </div>
-                                    </figcaption>
-                                </figure>
-                                </a>
-                            </li>
-                            <li class="top_list_item">
-                                <a href="#"
-                                onclick="">
-                                <figure class="ls-item">
-                                    <div class="thumb">
-                                    <div class="inner">
-                                        <img class="center-crop portrait lazy"
-                                            alt="이주의 주목할만 한 맛집 리뷰 BEST 20" src="./img/top_lists/puv3it_az8vycq.jpg">
-                                    </div>
-                                    </div>
-                                    <figcaption class="info">
-                                    <div class="info_inner_wrap">
-                                        <span class="title">이주의 주목할만 한 맛집 리뷰 BEST 20</span>
-                                        <p class="desc">"이주의 주목할만 한 리뷰만 모았다!"</p>
-                                        <p class="hash">
-                                        <span>#이주의 주목할만 한 맛집 리뷰 BEST 20</span>
-                                        </p>
-                                    </div>
-                                    </figcaption>
-                                </figure>
-                                </a>
-                            </li>
-                            <li class="top_list_item">
-                                <a href="#"
-                                onclick="">
-                                <figure class="ls-item">
-                                    <div class="thumb">
-                                    <div class="inner">
-                                        <img class="center-crop portrait lazy"
-                                            alt="이주의 주목할만 한 맛집 리뷰 BEST 20" src="./img/top_lists/puv3it_az8vycq.jpg">
-                                    </div>
-                                    </div>
-                                    <figcaption class="info">
-                                    <div class="info_inner_wrap">
-                                        <span class="title">이주의 주목할만 한 맛집 리뷰 BEST 20</span>
-                                        <p class="desc">"이주의 주목할만 한 리뷰만 모았다!"</p>
-                                        <p class="hash">
-                                        <span>#이주의 주목할만 한 맛집 리뷰 BEST 20</span>
-                                        </p>
-                                    </div>
-                                    </figcaption>
-                                </figure>
-                                </a>
-                            </li>
+<?php
+        }
+    }
+?>
                         </ul>
             
                         <a class="btn-more" onclick="trackEvent('CLICK_MORE_LIST')">더보기</a>

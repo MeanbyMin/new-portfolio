@@ -58,7 +58,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="index.php">
+                            <a class="nav-link" href="./adminindex.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
@@ -86,10 +86,10 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">MangoStory</h1>
+                        <h1 class="mt-4">망고 스토리</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                            <li class="breadcrumb-item active">MangoStory</li>
+                            <li class="breadcrumb-item"><a href="./adminindex.html">Dashboard</a></li>
+                            <li class="breadcrumb-item active">망고 스토리</li>
                         </ol>
                         <!-- 본문 추가 영역 -->
                         <h2>망고스토리 등록하기</h2>

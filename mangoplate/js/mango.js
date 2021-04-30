@@ -232,7 +232,6 @@ function CLICK_RECENT_TAB() {
 }
 
 function CLICK_WAANGO_TAB() {
-  console.log(mm_wannago);
   UserRestaurantHistoryTabItemWannago.classList.add(
     "UserRestaurantHistory__TabItem--Selected"
   );
@@ -256,7 +255,7 @@ function CLICK_WAANGO_TAB() {
       "UserRestaurantHistory__EmptyViewedRestaurantHistory--Show"
     );
   }
-  if (mm_wannago[0] !== "") {
+  if (mm_wannago !== "") {
     let wannago_arr = document.querySelector(
       ".UserRestaurantHistory__RestaurantList.mm_wannagoarr"
     );

@@ -3,23 +3,37 @@
     session_start();
     include "./include/dbconn.php";
     include "./include/adminsessionCheck.php";
-    include "./include/msIdxCheck.php";
+    if(!isset($_GET['tl_idx'])){
+        echo "<script>alert('잘못된 접근입니다. 리스트를 통해 게시글을 선택하세요.'); location.href='./MatjibList.php'</script>";
+        
+    }
 
-    $auth_ms_idx = mysqli_real_escape_string($conn, $_GET['ms_idx']);
+    $tl_idx = $_GET['tl_idx'];
+    $sql = "UPDATE top_lists SET tl_read = tl_read + 1 WHERE tl_idx = $tl_idx";
+    $result = mysqli_query($conn, $sql);
 
-    $sql = "SELECT * FROM mango_story WHERE ms_idx=$auth_ms_idx";
+    $sql = "SELECT tl_idx, tl_userid, tl_title, tl_subtitle, tl_restaurant, tl_repphoto, tl_read, tl_status, tl_regdate FROM top_lists WHERE tl_idx = $tl_idx";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result);
 
-    $id = $_SESSION['adminid'];
-    $ms_idx         = $row['ms_idx'];
-    $ms_userid      = $row['ms_userid'];
-    $ms_title       = $row['ms_title'];
-    $ms_subtitle    = $row['ms_subtitle'];
-    $ms_content     = $row['ms_content'];
-    $ms_regdate     = $row['ms_regdate'];
-    $ms_read        = $row['ms_read'];
-    $ms_like        = $row['ms_like'];
+    $id             = $_SESSION['adminid'];
+    $tl_idx         = $row['tl_idx'];
+    $tl_userid      = $row['tl_userid'];
+    $tl_title       = $row['tl_title'];
+    $tl_subtitle    = $row['tl_subtitle'];
+    $tl_restaurant  = $row['tl_restaurant'];
+    $tl_repphoto    = $row['tl_repphoto'];
+    $tl_read        = $row['tl_read'];
+    $tl_status      = $row['tl_status'];
+    $tl_regdate     = $row['tl_regdate'];
+
+       
+    $imgpath = "";
+    if($row['tl_repphoto'] != ""){
+        $imgpath = "<img src = '".$tl_repphoto."' width='250px' alt='repphoto'>";
+    }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -29,18 +43,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title> 민바이민 : Restaurant Edit</title>
+        <title> 민바이민 : 맛집 리스트</title>
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="./css/write.css">
-        <!-- include libraries(jQuery, bootstrap) -->
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-        <!-- include summernote css/js -->
-        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+        <link rel="stylesheet" href="./css/view.css">
     </head>
     <body>
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -74,7 +80,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="adminindex.php">
+                            <a class="nav-link" href="./adminindex.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
@@ -111,56 +117,55 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">Restaurant Edit</h1>
+                        <h1 class="mt-4">맛집리스트</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="./adminindex.php">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Restaurant Edit</li>
+                            <li class="breadcrumb-item"><a href="./adminindex.html">Dashboard</a></li>
+                            <li class="breadcrumb-item active">맛집리스트</li>
                         </ol>
                         <!-- 본문 추가 영역 -->
-                        <form method="post" action="edit_story_ok.php" method="post">
-                            <input type="hidden" name="ms_idx" value="<?=$ms_idx?>">
-                            <input type="hidden" name="ms_userid" value="<?=$ms_userid?>">
-                            <div class="story_titleArea">
-                                <input type="text" class="story_title" name="ms_title" placeholder="제목을 입력하세요" autocomplete="off" value="<?=$ms_title?>">
-                                <input type="text" class="story_subtitle" name="ms_subtitle" placeholder="부제를 입력하세요" autocomplete="off" value="<?=$ms_subtitle?>">
-                            </div>
-                            <textarea name="ms_content" id="summernote"><?=$ms_content?></textarea>
-                            <p class="btn_area story_btn">
-                                <input type="submit"  value="등록">
-                            </p>
-                        </form>
-                        <script type="text/javascript">
-                            $(function() {
-                                $('#summernote').summernote({
-                                    height: 500,
-                                    lang : 'ko-KR',
-                                    callbacks: {
-                                        onImageUpload : function(files, editor, welEditable) {
-                                            console.log('image upload:', files);
-                                            sendFile( files[0], this );
-                                        }
-                                    }
-                                });
-                                function sendFile(file, editor) {
-                                    console.log(file);
-                                    data = new FormData();
-                                    data.append("file", file);
-                                    $.ajax({
-                                        url: "saveimage.php", // image 저장 소스
-                                        data: data,
-                                        cache: false,
-                                        contentType: false,
-                                        processData: false,
-                                        type: 'POST',
-                                        success: function(data){
-                                            //   alert(data);
-                                            console.log(data)
-                                            $('#summernote').summernote('insertImage', data);
-                                        }
-                                    });
-                                }
-                            });
-                        </script>
+                        <p class="btn_area">
+                            <input type="button" class="btn list" value="리스트" onclick="location.href='./MatjibList.php'"> 
+                            <input type="button" class="btn edit" value="수정" onclick="location.href='./edit_matjib.php?tl_idx=<?=$tl_idx?>'"> 
+                            <input type="button" class="btn delete" value="삭제" onclick="location.href='./delete_matjib.php?tl_idx=<?=$tl_idx?>'">
+
+                        </p>
+                        <div class="view">
+                            
+                            <table class="info">
+                                <tr>
+                                    <th>제목</th>
+                                    <td class="matjib_title"><?=$tl_title?></td>
+                                </tr>
+                                <tr>
+                                    <th>부제</th>
+                                    <td class="matjib_subtitle"><?=$tl_subtitle?></td>
+                                </tr>
+                                <tr>
+                                    <th>조회수</th>
+                                    <td><?=$tl_read?></td>
+                                </tr>
+                                <tr>
+                                    <th>글쓴이</th>
+                                    <td><?=$tl_userid?></td>
+                                </tr>
+                                <tr>
+                                    <th>대표사진</th>
+                                    <td><?=$imgpath?></td>
+                                </tr>
+                                <tr>
+                                    <th>가게</th>
+                                    <td><?=$tl_restaurant?></td>
+                                </tr>
+                                <tr>
+                                    <th>등록상태</th>
+                                    <td><?=$tl_status?></td>
+                                </tr>
+                                <tr>
+                                    <th>작성시간</th>
+                                    <td><?=$tl_regdate?></td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
@@ -177,6 +182,21 @@
                 </footer>
             </div>
         </div>
+        <script>
+        function wannago(){
+            const httpRequest = new XMLHttpRequest();
+            httpRequest.onreadystatechange = function(){
+                if(httpRequest.readyState == XMLHttpRequest.DONE && httpRequest.status == 200){
+                    alert('가고싶다에 추가되었습니다.');
+                    document.getElementById("wannago").innerHTML = httpRequest.responseText;
+                }
+            };
+            httpRequest.open("GET", "wannago_ok.php?r_idx=<?=$r_idx?>", true);
+            httpRequest.send();
+        }
+        </script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
     </body>
 </html>

@@ -25,7 +25,7 @@
         }
     }else{
         $mm_wannagoarr = "";
-        $id = "";
+        $id = null;
     }
     
     $sql = "SELECT r_restaurant, r_repadd, r_address, r_jibunaddress, r_menu, r_tags FROM mango_restaurant";
@@ -47,13 +47,15 @@
                 array_push($mm_recentarr, $_COOKIE[$sessionid]);
             }
         }else{
-            $mm_recentarr = null;
+            $mm_recentarr = "";
         }
+    }else{
+        $mm_recentarr = "";
     }
 
     // 가고싶다 리스트
     if(isset($mm_wannagoarr)){
-        if($mm_wannagoarr[0] !== ""){
+        if($mm_wannagoarr !== ""){
             $wannago_list = [];
             $wannago_idx = "";
             if(isset($mm_wannagoarr)){
@@ -70,6 +72,7 @@
                 }
             }
         }else{
+            $mm_wannagoarr = "";
         }
     }
 ?>

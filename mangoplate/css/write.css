@@ -187,3 +187,17 @@ input[type=submit]{
     letter-spacing: 1px;
     font-size: 1.1rem;
 }
+
+/* 맛집리스트 */
+
+.matjib_titleArea .matjib_title{
+    width: 60%;
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.matjib_titleArea .matjib_subtitle{
+    width: 60%;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}

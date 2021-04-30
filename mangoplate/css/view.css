@@ -26,6 +26,10 @@ table{
     width: 100%;
 }
 
+table tr{
+    margin: 10px 0 10px 0;
+}
+
 table th{
     width: 110px;
     font-size: 1rem;
@@ -119,3 +123,21 @@ table td{
 .btn.delete{ margin-left: 5px;}
 
 /* 망고스토리 뷰 */
+
+
+/* 맛집리스트 뷰 */
+.matjib_title{ 
+    letter-spacing: 1px;
+    margin-right: 10px;
+    font-size: 1.3rem;
+    line-height: 1.7;
+}
+
+.matjib_subtitle{
+    color: #868686;
+    letter-spacing: 1px;
+    margin-right: 10px;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+/* 맛집리스트 뷰 */

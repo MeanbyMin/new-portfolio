@@ -3,23 +3,6 @@
     session_start();
     include "./include/dbconn.php";
     include "./include/adminsessionCheck.php";
-    include "./include/msIdxCheck.php";
-
-    $auth_ms_idx = mysqli_real_escape_string($conn, $_GET['ms_idx']);
-
-    $sql = "SELECT * FROM mango_story WHERE ms_idx=$auth_ms_idx";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_array($result);
-
-    $id = $_SESSION['adminid'];
-    $ms_idx         = $row['ms_idx'];
-    $ms_userid      = $row['ms_userid'];
-    $ms_title       = $row['ms_title'];
-    $ms_subtitle    = $row['ms_subtitle'];
-    $ms_content     = $row['ms_content'];
-    $ms_regdate     = $row['ms_regdate'];
-    $ms_read        = $row['ms_read'];
-    $ms_like        = $row['ms_like'];
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -29,10 +12,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title> 민바이민 : Restaurant Edit</title>
+        <title> 민바이민 : MangoStory</title>
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="./css/write.css">
+        
         <!-- include libraries(jQuery, bootstrap) -->
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
@@ -44,7 +28,7 @@
     </head>
     <body>
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="./adminindex.php">Mangoplate Admin</a>
+            <a class="navbar-brand" href="./index.php">Mangoplate Admin</a>
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -74,7 +58,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="adminindex.php">
+                            <a class="nav-link" href="./adminindex.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
@@ -91,15 +75,6 @@
                                     <a class="nav-link" href="MatjibList.php">Matjib List</a>
                                 </nav>
                             </div>
-                            <!-- <div class="sb-sidenav-menu-heading">Addons</div>
-                            <a class="nav-link" href="charts.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Charts
-                            </a>
-                            <a class="nav-link" href="tables.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Tables
-                            </a> -->
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
@@ -111,56 +86,37 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">Restaurant Edit</h1>
+                        <h1 class="mt-4">맛집 리스트</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="./adminindex.php">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Restaurant Edit</li>
+                            <li class="breadcrumb-item"><a href="./adminindex.html">Dashboard</a></li>
+                            <li class="breadcrumb-item active">맛집 리스트</li>
                         </ol>
                         <!-- 본문 추가 영역 -->
-                        <form method="post" action="edit_story_ok.php" method="post">
-                            <input type="hidden" name="ms_idx" value="<?=$ms_idx?>">
-                            <input type="hidden" name="ms_userid" value="<?=$ms_userid?>">
-                            <div class="story_titleArea">
-                                <input type="text" class="story_title" name="ms_title" placeholder="제목을 입력하세요" autocomplete="off" value="<?=$ms_title?>">
-                                <input type="text" class="story_subtitle" name="ms_subtitle" placeholder="부제를 입력하세요" autocomplete="off" value="<?=$ms_subtitle?>">
+                        <h2>맛집 리스트 등록하기</h2>
+                        <form method="post" action="./write_matjib_ok.php" enctype="multipart/form-data" onsubmit="return sendit()">
+                            <div class="matjib_titleArea">
+                                <input type="text" class="matjib_title" name="tl_title" placeholder="제목을 입력하세요" autocomplete="off">
+                                <input type="text" class="matjib_subtitle" name="tl_subtitle" placeholder="부제를 입력하세요" autocomplete="off">
                             </div>
-                            <textarea name="ms_content" id="summernote"><?=$ms_content?></textarea>
+                            <p><span class="title">대표사진</span> 
+                            <div class="filebox"> 
+                                <input id="upload-name" placeholder="파일선택" readonly> 
+                                <label for="ex_filename">파일선택</label> 
+                                <input type="file" id="ex_filename" class="upload-hidden" name="tl_repphoto" onchange="upload_file()"> 
+                            </div>
+                            </p>
+                            <p>
+                                <label>
+                                    <span class="title">가게명</span> 
+                                    <div id="restaurant">
+                                        <input type="text" class="tl_restaurant" name="tl_restuarant[]" placeholder="가게명을 입력하세요"> <input type="button" value="추가" onclick="add_textbox()">
+                                    </div>
+                                </label>
+                            </p>
                             <p class="btn_area story_btn">
                                 <input type="submit"  value="등록">
                             </p>
                         </form>
-                        <script type="text/javascript">
-                            $(function() {
-                                $('#summernote').summernote({
-                                    height: 500,
-                                    lang : 'ko-KR',
-                                    callbacks: {
-                                        onImageUpload : function(files, editor, welEditable) {
-                                            console.log('image upload:', files);
-                                            sendFile( files[0], this );
-                                        }
-                                    }
-                                });
-                                function sendFile(file, editor) {
-                                    console.log(file);
-                                    data = new FormData();
-                                    data.append("file", file);
-                                    $.ajax({
-                                        url: "saveimage.php", // image 저장 소스
-                                        data: data,
-                                        cache: false,
-                                        contentType: false,
-                                        processData: false,
-                                        type: 'POST',
-                                        success: function(data){
-                                            //   alert(data);
-                                            console.log(data)
-                                            $('#summernote').summernote('insertImage', data);
-                                        }
-                                    });
-                                }
-                            });
-                        </script>
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
@@ -177,6 +133,55 @@
                 </footer>
             </div>
         </div>
-        <script src="js/scripts.js"></script>
+        <script>
+            function sendit(){
+                const matjib_title = document.querySelector('.matjib_title');
+                const matjib_subtitle = document.querySelector('.matjib_subtitle');
+                const ex_filename = document.getElementById('ex_filename');
+                const tl_restaurant = document.querySelector('.tl_restaurant');
+
+                if(matjib_title.value == ''){
+                    alert('제목을 입력하세요');
+                    matjib_title.focus();
+                    return false;
+                }
+
+                if(matjib_subtitle.value == ''){
+                    alert('부제를 입력하세요');
+                    matjib_subtitle.focus();
+                    return false;
+                }
+
+                if(ex_filename.value == ''){
+                    alert('사진을 선택하세요');
+                    ex_filename.focus();
+                    return false;
+                }
+
+                if(tl_restaurant.value == ''){
+                    alert('가게명을 입력하세요');
+                    tl_restaurant.focus();
+                    return false;
+                }
+            }
+
+            const add_textbox = () => {
+                const restaurant = document.getElementById("restaurant");
+                const newP = document.createElement('p');
+                newP.innerHTML = "<input type='text' name='tl_restuarant[]' placeholder='가게명을 입력하세요'> <input type='button' value='삭제' onclick='remove(this)'>";
+                restaurant.appendChild(newP);
+            }
+            const remove = (obj) => {
+                document.getElementById('restaurant').removeChild(obj.parentNode);
+            }
+
+            const upload_file = () => {
+                let fileValue = document.querySelector('.upload-hidden').value;
+                let fileName = document.getElementById('upload-name');
+                fileValue = fileValue.split('/').pop().split('\\').pop();
+                fileName.value = fileValue; 
+            }
+        </script>
+        <script src="js/scripts.js"></script>        
     </body>
 </html>
