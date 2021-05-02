@@ -74,26 +74,49 @@
             $mm_wannagoarr = "";
         }
     }
+
+    $tl_idx = $_GET['tl_idx'];
+    $sql = "UPDATE top_lists SET tl_read = tl_read + 1 WHERE tl_idx ='$tl_idx'";
+    $result = mysqli_query($conn, $sql);
+    $sql = "SELECT tl_title, tl_subtitle, tl_restaurant, tl_tags, tl_read, tl_regdate FROM top_lists WHERE tl_idx = '$tl_idx' AND tl_status = '등록'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_array($result);
+
+    $tl_title       = $row['tl_title'];
+    $tl_subtitle    = $row['tl_subtitle'];
+    $tl_restaurant  = $row['tl_restaurant'];
+    $tl_tags        = $row['tl_tags'];
+    $tl_read        = $row['tl_read'];
+    $tl_regdate     = $row['tl_regdate'];
+    $tl_regdate = explode(" ", $tl_regdate)[0];
+    
+    $tl_tagsarr = [];
+    if(strpos($tl_tags, ",") > 0 ){
+        $tl_tagsarr = explode(",", $tl_tags);
+    }else{
+        array_push($tl_tagsarr, $tl_tags);
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="kor">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>망고플레이트 탑리스트 - 당신의 고민을 덜어줄 맛집 리스트</title>
+    <title><?=$tl_title?> | 맛집검색 망고플레이트</title>
     
     <!-- CSS styles -->
     <link rel="stylesheet" href="./css/common.css" type="text/css">
     <link href="../img/ico.png" rel="shortcut icon" type="image/x-icon">
     <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
 </head>
-<body class="pg-all_picks">
+<body onunload="" ng-app="mp20App" class="top_list_page_body">
     <ul class="skipnavi">
         <li><a href="#container">본문내용</a></li>
     </ul>
     <!-- wrap 시작 -->
     <div id="wrap">
-       <!-- 헤더 시작 -->
+        <!-- 헤더 시작 -->
        <header class="Header" data-page="noraml">
             <a href="./index.php" class="Header__Logo">
                 <i class="Header__LogoIcon"></i>
@@ -644,132 +667,427 @@
 
         <!-- 검색창 포커스 끝 -->
         <!-- 본문 시작 -->
-        <main class="pg-all_picks">
+        <main class="mn-toplist pg-toplist">
+
             <article class="contents">
-                <section class="module top-list">
-                    <div class="inner">
-                        <h1 class="title">믿고 보는 맛집 리스트</h1>
-                
-                        <div class="slider-container">
-                            <p class="tags">
-                            <button class="tag-item selected"
-                                    onclick="">
-                                전체
-                            </button>
-                                <button class="tag-item" data-keyword="파스타"
-                                        onclick="">
-                                <h2>파스타</h2>
-                                </button>
-                                <button class="tag-item" data-keyword="무한리필"
-                                        onclick="">
-                                <h2>무한리필</h2>
-                                </button>
-                                <button class="tag-item" data-keyword="이태원"
-                                        onclick="">
-                                <h2>이태원</h2>
-                                </button>
-                                <button class="tag-item" data-keyword="고기"
-                                        onclick="">
-                                <h2>고기</h2>
-                                </button>
-                                <button class="tag-item" data-keyword="데이트"
-                                        onclick="">
-                                <h2>데이트</h2>
-                                </button>
-                                <button class="tag-item" data-keyword="강남"
-                                        onclick="">
-                                <h2>강남</h2>
-                                </button>
-                                <button class="tag-item" data-keyword="홍대"
-                                        onclick="">
-                                <h2>홍대</h2>
-                                </button>
-                                <button class="tag-item" data-keyword="스테이크"
-                                        onclick="">
-                                <h2>스테이크</h2>
-                                </button>
-                                <button class="tag-item" data-keyword="가로수길"
-                                        onclick="">
-                                <h2>가로수길</h2>
-                                </button>
-                                <button class="tag-item" data-keyword="디저트"
-                                        onclick="">
-                                <h2>디저트</h2>
-                                </button>
-                            </p>
-                        </div>
-            
-                        <ul class="list-type-ls type-column02-picks">
+                <header class="basic-info-list">
+                <div class="inner" style="padding-bottom: 10px">
+                    <p class="status">
+                        <span>
+                            <?=$tl_read?> 클릭
+                        </span> |
+                        <time datetime="<?=$tl_regdate?>">
+                            <?=$tl_regdate?>
+                        </time>
+                    </p>
+                    <h1 class="title"><?=$tl_title?></h1>
+                    <h2 class="desc">
+                        <?=$tl_subtitle?>
+                    </h2>
+                </div>
+                </header>
+
+                <div class="container-list" id="contents_width">
+                <div class="inner">
+                    <!-- 해당 레스토랑 목록 -->
+                    <section id="contents_list">
+                    <p class="hidden"> 목록</p>
+
+                    <ul class="list-restaurants type-single-big top_list_restaurant_list">
 <?php
-    $sql = "SELECT * FROM top_lists WHERE tl_status = '등록'";
-    $result = mysqli_query($conn, $sql);
+    $tl_restaurantarr = explode(",", $tl_restaurant);
+    $tl_restaurant_list = [];
+    for($i=0;$i<count($tl_restaurantarr);$i++){
+        $sql = "SELECT r_idx, r_restaurant, r_grade, r_repadd, r_repphoto, r_address, r_jibunaddress, r_foodtype, r_review, r_wannago FROM mango_restaurant WHERE r_restaurant = '$tl_restaurantarr[$i]'";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_array($result);
+        $r_idx = $row['r_idx'];
+        $tl_restaurantadd = array('r_idx' => $row['r_idx'], 'r_restaurant' => $row['r_restaurant'], 'r_grade' => $row['r_grade'], 'r_repadd' => $row['r_repadd'], 'r_repphoto' => $row['r_repphoto'], 'r_address' => $row['r_address'], 'r_jibunaddress' => $row['r_jibunaddress'], 'r_foodtype' => $row['r_foodtype'], 'r_review' => $row['r_review'], 'r_wannago' => $row['r_wannago']);
+        array_push($tl_restaurant_list, $tl_restaurantadd);
+        $sql = "SELECT mr_userid, mr_name, mr_content FROM mango_review WHERE mr_boardidx = '$r_idx'";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_array($result);
+        if(isset($row)){
+            $tl_restaurant_list[$i]['mr_name'] = $row['mr_name'];
+            $tl_restaurant_list[$i]['mr_content'] = $row['mr_content'];
+            $mr_userid = $row['mr_userid'];
+            $sql = "SELECT mm_profile_image FROM mango_member WHERE mm_userid = '$mr_userid'";
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_array($result);
+            $tl_restaurant_list[$i]['mm_profile_image'] = $row['mm_profile_image'];
+        }
 
-    $top_lists = [];
-    while($row = mysqli_fetch_array($result)){
-        $toplistadd = array('tl_idx' => $row['tl_idx'], 'tl_title' => $row['tl_title'], 'tl_subtitle' => $row['tl_subtitle'], 'tl_repphoto' => $row['tl_repphoto']);
-        array_push($top_lists, $toplistadd);
     }
-
-    if(count($top_lists) > 20){
-        for($i=0; $i<20; $i++){
+    
+    if(count($tl_restaurant_list) > 10){
+        for($i=0;$i<10;$i++){
+            $j = $i + 1;
+            $tl_r_idx = $tl_restaurant_list[$i]['r_idx'];
 ?>
-                            <li class="top_list_item">
-                                <a href="./top_lists_detail.php?tl_idx=<?=$top_lists[$i]['tl_idx']?>" onclick="">
-                                    <figure class="ls-item">
+                        <li class="toplist_list">
+                            <div class="with-review">
+                            <figure class="restaurant-item">
+                                <a href="./restaurant.php?r_idx=<?=$tl_restaurant_list[$i]['r_idx']?>" onclick="">
                                     <div class="thumb">
-                                        <div class="inner">
-                                        <img class="center-crop portrait lazy" alt="<?=$top_lists[$i]['tl_title']?>" data-original="<?=$top_lists[$i]['tl_repphoto']?>" data-error="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80" src="<?=$top_lists[$i]['tl_repphoto']?>" style="display: block;">
-                                        </div>
+                                        <img class="center-croping lazy"
+                                            alt="<?=$tl_restaurant_list[$i]['r_restaurant']?> 사진 - <?=$tl_restaurant_list[$i]['r_address']?>" data-original="<?=$tl_restaurant_list[$i]['r_repphoto']?>" data-error="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80" src="<?=$tl_restaurant_list[$i]['r_repphoto']?>"/>
                                     </div>
-                                    <figcaption class="info">
-                                        <div class="info_inner_wrap">
-                                        <span class="title" data-ellipsis-id="<?=$i + 1?>"><?=$top_lists[$i]['tl_title']?></span>
-                                        <p class="desc" data-ellipsis-id="2<?=$i + 1?>"><?=$top_lists[$i]['tl_subtitle']?></p>
-                                        <p class="hash">
-                                            <span>#<?=$top_lists[$i]['tl_title']?></span>
-                                        </p>
-                                        </div>
-                                    </figcaption>
-                                    </figure>
                                 </a>
-                            </li>
+                                <figcaption>
+                                <div class="info">
+                                    <div class="wannago_wrap">
+<?php
+if(isset($id)){
+    $sql = "SELECT mm_wannago FROM mango_member WHERE mm_userid = '$id' AND mm_wannago LIKE '%$tl_r_idx%'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_array($result);
+    if(isset($row['mm_wannago'])){
+?>
+                                                <button class="btn-type-icon favorite wannago_btn selected"
+                                                    data-restaurant_uuid="<?=$tl_restaurant_list[$i]['r_idx']?>"
+                                                    data-action_id="<?=$id?>" onclick="wannago_btn(this)"></button>
+<?php
+    }else{
+?>
+                                                <button class="btn-type-icon favorite wannago_btn "
+                                                    data-restaurant_uuid="<?=$tl_restaurant_list[$i]['r_idx']?>"
+                                                    data-action_id="<?=$id?>" onclick="wannago_btn(this)"></button>
+
+<?php
+    }
+?>
+                                                <p class="wannago_txt" onclick="wannago_btn(this)">가고싶다</p>
+                                            </div>
+<?php
+    }else{
+?>
+                                                <button class="btn-type-icon favorite wannago_btn "
+                                                    data-restaurant_uuid="<?=$tl_restaurant_list[$i]['r_idx']?>" data-action_id=""
+                                                    onclick="clickLogin()"></button>
+                                                <p class="wannago_txt">가고싶다</p>
+                                            </div>
+<?php
+    }
+?>
+                                    <span class="title ">
+                                    <a href="./restaurant.php?r_idx=<?=$tl_restaurant_list[$i]['r_idx']?>"
+                                        onclick="">
+                                        <?=$j?>.<h3> <?=$tl_restaurant_list[$i]['r_restaurant']?></h3>
+                                    </a>
+                                    </span>
+                                    <strong class="point  ">
+                                    <span><?=$tl_restaurant_list[$i]['r_grade']?></span>
+                                    </strong>
+                                    <p class="etc "><?=$tl_restaurant_list[$i]['r_address']?></p>
+                                </div>
+                                </figcaption>
+                            </figure>
+
+                                <div class="review-content no-bottom">
+<?php
+    if(isset($tl_restaurant_list[$i]['mr_name'])){
+?>
+                                <figure class="user">
+                                    <div class="thumb lazy" data-original="<?=$tl_restaurant_list[$i]['mm_profile_image']?>" data-error="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/jmcmlp180qwkp1jj.png?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80" style="display: block; background-image: url(<?=$tl_restaurant_list[$i]['mm_profile_image']?>);">
+                                    </div>
+                                    <figcaption class="">
+                                    <?=$tl_restaurant_list[$i]['mr_name']?>
+                                    </figcaption>
+                                </figure>
+<?php
+    if(mb_strlen($tl_restaurant_list[$i]['mr_content'], 'UTF-8') > 80){
+?>
+                                <p class="short_review " onclick="">
+                                    <?=mb_substr($tl_restaurant_list[$i]['mr_content'], 0, 80, 'UTF-8')?>...
+                                </p>
+
+                                <p class="long_review ">
+                                    <?=$tl_restaurant_list[$i]['mr_content']?>
+                                </p>
+
+                                    <span class="review_more_btn" onclick="">더보기</span>
+                                </div>
+<?php
+    }else{
+?>
+                                <p class="short_review " onclick="">
+                                    <?=$tl_restaurant_list[$i]['mr_content']?>
+                                </p>
+<?php
+    }
+    }else{
+?>
+                                <figure class="user">
+                                    <div class="thumb lazy">
+                                    </div>
+                                    <figcaption class=""></figcaption>
+                                </figure>
+                                <p class="short_review " onclick=""></p>
+
+                                <p class="long_review "></p>
+                                    <span class="review_more_btn" onclick="" style="display:none">더보기</span>
+                                </div>
+<?php
+    }
+?>
+
+
+                            <a href="./restaurant.php?r_idx=<?=$tl_restaurant_list[$i]['r_idx']?>" class="btn-detail"
+                                onclick="">
+                                <div class="restaurant-more-name"><?=$tl_restaurant_list[$i]['r_restaurant']?></div>
+                                <div class="restaurant-more-text">더보기 ></div>
+                            </a>
+                            </div>
+                        </li>
+<?php
+        }
+?>
+        </ul>
+
+                    <div class="more_btn_wrapper">
+                        <button class="more_btn" onclick="">더보기</button>
+                        <img class="loading_img" src="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/ldcyd5lxlvtlppe3.gif?fit=around|:&crop=:;*,*&output-format=gif&output-quality=80" alt="loading bar"/>
+                    </div>
+<?php
+    }else{
+        for($i=0;$i<count($tl_restaurant_list);$i++){
+            $j = $i + 1;
+            $tl_r_idx = $tl_restaurant_list[$i]['r_idx'];
+?>
+                        <li class="toplist_list">
+                            <div class="with-review">
+                            <figure class="restaurant-item">
+                                <a href="./restaurant.php?r_idx=<?=$tl_restaurant_list[$i]['r_idx']?>" onclick="">
+                                    <div class="thumb">
+                                        <img class="center-croping lazy"
+                                            alt="<?=$tl_restaurant_list[$i]['r_restaurant']?> 사진 - <?=$tl_restaurant_list[$i]['r_address']?>" data-original="<?=$tl_restaurant_list[$i]['r_repphoto']?>" data-error="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80" src="<?=$tl_restaurant_list[$i]['r_repphoto']?>"/>
+                                    </div>
+                                </a>
+                                <figcaption>
+                                <div class="info">
+                                    <div class="wannago_wrap">
+                                    <?php
+if(isset($id)){
+    $sql = "SELECT mm_wannago FROM mango_member WHERE mm_userid = '$id' AND mm_wannago LIKE '%$tl_r_idx%'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_array($result);
+    if(isset($row['mm_wannago'])){
+?>
+                                                <button class="btn-type-icon favorite wannago_btn selected"
+                                                    data-restaurant_uuid="<?=$tl_restaurant_list[$i]['r_idx']?>"
+                                                    data-action_id="<?=$id?>" onclick="wannago_btn(this)"></button>
+<?php
+    }else{
+?>
+                                                <button class="btn-type-icon favorite wannago_btn "
+                                                    data-restaurant_uuid="<?=$tl_restaurant_list[$i]['r_idx']?>"
+                                                    data-action_id="<?=$id?>" onclick="wannago_btn(this)"></button>
+
+<?php
+    }
+?>
+                                                <p class="wannago_txt" onclick="wannago_btn(this)">가고싶다</p>
+                                            </div>
+<?php
+    }else{
+?>
+                                                <button class="btn-type-icon favorite wannago_btn "
+                                                    data-restaurant_uuid="<?=$tl_restaurant_list[$i]['r_idx']?>" data-action_id=""
+                                                    onclick="clickLogin()"></button>
+                                                <p class="wannago_txt">가고싶다</p>
+                                            </div>
+<?php
+    }
+?>
+                                    <span class="title ">
+                                    <a href="./restaurant.php?r_idx=<?=$tl_restaurant_list[$i]['r_idx']?>"
+                                        onclick="">
+                                        <?=$j?>.<h3> <?=$tl_restaurant_list[$i]['r_restaurant']?></h3>
+                                    </a>
+                                    </span>
+                                    <strong class="point  ">
+                                    <span><?=$tl_restaurant_list[$i]['r_grade']?></span>
+                                    </strong>
+                                    <p class="etc "><?=$tl_restaurant_list[$i]['r_address']?></p>
+                                </div>
+                                </figcaption>
+                            </figure>
+
+                                <div class="review-content no-bottom">
+<?php
+    if(isset($tl_restaurant_list[$i]['mr_name'])){
+?>
+                                <figure class="user">
+                                    <div class="thumb lazy" data-original="<?=$tl_restaurant_list[$i]['mm_profile_image']?>" data-error="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/jmcmlp180qwkp1jj.png?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80" style="display: block; background-image: url(<?=$tl_restaurant_list[$i]['mm_profile_image']?>);">
+                                    </div>
+                                    <figcaption class="">
+                                    <?=$tl_restaurant_list[$i]['mr_name']?>
+                                    </figcaption>
+                                </figure>
+<?php
+        if(mb_strlen($tl_restaurant_list[$i]['mr_content'], 'UTF-8') > 80){
+?>
+                                <p class="short_review " onclick="">
+                                    <?=mb_substr($tl_restaurant_list[$i]['mr_content'], 0, 80, 'UTF-8')?>...
+                                </p>
+
+                                <p class="long_review ">
+                                    <?=$tl_restaurant_list[$i]['mr_content']?>
+                                </p>
+
+                                    <span class="review_more_btn" onclick="">더보기</span>
+                                </div>
+<?php
+        }else{
+?>
+                                <p class="short_review " onclick="">
+                                    <?=$tl_restaurant_list[$i]['mr_content']?>
+                                </p>
 <?php
         }
     }else{
-        for($i=0;$i<count($top_lists);$i++){
 ?>
-                            <li class="top_list_item">
-                                <a href="./top_lists_detail.php?tl_idx=<?=$top_lists[$i]['tl_idx']?>" onclick="">
-                                    <figure class="ls-item">
-                                    <div class="thumb">
-                                        <div class="inner">
-                                        <img class="center-crop portrait lazy" alt="<?=$top_lists[$i]['tl_title']?>" data-original="<?=$top_lists[$i]['tl_repphoto']?>" data-error="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80" src="<?=$top_lists[$i]['tl_repphoto']?>" style="display: block;">
-                                        </div>
+                                <figure class="user">
+                                    <div class="thumb lazy">
                                     </div>
-                                    <figcaption class="info">
-                                        <div class="info_inner_wrap">
-                                        <span class="title" data-ellipsis-id="<?=$i + 1?>"><?=$top_lists[$i]['tl_title']?></span>
-                                        <p class="desc" data-ellipsis-id="2<?=$i + 1?>"><?=$top_lists[$i]['tl_subtitle']?></p>
-                                        <p class="hash">
-                                            <span>#<?=$top_lists[$i]['tl_title']?></span>
+                                    <figcaption class=""></figcaption>
+                                </figure>
+                                <p class="short_review " onclick=""></p>
+
+                                <p class="long_review "></p>
+                                    <span class="review_more_btn" onclick="" style="display:none">더보기</span>
+                                </div>
+<?php
+    }
+?>
+
+
+                            <a href="./restaurant.php?r_idx=<?=$tl_restaurant_list[$i]['r_idx']?>" class="btn-detail"
+                                onclick="">
+                                <div class="restaurant-more-name"><?=$tl_restaurant_list[$i]['r_restaurant']?></div>
+                                <div class="restaurant-more-text">더보기 ></div>
+                            </a>
+                            </div>
+                        </li> 
+<?php
+        }
+?>
+                    </ul>
+<?php
+    }
+?>
+
+                    </section>
+
+                    <div class="module options only-desktop">
+                    <div class="share-sns">
+                    <p>
+                        <button class="btn-type-share facebook facebook_share_btn" onclick="t">페이스북에 공유</button>
+                        <button class="btn-type-share kakaotalk kakaotalk_share_btn only-mobile" onclick="">카카오톡에 공유</button>
+                        <button class="btn-type-share band band_share_btn only-mobile" onclick="" >밴드에 공유</button>
+                        <button class="btn-type-share twitter twitter_share_btn" onclick="">트위터에 공유</button>
+                        <button class="btn-type-share email mail_share_btn only-mobile" onclick="">메일보내기</button>
+                    </p>
+                    </div>
+
+                            <!-- 페이지 링크 공유 -->
+                    <div class="share-link" onclick="">
+                    <p>
+                        <span class="url copy_url"></span>
+                        <button class="btn-url-share">공유하기</button>
+                    </p>
+                    </div>
+
+                    </div>
+
+                    <section class="module map only-desktop">
+                    <span class="title">리스트 지도</span>
+
+                    <div class="map-container">
+                        <div id="map" style="width:100%;height:400px;"></div>
+                    </div>
+                    </section>
+                </div>
+                </div>
+
+                <!-- 관련 태그/맛집/탑리스트 -->
+                <div class="container-related-list">
+                <div class="inner">
+                    <!-- 관련 식당 목록 -->
+                    <section class="module related-restaurant">
+                        <span class="title">리스트의 식당과 비슷한 맛집</span>
+
+                        <ul class="list-restaurants type-column04">
+<?php
+    $tl_restaurantSi = "";
+    $resexplode = explode(",",$tl_restaurant);
+    foreach($resexplode as $t){
+        $tl_restaurantSi .= "'".$t."',";
+    }
+    $tl_restaurantSi = substr($tl_restaurantSi, 0, -1);
+
+    $sql = "SELECT r_idx, r_restaurant, r_grade, r_foodtype, r_repadd, r_repphoto, r_address FROM mango_restaurant WHERE (r_restaurant like '%$tl_tags%' OR r_repadd like '%$tl_tags%' OR r_address like '%$tl_tags%' OR r_menu like '%$tl_tags%' OR r_foodtype like '%$tl_tags%' OR r_tags like '%$tl_tags%') AND r_restaurant NOT IN ($tl_restaurantSi) ORDER BY r_grade DESC LIMIT 4";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_array($result);
+    $similarlist = [];
+    while($row = mysqli_fetch_array($result)){
+        $similaradd = array('r_idx' => $row['r_idx'], 'r_restaurant' => $row['r_restaurant'], 'r_grade' => $row['r_grade'], 'r_repphoto' => $row['r_repphoto'], 'r_repadd' => $row['r_repadd'], 'r_address' => $row['r_address'], 'r_foodtype' => $row['r_foodtype']);
+        array_push($similarlist, $similaradd);
+    }
+    for($i=0;$i<count($similarlist);$i++){
+?>
+                            <li>
+                                <div class="restaurant-item">
+                                    <figure class="restaurant-item">
+                                    <div class="thumb">
+                                        <img class="center-croping lazy" alt="<?=$similarlist[$i]['r_restaurant']?> 사진 - <?=$similarlist[$i]['r_repadd']?>" src="<?=$similarlist[$i]['r_repphoto']?>"/>
+                                        <a href="./restaurant.php?r_idx=<?=$similarlist[$i]['r_idx']?>"
+                                        onclick="">
+                                        <?=$similarlist[$i]['r_restaurant']?>
+                                        사진
+                                        </a>
+                                    </div>
+                                    <figcaption>
+                                        <div class="info">
+                                        <a href="" onclick="">
+                                            <span class="title"><?=$similarlist[$i]['r_restaurant']?></span>
+                                        </a>
+                                        <strong class="point "><?=$similarlist[$i]['r_grade']?></strong>
+                                        <p class="etc">
+                                        <?=$similarlist[$i]['r_repadd']?> -
+                                        <?=$similarlist[$i]['r_foodtype']?>
                                         </p>
                                         </div>
                                     </figcaption>
                                     </figure>
-                                </a>
+                                </div>
                             </li>
 <?php
-        }
     }
 ?>
                         </ul>
-            
-                        <a class="btn-more" onclick="trackEvent('CLICK_MORE_LIST')">더보기</a>
-                    </div>
-                </section>
-            </article>
-        </main>
-        <!-- 컨테이너 끝 -->
+                    </section>
+
+                    <!-- 관련 태그 -->
+                    <section class="module related-tags">
+                        <span class="title">실시간 인기 키워드</span>
+                        <p>
+<?php
+    for($i=0;$i<count($tl_tagsarr);$i++){
+?>
+                            <a href="./search.php?search=<?=$tl_tagsarr[$i]?>"
+                            onclick="" class="tag-item">
+                            <?=$tl_tagsarr[$i]?>
+                            </a>
+<?php
+    }
+?>
+                        
+                        </p>
+                    </section>
+                </div>
+                </div>
+        <!-- 본문 끝 -->
         <!-- footer 시작 -->
         <footer class="footer">
             <div class="inner">
@@ -1098,20 +1416,184 @@
         src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v10.0&appId=3138539786286381&autoLogAppEvents=1"
         nonce="tABT7H90"></script>
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<!-- 검색어 -->
+    <script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=706ac1d7c4ad234db8fea2600a7f7c14&libraries=services"></script>
+<!-- 지도 -->
 <?php
-    $sql = "SELECT r_restaurant, r_repadd, r_address, r_jibunaddress, r_menu, r_tags FROM mango_restaurant";
-    $result = mysqli_query($conn, $sql);
-    $restaurant_list = [];
-    while($row = mysqli_fetch_array($result)){
-        $restuarant = array('r_restaurant' => $row['r_restaurant']);
-        array_push($restaurant_list, $restuarant);
+    $tl_listAddress = [];
+    for($i=0;$i<count($tl_restaurant_list);$i++){
+        array_push($tl_listAddress, $tl_restaurant_list[$i]['r_jibunaddress']);
+    }
+    $tl_listRestaurant = [];
+    for($i=0;$i<count($tl_restaurant_list);$i++){
+        array_push($tl_listRestaurant, $tl_restaurant_list[$i]['r_restaurant']);
+    }
+    $tl_list_idx = [];
+    for($i=0;$i<count($tl_restaurant_list);$i++){
+        array_push($tl_list_idx, $tl_restaurant_list[$i]['r_idx']);
+    }
+    $tl_list_grade = [];
+    for($i=0;$i<count($tl_restaurant_list);$i++){
+        array_push($tl_list_grade, $tl_restaurant_list[$i]['r_grade']);
+    }
+    $tl_list_repphoto = [];
+    for($i=0;$i<count($tl_restaurant_list);$i++){
+        array_push($tl_list_repphoto, $tl_restaurant_list[$i]['r_repphoto']);
+    }
+    $tl_list_repadd = [];
+    for($i=0;$i<count($tl_restaurant_list);$i++){
+        array_push($tl_list_repadd, $tl_restaurant_list[$i]['r_repadd']);
+    }
+    $tl_list_foodtype = [];
+    for($i=0;$i<count($tl_restaurant_list);$i++){
+        array_push($tl_list_foodtype, $tl_restaurant_list[$i]['r_foodtype']);
+    }
+    $tl_list_review = [];
+    for($i=0;$i<count($tl_restaurant_list);$i++){
+        array_push($tl_list_review, $tl_restaurant_list[$i]['r_review']);
+    }
+    $tl_list_wannago = [];
+    for($i=0;$i<count($tl_restaurant_list);$i++){
+        array_push($tl_list_wannago, $tl_restaurant_list[$i]['r_wannago']);
     }
 ?>
+<!-- 검색어 -->
     <script>
+        let mm_wannago = <?= json_encode($mm_wannagoarr) ?>;
+        let mm_userid = <?= json_encode($id) ?>;
+        let sessionid = <?= json_encode($sessionid)?>;
+        let mm_recentarr = <?=json_encode($mm_recentarr)?>;
+        let url = window.location.href;
+        const copy_url = document.querySelector(".copy_url");
+        copy_url.innerText = url;
         let restaurant_list = <?= json_encode($restaurant_list) ?>;
+        let tl_listAddress = <?= json_encode($tl_listAddress) ?>;
+        let tl_listRestaurant = <?= json_encode($tl_listRestaurant) ?>;
+        let tl_list_idx = <?= json_encode($tl_list_idx) ?>;
+        let tl_list_grade = <?= json_encode($tl_list_grade) ?>;
+        let tl_list_repphoto = <?= json_encode($tl_list_repphoto) ?>;
+        let tl_list_repadd = <?= json_encode($tl_list_repadd) ?>;
+        let tl_list_foodtype = <?= json_encode($tl_list_foodtype) ?>;
+        let tl_list_review = <?= json_encode($tl_list_review) ?>;
+        let tl_list_wannago = <?= json_encode($tl_list_wannago) ?>;
+        let mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+            mapOption = {
+                center: new kakao.maps.LatLng(37.535265422268566, 127.0811345629391), // 지도의 중심좌표
+                level: 2 // 지도의 확대 레벨
+            };
+        // 주소-좌표 변환 객체를 생성합니다
+        const geocoder = new kakao.maps.services.Geocoder();
+
+        let positions = [];
+        // 주소로 좌표를 검색합니다
+        for (let i = 0; i < tl_listRestaurant.length; i++) {
+            geocoder.addressSearch(tl_listAddress[i], function (result, status) {
+                // 정상적으로 검색이 완료됐으면 
+                if (status === kakao.maps.services.Status.OK) {
+                    const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+                    positions[i] = {
+                        content: `
+<div class="restaurant-in-map">
+    <figure class="restaurant-item">
+        <div class="thumb">
+          <a href="./restaurant.php?r_idx=${tl_list_idx[i]}">
+            <div class="inner">
+              <img src=${tl_list_repphoto[i]} alt="${tl_listRestaurant[i]} 사진" class="center-crop" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg'">
+            </div>
+          </a>
+        </div>
+      <figcaption>
+        <div class="info">
+          <span class="title"><a href="./restaurant.php?r_idx=${tl_list_idx[i]}">${tl_listRestaurant[i]}</a></span>
+          <strong class="point ">${tl_list_grade[i]}</strong>
+          <p class="etc">${tl_list_repadd[i]} - ${tl_list_foodtype[i]}</p>
+
+          <p class="status-cnt">
+            <em class="review"><span class="hidden">리뷰수: </span>${tl_list_review[i]}</em>
+            <em class="favorite"><span class="hidden">가고싶다 수: </span>${tl_list_wannago[i]}</em>
+          </p>
+        </div>
+      </figcaption>
+    </figure>
+  </div>`,
+                        latlng: coords
+                    };
+                }
+            });
+        }
+
+
+
+        // 지도를 생성합니다    
+        const map = new kakao.maps.Map(mapContainer, mapOption);
+
+        var mapTypeControl = new kakao.maps.MapTypeControl();
+
+        // 지도에 컨트롤을 추가해야 지도위에 표시됩니다
+        // kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
+        map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+
+        // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+        var zoomControl = new kakao.maps.ZoomControl();
+        map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+
+
+        setTimeout(() => {
+            let plusLa = new Number();
+            let plusMa = new Number();
+            for (var i = 0; i < positions.length; i++) {
+                // 마커를 생성합니다
+                var marker = new kakao.maps.Marker({
+                    map: map, // 마커를 표시할 지도
+                    position: positions[i].latlng, // 마커의 위치
+                    clickable: true // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
+                });
+
+                var iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+
+                // 마커에 표시할 인포윈도우를 생성합니다 
+                var infowindow = new kakao.maps.InfoWindow({
+                    content: positions[i].content, // 인포윈도우에 표시할 내용
+                    removable: iwRemoveable
+                });
+
+                // 마커에 클릭이벤트를 등록합니다
+                kakao.maps.event.addListener(marker, 'click', makeOverListener(map, marker, infowindow));
+
+                plusLa += positions[i].latlng.La;
+                plusMa += positions[i].latlng.Ma;
+            }
+
+            // 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+            function makeOverListener(map, marker, infowindow) {
+                return function () {
+                    infowindow.open(map, marker);
+                };
+            }
+
+            // 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+            function makeOutListener(infowindow) {
+                return function () {
+                    infowindow.close();
+                };
+            }
+
+            let avgLa = plusLa / positions.length;
+            let avgMa = plusMa / positions.length;
+
+            (function setCenter() {
+                // 이동할 위도 경도 위치를 생성합니다 
+                var moveLatLon = new kakao.maps.LatLng(avgMa, avgLa);
+
+                // 지도 중심을 이동 시킵니다
+                map.setCenter(moveLatLon);
+
+                map.setLevel(14);
+            })();
+        }, 1000); 
     </script>
-    <script src="./js/basic.js"></script>
+    <script src="./js/top_lists_detail.js"></script>
     <script src="./js/facebook.js"></script>
     <script src="./js/kakao.js"></script>
 </body>

@@ -124,17 +124,17 @@
             <!-- 메뉴 부분 시작 -->
             <ul class="Header__MenuList">
                 <li class="Header__MenuItem Header__MenuItem--New clear">
-                    <a href="#" class="Header__MenuLink">
+                    <a href="./eat_deals.php" class="Header__MenuLink">
                         <span class="Header__MenuText">EAT딜</span>
                     </a>
                 </li>
                 <li class="Header__MenuItem Header__MenuItem--New clear">
-                    <a href="#" class="Header__MenuLink">
+                    <a href="./top_lists.php" class="Header__MenuLink">
                         <span class="Header__MenuText">맛집 리스트</span>
                     </a>
                 </li>
                 <li class="Header__MenuItem Header__MenuItem--New clear">
-                    <a href="#" class="Header__MenuLink">
+                    <a href="./mango_picks.php" class="Header__MenuLink">
                         <span class="Header__MenuText">망고 스토리</span>
                     </a>
                 </li>
@@ -693,7 +693,7 @@
             <section class="module popular_top_list_wrap">
                 <div class="module_title_wrap">
                     <h2 class="title">믿고 보는 맛집 리스트</h2>
-                    <a href="#" class="module_more">리스트 더보기</a>
+                    <a href="./top_list.php" class="module_more">리스트 더보기</a>
                 </div>
                 <div class="swiper-button-prev btn_prev1"></div>
                 <div class="swiper-container swiper1">
@@ -703,7 +703,6 @@
                                 <li>
                                     <img class="center-croping" alt="2021 충청도 인기 맛집 TOP 25 사진"
                                         src="./img/Chungcheong-do.jpeg" />
-
                                     <a href="#" onclick="">
                                         <figure class="ls-item">
                                             <figcaption class="info">
@@ -906,7 +905,7 @@
             <section class="module mp20_main_mango_pick_wrap">
                 <div class="module_title_wrap">
                     <h2 class="title">맛집 스토리</h2>
-                    <a class="module_more" href="./mango_picks.html" onclick="">
+                    <a class="module_more" href="./mango_picks.php" onclick="">
                         스토리 더보기
                     </a>
                 </div>
@@ -1386,7 +1385,7 @@ while($row = mysqli_fetch_array($result)){
             <section class="module popular_top_list_wrap">
                 <div class="module_title_wrap">
                     <h2 class="title">믿고 보는 맛집 리스트</h2>
-                    <a href="#" class="module_more">리스트 더보기</a>
+                    <a href="./top_lists.php" class="module_more">리스트 더보기</a>
                 </div>
                 <div class="swiper-button-prev btn_prev3"></div>
                 <div class="swiper-container swiper3">

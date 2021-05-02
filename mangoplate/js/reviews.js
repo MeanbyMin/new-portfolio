@@ -256,7 +256,7 @@ function upload_file(e) {
 
 let mr_remainPhotoArr = [];
 function reviewUpload() {
-  // mr_content.value = ReviewEditor__Editor.value;
+  mr_content.value = ReviewEditor__Editor.value;
   // let PictureReady = document.querySelectorAll(".Picture--Ready");
   // if (PictureReady !== null) {
   //   for (pic of PictureReady) {
@@ -300,6 +300,10 @@ function writeOver() {
   }
   mr_remainPhoto.value = mr_remainPhotoArr;
   mr_submit2.click();
+}
+
+function reviewCancel() {
+  history.back();
 }
 
 function removePicture(item) {

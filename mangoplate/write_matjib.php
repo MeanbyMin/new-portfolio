@@ -98,6 +98,7 @@
                                 <input type="text" class="matjib_title" name="tl_title" placeholder="제목을 입력하세요" autocomplete="off">
                                 <input type="text" class="matjib_subtitle" name="tl_subtitle" placeholder="부제를 입력하세요" autocomplete="off">
                             </div>
+                            <!-- <p><span class="title">태그</span> <input type="checkbox" name="" id=""></p> -->
                             <p><span class="title">대표사진</span> 
                             <div class="filebox"> 
                                 <input id="upload-name" placeholder="파일선택" readonly> 

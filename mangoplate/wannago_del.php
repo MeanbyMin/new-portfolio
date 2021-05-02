@@ -11,7 +11,6 @@
         $sql = "SELECT r_wannago FROM mango_restaurant WHERE r_idx = '$r_idx'";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_array($result);
-        echo $row['r_wannago'];
         $sql = "SELECT mm_wannago FROM mango_member WHERE mm_wannago LIKE '%$r_idx%' AND mm_userid = '$mm_userid'";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_array($result);

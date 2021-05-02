@@ -484,6 +484,9 @@ Header__SearchInput.addEventListener("keydown", (e) => {
 
 Header__SearchInputClearButton.addEventListener("click", () => {
   Header__SearchInput.value = "";
+  Header__SearchInputClearButton.classList.remove(
+    "Header__SearchInputClearButton--Show"
+  );
 });
 
 const CLICK_KEYWORD_SEARCH = () => {

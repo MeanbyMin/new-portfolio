@@ -60,8 +60,10 @@
             $imgfile .= $filepath.",";
         }
         $imgfile = substr($imgfile, 0, -1);
+        $r_photo = $imgfile.",".$r_photo;
+    }else{
+        $r_photo = $r_photo;
     }
-    $r_photo = $imgfile.",".$r_photo;
 
 
     // echo $id."<br>";  
@@ -78,7 +80,6 @@
         $sql = "INSERT INTO mango_review (mr_userid, mr_name, mr_content, mr_recommend, mr_photo, mr_status, mr_boardidx) VALUES ('$id', '$mr_name',
         '$mr_content', '$mr_recommend', '$imgfile', '$mr_status', '$r_idx');";
         $result = mysqli_query($conn, $sql);
-        // echo $sql;
         $sql = "UPDATE mango_member SET mm_reviews = mm_reviews + 1 WHERE mm_userid = '$id'";
         $result = mysqli_query($conn, $sql);
         $sql = "UPDATE mango_restaurant SET r_review = r_review + 1 WHERE r_idx ='$r_idx'";

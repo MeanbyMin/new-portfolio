@@ -7,7 +7,7 @@
     $sql = "SELECT * FROM mango_review WHERE mr_boardidx = '$r_idx' order by mr_idx desc";
     $result = mysqli_query($conn, $sql);
 
-    $i=0;
+
     while ($row = mysqli_fetch_array($result)){
         $row['mr_regdate'] = substr($row['mr_regdate'], 0, 10);
         echo $row['mr_idx']."&nbsp".$row['mr_userid'].

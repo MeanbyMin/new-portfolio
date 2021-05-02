@@ -26,7 +26,7 @@
         }
     }else{
         $mm_wannagoarr = "";
-        $id = "";
+        $id = null;
     }
     
     // 최근 검색을 위한 쿠키 설정
@@ -79,7 +79,7 @@
     
     // 가고싶다 리스트
     if(isset($mm_wannagoarr)){
-        if($mm_wannagoarr[0] !== ""){
+        if($mm_wannagoarr !== ""){
             $wannago_list = [];
             $wannago_idx = "";
             if(isset($mm_wannagoarr)){
@@ -96,6 +96,7 @@
                 }
             }
         }else{
+            $mm_wannagoarr = "";
         }
     }
     
@@ -240,7 +241,7 @@
     </title>
 
     <!-- CSS styles -->
-    <link rel="stylesheet" href="./css/restaurant.css" type="text/css">
+    <!-- <link rel="stylesheet" href="./css/restaurant.css" type="text/css"> -->
     <link rel="stylesheet" href="./css/common.css" type="text/css">
     <link href="../img/ico.png" rel="shortcut icon" type="image/x-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -270,23 +271,24 @@
                     <input class="Header__SearchInput" type="text" placeholder="지역, 식당 또는 음식" maxlength="50">
                 </label>
                 <button class="Header__SearchInputClearButton">CLEAR</button>
+                <input class="btn-search" type="submit" value="검색" style="display:none" onclick="CLICK_KEYWORD_SEARCH()" />
             </div>
             <!-- 검색 영역 끝 -->
 
             <!-- 메뉴 부분 시작 -->
             <ul class="Header__MenuList">
                 <li class="Header__MenuItem Header__MenuItem--New clear">
-                    <a href="#" class="Header__MenuLink">
+                    <a href="./eat_deals.php" class="Header__MenuLink">
                         <span class="Header__MenuText">EAT딜</span>
                     </a>
                 </li>
                 <li class="Header__MenuItem Header__MenuItem--New clear">
-                    <a href="#" class="Header__MenuLink">
+                    <a href="./top_lists.php" class="Header__MenuLink">
                         <span class="Header__MenuText">맛집 리스트</span>
                     </a>
                 </li>
                 <li class="Header__MenuItem Header__MenuItem--New clear">
-                    <a href="#" class="Header__MenuLink">
+                    <a href="./mango_picks.php" class="Header__MenuLink">
                         <span class="Header__MenuText">망고 스토리</span>
                     </a>
                 </li>
@@ -400,8 +402,8 @@
 <?php
     $recent_list = [];
     if(isset($mm_recentarr)){
-        foreach($mm_recentarr as $r_idx){
-            $sql = "SELECT r_idx, r_restaurant, r_grade, r_repphoto, r_repadd, r_foodtype FROM mango_restaurant WHERE r_idx = '$r_idx'";
+        foreach($mm_recentarr as $idx){
+            $sql = "SELECT r_idx, r_restaurant, r_grade, r_repphoto, r_repadd, r_foodtype FROM mango_restaurant WHERE r_idx = '$idx'";
             $result = mysqli_query($conn, $sql);
             $row = mysqli_fetch_array($result);
             // echo var_dump($row);
@@ -618,11 +620,6 @@
                                         <?=$email?>
                                     </div>
                                 </div>
-                                <!-- <div class="UserProfile__InfoRow">
-                                    <div class="UserProfile__InfoRow--Label">전화번호</div>
-                                    <div class="UserProfile__InfoRow--Content UserProfile__UserPhoneNumber">01024750333
-                                    </div>
-                                </div> -->
 <?php
                       }else if(strpos($id, "kakao") === 0){ 
                       ?>
@@ -651,16 +648,6 @@
                                     <span class="UserProfile__InfoSideRow--Info UserProfile__UserSignupType">애플 계정으로
                                         가입</span>
                                 </div>
-                                <!-- <div class="UserProfile__InfoRow">
-                                    <div class="UserProfile__InfoRow--Label">이메일</div>
-                                    <div class="UserProfile__InfoRow--Content UserProfile__UserEmail">
-                                        soeg0810@lycos.co.kr</div>
-                                </div>
-                                <div class="UserProfile__InfoRow">
-                                    <div class="UserProfile__InfoRow--Label">전화번호</div>
-                                    <div class="UserProfile__InfoRow--Content UserProfile__UserPhoneNumber">01024750333
-                                    </div>
-                                </div> -->
 <?php
                       }
                       ?>

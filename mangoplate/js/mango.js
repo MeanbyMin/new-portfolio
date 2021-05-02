@@ -500,7 +500,6 @@ function profile_wannago_btn(e) {
   ) {
     let r_idx =
       e.previousSibling.previousSibling.childNodes[1].dataset.restaurant;
-    console.log(r_idx);
     e.classList.remove("RestaurantHorizontalItem__WannagoButton--Selected");
     const xhr = new XMLHttpRequest();
     xhr.open("POST", "./wannago_del.php");

@@ -4381,6 +4381,7 @@ img.center-crop.portrait {
 .pg-toplist article.contents {
     position: relative;
     overflow: hidden;
+    padding-top: 61px;
 }
 
 .pg-toplist .basic-info-list {
@@ -4488,6 +4489,13 @@ img.center-crop.portrait {
     background-position: -935px -583px;
     width: 32px;
     height: 32px;
+}
+
+.btn-type-icon.favorite.selected {
+    background-image: url(../img/2018022864551sprites_desktop.png);
+    background-position: -935px -468px;
+    width: 32px;
+    height: 32px
 }
 
 .restaurant-item .btn-type-icon.favorite {

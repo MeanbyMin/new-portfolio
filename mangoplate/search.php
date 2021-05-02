@@ -9,7 +9,68 @@
         }
         $name = $_SESSION['name'];
         $image = $_SESSION['image'];
+        if(isset($row['mm_wannago'])){
+            $mm_wannago = $row['mm_wannago'];
+            $mm_wannagoarr = [];
+            if(strpos($mm_wannago, ",") > 0){
+                $mm_wannagoarr = explode(",", $mm_wannago);
+            }else{
+                array_push($mm_wannagoarr, $mm_wannago);
+            }
+        }
+    }else{
+        $mm_wannagoarr = "";
+        $id = null;
     }
+
+    $sql = "SELECT r_restaurant, r_repadd, r_address, r_jibunaddress, r_menu, r_tags FROM mango_restaurant";
+    $result = mysqli_query($conn, $sql);
+    $restaurant_list = [];
+    while($row = mysqli_fetch_array($result)){
+        $restuarant = array('r_restaurant' => $row['r_restaurant']);
+        array_push($restaurant_list, $restuarant);
+    }
+    $sessionid = session_id();
+
+    // 최근 본 맛집 리스트
+    if(isset($_COOKIE[$sessionid])){
+        if(strlen($_COOKIE[$sessionid]) > 0){
+            $mm_recentarr = [];
+            if(strpos($_COOKIE[$sessionid], ",") > 0){
+                $mm_recentarr = explode(",", $_COOKIE[$sessionid]);
+            }else{
+                array_push($mm_recentarr, $_COOKIE[$sessionid]);
+            }
+        }else{
+            $mm_recentarr = "";
+        }
+    }else{
+        $mm_recentarr = "";
+    }
+
+    // 가고싶다 리스트
+    if(isset($mm_wannagoarr)){
+        if($mm_wannagoarr !== ""){
+            $wannago_list = [];
+            $wannago_idx = "";
+            if(isset($mm_wannagoarr)){
+                foreach($mm_wannagoarr as $idx){
+                    $sql = "SELECT r_idx, r_restaurant, r_grade, r_repphoto, r_repadd, r_foodtype FROM mango_restaurant WHERE r_idx = '$idx'";
+                    $result = mysqli_query($conn, $sql);
+                    $row = mysqli_fetch_array($result);
+                    // echo var_dump($row);
+                    $wannagoadd = array('r_idx' => $row['r_idx'], 'r_restaurant' => $row['r_restaurant'], 'r_grade' => $row['r_grade'], 'r_repphoto' => $row['r_repphoto'], 'r_repadd' => $row['r_repadd'], 'r_foodtype' => $row['r_foodtype']);
+                    array_push($wannago_list, $wannagoadd);
+                }
+                for($i=0;$i<count($wannago_list);$i++){
+                    $wannago_idx .= $wannago_list[$i]['r_idx']." ";
+                }
+            }
+        }else{
+            $mm_wannagoarr = "";
+        }
+    }
+
     $search = $_GET['search'];
 
 
@@ -200,17 +261,17 @@
             <!-- 메뉴 부분 시작 -->
             <ul class="Header__MenuList">
                 <li class="Header__MenuItem Header__MenuItem--New clear">
-                    <a href="#" class="Header__MenuLink">
+                    <a href="./eat_deals.php" class="Header__MenuLink">
                         <span class="Header__MenuText">EAT딜</span>
                     </a>
                 </li>
                 <li class="Header__MenuItem Header__MenuItem--New clear">
-                    <a href="#" class="Header__MenuLink">
+                    <a href="./top_lists.php" class="Header__MenuLink">
                         <span class="Header__MenuText">맛집 리스트</span>
                     </a>
                 </li>
                 <li class="Header__MenuItem Header__MenuItem--New clear">
-                    <a href="#" class="Header__MenuLink">
+                    <a href="./mango_picks.php" class="Header__MenuLink">
                         <span class="Header__MenuText">망고 스토리</span>
                     </a>
                 </li>
@@ -1708,7 +1769,7 @@
             })();
         }, 1000); 
     </script>
-    <?php
+<?php
     $sql = "SELECT r_restaurant, r_repadd, r_address, r_jibunaddress, r_menu, r_tags FROM mango_restaurant";
     $result = mysqli_query($conn, $sql);
     $restaurant_list = [];
