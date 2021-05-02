@@ -413,10 +413,57 @@ header .call .number:hover{
     position: relative;
     overflow: hidden;
     width: 100%;
-    height: 100vh;
     min-height: 640px;
-    background-color: #dbdbdb;
+    background-color: rgba(255, 255, 255, 0.6);
 }
+
+.skills_inner{
+    position: relative;
+    max-width: 1600px;
+    margin: 150px auto 100px;
+    padding: 0 60px;
+}
+
+.skills_intro{
+    font-size: 2.8rem;
+    position: relative;
+    top: -70px;
+    text-align: center;
+}
+
+.skills_list{
+    position: relative;
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 50px;
+    text-align: center;
+}
+
+.skills_list_item{
+    position: relative;
+    width: 16%;
+    display: inline-block;
+    text-align: center;
+}
+
+.skills_list_item img{
+    width: 130px;
+    height: 130px;
+    background-color: inherit;
+    box-sizing: border-box;
+    border-radius: 30px;
+    box-shadow: 0 20px 30px 0 rgba(65,58,58,0.4);
+}
+
+.skills_list_item img:hover{
+    will-change: transform;
+    transform: scale(1.05);
+    opacity: .9;
+    box-shadow: 0 20px 30px 0 rgba(65,58,58,.25)
+}
+
+
 
 .projects{
     position: relative;
@@ -462,6 +509,7 @@ header .call .number:hover{
     box-sizing: border-box;
     border-radius: 30px;
     box-shadow: 0 20px 30px 0 rgba(65,58,58,0.4);
+    object-fit: fill;
 }
 
 .project_list_item img:hover{
@@ -501,29 +549,112 @@ header .call .number:hover{
 }
 
 .recent{
-    display: none;
-    /* position: relative;
+    /* display: none; */
+    position: relative;
     background-color: #fff;
     overflow: hidden;
     display: block;
-    width: 100%; */
+    width: 100%;
 }
 
-/*
-.recent_inner{
+
+.recent_inner {
     position: relative;
     max-width: 1600px;
-    margin: 150px auto 100px;
-    padding: 0 60px;
+    margin: 145px auto 0;
+    padding-bottom: 174px;
+    text-align: center;
 }
 
 .recent_title{
-    width: 100%;
+    font-size: 2.8rem;
+    position: relative;
+    top: -70px;
     text-align: center;
-    margin-top: 150px;
-    font-size: 2rem;
 }
-*/
+
+.recent_background{
+    opacity: 0;
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    display: block;
+    font-weight: 900;
+    font-size: 70px;
+    color: rgba(109, 109, 109, 0.8);
+    font-family: montserrat,AppleGothic,sans-serif,Helvetica;
+    -moz-pointer-events: none;
+    -webkit-pointer-events: none;
+    -o-pointer-events: none;
+    -ms-pointer-events: none;
+    pointer-events: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+.recent_background:nth-child(2) {
+    margin-top: -40px;
+    margin-left: 130px;
+}
+
+.recent_background:nth-child(3) {
+    font-weight: 400;
+    margin-top: 30px;
+    margin-left: 130px;
+}
+
+.recent_background:nth-child(2) {
+    -webkit-animation: recentShow1 1.5s;
+    animation: recentShow1 1.5s;
+    -webkit-animation-delay: .4s;
+    animation-delay: .4s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards
+}
+.recent_background:nth-child(3) {
+    -webkit-animation: recentShow1 1.8s;
+    animation: recentShow1 1.8s;
+    -webkit-animation-delay: .4s;
+    animation-delay: .4s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards
+}
+
+@media screen and (max-width: 639px) {
+    .recent_background {
+        -webkit-animation:none!important;
+        animation: none!important
+    }
+}
+
+
+.clone_coding{
+    position: relative; 
+    bottom: 166px;
+    margin-left: 70px;
+    font-size: 1.2rem;
+    color: #8b8b8b;
+}
+
+.clone_coding:hover{
+    color: black;
+}
+
+.recent_pic {
+    margin-top: 60px;
+    text-align: left;
+    margin-left: 16%;
+}
+
+.recent_pic img{
+    width: 600px;
+}
+
+
 
 .blog{
     position: relative;
@@ -745,7 +876,80 @@ header .call .number:hover{
 }
 
 
+@-webkit-keyframes recentShow1 {
+    0% {
+        opacity: 0;
+        transform: translateX(100%)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+
+@keyframes recentShow1 {
+    0% {
+        opacity: 0;
+        transform: translateX(100%)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+
+@-webkit-keyframes recentShow2 {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+
+@keyframes recentShow2 {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+
+
 /* 반응형 */
+@media screen and (max-width: 1440px){
+    
+    .recent_background:nth-child(2) {
+        margin-top: -40px;
+        margin-left: 90px;
+    }
+    
+    .recent_background:nth-child(3) {
+        margin-top: 30px;
+        margin-left: 90px;
+    }
+
+    .clone_coding{
+        bottom: 142px;
+    }
+
+    .recent_background{
+        font-size: 55px;
+    }
+
+    .recent_pic img{
+        width: 500px;
+    }
+}
 @media screen and (max-width: 1224px){
     .about_title{
         font-size: 1.8rem;
@@ -772,13 +976,21 @@ header .call .number:hover{
     .project_list_item:nth-child(n+4){
         margin-top: 50px;
     }
+
+    .skills_list_item{
+        width: 24.5%;
+    }
+    
 }
 
 @media screen and (max-width: 1040px){
     .project_list_item{
         width: 32%;
     }
-    
+
+    .skills_list_item{
+        width: 32%;
+    }
 }
 
 @media screen and (max-width: 1024px){
@@ -826,6 +1038,43 @@ header .call .number:hover{
     .project_list_item:nth-child(n+3){
         margin-top: 50px;
     }
+
+    .skills_list_item{
+        position: relative;
+        width: 20%;
+    }
+
+
+    .recent_background:nth-child(2) {
+        margin-top: -40px;
+        margin-left: 128px;
+    }
+    
+    .recent_background:nth-child(3) {
+        margin-top: 5px;
+        margin-left: 128px;
+    }
+
+    .clone_coding{
+        bottom: 125px;
+        margin-left: 40px;
+        padding: 16px 40px;
+    }
+
+
+    .recent_background{
+        font-size: 40px;
+    }
+    
+    .recent_pic img{
+        width: 50%;
+    }
+
+    .clone_coding {
+        margin-top: 80px;
+        font-size: 1rem;
+        color: #8b8b8b;
+    }
 }
 @media screen and (max-width: 1000px){
     .about_title{
@@ -852,6 +1101,37 @@ header .call .number:hover{
     }
     .contact_title{
         margin-right: 120px;
+    }
+
+    .recent_background {
+        display: none;
+    }
+
+    .recent_title{
+        font-size: 2rem;
+    }
+    
+    .recent_pic{
+        text-align: center;
+        margin-left: 0;
+        position: static;
+    }
+    
+    .recent_pic img{
+        display: inline-block;
+        width: 40%;
+    }
+
+    .clone_coding {
+        margin-top: 80px;
+        font-size: 1rem;
+        color: #8b8b8b;
+        display: block;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-left: 0;
+        padding: 16px 45px;
     }
 }
 @media screen and (max-width: 767px){
@@ -913,6 +1193,15 @@ header .call .number:hover{
         display: none;
     }
 
+    .blog_main_title{
+        font-size: 1.8rem;
+    }
+
+
+    .project_intro{
+        font-size: 2rem;
+    }
+
     .project_list_item{
         position: relative;
         width: 49%;
@@ -923,6 +1212,45 @@ header .call .number:hover{
     }
 
     .project_list_item img{
+        width: 85px;
+        height: 85px;
+    }
+
+    .recent_pic img{
+        display: inline-block;
+        width: 70%;
+    }
+
+    .clone_coding {
+        margin-top: 80px;
+        font-size: 1rem;
+        color: #8b8b8b;
+        display: block;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-left: 0;
+        padding: 16px 45px;
+    }
+
+    .skills_intro{
+        font-size: 2rem;
+    }
+
+    .skills_list{
+        padding: 0;
+    }
+
+    .skills_list_item{
+        position: relative;
+        width: 49%;
+    }
+
+    .skills_list_item:nth-child(n){
+        margin-top: 50px;
+    }
+    
+    .skills_list_item img{
         width: 85px;
         height: 85px;
     }
@@ -1019,6 +1347,11 @@ header .call .number:hover{
     .btn-more{
         display: none;
     }
+
+    .clone_coding {
+        display: block;
+    }
+    
     .feature_list .btn-more{
         display: block;
         margin-top: 50px;
@@ -1040,6 +1373,24 @@ header .call .number:hover{
     }
 
     .project_list_item:nth-child(3) img{
+        margin: 0;
+    }
+
+    .skills_list_item{
+        position: relative;
+        width: 100%;
+    }
+
+    .skills_list_item:nth-child(n+3){
+        margin-top: 50px;
+    }
+
+    .skills_list_item img{
+        width: 150px;
+        height: 150px;
+    }
+
+    .skills_list_item:nth-child(3) img{
         margin: 0;
     }
 
