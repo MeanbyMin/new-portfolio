@@ -71,6 +71,7 @@
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="./RestaurantList.php">Restaurant List</a>
+                                    <a class="nav-link" href="./EatDeal.php">Eat Deal</a>
                                     <a class="nav-link" href="MangoStory.php">Mango Story</a>
                                     <a class="nav-link" href="MatjibList.php">Matjib List</a>
                                 </nav>
@@ -104,37 +105,37 @@
                             </p>
                         </form>
                         <script type="text/javascript">
-                    $(function() {
-                        $('#summernote').summernote({
-                            height: 500,
-                            lang : 'ko-KR',
-                            callbacks: {
-                                onImageUpload : function(files, editor, welEditable) {
-                                    console.log('image upload:', files);
-                                    sendFile( files[0], this );
-                                }
-                            }
-                        });
-                        function sendFile(file, editor) {
-                            console.log(file);
-                            data = new FormData();
-                            data.append("file", file);
-                            $.ajax({
-                                url: "saveimage.php", // image 저장 소스
-                                data: data,
-                                cache: false,
-                                contentType: false,
-                                processData: false,
-                                type: 'POST',
-                                success: function(data){
-                                    //   alert(data);
-                                    console.log(data)
-                                    $('#summernote').summernote('insertImage', data);
+                        $(function() {
+                            $('#summernote').summernote({
+                                height: 500,
+                                lang : 'ko-KR',
+                                callbacks: {
+                                    onImageUpload : function(files, editor, welEditable) {
+                                        console.log('image upload:', files);
+                                        sendFile( files[0], this );
+                                    }
                                 }
                             });
-                        }
-                    });
-                    </script>
+                            function sendFile(file, editor) {
+                                console.log(file);
+                                data = new FormData();
+                                data.append("file", file);
+                                $.ajax({
+                                    url: "saveimage.php", // image 저장 소스
+                                    data: data,
+                                    cache: false,
+                                    contentType: false,
+                                    processData: false,
+                                    type: 'POST',
+                                    success: function(data){
+                                        //   alert(data);
+                                        console.log(data)
+                                        $('#summernote').summernote('insertImage', data);
+                                    }
+                                });
+                            }
+                        });
+                        </script>
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
@@ -151,7 +152,6 @@
                 </footer>
             </div>
         </div>
-        
         <script src="js/scripts.js"></script>        
     </body>
 </html>

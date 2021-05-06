@@ -186,7 +186,7 @@ function upload_file(e) {
         class="Picture Picture--Ready"
         role="button"
         aria-pressed="true"
-        style='background-image: url("${event.target.result}"); opacity: 1; transform: scale(1);'>
+        style='background-image: url("${event.target.result}");'>
           <div class="Picture__Layer ItemDraggable">
             <button class="Picture__RemoveButton Picture__UploadedContent">
               <i class="Picture__RemoveIcon" onclick="removePicture(this)"></i>
@@ -362,11 +362,11 @@ function GALLERY() {
   div.setAttribute("style", "display: block");
   div.innerHTML = `
   <div class="Gallery__Container">
-  <div class="Gallery__ImageWrap fotorama" data-nav="thumbs">
-  </div>
-  <button class="Gallery__CloseButton">
-            <i class="Gallery__CloseIcon" onclick="removeGallery()"></i>
-        </button>
+    <div class="Gallery__ImageWrap fotorama" data-nav="thumbs">
+    </div>
+    <button class="Gallery__CloseButton">
+      <i class="Gallery__CloseIcon" onclick="removeGallery()"></i>
+    </button>
   </div>
   `;
   body.appendChild(div);

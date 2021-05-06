@@ -125,9 +125,10 @@ window.addEventListener("click", (e) => {
     ? UserDisactiveInfo.classList.remove("UserDisactiveInfo--Open")
     : false;
 
-  e.target === KeywordSuggester__BlackDeem
-    ? KeywordSuggester.classList.remove("KeywordSuggester--Open")
-    : false;
+  if (e.target === KeywordSuggester__BlackDeem) {
+    KeywordSuggester.classList.remove("KeywordSuggester--Open");
+    body.style.overflow = "";
+  }
   if (e.target === black_screen) {
     black_screen.style.display = "none";
     searchFilter.style.display = "none";

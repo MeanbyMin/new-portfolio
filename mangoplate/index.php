@@ -698,200 +698,92 @@
                 <div class="swiper-button-prev btn_prev1"></div>
                 <div class="swiper-container swiper1">
                     <div class="swiper-wrapper toplist-slider">
+<?php
+    $sql = "SELECT tl_idx, tl_title, tl_subtitle, tl_repphoto FROM top_lists ORDER BY tl_idx DESC LIMIT 12";
+    $result = mysqli_query($conn, $sql);
+    $top_lists = [];
+    while($row = mysqli_fetch_array($result)){
+        $toplistadd = array('tl_idx' => $row['tl_idx'], 'tl_title' => $row['tl_title'], 'tl_subtitle' => $row['tl_subtitle'], 'tl_repphoto' => $row['tl_repphoto']);
+        array_push($top_lists, $toplistadd);
+    }
+?>
                         <div class="swiper-slide top_list_slide">
+<?php
+    for($i=0;$i<6;$i+=2){
+        $j = $i + 1;
+?>
                             <ul class="list-toplist-slider">
                                 <li>
-                                    <img class="center-croping" alt="2021 충청도 인기 맛집 TOP 25 사진"
-                                        src="./img/Chungcheong-do.jpeg" />
-                                    <a href="#" onclick="">
+                                    <img class="center-croping" alt="<?=$top_lists[$i]['tl_title']?>"
+                                        src="<?=$top_lists[$i]['tl_repphoto']?>" />
+                                    <a href="./top_lists_detail.php?tl_idx=<?=$top_lists[$i]['tl_idx']?>" onclick="">
                                         <figure class="ls-item">
                                             <figcaption class="info">
                                                 <div class="info_inner_wrap">
-                                                    <span class="title">2021 충청도 인기 맛집 TOP 25</span>
-                                                    <p class="desc">"충청도 맛집도 많다구유~!"</p>
+                                                    <span class="title"><?=$top_lists[$i]['tl_title']?></span>
+                                                    <p class="desc"><?=$top_lists[$i]['tl_subtitle']?></p>
                                                 </div>
                                             </figcaption>
                                         </figure>
                                     </a>
                                 </li>
                                 <li>
-                                    <img class="center-croping" alt="2021 전라도 인기 맛집 TOP 40 사진"
-                                        src="./img/Jeonla-do.jpeg">
-
-                                    <a href="#" onclick="">
+                                    <img class="center-croping" alt="<?=$top_lists[$j]['tl_title']?>"
+                                        src="<?=$top_lists[$j]['tl_repphoto']?>" />
+                                    <a href="./top_lists_detail.php?tl_idx=<?=$top_lists[$j]['tl_idx']?>" onclick="">
                                         <figure class="ls-item">
                                             <figcaption class="info">
                                                 <div class="info_inner_wrap">
-                                                    <span class="title">2021 전라도 인기 맛집 TOP 40</span>
-                                                    <p class="desc">"역시 음식은 전라도가 맛있어!"</p>
+                                                    <span class="title"><?=$top_lists[$j]['tl_title']?></span>
+                                                    <p class="desc"><?=$top_lists[$j]['tl_subtitle']?></p>
                                                 </div>
                                             </figcaption>
                                         </figure>
                                     </a>
                                 </li>
                             </ul>
-                            <ul class="list-toplist-slider">
-                                <li>
-                                    <img class="center-croping" alt="2021 충청도 인기 맛집 TOP 25 사진"
-                                        src="./img/Chungcheong-do.jpeg" />
-
-                                    <a href="#" onclick="">
-                                        <figure class="ls-item">
-                                            <figcaption class="info">
-                                                <div class="info_inner_wrap">
-                                                    <span class="title">2021 충청도 인기 맛집 TOP 25</span>
-                                                    <p class="desc">"충청도 맛집도 많다구유~!"</p>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </a>
-                                </li>
-                                <li>
-                                    <img class="center-croping" alt="2021 전라도 인기 맛집 TOP 40 사진"
-                                        src="./img/Jeonla-do.jpeg">
-
-                                    <a href="#" onclick="">
-                                        <figure class="ls-item">
-                                            <figcaption class="info">
-                                                <div class="info_inner_wrap">
-                                                    <span class="title">2021 전라도 인기 맛집 TOP 40</span>
-                                                    <p class="desc">"역시 음식은 전라도가 맛있어!"</p>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul class="list-toplist-slider">
-                                <li>
-                                    <img class="center-croping" alt="2021 충청도 인기 맛집 TOP 25 사진"
-                                        src="./img/Chungcheong-do.jpeg" />
-
-                                    <a href="#" onclick="">
-                                        <figure class="ls-item">
-                                            <figcaption class="info">
-                                                <div class="info_inner_wrap">
-                                                    <span class="title">2021 충청도 인기 맛집 TOP 25</span>
-                                                    <p class="desc">"충청도 맛집도 많다구유~!"</p>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </a>
-                                </li>
-                                <li>
-                                    <img class="center-croping" alt="2021 전라도 인기 맛집 TOP 40 사진"
-                                        src="./img/Jeonla-do.jpeg">
-
-                                    <a href="#" onclick="">
-                                        <figure class="ls-item">
-                                            <figcaption class="info">
-                                                <div class="info_inner_wrap">
-                                                    <span class="title">2021 전라도 인기 맛집 TOP 40</span>
-                                                    <p class="desc">"역시 음식은 전라도가 맛있어!"</p>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </a>
-                                </li>
-                            </ul>
+<?php
+    }
+?>
                         </div>
                         <div class="swiper-slide top_list_slide">
+<?php
+    for($i=6;$i<12;$i+=2){
+        $j = $i + 1;
+?>
                             <ul class="list-toplist-slider">
                                 <li>
-                                    <img class="center-croping" alt="2021 충청도 인기 맛집 TOP 25 사진"
-                                        src="./img/Chungcheong-do.jpeg" />
-
-                                    <a href="#" onclick="">
+                                    <img class="center-croping" alt="<?=$top_lists[$i]['tl_title']?>"
+                                        src="<?=$top_lists[$i]['tl_repphoto']?>" />
+                                    <a href="./top_lists_detail.php?tl_idx=<?=$top_lists[$i]['tl_idx']?>" onclick="">
                                         <figure class="ls-item">
                                             <figcaption class="info">
                                                 <div class="info_inner_wrap">
-                                                    <span class="title">2021 충청도 인기 맛집 TOP 25</span>
-                                                    <p class="desc">"충청도 맛집도 많다구유~!"</p>
+                                                    <span class="title"><?=$top_lists[$i]['tl_title']?></span>
+                                                    <p class="desc"><?=$top_lists[$i]['tl_subtitle']?></p>
                                                 </div>
                                             </figcaption>
                                         </figure>
                                     </a>
                                 </li>
                                 <li>
-                                    <img class="center-croping" alt="2021 전라도 인기 맛집 TOP 40 사진"
-                                        src="./img/Jeonla-do.jpeg">
-
-                                    <a href="#" onclick="">
+                                    <img class="center-croping" alt="<?=$top_lists[$j]['tl_title']?>"
+                                        src="<?=$top_lists[$j]['tl_repphoto']?>" />
+                                    <a href="./top_lists_detail.php?tl_idx=<?=$top_lists[$j]['tl_idx']?>" onclick="">
                                         <figure class="ls-item">
                                             <figcaption class="info">
                                                 <div class="info_inner_wrap">
-                                                    <span class="title">2021 전라도 인기 맛집 TOP 40</span>
-                                                    <p class="desc">"역시 음식은 전라도가 맛있어!"</p>
+                                                    <span class="title"><?=$top_lists[$j]['tl_title']?></span>
+                                                    <p class="desc"><?=$top_lists[$j]['tl_subtitle']?></p>
                                                 </div>
                                             </figcaption>
                                         </figure>
                                     </a>
                                 </li>
                             </ul>
-                            <ul class="list-toplist-slider">
-                                <li>
-                                    <img class="center-croping" alt="2021 충청도 인기 맛집 TOP 25 사진"
-                                        src="./img/Chungcheong-do.jpeg" />
-
-                                    <a href="#" onclick="">
-                                        <figure class="ls-item">
-                                            <figcaption class="info">
-                                                <div class="info_inner_wrap">
-                                                    <span class="title">2021 충청도 인기 맛집 TOP 25</span>
-                                                    <p class="desc">"충청도 맛집도 많다구유~!"</p>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </a>
-                                </li>
-                                <li>
-                                    <img class="center-croping" alt="2021 전라도 인기 맛집 TOP 40 사진"
-                                        src="./img/Jeonla-do.jpeg">
-
-                                    <a href="#" onclick="">
-                                        <figure class="ls-item">
-                                            <figcaption class="info">
-                                                <div class="info_inner_wrap">
-                                                    <span class="title">2021 전라도 인기 맛집 TOP 40</span>
-                                                    <p class="desc">"역시 음식은 전라도가 맛있어!"</p>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul class="list-toplist-slider">
-                                <li>
-                                    <img class="center-croping" alt="2021 충청도 인기 맛집 TOP 25 사진"
-                                        src="./img/Chungcheong-do.jpeg" />
-
-                                    <a href="#" onclick="">
-                                        <figure class="ls-item">
-                                            <figcaption class="info">
-                                                <div class="info_inner_wrap">
-                                                    <span class="title">2021 충청도 인기 맛집 TOP 25</span>
-                                                    <p class="desc">"충청도 맛집도 많다구유~!"</p>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </a>
-                                </li>
-                                <li>
-                                    <img class="center-croping" alt="2021 전라도 인기 맛집 TOP 40 사진"
-                                        src="./img/Jeonla-do.jpeg">
-
-                                    <a href="#" onclick="">
-                                        <figure class="ls-item">
-                                            <figcaption class="info">
-                                                <div class="info_inner_wrap">
-                                                    <span class="title">2021 전라도 인기 맛집 TOP 40</span>
-                                                    <p class="desc">"역시 음식은 전라도가 맛있어!"</p>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </a>
-                                </li>
-                            </ul>
+<?php
+    }
+?>
                         </div>
                     </div>
                     <div class="list_button">
@@ -912,147 +804,76 @@
                 <div class="swiper-button-prev btn_prev2"></div>
                 <div class="swiper-container swiper2 mango_pick_list">
                     <div class="swiper-wrapper list-main-slider">
+<?php
+    $sql = "SELECT ms_idx, ms_userid, ms_userphoto, ms_title, ms_subtitle, ms_repphoto FROM mango_story ORDER BY ms_idx DESC LIMIT 6";
+    $result = mysqli_query($conn, $sql);
+    $story_lists = [];
+    while($row = mysqli_fetch_array($result)){
+        $storyadd = array('ms_idx' => $row['ms_idx'], 'ms_userid' => $row['ms_userid'], 'ms_userphoto' => $row['ms_userphoto'], 'ms_title' => $row['ms_title'], 'ms_subtitle' => $row['ms_subtitle'], 'ms_repphoto' => $row['ms_repphoto']);
+        array_push($story_lists, $storyadd);
+    }
+?>
                         <div class="swiper-slide mango-slider">
+<?php
+    for($i=0;$i<3;$i++){
+?>
                             <div class="main_mango_pick_slide_item">
-                                <img class="center-croping" alt="신년 계획! 다이어트 맛집 추천 6곳 사진" src="./img/diet.jpg">
+                                <img class="center-croping" alt="<?=$story_lists[$i]['ms_title']?>" src="<?=$story_lists[$i]['ms_repphoto']?>">
 
-                                <a href="#">
+                                <a href="./mango_picks_detail.php?ms_idx=<?=$story_lists[$i]['ms_idx']?>">
                                     <figure class="mango-pick-item" onclick="">
                                         <div class="thumb">
                                             <div class="inner"></div>
                                         </div>
                                         <figcaption>
-                                            <strong class="title">신년 계획! 다이어트 맛집 추천 6곳</strong>
-                                            <p class="hash">새해 계획은 자고로 #다이어트 아니겠어?</p>
+                                            <strong class="title"><?=$story_lists[$i]['ms_title']?></strong>
+                                            <p class="hash"><?=$story_lists[$i]['ms_subtitle']?></p>
                                             <figure class="editor">
                                                 <span class="badge"></span>
                                                 <div class="thumb">
                                                     <img class="center-crop" alt="Editor Image"
-                                                        src="./img/maengomaengo.jpg">
+                                                        src="<?=$story_lists[$i]['ms_userphoto']?>">
                                                 </div>
-                                                <figcaption>맹고맹고</figcaption>
+                                                <figcaption><?=$story_lists[$i]['ms_userid']?></figcaption>
                                             </figure>
                                         </figcaption>
                                     </figure>
                                 </a>
                             </div>
-                            <div class="main_mango_pick_slide_item">
-                                <img class="center-croping" alt="신년 계획! 다이어트 맛집 추천 6곳 사진" src="./img/diet.jpg">
-
-                                <a href="#">
-                                    <figure class="mango-pick-item" onclick="">
-                                        <div class="thumb">
-                                            <div class="inner"></div>
-                                        </div>
-                                        <figcaption>
-                                            <strong class="title">신년 계획! 다이어트 맛집 추천 6곳</strong>
-                                            <p class="hash">새해 계획은 자고로 #다이어트 아니겠어?</p>
-                                            <figure class="editor">
-                                                <span class="badge"></span>
-                                                <div class="thumb">
-                                                    <img class="center-crop" alt="Editor Image"
-                                                        src="./img/maengomaengo.jpg">
-                                                </div>
-                                                <figcaption>맹고맹고</figcaption>
-                                            </figure>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-                            <div class="main_mango_pick_slide_item">
-                                <img class="center-croping" alt="신년 계획! 다이어트 맛집 추천 6곳 사진" src="./img/diet.jpg">
-
-                                <a href="#">
-                                    <figure class="mango-pick-item" onclick="">
-                                        <div class="thumb">
-                                            <div class="inner"></div>
-                                        </div>
-                                        <figcaption>
-                                            <strong class="title">신년 계획! 다이어트 맛집 추천 6곳</strong>
-                                            <p class="hash">새해 계획은 자고로 #다이어트 아니겠어?</p>
-                                            <figure class="editor">
-                                                <span class="badge"></span>
-                                                <div class="thumb">
-                                                    <img class="center-crop" alt="Editor Image"
-                                                        src="./img/maengomaengo.jpg">
-                                                </div>
-                                                <figcaption>맹고맹고</figcaption>
-                                            </figure>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
+<?php
+    }
+?>
                         </div>
                         <div class="swiper-slide mango-slider">
+                        <?php
+    for($i=3;$i<6;$i++){
+?>
                             <div class="main_mango_pick_slide_item">
-                                <img class="center-croping" alt="신년 계획! 다이어트 맛집 추천 6곳 사진" src="./img/diet.jpg">
+                                <img class="center-croping" alt="<?=$story_lists[$i]['ms_title']?>" src="<?=$story_lists[$i]['ms_repphoto']?>">
 
-                                <a href="#">
+                                <a href="./mango_picks_detail.php?ms_idx=<?=$story_lists[$i]['ms_idx']?>">
                                     <figure class="mango-pick-item" onclick="">
                                         <div class="thumb">
                                             <div class="inner"></div>
                                         </div>
                                         <figcaption>
-                                            <strong class="title">신년 계획! 다이어트 맛집 추천 6곳</strong>
-                                            <p class="hash">새해 계획은 자고로 #다이어트 아니겠어?</p>
+                                            <strong class="title"><?=$story_lists[$i]['ms_title']?></strong>
+                                            <p class="hash"><?=$story_lists[$i]['ms_subtitle']?></p>
                                             <figure class="editor">
                                                 <span class="badge"></span>
                                                 <div class="thumb">
                                                     <img class="center-crop" alt="Editor Image"
-                                                        src="./img/maengomaengo.jpg">
+                                                        src="<?=$story_lists[$i]['ms_userphoto']?>">
                                                 </div>
-                                                <figcaption>맹고맹고</figcaption>
+                                                <figcaption><?=$story_lists[$i]['ms_userid']?></figcaption>
                                             </figure>
                                         </figcaption>
                                     </figure>
                                 </a>
                             </div>
-                            <div class="main_mango_pick_slide_item">
-                                <img class="center-croping" alt="신년 계획! 다이어트 맛집 추천 6곳 사진" src="./img/diet.jpg">
-
-                                <a href="#">
-                                    <figure class="mango-pick-item" onclick="">
-                                        <div class="thumb">
-                                            <div class="inner"></div>
-                                        </div>
-                                        <figcaption>
-                                            <strong class="title">신년 계획! 다이어트 맛집 추천 6곳</strong>
-                                            <p class="hash">새해 계획은 자고로 #다이어트 아니겠어?</p>
-                                            <figure class="editor">
-                                                <span class="badge"></span>
-                                                <div class="thumb">
-                                                    <img class="center-crop" alt="Editor Image"
-                                                        src="./img/maengomaengo.jpg">
-                                                </div>
-                                                <figcaption>맹고맹고</figcaption>
-                                            </figure>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
-                            <div class="main_mango_pick_slide_item">
-                                <img class="center-croping" alt="신년 계획! 다이어트 맛집 추천 6곳 사진" src="./img/diet.jpg">
-
-                                <a href="#">
-                                    <figure class="mango-pick-item" onclick="">
-                                        <div class="thumb">
-                                            <div class="inner"></div>
-                                        </div>
-                                        <figcaption>
-                                            <strong class="title">신년 계획! 다이어트 맛집 추천 6곳</strong>
-                                            <p class="hash">새해 계획은 자고로 #다이어트 아니겠어?</p>
-                                            <figure class="editor">
-                                                <span class="badge"></span>
-                                                <div class="thumb">
-                                                    <img class="center-crop" alt="Editor Image"
-                                                        src="./img/maengomaengo.jpg">
-                                                </div>
-                                                <figcaption>맹고맹고</figcaption>
-                                            </figure>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            </div>
+<?php
+    }
+?>
                         </div>
                     </div>
                     <div class="list_button clear">
@@ -1067,27 +888,47 @@
                 <h2 class="title">EAT딜을 판매중인 식당</h2>
                 <div class="slider-container popular_restaurant_container">
                     <ul class="list-restaurants main_popular_restaurant_list type-main">
+
 <?php
-// tags에 eatdeal 추가하기
-{
+$sql = "SELECT r_idx, r_restaurant, r_jibunaddress, r_branch, r_grade, r_repphoto, r_repadd, r_foodtype FROM mango_restaurant WHERE r_status= '등록' AND r_tags LIKE '%eatdeal%' ORDER BY r_idx DESC LIMIT 8 ";
+$result = mysqli_query($conn, $sql);
+while($row = mysqli_fetch_array($result)){
+    $r_idx              = $row['r_idx'];
+    $r_restaurant       = $row['r_restaurant'];
+    $r_jibunaddress     = $row['r_jibunaddress'];
+    $r_branch           = $row['r_branch'];
+    $r_grade            = $row['r_grade'];
+    if(isset($row['r_repphoto'])){
+        $r_repphoto     = $row['r_repphoto'];
+    }else{
+        $r_repphoto = "https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&crop=*:*;*,*&output-format=jpg&output-quality=80";
+    }
+    $r_repadd           = $row['r_repadd'];
+    $r_foodtype         = $row['r_foodtype'];
 ?>
                         <li class="restaurant-item">
                             <div class="popular_restaurant_inner_wrap">
-                                <a href="#" onclick="">
+                                <a href="./restaurant.php?r_idx=<?=$r_idx?>" onclick="">
                                     <figure class="restaurant-item">
                                         <div class="thumb">
                                             <i class="featured_badge"
                                                 style="background-image: url(./img/r-i0n1w_hdfo4vlf.png)"></i>
-                                            <img class="center-croping lazy" alt="오스틴 사진 - 서울시 강남구 역삼동 617-3"
-                                                src="./img/ostin.jpg">
+                                            <img class="center-croping lazy"
+                                                alt="<?=$r_restaurant?> 사진 - <?=$r_jibunaddress?>"
+                                                data-original="<?=$r_repphoto?>" data-error="<?=$r_repphoto?>"
+                                                src="<?=$r_repphoto?>" style="display: block;" />
                                         </div>
                                         <figcaption>
                                             <div class="info">
-                                                <span class="title">오스틴</span>
-                                                <strong class="point search_point ">4.2</strong>
+                                                <span class="title">
+                                                    <?=$r_restaurant?>
+                                                </span>
+                                                <strong class="point search_point">
+                                                    <?=$r_grade?>
+                                                </strong>
                                                 <p class="etc">
-                                                    강남역 -
-                                                    스테이크 / 바베큐
+                                                    <?=$r_repadd?> -
+                                                    <?=$r_foodtype?>
                                                 </p>
                                             </div>
                                         </figcaption>
@@ -1282,285 +1123,152 @@ while($row = mysqli_fetch_array($result)){
                 <!-- <div class="swiper-button-prev btn_prev3"></div> -->
                 <div class="swiper-container swiper">
                     <div class="swiper-wrapper toplist-slider">
+                    <?php
+    $sql = "SELECT tl_idx, tl_title, tl_subtitle, tl_repphoto FROM top_lists ORDER BY tl_idx DESC LIMIT 12";
+    $result = mysqli_query($conn, $sql);
+    $top_lists = [];
+    while($row = mysqli_fetch_array($result)){
+        $toplistadd = array('tl_idx' => $row['tl_idx'], 'tl_title' => $row['tl_title'], 'tl_subtitle' => $row['tl_subtitle'], 'tl_repphoto' => $row['tl_repphoto']);
+        array_push($top_lists, $toplistadd);
+    }
+?>
                         <div class="swiper-slide top_list_slide">
+<?php
+    for($i=0;$i<6;$i+=2){
+        $j = $i + 1;
+?>
                             <ul class="list-toplist-slider">
                                 <li>
-                                    <img class="center-croping" alt="2021 강원도 인기 맛집 TOP 100 사진"
-                                        src="./img/gangwondo.jpg">
-                                    <a href="#" onclick="">
+                                    <img class="center-croping" alt="<?=$top_lists[$i]['tl_title']?>"
+                                        src="<?=$top_lists[$i]['tl_repphoto']?>" />
+                                    <a href="./top_lists_detail.php?tl_idx=<?=$top_lists[$i]['tl_idx']?>" onclick="">
                                         <figure class="ls-item">
                                             <figcaption class="info">
                                                 <div class="info_inner_wrap">
-                                                    <span class="title">2021 강원도 인기 맛집 TOP 100</span>
-                                                    <p class="desc">"1년 내내 핫한 #강원도 맛집"</p>
+                                                    <span class="title"><?=$top_lists[$i]['tl_title']?></span>
+                                                    <p class="desc"><?=$top_lists[$i]['tl_subtitle']?></p>
                                                 </div>
                                             </figcaption>
                                         </figure>
                                     </a>
                                 </li>
                                 <li>
-                                    <img class="center-croping" alt="2021 강원도 인기 맛집 TOP 100 사진"
-                                        src="./img/gangwondo.jpg">
-                                    <a href="#" onclick="">
+                                    <img class="center-croping" alt="<?=$top_lists[$j]['tl_title']?>"
+                                        src="<?=$top_lists[$j]['tl_repphoto']?>" />
+                                    <a href="./top_lists_detail.php?tl_idx=<?=$top_lists[$j]['tl_idx']?>" onclick="">
                                         <figure class="ls-item">
                                             <figcaption class="info">
                                                 <div class="info_inner_wrap">
-                                                    <span class="title">2021 강원도 인기 맛집 TOP 100</span>
-                                                    <p class="desc">"1년 내내 핫한 #강원도 맛집"</p>
+                                                    <span class="title"><?=$top_lists[$j]['tl_title']?></span>
+                                                    <p class="desc"><?=$top_lists[$j]['tl_subtitle']?></p>
                                                 </div>
                                             </figcaption>
                                         </figure>
                                     </a>
                                 </li>
                             </ul>
-                            <ul class="list-toplist-slider">
-                                <li>
-                                    <img class="center-croping" alt="2021 강원도 인기 맛집 TOP 100 사진"
-                                        src="./img/gangwondo.jpg">
-                                    <a href="#" onclick="">
-                                        <figure class="ls-item">
-                                            <figcaption class="info">
-                                                <div class="info_inner_wrap">
-                                                    <span class="title">2021 강원도 인기 맛집 TOP 100</span>
-                                                    <p class="desc">"1년 내내 핫한 #강원도 맛집"</p>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </a>
-                                </li>
-                                <li>
-                                    <img class="center-croping" alt="2021 강원도 인기 맛집 TOP 100 사진"
-                                        src="./img/gangwondo.jpg">
-                                    <a href="#" onclick="">
-                                        <figure class="ls-item">
-                                            <figcaption class="info">
-                                                <div class="info_inner_wrap">
-                                                    <span class="title">2021 강원도 인기 맛집 TOP 100</span>
-                                                    <p class="desc">"1년 내내 핫한 #강원도 맛집"</p>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul class="list-toplist-slider">
-                                <li>
-                                    <img class="center-croping" alt="2021 강원도 인기 맛집 TOP 100 사진"
-                                        src="./img/gangwondo.jpg">
-                                    <a href="#" onclick="">
-                                        <figure class="ls-item">
-                                            <figcaption class="info">
-                                                <div class="info_inner_wrap">
-                                                    <span class="title">2021 강원도 인기 맛집 TOP 100</span>
-                                                    <p class="desc">"1년 내내 핫한 #강원도 맛집"</p>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </a>
-                                </li>
-                                <li>
-                                    <img class="center-croping" alt="2021 강원도 인기 맛집 TOP 100 사진"
-                                        src="./img/gangwondo.jpg">
-                                    <a href="#" onclick="">
-                                        <figure class="ls-item">
-                                            <figcaption class="info">
-                                                <div class="info_inner_wrap">
-                                                    <span class="title">2021 강원도 인기 맛집 TOP 100</span>
-                                                    <p class="desc">"1년 내내 핫한 #강원도 맛집"</p>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </a>
-                                </li>
-                            </ul>
+<?php
+    }
+?>
                         </div>
-                        <!-- <div class="list_button">
-                        <div class="swiper-pagination"></div>
-                    </div> -->
                     </div>
-                    <!-- <div class="swiper-button-next btn_next3"></div> -->
             </section>
             <!-- 지역별 인기 맛집 끝 -->
             <!-- 메뉴별 인기 맛집 시작 -->
             <section class="module popular_top_list_wrap">
                 <div class="module_title_wrap">
-                    <h2 class="title">믿고 보는 맛집 리스트</h2>
+                    <h2 class="title">메뉴별 인기 맛집</h2>
                     <a href="./top_lists.php" class="module_more">리스트 더보기</a>
                 </div>
                 <div class="swiper-button-prev btn_prev3"></div>
                 <div class="swiper-container swiper3">
                     <div class="swiper-wrapper toplist-slider">
+                    <?php
+    $sql = "SELECT tl_idx, tl_title, tl_subtitle, tl_repphoto FROM top_lists ORDER BY tl_idx DESC LIMIT 12";
+    $result = mysqli_query($conn, $sql);
+    $top_lists = [];
+    while($row = mysqli_fetch_array($result)){
+        $toplistadd = array('tl_idx' => $row['tl_idx'], 'tl_title' => $row['tl_title'], 'tl_subtitle' => $row['tl_subtitle'], 'tl_repphoto' => $row['tl_repphoto']);
+        array_push($top_lists, $toplistadd);
+    }
+?>
                         <div class="swiper-slide top_list_slide">
+<?php
+    for($i=0;$i<6;$i+=2){
+        $j = $i + 1;
+?>
                             <ul class="list-toplist-slider">
                                 <li>
-                                    <img class="center-croping" alt="2021 스시 인기 맛집 TOP 50 사진" src="./img/sushi.jpg">
-                                    <a href="" onclick="">
+                                    <img class="center-croping" alt="<?=$top_lists[$i]['tl_title']?>"
+                                        src="<?=$top_lists[$i]['tl_repphoto']?>" />
+                                    <a href="./top_lists_detail.php?tl_idx=<?=$top_lists[$i]['tl_idx']?>" onclick="">
                                         <figure class="ls-item">
                                             <figcaption class="info">
                                                 <div class="info_inner_wrap">
-                                                    <span class="title">2021 스시 인기 맛집 TOP 50</span>
-                                                    <p class="desc">"가성비 스시 맛집부터 하이엔드 스시야까지!"</p>
+                                                    <span class="title"><?=$top_lists[$i]['tl_title']?></span>
+                                                    <p class="desc"><?=$top_lists[$i]['tl_subtitle']?></p>
                                                 </div>
                                             </figcaption>
                                         </figure>
                                     </a>
                                 </li>
                                 <li>
-                                    <img class="center-croping" alt="2021 스시 인기 맛집 TOP 50 사진" src="./img/sushi.jpg">
-                                    <a href="" onclick="">
+                                    <img class="center-croping" alt="<?=$top_lists[$j]['tl_title']?>"
+                                        src="<?=$top_lists[$j]['tl_repphoto']?>" />
+                                    <a href="./top_lists_detail.php?tl_idx=<?=$top_lists[$j]['tl_idx']?>" onclick="">
                                         <figure class="ls-item">
                                             <figcaption class="info">
                                                 <div class="info_inner_wrap">
-                                                    <span class="title">2021 스시 인기 맛집 TOP 50</span>
-                                                    <p class="desc">"가성비 스시 맛집부터 하이엔드 스시야까지!"</p>
+                                                    <span class="title"><?=$top_lists[$j]['tl_title']?></span>
+                                                    <p class="desc"><?=$top_lists[$j]['tl_subtitle']?></p>
                                                 </div>
                                             </figcaption>
                                         </figure>
                                     </a>
                                 </li>
                             </ul>
-                            <ul class="list-toplist-slider">
-                                <li>
-                                    <img class="center-croping" alt="2021 스시 인기 맛집 TOP 50 사진" src="./img/sushi.jpg">
-                                    <a href="" onclick="">
-                                        <figure class="ls-item">
-                                            <figcaption class="info">
-                                                <div class="info_inner_wrap">
-                                                    <span class="title">2021 스시 인기 맛집 TOP 50</span>
-                                                    <p class="desc">"가성비 스시 맛집부터 하이엔드 스시야까지!"</p>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </a>
-                                </li>
-                                <li>
-                                    <img class="center-croping" alt="2021 스시 인기 맛집 TOP 50 사진" src="./img/sushi.jpg">
-                                    <a href="" onclick="">
-                                        <figure class="ls-item">
-                                            <figcaption class="info">
-                                                <div class="info_inner_wrap">
-                                                    <span class="title">2021 스시 인기 맛집 TOP 50</span>
-                                                    <p class="desc">"가성비 스시 맛집부터 하이엔드 스시야까지!"</p>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul class="list-toplist-slider">
-                                <li>
-                                    <img class="center-croping" alt="2021 스시 인기 맛집 TOP 50 사진" src="./img/sushi.jpg">
-                                    <a href="" onclick="">
-                                        <figure class="ls-item">
-                                            <figcaption class="info">
-                                                <div class="info_inner_wrap">
-                                                    <span class="title">2021 스시 인기 맛집 TOP 50</span>
-                                                    <p class="desc">"가성비 스시 맛집부터 하이엔드 스시야까지!"</p>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </a>
-                                </li>
-                                <li>
-                                    <img class="center-croping" alt="2021 스시 인기 맛집 TOP 50 사진" src="./img/sushi.jpg">
-                                    <a href="" onclick="">
-                                        <figure class="ls-item">
-                                            <figcaption class="info">
-                                                <div class="info_inner_wrap">
-                                                    <span class="title">2021 스시 인기 맛집 TOP 50</span>
-                                                    <p class="desc">"가성비 스시 맛집부터 하이엔드 스시야까지!"</p>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </a>
-                                </li>
-                            </ul>
+<?php
+    }
+?>
                         </div>
                         <div class="swiper-slide top_list_slide">
+                        <?php
+    for($i=6;$i<12;$i+=2){
+        $j = $i + 1;
+?>
                             <ul class="list-toplist-slider">
                                 <li>
-                                    <img class="center-croping" alt="2021 스시 인기 맛집 TOP 50 사진" src="./img/sushi.jpg">
-                                    <a href="" onclick="">
+                                    <img class="center-croping" alt="<?=$top_lists[$i]['tl_title']?>"
+                                        src="<?=$top_lists[$i]['tl_repphoto']?>" />
+                                    <a href="./top_lists_detail.php?tl_idx=<?=$top_lists[$i]['tl_idx']?>" onclick="">
                                         <figure class="ls-item">
                                             <figcaption class="info">
                                                 <div class="info_inner_wrap">
-                                                    <span class="title">2021 스시 인기 맛집 TOP 50</span>
-                                                    <p class="desc">"가성비 스시 맛집부터 하이엔드 스시야까지!"</p>
+                                                    <span class="title"><?=$top_lists[$i]['tl_title']?></span>
+                                                    <p class="desc"><?=$top_lists[$i]['tl_subtitle']?></p>
                                                 </div>
                                             </figcaption>
                                         </figure>
                                     </a>
                                 </li>
                                 <li>
-                                    <img class="center-croping" alt="2021 스시 인기 맛집 TOP 50 사진" src="./img/sushi.jpg">
-                                    <a href="" onclick="">
+                                    <img class="center-croping" alt="<?=$top_lists[$j]['tl_title']?>"
+                                        src="<?=$top_lists[$j]['tl_repphoto']?>" />
+                                    <a href="./top_lists_detail.php?tl_idx=<?=$top_lists[$j]['tl_idx']?>" onclick="">
                                         <figure class="ls-item">
                                             <figcaption class="info">
                                                 <div class="info_inner_wrap">
-                                                    <span class="title">2021 스시 인기 맛집 TOP 50</span>
-                                                    <p class="desc">"가성비 스시 맛집부터 하이엔드 스시야까지!"</p>
+                                                    <span class="title"><?=$top_lists[$j]['tl_title']?></span>
+                                                    <p class="desc"><?=$top_lists[$j]['tl_subtitle']?></p>
                                                 </div>
                                             </figcaption>
                                         </figure>
                                     </a>
                                 </li>
                             </ul>
-                            <ul class="list-toplist-slider">
-                                <li>
-                                    <img class="center-croping" alt="2021 스시 인기 맛집 TOP 50 사진" src="./img/sushi.jpg">
-                                    <a href="" onclick="">
-                                        <figure class="ls-item">
-                                            <figcaption class="info">
-                                                <div class="info_inner_wrap">
-                                                    <span class="title">2021 스시 인기 맛집 TOP 50</span>
-                                                    <p class="desc">"가성비 스시 맛집부터 하이엔드 스시야까지!"</p>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </a>
-                                </li>
-                                <li>
-                                    <img class="center-croping" alt="2021 스시 인기 맛집 TOP 50 사진" src="./img/sushi.jpg">
-                                    <a href="" onclick="">
-                                        <figure class="ls-item">
-                                            <figcaption class="info">
-                                                <div class="info_inner_wrap">
-                                                    <span class="title">2021 스시 인기 맛집 TOP 50</span>
-                                                    <p class="desc">"가성비 스시 맛집부터 하이엔드 스시야까지!"</p>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul class="list-toplist-slider">
-                                <li>
-                                    <img class="center-croping" alt="2021 스시 인기 맛집 TOP 50 사진" src="./img/sushi.jpg">
-                                    <a href="" onclick="">
-                                        <figure class="ls-item">
-                                            <figcaption class="info">
-                                                <div class="info_inner_wrap">
-                                                    <span class="title">2021 스시 인기 맛집 TOP 50</span>
-                                                    <p class="desc">"가성비 스시 맛집부터 하이엔드 스시야까지!"</p>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </a>
-                                </li>
-                                <li>
-                                    <img class="center-croping" alt="2021 스시 인기 맛집 TOP 50 사진" src="./img/sushi.jpg">
-                                    <a href="" onclick="">
-                                        <figure class="ls-item">
-                                            <figcaption class="info">
-                                                <div class="info_inner_wrap">
-                                                    <span class="title">2021 스시 인기 맛집 TOP 50</span>
-                                                    <p class="desc">"가성비 스시 맛집부터 하이엔드 스시야까지!"</p>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </a>
-                                </li>
-                            </ul>
+<?php
+    }
+?>
                         </div>
                     </div>
                     <div class="list_button">

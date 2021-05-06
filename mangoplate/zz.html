@@ -1,67 +1,60 @@
-<!DOCTYPE html>
-<html lang="ko">
+<li class="mango-pick-item-content-wrap">
+        <a onclick="trackEvent('CLICK_STORY', {&quot;position&quot;:0,&quot;story_id&quot;:2036});"
+                href="/mango_picks/2036">
+                <figure class="mango-pick-item">
+                        <div class="thumb lazy"
+                                data-original="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/lwb_4lqtaub93u.jpg?fit=around|585:345&amp;crop=585:345;*,*&amp;output-format=jpg&amp;output-quality=80"
+                                data-error="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                                style="display: block; background-image: url(&quot;https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/lwb_4lqtaub93u.jpg?fit=around|585:345&amp;crop=585:345;*,*&amp;output-format=jpg&amp;output-quality=80&quot;);">
+                        </div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-</head>
+                        <figcaption>
+                                <strong class="title">미나리 맛집 8곳</strong>
 
-<body>
-    <input style="display: block;" type="file" id="input-multiple-image" multiple>
-    <div id="multiple-container">
-    </div>
-    <script>
-        function readMultipleImage(input) {
-            const multipleContainer = document.getElementById("multiple-container")
+                                <p class="hash">
+                                        이 정도면 상 받을만 해!
+                                </p>
 
-            // 인풋 태그에 파일들이 있는 경우
-            if (input.files) {
-                // 이미지 파일 검사 (생략)
-                console.log(input.files)
-                // 유사배열을 배열로 변환 (forEach문으로 처리하기 위해)
-                const fileArr = Array.from(input.files)
-                const $colDiv1 = document.createElement("div")
-                const $colDiv2 = document.createElement("div")
-                $colDiv1.classList.add("column")
-                $colDiv2.classList.add("column")
-                fileArr.forEach((file, index) => {
-                    const reader = new FileReader()
-                    const $imgDiv = document.createElement("div")
-                    const $img = document.createElement("img")
-                    $img.classList.add("image")
-                    const $label = document.createElement("label")
-                    $label.classList.add("image-label")
-                    $label.textContent = file.name
-                    $imgDiv.appendChild($img)
-                    $imgDiv.appendChild($label)
-                    reader.onload = e => {
-                        $img.src = e.target.result
+                                <figure class="editor only-mobile">
+                                        <span class="badge"></span>
 
-                        $imgDiv.style.width = ($img.naturalWidth) * 0.2 + "px"
-                        $imgDiv.style.height = ($img.naturalHeight) * 0.2 + "px"
-                    }
+                                        <div class="thumb">
+                                                <img class="center-crop lazy" alt="미스망고"
+                                                        data-original="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/jk5tg1s0xzjfqb.jpg?fit=around|89:89&amp;crop=89:89;*,*&amp;output-format=jpg&amp;output-quality=80"
+                                                        data-error="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/jmcmlp180qwkp1jj.png?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                                                        src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/jk5tg1s0xzjfqb.jpg?fit=around|89:89&amp;crop=89:89;*,*&amp;output-format=jpg&amp;output-quality=80"
+                                                        style="display: block;">
+                                        </div>
 
-                    console.log(file.name)
-                    if (index % 2 == 0) {
-                        $colDiv1.appendChild($imgDiv)
-                    } else {
-                        $colDiv2.appendChild($imgDiv)
-                    }
+                                        <figcaption>미스망고</figcaption>
+                                </figure>
+                        </figcaption>
 
-                    reader.readAsDataURL(file)
-                })
-                multipleContainer.appendChild($colDiv1)
-                multipleContainer.appendChild($colDiv2)
-            }
-        }
-        const inputMultipleImage = document.getElementById("input-multiple-image")
-        inputMultipleImage.addEventListener("change", e => {
-            readMultipleImage(e.target)
-        })
-    </script>
-</body>
+                        <figure class="editor only-desktop">
+                                <span class="badge"></span>
 
-</html>
+                                <div class="thumb">
+                                        <img class="center-crop lazy" alt="미스망고"
+                                                data-original="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/jk5tg1s0xzjfqb.jpg?fit=around|89:89&amp;crop=89:89;*,*&amp;output-format=jpg&amp;output-quality=80"
+                                                data-error="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/jmcmlp180qwkp1jj.png?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+                                                src="https://mp-seoul-image-production-s3.mangoplate.com/mango_pick/jk5tg1s0xzjfqb.jpg?fit=around|89:89&amp;crop=89:89;*,*&amp;output-format=jpg&amp;output-quality=80"
+                                                style="display: block;">
+                                </div>
+
+                                <figcaption>미스망고</figcaption>
+                        </figure>
+                </figure>
+
+                <div class="review-content">
+                        <figure class="user">
+                                <figcaption>
+                                        미스망고
+                                </figcaption>
+                        </figure>
+                        <p>
+                                청정 지하수로 재배되어 맛이 좋기로 유명한 한재미나리. 식감이 연해서 생으로 먹어도 맛있는데요~ 여기에 제주도 도야지의 만남이라면 더욱 완벽한 궁합을
+                                자랑하죠.
+                        </p>
+                </div>
+        </a>
+</li>

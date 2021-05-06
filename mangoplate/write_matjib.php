@@ -22,9 +22,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-        <!-- include summernote css/js -->
-        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     </head>
     <body>
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -71,6 +68,7 @@
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="./RestaurantList.php">Restaurant List</a>
+                                    <a class="nav-link" href="./EatDeal.php">Eat Deal</a>
                                     <a class="nav-link" href="MangoStory.php">Mango Story</a>
                                     <a class="nav-link" href="MatjibList.php">Matjib List</a>
                                 </nav>
@@ -106,7 +104,7 @@
                                 <input type="file" id="ex_filename" class="upload-hidden" name="tl_repphoto" onchange="upload_file()"> 
                             </div>
                             </p>
-                            <p>
+                            <p style="margin-top:40px">
                                 <label>
                                     <span class="title">가게명</span> 
                                     <div id="restaurant">

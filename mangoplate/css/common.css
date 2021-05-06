@@ -2421,6 +2421,10 @@ input[type=submit] {
     padding-right: 17px;
 }
 
+.list-restaurants>li:nth-child(even) {
+    padding-left: 17px;
+}
+
 .list-restaurants.type-main>li {
     float: left;
     padding-right: 17px;
@@ -2755,6 +2759,8 @@ input[type=submit] {
     text-align: center;
     color: #7F7F7F;
 }
+
+
 
 /* EAT딜을 판매하는 식당 끝 */
 
@@ -3937,6 +3943,10 @@ footer.footer small a {
     letter-spacing: 0;
     text-decoration: underline !important;
     color: #4F4F4F;
+}
+
+.slick-dots {
+    display: none !important;
 }
 
 /* EAT딜 상세 페이지 끝 */
@@ -8890,18 +8900,6 @@ span.orange-underline {
     overflow: hidden;
 }
 
-#mp20_gallery .picture_area {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 350px;
-    height: 100%;
-    background-color: rgba(0,0,0,0.8);
-    padding: 30px 0;
-    box-sizing: border-box;
-    border-radius: 4px;
-}
-
 .fotorama__arr, .fotorama__fullscreen-icon, .fotorama__no-select, .fotorama__video-close, .fotorama__video-play, .fotorama__wrap {
     user-select: none;
 }
@@ -8974,17 +8972,8 @@ span.orange-underline {
     transition-duration: 0ms;
 }
 
-.fotorama__stage__shaft{
-    width: 100% !important;
-    height: 100% !important;
-}
-
 .fotorama__stage__frame {
     overflow: hidden;
-}
-
-.fotorama__caption, .fotorama__nav:after, .fotorama__nav:before, .fotorama__stage:after, .fotorama__stage:before, .fotorama__wrap--css3 .fotorama__html, .fotorama__wrap--css3 .fotorama__nav, .fotorama__wrap--css3 .fotorama__spinner, .fotorama__wrap--css3 .fotorama__stage, .fotorama__wrap--css3 .fotorama__stage .fotorama__img, .fotorama__wrap--css3 .fotorama__stage__frame {
-    transform: translateZ(0);
 }
 
 .fotorama__wrap--slide .fotorama__stage__frame {
@@ -9045,6 +9034,7 @@ span.orange-underline {
     width: 28px;
     height: 45px;
     opacity: .5;
+    right: 0;
     margin-right: 10px;
 }
 
@@ -9111,6 +9101,10 @@ span.orange-underline {
 .fotorama__nav__frame {
     position: relative;
     cursor: pointer;
+}
+
+.fotorama__nav.fotorama__nav--thumbs{
+    text-align: center;
 }
 
 .fotorama__nav--thumbs .fotorama__nav__frame {
@@ -9226,8 +9220,8 @@ span.orange-underline {
 #mp20_gallery .picture_area {
     position: absolute;
     top: 0;
-    left: 0;
-    right: 350px;
+    left: 170px;
+    right: 170px;
     height: 100%;
     background-color: rgba(0,0,0,0.8);
     padding: 30px 0;
@@ -9236,7 +9230,8 @@ span.orange-underline {
     box-sizing: border-box;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
-    border-radius: 4px
+    border-radius: 4px;
+    z-index: 1001;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 768px) {
@@ -9567,8 +9562,9 @@ span.orange-underline {
 
 #mp20_gallery .close_btn {
     position: absolute;
-    top: -10px;
-    right: -40px
+    top: 18px;
+    right: 190px;
+    z-index: 1002;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 768px) {
@@ -12495,3 +12491,4 @@ body.ReviewDetailPage__Body {
     background-color: #ffffff
 }
 /* 검색 지도 css 끝 */
+

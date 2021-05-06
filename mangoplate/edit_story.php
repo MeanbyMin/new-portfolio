@@ -87,6 +87,7 @@
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="./RestaurantList.php">Restaurant List</a>
+                                    <a class="nav-link" href="./EatDeal.php">Eat Deal</a>
                                     <a class="nav-link" href="MangoStory.php">Mango Story</a>
                                     <a class="nav-link" href="MatjibList.php">Matjib List</a>
                                 </nav>

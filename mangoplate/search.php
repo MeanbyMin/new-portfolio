@@ -115,6 +115,8 @@
         $food = $_POST['food'];
     }
 
+
+    // 필터 사용시
     $searchlist = [];
     if(isset($_POST['sorting'])){
         $cs = "";
@@ -1780,6 +1782,10 @@
 ?>
     <script>
         let restaurant_list = <?= json_encode($restaurant_list) ?>;
+        let mm_wannago = <?= json_encode($mm_wannagoarr) ?>;
+        let mm_userid = <?= json_encode($id) ?>;
+        let sessionid = <?= json_encode($sessionid)?>;
+        let mm_recentarr = <?=json_encode($mm_recentarr)?>;
     </script>
     <script src="./js/search.js"></script>
     <script src="./js/facebook.js"></script>

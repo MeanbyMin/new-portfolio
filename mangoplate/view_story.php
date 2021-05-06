@@ -13,7 +13,7 @@
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result);
 
-    $id = $_SESSION['adminid'];
+    $id             = $_SESSION['adminid'];
     $ms_idx         = $row['ms_idx'];
     $ms_userid      = $row['ms_userid'];
     $ms_title       = $row['ms_title'];
@@ -22,6 +22,7 @@
     $ms_regdate     = $row['ms_regdate'];
     $ms_read        = $row['ms_read'];
     $ms_like        = $row['ms_like'];
+
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -31,7 +32,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title> 민바이민 : Restaurant Enrollment</title>
+        <title> 민바이민 : MangoStory View</title>
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="./css/view.css">
@@ -68,7 +69,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="index.php">
+                            <a class="nav-link" href="./adminindex.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
@@ -81,6 +82,7 @@
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="./RestaurantList.php">Restaurant List</a>
+                                    <a class="nav-link" href="./EatDeal.php">Eat Deal</a>
                                     <a class="nav-link" href="MangoStory.php">Mango Story</a>
                                     <a class="nav-link" href="MatjibList.php">Matjib List</a>
                                 </nav>
@@ -105,10 +107,10 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">Restaurant View</h1>
+                        <h1 class="mt-4">MangoStory View</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Restaurant View</li>
+                            <li class="breadcrumb-item active">MangoStory View</li>
                         </ol>
                         <!-- 본문 추가 영역 -->
                         <p class="btn_area">
@@ -131,7 +133,7 @@
                                     <span><b>조회수</b> : <?=$ms_read?></span>
                                     <span><b>좋아요</b> : <span id="wannago"><?=$ms_like?></span></span>
 <?php
-if($ms_userid != $_SESSION['id']){
+if($ms_userid !== $id){
 ?>
                                 <img src="./img/wannago.png" alt="wannago" style="width:20px" class="wannago_btn" onclick="like_story()">
 <?php

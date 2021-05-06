@@ -869,12 +869,12 @@ if($r_photoarr == null){
                                             <img class="center-croping" src="<?=$r_photoarr[$i]?>"
                                                 alt="<?=$r_restaurant?> 사진 - <?=$r_jibunaddress?>">
 
-                                            <div class="last_image" onclick="">
+                                            <!-- <div class="last_image" onclick="">
                                                 <p class="txt">
                                                     사진 더보기
                                                     <span class="arrow-white"></span>
                                                 </p>
-                                            </div>
+                                            </div> -->
                                         </figure>
                                     </figure>
                                 </div>
@@ -1282,6 +1282,17 @@ if($r_photoarr == null){
 
                             </section>
 <?php
+    }
+?>
+
+<?php
+    $sql = "SELECT tl_title, tl_restaurant FROM top_lists WHERE tl_title LIKE %$r_repadd% ORDER BY tl_idx DESC LIMIT 1";
+    $result = mysqli_query($conn, $sql);
+    if($result !== false){
+        $row = mysqli_fetch_array($result);
+        $tl_title = $row['tl_tile'];
+        $tl_restaurant = $row['tl_restaurant'];
+        
     }
 ?>
                             <section class="module related-restaurant">
@@ -1881,118 +1892,9 @@ if($r_photoarr == null){
     <!-- 사진 더보기 팝업 시작 -->
     <div id="mp20_gallery" class="">
         <div class="picture_area fotorama" data-width="90%" data-nav="thumbs"></div>
-        <div class="ng-scope">
-            <div class="info_area">
-                <div class="resto_name ng-binding"><?=$r_restaurant?></div>
-                <div class="header">
-                    <div class="basic_review_area">
-                        <div class="inner_header">
-                            <div class="user_picture_area">
-                                <img class="user_picture" alt="Review User Image" src="<?=$mm_photo?>">
-                            </div>
-<?php
-if(isset($member[0])){
-?>
-                            <div class="user_profile">
-                                <p class="name_wrap">
-                                    <span class="name ng-binding"><?=$member[0]['mr_name']?></span>
-                                    <!-- <span class="holic"></span> -->
-                                </p>
-                                <span class="stat">
-                                    <em class="review">
-                                        <span class="hidden">리뷰수: </span>
-                                        <span class="ng-binding"><?=$mm_reviews?></span>
-                                    </em>
-                                    <em class="hit">
-                                        <span class="hidden">팔로우 수: </span>
-                                        <span class="ng-binding"><?=$mm_followers?></span></em>
-                                </span>
-                            </div>
-
-                            <div class="rating_area">
-                                <div class="rating good"></div>
-                                <p class="rating_str ng-binding"><?=$member[0]['mr_recommend']?></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="body">
-                    <div class="content_wrap ng-isolate-scope mCustomScrollbar _mCS_2 mCS-autoHide"
-                        style="position: relative; overflow: visible;">
-                        <div id="mCSB_2" class="mCustomScrollBox mCS-minimal-dark mCSB_vertical_horizontal mCSB_outside"
-                            tabindex="0" style="max-height: 0px;">
-                            <div id="mCSB_2_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y"
-                                style="position: relative; top: 0px; left: 0px; width: 100%;" dir="ltr">
-                                <div class="content">
-                                    <a class="source ng-binding ng-hide"></a>
-
-                                    <a ng-href="" target="_blank" class="source ng-binding ng-hide"></a>
-
-                                    <span class="review_content ng-binding">
-                                    <?=$member[0]['mr_content']?>
-                                    </span>
-
-                                </div>
-
-                                <div class="regist_date ng-binding"><?=$mr_regdate?></div>
-<?php
-}else{
-?>
-<div class="user_profile">
-                                <p class="name_wrap">
-                                    <span class="name ng-binding">이름</span>
-                                    <!-- <span class="holic"></span> -->
-                                </p>
-                                <span class="stat">
-                                    <em class="review">
-                                        <span class="hidden">리뷰수: </span>
-                                        <span class="ng-binding">0</span>
-                                    </em>
-                                    <em class="hit">
-                                        <span class="hidden">팔로우 수: </span>
-                                        <span class="ng-binding">0</span></em>
-                                </span>
-                            </div>
-
-                            <div class="rating_area">
-                                <div class="rating good"></div>
-                                <p class="rating_str ng-binding">맛평가</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="body">
-                    <div class="content_wrap ng-isolate-scope mCustomScrollbar _mCS_2 mCS-autoHide"
-                        style="position: relative; overflow: visible;">
-                        <div id="mCSB_2" class="mCustomScrollBox mCS-minimal-dark mCSB_vertical_horizontal mCSB_outside"
-                            tabindex="0" style="max-height: 0px;">
-                            <div id="mCSB_2_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y"
-                                style="position: relative; top: 0px; left: 0px; width: 100%;" dir="ltr">
-                                <div class="content">
-                                    <a class="source ng-binding ng-hide"></a>
-
-                                    <a ng-href="" target="_blank" class="source ng-binding ng-hide"></a>
-
-                                    <span class="review_content ng-binding">
-                                    리뷰내용
-                                    </span>
-
-                                </div>
-
-                                <div class="regist_date ng-binding">날짜</div>
-<?php
-}
-?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button class="close_btn">
-                <i class="close_icon"></i>
-            </button>
+        <button class="close_btn">
+            <i class="close_icon"></i>
+        </button>
         </div>
     </div>
     <div class="black_screen"></div>

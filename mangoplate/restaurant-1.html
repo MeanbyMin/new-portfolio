@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="kor">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>바위파스타바 - 왕십리/성동 이탈리안 | 맛집검색 망고플레이트</title>
+
+    <!-- CSS styles -->
+    <link rel="stylesheet" href="./css/common.css" type="text/css">
+    <link href="../img/ico.png" rel="shortcut icon" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+    <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
+</head>
+
+<body onunload="" ng-app="mp20App" class="ng-scope">
+    <ul class="skipnavi">
+        <li><a href="#container">본문내용</a></li>
+    </ul>
+    <!-- wrap 시작 -->
+    <div id="wrap">
+        <!-- 헤더 시작 -->
+        <header class="Header" data-page="noraml">
+            <a href="./index.html" class="Header__Logo">
+                <i class="Header__LogoIcon"></i>
+            </a>
+
+            <!-- 검색 영역 시작-->
+            <div class="Header__SearchBox">
+                <i class="Header__SearchIcon"></i>
+                <label class="Header__SearchInputWrap">
+                    <input class="Header__SearchInput" type="text" placeholder="지역, 식당 또는 음식" maxlength="50">
+                </label>
+                <button class="Header__SearchInputClearButton">CLEAR</button>
+            </div>
+            <!-- 검색 영역 끝 -->
+
+            <!-- 메뉴 부분 시작 -->
+            <ul class="Header__MenuList">
+                <li class="Header__MenuItem Header__MenuItem--New clear">
+                    <a href="#" class="Header__MenuLink">
+                        <span class="Header__MenuText">EAT딜</span>
+                    </a>
+                </li>
+                <li class="Header__MenuItem Header__MenuItem--New clear">
+                    <a href="#" class="Header__MenuLink">
+                        <span class="Header__MenuText">맛집 리스트</span>
+                    </a>
+                </li>
+                <li class="Header__MenuItem Header__MenuItem--New clear">
+                    <a href="#" class="Header__MenuLink">
+                        <span class="Header__MenuText">망고 스토리</span>
+                    </a>
+                </li>
+                <!-- 프로필 영역 시작 -->
+                <ul class="Header__IconButtonList">
+                    <li class="Header__IconButtonItem only-mobile Header__IconButtonItem--MenuButton">
+                        <button class="MenuButton" onclick="">
+                            <i class="MenuButton__Icon"></i>
+                        </button>
+                    </li>
+
+                    <li class="Header__IconButtonItem Header__IconButtonItem--UserRestaurantHistory">
+                        <button class="UserProfileButton" onclick="">
+                            <i class="UserProfileButton__Picture"></i>
+                            <i class="UserProfileButton__PersonIcon"></i>
+                            <span class="UserProfileButton__HistoryCount">0</span>
+                        </button>
+                    </li>
+
+                    <li class="Header__IconButtonItem Header__IconButtonItem--CloseButton Header__IconButtonItem--Hide">
+                        <button class="Header__CloseButton"></button>
+                    </li>
+                </ul>
+                <!-- 프로필 팝업 창 -->
+                <div class="UserRestaurantHistory">
+                    <div class="UserRestaurantHistory__BlackDeem"></div>
+
+                    <div class="UserRestaurantHistory__Container">
+                        <i class="UserRestaurantHistory__Triangle"></i>
+
+                        <ul class="UserRestaurantHistory__TabList">
+                            <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Viewed UserRestaurantHistory__TabItem--Selected"
+                                onclick="">
+                                <button class="UserRestaurantHistory__TabButton">최근 본 맛집 <span
+                                        class="UserRestaurantHistory__ViewedCount">6</span></button>
+                            </li>
+
+                            <li class="UserRestaurantHistory__TabItem UserRestaurantHistory__TabItem--Wannago"
+                                onclick="">
+                                <button class="UserRestaurantHistory__TabButton">가고싶다</button>
+                            </li>
+                        </ul>
+
+                        <div class="UserRestaurantHistory__HistoryContainer">
+                            <div class="UserRestaurantHistory__HistoryHeader">
+                                <button class="UserRestaurantHistory__ClearAllHistoryButton" onclick="">
+                                    x clear all
+                                </button>
+                            </div>
+
+                            <ul class="UserRestaurantHistory__RestaurantList"></ul>
+
+                            <div
+                                class="UserRestaurantHistory__EmptyViewedRestaurantHistory UserRestaurantHistory__EmptyViewedRestaurantHistory--Show">
+                                <span class="UserRestaurantHistory__EmptyViewedRestaurantHistoryTitle">
+                                    거기가 어디였지?
+                                </span>
+
+                                <p class="UserRestaurantHistory__EmptyViewedRestaurantHistoryDescription">
+                                    내가 둘러 본 식당이 이 곳에 순서대로 기록됩니다.
+                                </p>
+                            </div>
+
+                            <div class="UserRestaurantHistory__EmptyWannagoRestaurantHistory">
+                                <img class="UserRestaurantHistory__EmptyWannagoRestaurantHistoryImage"
+                                    src="./img/kycrji1bsrupvbem.png" alt="wannago empty star">
+                                <p class="UserRestaurantHistory__EmptyWannagoRestaurantHistoryTitle">격하게 가고싶다..</p>
+                                <p class="UserRestaurantHistory__EmptyWannagoRestaurantHistoryDescription">
+                                    식당의 ‘별’ 아이콘을 누르면 가고싶은 곳을 쉽게 저장할 수 있습니다.
+                                </p>
+                            </div>
+                        </div>
+
+                        <footer class="UserRestaurantHistory__Footer">
+                            <button class="UserRestaurantHistory__LoginButton UserRestaurantHistory__LoginButton--Show"
+                                onclick="">로그인</button>
+                            <button class="UserRestaurantHistory__LogoutButton" onclick="">logout</button>
+                        </footer>
+                    </div>
+                </div>
+                <!-- 프로필 팝업창 끝 -->
+                <!-- 프로필 영역 끝 -->
+            </ul>
+            <!-- 메뉴 부분 끝 -->
+        </header>
+        <!-- 헤더 끝 -->
+        <!-- 검색창 시작 -->
+        <div class="KeywordSuggester">
+            <div class="KeywordSuggester__BlackDeem"></div>
+            <div class="KeywordSuggester__Container">
+                <nav class="KeywordSuggester__TabNavigation">
+                    <ul class="KeywordSuggester__TabList">
+                        <li class="KeywordSuggester__TabItem">
+                            <div class="KeywordSuggester__TabButton KeywordSuggester__RecommendTabButton" onclick=""
+                                role="button">
+                                추천 검색어
+                            </div>
+                        </li>
+
+                        <li class="KeywordSuggester__TabItem">
+                            <div class="KeywordSuggester__TabButton KeywordSuggester__PopularTabButton" onclick=""
+                                role="button">
+                                인기 검색어
+                            </div>
+                        </li>
+
+                        <li class="KeywordSuggester__TabItem">
+                            <div class="KeywordSuggester__TabButton KeywordSuggester__HistoryTabButton" onclick=""
+                                role="button">
+                                최근 검색어
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="KeywordSuggester__SuggestKeywordListWrap">
+                    <p class="KeywordSuggester__EmptyKeywordMessage">최근 검색어가 없습니다.</p>
+
+                    <div class="KeywordSuggester__Footer">
+                        <button class="KeywordSuggester__RemoveAllHistoryKeywordButton">
+                            x clear all
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 검색창 끝 -->
+        <!-- 본문 시작 -->
+        <main class="pg-restaurant have-share-sns-another" ng-controller="mp20_restaurant_controller"
+            data-restaurant_key="0ZBL14x1k0Re" data-restaurant_name="바위파스타바" data-metro_str="왕십리/성동"
+            data-subcuisine_code_str="이탈리안" data-price_code_str="만원-2만원" data-parking_code_str="주차공간없음"
+            data-review_count="34">
+            <article class="contents">
+                <!-- 레스토랑 상세 이미지 슬라이드 -->
+                <aside class="restaurant-photos">
+
+                    <div class="list-photo_wrap owl-carousel owl-theme" style="opacity: 1; display: block;">
+                        <div class="owl-wrapper-outer">
+                            <div class="owl-wrapper" style="width: 2850px; left: 0px; display: block;">
+                                <div class="owl-item" style="width: 285px;">
+                                    <figure class="list-photo">
+                                        <meta content="">
+                                        <figure class="restaurant-photos-item" onclick="t"
+                                            aria-label="바위파스타바 - 왕십리/성동 이탈리안 | 맛집검색 망고플레이트"
+                                            title="바위파스타바 - 왕십리/성동 이탈리안 | 맛집검색 망고플레이트">
+                                            <img class="center-croping"
+                                                src="./img/search/1013171_1600765976860_19391.jpeg"
+                                                alt="바위파스타바 사진 - 서울시 성동구 성수동2가 269-81">
+
+                                            <div class="last_image" onclick="">
+                                                <p class="txt">
+                                                    사진 더보기
+                                                    <span class="arrow-white"></span>
+                                                </p>
+                                            </div>
+                                        </figure>
+                                    </figure>
+                                </div>
+                                <div class="owl-item" style="width: 285px;">
+                                    <figure class="list-photo">
+                                        <meta content="">
+                                        <figure class="restaurant-photos-item" onclick="" role="img"
+                                            aria-label="바위파스타바 - 왕십리/성동 이탈리안 | 맛집검색 망고플레이트"
+                                            title="바위파스타바 - 왕십리/성동 이탈리안 | 맛집검색 망고플레이트">
+                                            <img class="center-croping" src="./img/search/1175978_1604733090427406.jpg"
+                                                alt="바위파스타바 사진 - 서울시 성동구 성수동2가 269-81">
+
+                                            <div class="last_image" onclick="">
+                                                <p class="txt">
+                                                    사진 더보기
+                                                    <span class="arrow-white"></span>
+                                                </p>
+                                            </div>
+                                        </figure>
+                                    </figure>
+                                </div>
+                                <div class="owl-item" style="width: 285px;">
+                                    <figure class="list-photo">
+                                        <meta content="">
+                                        <figure class="restaurant-photos-item" onclick="" role="img"
+                                            aria-label="바위파스타바 - 왕십리/성동 이탈리안 | 맛집검색 망고플레이트"
+                                            title="바위파스타바 - 왕십리/성동 이탈리안 | 맛집검색 망고플레이트">
+                                            <img class="center-croping" src="./img/search/1175978_1604733091287602.jpg"
+                                                alt="바위파스타바 사진 - 서울시 성동구 성수동2가 269-81">
+
+                                            <div class="last_image" onclick="">
+                                                <p class="txt">
+                                                    사진 더보기
+                                                    <span class="arrow-white"></span>
+                                                </p>
+                                            </div>
+                                        </figure>
+                                    </figure>
+                                </div>
+                                <div class="owl-item" style="width: 285px;">
+                                    <figure class="list-photo">
+                                        <meta content="">
+                                        <figure class="restaurant-photos-item" onclick="" role="img"
+                                            aria-label="바위파스타바 - 왕십리/성동 이탈리안 | 맛집검색 망고플레이트"
+                                            title="바위파스타바 - 왕십리/성동 이탈리안 | 맛집검색 망고플레이트">
+                                            <img class="center-croping" src="./img/search/1175978_1604733091592955.jpg"
+                                                alt="바위파스타바 사진 - 서울시 성동구 성수동2가 269-81">
+
+                                            <div class="last_image" onclick="">
+                                                <p class="txt">
+                                                    사진 더보기
+                                                    <span class="arrow-white"></span>
+                                                </p>
+                                            </div>
+                                        </figure>
+                                    </figure>
+                                </div>
+                                <div class="owl-item" style="width: 285px;">
+                                    <figure class="list-photo">
+                                        <meta content="">
+                                        <figure class="restaurant-photos-item" onclick="" role="img"
+                                            aria-label="바위파스타바 - 왕십리/성동 이탈리안 | 맛집검색 망고플레이트"
+                                            title="바위파스타바 - 왕십리/성동 이탈리안 | 맛집검색 망고플레이트">
+                                            <img class="center-croping" src="./img/search/1255396_1601195530253866.jpg"
+                                                alt="바위파스타바 사진 - 서울시 성동구 성수동2가 269-81">
+
+                                            <div class="last_image" onclick="">
+                                                <p class="txt">
+                                                    사진 더보기
+                                                    <span class="arrow-white"></span>
+                                                </p>
+                                            </div>
+                                        </figure>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="owl-controls clickable" style="display: none;">
+                            <div class="owl-buttons">
+                                <div class="owl-prev"><button class="btn-nav prev" style="display: none;"></button>
+                                </div>
+                                <div class="owl-next"><button class="btn-nav next"></button></div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <div class="column-wrapper">
+                    <!-- 데스크탑 컨텐츠 영역 -->
+                    <div class="column-contents">
+                        <div class="inner">
+
+                            <!-- 레스토랑 상세 -->
+                            <section class="restaurant-detail">
+                                <header>
+                                    <div class="restaurant_title_wrap">
+                                        <span class="title">
+                                            <h1 class="restaurant_name">바위파스타바</h1>
+                                            <strong class="rate-point ">
+                                                <span>4.8</span>
+                                            </strong>
+
+                                            <p class="branch"></p>
+                                        </span>
+
+                                        <div class="restaurant_action_button_wrap">
+
+                                            <button class="review_writing_button" data-restaurant_key="0ZBL14x1k0Re">
+                                                <i class="review_writing_button_icon"></i>
+                                                <span class="review_writing_button_text">리뷰쓰기</span>
+                                            </button>
+
+                                            <div class="wannago_wrap">
+                                                <button class="btn-type-icon favorite wannago_btn "
+                                                    data-restaurant_uuid="411159" data-action_id=""></button>
+                                                <p class="wannago_txt">가고싶다</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="status
+                            branch_none
+                            ">
+                                        <span class="cnt hit">76,785</span>
+                                        <span class="cnt review">34</span>
+                                        <span class="cnt favorite">2,742</span>
+                                    </div>
+                                </header>
+                                <!-- 상세 정보 -->
+                                <table class="info">
+                                    <caption>레스토랑 상세 정보</caption>
+
+                                    <tbody>
+                                        <tr class="only-desktop">
+                                            <th>주소</th>
+                                            <td>서울특별시 성동구 뚝섬로15길 27 1F<br />
+                                                <span class="Restaurant__InfoAddress--Rectangle">지번</span>
+                                                <span class="Restaurant__InfoAddress--Text">서울시 성동구 성수동2가 269-81
+                                                    1F</span>
+                                            </td>
+                                        </tr>
+
+                                        <tr class="only-desktop">
+                                            <th>전화번호</th>
+                                            <td>010-2702-1496</td>
+                                        </tr>
+
+                                        <tr>
+                                            <th>음식 종류</th>
+                                            <td>
+                                                <span>이탈리안</span>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <th>가격대</th>
+                                            <td>만원-2만원</td>
+                                        </tr>
+
+                                        <tr>
+                                            <th>주차</th>
+                                            <td>주차공간없음 </td>
+                                        </tr>
+
+                                        <tr>
+                                            <th style="vertical-align:top;">영업시간</th>
+                                            <td>17:00 - 24:00</td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <th>마지막주문</th>
+                                            <td>23:00</td>
+                                        </tr>
+
+                                        <tr>
+                                            <th>휴일</th>
+                                            <td>일, 월</td>
+                                        </tr>
+
+                                        <tr>
+                                            <th>웹 사이트</th>
+                                            <td>
+                                                <a href="#" class="under_line" target="_blank" style="color: black;"
+                                                    onclick="">
+                                                    식당 홈페이지로 가기
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <th>메뉴</th>
+                                            <td class="menu_td">
+                                                <ul class="Restaurant_MenuList">
+                                                    <li class="Restaurant_MenuItem">
+                                                        <span class="Restaurant_Menu">사워도우브레드</span>
+                                                        <span class="Restaurant_MenuPrice">7,000원</span>
+                                                    </li>
+                                                    <li class="Restaurant_MenuItem">
+                                                        <span class="Restaurant_Menu">샤퀴테리 플레이트</span>
+                                                        <span class="Restaurant_MenuPrice">14,000원</span>
+                                                    </li>
+                                                    <li class="Restaurant_MenuItem">
+                                                        <span class="Restaurant_Menu">아티초크 민트 피스타치오 페스토 딸리올리니</span>
+                                                        <span class="Restaurant_MenuPrice">19,000원</span>
+                                                    </li>
+                                                    <li class="Restaurant_MenuItem">
+                                                        <span class="Restaurant_Menu">앤초비 레몬 스파게티</span>
+                                                        <span class="Restaurant_MenuPrice">19,000원</span>
+                                                    </li>
+                                                    <li class="Restaurant_MenuItem">
+                                                        <span class="Restaurant_Menu">봉골레 소스 바질 링퀴니</span>
+                                                        <span class="Restaurant_MenuPrice">24,000원</span>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <th>
+                                            </th>
+
+                                            <td>
+                                                <div class="list-thumb-photos size-small">
+                                                    <button class="btn-thumb" onclick=""
+                                                        ng-click="open_menu_picture(0)">
+                                                        <img class="center-croping lazy"
+                                                            alt="바위파스타바 메뉴 사진 - 서울시 성동구 성수동2가 269-81"
+                                                            src="./img/search/1042666_1601307885871_40883.jpeg"
+                                                            style="display: block;">
+
+                                                    </button>
+                                                    <button class="btn-thumb" onclick=""
+                                                        ng-click="open_menu_picture(1)">
+                                                        <img class="center-croping lazy"
+                                                            alt="바위파스타바 메뉴 사진 - 서울시 성동구 성수동2가 269-81"
+                                                            src="./img/search/1042666_1601307885871_40881.jpeg"
+                                                            style="display: block;" />
+
+                                                    </button>
+                                                    <button class="btn-thumb" onclick=""
+                                                        ng-click="open_menu_picture(2)">
+                                                        <img class="center-croping lazy"
+                                                            alt="바위파스타바 메뉴 사진 - 서울시 성동구 성수동2가 269-81"
+                                                            src="./img/search/1059167_1592399720435_54673.jpeg"
+                                                            style="display: block;" />
+
+                                                    </button>
+                                                    <button class="btn-thumb" onclick=""
+                                                        ng-click="open_menu_picture(3)">
+                                                        <img class="center-croping lazy"
+                                                            alt="바위파스타바 메뉴 사진 - 서울시 성동구 성수동2가 269-81"
+                                                            src="./img/search/1059167_1592399720435_54672.jpeg"
+                                                            style="display: block;">
+
+                                                        <div class="black_screen">
+                                                            <p class="txt">+ 2</p>
+                                                        </div>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <p class="update_date">
+                                    업데이트
+                                    : 2020. 1. 15
+                                </p>
+
+                                <div id="reviewListFocusId"></div>
+                            </section>
+
+                            <section class="restaurant_introduce_section_desktop only-desktop">
+                                <div class="RestaurantIntroduceSection"></div>
+                            </section>
+                            <script id="reviewCountInfo"
+                                type="application/json">[{"action_value":1,"count":1},{"action_value":2,"count":2},{"action_value":3,"count":31}]</script>
+                            <section class="RestaurantReviewList">
+                                <header class="RestaurantReviewList__Header">
+                                    <h2 class="RestaurantReviewList__Title">
+                                        <span class="RestaurantReviewList__RestaurantName">바위파스타바</span><span
+                                            class="RestaurantReviewList__RestaurantNameSuffixDesktop">리뷰</span><span
+                                            class="RestaurantReviewList__RestaurantNameSuffixMobile">의 리뷰</span>
+                                    </h2>
+
+                                    <ul class="RestaurantReviewList__FilterList">
+                                        <li class="RestaurantReviewList__FilterItem">
+                                            <button
+                                                class="RestaurantReviewList__FilterButton RestaurantReviewList__FilterButton--Selected RestaurantReviewList__AllFilterButton">
+                                                전체
+                                            </button>
+                                        </li>
+
+                                        <li class="RestaurantReviewList__FilterItem">
+                                            <button
+                                                class="RestaurantReviewList__FilterButton RestaurantReviewList__RecommendFilterButton">
+                                                맛있다
+                                            </button>
+                                        </li>
+
+                                        <li class="RestaurantReviewList__FilterItem">
+                                            <button
+                                                class="RestaurantReviewList__FilterButton RestaurantReviewList__OkFilterButton">
+                                                괜찮다
+                                            </button>
+                                        </li>
+
+                                        <li class="RestaurantReviewList__FilterItem">
+                                            <button
+                                                class="RestaurantReviewList__FilterButton RestaurantReviewList__NotRecommendButton">
+                                                별로
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </header>
+
+                                <ul class="RestaurantReviewList__ReviewList RestaurantReviewList__ReviewList--Loading">
+
+                                </ul>
+
+                                <div class="RestaurantReviewList__Empty">
+                                    <span class="RestaurantReviewList__EmptyTitle">아직 작성된 리뷰가 없네요.</span>
+                                    <span class="RestaurantReviewList__EmptyDescription">앱에서 해당 식당의 첫 리뷰를
+                                        작성해주시겠어요?</span>
+                                </div>
+
+                                <div class="RestaurantReviewList__MoreReviewButton RestaurantReviewList__MoreReviewButton--Hide"
+                                    role="button">
+                                    더보기
+                                </div>
+                            </section>
+
+                            <section class="module related-restaurant">
+                                <span class="title">
+                                    <a href="#" onclick="t">
+                                        <span class="orange-underline">2021 양식 인기 맛집 TOP 100 </span></a>에 있는 다른 식당
+                                </span>
+
+                                <ul class="list-restaurants">
+                                    <li>
+                                        <a href="#">
+                                            <figure class="restaurant-item">
+                                                <div class="thumb" onclick="">
+                                                    <img class="center-croping lazy"
+                                                        alt="바위파스타바 사진 - 서울시 성동구 성수동2가 269-81"
+                                                        src="./img/search/1558210_1599313144567820.jpg" />
+                                                </div>
+                                                <figcaption onclick="">
+                                                    <div class="info">
+                                                        <span class="title list">바위파스타바</span>
+                                                        <strong class="point ">
+                                                            4.8
+                                                        </strong>
+                                                        <p class="etc">
+                                                            왕십리/성동
+                                                            -
+                                                            이탈리안
+                                                        </p>
+                                                    </div>
+                                                </figcaption>
+
+                                            </figure>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <figure class="restaurant-item">
+                                                <div class="thumb" onclick="">
+                                                    <img class="center-croping lazy"
+                                                        alt="몽크스부처 사진 - 서울시 용산구 한남동 683-126"
+                                                        src="./img/search/897636_1605442357899_34746.jpeg">
+                                                </div>
+                                                <figcaption onclick="">
+                                                    <div class="info">
+                                                        <span class="title list">몽크스부처</span>
+                                                        <strong class="point ">
+                                                            4.8
+                                                        </strong>
+                                                        <p class="etc">
+                                                            이태원/한남동
+                                                            -
+                                                            기타 양식
+                                                        </p>
+                                                    </div>
+                                                </figcaption>
+
+                                            </figure>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <figure class="restaurant-item">
+                                                <div class="thumb" onclick="t">
+                                                    <img class="center-croping lazy" alt="파씨오네 사진 - 서울시 강남구 신사동 646-23"
+                                                        src="./img/search/586167_1600758506631585.jpg" />
+                                                </div>
+                                                <figcaption onclick="">
+                                                    <div class="info">
+                                                        <span class="title list">파씨오네</span>
+                                                        <strong class="point ">
+                                                            4.7
+                                                        </strong>
+                                                        <p class="etc">
+                                                            신사/압구정
+                                                            -
+                                                            프랑스 음식
+                                                        </p>
+                                                    </div>
+                                                </figcaption>
+
+                                            </figure>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <figure class="restaurant-item">
+                                                <div class="thumb" onclick="">
+                                                    <img class="center-croping lazy" alt="샐러드셀러 사진 - 서울시 용산구 한남동 684-24"
+                                                        src="./img/search/598583_1604485237896509.jpg">
+                                                </div>
+                                                <figcaption onclick="">
+                                                    <div class="info">
+                                                        <span class="title list">샐러드셀러</span>
+                                                        <strong class="point ">
+                                                            4.7
+                                                        </strong>
+                                                        <p class="etc">
+                                                            이태원/한남동
+                                                            -
+                                                            기타 양식
+                                                        </p>
+                                                    </div>
+                                                </figcaption>
+
+                                            </figure>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </section>
+
+                            <div class="column-module">
+                                <!-- 관련 TOP 리스트 -->
+                                <section class="module includes-restaurants RelatedTopList RelatedTopList--Loading">
+                                    <h2 class="title RelatedTopList__Title">관련 TOP 리스트</h2>
+
+                                    <ul class="RelatedTopList__List">
+                                        <li class="ContentCard RelatedTopList__Item RelatedTopList__Item--Placeholder">
+                                            <a href="#" class="ContentCard__Link" onclick="return false;"></a>
+                                            <div class="ContentCard__Deem"></div>
+
+                                            <div class="ContentCard__BgImage"></div>
+
+                                            <div class="ContentCard__Content">
+                                                <span class="ContentCard__Title"></span>
+                                                <p class="ContentCard__Description">""</p>
+                                            </div>
+                                        </li>
+
+                                        <li class="ContentCard RelatedTopList__Item RelatedTopList__Item--Placeholder">
+                                            <a href="#" class="ContentCard__Link" onclick="return false;"></a>
+                                            <div class="ContentCard__Deem"></div>
+
+                                            <div class="ContentCard__BgImage"></div>
+
+                                            <div class="ContentCard__Content">
+                                                <span class="ContentCard__Title"></span>
+                                                <p class="ContentCard__Description">""</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </section>
+
+                                <!-- 관련 스토리 -->
+                                <section class="module related-story RelatedStory RelatedStory--Loading">
+                                    <h2 class="title RelatedStory__Title">관련 스토리</h2>
+
+                                    <ul class="RelatedStory__List">
+                                        <li class="ContentCard RelatedStory__Item RelatedStory__Item--Placeholder">
+                                            <a href="#" class="ContentCard__Link" onclick="return false;"></a>
+                                            <div class="ContentCard__Deem"></div>
+
+                                            <div class="ContentCard__BgImage"></div>
+
+                                            <div class="ContentCard__Content">
+                                                <span class="ContentCard__Title"></span>
+                                                <p class="ContentCard__Description">""</p>
+                                            </div>
+                                        </li>
+
+                                        <li class="ContentCard RelatedStory__Item RelatedStory__Item--Placeholder">
+                                            <a href="#" class="ContentCard__Link" onclick="return false;"></a>
+                                            <div class="ContentCard__Deem"></div>
+
+                                            <div class="ContentCard__BgImage"></div>
+
+                                            <div class="ContentCard__Content">
+                                                <span class="ContentCard__Title"></span>
+                                                <p class="ContentCard__Description">""</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- class="column-contents" -->
+
+                    <!-- 데스크탑 사이드 영역 -->
+                    <div class="side-wrap">
+                        <div class="column-side">
+                            <!-- 지도 -->
+                            <div class="map-container">
+                            </div>
+
+                            <div class="inner">
+                                <!-- 주변 인기 식당 -->
+                                <section
+                                    class="module near-rastaurant NearByRestaurantList NearByRestaurantList--Loading">
+                                    <span class="title NearByRestaurantList__Title">주변 인기 식당</span>
+
+                                    <ul class="list-restaurants type-single NearByRestaurantList__List">
+                                        <li
+                                            class="NearByRestaurantItem NearByRestaurantItem--Placeholder NearByRestaurantList__Item">
+                                            <div class="NearByRestaurantItem__PictureAndContent">
+                                            </div>
+                                        </li>
+
+                                        <li
+                                            class="NearByRestaurantItem NearByRestaurantItem--Placeholder NearByRestaurantList__Item">
+                                            <div class="NearByRestaurantItem__PictureAndContent">
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </section>
+                                <!-- 관련 태그 -->
+                                <section class="module related-tags only-desktop">
+                                    <span class="title">이 식당 관련 태그</span>
+
+                                    <p>
+                                        <a href="#" class="tag-item" onclick="">채식메뉴
+                                        </a>
+                                    </p>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="restaurnat_footer">
+                        <button class="dwn-banner" onclick="">
+                            <div class="logo-white dwn"></div>
+                            <div class="desc dwn">
+                                <p>대한민국 먹슐랭 가이드!</p>
+
+                                <p>망고플레이트 앱 바로가기</p>
+                            </div>
+                            <div class="icon-arrow dwn"></div>
+                        </button>
+                    </div>
+                </div>
+            </article>
+        </main>
+        <!-- 본문 끝 -->
+        <!-- footer 시작 -->
+        <footer class="footer">
+            <div class="inner">
+                <div class="mp_logo">
+                    <a href="/" class="btn-mp">
+                        <img class="mp_logo_img" src="./img/mangoplate-gray-logo.svg" alt="mangoplate logo" />
+                    </a>
+                    <p class="subtitle">Eat, Share, Be Happy.</p>
+                </div>
+
+                <p class="sns-shortcut">
+                    <a class="btn blog" href="#" target="_blank" onclick="">
+                        망고플레이트 네이버 블로그 계정으로 바로가기
+                    </a>
+
+                    <a class="btn facebook" href="#" target="_blank" onclick="">
+                        망고플레이트 페이스북 계정으로 바로가기
+                    </a>
+
+                    <a class="btn instagram" href="#" target="_blank" onclick="">
+                        망고플레이트 인스타그램 계정으로 바로가기
+                    </a>
+                </p>
+
+                <nav class="links-external">
+                    <ul class="list-links">
+                        <li>
+                            <a href="#">
+                                회사소개
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                망고플레이트 채용
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                투자 정보
+                            </a>
+                        </li>
+
+                        <li class="only-desktop">
+                            <a href="#" target="_blank">
+                                브랜드 가이드라인
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" target="_blank">
+                                망고플레이트 비즈니스
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" target="_blank">
+                                광고 문의
+                            </a>
+                        </li>
+
+                    </ul>
+
+                    <ul class="list-links">
+                        <li>
+                            <a href="#" target="_blank">
+                                공지사항
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="" href="#" onclick="" target="_blank">
+                                이용약관
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="#" onclick="" target="_blank">
+                                비회원 이용자 이용정책
+                            </a>
+                        </li>
+                        <li>
+                            <a class="bold" href="#" onclick="" target="_blank">
+                                개인정보처리방침
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="#" onclick="" target="_blank">
+                                위치기반서비스 이용약관
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="#" onclick="">
+                                커뮤니티 가이드라인
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="#" onclick="" target="_blank">
+                                청소년보호정책
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" target="_blank">
+                                홀릭 소개
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                문의하기
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="sitemap-location-keywords">
+                    <div class="keyword_wrap">
+                        <span class="keyword">인기지역 : </span>
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            이태원
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            홍대
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            강남역
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            가로수길
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            신촌
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            명동
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            대학로
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            연남동
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            부산
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            합정
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            대구
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            여의도
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            건대
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            광화문
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            일산
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            제주
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            경리단길
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            한남동
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            삼청동
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            대전
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            종로
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            서촌
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            잠실
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            사당역
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            인천
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            코엑스
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            상수
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            서래마을
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            송도
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            왕십리
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            분당
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            혜화
+                        </a>
+                        |
+                        <a class="keyword" target="_blank" href="#" onclick="">
+                            고속터미널
+                        </a>
+                    </div>
+                </div>
+
+                <div class="language-copyrights">
+                    <p class="select-language">
+                        <a href="#" class='selected'>
+                            한국어
+                        </a>
+
+                        <a href="#">
+                            English
+                        </a>
+
+                        <a href="#">
+                            简体中文
+                        </a>
+                    </p>
+
+                    <small>
+                        <p>
+
+                            ㈜ 망고플레이트<br />서울특별시 서초구 강남대로99길 53, 6층 (잠원동, 삼우빌딩)<br />대표이사: OH JOON HWAN(오준환)<br />사업자
+                            등록번호: 211-88-92374 <a href='#' target='_blank'>[사업자정보확인]</a><br />통신판매업 신고번호:
+                            2014-서울강남-02615<br />고객센터: 02-565-5988<br /><br />
+                            <span class="copyrights">© 2021 MangoPlate Co., Ltd. All rights reserved.</span>
+                        </p>
+                    </small>
+                </div>
+            </div>
+        </footer>
+        <!-- footer 끝 -->
+    </div>
+    <!-- wrap 끝 -->
+    <!-- 로그인창 팝업 시작 -->
+    <aside class="pop-context pg-login" style="display: none;">
+        <div class="contents-box">
+            <button class="btn-nav-close" onclick="">
+                닫기
+            </button>
+
+            <p class="title">로그인</p>
+
+            <p class="message">로그인 하면 가고싶은 식당을 <br>저장할 수 있어요</p>
+
+            <p>
+                <a class="btn-login facebook" href="#" onclick="">
+                    <span class="text">페이스북으로 계속하기</span>
+                </a>
+
+                <a class="btn-login kakaotalk" href="#" onclick="">
+                    <span class="text">카카오톡으로 계속하기</span>
+                </a>
+
+                <a class="btn-login apple" href="#" onclick="">
+                    <span class="text">Apple로 계속하기</span>
+                </a>
+            </p>
+        </div>
+    </aside>
+    <!-- 로그인창 팝업 끝 -->
+    <!-- 사진 더보기 팝업 시작 -->
+    <div id="mp20_gallery" class="">
+        <div class="picture_area fotorama" data-auto="false"></div>
+        <div class="ng-scope">
+            <div class="info_area">
+                <div class="resto_name ng-binding">바위파스타바</div>
+                <div class="header">
+                    <div class="basic_review_area">
+                        <div class="inner_header">
+                            <div class="user_picture_area">
+                                <img class="user_picture" alt="Review User Image" src="">
+                            </div>
+
+                            <div class="user_profile">
+                                <p class="name_wrap">
+                                    <span class="name ng-binding">작성자</span>
+                                    <span class="holic"></span>
+                                </p>
+                                <span class="stat">
+                                    <em class="review">
+                                        <span class="hidden">리뷰수: </span>
+                                        <span class="ng-binding">410</span>
+                                    </em>
+                                    <em class="hit">
+                                        <span class="hidden">팔로우 수: </span>
+                                        <span class="ng-binding">39</span></em>
+                                </span>
+                            </div>
+
+                            <div class="rating_area">
+                                <div class="rating good"></div>
+                                <p class="rating_str ng-binding">맛있다</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="body">
+                    <div class="content_wrap ng-isolate-scope mCustomScrollbar _mCS_2 mCS-autoHide"
+                        style="position: relative; overflow: visible;">
+                        <div id="mCSB_2" class="mCustomScrollBox mCS-minimal-dark mCSB_vertical_horizontal mCSB_outside"
+                            tabindex="0" style="max-height: 0px;">
+                            <div id="mCSB_2_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y"
+                                style="position: relative; top: 0px; left: -100px; width: 100%;" dir="ltr">
+                                <div class="content">
+                                    <a class="source ng-binding ng-hide">
+                                        내용 작성 부분
+                                    </a>
+
+                                    <a ng-href="" target="_blank" class="source ng-binding ng-hide"></a>
+
+                                    <span class="review_content ng-binding">
+                                        내용 작성 부분
+                                    </span>
+
+                                    <button class="translate_btn ng-binding ng-hide">번역 보기</button>
+                                </div>
+
+                                <div class="regist_date ng-binding">2020-09-22</div>
+                            </div>
+                        </div>
+                        <div id="mCSB_2_scrollbar_vertical"
+                            class="mCSB_scrollTools mCSB_2_scrollbar mCS-minimal-dark mCSB_scrollTools_vertical"
+                            style="display: none;">
+                            <div class="mCSB_draggerContainer">
+                                <div id="mCSB_2_dragger_vertical" class="mCSB_dragger"
+                                    style="position: absolute; min-height: 50px; top: 0px; display: block; height: 210px; max-height: 352px;">
+                                    <div class="mCSB_dragger_bar" style="line-height: 50px;"></div>
+                                </div>
+                                <div class="mCSB_draggerRail"></div>
+                            </div>
+                        </div>
+                        <div id="mCSB_2_scrollbar_horizontal"
+                            class="mCSB_scrollTools mCSB_2_scrollbar mCS-minimal-dark mCSB_scrollTools_horizontal"
+                            style="display: block;">
+                            <div class="mCSB_draggerContainer">
+                                <div id="mCSB_2_dragger_horizontal" class="mCSB_dragger"
+                                    style="position: absolute; min-width: 50px; display: block; width: 0px; left: 0px;">
+                                    <div class="mCSB_dragger_bar"></div>
+                                </div>
+                                <div class="mCSB_draggerRail"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info_area_footer">
+                        <div class="source_notice ng-hide">
+                            <div class="inner">
+                                <i class="icon"></i>
+                                망고플레이트는 인스타그램과 기술제휴를 통해 식당과 관련된 사진을 보여드리고 있어요. <br> <br> 당신의 사진이 표시되는 것을 원하지 않으실 경우 <a
+                                    class="color_orange under_line" href="#" target="_blank">cs@mangoplate.com</a>로
+                                요청주세요.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="close_btn">
+                <i class="close_icon"></i>
+            </button>
+        </div>
+    </div>
+    <!-- 사진 더보기 팝업 끝 -->
+    <!-- 로딩 -->
+    <div class="login_loading_area">
+        <img src="./img/ldcyd5lxlvtlppe3.gif" alt="login loading bar" />
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리뷰 쓰기</title>
+    
+    <!-- CSS styles -->
+    <link rel="stylesheet" href="./css/common.css" type="text/css">
+    <link href="../img/ico.png" rel="shortcut icon" type="image/x-icon">
+    <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <!-- 심플 헤더 -->
+    <header class="SimpleHeader">
+        <a href="#" class="SimpleHeader__Logo" onclick="">
+            <i class="SimpleHeader__LogoIcon"></i>
+        </a>
+    </header>
+    <main class="ReviewWritingPage" data-restaurant-uuid="411159" data-restaurant-key="0ZBL14x1k0Re">
+        <header class="SimpleHeader">
+        <a href="/" class="SimpleHeader__Logo" onclick="trackEvent('CLICK_HEADER_LOGO');">
+            <i class="SimpleHeader__LogoIcon"></i>
+        </a>
+        </header>
+
+
+        <section class="ReviewWritingPage__Container">
+            <div class="ReviewWritingPage__Row">
+            <strong class="RestaurantSubMessage__RestaurantName">바위파스타바</strong>
+            <div class="RestaurantSubMessage__SubMessageWrap">
+                <span class="RestaurantSubMessage__SubMessage">에 대한 솔직한 리뷰를 써주세요.</span>
+            </div>
+            </div>
+
+            <div class="ReviewWritingPage__ContentWrap">
+            <div class="ReviewWritingPage__FormWrap">
+                <div class="ReviewWritingPage__EditorWrap">
+                <div class="ReviewEditor">
+                    <div class="ReviewEditor__Editor__Wrap">
+                    <div class="ReviewWritingPage__RestaurantRecommendPickerWrap">
+                        <div class="RestaurantRecommendPicker">
+                        <ul class="RestaurantRecommendPicker__List">
+                            <li class="RestaurantRecommendPicker__Item">
+                            <button class="RestaurantRecommendPicker__RecommendButton RestaurantRecommendPicker__RecommendButton--Recommend RestaurantRecommendPicker__RecommendButton--Active" data-recommend-type="3">
+                                <i class="RestaurantRecommendPicker__Image RestaurantRecommendPicker__Image--Recommend"></i>
+                                <span class="RestaurantRecommendPicker__LikeLabel">맛있다</span>
+                            </button>
+                            </li>
+
+                            <li class="RestaurantRecommendPicker__Item">
+                            <button class="RestaurantRecommendPicker__RecommendButton RestaurantRecommendPicker__RecommendButton--Ok" data-recommend-type="2">
+                                <i class="RestaurantRecommendPicker__Image RestaurantRecommendPicker__Image--Ok"></i>
+                                <span class="RestaurantRecommendPicker__LikeLabel">괜찮다</span>
+                            </button>
+                            </li>
+
+                            <li class="RestaurantRecommendPicker__Item">
+                            <button class="RestaurantRecommendPicker__RecommendButton RestaurantRecommendPicker__RecommendButton--NotRecommend" data-recommend-type="1">
+                                <i class="RestaurantRecommendPicker__Image RestaurantRecommendPicker__Image--NotRecommend"></i>
+                                <span class="RestaurantRecommendPicker__LikeLabel">별로</span>
+                            </button>
+                            </li>
+                        </ul>
+                        </div>
+                    </div>
+                    <textarea class="ReviewEditor__Editor" maxlength="10000" placeholder="오석민님, 주문하신 메뉴는 어떠셨나요? 식당의 분위기와 서비스도 궁금해요!" style="overflow: hidden; overflow-wrap: break-word; height: 150px;"></textarea>
+                    </div>
+
+                    <p class="ReviewEditor__TextLengthStateBox">
+                    <span class="ReviewEditor__CurrentTextLength">0</span>
+                    <span class="ReviewEditor__TextLengthStateDivider">/</span>
+                    <span class="ReviewEditor__MaxTextLength">10000</span>
+                    </p>
+                </div>
+                </div>
+
+                <div class="ReviewWritingPage__PictureWrap">
+                <div class="ReviewPictureCounter">
+                    <span class="ReviewPictureCounter__CurrentLength">0</span>
+                    <span class="ReviewPictureCounter__Divider">/</span>
+                    <span class="ReviewPictureCounter__MaxLength">30</span>
+                </div>
+
+                <div class="DraggablePictureContainer">
+                    <ul class="DraggablePictureContainer__PictureList">
+                    <li class="DraggablePictureContainer__PictureItem DraggablePictureContainer__PictureItem--button">
+                        <button class="DraggablePictureContainer__AddButton">
+                        <i class="DraggablePictureContainer__AddIcon"></i>
+                        </button>
+                    </li>
+                    </ul>
+
+                    <div class="DraggablePictureContainer__GuideLayer">
+                    <span class="DraggablePictureContainer__GuideMessage">사진을 여기에 놓으세요.</span>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+            <div class="ReviewWritingPage__ButtonsWrap">
+            <button class="ReviewWritingPage__ContinueButton">나중에 이어쓰기</button>
+            <div class="ReviewWritingPage__Buttons">
+                <button class="ReviewWritingPage__CancelButton">취소</button>
+                <button class="ReviewWritingPage__SubmitButton">리뷰 올리기</button>
+            </div>
+            </div>
+            <div class="ReviewToolTip">
+            <div class="ToolTip">
+        <div class="ToolTip__Wrap">
+            <i class="ToolTip__New">NEW</i>
+            <p class="ToolTip__Message"></p>
+            <button class="ToolTip__CloseButton"></button>
+        </div>
+        </div>
+
+            </div>
+        </section>
+
+        <div class="PopupConfirmLayer ReviewContinueConfirmLayer">
+            <div class="PopupConfirmLayer__Container">
+            <p class="PopupConfirmLayer__Description">PC웹과 모바일앱의 <span class='PopupConfirmLayer__Description__Bold'>바위파스타바</span> 페이지에서 <span class='PopupConfirmLayer__Description__Bold'>리뷰쓰기</span>를 누르면 리뷰를 이어쓸 수 있어요.</p>
+
+            <div class="PopupConfirmLayer__Buttons">
+                <button class="PopupConfirmLayer__Button PopupConfirmLayer__GrayButton">취소</button>
+                <button class="PopupConfirmLayer__Button PopupConfirmLayer__OrangeButton">확인</button>
+            </div>
+            </div>
+        </div>
+
+        <div class="PopupConfirmLayer ReviewCancelLayer">
+            <div class="PopupConfirmLayer__Container">
+            <p class="PopupConfirmLayer__Description">리뷰 쓰기를 취소하시겠습니까?<br/>취소 시, 작성 중이던 리뷰는 삭제됩니다.</p>
+
+            <div class="PopupConfirmLayer__Buttons">
+                <button class="PopupConfirmLayer__Button PopupConfirmLayer__GrayButton">리뷰 계속 쓰기</button>
+                <button class="PopupConfirmLayer__Button PopupConfirmLayer__OrangeButton">리뷰 쓰기 취소</button>
+            </div>
+            </div>
+        </div>
+
+        <div class="ReviewDraftConfirmLayer PopupConfirmLayer">
+            <div class="PopupConfirmLayer__Container">
+            <p class="PopupConfirmLayer__Description"><b>작성 중이던 리뷰가 있습니다 이어서 쓰시겠습니까?</b><br />(새로쓰기를 누르면 작성중이던 리뷰는 삭제 됩니다)</p>
+
+            <div class="PopupConfirmLayer__Buttons">
+                <button class="PopupConfirmLayer__Button PopupConfirmLayer__GrayButton">새로쓰기</button>
+                <button class="PopupConfirmLayer__Button PopupConfirmLayer__OrangeButton">이어쓰기</button>
+            </div>
+            </div>
+        </div>
+
+        <div class="ReviewSubmitLayer">
+            <i class="ReviewSubmitLayer__Emoji"></i>
+
+            <div class="ReviewSubmitLayer__ShadowWrap">
+            <img src="./img/reviews/review_submit_animation_shadow.svg" alt="layer shadow" class="ReviewSubmitLayer__Shadow"/>
+            </div>
+            <p class="ReviewSubmitLayer__Message"></p>
+        </div>
+
+        <div class="NoticeNotAcceptImageLayer">
+            <div class="NoticeNotAcceptImageLayer__Container">
+                <div class="NoticeNotAcceptImageLayer__Header">
+                    <i class="NoticeNotAcceptImageLayer__FaceIcon"></i>
+                    <h3 class="NoticeNotAcceptImageLayer__Title">사진 업로드 중에 문제가 발생했어요!</h3>
+                </div>
+
+                <div class="NoticeNotAcceptImageLayer__Content"></div>
+                <button class="NoticeNotAcceptImageLayer__Button">확인</button>
+            </div>
+        </div>
+    </main>
+    <div class="account_terms_layer">
+    <img src="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/ojlwsg-0cpi1dz8p.png?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80"
+        alt="checkbox"
+        style="position:absolute;top: -9999px;display: block"
+    />
+
+    <div class="account_terms_layer_header">
+        <button class="close_btn">
+            <img src="./img/reviews/zva6r-2wxzbxhw_n.png"
+                alt="arrow">
+        </button>
+
+        <span>이용약관 동의</span>
+    </div>
+
+    <div class="account_terms_layer_content">
+        <div class="account_terms_layer_content_location">
+        <p class="terms_content">
+            전체 동의
+        </p>
+
+        <div class="check_area">
+            <button class="check_terms_btn all_terms_btn" data-ischecked="false">
+            <img src="./img/reviews/24_jjq1lbdgzpdnp.png"
+                alt="arrow"
+                title=""
+            />
+            </button>
+        </div>
+        </div>
+
+        <p class="sub_content">
+        망고플레이트 서비스 이용을 위해 다음의 약관에 동의해 주세요.
+        </p>
+
+        <hr class="seper_hr" />
+
+        <ul class="account_terms_items">
+
+        </ul>
+    </div>
+
+    <button class="account_terms_layer_ok_btn" disabled="true">확인</button>
+    </div>
+
+    <aside class="pop-context pg-login" style="display: none;">
+    <div class="contents-box">
+        <button
+        class="btn-nav-close"
+        onclick="">
+        닫기
+        </button>
+
+        <p class="title">로그인</p>
+
+        <p class="message">
+        로그인 하면 가고싶은 식당을 <br />저장할 수 있어요
+        </p>
+
+        <p>
+            <a class="btn-login facebook"
+            href="#"
+            onclick="">
+            <span class="text">페이스북으로 계속하기</span>
+            </a>
+
+            <a class="btn-login kakaotalk"
+            href="#"
+            onclick="">
+            <span class="text">카카오톡으로 계속하기</span>
+            </a>
+
+            <a class="btn-login apple"
+            href="#"
+            onclick="">
+            <span class="text">Apple로 계속하기</span>
+            </a>
+        </p>
+    </div>
+    </aside>
+
+    <div class="login_loading_area">
+    <img src="./img/reviews/ldcyd5lxlvtlppe3.gif"
+        alt="login loading bar"/>
+    </div>
+</body>
+</html>

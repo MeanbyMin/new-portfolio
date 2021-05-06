@@ -1593,6 +1593,22 @@ if(isset($id)){
             })();
         }, 1000); 
     </script>
+    <?php
+    $sql = "SELECT r_restaurant, r_repadd, r_address, r_jibunaddress, r_menu, r_tags FROM mango_restaurant";
+    $result = mysqli_query($conn, $sql);
+    $restaurant_list = [];
+    while($row = mysqli_fetch_array($result)){
+        $restuarant = array('r_restaurant' => $row['r_restaurant']);
+        array_push($restaurant_list, $restuarant);
+    }
+?>
+    <script>
+        let restaurant_list = <?= json_encode($restaurant_list) ?>;
+        let mm_wannago = <?= json_encode($mm_wannagoarr) ?>;
+        let mm_userid = <?= json_encode($id) ?>;
+        let sessionid = <?= json_encode($sessionid)?>;
+        let mm_recentarr = <?=json_encode($mm_recentarr)?>;
+    </script>
     <script src="./js/top_lists_detail.js"></script>
     <script src="./js/facebook.js"></script>
     <script src="./js/kakao.js"></script>

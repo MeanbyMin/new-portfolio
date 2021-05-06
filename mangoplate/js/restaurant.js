@@ -254,14 +254,14 @@ function CLICK_REVIEW() {
 let review = [];
 window.onload = function () {
   const xhr = new XMLHttpRequest();
-  console.log(r_idx);
+  // console.log(r_idx);
   xhr.open("GET", "./recommend_all.php?r_idx=" + r_idx);
   xhr.send();
   xhr.onload = () => {
     if (xhr.status === 200) {
       let arr = xhr.responseText.split("<br>");
       arr.pop();
-      console.log(arr);
+      // console.log(arr);
       if (arr.length <= 5) {
         for (let i = 0; i < arr.length; i++) {
           review[i] = arr[i].split("&nbsp");
@@ -271,7 +271,7 @@ window.onload = function () {
           review[i] = arr[i].split("&nbsp");
         }
       }
-      console.log(review);
+      // console.log(review);
       profile(review);
     }
   };
