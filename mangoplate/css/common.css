@@ -2421,7 +2421,7 @@ input[type=submit] {
     padding-right: 17px;
 }
 
-.list-restaurants>li:nth-child(even) {
+.related-restaurant .list-restaurants>li:nth-child(even) {
     padding-left: 17px;
 }
 
@@ -8225,6 +8225,15 @@ img.center-crop.portrait {
 .pg-restaurant .module>.title a {
     color: #ff792a;
     position: relative;
+}
+
+.RelatedTopList__Title {
+    margin-bottom: 20px;
+}
+
+.RelatedStory__Title {
+    margin-bottom: 20px;
+    color: #ff792a;
 }
 
 span.orange-underline {

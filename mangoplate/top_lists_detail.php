@@ -1493,29 +1493,29 @@ if(isset($id)){
                     const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
                     positions[i] = {
                         content: `
-<div class="restaurant-in-map">
-    <figure class="restaurant-item">
-        <div class="thumb">
-          <a href="./restaurant.php?r_idx=${tl_list_idx[i]}">
-            <div class="inner">
-              <img src=${tl_list_repphoto[i]} alt="${tl_listRestaurant[i]} 사진" class="center-crop" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg'">
-            </div>
-          </a>
-        </div>
-      <figcaption>
-        <div class="info">
-          <span class="title"><a href="./restaurant.php?r_idx=${tl_list_idx[i]}">${tl_listRestaurant[i]}</a></span>
-          <strong class="point ">${tl_list_grade[i]}</strong>
-          <p class="etc">${tl_list_repadd[i]} - ${tl_list_foodtype[i]}</p>
+                            <div class="restaurant-in-map">
+                                <figure class="restaurant-item">
+                                    <div class="thumb">
+                                    <a href="./restaurant.php?r_idx=${tl_list_idx[i]}">
+                                        <div class="inner">
+                                        <img src=${tl_list_repphoto[i]} alt="${tl_listRestaurant[i]} 사진" class="center-crop" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg'">
+                                        </div>
+                                    </a>
+                                    </div>
+                                <figcaption>
+                                    <div class="info">
+                                    <span class="title"><a href="./restaurant.php?r_idx=${tl_list_idx[i]}">${tl_listRestaurant[i]}</a></span>
+                                    <strong class="point ">${tl_list_grade[i]}</strong>
+                                    <p class="etc">${tl_list_repadd[i]} - ${tl_list_foodtype[i]}</p>
 
-          <p class="status-cnt">
-            <em class="review"><span class="hidden">리뷰수: </span>${tl_list_review[i]}</em>
-            <em class="favorite"><span class="hidden">가고싶다 수: </span>${tl_list_wannago[i]}</em>
-          </p>
-        </div>
-      </figcaption>
-    </figure>
-  </div>`,
+                                    <p class="status-cnt">
+                                        <em class="review"><span class="hidden">리뷰수: </span>${tl_list_review[i]}</em>
+                                        <em class="favorite"><span class="hidden">가고싶다 수: </span>${tl_list_wannago[i]}</em>
+                                    </p>
+                                    </div>
+                                </figcaption>
+                                </figure>
+                            </div>`,
                         latlng: coords
                     };
                 }
@@ -1591,7 +1591,7 @@ if(isset($id)){
 
                 map.setLevel(14);
             })();
-        }, 1000); 
+        }, 1500); 
     </script>
     <?php
     $sql = "SELECT r_restaurant, r_repadd, r_address, r_jibunaddress, r_menu, r_tags FROM mango_restaurant";
@@ -1602,13 +1602,6 @@ if(isset($id)){
         array_push($restaurant_list, $restuarant);
     }
 ?>
-    <script>
-        let restaurant_list = <?= json_encode($restaurant_list) ?>;
-        let mm_wannago = <?= json_encode($mm_wannagoarr) ?>;
-        let mm_userid = <?= json_encode($id) ?>;
-        let sessionid = <?= json_encode($sessionid)?>;
-        let mm_recentarr = <?=json_encode($mm_recentarr)?>;
-    </script>
     <script src="./js/top_lists_detail.js"></script>
     <script src="./js/facebook.js"></script>
     <script src="./js/kakao.js"></script>

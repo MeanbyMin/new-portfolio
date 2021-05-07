@@ -73,7 +73,7 @@
                 array_push($mm_recentarr, $_COOKIE[$sessionid]);
             }
         }else{
-            $mm_recentarr = null;
+            $mm_recentarr = "";
         }
     }
     
@@ -1286,40 +1286,52 @@ if($r_photoarr == null){
 ?>
 
 <?php
-    $sql = "SELECT tl_title, tl_restaurant FROM top_lists WHERE tl_title LIKE %$r_repadd% ORDER BY tl_idx DESC LIMIT 1";
+    $sql = "SELECT tl_title, tl_restaurant FROM top_lists WHERE tl_restaurant LIKE '%$r_restaurant%' ORDER BY tl_idx DESC LIMIT 1";
     $result = mysqli_query($conn, $sql);
-    if($result !== false){
+    if(mysqli_num_rows($result) !== 0){
         $row = mysqli_fetch_array($result);
-        $tl_title = $row['tl_tile'];
+        $tl_title = $row['tl_title'];
         $tl_restaurant = $row['tl_restaurant'];
-        
-    }
+        $tl_restaurantarr = explode(",", $tl_restaurant);
+        $key = array_search('$r_restaurant', $tl_restaurantarr);
+        array_splice($tl_restaurantarr, $key, 1);
 ?>
                             <section class="module related-restaurant">
                                 <span class="title">
                                     <a href="#" onclick="">
-                                        <span class="orange-underline">2021 양식 인기 맛집 TOP 100 </span></a>에 있는 다른 식당
+                                        <span class="orange-underline"><?=$tl_title?> </span></a>에 있는 다른 식당
                                 </span>
 
                                 <ul class="list-restaurants">
+<?php
+        $restuarantarr = [];
+        if(count($tl_restaurantarr) > 4){
+            for($i=0;$i<4;$i++){
+                $sql = "SELECT r_idx, r_restaurant, r_branch, r_grade, r_repphoto, r_repadd, r_jibunaddress, r_foodtype FROM mango_restaurant WHERE r_restaurant = '$tl_restaurantarr[$i]'";
+                $result = mysqli_query($conn, $sql);
+                while($row = mysqli_fetch_array($result)){
+                    $restaurantadd = array('r_idx' => $row['r_idx'], 'r_restaurant' => $row['r_restaurant'], 'r_branch' => $row['r_branch'], 'r_grade' => $row['r_grade'], 'r_repphoto' => $row['r_repphoto'], 'r_repadd' => $row['r_repadd'], 'r_jibunaddress' => $row['r_jibunaddress'], 'r_foodtype' => $row['r_foodtype']);
+                    array_push($restuarantarr, $restaurantadd);
+                }
+?>
                                     <li>
-                                        <a href="#">
+                                        <a href="./restaurant.php?r_idx=<?=$restuarantarr[$i]['r_idx']?>">
                                             <figure class="restaurant-item">
                                                 <div class="thumb" onclick="">
                                                     <img class="center-croping lazy"
-                                                        alt="바위파스타바 사진 - 서울시 성동구 성수동2가 269-81"
-                                                        src="./img/search/1558210_1599313144567820.jpg" />
+                                                        alt="<?=$restuarantarr[$i]['r_restaurant']?> 사진 - <?=$restuarantarr[$i]['r_jibunaddress']?>"
+                                                        src="<?=$restuarantarr[$i]['r_repphoto']?>" />
                                                 </div>
                                                 <figcaption onclick="">
                                                     <div class="info">
-                                                        <span class="title list">바위파스타바</span>
+                                                        <span class="title list"><?=$restuarantarr[$i]['r_restaurant']?><?=$restuarantarr[$i]['r_branch']?></span>
                                                         <strong class="point ">
-                                                            4.8
+                                                        <?=$restuarantarr[$i]['r_grade']?>
                                                         </strong>
                                                         <p class="etc">
-                                                            왕십리/성동
+                                                        <?=$restuarantarr[$i]['r_repadd']?>
                                                             -
-                                                            이탈리안
+                                                            <?=$restuarantarr[$i]['r_foodtype']?>
                                                         </p>
                                                     </div>
                                                 </figcaption>
@@ -1327,24 +1339,35 @@ if($r_photoarr == null){
                                             </figure>
                                         </a>
                                     </li>
+<?php
+            }
+        }else{
+            for($i=0;$i<count($tl_restaurantarr);$i++){
+                $sql = "SELECT r_idx, r_restaurant, r_branch, r_grade, r_repphoto, r_repadd, r_jibunaddress, r_foodtype FROM mango_restaurant WHERE r_restaurant = '$tl_restaurantarr[$i]'";
+                $result = mysqli_query($conn, $sql);
+                while($row = mysqli_fetch_array($result)){
+                    $restaurantadd = array('r_idx' => $row['r_idx'], 'r_restaurant' => $row['r_restaurant'], 'r_branch' => $row['r_branch'], 'r_grade' => $row['r_grade'], 'r_repphoto' => $row['r_repphoto'], 'r_repadd' => $row['r_repadd'], 'r_jibunaddress' => $row['r_jibunaddress'], 'r_foodtype' => $row['r_foodtype']);
+                    array_push($restuarantarr, $restaurantadd);
+                }
+?>
                                     <li>
-                                        <a href="#">
+                                        <a href="./restaurant.php?r_idx=<?=$restuarantarr[$i]['r_idx']?>">
                                             <figure class="restaurant-item">
                                                 <div class="thumb" onclick="">
                                                     <img class="center-croping lazy"
-                                                        alt="몽크스부처 사진 - 서울시 용산구 한남동 683-126"
-                                                        src="./img/search/897636_1605442357899_34746.jpeg">
+                                                        alt="<?=$restuarantarr[$i]['r_restaurant']?> 사진 - <?=$restuarantarr[$i]['r_jibunaddress']?>"
+                                                        src="<?=$restuarantarr[$i]['r_repphoto']?>" />
                                                 </div>
                                                 <figcaption onclick="">
                                                     <div class="info">
-                                                        <span class="title list">몽크스부처</span>
+                                                        <span class="title list"><?=$restuarantarr[$i]['r_restaurant']?><?=$restuarantarr[$i]['r_branch']?></span>
                                                         <strong class="point ">
-                                                            4.8
+                                                        <?=$restuarantarr[$i]['r_grade']?>
                                                         </strong>
                                                         <p class="etc">
-                                                            이태원/한남동
+                                                        <?=$restuarantarr[$i]['r_repadd']?>
                                                             -
-                                                            기타 양식
+                                                            <?=$restuarantarr[$i]['r_foodtype']?>
                                                         </p>
                                                     </div>
                                                 </figcaption>
@@ -1352,121 +1375,101 @@ if($r_photoarr == null){
                                             </figure>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="#">
-                                            <figure class="restaurant-item">
-                                                <div class="thumb" onclick="t">
-                                                    <img class="center-croping lazy" alt="파씨오네 사진 - 서울시 강남구 신사동 646-23"
-                                                        src="./img/search/586167_1600758506631585.jpg" />
-                                                </div>
-                                                <figcaption onclick="">
-                                                    <div class="info">
-                                                        <span class="title list">파씨오네</span>
-                                                        <strong class="point ">
-                                                            4.7
-                                                        </strong>
-                                                        <p class="etc">
-                                                            신사/압구정
-                                                            -
-                                                            프랑스 음식
-                                                        </p>
-                                                    </div>
-                                                </figcaption>
+<?php
+            }
+        }
+?>
+                            
 
-                                            </figure>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <figure class="restaurant-item">
-                                                <div class="thumb" onclick="">
-                                                    <img class="center-croping lazy" alt="샐러드셀러 사진 - 서울시 용산구 한남동 684-24"
-                                                        src="./img/search/598583_1604485237896509.jpg">
-                                                </div>
-                                                <figcaption onclick="">
-                                                    <div class="info">
-                                                        <span class="title list">샐러드셀러</span>
-                                                        <strong class="point ">
-                                                            4.7
-                                                        </strong>
-                                                        <p class="etc">
-                                                            이태원/한남동
-                                                            -
-                                                            기타 양식
-                                                        </p>
-                                                    </div>
-                                                </figcaption>
-
-                                            </figure>
-                                        </a>
-                                    </li>
+                                   
+                                    
                                 </ul>
                             </section>
-
+<?php
+    }
+?>
                             <div class="column-module">
                                 <!-- 관련 TOP 리스트 -->
+<?php
+    $sql = "SELECT tl_idx, tl_title, tl_subtitle, tl_repphoto FROM top_lists WHERE tl_restaurant LIKE '%$r_restaurant%' AND tl_status = '등록' ORDER BY tl_idx DESC LIMIT 4";
+    $result = mysqli_query($conn, $sql);
+    if(mysqli_num_rows($result) !== 0){
+        $top_lists = [];
+        while($row = mysqli_fetch_array($result)){
+            $toplistsadd = array('tl_idx' => $row['tl_idx'], 'tl_title' => $row['tl_title'], 'tl_subtitle' => $row['tl_subtitle'], 'tl_repphoto' => $row['tl_repphoto']);
+            array_push($top_lists, $toplistsadd);
+        };
+?>
                                 <section class="module includes-restaurants RelatedTopList">
-                                <!-- <section class="module includes-restaurants RelatedTopList RelatedTopList--Loading"> -->
                                     <h2 class="title RelatedTopList__Title">관련 TOP 리스트</h2>
 
                                     <ul class="RelatedTopList__List">
-                                        <li class="ContentCard RelatedTopList__Item RelatedTopList__Item--Placeholder">
-                                            <a href="#" class="ContentCard__Link" onclick="return false;"></a>
+<?php
+    for($i=0; $i<count($top_lists); $i++){
+?>
+
+                                        <li class="ContentCard RelatedTopList__Item">
+                                            <a href="./top_lists_detail.php?tl_idx=<?=$top_lists[$i]['tl_idx']?>" class="ContentCard__Link"></a>
                                             <div class="ContentCard__Deem"></div>
-
-                                            <div class="ContentCard__BgImage"></div>
-
+                                        
+                                            <div class="ContentCard__BgImage" data-bg="url(<?=$top_lists[$i]['tl_repphoto']?>), url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg)" data-was-processed="true" style="background-image: url(<?=$top_lists[$i]['tl_repphoto']?>), url(&quot;https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg&quot;);"></div>
+                                        
                                             <div class="ContentCard__Content">
-                                                <span class="ContentCard__Title"></span>
-                                                <p class="ContentCard__Description">""</p>
+                                            <span class="ContentCard__Title"><?=$top_lists[$i]['tl_title']?></span>
+                                            <p class="ContentCard__Description"><?=$top_lists[$i]['tl_subtitle']?></p>
                                             </div>
                                         </li>
-
-                                        <li class="ContentCard RelatedTopList__Item RelatedTopList__Item--Placeholder">
-                                            <a href="#" class="ContentCard__Link" onclick="return false;"></a>
-                                            <div class="ContentCard__Deem"></div>
-
-                                            <div class="ContentCard__BgImage"></div>
-
-                                            <div class="ContentCard__Content">
-                                                <span class="ContentCard__Title"></span>
-                                                <p class="ContentCard__Description">""</p>
-                                            </div>
-                                        </li>
+<?php
+    }
+?>
                                     </ul>
                                 </section>
+<?php
+    }
+?>
 
                                 <!-- 관련 스토리 -->
+<?php
+    $sql = "SELECT ms_idx, ms_title, ms_subtitle, ms_repphoto FROM mango_story WHERE ms_content LIKE '%$r_restaurant%' AND ms_status = '등록' ORDER BY ms_idx DESC LIMIT 4";
+    $result = mysqli_query($conn, $sql);
+
+    if(mysqli_num_rows($result) !== 0){
+        $mango_story = [];
+        while($row = mysqli_fetch_array($result)){
+            $mango_storyadd = array('ms_idx' => $row['ms_idx'], 'ms_title' => $row['ms_title'], 'ms_subtitle' => $row['ms_subtitle'], 'ms_repphoto' => $row['ms_repphoto']);
+            array_push($mango_story, $mango_storyadd);
+        };
+?>
                                 <section class="module related-story RelatedStory">
-                                <!-- <section class="module related-story RelatedStory RelatedStory--Loading"> -->
                                     <h2 class="title RelatedStory__Title">관련 스토리</h2>
 
                                     <ul class="RelatedStory__List">
+<?php
+    for($i=0; $i<count($mango_story); $i++){
+?>
                                         <li class="ContentCard RelatedStory__Item RelatedStory__Item--Placeholder">
-                                            <a href="#" class="ContentCard__Link" onclick="return false;"></a>
+                                            <a href="./mango_picks_detail.php?ms_idx=<?=$mango_story[$i]['ms_idx']?>" class="ContentCard__Link"></a>
                                             <div class="ContentCard__Deem"></div>
 
-                                            <div class="ContentCard__BgImage"></div>
+                                            <div class="ContentCard__BgImage"
+                                                    data-bg="url(<?=$mango_story[$i]['ms_repphoto']?>), url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg)"
+                                                    data-was-processed="true"
+                                                    style="background-image: url(<?=$mango_story[$i]['ms_repphoto']?>), url(&quot;https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg&quot;);">
+                                            </div>
 
                                             <div class="ContentCard__Content">
-                                                <span class="ContentCard__Title"></span>
-                                                <p class="ContentCard__Description">""</p>
+                                                    <span class="ContentCard__Title"><?=$mango_story[$i]['ms_title']?></span>
+                                                    <p class="ContentCard__Description"><?=$mango_story[$i]['ms_subtitle']?></p>
                                             </div>
                                         </li>
-
-                                        <li class="ContentCard RelatedStory__Item RelatedStory__Item--Placeholder">
-                                            <a href="#" class="ContentCard__Link" onclick="return false;"></a>
-                                            <div class="ContentCard__Deem"></div>
-
-                                            <div class="ContentCard__BgImage"></div>
-
-                                            <div class="ContentCard__Content">
-                                                <span class="ContentCard__Title"></span>
-                                                <p class="ContentCard__Description">""</p>
-                                            </div>
-                                        </li>
+<?php
+    }
+?>
                                     </ul>
                                 </section>
+<?php
+    }
+?>
                             </div>
                         </div>
                     </div>
