@@ -74,6 +74,22 @@
     $search = $_GET['search'];
 
 
+    // 최근 검색어 
+    $searchRecent = "";
+    if(isset($_COOKIE['search'])){
+        $searcharr = explode(",", $_COOKIE['search']);
+        if(!in_array($search, $searcharr)){ // 배열에 검색어가 없는 경우
+            $searchRecent = $_COOKIE['search'].','.$search;
+        }else{
+            $searchRecent = $_COOKIE['search'];
+        }
+    }else{
+        $searchRecent = $search;
+    }
+
+    setcookie('search', $searchRecent);
+
+    // 필터
     $sorting = "";
     if(isset($_POST['sorting'])){
         if($_POST['sorting'] === "2"){

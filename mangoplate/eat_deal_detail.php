@@ -772,9 +772,9 @@
             <div class="AppDownloadLayer__Buttons">
                 <div class="AppDownloadLayer__ButtonList">
                     <a class="AppDownloadLayer__AppBtn AppDownloadLayer__AppBtnAndroid AppDownloadLayer__AppBtn--Show"
-                        href="#" target="_blank"></a>
+                        href="https://play.google.com/store/apps/details?id=com.mangoplate" target="_blank"></a>
                     <a class="AppDownloadLayer__AppBtn AppDownloadLayer__AppBtnIOS AppDownloadLayer__AppBtn--Show"
-                        href="#" target="_blank"></a>
+                        href="https://apps.apple.com/kr/app/id628509224" target="_blank"></a>
                 </div>
 
                 <div class="AppDownloadLayer__PreparingMessageList" style="display: none;">

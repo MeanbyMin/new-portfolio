@@ -76,6 +76,18 @@ const centerCroping = document.querySelectorAll(".center-croping");
 
 // 필터
 const searchFilter = document.querySelector(".popup.search-filter");
+
+// 구매하기
+const EatDealDetailPage__ActionButton = document.querySelector(
+  ".EatDealDetailPage__ActionButton"
+);
+const AppDownloadLayer = document.querySelector(".AppDownloadLayer");
+const AppDownloadLayer__BlackDeem = document.querySelector(
+  ".AppDownloadLayer__BlackDeem"
+);
+const AppDownloadLayer__CloseIcon = document.querySelector(
+  ".AppDownloadLayer__CloseIcon"
+);
 // -------------------------------------------------
 
 window.addEventListener("click", (e) => {
@@ -133,6 +145,21 @@ window.addEventListener("click", (e) => {
     black_screen.style.display = "none";
     searchFilter.style.display = "none";
     body.style.overflow = "";
+  }
+  if (e.target === EatDealDetailPage__ActionButton) {
+    AppDownloadLayer.classList.add("AppDownloadLayer--Show");
+    AppDownloadLayer__BlackDeem.classList.add(
+      "AppDownloadLayer__BlackDeem--Show"
+    );
+  }
+  if (
+    e.target === AppDownloadLayer__BlackDeem ||
+    e.target === AppDownloadLayer__CloseIcon
+  ) {
+    AppDownloadLayer.classList.remove("AppDownloadLayer--Show");
+    AppDownloadLayer__BlackDeem.classList.remove(
+      "AppDownloadLayer__BlackDeem--Show"
+    );
   }
 });
 
@@ -401,25 +428,45 @@ function CLICK_SEARCH_RECENT(t) {
     simplebarContent.removeChild(simplebarContent.firstChild);
   }
 
-  let p = document.createElement("p");
-  p.setAttribute(
-    "class",
-    "KeywordSuggester__EmptyKeywordMessage KeywordSuggester__EmptyKeywordMessage--Show"
-  );
-  p.innerHTML = `최근 검색어가 없습니다.`;
-  simplebarContent.appendChild(p);
-  let div = document.createElement("div");
-  div.setAttribute(
-    "class",
-    "KeywordSuggester__Footer KeywordSuggester__Footer--Hide"
-  );
-  div.innerHTML = `<button class="KeywordSuggester__RemoveAllHistoryKeywordButton">
+  let cookie = decodeURI(document.cookie);
+  let searcharr = [];
+  if (cookie.includes("search")) {
+    let searchCookie = cookie.split("search=")[1].split(";")[0];
+    if (searchCookie.includes("%2C")) {
+      searcharr = searchCookie.split("%2C");
+    } else {
+      searcharr[0] = searchCookie;
+    }
+    searcharr.forEach((i) => {
+      let li = document.createElement("li");
+      li.setAttribute("class", "KeywordSuggester__SuggestKeywordItem");
+      li.innerHTML = `<a href="./search.php?search=${i}" class="KeywordSuggester__SuggestKeywordLink">
+          <i class="KeywordSuggester__SuggestKeywordIcon"></i>
+          <span class="KeywordSuggester__SuggestKeyword">${i}</span>
+          </a>`;
+      simplebarContent.appendChild(li);
+    });
+  } else {
+    let p = document.createElement("p");
+    p.setAttribute(
+      "class",
+      "KeywordSuggester__EmptyKeywordMessage KeywordSuggester__EmptyKeywordMessage--Show"
+    );
+    p.innerHTML = `최근 검색어가 없습니다.`;
+    simplebarContent.appendChild(p);
+    let div = document.createElement("div");
+    div.setAttribute(
+      "class",
+      "KeywordSuggester__Footer KeywordSuggester__Footer--Hide"
+    );
+    div.innerHTML = `<button class="KeywordSuggester__RemoveAllHistoryKeywordButton">
         x clear all
     </button>`;
-  simplebarContent.appendChild(div);
-  simplebarPlaceholder.style.width = "542px";
-  simplebarPlaceholder.style.height = "77px";
-  simplebarVertical.style.visibility = "hidden";
+    simplebarContent.appendChild(div);
+    simplebarPlaceholder.style.width = "542px";
+    simplebarPlaceholder.style.height = "77px";
+    simplebarVertical.style.visibility = "hidden";
+  }
 }
 
 function wannago_btn() {

@@ -128,9 +128,10 @@ window.addEventListener("click", (e) => {
     ? UserDisactiveInfo.classList.remove("UserDisactiveInfo--Open")
     : false;
 
-  e.target === KeywordSuggester__BlackDeem
-    ? KeywordSuggester.classList.remove("KeywordSuggester--Open")
-    : false;
+  if (e.target === KeywordSuggester__BlackDeem) {
+    KeywordSuggester.classList.remove("KeywordSuggester--Open");
+    body.style.overflow = "";
+  }
   if (e.target === black_screen) {
     black_screen.style.display = "none";
     searchFilter.style.display = "none";
@@ -403,25 +404,45 @@ function CLICK_SEARCH_RECENT(t) {
     simplebarContent.removeChild(simplebarContent.firstChild);
   }
 
-  let p = document.createElement("p");
-  p.setAttribute(
-    "class",
-    "KeywordSuggester__EmptyKeywordMessage KeywordSuggester__EmptyKeywordMessage--Show"
-  );
-  p.innerHTML = `최근 검색어가 없습니다.`;
-  simplebarContent.appendChild(p);
-  let div = document.createElement("div");
-  div.setAttribute(
-    "class",
-    "KeywordSuggester__Footer KeywordSuggester__Footer--Hide"
-  );
-  div.innerHTML = `<button class="KeywordSuggester__RemoveAllHistoryKeywordButton">
+  let cookie = decodeURI(document.cookie);
+  let searcharr = [];
+  if (cookie.includes("search")) {
+    let searchCookie = cookie.split("search=")[1].split(";")[0];
+    if (searchCookie.includes("%2C")) {
+      searcharr = searchCookie.split("%2C");
+    } else {
+      searcharr[0] = searchCookie;
+    }
+    searcharr.forEach((i) => {
+      let li = document.createElement("li");
+      li.setAttribute("class", "KeywordSuggester__SuggestKeywordItem");
+      li.innerHTML = `<a href="./search.php?search=${i}" class="KeywordSuggester__SuggestKeywordLink">
+          <i class="KeywordSuggester__SuggestKeywordIcon"></i>
+          <span class="KeywordSuggester__SuggestKeyword">${i}</span>
+          </a>`;
+      simplebarContent.appendChild(li);
+    });
+  } else {
+    let p = document.createElement("p");
+    p.setAttribute(
+      "class",
+      "KeywordSuggester__EmptyKeywordMessage KeywordSuggester__EmptyKeywordMessage--Show"
+    );
+    p.innerHTML = `최근 검색어가 없습니다.`;
+    simplebarContent.appendChild(p);
+    let div = document.createElement("div");
+    div.setAttribute(
+      "class",
+      "KeywordSuggester__Footer KeywordSuggester__Footer--Hide"
+    );
+    div.innerHTML = `<button class="KeywordSuggester__RemoveAllHistoryKeywordButton">
         x clear all
     </button>`;
-  simplebarContent.appendChild(div);
-  simplebarPlaceholder.style.width = "542px";
-  simplebarPlaceholder.style.height = "77px";
-  simplebarVertical.style.visibility = "hidden";
+    simplebarContent.appendChild(div);
+    simplebarPlaceholder.style.width = "542px";
+    simplebarPlaceholder.style.height = "77px";
+    simplebarVertical.style.visibility = "hidden";
+  }
 }
 
 function wannago_btn() {
@@ -631,6 +652,73 @@ function CLICK_MORE_LIST() {
         listTypeLs.appendChild(li);
       }
       page += 20;
+    }
+  };
+}
+
+// 필터(#) 기능
+
+function CLICK_TAG(t) {
+  let selected = document.querySelector(
+    ".pg-all_picks .module>.inner .tags .tag-item.selected"
+  );
+  selected.classList.remove("selected");
+  t.classList.add("selected");
+  let data = t.dataset.keyword;
+  console.log(data);
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", "./tags.php?tag=" + data);
+  xhr.send();
+  xhr.onload = () => {
+    if (xhr.status === 200) {
+      let arr = xhr.responseText.split("<br>");
+      arr.pop();
+      let tags = [];
+      for (let i = 0; i < arr.length; i++) {
+        tags[i] = arr[i].split("&nbsp");
+      }
+      if (tags.length < 20) {
+        btnMore.style.display = "none";
+      } else {
+        btnMore.style.display = "block";
+      }
+      const listTypeLs = document.querySelector(".list-type-ls");
+      while (listTypeLs.hasChildNodes()) {
+        listTypeLs.removeChild(listTypeLs.firstChild);
+      }
+      for (let i = 0; i < tags.length; i++) {
+        let li = document.createElement("li");
+        li.setAttribute("class", "top_list_item");
+        li.innerHTML = `
+        <a href="./top_lists_detail.php?tl_idx=${tags[i][0]}>" onclick="">
+            <figure class="ls-item">
+              <div class="thumb">
+                  <div class="inner">
+                  <img class="center-crop portrait lazy" alt="${
+                    tags[i][1]
+                  }" data-original="${
+          tags[i][3]
+        }" data-error="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80" src="${
+          tags[i][3]
+        }" style="display: block;">
+                  </div>
+              </div>
+              <figcaption class="info">
+                  <div class="info_inner_wrap">
+                  <span class="title" data-ellipsis-id="${i + 1}">${
+          tags[i][1]
+        }</span>
+                  <p class="desc" data-ellipsis-id="2${i + 1}">${tags[i][2]}</p>
+                  <p class="hash">
+                      <span>#${tags[i][1]}</span>
+                  </p>
+                  </div>
+              </figcaption>
+            </figure>
+        </a>
+        `;
+        listTypeLs.appendChild(li);
+      }
     }
   };
 }

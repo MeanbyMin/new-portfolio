@@ -401,25 +401,45 @@ function CLICK_SEARCH_RECENT(t) {
     simplebarContent.removeChild(simplebarContent.firstChild);
   }
 
-  let p = document.createElement("p");
-  p.setAttribute(
-    "class",
-    "KeywordSuggester__EmptyKeywordMessage KeywordSuggester__EmptyKeywordMessage--Show"
-  );
-  p.innerHTML = `최근 검색어가 없습니다.`;
-  simplebarContent.appendChild(p);
-  let div = document.createElement("div");
-  div.setAttribute(
-    "class",
-    "KeywordSuggester__Footer KeywordSuggester__Footer--Hide"
-  );
-  div.innerHTML = `<button class="KeywordSuggester__RemoveAllHistoryKeywordButton">
+  let cookie = decodeURI(document.cookie);
+  let searcharr = [];
+  if (cookie.includes("search")) {
+    let searchCookie = cookie.split("search=")[1].split(";")[0];
+    if (searchCookie.includes("%2C")) {
+      searcharr = searchCookie.split("%2C");
+    } else {
+      searcharr[0] = searchCookie;
+    }
+    searcharr.forEach((i) => {
+      let li = document.createElement("li");
+      li.setAttribute("class", "KeywordSuggester__SuggestKeywordItem");
+      li.innerHTML = `<a href="./search.php?search=${i}" class="KeywordSuggester__SuggestKeywordLink">
+          <i class="KeywordSuggester__SuggestKeywordIcon"></i>
+          <span class="KeywordSuggester__SuggestKeyword">${i}</span>
+          </a>`;
+      simplebarContent.appendChild(li);
+    });
+  } else {
+    let p = document.createElement("p");
+    p.setAttribute(
+      "class",
+      "KeywordSuggester__EmptyKeywordMessage KeywordSuggester__EmptyKeywordMessage--Show"
+    );
+    p.innerHTML = `최근 검색어가 없습니다.`;
+    simplebarContent.appendChild(p);
+    let div = document.createElement("div");
+    div.setAttribute(
+      "class",
+      "KeywordSuggester__Footer KeywordSuggester__Footer--Hide"
+    );
+    div.innerHTML = `<button class="KeywordSuggester__RemoveAllHistoryKeywordButton">
         x clear all
     </button>`;
-  simplebarContent.appendChild(div);
-  simplebarPlaceholder.style.width = "542px";
-  simplebarPlaceholder.style.height = "77px";
-  simplebarVertical.style.visibility = "hidden";
+    simplebarContent.appendChild(div);
+    simplebarPlaceholder.style.width = "542px";
+    simplebarPlaceholder.style.height = "77px";
+    simplebarVertical.style.visibility = "hidden";
+  }
 }
 
 function wannago_btn() {
@@ -581,6 +601,7 @@ function profile_wannago_btn(e) {
   }
 }
 
+// 무한 스크롤
 (() => {
   document.addEventListener("scroll", () => {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
@@ -596,7 +617,7 @@ function profile_wannago_btn(e) {
           for (let i = 0; i < arr.length; i++) {
             review[i] = arr[i].split("&nbsp");
           }
-          console.log(review);
+          // console.log(review);
           for (let i = 0; i < review.length; i++) {
             const EatDealsPage__List = document.querySelector(
               ".EatDealsPage__List"
@@ -607,7 +628,10 @@ function profile_wannago_btn(e) {
             let discountprice = String(
               review[i][4] * ((100 - review[i][5]) * 0.01)
             );
-            let discountprice1 = discountprice.substr(0, discountprice - 3);
+            let discountprice1 = discountprice.substr(
+              0,
+              discountprice.length - 3
+            );
             let discountprice2 = discountprice.substr(discountprice.length - 3);
             discountprice = discountprice1 + "," + discountprice2;
             let li = document.createElement("li");

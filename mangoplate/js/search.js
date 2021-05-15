@@ -128,6 +128,10 @@ window.addEventListener("click", (e) => {
   e.target === KeywordSuggester__BlackDeem
     ? KeywordSuggester.classList.remove("KeywordSuggester--Open")
     : false;
+  if (e.target === KeywordSuggester__BlackDeem) {
+    KeywordSuggester.classList.remove("KeywordSuggester--Open");
+    body.style.overflow = "";
+  }
   if (e.target === black_screen) {
     black_screen.style.display = "none";
     searchFilter.style.display = "none";
@@ -230,6 +234,8 @@ function CLICK_WAANGO_TAB() {
 }
 
 // 검색어 영역
+
+//추천 검색어
 function CLICK_SEARCH_RECOMMEND(t) {
   let KeywordSuggester__TabButtonSelected = document.querySelector(
     ".KeywordSuggester__TabButton--Selected"
@@ -267,7 +273,7 @@ function CLICK_SEARCH_RECOMMEND(t) {
         });
         let p = document.createElement("p");
         p.setAttribute("class", "KeywordSuggester__EmptyKeywordMessage");
-        p.innerHTML = `최근 검색어가 없습니다.`;
+        p.innerHTML = `추천 검색어가 없습니다.`;
         simplebarContent.appendChild(p);
         let div = document.createElement("div");
         div.setAttribute(
@@ -287,6 +293,8 @@ function CLICK_SEARCH_RECOMMEND(t) {
     }
   };
 }
+
+// 인기 검색어
 function CLICK_SEARCH_POPULAR(t) {
   let KeywordSuggester__TabButtonSelected = document.querySelector(
     ".KeywordSuggester__TabButton--Selected"
@@ -323,7 +331,7 @@ function CLICK_SEARCH_POPULAR(t) {
         });
         let p = document.createElement("p");
         p.setAttribute("class", "KeywordSuggester__EmptyKeywordMessage");
-        p.innerHTML = `최근 검색어가 없습니다.`;
+        p.innerHTML = `인기 검색어가 없습니다.`;
         simplebarContent.appendChild(p);
         let div = document.createElement("div");
         div.setAttribute(
@@ -343,6 +351,8 @@ function CLICK_SEARCH_POPULAR(t) {
     }
   };
 }
+
+// 최근 검색어
 function CLICK_SEARCH_RECENT(t) {
   let KeywordSuggester__TabButtonSelected = document.querySelector(
     ".KeywordSuggester__TabButton--Selected"
@@ -359,26 +369,76 @@ function CLICK_SEARCH_RECENT(t) {
     simplebarContent.removeChild(simplebarContent.firstChild);
   }
 
-  let p = document.createElement("p");
-  p.setAttribute(
-    "class",
-    "KeywordSuggester__EmptyKeywordMessage KeywordSuggester__EmptyKeywordMessage--Show"
-  );
-  p.innerHTML = `최근 검색어가 없습니다.`;
-  simplebarContent.appendChild(p);
-  let div = document.createElement("div");
-  div.setAttribute(
-    "class",
-    "KeywordSuggester__Footer KeywordSuggester__Footer--Hide"
-  );
-  div.innerHTML = `<button class="KeywordSuggester__RemoveAllHistoryKeywordButton">
+  let cookie = decodeURI(document.cookie);
+  let searcharr = [];
+  if (cookie.includes("search")) {
+    let searchCookie = cookie.split("search=")[1].split(";")[0];
+    if (searchCookie.includes("%2C")) {
+      searcharr = searchCookie.split("%2C");
+    } else {
+      searcharr[0] = searchCookie;
+    }
+    searcharr.forEach((i) => {
+      let li = document.createElement("li");
+      li.setAttribute("class", "KeywordSuggester__SuggestKeywordItem");
+      li.innerHTML = `<a href="./search.php?search=${i}" class="KeywordSuggester__SuggestKeywordLink">
+          <i class="KeywordSuggester__SuggestKeywordIcon"></i>
+          <span class="KeywordSuggester__SuggestKeyword">${i}</span>
+          </a>`;
+      simplebarContent.appendChild(li);
+    });
+  } else {
+    let p = document.createElement("p");
+    p.setAttribute(
+      "class",
+      "KeywordSuggester__EmptyKeywordMessage KeywordSuggester__EmptyKeywordMessage--Show"
+    );
+    p.innerHTML = `최근 검색어가 없습니다.`;
+    simplebarContent.appendChild(p);
+    let div = document.createElement("div");
+    div.setAttribute(
+      "class",
+      "KeywordSuggester__Footer KeywordSuggester__Footer--Hide"
+    );
+    div.innerHTML = `<button class="KeywordSuggester__RemoveAllHistoryKeywordButton">
         x clear all
     </button>`;
-  simplebarContent.appendChild(div);
-  simplebarPlaceholder.style.width = "542px";
-  simplebarPlaceholder.style.height = "77px";
-  simplebarVertical.style.visibility = "hidden";
+    simplebarContent.appendChild(div);
+    simplebarPlaceholder.style.width = "542px";
+    simplebarPlaceholder.style.height = "77px";
+    simplebarVertical.style.visibility = "hidden";
+  }
 }
+
+// function removeRecent(t) {
+//   let simplebarContent = document.querySelector(".simplebar-content");
+//   t.parentNode.removeAttribute("href");
+//   simplebarContent.removeChild(t.parentNode.parentNode);
+//   let text = t.previousSibling.previousSibling.textContent;
+//   let cookie = decodeURI(document.cookie);
+//   let searcharr = [];
+//   if (cookie.includes("search")) {
+//     let searchCookie = cookie.split("search=")[1].split(";")[0];
+//     if (searchCookie.includes("%2C")) {
+//       searcharr = searchCookie.split("%2C");
+//     } else {
+//       searcharr[0] = searchCookie;
+//     }
+//   }
+//   let newSearchArr = searcharr.filter((word) => word !== text);
+//   let newSearch = "";
+//   for (let x of newSearchArr) {
+//     newSearch += x + ",";
+//   }
+//   newSearch = newSearch.substr(0, newSearch.length - 1);
+//   newSearch = encodeURI(newSearch);
+//   newSearch = encodeURIComponent(newSearch);
+//   console.log(cookie);
+//   let cookie1 = cookie.split("search=")[1];
+//   console.log(cookie1);
+//   let cookie2 = cookie1.split("; ");
+//   console.log(cookie2);
+// }
 
 function wannago_btn() {
   let wannago_btnSelected = document.querySelector(".wannago_btn.selected");

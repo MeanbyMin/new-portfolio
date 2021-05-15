@@ -652,48 +652,48 @@
                 
                         <div class="slider-container">
                             <p class="tags">
-                            <button class="tag-item selected"
-                                    onclick="">
+                            <button class="tag-item selected" data-keyword=""
+                                    onclick="CLICK_TAG(this)">
                                 전체
                             </button>
-                                <button class="tag-item" data-keyword="파스타"
-                                        onclick="">
-                                <h2>파스타</h2>
+                                <button class="tag-item" data-keyword="성수"
+                                        onclick="CLICK_TAG(this)">
+                                <h2>성수</h2>
                                 </button>
-                                <button class="tag-item" data-keyword="무한리필"
-                                        onclick="">
-                                <h2>무한리필</h2>
+                                <button class="tag-item" data-keyword="해장"
+                                        onclick="CLICK_TAG(this)">
+                                <h2>해장</h2>
                                 </button>
                                 <button class="tag-item" data-keyword="이태원"
-                                        onclick="">
+                                        onclick="CLICK_TAG(this)">
                                 <h2>이태원</h2>
                                 </button>
                                 <button class="tag-item" data-keyword="고기"
-                                        onclick="">
+                                        onclick="CLICK_TAG(this)">
                                 <h2>고기</h2>
                                 </button>
                                 <button class="tag-item" data-keyword="데이트"
-                                        onclick="">
+                                        onclick="CLICK_TAG(this)">
                                 <h2>데이트</h2>
                                 </button>
                                 <button class="tag-item" data-keyword="강남"
-                                        onclick="">
+                                        onclick="CLICK_TAG(this)">
                                 <h2>강남</h2>
                                 </button>
                                 <button class="tag-item" data-keyword="홍대"
-                                        onclick="">
+                                        onclick="CLICK_TAG(this)">
                                 <h2>홍대</h2>
                                 </button>
                                 <button class="tag-item" data-keyword="스테이크"
-                                        onclick="">
+                                        onclick="CLICK_TAG(this)">
                                 <h2>스테이크</h2>
                                 </button>
                                 <button class="tag-item" data-keyword="가로수길"
-                                        onclick="">
+                                        onclick="CLICK_TAG(this)">
                                 <h2>가로수길</h2>
                                 </button>
                                 <button class="tag-item" data-keyword="디저트"
-                                        onclick="">
+                                        onclick="CLICK_TAG(this)">
                                 <h2>디저트</h2>
                                 </button>
                             </p>

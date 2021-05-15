@@ -701,24 +701,25 @@
         $sql = "SELECT r_idx, r_restaurant, r_grade, r_repadd, r_repphoto, r_address, r_jibunaddress, r_foodtype, r_review, r_wannago FROM mango_restaurant WHERE r_restaurant = '$tl_restaurantarr[$i]'";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_array($result);
-        $r_idx = $row['r_idx'];
-        $tl_restaurantadd = array('r_idx' => $row['r_idx'], 'r_restaurant' => $row['r_restaurant'], 'r_grade' => $row['r_grade'], 'r_repadd' => $row['r_repadd'], 'r_repphoto' => $row['r_repphoto'], 'r_address' => $row['r_address'], 'r_jibunaddress' => $row['r_jibunaddress'], 'r_foodtype' => $row['r_foodtype'], 'r_review' => $row['r_review'], 'r_wannago' => $row['r_wannago']);
-        array_push($tl_restaurant_list, $tl_restaurantadd);
-        $sql = "SELECT mr_userid, mr_name, mr_content FROM mango_review WHERE mr_boardidx = '$r_idx'";
-        $result = mysqli_query($conn, $sql);
-        $row = mysqli_fetch_array($result);
-        if(isset($row)){
-            $tl_restaurant_list[$i]['mr_name'] = $row['mr_name'];
-            $tl_restaurant_list[$i]['mr_content'] = $row['mr_content'];
-            $mr_userid = $row['mr_userid'];
-            $sql = "SELECT mm_profile_image FROM mango_member WHERE mm_userid = '$mr_userid'";
+        if(isset($row['r_idx'])){
+            $r_idx = $row['r_idx'];
+            $tl_restaurantadd = array('r_idx' => $row['r_idx'], 'r_restaurant' => $row['r_restaurant'], 'r_grade' => $row['r_grade'], 'r_repadd' => $row['r_repadd'], 'r_repphoto' => $row['r_repphoto'], 'r_address' => $row['r_address'], 'r_jibunaddress' => $row['r_jibunaddress'], 'r_foodtype' => $row['r_foodtype'], 'r_review' => $row['r_review'], 'r_wannago' => $row['r_wannago']);
+            array_push($tl_restaurant_list, $tl_restaurantadd);
+            $sql = "SELECT mr_userid, mr_name, mr_content FROM mango_review WHERE mr_boardidx = '$r_idx'";
             $result = mysqli_query($conn, $sql);
             $row = mysqli_fetch_array($result);
-            $tl_restaurant_list[$i]['mm_profile_image'] = $row['mm_profile_image'];
+            if(isset($row)){
+                $tl_restaurant_list[$i]['mr_name'] = $row['mr_name'];
+                $tl_restaurant_list[$i]['mr_content'] = $row['mr_content'];
+                $mr_userid = $row['mr_userid'];
+                $sql = "SELECT mm_profile_image FROM mango_member WHERE mm_userid = '$mr_userid'";
+                $result = mysqli_query($conn, $sql);
+                $row = mysqli_fetch_array($result);
+                $tl_restaurant_list[$i]['mm_profile_image'] = $row['mm_profile_image'];
+            }
         }
-
     }
-    
+
     if(count($tl_restaurant_list) > 10){
         for($i=0;$i<10;$i++){
             $j = $i + 1;

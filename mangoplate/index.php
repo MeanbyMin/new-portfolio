@@ -677,14 +677,18 @@
                     </fieldset>
 
                     <aside class="shortcut-app type-main">
-                        <a class="btn inbound only-desktop " href="#"><img src="./img/eat_deal_event.png"></img></a>
+                        <a class="btn inbound only-desktop " href="./eat_deals.php"><img src="./img/eat_deal_event.png"></img></a>
 
                         <button class="btn android">
-                            <img src="./img/btn_android.png" width="180" alt="android market button" />
+                            <a href="https://play.google.com/store/apps/details?id=com.mangoplate" target="_blank">
+                                <img src="./img/btn_android.png" width="180" alt="android market button" />
+                            </a>
                         </button>
 
                         <button class="btn ios">
-                            <img src="./img/btn_ios.svg" width="180" alt="app store" />
+                            <a href="https://apps.apple.com/kr/app/id628509224" target="_blank">
+                                <img src="./img/btn_ios.svg" width="180" alt="app store" />
+                            </a>
                         </button>
                     </aside>
                 </div>
@@ -693,7 +697,7 @@
             <section class="module popular_top_list_wrap">
                 <div class="module_title_wrap">
                     <h2 class="title">믿고 보는 맛집 리스트</h2>
-                    <a href="./top_list.php" class="module_more">리스트 더보기</a>
+                    <a href="./top_lists.php" class="module_more">리스트 더보기</a>
                 </div>
                 <div class="swiper-button-prev btn_prev1"></div>
                 <div class="swiper-container swiper1">

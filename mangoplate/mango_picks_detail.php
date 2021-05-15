@@ -649,9 +649,9 @@
         <!-- 컨텐츠 시작 -->
         <main class="Story">
             <div class="Story__BaseInfoContainer">
-                <header class="StoryHeader" style="background-image: url(./img/mango_picks_detail/5rh5cjpxshg5kw7o.jpg)">
+                <header class="StoryHeader" style="background-image: url(<?=$ms_repphoto?>)">
                     <div class="StoryContent__Source StoryContent__Source--Header">
-                        <span class="StoryContent__SourceText">Instagram ID @woogachu</span>
+                        <!-- <span class="StoryContent__SourceText">Instagram ID @woogachu</span> -->
                     </div>
                 </header>
             
