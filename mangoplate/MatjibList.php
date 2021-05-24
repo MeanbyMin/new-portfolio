@@ -32,7 +32,7 @@
     </head>
     <body>
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="./adminindex.php">Mangoplate Admin</a>
+            <a class="navbar-brand" href="./adminIndex.php">Mangoplate Admin</a>
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -62,7 +62,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="./adminindex.php">
+                            <a class="nav-link" href="./adminIndex.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
@@ -133,7 +133,7 @@
                     <div class="container-fluid">
                         <h1 class="mt-4">맛집 리스트</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="./adminindex.php">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="./adminIndex.php">Dashboard</a></li>
                             <li class="breadcrumb-item active">맛집 리스트</li>
                         </ol>
                         <table>
@@ -190,7 +190,7 @@
     }
 ?>
                                 </p>
-                                <input type="button" class="btn login_btn" value="돌아가기" onclick="location.href='./adminindex.php'">
+                                <input type="button" class="btn login_btn" value="돌아가기" onclick="location.href='./adminIndex.php'">
                             </div>
                         <div style="height: 100vh"></div>
                     </div>

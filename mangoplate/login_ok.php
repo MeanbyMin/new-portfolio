@@ -11,7 +11,7 @@
 ?>
     <script>
         alert("관리자님 어서오세요.");
-        location.href="./adminindex.php";
+        location.href="./adminIndex.php";
     </script>
 <?php
     }else{
