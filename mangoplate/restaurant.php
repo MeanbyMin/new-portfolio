@@ -164,7 +164,7 @@
       }
     }
 
-    $sql = "SELECT * FROM mango_review WHERE mr_boardidx = '$r_idx'";
+    $sql = "SELECT * FROM mango_review WHERE mr_boardidx = '$r_idx' ORDER BY mr_idx DESC";
     $result = mysqli_query($conn, $sql);
 
     
@@ -1225,6 +1225,60 @@ if($r_photoarr == null){
                                     더보기
                                 </div>
 <?php
+    }else if($reviewCount>5){
+?>
+                                <header class="RestaurantReviewList__Header">
+                                    <h2 class="RestaurantReviewList__Title">
+                                        <span class="RestaurantReviewList__RestaurantName">
+                                            <?=$r_restaurant?>
+                                        </span><span
+                                            class="RestaurantReviewList__RestaurantNameSuffixDesktop">리뷰</span><span
+                                            class="RestaurantReviewList__RestaurantNameSuffixMobile">의 리뷰</span>
+                                        <span class="RestaurantReviewList__AllCount">
+                                            <?=$reviewCount?>
+                                        </span>
+                                    </h2>
+                                    <ul class="RestaurantReviewList__FilterList">
+                                        <li class="RestaurantReviewList__FilterItem">
+                                            <button
+                                                class="RestaurantReviewList__FilterButton RestaurantReviewList__FilterButton--Selected RestaurantReviewList__AllFilterButton">
+                                                전체
+                                                <span class="RestaurantReviewList__ReviewCount"><?=$reviewCount?></span>
+                                            </button>
+                                        </li>
+
+                                        <li class="RestaurantReviewList__FilterItem">
+                                            <button
+                                                class="RestaurantReviewList__FilterButton RestaurantReviewList__RecommendFilterButton">
+                                                맛있다
+                                                <span class="RestaurantReviewList__ReviewCount"><?=$goodRecommendCount?></span>
+                                            </button>
+                                        </li>
+
+                                        <li class="RestaurantReviewList__FilterItem">
+                                            <button
+                                                class="RestaurantReviewList__FilterButton RestaurantReviewList__OkFilterButton">
+                                                괜찮다
+                                                <span class="RestaurantReviewList__ReviewCount"><?=$okRecommendCount?></span>
+                                            </button>
+                                        </li>
+
+                                        <li class="RestaurantReviewList__FilterItem">
+                                            <button
+                                                class="RestaurantReviewList__FilterButton RestaurantReviewList__NotRecommendButton">
+                                                별로
+                                                <span class="RestaurantReviewList__ReviewCount"><?=$noRecommendCount?></span>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </header>
+                                <ul class="RestaurantReviewList__ReviewList RestaurantReviewList__ReviewList--Loading">
+                                </ul>
+                                <div class="RestaurantReviewList__MoreReviewButton" role="button">
+                                    더보기
+                                </div>
+                            </section>
+<?php
     }else{
 ?>
                                 <header class="RestaurantReviewList__Header">
@@ -1274,12 +1328,6 @@ if($r_photoarr == null){
                                 </header>
                                 <ul class="RestaurantReviewList__ReviewList RestaurantReviewList__ReviewList--Loading">
                                 </ul>
-                                
-                                <div class="RestaurantReviewList__MoreReviewButton" role="button">
-                                    더보기
-                                </div>
-
-
                             </section>
 <?php
     }
