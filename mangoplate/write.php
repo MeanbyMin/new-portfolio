@@ -89,28 +89,28 @@
                             <input type="hidden" name="isAddress" id="isAddress" value="false">
                             <input type="hidden" name="r_status" value="등록">
                             <p><label><span class="title">아이디</span> <span class="value"><?=$_SESSION['adminid']?></span></label></p>
-                            <p><label><span class="title">가게명</span> <input type="text" name="r_restaurant" required></label></p>
+                            <p><label><span class="title">가게명</span> <input type="text" name="r_restaurant" placeholder="가게명을 입력해주세요." required></label></p>
                             <p><label><span class="title">도로명 주소</span> <input type="text" id="sample4_roadAddress" class="r_address" name="r_address" placeholder="도로명주소" readonly></label> <input type="button" id="address_btn" onclick="sample4_execDaumPostcode()" value="주소 찾기"></p>
                             <p><label><span class="title">지번 주소</span> <input type="text" id="sample4_jibunAddress" class="r_jibunaddress" name="r_jibunaddress" placeholder="지번주소" readonly></label></p>
-                            <p><label><span class="title">전화번호</span> <input type="text" name="r_tel" placeholder="-을 넣어주세요"></label></p>
-                            <p><label><span class="title">음식 종류</span> <input type="text" id="r_foodtype" name="r_foodtype"></label></p>
-                            <p><label><span class="title">가격대</span> <input type="text" name="r_price"></label></p>
-                            <p><label><span class="title">웹사이트</span> <input type="text" name="r_website"></label></p>
-                            <p><label><span class="title">주차</span> <input type="text" name="r_parking"></label></p>
-                            <p><label><span class="title">영업 시간</span> <input type="text" name="r_openhour"></label></p>
-                            <p><label><span class="title">쉬는 시간</span> <input type="text" name="r_breaktime"></label></p>
-                            <p><label><span class="title">마지막 주문</span> <input type="text" name="r_lastorder"></label></p>
-                            <p><label><span class="title">휴일</span> <input type="text" name="r_holiday"></label></p>
-                            <p><label><span class="title">태그</span> <input type="text" name="r_tags"></label></p>
+                            <p><label><span class="title">전화번호</span> <input type="text" name="r_tel" placeholder="02-1234-4567처럼 하이픈(-)을 넣어주세요"></label></p>
+                            <p><label><span class="title">음식 종류</span> <input type="text" id="r_foodtype" name="r_foodtype" placeholder="한식,일식,중식,양식,세계음식,뷔페,카페,주점 중 작성해주세요."></label></p>
+                            <p><label><span class="title">가격대</span> <input type="text" name="r_price" placeholder="만원 미만,만원-2만원,2만원-3만원,3만원-4만원,4만원 이상 중 작성해주세요."></label></p>
+                            <p><label><span class="title">웹사이트</span> <input type="text" name="r_website" placeholder="웹사이트를 작성해주세요."></label></p>
+                            <p><label><span class="title">주차</span> <input type="text" name="r_parking" placeholder="무료주차 가능,유료주차 가능,발렛,주차공간없음 중 작성해주세요."></label></p>
+                            <p><label><span class="title">영업 시간</span> <input type="text" name="r_openhour" placeholder="11:00 - 22:00 처럼 24시 기준으로 작성해주세요."></label></p>
+                            <p><label><span class="title">쉬는 시간</span> <input type="text" name="r_breaktime" placeholder="13:00 - 14:30 처럼 24시 기준으로 작성해주세요."></label></p>
+                            <p><label><span class="title">마지막 주문</span> <input type="text" name="r_lastorder" placeholder="19:00 처럼 24시 기준으로 작성해주세요."></label></p>
+                            <p><label><span class="title">휴일</span> <input type="text" name="r_holiday" placeholder="요일만 작성해주세요. ex) 월"></label></p>
+                            <p><label><span class="title">태그</span> <input type="text" name="r_tags" placeholder="띄워쓰기 없이 ' , '으로 구분해주세요. ex)성수,강남"></label></p>
                             <p>
                                 <label>
                                     <span class="title">메뉴/가격</span> 
                                     <div id="price">
-                                        <input type="text" name="r_menu[]"> <input type="text" name="r_menuprice[]" placeholder='원을 함께 적어주세요.'> <input type="button" value="추가" onclick="add_textbox()">
+                                        <input type="text" name="r_menu[]" placeholder="메뉴를 적어주세요."> <input type="text" name="r_menuprice[]" placeholder='원을 함께 적어주세요.'> <input type="button" value="추가" onclick="add_textbox()">
                                     </div>
                                 </label>
                             </p>
-                            <p><span class="title">파일</span> 
+                            <p><span class="title">대표사진</span> 
                             <div class="filebox"> 
                                 <input id="upload-name" placeholder="파일선택" readonly> 
                                 <label for="ex_filename">파일선택</label> 
@@ -171,7 +171,7 @@
             const add_textbox = () => {
                 const price = document.getElementById("price");
                 const newP = document.createElement('p');
-                newP.innerHTML = "<input type='text' name='r_menu[]'> <input type='text' name='r_menuprice[]' placeholder='원을 함께 적어주세요.'> <input type='button' value='삭제' onclick='remove(this)'>";
+                newP.innerHTML = "<input type='text' name='r_menu[]' placeholder='메뉴를 적어주세요.'> <input type='text' name='r_menuprice[]' placeholder='원을 함께 적어주세요.'> <input type='button' value='삭제' onclick='remove(this)'>";
                 price.appendChild(newP);
             }
             const remove = (obj) => {
