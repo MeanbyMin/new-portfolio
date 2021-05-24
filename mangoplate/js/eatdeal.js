@@ -146,13 +146,13 @@ if (Header__SearchInput !== null) {
     // main_Search.style.zIndex = "1000";
     body.style.overflow = "hidden";
     KeywordSuggester.classList.add("KeywordSuggester--Open");
-    let SearchTop = Header__SearchInput.getBoundingClientRect().top + 44;
+    let SearchTop = Header__SearchInput.getBoundingClientRect().top - 17;
     let SearchLeft = Header__SearchInput.getBoundingClientRect().left;
     let SearchWidth = Header__SearchInput.getBoundingClientRect().width - 90;
     const scrolledTopLength = window.pageYOffset;
     const absoluteTop = scrolledTopLength + SearchTop;
 
-    // KeywordSuggester__Container.style.top = absoluteTop + "px";
+    KeywordSuggester__Container.style.top = absoluteTop + "px";
     KeywordSuggester__Container.style.left = SearchLeft + "px";
     KeywordSuggester__Container.style.width = SearchWidth + "px";
     // Header.style.zIndex = "10";
