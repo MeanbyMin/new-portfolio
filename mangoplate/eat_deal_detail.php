@@ -561,7 +561,7 @@
             </div>
 
             <div class="EatDealDetailPage__Info EatDealInfo">
-                <a href="./restaurant.php?r_idx=<?=$r_idx?>">
+                <a>
                     <h1 class="EatDealInfo__RestaurantName">[<?=$ed_region?>] <?=$ed_restaurant?></h1>
 
                     <div class="EatDealDetailPage__RestaurantButton">
