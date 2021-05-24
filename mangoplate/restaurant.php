@@ -1334,10 +1334,11 @@ if($r_photoarr == null){
 ?>
 
 <?php
-    $sql = "SELECT tl_title, tl_restaurant FROM top_lists WHERE tl_restaurant LIKE '%$r_restaurant%' ORDER BY tl_idx DESC LIMIT 1";
+    $sql = "SELECT tl_idx, tl_title, tl_restaurant FROM top_lists WHERE tl_restaurant LIKE '%$r_restaurant%' ORDER BY tl_idx DESC LIMIT 1";
     $result = mysqli_query($conn, $sql);
     if(mysqli_num_rows($result) !== 0){
         $row = mysqli_fetch_array($result);
+        $tl_idx = $row['tl_idx'];
         $tl_title = $row['tl_title'];
         $tl_restaurant = $row['tl_restaurant'];
         $tl_restaurantarr = explode(",", $tl_restaurant);
@@ -1346,7 +1347,7 @@ if($r_photoarr == null){
 ?>
                             <section class="module related-restaurant">
                                 <span class="title">
-                                    <a href="#" onclick="">
+                                    <a href="./top_lists_detail.php?tl_idx=<?=$tl_idx?>" onclick="">
                                         <span class="orange-underline"><?=$tl_title?> </span></a>에 있는 다른 식당
                                 </span>
 
