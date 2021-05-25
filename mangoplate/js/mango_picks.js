@@ -667,8 +667,6 @@ function CLICK_MORE_LIST() {
       }
       page = page + 4;
       listcount += review.length;
-      console.log(mscount);
-      console.log(listcount);
       if (listcount === mscount) {
         btnMore.style.display = "none";
       }
