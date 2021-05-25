@@ -265,7 +265,7 @@ if (Header__SearchInput !== null) {
           value.forEach((i) => {
             let li = document.createElement("li");
             li.setAttribute("class", "KeywordSuggester__SuggestKeywordItem");
-            li.innerHTML = `<a href="#" class="KeywordSuggester__SuggestKeywordLink">
+            li.innerHTML = `<a href="./search.php?search=${i}" class="KeywordSuggester__SuggestKeywordLink">
           <i class="KeywordSuggester__SuggestKeywordIcon"></i>
           <span class="KeywordSuggester__SuggestKeyword">${i}</span>
           </a>`;
@@ -527,7 +527,7 @@ function showFilter(id) {
   let simplebarContent = document.querySelector(".simplebar-content");
   let li = document.createElement("li");
   li.setAttribute("class", "KeywordSuggester__SuggestKeywordItem");
-  li.innerHTML = `<a href="#" class="KeywordSuggester__SuggestKeywordLink">
+  li.innerHTML = `<a href="./search.php?search=${id.r_restaurant}" class="KeywordSuggester__SuggestKeywordLink">
           <i class="KeywordSuggester__SuggestKeywordIcon"></i>
           <span class="KeywordSuggester__SuggestKeyword">${id.r_restaurant}</span>
           </a>`;
