@@ -679,7 +679,7 @@
                             <div class="EatDealItem__BGPicture"  data-original="<?=$repphoto[0]?>"style="display: block; background-image: url(<?=$repphoto[0]?>);"></div>
                             <div class="EatDealItem__PictureDeem"></div>
                             <div class="EatDealItem__PictureLeftArea">
-                                <img src="./img/eat_deals/hhttmnuarfupbxjm.png" alt="badge image" class="EatDealItem__Badge EatDealItem__BadgeImage">
+                                <!-- <img src="./img/eat_deals/hhttmnuarfupbxjm.png" alt="badge image" class="EatDealItem__Badge EatDealItem__BadgeImage"> -->
                                 <div class="EatDealItem__DiscountValueLabel EatDealItem__PricePresentation EatDealItem__Badge">
                                     <span class="EatDealItem__DiscountValue EatDealItem__DiscountValue--Rate"><?=$eatdealList[$i]['ed_percent']?></span>
                                 </div>
