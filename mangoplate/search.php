@@ -1443,25 +1443,31 @@
                             <!-- 리스트 -->
                             <section class="module related-list only-desktop">
                                 <span class="title">관련 콘텐츠</span>
-
+<?php
+    $sql = "SELECT ms_idx, ms_title, ms_subtitle, ms_repphoto FROM mango_story WHERE (ms_title LIKE '%$search%') AND ms_status = '등록' ORDER BY ms_idx DESC LIMIT 14";
+    $result = mysqli_query($conn, $sql);
+    if(mysqli_num_rows($result) > 0){
+        while($row = mysqli_fetch_array($result)){
+            $ms_idx      = $row['ms_idx'];
+            $ms_title    = $row['ms_title'];
+            $ms_subtitle = $row['ms_subtitle'];
+            $ms_repphoto = $row['ms_repphoto'];
+?>
                                 <ul class="list-type-ls">
                                     <li class="ng-scope">
-                                        <a href="#">
+                                        <a href="./mango_picks_detail.php?ms_idx=<?=$ms_idx?>">
                                             <figure class="ls-item">
                                                 <i class="sponsored-badge ng-hide"></i>
 
                                                 <div class="thumb">
-                                                    <img class="center-croping" alt="relatedContent.getTitle() " src="">
+                                                    <img class="center-croping" alt="relatedContent.getTitle() " src="<?=$ms_repphoto?>">
                                                 </div>
                                                 <figcaption class="info">
                                                     <div class="info_inner_wrap">
                                                         <i class="eatdeal-badge ng-hide"></i>
-                                                        <span class="title small ng-binding">2021 강북 인기 맛집 TOP
-                                                            100</span>
+                                                        <span class="title small ng-binding"><?=$ms_title?></span>
                                                         <p class="desc small ng-binding">
-                                                            <span class="ellip">"망고플레이트가 선정한 2021년에 꼭 가봐야 할
-                                                                <span class="ellip-line">강북 맛집"</span>
-                                                            </span>
+                                                            <span class="ellip"><?=$ms_subtitle?></span>
                                                         </p>
                                                     </div>
                                                 </figcaption>
@@ -1469,6 +1475,10 @@
                                         </a>
                                     </li>
                                 </ul>
+<?php
+        }
+    }
+?>
                             </section>
                         </div> 
                     </div>
