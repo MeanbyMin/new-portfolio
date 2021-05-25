@@ -703,7 +703,7 @@
                 <div class="swiper-container swiper1">
                     <div class="swiper-wrapper toplist-slider">
 <?php
-    $sql = "SELECT tl_idx, tl_title, tl_subtitle, tl_repphoto FROM top_lists ORDER BY tl_idx DESC LIMIT 12";
+    $sql = "SELECT tl_idx, tl_title, tl_subtitle, tl_repphoto FROM top_lists WHERE tl_status='등록' ORDER BY tl_idx DESC LIMIT 12";
     $result = mysqli_query($conn, $sql);
     $top_lists = [];
     while($row = mysqli_fetch_array($result)){
@@ -809,7 +809,7 @@
                 <div class="swiper-container swiper2 mango_pick_list">
                     <div class="swiper-wrapper list-main-slider">
 <?php
-    $sql = "SELECT ms_idx, ms_userid, ms_userphoto, ms_title, ms_subtitle, ms_repphoto FROM mango_story ORDER BY ms_idx DESC LIMIT 6";
+    $sql = "SELECT ms_idx, ms_userid, ms_userphoto, ms_title, ms_subtitle, ms_repphoto FROM mango_story WHERE ms_status = '등록' ORDER BY ms_idx DESC LIMIT 6";
     $result = mysqli_query($conn, $sql);
     $story_lists = [];
     while($row = mysqli_fetch_array($result)){
@@ -1127,19 +1127,28 @@ while($row = mysqli_fetch_array($result)){
                 <!-- <div class="swiper-button-prev btn_prev3"></div> -->
                 <div class="swiper-container swiper">
                     <div class="swiper-wrapper toplist-slider">
-                    <?php
-    $sql = "SELECT tl_idx, tl_title, tl_subtitle, tl_repphoto FROM top_lists ORDER BY tl_idx DESC LIMIT 12";
+<?php
+    $sql = "SELECT CONCAT(gangnam,',',gangbuk,',',gyeonggi,',',incheon,',',daegu,',',busan,',',jeju,',',daejeon,',',gwangju,',',gangwon,',',gyeongnam,',',gyeongbuk,',',jeonnam,',',jeonbuk,',',chungnam,',',chungbuk,',',ulsan,',',sejong) FROM mango_region";
     $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_array($result);
+    $region = str_replace("/", ",", $row[0]);
+    $regionarr = explode(",", $region);
+
     $top_lists = [];
-    while($row = mysqli_fetch_array($result)){
-        $toplistadd = array('tl_idx' => $row['tl_idx'], 'tl_title' => $row['tl_title'], 'tl_subtitle' => $row['tl_subtitle'], 'tl_repphoto' => $row['tl_repphoto']);
-        array_push($top_lists, $toplistadd);
+    for($i=0; $i<count($regionarr); $i++){
+        $sql = "SELECT tl_idx, tl_title, tl_subtitle, tl_repphoto FROM top_lists WHERE (tl_title LIKE '%$regionarr[$i]%') AND tl_status = '등록' ORDER BY tl_idx DESC";
+        $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+        while($row = mysqli_fetch_array($result)){
+            $toplistadd = array('tl_idx' => $row['tl_idx'], 'tl_title' => $row['tl_title'], 'tl_subtitle' => $row['tl_subtitle'], 'tl_repphoto' => $row['tl_repphoto']);
+            array_push($top_lists, $toplistadd);
+        }
     }
 ?>
                         <div class="swiper-slide top_list_slide">
 <?php
-    for($i=0;$i<6;$i+=2){
-        $j = $i + 1;
+    if(count($top_lists) >= 6){
+        for($i=0;$i<6;$i+=2){
+            $j = $i + 1;
 ?>
                             <ul class="list-toplist-slider">
                                 <li>
@@ -1172,6 +1181,64 @@ while($row = mysqli_fetch_array($result)){
                                 </li>
                             </ul>
 <?php
+        }
+    }else{
+        for($i=0;$i<count($top_lists);$i+=2){
+            if(count($top_lists) > $i + 1){
+                $j = $i + 1;
+?>
+                            <ul class="list-toplist-slider">
+                                <li>
+                                    <img class="center-croping" alt="<?=$top_lists[$i]['tl_title']?>"
+                                        src="<?=$top_lists[$i]['tl_repphoto']?>" />
+                                    <a href="./top_lists_detail.php?tl_idx=<?=$top_lists[$i]['tl_idx']?>" onclick="">
+                                        <figure class="ls-item">
+                                            <figcaption class="info">
+                                                <div class="info_inner_wrap">
+                                                    <span class="title"><?=$top_lists[$i]['tl_title']?></span>
+                                                    <p class="desc"><?=$top_lists[$i]['tl_subtitle']?></p>
+                                                </div>
+                                            </figcaption>
+                                        </figure>
+                                    </a>
+                                </li>
+                                <li>
+                                    <img class="center-croping" alt="<?=$top_lists[$j]['tl_title']?>"
+                                        src="<?=$top_lists[$j]['tl_repphoto']?>" />
+                                    <a href="./top_lists_detail.php?tl_idx=<?=$top_lists[$j]['tl_idx']?>" onclick="">
+                                        <figure class="ls-item">
+                                            <figcaption class="info">
+                                                <div class="info_inner_wrap">
+                                                    <span class="title"><?=$top_lists[$j]['tl_title']?></span>
+                                                    <p class="desc"><?=$top_lists[$j]['tl_subtitle']?></p>
+                                                </div>
+                                            </figcaption>
+                                        </figure>
+                                    </a>
+                                </li>
+                            </ul>
+<?php
+            }else{
+?>
+                            <ul class="list-toplist-slider">
+                                <li>
+                                    <img class="center-croping" alt="<?=$top_lists[$i]['tl_title']?>"
+                                        src="<?=$top_lists[$i]['tl_repphoto']?>" />
+                                    <a href="./top_lists_detail.php?tl_idx=<?=$top_lists[$i]['tl_idx']?>" onclick="">
+                                        <figure class="ls-item">
+                                            <figcaption class="info">
+                                                <div class="info_inner_wrap">
+                                                    <span class="title"><?=$top_lists[$i]['tl_title']?></span>
+                                                    <p class="desc"><?=$top_lists[$i]['tl_subtitle']?></p>
+                                                </div>
+                                            </figcaption>
+                                        </figure>
+                                    </a>
+                                </li>
+                            </ul>
+<?php
+            }
+        }
     }
 ?>
                         </div>
@@ -1181,14 +1248,14 @@ while($row = mysqli_fetch_array($result)){
             <!-- 메뉴별 인기 맛집 시작 -->
             <section class="module popular_top_list_wrap">
                 <div class="module_title_wrap">
-                    <h2 class="title">메뉴별 인기 맛집</h2>
+                    <h2 class="title">인기 맛집</h2>
                     <a href="./top_lists.php" class="module_more">리스트 더보기</a>
                 </div>
                 <div class="swiper-button-prev btn_prev3"></div>
                 <div class="swiper-container swiper3">
                     <div class="swiper-wrapper toplist-slider">
                     <?php
-    $sql = "SELECT tl_idx, tl_title, tl_subtitle, tl_repphoto FROM top_lists ORDER BY tl_idx DESC LIMIT 12";
+    $sql = "SELECT tl_idx, tl_title, tl_subtitle, tl_repphoto FROM top_lists ORDER BY tl_read DESC LIMIT 12";
     $result = mysqli_query($conn, $sql);
     $top_lists = [];
     while($row = mysqli_fetch_array($result)){
