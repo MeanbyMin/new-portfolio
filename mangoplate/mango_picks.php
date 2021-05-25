@@ -731,8 +731,16 @@
     }
 ?> 
                     </ul>
-            
-                        <button class="btn-more" onclick="CLICK_MORE_LIST()">더보기</button>
+<?php
+    $sql = "SELECT ms_idx FROM mango_story WHERE ms_status ='등록'";
+    $result = mysqli_query($conn, $sql);
+    $mscount = mysqli_num_rows($result);
+    if($mscount > 4){
+?>
+    <button class="btn-more" onclick="CLICK_MORE_LIST()">더보기</button>
+<?php
+    }
+?>
                     </div>
                 </section>
             </article>
@@ -1078,10 +1086,11 @@
 ?>
     <script>
         let restaurant_list = <?= json_encode($restaurant_list) ?>;
-        let mm_wannago = <?= json_encode($mm_wannagoarr) ?>;
         let mm_userid = <?= json_encode($id) ?>;
         let sessionid = <?= json_encode($sessionid)?>;
+        let mscount = <?=json_encode($mscount)?>;
         let mm_recentarr = <?=json_encode($mm_recentarr)?>;
+        let mm_wannago = <?= json_encode($mm_wannagoarr) ?>;
     </script>
     <script src="./js/mango_picks.js"></script>
     <script src="./js/facebook.js"></script>

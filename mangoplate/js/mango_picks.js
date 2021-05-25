@@ -607,6 +607,7 @@ function profile_wannago_btn(e) {
 
 // 더보기 버튼
 let page = 4;
+let listcount = 4;
 function CLICK_MORE_LIST() {
   const xhr = new XMLHttpRequest();
   xhr.open("GET", "./mango_picksMore.php?page=" + page);
@@ -665,6 +666,12 @@ function CLICK_MORE_LIST() {
         listEditorsPick.appendChild(li);
       }
       page = page + 4;
+      listcount += review.length;
+      console.log(mscount);
+      console.log(listcount);
+      if (listcount === mscount) {
+        btnMore.style.display = "none";
+      }
     }
   };
 }
