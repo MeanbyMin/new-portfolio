@@ -758,6 +758,7 @@ function CLICK_SEARCH_RECENT(t) {
     let searchCookie = cookie.split("search=")[1].split(";")[0];
     if (searchCookie.includes("%2C")) {
       searcharr = searchCookie.split("%2C");
+      searcharr = searcharr.reverse();
     } else {
       searcharr[0] = searchCookie;
     }

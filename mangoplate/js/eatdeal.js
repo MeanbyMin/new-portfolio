@@ -235,7 +235,7 @@ function CLICK_RECENT_TAB() {
   }
 }
 
-function CLICK_WAANGO_TAB() {
+function CLICK_WANNAGO_TAB() {
   UserRestaurantHistoryTabItemWannago.classList.add(
     "UserRestaurantHistory__TabItem--Selected"
   );
@@ -301,7 +301,7 @@ function CLICK_SEARCH_RECOMMEND(t) {
         value.forEach((i) => {
           let li = document.createElement("li");
           li.setAttribute("class", "KeywordSuggester__SuggestKeywordItem");
-          li.innerHTML = `<a href="#" class="KeywordSuggester__SuggestKeywordLink">
+          li.innerHTML = `<a href="./search.php?search=${i}" class="KeywordSuggester__SuggestKeywordLink">
           <i class="KeywordSuggester__SuggestKeywordIcon"></i>
           <span class="KeywordSuggester__SuggestKeyword">${i}</span>
           </a>`;
@@ -357,7 +357,7 @@ function CLICK_SEARCH_POPULAR(t) {
         value.forEach((i) => {
           let li = document.createElement("li");
           li.setAttribute("class", "KeywordSuggester__SuggestKeywordItem");
-          li.innerHTML = `<a href="#" class="KeywordSuggester__SuggestKeywordLink">
+          li.innerHTML = `<a href="./search.php?search=${i}" class="KeywordSuggester__SuggestKeywordLink">
           <i class="KeywordSuggester__SuggestKeywordIcon"></i>
           <span class="KeywordSuggester__SuggestKeyword">${i}</span>
           </a>`;
@@ -407,6 +407,7 @@ function CLICK_SEARCH_RECENT(t) {
     let searchCookie = cookie.split("search=")[1].split(";")[0];
     if (searchCookie.includes("%2C")) {
       searcharr = searchCookie.split("%2C");
+      searcharr = searcharr.reverse();
     } else {
       searcharr[0] = searchCookie;
     }

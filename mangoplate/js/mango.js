@@ -137,6 +137,7 @@ window.addEventListener("click", (e) => {
   e.target === KeywordSuggester__BlackDeem ? (main_Search.style = "") : false;
 });
 
+// 검색창
 if (mainSearch !== null) {
   mainSearch.addEventListener("focus", () => {
     main_Search.style.zIndex = "1000";
@@ -231,7 +232,7 @@ function CLICK_RECENT_TAB() {
   }
 }
 
-function CLICK_WAANGO_TAB() {
+function CLICK_WANNAGO_TAB() {
   UserRestaurantHistoryTabItemWannago.classList.add(
     "UserRestaurantHistory__TabItem--Selected"
   );
@@ -421,6 +422,7 @@ const CLICK_SEARCH_RECENT = (t) => {
     let searchCookie = cookie.split("search=")[1].split(";")[0];
     if (searchCookie.includes("%2C")) {
       searcharr = searchCookie.split("%2C");
+      searcharr = searcharr.reverse();
     } else {
       searcharr[0] = searchCookie;
     }

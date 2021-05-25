@@ -407,6 +407,7 @@ function CLICK_SEARCH_RECENT(t) {
     let searchCookie = cookie.split("search=")[1].split(";")[0];
     if (searchCookie.includes("%2C")) {
       searcharr = searchCookie.split("%2C");
+      searcharr = searcharr.reverse();
     } else {
       searcharr[0] = searchCookie;
     }
@@ -609,3 +610,55 @@ review_more_btn.addEventListener("click", function () {
   long_review.style.display = "inline";
   review_more_btn.style.display = "none";
 });
+
+// 더보기 버튼
+// let page = 10;
+// function CLICK_MORE_LIST() {
+//   const xhr = new XMLHttpRequest();
+//   xhr.open("GET", "./top_listsDetailMore.php?page=" + page);
+//   xhr.send();
+//   xhr.onload = () => {
+//     if (xhr.status === 200) {
+//       let arr = xhr.responseText.split("<br>");
+//       arr.pop();
+//       let review = [];
+//       for (let i = 0; i < arr.length; i++) {
+//         review[i] = arr[i].split("&nbsp");
+//       }
+//       // console.log(review);
+//       for (let i = 0; i < review.length; i++) {
+//         const listRestaurants = document.querySelector(".list-restaurants");
+//         let li = document.createElement("li");
+//         li.setAttribute("class", "toplist_list");
+//         li.innerHTML = `
+//         <a href="./top_lists_detail.php?tl_idx=${review[i][0]}" onclick="">
+//           <figure class="ls-item">
+//             <div class="thumb">
+//                 <div class="inner">
+//                 <img class="center-crop portrait lazy" alt="<?=$top_lists[$i]['tl_title']?>" data-original="${
+//                   review[i][3]
+//                 }" data-error="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg?fit=around|*:*&amp;crop=*:*;*,*&amp;output-format=jpg&amp;output-quality=80" src="${
+//           review[i][3]
+//         }" style="display: block;">
+//                 </div>
+//             </div>
+//             <figcaption class="info">
+//                 <div class="info_inner_wrap">
+//                 <span class="title" data-ellipsis-id="${i + 1}">${
+//           review[i][1]
+//         }</span>
+//                 <p class="desc" data-ellipsis-id="2${i + 1}">${review[i][2]}</p>
+//                 <p class="hash">
+//                     <span>#${review[i][1]}></span>
+//                 </p>
+//                 </div>
+//             </figcaption>
+//           </figure>
+//         </a>
+//           `;
+//         listRestaurants.appendChild(li);
+//       }
+//       page += 10;
+//     }
+//   };
+// }
