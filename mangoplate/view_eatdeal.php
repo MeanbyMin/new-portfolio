@@ -49,7 +49,7 @@
     $ed_photoarr = [];
     if(strpos($ed_photo, ",") > 0){
         $ed_photoarr = explode(",", $ed_photo);
-    }else{
+    }else if($ed_photo !== ''){
         array_push($ed_photoarr, $ed_photo);
     }
 
