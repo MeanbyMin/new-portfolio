@@ -666,7 +666,6 @@ function CLICK_TAG(t) {
   selected.classList.remove("selected");
   t.classList.add("selected");
   let data = t.dataset.keyword;
-  console.log(data);
   const xhr = new XMLHttpRequest();
   xhr.open("GET", "./tags.php?tag=" + data);
   xhr.send();

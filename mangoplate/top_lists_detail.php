@@ -698,7 +698,7 @@
     $tl_restaurantarr = explode(",", $tl_restaurant);
     $tl_restaurant_list = [];
     for($i=0;$i<count($tl_restaurantarr);$i++){
-        $sql = "SELECT r_idx, r_restaurant, r_grade, r_repadd, r_repphoto, r_address, r_jibunaddress, r_foodtype, r_review, r_wannago FROM mango_restaurant WHERE r_restaurant = '$tl_restaurantarr[$i]'";
+        $sql = "SELECT r_idx, r_restaurant, r_grade, r_repadd, r_repphoto, r_address, r_jibunaddress, r_foodtype, r_review, r_wannago FROM mango_restaurant WHERE r_restaurant = '$tl_restaurantarr[$i]' AND r_status ='등록'";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_array($result);
         if(isset($row['r_idx'])){

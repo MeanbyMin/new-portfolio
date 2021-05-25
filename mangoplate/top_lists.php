@@ -701,7 +701,7 @@
             
                         <ul class="list-type-ls type-column02-picks">
 <?php
-    $sql = "SELECT * FROM top_lists WHERE tl_status = '등록'";
+    $sql = "SELECT * FROM top_lists WHERE tl_status = '등록' ORDER BY tl_idx DESC";
     $result = mysqli_query($conn, $sql);
 
     $top_lists = [];
@@ -709,7 +709,6 @@
         $toplistadd = array('tl_idx' => $row['tl_idx'], 'tl_title' => $row['tl_title'], 'tl_subtitle' => $row['tl_subtitle'], 'tl_repphoto' => $row['tl_repphoto']);
         array_push($top_lists, $toplistadd);
     }
-
     if(count($top_lists) > 20){
         for($i=0; $i<20; $i++){
 ?>
@@ -1110,10 +1109,10 @@
 ?>
     <script>
         let restaurant_list = <?= json_encode($restaurant_list) ?>;
-        let mm_wannago = <?= json_encode($mm_wannagoarr) ?>;
         let mm_userid = <?= json_encode($id) ?>;
         let sessionid = <?= json_encode($sessionid)?>;
         let mm_recentarr = <?=json_encode($mm_recentarr)?>;
+        let mm_wannago = <?= json_encode($mm_wannagoarr) ?>;
     </script>
     <script src="./js/top_lists.js"></script>
     <script src="./js/facebook.js"></script>
