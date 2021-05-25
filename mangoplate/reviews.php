@@ -219,8 +219,7 @@
                     이어쓰기</button>
                 <div class="ReviewWritingPage__Buttons">
                     <button class="ReviewWritingPage__CancelButton" onclick="reviewCancel()">취소</button>
-                    <button class="ReviewWritingPage__SubmitButton ReviewWritingPage__SubmitButton--Deactive" onclick="reviewUpload()">리뷰
-                        올리기</button>
+                    <button class="ReviewWritingPage__SubmitButton" onclick="reviewUpload()">리뷰 올리기</button>
                 </div>
             </div>
             <div class="ReviewToolTip">
@@ -513,8 +512,7 @@
                     이어쓰기</button>
                 <div class="ReviewWritingPage__Buttons">
                     <button class="ReviewWritingPage__CancelButton" onclick="reviewCancel()">취소</button>
-                    <button class="ReviewWritingPage__SubmitButton ReviewWritingPage__SubmitButton--Deactive" onclick="reviewUpload()">리뷰
-                        올리기</button>
+                    <button class="ReviewWritingPage__SubmitButton ReviewWritingPage__SubmitButton--Deactive" onclick="reviewUpload()">리뷰 올리기</button>
                 </div>
             </div>
             <div class="ReviewToolTip">

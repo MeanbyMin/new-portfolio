@@ -131,6 +131,7 @@ const pool = mysql.createPool({
           console.log("DB 추가 완료");
         });
       });
+      
 
       await driver.sleep(5000);
       // 뒤로가기
