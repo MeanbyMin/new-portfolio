@@ -176,7 +176,7 @@ if (Header__SearchInput !== null) {
           value.forEach((i) => {
             let li = document.createElement("li");
             li.setAttribute("class", "KeywordSuggester__SuggestKeywordItem");
-            li.innerHTML = `<a href="#" class="KeywordSuggester__SuggestKeywordLink">
+            li.innerHTML = `<a href="./search.php?search=${i}" class="KeywordSuggester__SuggestKeywordLink">
           <i class="KeywordSuggester__SuggestKeywordIcon"></i>
           <span class="KeywordSuggester__SuggestKeyword">${i}</span>
           </a>`;
@@ -210,27 +210,68 @@ function CLICK_RECENT_TAB() {
   UserRestaurantHistoryTabItemWannago.classList.remove(
     "UserRestaurantHistory__TabItem--Selected"
   );
-  UserRestaurantHistoryEmptyViewedRestaurantHistory.classList.add(
-    "UserRestaurantHistory__EmptyViewedRestaurantHistory--Show"
-  );
-  UserRestaurantHistoryEmptyWannagoRestaurantHistory.classList.remove(
-    "UserRestaurantHistory__EmptyWannagoRestaurantHistory--Show"
-  );
+  if (mm_recentarr !== "") {
+    let UserRestaurantHistory__HistoryHeader = document.querySelector(
+      ".UserRestaurantHistory__HistoryHeader"
+    );
+    UserRestaurantHistory__HistoryHeader.classList.add(
+      "UserRestaurantHistory__HistoryHeader--Show"
+    );
+    let recent_arr = document.querySelector(
+      ".UserRestaurantHistory__RestaurantList.mm_recentarr"
+    );
+    recent_arr.classList.add("mm_recentarr--Show");
+  } else {
+    UserRestaurantHistoryEmptyViewedRestaurantHistory.classList.add(
+      "UserRestaurantHistory__EmptyViewedRestaurantHistory--Show"
+    );
+  }
+  if (mm_wannago !== "") {
+    let wannago_arr = document.querySelector(
+      ".UserRestaurantHistory__RestaurantList.mm_wannagoarr"
+    );
+    wannago_arr.classList.remove("mm_wannagoarr--Show");
+  } else {
+    UserRestaurantHistoryEmptyWannagoRestaurantHistory.classList.remove(
+      "UserRestaurantHistory__EmptyWannagoRestaurantHistory--Show"
+    );
+  }
 }
 
-function CLICK_WAANGO_TAB() {
+function CLICK_WANNAGO_TAB() {
   UserRestaurantHistoryTabItemWannago.classList.add(
     "UserRestaurantHistory__TabItem--Selected"
   );
   UserRestaurantHistoryTabItemViewed.classList.remove(
     "UserRestaurantHistory__TabItem--Selected"
   );
-  UserRestaurantHistoryEmptyViewedRestaurantHistory.classList.remove(
-    "UserRestaurantHistory__EmptyViewedRestaurantHistory--Show"
-  );
-  UserRestaurantHistoryEmptyWannagoRestaurantHistory.classList.add(
-    "UserRestaurantHistory__EmptyWannagoRestaurantHistory--Show"
-  );
+
+  if (mm_recentarr !== "") {
+    let UserRestaurantHistory__HistoryHeader = document.querySelector(
+      ".UserRestaurantHistory__HistoryHeader"
+    );
+    UserRestaurantHistory__HistoryHeader.classList.remove(
+      "UserRestaurantHistory__HistoryHeader--Show"
+    );
+    let recent_arr = document.querySelector(
+      ".UserRestaurantHistory__RestaurantList.mm_recentarr"
+    );
+    recent_arr.classList.remove("mm_recentarr--Show");
+  } else {
+    UserRestaurantHistoryEmptyViewedRestaurantHistory.classList.remove(
+      "UserRestaurantHistory__EmptyViewedRestaurantHistory--Show"
+    );
+  }
+  if (mm_wannago !== "") {
+    let wannago_arr = document.querySelector(
+      ".UserRestaurantHistory__RestaurantList.mm_wannagoarr"
+    );
+    wannago_arr.classList.add("mm_wannagoarr--Show");
+  } else {
+    UserRestaurantHistoryEmptyWannagoRestaurantHistory.classList.add(
+      "UserRestaurantHistory__EmptyWannagoRestaurantHistory--Show"
+    );
+  }
 }
 
 // 검색어 영역
@@ -440,42 +481,6 @@ function CLICK_SEARCH_RECENT(t) {
 //   console.log(cookie2);
 // }
 
-function wannago_btn() {
-  let wannago_btnSelected = document.querySelector(".wannago_btn.selected");
-  let wannago_btn = document.querySelector(".wannago_btn");
-  let r_idx = wannago_btn.dataset.restaurant_uuid;
-  let mm_userid = wannago_btn.dataset.action_id;
-  if (wannago_btnSelected === null) {
-    wannago_btn.classList.add("selected");
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", "./wannago_btn.php");
-    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-    const data = "mm_userid=" + mm_userid + "&r_idx=" + r_idx;
-    xhr.send(data);
-    xhr.onload = () => {
-      if (xhr.status === 200) {
-        console.log("가고싶다 추가 성공");
-      } else {
-        console.log("가고싶다 추가 실패");
-      }
-    };
-  } else {
-    wannago_btn.classList.remove("selected");
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", "./wannago_del.php");
-    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-    const data = "mm_userid=" + mm_userid + "&r_idx=" + r_idx;
-    xhr.send(data);
-    xhr.onload = () => {
-      if (xhr.status === 200) {
-        console.log("가고싶다 제거 성공");
-      } else {
-        console.log("가고싶다 제거 실패");
-      }
-    };
-  }
-}
-
 function clickProfile() {
   body.style.overflow = "hidden";
   UserRestaurantHistory.classList.add("UserRestaurantHistory--Open");
@@ -552,6 +557,52 @@ Header__SearchInputClearButton.addEventListener("click", () => {
 const CLICK_KEYWORD_SEARCH = () => {
   location.href = "./search.php?search=" + Header__SearchInput.value;
 };
+
+// 최근 본 맛집 삭제
+function CLICK_VIEWED_RESTAURANT_CLEAR() {
+  document.cookie = sessionid + "=; expires=Thu, 01 Jan 1999 00:00:10 GMT;";
+  location.reload();
+}
+
+// 유저프로필 wannago btn
+function profile_wannago_btn(e) {
+  if (
+    e.classList.contains("RestaurantHorizontalItem__WannagoButton--Selected")
+  ) {
+    let r_idx =
+      e.previousSibling.previousSibling.childNodes[1].dataset.restaurant;
+    e.classList.remove("RestaurantHorizontalItem__WannagoButton--Selected");
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "./wannago_del.php");
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    const data = "mm_userid=" + mm_userid + "&r_idx=" + r_idx;
+    xhr.send(data);
+    xhr.onload = () => {
+      if (xhr.status === 200) {
+        console.log("가고싶다 제거 성공");
+      } else {
+        console.log("가고싶다 제거 실패");
+      }
+    };
+  } else {
+    let r_idx =
+      e.previousSibling.previousSibling.childNodes[1].dataset.restaurant;
+    console.log(r_idx);
+    e.classList.add("RestaurantHorizontalItem__WannagoButton--Selected");
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "./wannago_btn.php");
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    const data = "mm_userid=" + mm_userid + "&r_idx=" + r_idx;
+    xhr.send(data);
+    xhr.onload = () => {
+      if (xhr.status === 200) {
+        console.log("가고싶다 추가 성공");
+      } else {
+        console.log("가고싶다 추가 실패");
+      }
+    };
+  }
+}
 
 // 필터
 function open_filter() {
