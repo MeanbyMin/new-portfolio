@@ -70,6 +70,10 @@ const simplebarVertical = document.querySelector(".simplebar-vertical");
 const Header__SearchInputClearButton = document.querySelector(
   ".Header__SearchInputClearButton"
 );
+const KeywordSuggester__TabList = document.querySelector(
+  ".KeywordSuggester__TabList"
+);
+const simplebarMask = document.querySelector(".simplebar-mask");
 
 // 이미지
 const centerCroping = document.querySelectorAll(".center-croping");
@@ -141,66 +145,6 @@ window.addEventListener("click", (e) => {
 
 function CLICK_REVIEW() {
   location.href = "./reviews.php?r_idx=" + r_idx;
-}
-
-// 검색창
-if (Header__SearchInput !== null) {
-  Header__SearchInput.addEventListener("focus", () => {
-    // main_Search.style.zIndex = "1000";
-    body.style.overflow = "hidden";
-    KeywordSuggester.classList.add("KeywordSuggester--Open");
-    let SearchTop = Header__SearchInput.getBoundingClientRect().top + 44;
-    let SearchLeft = Header__SearchInput.getBoundingClientRect().left;
-    let SearchWidth = Header__SearchInput.getBoundingClientRect().width - 90;
-    const scrolledTopLength = window.pageYOffset;
-    const absoluteTop = scrolledTopLength + SearchTop;
-
-    KeywordSuggester__Container.style.top = absoluteTop + "px";
-    KeywordSuggester__Container.style.left = SearchLeft + "px";
-    KeywordSuggester__Container.style.width = SearchWidth + "px";
-    // Header.style.zIndex = "10";
-    const xhr = new XMLHttpRequest();
-
-    xhr.open("POST", "./searchrecommend.php");
-    xhr.send();
-    xhr.onload = () => {
-      if (xhr.status === 200) {
-        // console.log("값 가져오기 성공");
-        // console.log(xhr.response);
-        (function () {
-          let simplebarContent = document.querySelector(".simplebar-content");
-          while (simplebarContent.hasChildNodes()) {
-            simplebarContent.removeChild(simplebarContent.firstChild);
-          }
-          let value = xhr.response.split(",");
-          value.forEach((i) => {
-            let li = document.createElement("li");
-            li.setAttribute("class", "KeywordSuggester__SuggestKeywordItem");
-            li.innerHTML = `<a href="#" class="KeywordSuggester__SuggestKeywordLink">
-          <i class="KeywordSuggester__SuggestKeywordIcon"></i>
-          <span class="KeywordSuggester__SuggestKeyword">${i}</span>
-          </a>`;
-            simplebarContent.appendChild(li);
-          });
-          let p = document.createElement("p");
-          p.setAttribute("class", "KeywordSuggester__EmptyKeywordMessage");
-          p.innerHTML = `최근 검색어가 없습니다.`;
-          simplebarContent.appendChild(p);
-          let div = document.createElement("div");
-          div.setAttribute(
-            "class",
-            "KeywordSuggester__Footer KeywordSuggester__Footer--Hide"
-          );
-          div.innerHTML = `<button class="KeywordSuggester__RemoveAllHistoryKeywordButton">
-        x clear all
-    </button>`;
-          simplebarContent.appendChild(div);
-        })();
-      } else {
-        console.log("값 가져오기 실패");
-      }
-    };
-  });
 }
 
 function CLICK_RECENT_TAB() {
@@ -275,6 +219,78 @@ function CLICK_WAANGO_TAB() {
 }
 
 // 검색어 영역
+// 검색창
+if (Header__SearchInput !== null) {
+  Header__SearchInput.addEventListener("focus", () => {
+    // main_Search.style.zIndex = "1000";
+    body.style.overflow = "hidden";
+    KeywordSuggester.classList.add("KeywordSuggester--Open");
+    let SearchTop = Header__SearchInput.getBoundingClientRect().top + 44;
+    let SearchLeft = Header__SearchInput.getBoundingClientRect().left;
+    let SearchWidth = Header__SearchInput.getBoundingClientRect().width - 90;
+    const scrolledTopLength = window.pageYOffset;
+    const absoluteTop = scrolledTopLength + SearchTop;
+
+    KeywordSuggester__Container.style.top = absoluteTop + "px";
+    KeywordSuggester__Container.style.left = SearchLeft + "px";
+    KeywordSuggester__Container.style.width = SearchWidth + "px";
+    // Header.style.zIndex = "10";
+
+    let KeywordSuggester__TabButtonSelected = document.querySelector(
+      ".KeywordSuggester__TabButton--Selected"
+    );
+    KeywordSuggester__TabButtonSelected.classList.remove(
+      "KeywordSuggester__TabButton--Selected"
+    );
+    let KeywordSuggester__RecommendTabButton = document.querySelector(
+      ".KeywordSuggester__RecommendTabButton"
+    );
+    KeywordSuggester__RecommendTabButton.classList.add(
+      "KeywordSuggester__TabButton--Selected"
+    );
+    const xhr = new XMLHttpRequest();
+
+    xhr.open("POST", "./searchrecommend.php");
+    xhr.send();
+    xhr.onload = () => {
+      if (xhr.status === 200) {
+        // console.log("값 가져오기 성공");
+        // console.log(xhr.response);
+        (function () {
+          let simplebarContent = document.querySelector(".simplebar-content");
+          while (simplebarContent.hasChildNodes()) {
+            simplebarContent.removeChild(simplebarContent.firstChild);
+          }
+          let value = xhr.response.split(",");
+          value.forEach((i) => {
+            let li = document.createElement("li");
+            li.setAttribute("class", "KeywordSuggester__SuggestKeywordItem");
+            li.innerHTML = `<a href="#" class="KeywordSuggester__SuggestKeywordLink">
+          <i class="KeywordSuggester__SuggestKeywordIcon"></i>
+          <span class="KeywordSuggester__SuggestKeyword">${i}</span>
+          </a>`;
+            simplebarContent.appendChild(li);
+          });
+          let p = document.createElement("p");
+          p.setAttribute("class", "KeywordSuggester__EmptyKeywordMessage");
+          p.innerHTML = `최근 검색어가 없습니다.`;
+          simplebarContent.appendChild(p);
+          let div = document.createElement("div");
+          div.setAttribute(
+            "class",
+            "KeywordSuggester__Footer KeywordSuggester__Footer--Hide"
+          );
+          div.innerHTML = `<button class="KeywordSuggester__RemoveAllHistoryKeywordButton">
+        x clear all
+    </button>`;
+          simplebarContent.appendChild(div);
+        })();
+      } else {
+        console.log("값 가져오기 실패");
+      }
+    };
+  });
+}
 function CLICK_SEARCH_RECOMMEND(t) {
   let KeywordSuggester__TabButtonSelected = document.querySelector(
     ".KeywordSuggester__TabButton--Selected"
@@ -523,10 +539,20 @@ Header__SearchInput.addEventListener("keyup", function () {
     Header__SearchInputClearButton.classList.add(
       "Header__SearchInputClearButton--Show"
     );
+    KeywordSuggester__TabList.classList.add("KeywordSuggester__TabList--Hide");
+    simplebarMask.style.marginTop = "0";
   } else {
     Header__SearchInputClearButton.classList.remove(
-      "Header__SearchInputClearButton--Show"
+      "Header__SearchInputClearButton--Shows"
     );
+    KeywordSuggester__TabList.classList.remove(
+      "KeywordSuggester__TabList--Hide"
+    );
+    simplebarMask.style.marginTop = "50px";
+    let KeywordSuggester__TabButtonSelected = document.querySelector(
+      ".KeywordSuggester__TabButton--Selected"
+    );
+    KeywordSuggester__TabButtonSelected.click();
   }
   if (Header__SearchInput.value) {
     const filtered = restaurant_list.filter((x) => matchSearch(x.r_restaurant));
@@ -553,6 +579,9 @@ Header__SearchInputClearButton.addEventListener("click", () => {
   Header__SearchInputClearButton.classList.remove(
     "Header__SearchInputClearButton--Show"
   );
+  KeywordSuggester__TabList.classList.remove("KeywordSuggester__TabList--Hide");
+  simplebarMask.style.marginTop = "50px";
+  Header__SearchInput.focus();
 });
 
 const CLICK_KEYWORD_SEARCH = () => {

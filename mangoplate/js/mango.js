@@ -53,6 +53,7 @@ const UserDisactiveInfo__ClostButtonIcon = document.querySelector(
   ".UserDisactiveInfo__ClostButton--Icon"
 );
 
+//검색창
 const mainSearch = document.getElementById("main-search");
 const main_Search = document.querySelector(".main-search");
 const KeywordSuggester = document.querySelector(".KeywordSuggester");
@@ -67,6 +68,10 @@ const simplebarVertical = document.querySelector(".simplebar-vertical");
 
 const btnSearch = document.querySelector(".btn-search");
 const clearBtn = document.querySelector(".clear_btn");
+const KeywordSuggester__TabList = document.querySelector(
+  ".KeywordSuggester__TabList"
+);
+const simplebarMask = document.querySelector(".simplebar-mask");
 
 // --------------------------------------------------------------------
 
@@ -153,6 +158,19 @@ if (mainSearch !== null) {
     KeywordSuggester__Container.style.left = SearchLeft + "px";
     KeywordSuggester__Container.style.width = SearchWidth + "px";
     Header.style.zIndex = "10";
+
+    let KeywordSuggester__TabButtonSelected = document.querySelector(
+      ".KeywordSuggester__TabButton--Selected"
+    );
+    KeywordSuggester__TabButtonSelected.classList.remove(
+      "KeywordSuggester__TabButton--Selected"
+    );
+    let KeywordSuggester__RecommendTabButton = document.querySelector(
+      ".KeywordSuggester__RecommendTabButton"
+    );
+    KeywordSuggester__RecommendTabButton.classList.add(
+      "KeywordSuggester__TabButton--Selected"
+    );
     const xhr = new XMLHttpRequest();
 
     xhr.open("POST", "./searchrecommend.php");
@@ -460,7 +478,6 @@ const CLICK_SEARCH_RECENT = (t) => {
 
 function matchSearch(value) {
   const search = mainSearch.value;
-
   return value.indexOf(search) != -1;
 }
 
@@ -478,9 +495,20 @@ function showFilter(id) {
 mainSearch.addEventListener("keyup", function () {
   if (mainSearch.value.length > 0) {
     clearBtn.classList.add("show");
+    KeywordSuggester__TabList.classList.add("KeywordSuggester__TabList--Hide");
+    simplebarMask.style.marginTop = "0";
   } else {
     clearBtn.classList.remove("show");
+    KeywordSuggester__TabList.classList.remove(
+      "KeywordSuggester__TabList--Hide"
+    );
+    simplebarMask.style.marginTop = "50px";
+    let KeywordSuggester__TabButtonSelected = document.querySelector(
+      ".KeywordSuggester__TabButton--Selected"
+    );
+    KeywordSuggester__TabButtonSelected.click();
   }
+  // 검색어와 DB 비교
   if (mainSearch.value) {
     const filtered = restaurant_list.filter((x) => matchSearch(x.r_restaurant));
     if (filtered) {
@@ -503,6 +531,13 @@ mainSearch.addEventListener("keydown", (e) => {
 
 clearBtn.addEventListener("click", () => {
   mainSearch.value = "";
+  clearBtn.classList.remove("show");
+  KeywordSuggester__TabList.classList.remove("KeywordSuggester__TabList--Hide");
+  simplebarMask.style.marginTop = "50px";
+  let KeywordSuggester__TabButtonSelected = document.querySelector(
+    ".KeywordSuggester__TabButton--Selected"
+  );
+  mainSearch.focus();
 });
 
 const CLICK_KEYWORD_SEARCH = () => {

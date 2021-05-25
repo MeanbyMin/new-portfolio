@@ -92,6 +92,10 @@ const simplebarVertical = document.querySelector(".simplebar-vertical");
 const Header__SearchInputClearButton = document.querySelector(
   ".Header__SearchInputClearButton"
 );
+const KeywordSuggester__TabList = document.querySelector(
+  ".KeywordSuggester__TabList"
+);
+const simplebarMask = document.querySelector(".simplebar-mask");
 
 // 이미지
 const centerCroping = document.querySelectorAll(".center-croping");
@@ -880,6 +884,19 @@ if (Header__SearchInput !== null) {
     KeywordSuggester__Container.style.left = SearchLeft + "px";
     KeywordSuggester__Container.style.width = SearchWidth + "px";
     // Header.style.zIndex = "10";
+
+    let KeywordSuggester__TabButtonSelected = document.querySelector(
+      ".KeywordSuggester__TabButton--Selected"
+    );
+    KeywordSuggester__TabButtonSelected.classList.remove(
+      "KeywordSuggester__TabButton--Selected"
+    );
+    let KeywordSuggester__RecommendTabButton = document.querySelector(
+      ".KeywordSuggester__RecommendTabButton"
+    );
+    KeywordSuggester__RecommendTabButton.classList.add(
+      "KeywordSuggester__TabButton--Selected"
+    );
     const xhr = new XMLHttpRequest();
 
     xhr.open("POST", "./searchrecommend.php");
@@ -1245,10 +1262,20 @@ Header__SearchInput.addEventListener("keyup", function () {
     Header__SearchInputClearButton.classList.add(
       "Header__SearchInputClearButton--Show"
     );
+    KeywordSuggester__TabList.classList.add("KeywordSuggester__TabList--Hide");
+    simplebarMask.style.marginTop = "0";
   } else {
     Header__SearchInputClearButton.classList.remove(
-      "Header__SearchInputClearButton--Show"
+      "Header__SearchInputClearButton--Shows"
     );
+    KeywordSuggester__TabList.classList.remove(
+      "KeywordSuggester__TabList--Hide"
+    );
+    simplebarMask.style.marginTop = "50px";
+    let KeywordSuggester__TabButtonSelected = document.querySelector(
+      ".KeywordSuggester__TabButton--Selected"
+    );
+    KeywordSuggester__TabButtonSelected.click();
   }
   if (Header__SearchInput.value) {
     const filtered = restaurant_list.filter((x) => matchSearch(x.r_restaurant));
@@ -1275,6 +1302,9 @@ Header__SearchInputClearButton.addEventListener("click", () => {
   Header__SearchInputClearButton.classList.remove(
     "Header__SearchInputClearButton--Show"
   );
+  KeywordSuggester__TabList.classList.remove("KeywordSuggester__TabList--Hide");
+  simplebarMask.style.marginTop = "50px";
+  Header__SearchInput.focus();
 });
 
 const CLICK_KEYWORD_SEARCH = () => {
