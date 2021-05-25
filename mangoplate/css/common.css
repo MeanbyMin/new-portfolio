@@ -536,7 +536,7 @@ input:-webkit-autofill:active {
     color: #888888
 }
 
-.Header__MenuItem--New .Header__MenuText:after {
+/* .Header__MenuItem--New .Header__MenuText:after {
     content: '';
     position: absolute;
     top: -11px;
@@ -546,7 +546,7 @@ input:-webkit-autofill:active {
     height: 15px;
     background-image: url("https://mp-seoul-image-production-s3.mangoplate.com/web/resources/uo3o88vopcmdsket.png");
     background-size: cover
-}
+} */
 
 .Header--Transparent .Header__MenuText {
     color: #FFFFFF
