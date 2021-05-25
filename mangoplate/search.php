@@ -23,7 +23,7 @@
         $id = null;
     }
 
-    $sql = "SELECT r_restaurant, r_repadd, r_address, r_jibunaddress, r_menu, r_tags FROM mango_restaurant";
+    $sql = "SELECT r_restaurant, r_repadd, r_address, r_jibunaddress, r_menu, r_tags FROM mango_restaurant WHERE r_status = '등록'";
     $result = mysqli_query($conn, $sql);
     $restaurant_list = [];
     while($row = mysqli_fetch_array($result)){
@@ -196,7 +196,7 @@
                 $ps = " AND r_parking NOT LIKE '$parking'";
             }
         }
-        $sql = "SELECT r_idx, r_restaurant, r_branch, r_grade, r_read, r_review, r_wannago, r_repphoto, r_repadd, r_address, r_jibunaddress, r_foodtype  FROM mango_restaurant WHERE (r_restaurant like '%$search%' OR r_repadd like '%$search%' OR r_address like '%$search%' OR r_jibunaddress like '%$search%' OR r_menu like '%$search%' OR r_tags like '%$search%') $cs $rs $fs $ps ORDER BY $sorting DESC";
+        $sql = "SELECT r_idx, r_restaurant, r_branch, r_grade, r_read, r_review, r_wannago, r_repphoto, r_repadd, r_address, r_jibunaddress, r_foodtype  FROM mango_restaurant WHERE (r_restaurant like '%$search%' OR r_repadd like '%$search%' OR r_address like '%$search%' OR r_jibunaddress like '%$search%' OR r_menu like '%$search%' OR r_tags like '%$search%') $cs $rs $fs $ps AND r_status = '등록' ORDER BY $sorting DESC";
 
         $result = mysqli_query($conn, $sql);
 
@@ -208,7 +208,7 @@
             $page = ($_GET['page']-1) * $pageNum;
         };
 
-        $sql = "SELECT r_idx, r_restaurant, r_branch, r_grade, r_read, r_review, r_wannago, r_repphoto, r_repadd, r_address, r_jibunaddress, r_foodtype  FROM mango_restaurant WHERE (r_restaurant like '%$search%' OR r_repadd like '%$search%' OR r_address like '%$search%' OR r_jibunaddress like '%$search%' OR r_menu like '%$search%' OR r_tags like '%$search%') $cs $rs $fs $ps ORDER BY $sorting DESC LIMIT $page, $pageNum";
+        $sql = "SELECT r_idx, r_restaurant, r_branch, r_grade, r_read, r_review, r_wannago, r_repphoto, r_repadd, r_address, r_jibunaddress, r_foodtype  FROM mango_restaurant WHERE (r_restaurant like '%$search%' OR r_repadd like '%$search%' OR r_address like '%$search%' OR r_jibunaddress like '%$search%' OR r_menu like '%$search%' OR r_tags like '%$search%') $cs $rs $fs $ps AND r_status = '등록' ORDER BY $sorting DESC LIMIT $page, $pageNum";
         $result = mysqli_query($conn, $sql);
 
         
@@ -228,7 +228,7 @@
             $page = ($_GET['page']-1) * $pageNum;
         };
         
-        $sql = "SELECT r_idx, r_restaurant, r_branch, r_grade, r_read, r_review, r_wannago, r_repphoto, r_repadd, r_address, r_jibunaddress, r_foodtype  FROM mango_restaurant WHERE r_restaurant like '%$search%' OR r_repadd like '%$search%' OR r_address like '%$search%' OR r_jibunaddress like '%$search%' OR r_menu like '%$search%' OR r_tags like '%$search%' ORDER BY r_grade DESC LIMIT $page, $pageNum";
+        $sql = "SELECT r_idx, r_restaurant, r_branch, r_grade, r_read, r_review, r_wannago, r_repphoto, r_repadd, r_address, r_jibunaddress, r_foodtype  FROM mango_restaurant WHERE (r_restaurant like '%$search%' OR r_repadd like '%$search%' OR r_address like '%$search%' OR r_jibunaddress like '%$search%' OR r_menu like '%$search%' OR r_tags like '%$search%') AND r_status = '등록' ORDER BY r_grade DESC LIMIT $page, $pageNum";
         $result = mysqli_query($conn, $sql);
         
 

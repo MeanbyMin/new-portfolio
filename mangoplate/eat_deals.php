@@ -23,7 +23,7 @@
         $id = null;
     }
 
-    $sql = "SELECT r_restaurant, r_repadd, r_address, r_jibunaddress, r_menu, r_tags FROM mango_restaurant";
+    $sql = "SELECT r_restaurant, r_repadd, r_address, r_jibunaddress, r_menu, r_tags FROM mango_restaurant WHERE r_status = '등록'";
     $result = mysqli_query($conn, $sql);
     $restaurant_list = [];
     while($row = mysqli_fetch_array($result)){
