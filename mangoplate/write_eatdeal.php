@@ -146,10 +146,19 @@
                 const ed_price = document.querySelector('input[name=ed_price]');
                 const ed_percent = document.querySelector('input[name=ed_percent]');
                 const ed_startday = document.querySelector('input[name=ed_startday]');
-                const ed_day = document.querySelector('input[name=ed_endday]');
+                const ed_endday = document.querySelector('input[name=ed_endday]');
                 const ed_resinfo = document.querySelector('.ed_resinfo');
                 const ed_menuinfo = document.querySelector('.ed_menuinfo');
                 const ex_filename = document.getElementById('ex_filename');
+                let date = new Date();
+                let sYY = Number(ed_startday.value.substring(0,4));
+                let sMM = Number(ed_startday.value.substring(5,7)) - 1;
+                let sDD = Number(ed_startday.value.substring(8,10));
+                let sDate = new Date(sYY, sMM, sDD, 23, 59, 59);
+                let eYY = Number(ed_endday.value.substring(0,4));
+                let eMM = Number(ed_endday.value.substring(5,7)) - 1;
+                let eDD = Number(ed_endday.value.substring(8,10));
+                let eDate = new Date(eYY, eMM, eDD, 23, 59, 59);
 
                 // 정규식
                 const expDayText = /^\d{4}-\d{2}-\d{2}$/;
@@ -189,6 +198,18 @@
                     ed_startday.focus();
                     return false;
                 }
+                
+                if(sDate - date < 0){
+                    alert('현재 날짜 이후로 작성해주세요.');
+                    ed_startday.focus();
+                    return false;
+                }
+                
+                if(expDayText.test(ed_startday.value) == false){
+                    alert('기간 형식을 확인하세요.');
+                    ed_startday.focus();
+                    return false;
+                }
 
                 if(ed_endday.value == ''){
                     alert('마감일을 입력하세요');
@@ -196,9 +217,9 @@
                     return false;
                 }
 
-                if(expDayText.test(ed_startday.value) == false){
-                    alert('기간 형식을 확인하세요.');
-                    ed_startday.focus();
+                if(eDate - sDate < 0){
+                    alert('시작일 날짜 이후로 작성해주세요.');
+                    ed_endday.focus();
                     return false;
                 }
 
@@ -207,6 +228,8 @@
                     ed_endday.focus();
                     return false;
                 }
+
+                
 
                 if(ed_resinfo.value == ''){
                     alert('가게 설명을 입력하세요');
