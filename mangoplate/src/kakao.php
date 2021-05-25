@@ -14,6 +14,9 @@
     // echo $mm_profile_image;
     // echo $mm_gender;
     // echo $mm_birthday;
+    if($mm_profile_image === null || $mm_profile_image === 'undefined' || $mm_profile_image === ''){
+        $mm_profile_image = './img/userprofile.png';
+    }
 
     if(!$conn){
         echo "DB 연결 실패";
