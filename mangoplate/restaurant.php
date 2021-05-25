@@ -1,5 +1,6 @@
 <?php
     header('Content-Type: text/html; charset=UTF-8');
+    header("Access-Control-Allow-Origin: *");
     session_start();
     include "./include/getmrIdxCheck.php";
     include "./include/dbconn.php";
