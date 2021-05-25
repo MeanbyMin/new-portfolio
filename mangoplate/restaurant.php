@@ -1274,7 +1274,7 @@ if($r_photoarr == null){
                                 </header>
                                 <ul class="RestaurantReviewList__ReviewList RestaurantReviewList__ReviewList--Loading">
                                 </ul>
-                                <div class="RestaurantReviewList__MoreReviewButton" role="button">
+                                <div class="RestaurantReviewList__MoreReviewButton" role="button" onclick="CLICK_MORE_LIST()">
                                     더보기
                                 </div>
                             </section>
@@ -2001,10 +2001,13 @@ if($r_photoarr == null){
     <script src="./js/kakao.js"></script>
     <script src="./js/restaurant.js"></script>
     <script>
-        let mm_wannago = <?= json_encode($mm_wannagoarr) ?>;
         let mm_userid = <?= json_encode($id) ?>;
         let sessionid = <?= json_encode($sessionid)?>;
         let mm_recentarr = <?=json_encode($mm_recentarr)?>;
+        let reviewCount = <?=json_encode($reviewCount)?>;
+        let goodRecommendCount = <?=json_encode($goodRecommendCount)?>;
+        let okRecommendCount = <?=json_encode($okRecommendCount)?>;
+        let noRecommendCount = <?=json_encode($noRecommendCount)?>;
     </script>
 </body>
 

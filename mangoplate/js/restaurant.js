@@ -73,6 +73,10 @@ const RestaurantReviewList__NotRecommendButton = document.querySelector(
 const RestaurantReviewList__ReviewList = document.querySelector(
   ".RestaurantReviewList__ReviewList "
 );
+//리뷰 더보기
+const RestaurantReviewList__MoreReviewButton = document.querySelector(
+  ".RestaurantReviewList__MoreReviewButton"
+);
 
 // 검색창
 const Header__SearchInput = document.querySelector(".Header__SearchInput");
@@ -272,11 +276,20 @@ window.onload = function () {
           review[i] = arr[i].split("&nbsp");
         }
       }
-      // console.log(review);
       profile(review);
     }
   };
 };
+
+// 더보기 페이지 카운트
+let allPage = 5;
+let recommendPage = 5;
+let okPage = 5;
+let noPage = 5;
+let allPageCount = 5;
+let recommendPageCount = 5;
+let okPageCount = 5;
+let noPageCount = 5;
 
 function recommendAll(rc) {
   RestaurantReviewList__ReviewList.classList.add(
@@ -299,17 +312,51 @@ function recommendAll(rc) {
         for (let i = 0; i < arr.length; i++) {
           review[i] = arr[i].split("&nbsp");
         }
+        RestaurantReviewList__MoreReviewButton.classList.add(
+          "RestaurantReviewList__MoreReviewButton--Hide"
+        );
       } else {
         for (let i = 0; i < 5; i++) {
           review[i] = arr[i].split("&nbsp");
         }
+        RestaurantReviewList__MoreReviewButton.classList.remove(
+          "RestaurantReviewList__MoreReviewButton--Hide"
+        );
       }
       profile(review);
     }
   };
+  recommendPage = 5;
+  okPage = 5;
+  noPage = 5;
+  recommendPageCount = 5;
+  okPageCount = 5;
+  noPageCount = 5;
 }
 
 function recommend(rc) {
+  if (rc === "맛있다") {
+    allPage = 5;
+    okPage = 5;
+    noPage = 5;
+    allPageCount = 5;
+    okPageCount = 5;
+    noPageCount = 5;
+  } else if (rc === "괜찮다") {
+    allPage = 5;
+    recommendPage = 5;
+    noPage = 5;
+    allPageCount = 5;
+    recommendPageCount = 5;
+    noPageCount = 5;
+  } else {
+    allPage = 5;
+    recommendPage = 5;
+    okPage = 5;
+    allPageCount = 5;
+    recommendPageCount = 5;
+    okPageCount = 5;
+  }
   RestaurantReviewList__ReviewList.classList.add(
     "RestaurantReviewList__ReviewList--Loading"
   );
@@ -330,10 +377,16 @@ function recommend(rc) {
         for (let i = 0; i < arr.length; i++) {
           review[i] = arr[i].split("&nbsp");
         }
+        RestaurantReviewList__MoreReviewButton.classList.add(
+          "RestaurantReviewList__MoreReviewButton--Hide"
+        );
       } else {
         for (let i = 0; i < 5; i++) {
           review[i] = arr[i].split("&nbsp");
         }
+        RestaurantReviewList__MoreReviewButton.classList.remove(
+          "RestaurantReviewList__MoreReviewButton--Hide"
+        );
       }
       profile(review);
     }
@@ -359,6 +412,7 @@ function profile(re) {
       };
     })(i);
   }
+  profilearr = [];
 }
 
 const writeList = (i) => {
@@ -489,6 +543,327 @@ const writeRecommend = (i) => {
   }
 };
 
+// let allPage = 5;
+// let recommendPage = 5;
+// let okPage = 5;
+// let noPage = 5;
+// allPageCount = 5;
+// let recommendPageCount = 5;
+// let okPageCount = 5;
+// let noPageCount = 5;
+// 리뷰 더보기
+let reviewMore = [];
+let moreLength;
+function CLICK_MORE_LIST() {
+  const rc = document
+    .querySelector(".RestaurantReviewList__FilterButton--Selected")
+    .textContent.trim()
+    .split("\n")[0];
+  if (rc === "전체") {
+    reviewMore = [];
+    const xhr = new XMLHttpRequest();
+    xhr.open(
+      "GET",
+      "./recommend_allMore.php?r_idx=" + r_idx + "&page=" + allPage
+    );
+    xhr.send();
+    xhr.onload = () => {
+      if (xhr.status === 200) {
+        let arr = xhr.responseText.split("<br>");
+        arr.pop();
+        moreLength = arr.length;
+        if (arr.length <= 5) {
+          for (let i = 0; i < arr.length; i++) {
+            reviewMore[i] = arr[i].split("&nbsp");
+          }
+        } else {
+          for (let i = 0; i < 5; i++) {
+            reviewMore[i] = arr[i].split("&nbsp");
+          }
+        }
+        profileMore(reviewMore, allPage);
+        allPage += 5;
+        allPageCount += arr.length;
+      }
+      if (allPageCount === reviewCount) {
+        RestaurantReviewList__MoreReviewButton.classList.add(
+          "RestaurantReviewList__MoreReviewButton--Hide"
+        );
+      }
+    };
+  } else if (rc === "맛있다") {
+    RestaurantReviewList__ReviewList.classList.add(
+      "RestaurantReviewList__ReviewList--Loading"
+    );
+    reviewMore = [];
+    const xhr = new XMLHttpRequest();
+    xhr.open(
+      "GET",
+      "./recommendMore.php?r_idx=" +
+        r_idx +
+        "&mm_recommend=" +
+        rc +
+        "&page=" +
+        recommendPage
+    );
+    xhr.send();
+    xhr.onload = () => {
+      if (xhr.status === 200) {
+        let arr = xhr.responseText.split("<br>");
+        arr.pop();
+        moreLength = arr.length;
+        if (arr.length <= 5) {
+          for (let i = 0; i < arr.length; i++) {
+            reviewMore[i] = arr[i].split("&nbsp");
+          }
+        } else {
+          for (let i = 0; i < 5; i++) {
+            reviewMore[i] = arr[i].split("&nbsp");
+          }
+        }
+        profileMore(reviewMore, recommendPage);
+        recommendPage += 5;
+        recommendPageCount += arr.length;
+      }
+      if (allPageCount === reviewCount) {
+        RestaurantReviewList__MoreReviewButton.classList.add(
+          "RestaurantReviewList__MoreReviewButton--Hide"
+        );
+      }
+    };
+  } else if (rc === "괜찮다") {
+    RestaurantReviewList__ReviewList.classList.add(
+      "RestaurantReviewList__ReviewList--Loading"
+    );
+    reviewMore = [];
+    const xhr = new XMLHttpRequest();
+    xhr.open(
+      "GET",
+      "./recommendMore.php?r_idx=" +
+        r_idx +
+        "&mm_recommend=" +
+        rc +
+        "&page=" +
+        okPage
+    );
+    xhr.send();
+    xhr.onload = () => {
+      if (xhr.status === 200) {
+        let arr = xhr.responseText.split("<br>");
+        arr.pop();
+        moreLength = arr.length;
+        if (arr.length <= 5) {
+          for (let i = 0; i < arr.length; i++) {
+            reviewMore[i] = arr[i].split("&nbsp");
+          }
+        } else {
+          for (let i = 0; i < 5; i++) {
+            reviewMore[i] = arr[i].split("&nbsp");
+          }
+        }
+        profileMore(reviewMore, okPage);
+        okPage += 5;
+        okPageCount += arr.length;
+      }
+      if (okPageCount === reviewCount) {
+        RestaurantReviewList__MoreReviewButton.classList.add(
+          "RestaurantReviewList__MoreReviewButton--Hide"
+        );
+      }
+    };
+  } else if (rc === "별로") {
+    RestaurantReviewList__ReviewList.classList.add(
+      "RestaurantReviewList__ReviewList--Loading"
+    );
+    reviewMore = [];
+    const xhr = new XMLHttpRequest();
+    xhr.open(
+      "GET",
+      "./recommendMore.php?r_idx=" +
+        r_idx +
+        "&mm_recommend=" +
+        rc +
+        "&page=" +
+        noPage
+    );
+    xhr.send();
+    xhr.onload = () => {
+      if (xhr.status === 200) {
+        let arr = xhr.responseText.split("<br>");
+        arr.pop();
+        moreLength = arr.length;
+        if (arr.length <= 5) {
+          for (let i = 0; i < arr.length; i++) {
+            reviewMore[i] = arr[i].split("&nbsp");
+          }
+        } else {
+          for (let i = 0; i < 5; i++) {
+            reviewMore[i] = arr[i].split("&nbsp");
+          }
+        }
+        profileMore(reviewMore, noPage);
+        noPage += 5;
+        noPageCount += arr.length;
+      }
+      if (noPageCount === reviewCount) {
+        RestaurantReviewList__MoreReviewButton.classList.add(
+          "RestaurantReviewList__MoreReviewButton--Hide"
+        );
+      }
+    };
+  }
+}
+
+let profileMorearr = [];
+function profileMore(re, count) {
+  for (let i = 0; i < re.length; i++) {
+    const xhr = new XMLHttpRequest();
+    (async function (i) {
+      await xhr.open("GET", "./profileConfirm.php?mm_userid=" + re[i][1]);
+      await xhr.send();
+      xhr.onload = () => {
+        if (xhr.status === 200) {
+          let detail = xhr.responseText.split("<br>");
+          detail.pop();
+          for (let i = 0; i < detail.length; i++) {
+            profileMorearr.push(detail[i].split("&nbsp"));
+          }
+          setTimeout(writeListMore, 200, i, count);
+        }
+      };
+    })(i);
+  }
+  profileMorearr = [];
+}
+
+const writeListMore = (i, c) => {
+  let li = document.createElement("li");
+  li.setAttribute(
+    "class",
+    "RestaurantReviewItem RestaurantReviewList__ReviewItem"
+  );
+  li.innerHTML = `
+    <a class="RestaurantReviewItem__Link" href="./review.php?mr_idx=${reviewMore[i][0]}" target="_blank">
+      <div class="RestaurantReviewItem__User">
+        <div class="RestaurantReviewItem__UserPictureWrap">
+          <img class="RestaurantReviewItem__UserPicture loaded" data-src="${profileMorearr[i][1]}" alt="user profile picture" src="${profileMorearr[i][1]}" data-was-processed="true">
+        </div>
+
+        <span class="RestaurantReviewItem__UserNickName">${profileMorearr[i][0]}</span>
+
+        <ul class="RestaurantReviewItem__UserStat">
+          <li class="RestaurantReviewItem__UserStatItem RestaurantReviewItem__UserStatItem--Review">${profileMorearr[i][2]}</li>
+          <li class="RestaurantReviewItem__UserStatItem RestaurantReviewItem__UserStatItem--Follower">${profileMorearr[i][3]}</li>
+        </ul>
+      </div>
+      <div class="RestaurantReviewItem__ReviewContent">
+        <div class="RestaurantReviewItem__ReviewTextWrap">
+          <p class="RestaurantReviewItem__ReviewText">
+            ${reviewMore[i][2]}
+          </p>
+          <span class="RestaurantReviewItem__ReviewDate">${reviewMore[i][5]}</span>
+        </div>
+        <ul class="RestaurantReviewItem__PictureList"></ul>
+      </div>
+    </a>
+    `;
+  RestaurantReviewList__ReviewList.appendChild(li);
+  RestaurantReviewList__ReviewList.classList.remove(
+    "RestaurantReviewList__ReviewList--Loading"
+  );
+  setTimeout(writePhotoMore, 100, i);
+  setTimeout(writeRecommendMore, 200, i, c);
+};
+
+const writePhotoMore = (i) => {
+  let reviewphotoMore = [];
+  if (reviewMore[i][4].length > 0) {
+    if (reviewMore[i][4].includes(",") === true) {
+      reviewphotoMore = reviewMore[i][4].split(",");
+    } else if (reviewMore[i][4].includes(",") === false) {
+      reviewphotoMore[0] = reviewMore[i][4];
+    }
+  }
+
+  const RestaurantReviewItem__PictureList = document.querySelectorAll(
+    ".RestaurantReviewItem__PictureList"
+  );
+  if (reviewphotoMore.length > 4) {
+    for (let k = 0; k < 4; k++) {
+      let minusCount = reviewphotoMore.length - 4;
+      let li1 = document.createElement("li");
+      li1.setAttribute("class", "RestaurantReviewItem__PictureItem");
+      li1.innerHTML = `
+      <button class="RestaurantReviewItem__PictureButton" data-index="${k}">
+      <img class="RestaurantReviewItem__Picture loaded"
+      data-src="${reviewphotoMore[k]}"
+      alt="review picture"
+      src="${reviewphotoMore[k]}">
+      <div class="RestaurantReviewItem__PictureDeem">+${minusCount}</div>
+      </button>
+      `;
+      RestaurantReviewItem__PictureList[i].appendChild(li1);
+    }
+  } else {
+    for (let k = 0; k < reviewphotoMore.length; k++) {
+      let li1 = document.createElement("li");
+      li1.setAttribute("class", "RestaurantReviewItem__PictureItem");
+      li1.innerHTML = `
+      <button class="RestaurantReviewItem__PictureButton" data-index="${k}" >
+      <img class="RestaurantReviewItem__Picture loaded"
+      data-src="${reviewphotoMore[k]}"
+      alt="review picture"
+      src="${reviewphotoMore[k]}" style="z-index:100;">
+      </button>
+      `;
+      RestaurantReviewItem__PictureList[i].appendChild(li1);
+    }
+  }
+};
+
+const writeRecommendMore = (i, c) => {
+  if (reviewMore[i][3] === "맛있다") {
+    let RestaurantReviewItem__Link = document.querySelectorAll(
+      ".RestaurantReviewItem__Link"
+    );
+    let div = document.createElement("div");
+    div.setAttribute(
+      "class",
+      "RestaurantReviewItem__Rating RestaurantReviewItem__Rating--Recommend"
+    );
+    div.innerHTML = `
+          <span class="RestaurantReviewItem__RatingText">맛있다</span>
+          `;
+    RestaurantReviewItem__Link[i + c].appendChild(div);
+  } else if (reviewMore[i][3] === "괜찮다") {
+    let RestaurantReviewItem__Link = document.querySelectorAll(
+      ".RestaurantReviewItem__Link"
+    );
+    let div = document.createElement("div");
+    div.setAttribute(
+      "class",
+      "RestaurantReviewItem__Rating RestaurantReviewItem__Rating--Ok"
+    );
+    div.innerHTML = `
+              <span class="RestaurantReviewItem__RatingText">괜찮다</span>
+              `;
+    RestaurantReviewItem__Link[i + c].appendChild(div);
+  } else if (reviewMore[i][3] === "별로") {
+    let RestaurantReviewItem__Link = document.querySelectorAll(
+      ".RestaurantReviewItem__Link"
+    );
+    let div = document.createElement("div");
+    div.setAttribute(
+      "class",
+      "RestaurantReviewItem__Rating RestaurantReviewItem__Rating--DoNotRecommend"
+    );
+    div.innerHTML = `
+                  <span class="RestaurantReviewItem__RatingText">별로</span>
+                  `;
+    RestaurantReviewItem__Link[i + c].appendChild(div);
+  }
+};
+
 // 검색창
 if (Header__SearchInput !== null) {
   Header__SearchInput.addEventListener("focus", () => {
@@ -585,7 +960,6 @@ function CLICK_RECENT_TAB() {
 
 // 가고싶다
 function CLICK_WAANGO_TAB() {
-  // console.log(mm_wannago);
   UserRestaurantHistoryTabItemWannago.classList.add(
     "UserRestaurantHistory__TabItem--Selected"
   );
