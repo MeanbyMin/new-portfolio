@@ -205,12 +205,11 @@
         if(isset($parking)){
             if($parking === "1"){
                 $parking = "주차공간없음";
-                $ps = " AND r_parking NOT LIKE '$parking'";
+                $ps = " AND r_parking NOT LIKE'$parking'";
             }
         }
 
         $sql = "SELECT r_idx, r_restaurant, r_branch, r_grade, r_read, r_review, r_wannago, r_repphoto, r_repadd, r_address, r_jibunaddress, r_foodtype  FROM mango_restaurant WHERE (r_restaurant like '%$search%' OR r_repadd like '%$search%' OR r_address like '%$search%' OR r_jibunaddress like '%$search%' OR r_menu like '%$search%' OR r_tags like '%$search%') $cs $rs $fs $ps AND r_status = '등록' ORDER BY $sorting DESC";
-
         $result = mysqli_query($conn, $sql);
 
         $pageNum = 20;
@@ -1607,13 +1606,20 @@
                                         <p>
 <?php
     if(isset($_POST['parking'])){
-        if(in_array("1", $_POST['parking'])){
+        if($_POST['parking'] === "1"){
 ?>
                                             <input type="radio" id="parking01" name="parking" value="0"><label
                                                 for="parking01">상관없음</label>
                                             <input type="radio" id="parking02" name="parking" value="1"checked><label
                                                 for="parking02">가능한 곳만</label>
 <?php
+        }else{
+?>
+                                            <input type="radio" id="parking01" name="parking" value="0" checked><label
+                                                for="parking01">상관없음</label>
+                                            <input type="radio" id="parking02" name="parking" value="1"><label
+                                                for="parking02">가능한 곳만</label>
+<?php   
         }
     }else{
 ?>
