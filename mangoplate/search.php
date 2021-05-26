@@ -120,73 +120,85 @@
     }
 
 
-    $region;
+    $regionarr = [];
     if(isset($_POST['region'])){
-        $region = $_POST['region'];
+        foreach ($_POST['region'] as $reg) {
+            array_push($regionarr, $reg);
+        }
     }
-
-
-    $food;
+    
+    $foodarr = [];
     if(isset($_POST['food'])){
-        $food = $_POST['food'];
+        foreach ($_POST['food'] as $fd) {
+            array_push($foodarr, $fd);
+        }
     }
 
+    if(isset($_POST['parking'])){
+        $parking = $_POST['parking'];
+    }
 
     // 필터 사용시
     $searchlist = [];
     if(isset($_POST['sorting'])){
         $cs = "";
         if(isset($costarr)){
-            $costsearch = " AND r_price IN (";
-            if(count($costarr) === 1){
-                $costsearch .= "'$costarr[0]'";
-            }else if(count($costarr) > 1){
-                for($i=0;$i<count($costarr);$i++){
-                    if($i === (count($costarr) - 1)){
-                        $costsearch .= "'$costarr[$i]'";    
-                    }else{
-                        $costsearch .= "'$costarr[$i]'".",";
+            if(count($costarr) > 0){
+                $costsearch = " AND r_price IN (";
+                if(count($costarr) === 1){
+                    $costsearch .= "'$costarr[0]'";
+                }else if(count($costarr) > 1){
+                    for($i=0;$i<count($costarr);$i++){
+                        if($i === (count($costarr) - 1)){
+                            $costsearch .= "'$costarr[$i]'";    
+                        }else{
+                            $costsearch .= "'$costarr[$i]'".",";
+                        }
                     }
                 }
+                $cs = $costsearch;
+                $cs .= ")";
             }
-            $cs = $costsearch;
-            $cs .= ")";
         }
 
         $rs = "";
-        if(isset($region)){
-            $regionsearch = " AND r_repadd IN (";
-            if(count($region) === 1){
-                $regionsearch .= "'$region[0]'";
-            }else if(count($region) > 1){
-                for($i=0;$i<count($region);$i++){
-                    if($i === (count($region) - 1)){
-                        $regionsearch .= "'$region[$i]'";    
-                    }else{
-                        $regionsearch .= "'$region[$i]'".",";
+        if(isset($regionarr)){
+            if(count($regionarr) > 0){
+                $regionsearch = " AND r_repadd IN (";
+                if(count($regionarr) === 1){
+                    $regionsearch .= "'$regionarr[0]'";
+                }else if(count($regionarr) > 1){
+                    for($i=0;$i<count($regionarr);$i++){
+                        if($i === (count($regionarr) - 1)){
+                            $regionsearch .= "'$regionarr[$i]'";    
+                        }else{
+                            $regionsearch .= "'$regionarr[$i]'".",";
+                        }
                     }
                 }
+                $rs = $regionsearch;
+                $rs .= ")";
             }
-            $rs = $regionsearch;
-            $rs .= ")";
         }
 
         $fs = "";
-        if(isset($food)){
-            $foodsearch = " AND r_foodtype IN (";
-            if(count($food) === 1){
-                $foodsearch .= "'$food[0]'";
-            }else if(count($food) > 1){
-                for($i=0;$i<count($food);$i++){
-                    if($i === (count($food) - 1)){
-                        $foodsearch .= "'$food[$i]'";    
-                    }else{
-                        $foodsearch .= "'$food[$i]'".",";
+        if(isset($foodarr)){
+            if(count($foodarr) > 0){
+                $foodsearch = " AND r_foodtype IN (";
+                if(count($foodarr) === 1){
+                    $foodsearch .= "'$foodarr[0]'";
+                }else if(count($foodarr) > 1){
+                    for($i=0;$i<count($foodarr);$i++){
+                        if($i === (count($foodarr) - 1)){
+                            $foodsearch .= "'$foodarr[$i]'";    
+                        }else{
+                            $foodsearch .= "'$foodarr[$i]'".",";
+                        }
                     }
                 }
+                $fs = $foodsearch;
+                $fs .= ")";
             }
-            $fs = $foodsearch;
-            $fs .= ")";
         }
 
         $ps = "";
@@ -196,6 +208,7 @@
                 $ps = " AND r_parking NOT LIKE '$parking'";
             }
         }
+
         $sql = "SELECT r_idx, r_restaurant, r_branch, r_grade, r_read, r_review, r_wannago, r_repphoto, r_repadd, r_address, r_jibunaddress, r_foodtype  FROM mango_restaurant WHERE (r_restaurant like '%$search%' OR r_repadd like '%$search%' OR r_address like '%$search%' OR r_jibunaddress like '%$search%' OR r_menu like '%$search%' OR r_tags like '%$search%') $cs $rs $fs $ps AND r_status = '등록' ORDER BY $sorting DESC";
 
         $result = mysqli_query($conn, $sql);
@@ -1148,10 +1161,26 @@
                                     <div class="filter-item">
                                         <label for="sorting01">검색 필터</label>
                                         <p class="order_wrap">
+<?php
+    if(isset($_POST['sorting'])){
+        if($sorting === 'r_review'){
+?>
+                                            <input type="radio" id="sorting01" name="sorting" value="2" >
+                                            <label onclick="" for="sorting01">평점순</label>
+                                            <input type="radio" id="sorting02" name="sorting" value="0" checked>
+                                            <label onclick="" for="sorting02">인기순</label>
+<?php
+        }
+    }else{
+?>
                                             <input type="radio" id="sorting01" name="sorting" value="2" checked>
                                             <label onclick="" for="sorting01">평점순</label>
                                             <input type="radio" id="sorting02" name="sorting" value="0">
                                             <label onclick="" for="sorting02">인기순</label>
+<?php
+    }
+?>
+                                            
                                         </p>
                                     </div>
 
@@ -1160,6 +1189,79 @@
                                         <label for="">가격/1인당</label>
 
                                         <p class="cost_wrap">
+<?php
+    if(isset($_POST['cost'])){
+        $cost = $_POST['cost'];
+        if(in_array("1", $cost)){
+?>
+                                            <input type="checkbox" id="cost01" name="cost[]" class="cost"
+                                                ng-checked="is_checked_price_value(price_filter_name, 1)" data-value="1"
+                                                value="1" checked><label onclick="" for="cost01" class="cost01 cost-zoom"
+                                                data-filter="1"
+                                                ng-click="set_filter_value(price_filter_name, $event, price_filter_value_hadler)"><span>만원미만</span></label>
+<?php
+        }else{
+?>
+                                            <input type="checkbox" id="cost01" name="cost[]" class="cost"
+                                            ng-checked="is_checked_price_value(price_filter_name, 1)" data-value="1"
+                                            value="1"><label onclick="" for="cost01" class="cost01 cost-zoom"
+                                            data-filter="1"
+                                            ng-click="set_filter_value(price_filter_name, $event, price_filter_value_hadler)"><span>만원미만</span></label>
+<?php
+        }
+        if(in_array("2", $cost)){
+?>
+                                            <input type="checkbox" id="cost02" name="cost[]" class="cost"
+                                                ng-checked="is_checked_price_value(price_filter_name, 2)" data-value="2"
+                                                value="2" checked><label onclick="" for="cost02" class="cost02 cost-zoom"
+                                                data-filter="2"
+                                                ng-click="set_filter_value(price_filter_name, $event, price_filter_value_hadler)"><span>1만원대</span></label>
+<?php
+        }else{
+?>
+                                            <input type="checkbox" id="cost02" name="cost[]" class="cost"
+                                                ng-checked="is_checked_price_value(price_filter_name, 2)" data-value="2"
+                                                value="2"><label onclick="" for="cost02" class="cost02 cost-zoom"
+                                                data-filter="2"
+                                                ng-click="set_filter_value(price_filter_name, $event, price_filter_value_hadler)"><span>1만원대</span></label>
+<?php
+        }
+        if(in_array("3", $cost)){
+?>
+                                            <input type="checkbox" id="cost03" name="cost[]" class="cost"
+                                                ng-checked="is_checked_price_value(price_filter_name, 3)" data-value="3"
+                                                value="3" checked><label onclick="" for="cost03" class="cost03 cost-zoom"
+                                                data-filter="3"
+                                                ng-click="set_filter_value(price_filter_name, $event, price_filter_value_hadler)"><span>2만원대</span></label>
+<?php
+        }else{
+?>
+                                            <input type="checkbox" id="cost03" name="cost[]" class="cost"
+                                                ng-checked="is_checked_price_value(price_filter_name, 3)" data-value="3"
+                                                value="3"><label onclick="" for="cost03" class="cost03 cost-zoom"
+                                                data-filter="3"
+                                                ng-click="set_filter_value(price_filter_name, $event, price_filter_value_hadler)"><span>2만원대</span></label>
+<?php
+        }
+        if(in_array("4", $cost)){
+?>
+                                            <input type="checkbox" id="cost04" name="cost[]" class="cost"
+                                                ng-checked="is_checked_price_value(price_filter_name, 4)" data-value="4"
+                                                value="4" checked><label onclick="" for="cost04" class="cost04 cost-zoom"
+                                                data-filter="4,5"
+                                                ng-click="set_filter_value(price_filter_name, $event, price_filter_value_hadler)"><span>3만원대</span></label>
+<?php
+        }else{
+?>
+                                            <input type="checkbox" id="cost04" name="cost[]" class="cost"
+                                                ng-checked="is_checked_price_value(price_filter_name, 4)" data-value="4"
+                                                value="4"><label onclick="" for="cost04" class="cost04 cost-zoom"
+                                                data-filter="4,5"
+                                                ng-click="set_filter_value(price_filter_name, $event, price_filter_value_hadler)"><span>3만원대</span></label>
+<?php
+        }
+    }else{
+?>
                                             <input type="checkbox" id="cost01" name="cost[]" class="cost"
                                                 ng-checked="is_checked_price_value(price_filter_name, 1)" data-value="1"
                                                 value="1"><label onclick="" for="cost01" class="cost01 cost-zoom"
@@ -1180,6 +1282,9 @@
                                                 value="4"><label onclick="" for="cost04" class="cost04 cost-zoom"
                                                 data-filter="4,5"
                                                 ng-click="set_filter_value(price_filter_name, $event, price_filter_value_hadler)"><span>3만원대</span></label>
+<?php
+    }
+?>
                                         </p>
                                     </div>
 
@@ -1382,6 +1487,99 @@
                                         <label for="">음식종류</label>
 
                                         <p class="cuisine_list_wrap">
+<?php
+    if(isset($_POST['food'])){
+        $food = $_POST['food'];
+        if(in_array('한식', $food)){
+?>
+                                            <input type="checkbox" id="food01" name="food[]" class="food" value="한식" checked><label
+                                                for="food01" class="food01">한식</label>
+<?php
+        }else{
+?>
+                                            <input type="checkbox" id="food01" name="food[]" class="food" value="한식"><label
+                                                for="food01" class="food01">한식</label>
+<?php
+        }
+        if(in_array('일식', $food)){
+?>
+                                            <input type="checkbox" id="food02" name="food[]" class="food" value="일식" checked><label
+                                                for="food02" class="food02">일식</label>
+<?php
+        }else{
+?>
+                                            <input type="checkbox" id="food02" name="food[]" class="food" value="일식"><label
+                                                for="food02" class="food02">일식</label>
+<?php
+        }
+        if(in_array('중식', $food)){
+?>
+                                            <input type="checkbox" id="food03" name="food[]" class="food" value="중식" checked><label
+                                                for="food03" class="food03">중식</label>
+<?php
+        }else{
+?>
+                                            <input type="checkbox" id="food03" name="food[]" class="food" value="중식"><label
+                                                for="food03" class="food03">중식</label>
+<?php
+        }
+        if(in_array('양식', $food)){
+?>
+                                            <input type="checkbox" id="food04" name="food[]" class="food" value="양식" checked><label
+                                                for="food04" class="food04 line-break">양식</label>
+<?php
+        }else{
+?>
+                                            <input type="checkbox" id="food04" name="food[]" class="food" value="양식"><label
+                                                for="food04" class="food04 line-break">양식</label>
+<?php
+        }
+        if(in_array('세계음식', $food)){
+?>
+                                            <input type="checkbox" id="food05" name="food[]" class="food" value="세계음식" checked><label
+                                                for="food05" class="food05">세계음식</label>
+<?php
+        }else{
+?>
+                                            <input type="checkbox" id="food05" name="food[]" class="food" value="세계음식"><label
+                                                for="food05" class="food05">세계음식</label>
+<?php
+        }
+        if(in_array('뷔페', $food)){
+?>
+                                            <input type="checkbox" id="food06" name="food[]" class="food" value="뷔페" checked><label
+                                                for="food06" class="food06">뷔페</label>
+<?php
+        }else{
+?>
+                                            <input type="checkbox" id="food06" name="food[]" class="food" value="뷔페"><label
+                                                for="food06" class="food06">뷔페</label>
+<?php
+        }
+        if(in_array('카페', $food)){
+?>
+                                            <input type="checkbox" id="food07" name="food[]" class="food" value="카페" checked><label
+                                                for="food07" class="food07">카페</label>
+<?php
+        }else{
+?>
+                                            <input type="checkbox" id="food07" name="food[]" class="food" value="카페"><label
+                                                for="food07" class="food07">카페</label>
+<?php
+        }
+        if(in_array('주점', $food)){
+?>
+                                            <input type="checkbox" id="food08" name="food[]" class="food" value="주점" checked><label
+                                                for="food08" class="food08 line-break">주점</label>
+<?php
+        }else{
+?>
+                                            <input type="checkbox" id="food08" name="food[]" class="food" value="주점"><label
+                                                for="food08" class="food08 line-break">주점</label>
+<?php
+        }
+    }else{
+?>
                                             <input type="checkbox" id="food01" name="food[]" class="food" value="한식"><label
                                                 for="food01" class="food01">한식</label>
                                             <input type="checkbox" id="food02" name="food[]" class="food" value="일식"><label
@@ -1398,16 +1596,34 @@
                                                 for="food07" class="food07">카페</label>
                                             <input type="checkbox" id="food08" name="food[]" class="food" value="주점"><label
                                                 for="food08" class="food08 line-break">주점</label>
+<?php
+    }
+?>
                                         </p>
                                     </div>
 
                                     <div class="filter-item only-desktop">
                                         <label for="parking01">주차</label>
                                         <p>
+<?php
+    if(isset($_POST['parking'])){
+        if(in_array("1", $_POST['parking'])){
+?>
+                                            <input type="radio" id="parking01" name="parking" value="0"><label
+                                                for="parking01">상관없음</label>
+                                            <input type="radio" id="parking02" name="parking" value="1"checked><label
+                                                for="parking02">가능한 곳만</label>
+<?php
+        }
+    }else{
+?>
                                             <input type="radio" id="parking01" name="parking" value="0" checked><label
                                                 for="parking01">상관없음</label>
                                             <input type="radio" id="parking02" name="parking" value="1"><label
                                                 for="parking02">가능한 곳만</label>
+<?php
+    }
+?>
                                         </p>
                                     </div>
                                 </div>
