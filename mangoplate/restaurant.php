@@ -1146,7 +1146,8 @@ if($r_photoarr == null){
                                             <td>
                                                 <div class="list-thumb-photos size-small">
 <?php
-  for($i=0; $i<count($r_menuphotoarr); $i++){
+    if(count($r_menuphotoarr) <= 4){
+        for($i=0; $i<count($r_menuphotoarr); $i++){
 ?>
                                                     <button class="btn-thumb" onclick=""
                                                         ng-click="open_menu_picture(<?=$i?>)">
@@ -1155,7 +1156,34 @@ if($r_photoarr == null){
                                                             src="<?=$r_menuphotoarr[$i]?>" style="display: block;">
                                                     </button>
 <?php
-  }
+        }
+    }else{
+        $lessCount = count($r_menuphotoarr) - 4;
+        for($i=0; $i<4; $i++){
+            if($i===3){
+?>
+                                                    <button class="btn-thumb" onclick="GALLERY2()"
+                                                        ng-click="open_menu_picture(<?=$i?>)">
+                                                        <img class="center-croping lazy"
+                                                            alt="<?=$r_restaurant?> 메뉴 사진 - <?=$r_jibunaddress?>"
+                                                            src="<?=$r_menuphotoarr[$i]?>" style="display: block;">
+                                                            <div class="black_screen">
+                                                                <p class="txt">+ <?=$lessCount?></p>
+                                                            </div>
+                                                    </button>
+<?php
+            }else{
+?>
+                                                    <button class="btn-thumb" onclick="GALLERY2()"
+                                                        ng-click="open_menu_picture(<?=$i?>)">
+                                                        <img class="center-croping lazy"
+                                                            alt="<?=$r_restaurant?> 메뉴 사진 - <?=$r_jibunaddress?>"
+                                                            src="<?=$r_menuphotoarr[$i]?>" style="display: block;">
+                                                    </button>
+<?php
+            }
+        }
+    }
 ?>
                                                 </div>
                                             </td>
@@ -1942,11 +1970,21 @@ if($r_photoarr == null){
     </aside>
     <!-- 로그인창 팝업 끝 -->
 
-    <!-- 사진 더보기 팝업 시작 -->
+    <!-- 메인사진 더보기 팝업 시작 -->
     <div id="mp20_gallery" class="">
         <div class="picture_area fotorama" data-width="90%" data-nav="thumbs"></div>
         <button class="close_btn">
             <i class="close_icon"></i>
+        </button>
+        </div>
+    </div>
+    <div class="black_screen"></div>
+    <!-- 사진 더보기 팝업 끝 -->
+    <!-- 메뉴사진 더보기 팝업 시작 -->
+    <div id="mp20_gallery1" class="">
+        <div class="picture_area1 fotorama" data-width="90%" data-nav="thumbs"></div>
+        <button class="close_btn">
+            <i class="close_icon1"></i>
         </button>
         </div>
     </div>

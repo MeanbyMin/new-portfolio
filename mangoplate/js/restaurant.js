@@ -1,8 +1,11 @@
 const mp20_gallery = document.querySelector("#mp20_gallery");
+const mp20_gallery1 = document.querySelector("#mp20_gallery1");
 const r_idx = document.querySelector("main").dataset.restaurant_key;
 const picture_area = document.querySelector(".picture_area");
+const picture_area1 = document.querySelector(".picture_area1");
 const black_screen = document.querySelector(".black_screen");
 const close_icon = document.querySelector(".close_icon");
+const close_icon1 = document.querySelector(".close_icon1");
 const body = document.querySelector("body");
 const popContext = document.querySelector(".pop-context");
 const contentsBox = document.querySelector("contents-box");
@@ -134,6 +137,39 @@ function GALLERY() {
   });
 }
 
+function GALLERY2() {
+  body.style.overflow = "hidden";
+  mp20_gallery1.classList.add("on");
+
+  if (picture_area1.hasChildNodes() === false) {
+    const xhr = new XMLHttpRequest();
+
+    xhr.open("POST", "./menuPhoto.php");
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    const data = "r_idx=" + r_idx;
+
+    xhr.send(data);
+    xhr.onload = () => {
+      if (xhr.status === 200) {
+        (function () {
+          let photoUrl = xhr.response.split(",");
+
+          photoUrl.forEach((i) => {
+            let img = document.createElement("img");
+            img.setAttribute("src", i);
+            picture_area1.appendChild(img);
+          });
+        })();
+      } else {
+        console.log("ajax 연결 실패");
+      }
+    };
+  }
+  $(function () {
+    $(".fotorama").fotorama();
+  });
+}
+
 window.addEventListener("click", (e) => {
   // console.log(e.target);
   e.target === HistoryBlackDeem
@@ -185,6 +221,8 @@ window.addEventListener("click", (e) => {
   e.target === black_screen ? (body.style.overflow = "") : false;
   e.target === close_icon ? mp20_gallery.classList.remove("on") : false;
   e.target === close_icon ? (body.style.overflow = "") : false;
+  e.target === close_icon1 ? mp20_gallery1.classList.remove("on") : false;
+  e.target === close_icon1 ? (body.style.overflow = "") : false;
 
   if (
     e.target === RestaurantReviewList__AllFilterButton ||

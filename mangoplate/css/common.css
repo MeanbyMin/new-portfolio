@@ -8879,7 +8879,6 @@ span.orange-underline {
     }
 }
 
-
 /* 사진 더 보기 팝업 */
 
 #mp20_gallery {
@@ -9713,6 +9712,546 @@ span.orange-underline {
         background-position: 650px 0
     }
 }
+
+/* 메뉴 사진 더보기 시작 */
+
+#mp20_gallery1 {
+    position: fixed;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    z-index: 1001;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    display: none
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    #mp20_gallery1 {
+        top:0;
+        left: 0;
+        width: 100%;
+        height: 100%
+    }
+}
+
+#mp20_gallery1.on {
+    display: block
+}
+
+#mp20_gallery1.on+.black_screen {
+    display: block
+}
+
+#mp20_gallery1+.black_screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .6;
+    z-index: auto;
+    z-index: 1000;
+    background-color: black;
+    display: none
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    #mp20_gallery1+.black_screen {
+        opacity:.9
+    }
+}
+
+#mp20_gallery1 .picture_area1 {
+    position: absolute;
+    top: 0;
+    left: 170px;
+    right: 170px;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    padding: 30px 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    z-index: 1001;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    #mp20_gallery1 .picture_area1 {
+        padding:0;
+        right: 0;
+        background-color: transparent
+    }
+}
+
+#mp20_gallery1 .info_area {
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 350px;
+    height: 100%;
+    background-color: white;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 0 4px 4px 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    #mp20_gallery1 .info_area {
+        display:none
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    #mp20_gallery1 .info_area .resto_name {
+        padding:8px 14px;
+        font-size: .8rem;
+        border-radius: 0 4px 0 0;
+        color: #555;
+        border-bottom: 1px solid #f2f2f2;
+        text-align: left;
+        word-break: break-word
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    #mp20_gallery1 .info_area .header {
+        padding:5px 16px 0
+    }
+}
+
+#mp20_gallery1 .info_area .header .inner_header {
+    overflow: hidden
+}
+
+#mp20_gallery1 .info_area .header .inner_header .user_picture_area {
+    float: left;
+    text-align: center
+}
+
+#mp20_gallery1 .info_area .header .inner_header .user_picture_area .user_picture {
+    display: block;
+    width: 40px;
+    height: 40px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%
+}
+
+#mp20_gallery1 .info_area .header .user_profile {
+    display: inline-block;
+    width: 65%;
+    padding: 6px 0 0 6px
+}
+
+#mp20_gallery1 .info_area .header .user_profile .name_wrap {
+    font-size: .85rem
+}
+
+#mp20_gallery1 .info_area .header .user_profile .name_wrap .name {
+    display: inline-block;
+    word-break: break-all;
+    vertical-align: top
+}
+
+#mp20_gallery1 .info_area .header .user_profile .stat {
+    font-size: .75rem;
+    color: #777;
+    display: block;
+    margin: 0;
+    width: 70px;
+    font-size: 0.625rem;
+    color: #cbcbcb;
+    text-align: center;
+    text-align: left
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    #mp20_gallery1 .info_area .header .user_profile .stat {
+        display:none
+    }
+}
+
+#mp20_gallery1 .info_area .header .user_profile .stat em {
+    margin: 0;
+    font-size: 0.625rem
+}
+
+#mp20_gallery1 .info_area .header .user_profile .stat em:before {
+    content: '';
+    display: inline-block;
+    margin: -2px 1px 0 2px;
+    vertical-align: middle
+}
+
+#mp20_gallery1 .info_area .header .user_profile .stat em.review:before {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-position: -996px -600px;
+    width: 9px;
+    height: 8px
+}
+
+#mp20_gallery1 .info_area .header .user_profile .stat em.hit:before {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+    background-position: -998px -729px;
+    width: 8px;
+    height: 8px
+}
+
+#mp20_gallery1 .info_area .header .user_profile .holic {
+    display: inline-block;
+    margin-left: 4px;
+    background: url("/assets/holic.svg") no-repeat;
+    width: 37px;
+    height: 15px;
+    background-size: 100%
+}
+
+#mp20_gallery1 .info_area .header .rating_area {
+    float: right
+}
+
+#mp20_gallery1 .info_area .header .rating_area .rating {
+    display: inline-block
+}
+
+#mp20_gallery1 .info_area .header .rating_area .rating.bad {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+    background-position: -66px -539px;
+    width: 30px;
+    height: 30px
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    #mp20_gallery1 .info_area .header .rating_area .rating.bad {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png);
+        background-size: 635px 609px
+    }
+}
+
+#mp20_gallery1 .info_area .header .rating_area .rating.ok {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+    background-position: -210px -539px;
+    width: 30px;
+    height: 30px
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    #mp20_gallery1 .info_area .header .rating_area .rating.ok {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png);
+        background-size: 635px 609px
+    }
+}
+
+#mp20_gallery1 .info_area .header .rating_area .rating.good {
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+    background-position: -102px -539px;
+    width: 30px;
+    height: 30px
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    #mp20_gallery1 .info_area .header .rating_area .rating.good {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png);
+        background-size: 635px 609px
+    }
+}
+
+#mp20_gallery1 .info_area .header .rating_area .rating_str {
+    color: #ff792a;
+    font-size: .75rem;
+    text-align: center
+}
+
+#mp20_gallery1 .info_area .body {
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -moz-box-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1
+}
+
+#mp20_gallery1 .info_area .content_wrap {
+    -moz-box-flex: 1;
+    -moz-flex: 1 0 100px;
+    -ms-flex: 1 0 100px;
+    flex: 1 0 100px;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 0 100px;
+    padding: 0 16px;
+    overflow: hidden !important;
+    margin-bottom: 30px
+}
+
+#mp20_gallery1 .info_area .content {
+    margin-top: 20px;
+    font-size: .85rem;
+    letter-spacing: .2px;
+    line-height: 1.2rem;
+    overflow: auto;
+    color: rgba(51,51,51,0.8)
+}
+
+#mp20_gallery1 .info_area .content .source {
+    word-wrap: break-word;
+    text-decoration: underline;
+    color: #999
+}
+
+#mp20_gallery1 .info_area .content .review_content {
+    display: inline-block;
+    word-break: break-all
+}
+
+#mp20_gallery1 .info_area .content .translate_btn {
+    display: block;
+    line-height: 1;
+    margin-top: 10px;
+    margin-bottom: 14px;
+    padding-bottom: 3px;
+    font-size: 13px;
+    border-bottom: solid 1px #9c9c9c;
+    color: #9c9c9c
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    #mp20_gallery1 .info_area .content .translate_btn {
+        display:none
+    }
+}
+
+#mp20_gallery1 .info_area .regist_date {
+    margin-top: 20px;
+    font-size: .75rem;
+    color: #777
+}
+
+#mp20_gallery1 .info_area .another_link a {
+    color: #6A6A6A;
+    text-decoration: underline
+}
+
+#mp20_gallery1 .info_area .info_area_footer .source_notice {
+    width: 300px;
+    margin: 17px auto;
+    box-sizing: border-box;
+    font-size: .75rem;
+    background-color: #ececec
+}
+
+#mp20_gallery1 .info_area .info_area_footer .source_notice .inner {
+    position: relative;
+    padding: 16px 16px 16px 52px
+}
+
+#mp20_gallery1 .info_area .info_area_footer .source_notice .inner .icon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+    background-position: -174px -539px;
+    width: 30px;
+    height: 30px
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    #mp20_gallery1 .info_area .info_area_footer .source_notice .inner .icon {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png);
+        background-size: 635px 609px
+    }
+}
+
+#mp20_gallery1 .info_area .info_area_footer .content {
+    margin-top: 0
+}
+
+#mp20_gallery1 .info_area .info_area_footer .gallery_right_review {
+    margin-bottom: 10px
+}
+
+
+#mp20_gallery1 .close_btn {
+    position: absolute;
+    top: 18px;
+    right: 190px;
+    z-index: 1002;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    #mp20_gallery1 .close_btn {
+        top:0;
+        right: 0;
+        width: 50px;
+        height: 50px;
+        text-align: center
+    }
+}
+
+#mp20_gallery1 .close_btn .close_icon1 {
+    display: inline-block;
+    background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+    background-position: -28px -587px;
+    width: 21px;
+    height: 21px
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    #mp20_gallery1 .close_btn .close_icon1 {
+        background-image:url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png);
+        background-size: 635px 609px
+    }
+}
+
+#mp20_gallery1 .m_info_area {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    background: -moz-linear-gradient(top, transparent 0%, rgba(0,0,0,0.65) 68%, rgba(0,0,0,0.65) 100%);
+    background: -webkit-linear-gradient(top, transparent 0%, rgba(0,0,0,0.65) 68%, rgba(0,0,0,0.65) 100%);
+    background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.65) 68%, rgba(0,0,0,0.65) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 )
+}
+
+@media only screen and (min-width: 769px) {
+    #mp20_gallery1 .m_info_area {
+        display:none
+    }
+}
+
+#mp20_gallery1 .m_info_area .now_stat {
+    color: white;
+    padding: 20px
+}
+
+#mp20_gallery1 .m_info_area .now_stat .page_stat {
+    float: right
+}
+
+#mp20_gallery1 .m_info_area .source a {
+    color: white;
+    text-decoration: underline
+}
+
+#mp20_gallery1 .m_info_area .source .naver_blog_link {
+    word-break: break-all
+}
+
+#mp20_gallery1 .m_info_area .user_name {
+    display: inline-block;
+    max-width: 60%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal
+}
+
+@media only screen and (min-width: 769px) {
+    #mp20_gallery1 .brand_wrap {
+        display:none
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+    #mp20_gallery1 .brand_wrap {
+        position:absolute;
+        top: 20px;
+        left: 20px
+    }
+}
+
+#mp20_gallery1 .brand_wrap .brand_image {
+    width: 35px;
+    height: 35px;
+    margin-right: 12px;
+    border-radius: 50%
+}
+
+#mp20_gallery1 .brand_wrap .brand_contents {
+    display: inline-block
+}
+
+#mp20_gallery1 .brand_wrap .brand_title {
+    margin-bottom: 3px;
+    font-size: 14px;
+    color: white
+}
+
+#mp20_gallery1 .brand_wrap .brand_ad_badge {
+    width: 24px;
+    height: 15px;
+    background-image: url("https://mp-seoul-image-production-s3.mangoplate.com/web/resources/7j5e5awc5ctqkqa7.png");
+    background-size: cover
+}
+
+@-webkit-keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+}
+
+@-moz-keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+}
+
+@keyframes placeholderAnimation {
+    0% {
+        background-position: -650px 0
+    }
+
+    100% {
+        background-position: 650px 0
+    }
+}
+/* 메뉴 사진 더보기 끝 */
 
 .mp20_map_popup {
     width: 90%;
