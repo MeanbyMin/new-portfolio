@@ -2003,6 +2003,11 @@ if($r_photoarr == null){
     <script>
         let r_Address = document.querySelector(".pg-restaurant .restaurant-detail .info td").textContent.split("지번")[1].trim();
         r_Address = String(r_Address);
+        if(r_Address.includes("F")){
+            let exadress = r_Address.split(" ");
+            exadress.pop();
+            r_Address = exadress.join(" ");
+        }
 
         let mapContainer = document.getElementById('map'), // 지도를 표시할 div 
         mapOption = {

@@ -2027,7 +2027,13 @@
     <?php
         $searchlistAddress = [];
         for($i=0;$i<count($searchlist);$i++){
-            array_push($searchlistAddress, $searchlist[$i]['r_jibunaddress']);
+            if(strpos($searchlist[$i]['r_jibunaddress'], "F")){
+                $exadress = explode(" ", $searchlist[$i]['r_jibunaddress'], -1);
+                $jbadress = implode(" ", $exadress);
+                array_push($searchlistAddress, $jbadress);
+            }else{
+                array_push($searchlistAddress, $searchlist[$i]['r_jibunaddress']);
+            }
         }
         $searchlistRestaurant = [];
         for($i=0;$i<count($searchlist);$i++){
@@ -2084,39 +2090,43 @@
         let positions = [];
         // 주소로 좌표를 검색합니다
         for (let i = 0; i < searchlistRestaurant.length; i++) {
-            geocoder.addressSearch(searchlistAddress[i], function (result, status) {
+            try {
+                geocoder.addressSearch(searchlistAddress[i], function (result, status) {
                 // 정상적으로 검색이 완료됐으면 
                 if (status === kakao.maps.services.Status.OK) {
                     const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
                     positions[i] = {
                         content: `
-<div class="restaurant-in-map">
-    <figure class="restaurant-item">
-        <div class="thumb">
-          <a href="./restaurant.php?r_idx=${searchlist_idx[i]}">
-            <div class="inner">
-              <img src=${searchlist_repphoto[i]} alt="${searchlistRestaurant[i]} 사진" class="center-crop" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg'">
-            </div>
-          </a>
-        </div>
-      <figcaption>
-        <div class="info">
-          <span class="title"><a href="./restaurant.php?r_idx=${searchlist_idx[i]}">${searchlistRestaurant[i]}</a></span>
-          <strong class="point ">${searchlist_grade[i]}</strong>
-          <p class="etc">${searchlist_repadd[i]} - ${searchlist_foodtype[i]}</p>
+                            <div class="restaurant-in-map">
+                                <figure class="restaurant-item">
+                                    <div class="thumb">
+                                    <a href="./restaurant.php?r_idx=${searchlist_idx[i]}">
+                                        <div class="inner">
+                                        <img src=${searchlist_repphoto[i]} alt="${searchlistRestaurant[i]} 사진" class="center-crop" onerror="this.src='https://mp-seoul-image-production-s3.mangoplate.com/web/resources/kssf5eveeva_xlmy.jpg'">
+                                        </div>
+                                    </a>
+                                    </div>
+                                <figcaption>
+                                    <div class="info">
+                                    <span class="title"><a href="./restaurant.php?r_idx=${searchlist_idx[i]}">${searchlistRestaurant[i]}</a></span>
+                                    <strong class="point ">${searchlist_grade[i]}</strong>
+                                    <p class="etc">${searchlist_repadd[i]} - ${searchlist_foodtype[i]}</p>
 
-          <p class="status-cnt">
-            <em class="review"><span class="hidden">리뷰수: </span>${searchlist_review[i]}</em>
-            <em class="favorite"><span class="hidden">가고싶다 수: </span>${searchlist_wannago[i]}</em>
-          </p>
-        </div>
-      </figcaption>
-    </figure>
-  </div>`,
+                                    <p class="status-cnt">
+                                        <em class="review"><span class="hidden">리뷰수: </span>${searchlist_review[i]}</em>
+                                        <em class="favorite"><span class="hidden">가고싶다 수: </span>${searchlist_wannago[i]}</em>
+                                    </p>
+                                    </div>
+                                </figcaption>
+                                </figure>
+                            </div>`,
                         latlng: coords
                     };
                 }
             });
+            } catch (e) {
+                console.log(e);
+            }
         }
 
 
